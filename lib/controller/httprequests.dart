@@ -15,7 +15,15 @@ class Products {
   final int id;
   final List media;
 
-  Products({this.name, this.description, this.category, this.seller, this.price, this.id, this.media, this.stock});
+  Products(
+      {this.name,
+      this.description,
+      this.category,
+      this.seller,
+      this.price,
+      this.id,
+      this.media,
+      this.stock});
 
   factory Products.fromJson(Map<String, dynamic> json) {
     return Products(
@@ -33,12 +41,11 @@ class Products {
 }
 
 Future<Products> fetchDB() async {
-  final response = await http.get(API_URI+ '/location/baneshwar', 
-  headers: {
+  final response = await http.get(API_URI + '/location/baneshwar', headers: {
     "Accept": "application/json",
     "X-Access-Id": null,
   }); //traffic ko satta user ni rakhna milne
-  
+
   final jsonresponse = json.decode(response.body);
   data = jsonresponse["products"];
 
@@ -57,11 +64,9 @@ class StatusAlert extends StatelessWidget {
         future: fetchDB(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return Material(
-            );  
-        }
-      }
-    );
+            return Material();
+          }
+          
+        });
   }
 }
-
