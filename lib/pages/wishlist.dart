@@ -87,9 +87,9 @@ class WishlistProduct extends StatelessWidget {
                   onTap: (){
                   Navigator.of(context).push(
                     MaterialPageRoute(builder: (context)=> HeroDetails(
-                      prodName: prodName,
-                      prodPicture: prodPicture,
-                      prodPrice: prodPrice,
+                      name: prodName,
+                      image: prodPicture,
+                      price: prodPrice,
                     )));
                   },
                     child: Column(

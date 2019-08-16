@@ -8,10 +8,10 @@ import '../pages/mycart.dart';
 
 
 class HeroDetails extends StatefulWidget {
-  HeroDetails({this.prodName, this.prodPicture, this.prodPrice});
-  final prodName;
-  final prodPrice;
-  final prodPicture;
+  HeroDetails({this.name, this.image, this.price});
+  final name;
+  final price;
+  final image;
 
   @override
   _HeroDetailsState createState() => _HeroDetailsState();
@@ -19,10 +19,10 @@ class HeroDetails extends StatefulWidget {
 
 class _HeroDetailsState extends State<HeroDetails> {
 
-  _HeroDetailsState({this.prodName, this.prodPicture, this.prodPrice});
-  final prodName;
-  final prodPrice;
-  final prodPicture;
+  _HeroDetailsState({this.name, this.image, this.price});
+  final name;
+  final price;
+  final image;
   var rating = 0.0;
 
   @override

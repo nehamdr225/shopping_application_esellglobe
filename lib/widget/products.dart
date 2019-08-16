@@ -1,19 +1,51 @@
-class Product{
-  String prodImage,prodName,prodOldprice, prodPrice, prodSeller;
+import 'package:flutter/material.dart';
+import '../pages/productdetail.dart';
 
-  Product(this.prodImage, this.prodName, this.prodOldprice, this.prodPrice, this.prodSeller);
+class Product extends StatelessWidget {
+  final name;
+  final image;
+  final seller;
+  final price;
+  final oldPrice;
+
+  Product({this.name, this.price, this.seller, this.image, this.oldPrice});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+        borderOnForeground: true,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12.0),
+        ),
+        child: Container(
+            height: 30.0,
+            width: 100.0,
+            padding: EdgeInsets.all(1.0),
+            child: Material(
+              borderRadius: BorderRadius.circular(12.0),
+              child: InkWell(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => HeroDetails(
+                            name: name,
+                            image: image,
+                            price: price,
+                          )));
+                },
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      height: 100.0,
+                      child: Image.asset(image),
+                    ),
+                    Divider(),
+                    Container(
+                        alignment: Alignment.bottomCenter,
+                        height: 5.0,
+                        child: Text(name)),
+                  ],
+                ),
+              ),
+            )));
+  }
 }
-
-
-  final List<Product> products=[
-    Product("images/4.jpg", "shirt","Rs.1000","Rs.800","eSellGlobe"),
-    Product("images/3.jpg", "pant","Rs.1000","Rs.800","eSellGlobe"),
-    Product("images/b1.jpg","brief case","Rs.1000","Rs.800","eSellGlobe"),
-    Product("images/o1.jpg", "shoes", "Rs.1000", "Rs.800","eSellGlobe"),
-    Product("images/p2.jpg", "pant", "Rs.1000","Rs.800","eSellGlobe"),
-    Product("images/p5.jpg", "pant", "Rs.1000", "Rs.800","eSellGlobe"),
-    Product("images/s1.jpg", "shirt", "Rs.1000", "Rs.800","eSellGlobe"),
-    Product("images/s5.jpg", "shirt", "Rs.1000","Rs.800","eSellGlobe"),
-
-
-];
