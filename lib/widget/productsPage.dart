@@ -21,7 +21,8 @@ class Products extends StatelessWidget {
                 TableRowInkWell(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => AllProductsPage()));
+                          builder: (context) =>
+                              AllProductsPage(products: products)));
                     },
                     child: Align(
                       alignment: Alignment.topRight,
@@ -42,12 +43,12 @@ class Products extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemBuilder: (BuildContext context, int index) {
               return Product(
-                name: products[index]['name'],
-                image: products[index]['picture'],
-                price: products[index]['price'],
-                seller: products[index]['seller'],
-                oldPrice: products[index]['oldPrice'],
-              );
+                  name: products[index]['name'],
+                  image: products[index]['picture'],
+                  price: products[index]['price'],
+                  seller: products[index]['seller'],
+                  oldPrice: products[index]['oldPrice'],
+                  details: products[index]['details']);
             },
           ),
         ),
