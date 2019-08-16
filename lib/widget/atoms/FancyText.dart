@@ -16,7 +16,7 @@ class FancyText extends StatelessWidget {
             style: TextStyle(
                 fontFamily: 'Ropa Sans',
                 fontSize: 20.0,
-                color: Colors.deepPurple[900],
+                color: Colors.deepPurple[900],  // colors lai import garera tyo icon theme bhanne rakha 
                 decoration: TextDecoration.underline,
                 decorationColor: Colors.deepPurple[900])),
       ),
