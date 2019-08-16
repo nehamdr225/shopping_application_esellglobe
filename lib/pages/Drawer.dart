@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import './widget/colors.dart';
-import './pages/Signup.dart';
+import '../widget/colors.dart';
+import './Signup.dart';
 
 class DrawerApp extends StatelessWidget {
   @override
@@ -67,7 +67,7 @@ class DrawerApp extends StatelessWidget {
 //                Navigator.pop(context);  
                 Navigator.push(
                     context,  
-                    MaterialPageRoute(builder:(context) => SignupPage()),
+                    MaterialPageRoute(builder:(context) => SignUpPage()),
                   );
               },
             ),
