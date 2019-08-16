@@ -3,7 +3,7 @@ import './colors.dart';
 // import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
-class AppBarPage extends StatelessWidget {
+class FAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     FlutterStatusbarcolor.setStatusBarColor(Colors.white);

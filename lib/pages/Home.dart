@@ -5,10 +5,10 @@ import '../widget/Carousel.dart';
 import '../widget/colors.dart';
 import '../widget/Icons.dart';
 import '../Drawer.dart';
-import '../widget/horizontalLIST.dart';
-import '../widget/productsPage.dart';
+import '../widget/CategorySlider.dart';
+import '../widget/containers/Products.dart';
 
-class EsellglobeApp extends StatelessWidget {
+class HomePageApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     FlutterStatusbarcolor.setStatusBarColor(Colors.black);
@@ -29,7 +29,7 @@ class EsellglobeApp extends StatelessWidget {
               ],
             ),
             FSlider(),
-            Products(products: products)
+            ProductContainer(products: products)
           ],
         ),
       ),

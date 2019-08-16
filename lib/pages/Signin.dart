@@ -1,30 +1,15 @@
 import 'package:flutter/material.dart';
 import '../widget/colors.dart';
-import './HomePage.dart';
-import './SignupPage.dart';
+import './Home.dart';
+import './Signup.dart';
 
-void main()=> runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class SignInPage extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      // routes: <String, WidgetBuilder>{
-      //   '/signup': (BuildContext context)=> SignupPage()
-      // },
-      home: AccountPage(),
-      
-    );
-  }
+  _SignInPageState createState() => _SignInPageState();
 }
 
-class AccountPage extends StatefulWidget {
-  @override
-  _AccountPageState createState() => _AccountPageState();
-}
-
-class _AccountPageState extends State<AccountPage> {
+class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -112,7 +97,7 @@ class _AccountPageState extends State<AccountPage> {
                       onTap: (){
                         Navigator.push(
                           context, 
-                          MaterialPageRoute(builder:(context) => EsellglobeApp())
+                          MaterialPageRoute(builder:(context) => HomePageApp())
                         );  
                       },
                       child: Center(

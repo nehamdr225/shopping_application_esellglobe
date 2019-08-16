@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../widget/appbar.dart';
-import '../pages/productdetail.dart';
+import '../widget/AppBar.dart';
+import '../pages/ProductDetails.dart';
 
 class WishlistPage extends StatelessWidget {
   final productList = [
@@ -26,7 +26,7 @@ class WishlistPage extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(40.0),
-        child: AppBarPage(),
+        child: FAppBar(),
       ),
       backgroundColor: Colors.grey,
       body: Container(

@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import '../widget/appbar.dart';
-import '../widget/products.dart';
+import '../widget/AppBar.dart';
+import '../widget/Product.dart';
 
-class AllProductsPage extends StatelessWidget {
+class ProductsPage extends StatelessWidget {
   final List<Map<String, dynamic>> products;
-  AllProductsPage({this.products});
+  ProductsPage({this.products});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.grey[200],
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(40.0),
-          child: AppBarPage(),
+          child: FAppBar(),
         ),
         body: OrientationBuilder(builder: (context, orientation) {
           return GridView.builder(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../pages/productdetail.dart';
-import '../pages/wishlist.dart';
+import '../pages/ProductDetails.dart';
+import '../pages/Wishlist.dart';
 
 class Product extends StatelessWidget {
   final name;

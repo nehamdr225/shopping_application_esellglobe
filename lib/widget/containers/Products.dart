@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../pages/Gridview.dart';
-import './products.dart';
+import '../../pages/Products.dart';
+import '../Product.dart';
 
-class Products extends StatelessWidget {
+class ProductContainer extends StatelessWidget {
   final List<Map<String, dynamic>> products;
-  Products({this.products});
+  ProductContainer({this.products});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class Products extends StatelessWidget {
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) =>
-                              AllProductsPage(products: products)));
+                              ProductsPage(products: products)));
                     },
                     child: Align(
                       alignment: Alignment.topRight,

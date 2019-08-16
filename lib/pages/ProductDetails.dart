@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../widget/colors.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart'; 
-import '../pages/wishlist.dart';
-import '../pages/mycart.dart';
+import '../pages/Wishlist.dart';
+import '../pages/Cart.dart';
 
 
 
