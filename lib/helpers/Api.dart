@@ -1,12 +1,11 @@
 import 'dart:convert';
-import 'dart:io';
-
 import 'package:http/http.dart' as http;
 
 class Client {
+  
   final String url;
-  String method;
-  String resource;
+  String method, resource;
+
   Client({
     this.url: "https://apiesell.herokuapp.com",
     this.method: "GET",
@@ -43,4 +42,6 @@ class Client {
       return err;
     }
   }
+
+  
 }
