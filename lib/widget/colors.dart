@@ -13,3 +13,4 @@ const drawercolor = LinearGradient(
     Color(0xff311b92),
   ]
 );
+

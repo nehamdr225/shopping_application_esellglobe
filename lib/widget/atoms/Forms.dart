@@ -7,10 +7,10 @@ class FForms extends StatelessWidget {
   final TextInputType type;
   final Function onChanged;
   final style = TextStyle(
-      fontFamily: 'Montserrat',
+      fontFamily: 'Ropa Sans',
       fontWeight: FontWeight.bold,
       fontSize: 16,
-      color: Colors.black87);
+      color: Colors.black54);
   FForms({this.text, this.type, this.obscure: false, this.onChanged});
 
   @override

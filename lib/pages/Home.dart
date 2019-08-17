@@ -8,9 +8,14 @@ import './Drawer.dart';
 import '../widget/CategorySlider.dart';
 import '../widget/containers/Products.dart';
 
+
 class HomePageApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+  var screenHeight = MediaQuery.of(context).size.height/100;
+  var screenWidth = MediaQuery.of(context).size.width/100;
+//Pass it as a prop to element or set it in the provider or global state. Or use a colors
+//file like thing e.g. config and do MediaQuery there and export the const just like colors
     FlutterStatusbarcolor.setStatusBarColor(Colors.black);
     return SafeArea(
       child: Scaffold(
@@ -22,7 +27,7 @@ class HomePageApp extends StatelessWidget {
               backgroundColor: Colors.grey[200],
               floating: true,
               flexibleSpace: FCarousel(),
-              expandedHeight: 200.0,
+              expandedHeight: screenHeight*30,
               actions: <Widget>[
                 FIcons(icon: Icons.search, color: icontheme),
                 FIcons(icon: Icons.shopping_cart, color: icontheme)

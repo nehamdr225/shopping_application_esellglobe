@@ -26,8 +26,8 @@ class Product extends StatelessWidget {
           borderRadius: BorderRadius.circular(12.0),
         ),
         child: Container(
-            height: 200.0,
-            width: 100.0,
+            height: 150,
+            width: 150.0,
             padding: EdgeInsets.all(1.0),
             child: Material(
               borderRadius: BorderRadius.circular(12.0),
