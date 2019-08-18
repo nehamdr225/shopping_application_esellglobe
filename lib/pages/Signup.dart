@@ -63,7 +63,7 @@ class _PageState extends State<SignUpPage> {
             width: screenWidth * 0.95,
             decoration: BoxDecoration(
                 color: Colors.grey[100],
-                boxShadow: [
+                boxShadow:[
                   BoxShadow(
                     color: Colors.grey,
                     blurRadius: 10.0
