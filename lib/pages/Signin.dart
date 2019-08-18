@@ -11,15 +11,33 @@ class SignInPage extends StatefulWidget {
 
 class _PageState extends State<SignInPage> {
   String email, password;
+  String emailErr, passwordErr;
 
   @override
   Widget build(BuildContext context) {
-    var setEmail = (data) => setState(() {
-          data == email ? email = data : print('');
+    var setEmail = (data) {
+      if (validateEmail(data) && data != email)
+        setState(() {
+          email = data;
+          emailErr = null;
         });
-    var setPassword = (data) => setState(() {
-          data == password ? password = data: print('');
+      else if (emailErr == null)
+        setState(() {
+          emailErr = "email is not valid!";
         });
+    };
+
+    var setPassword = (data) {
+      if (validatePassword(data) && data != password && data.length >= 8)
+        setState(() {
+          password = data;
+          passwordErr = null;
+        });
+      else if (passwordErr == null)
+        setState(() {
+          passwordErr = "Password not valid!";
+        });
+    };
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomPadding: false,
@@ -35,12 +53,26 @@ class _PageState extends State<SignInPage> {
                       type: TextInputType.emailAddress,
                       text: "Email",
                       onChanged: setEmail),
+
+                  emailErr != null
+                      ? Text(
+                          emailErr,
+                          textAlign: TextAlign.center,
+                        )
+                      : Text(''),
+
                   SizedBox(height: 15.0),
                   FForms(
                       type: TextInputType.text,
                       text: "Password",
                       obscure: true,
                       onChanged: setPassword),
+                  passwordErr != null
+                      ? Text(
+                          passwordErr,
+                          textAlign: TextAlign.center,
+                        )
+                      : Text(''),
                   SizedBox(height: 15.0),
                   FRaisedButton(
                     text: "Login",
@@ -54,4 +86,15 @@ class _PageState extends State<SignInPage> {
       ),
     );
   }
+}
+
+bool validateEmail(String email) {
+  return RegExp(
+    r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$",
+  ).hasMatch(email);
+}
+
+bool validatePassword(String password) {
+  return RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$')
+      .hasMatch(password);
 }
