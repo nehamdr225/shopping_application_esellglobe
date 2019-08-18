@@ -25,7 +25,7 @@ class Details extends StatelessWidget {
               Text(
                 price,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13.0),
-                textAlign: TextAlign.left,
+                textAlign: TextAlign.center,
               )),
               Expanded(child:FIcons(
                   icon: Icons.bookmark_border,

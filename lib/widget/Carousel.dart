@@ -8,7 +8,7 @@ class FCarousel extends StatelessWidget {
     return Container(
       height: 350.0,
       child: Carousel(
-        boxFit: BoxFit.fitWidth,
+        boxFit: BoxFit.fill,
         images: [
           AssetImage('images/heroimg4.jpeg'),
           AssetImage('images/heroimg1.jpeg'),

@@ -23,7 +23,7 @@ class HomePageApp extends StatelessWidget {
               backgroundColor: Colors.grey[200],
               floating: true,
               flexibleSpace: FCarousel(),
-              expandedHeight: screenHeight * 0.35,
+              expandedHeight: screenHeight * 0.30,
               actions: <Widget>[
                 FIcons(
                   icon: Icons.search,

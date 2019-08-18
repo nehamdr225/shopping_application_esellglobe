@@ -8,6 +8,7 @@ class ProductContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var screenHeight = MediaQuery.of(context).size.height/100;
     return SliverList(
       delegate: SliverChildListDelegate(<Widget>[
         Padding(
@@ -37,7 +38,7 @@ class ProductContainer extends StatelessWidget {
               ])
             ])),
         Container(
-          height: 201.0,
+          height: screenHeight*26,
           child: ListView.builder(
             itemCount: 10,
             scrollDirection: Axis.horizontal,

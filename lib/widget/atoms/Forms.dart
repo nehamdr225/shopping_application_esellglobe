@@ -9,7 +9,7 @@ class FForms extends StatelessWidget {
   final style = TextStyle(
       fontFamily: 'Ropa Sans',
       fontWeight: FontWeight.bold,
-      fontSize: 16,
+      fontSize: 18,
       color: Colors.black54);
   FForms({this.text, this.type, this.obscure: false, this.onChanged});
 
@@ -27,6 +27,7 @@ class FForms extends StatelessWidget {
               : null,
           hintText: text,
           labelStyle: style,
+          labelText: text,
           focusedBorder: UnderlineInputBorder(
               borderSide: BorderSide(color: primarycolor))),
     );

@@ -20,8 +20,8 @@ class FRaisedButton extends StatelessWidget {
             fontSize: 32.0,
           ),
         ),
-        shape: const BeveledRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(7.0)),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(12.0)),
         ),
         onPressed: () {
           switch (text) {
