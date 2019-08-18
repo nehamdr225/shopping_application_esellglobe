@@ -12,7 +12,7 @@ class HomePageApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     FlutterStatusbarcolor.setStatusBarColor(Colors.black87);
-    var screenHeight = MediaQuery.of(context).size.height / 100;
+    var screenHeight = MediaQuery.of(context).size.height;
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.grey[200],
@@ -23,10 +23,19 @@ class HomePageApp extends StatelessWidget {
               backgroundColor: Colors.grey[200],
               floating: true,
               flexibleSpace: FCarousel(),
-              expandedHeight: screenHeight * 30,
+              expandedHeight: screenHeight * 0.35,
               actions: <Widget>[
-                FIcons(icon: Icons.search, color: icontheme),
-                FIcons(icon: Icons.shopping_cart, color: icontheme)
+                FIcons(
+                  icon: Icons.search,
+                  alignment: Alignment.centerRight,
+                  color: icontheme,
+                  onPressed: () {},
+                ),
+                FIcons(
+                    icon: Icons.shopping_cart,
+                    alignment: Alignment.centerRight,
+                    color: icontheme,
+                    onPressed: () {})
               ],
             ),
             FSlider(),

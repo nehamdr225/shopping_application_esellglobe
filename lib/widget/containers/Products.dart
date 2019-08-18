@@ -37,7 +37,7 @@ class ProductContainer extends StatelessWidget {
               ])
             ])),
         Container(
-          height: 150.0,
+          height: 201.0,
           child: ListView.builder(
             itemCount: 10,
             scrollDirection: Axis.horizontal,
