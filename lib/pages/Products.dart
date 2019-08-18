@@ -19,7 +19,7 @@ class ProductsPage extends StatelessWidget {
             scrollDirection: Axis.vertical,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: orientation == Orientation.portrait ? 2 : 3,
-              childAspectRatio: 1.0,
+              childAspectRatio: 0.88,
             ),
             itemBuilder: (BuildContext context, int index) {
               return Product(

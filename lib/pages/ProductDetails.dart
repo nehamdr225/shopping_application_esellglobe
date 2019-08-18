@@ -217,7 +217,7 @@ class _HeroDetailsState extends State<HeroDetails> {
                 )),
             Container(
                 padding: EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 8.0),
-                height: 175.0,
+                height: 200.0,
                 width: 360.0,
                 decoration: BoxDecoration(
                     borderRadius:

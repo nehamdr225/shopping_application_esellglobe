@@ -21,6 +21,7 @@ class Product extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Card(
       borderOnForeground: true,
       shape: RoundedRectangleBorder(
@@ -28,6 +29,7 @@ class Product extends StatelessWidget {
       ),
       child: Container(
         width: 150,
+        height: 202.0,
         child: Material(
           borderRadius: BorderRadius.circular(8.0),
           child: InkWell(

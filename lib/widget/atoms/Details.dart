@@ -8,10 +8,7 @@ class Details extends StatelessWidget {
   Details({this.name, this.price});
   @override
   Widget build(BuildContext context) {
-    // var screenHeight = MediaQuery.of(context).size.height;
-    // var screenWidth = MediaQuery.of(context).size.width;
     return Container(
-        // height: 61,
         child: Column(
           children: <Widget>[
             Text(
