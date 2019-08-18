@@ -6,7 +6,7 @@ import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 class FAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    FlutterStatusbarcolor.setStatusBarColor(Colors.white);
+    FlutterStatusbarcolor.setStatusBarColor(Colors.black87);
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(40.0),

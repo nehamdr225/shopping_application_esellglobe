@@ -20,14 +20,16 @@ class Product extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var screenHeight = MediaQuery.of(context).size.height / 100;
+    var screenWidth = MediaQuery.of(context).size.width / 100;
     return Card(
         borderOnForeground: true,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12.0),
         ),
         child: Container(
-            height: 150,
-            width: 150.0,
+            height: screenHeight * 30,
+            width: screenWidth * 35,
             padding: EdgeInsets.all(1.0),
             child: Material(
               borderRadius: BorderRadius.circular(12.0),
@@ -43,56 +45,54 @@ class Product extends StatelessWidget {
                 child: Column(
                   children: <Widget>[
                     Container(
-                      height: 100.0,
+                      height: screenHeight * 10,
+                      width: screenWidth * 35,
                       child: Image.asset(image),
                     ),
                     Divider(),
-                    // IconButton(
-                    //   alignment: Alignment.bottomRight,
-                    //   icon: Icon(Icons.bookmark_border),
-                    //   onPressed: (){},
-                    // ),
                     Container(
                         // alignment: Alignment.bottomLeft,
-                        height: 10.0,
+                        padding: EdgeInsets.only(left: screenWidth * 5.0),
+                        height: screenHeight * 3,
                         child: Row(
                           children: <Widget>[
-                            Text(
-                              name,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 13.0),
-                              textAlign: TextAlign.center,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(right: 65.0),
-                            ),
-                            IconButton(
-                              icon: Icon(
-                                Icons.bookmark_border,
-                                size: 12.0,
+                            Container(
+                              width: screenWidth * 15,
+                              alignment: Alignment.topLeft,
+                              child: Text(
+                                name,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 13.0),
+                                textAlign: TextAlign.left,
                               ),
-                              alignment: Alignment.topRight,
-                              onPressed: () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => WishlistPage()));
-                              },
+                            ),
+                            Container(
+                              alignment: Alignment.centerRight,
+                              child: IconButton(
+                                icon: Icon(
+                                  Icons.bookmark_border,
+                                  size: 24.0,
+                                ),
+                                onPressed: () {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => WishlistPage()));
+                                },
+                              ),
                             )
                           ],
                         )),
                     Padding(
-                      padding: EdgeInsets.all(4.0),
+                      padding: EdgeInsets.all(screenWidth * 0.5),
                     ),
                     Container(
-                        alignment: Alignment.bottomCenter,
-                        height: 5.0,
-                        child: Text(details)),
-                    Padding(
-                      padding: EdgeInsets.all(4.0),
-                    ),
-                    Container(
-                        alignment: Alignment.bottomCenter,
-                        height: 5.0,
-                        child: Text(price)),
+                        padding: EdgeInsets.only(left: screenWidth * 5.0),
+                        alignment: Alignment.bottomLeft,
+                        height: screenHeight * 1.5,
+                        child: Text(
+                          price,
+                          textAlign: TextAlign.left,
+                        )),
                   ],
                 ),
               ),
