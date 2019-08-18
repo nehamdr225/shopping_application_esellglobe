@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-// import '../widget/colors.dart';
-// import '../widget/atoms/Buttons.dart';
 import '../widget/atoms/Forms.dart';
 import '../widget/atoms/RaisedButton.dart';
+import '../helpers/Validators.dart';
 
 class SignInPage extends StatefulWidget {
   @override
@@ -16,7 +15,7 @@ class _PageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     var setEmail = (data) {
-      if (validateEmail(data) && data != email)
+      if (emailValidator(data) && data != email)
         setState(() {
           email = data;
           emailErr = null;
@@ -28,7 +27,7 @@ class _PageState extends State<SignInPage> {
     };
 
     var setPassword = (data) {
-      if (validatePassword(data) && data != password && data.length >= 8)
+      if (pwdValidator(data) && data != password && data.length >= 8)
         setState(() {
           password = data;
           passwordErr = null;
@@ -86,15 +85,4 @@ class _PageState extends State<SignInPage> {
       ),
     );
   }
-}
-
-bool validateEmail(String email) {
-  return RegExp(
-    r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$",
-  ).hasMatch(email);
-}
-
-bool validatePassword(String password) {
-  return RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$')
-      .hasMatch(password);
 }
