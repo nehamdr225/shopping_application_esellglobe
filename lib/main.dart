@@ -1,8 +1,11 @@
+import 'package:EsellGlobe/pages/Home.dart';
 import 'package:flutter/material.dart';
 
 import './pages/UserPromt.dart';
+import 'package:EsellGlobe/store/Store.dart';
 
-void main() {
+void main() async {
+  var token = await getValue("token");
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     theme: ThemeData(
@@ -17,6 +20,6 @@ void main() {
           ),
           caption: TextStyle(fontSize: 12.0, color: Colors.grey[400])),
     ),
-    home: UserPromptApp(),
+    home: token != null ? HomePageApp() : UserPromptApp(),
   ));
 }
