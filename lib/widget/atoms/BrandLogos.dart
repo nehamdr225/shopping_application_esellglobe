@@ -9,7 +9,7 @@ class BrandLogos extends StatelessWidget {
       height: 40.0,
       child: FloatingActionButton(
         child: const Text(
-          ' LOGO AREAS ',
+          'eSell Globe',
           style: TextStyle(
             color: Colors.white,
             fontFamily: 'Ropa Sans',

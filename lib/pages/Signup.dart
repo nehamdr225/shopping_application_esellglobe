@@ -1,7 +1,10 @@
+import 'package:EsellGlobe/pages/Signin.dart';
 import 'package:flutter/material.dart';
+
+import '../helpers/Validators.dart';
 import '../widget/atoms/Forms.dart';
 import '../widget/atoms/RaisedButton.dart';
-import '../helpers/Validators.dart';
+import '../widget/atoms/FancyText.dart';
 
 class SignUpPage extends StatefulWidget {
   @override
@@ -15,7 +18,7 @@ class _PageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     var screenHeight = MediaQuery.of(context).size.height;
     var screenWidth = MediaQuery.of(context).size.width;
-    
+
     var setName = (data) {
       if (nameValidator(data) && data != name)
         setState(() {
@@ -63,11 +66,8 @@ class _PageState extends State<SignUpPage> {
             width: screenWidth * 0.95,
             decoration: BoxDecoration(
                 color: Colors.grey[100],
-                boxShadow:[
-                  BoxShadow(
-                    color: Colors.grey,
-                    blurRadius: 10.0
-                  ),
+                boxShadow: [
+                  BoxShadow(color: Colors.grey, blurRadius: 10.0),
                 ],
                 borderRadius: BorderRadius.all(Radius.circular(12.0))),
             child: Column(
@@ -118,6 +118,15 @@ class _PageState extends State<SignUpPage> {
                         text: "Register",
                       ), //onPressed: () {}),
                       SizedBox(height: 30.0),
+                      FancyText(
+                          text: "Already have an account?",
+                          size: 15.0,
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SignInPage()));
+                          })
                     ],
                   ),
                 ),

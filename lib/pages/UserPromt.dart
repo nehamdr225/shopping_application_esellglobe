@@ -1,3 +1,4 @@
+import 'package:EsellGlobe/pages/Home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
@@ -23,7 +24,10 @@ class UserPromptApp extends StatelessWidget {
             Padding(padding: EdgeInsets.all(12.0)),
             FRaisedButton(text: "Signup"),
             Padding(padding: EdgeInsets.all(12.0)),
-            FancyText(text: "Continue without signin!")
+            FancyText(text: "Continue without signin!", size: 20.0, onTap:(){
+              Navigator.push(
+              context, MaterialPageRoute(builder: (context) =>  HomePageApp()));
+            } )
           ]),
     ));
   }

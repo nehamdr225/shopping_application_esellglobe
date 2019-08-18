@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
-import '../../pages/Home.dart';
 
 class FancyText extends StatelessWidget {
   final String text;
-  FancyText({this.text});
+  final double size;
+  final Function onTap;
+
+  FancyText({this.text, this.size, this.onTap});
   @override
   Widget build(BuildContext context) {
     return Material(
       child: InkWell(
-        onTap: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => HomePageApp()));
-        },
+        onTap: onTap,
         child: Text(text,
             style: TextStyle(
                 fontFamily: 'Ropa Sans',
-                fontSize: 20.0,
+                fontSize: size,
                 color: Colors.deepPurple[900],
                 decoration: TextDecoration.underline,
                 decorationColor: Colors.deepPurple[900])),
