@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../widget/atoms/Forms.dart';
 import '../widget/atoms/RaisedButton.dart';
 import '../helpers/Validators.dart';
+import '../helpers/Api.dart';
 
 class SignInPage extends StatefulWidget {
   @override
@@ -40,6 +41,12 @@ class _PageState extends State<SignInPage> {
           passwordErr = "Password not valid!";
         });
     };
+
+    var loginUser = () async {
+      String token = await login(email, password);
+      print(token);
+    };
+
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomPadding: false,
@@ -50,14 +57,11 @@ class _PageState extends State<SignInPage> {
             width: screenWidth * 0.95,
             decoration: BoxDecoration(
                 color: Colors.grey[100],
-                boxShadow:[
-                  BoxShadow(
-                    color: Colors.grey,
-                    blurRadius: 10.0
-                  ),
+                boxShadow: [
+                  BoxShadow(color: Colors.grey, blurRadius: 10.0),
                 ],
                 borderRadius: BorderRadius.all(Radius.circular(12.0))),
-                    child: Column(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
@@ -92,6 +96,7 @@ class _PageState extends State<SignInPage> {
                       SizedBox(height: 15.0),
                       FRaisedButton(
                         text: "Login",
+                        onPressed: loginUser,
                       ), //onPressed: () {}),
                       SizedBox(height: 30.0),
                     ],

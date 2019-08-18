@@ -1,10 +1,10 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:http/http.dart' as http;
 
 Map<String, String> headers = {
-  'Content-Type': 'application/json',
+  HttpHeaders.contentTypeHeader: 'application/json',
 };
-
 
 fetch({uri, method: "GET", body: ''}) async {
   try {
@@ -13,10 +13,16 @@ fetch({uri, method: "GET", body: ''}) async {
         var response = await http.get(uri, headers: headers);
         return json.decode(response.body);
       case "POST":
-        var response = await http.post(uri, headers: headers, body: body);
-        return json.decode(response.body);
+        var response =
+            await http.post(uri, headers: headers, body: json.encode(body));
+        if (response.statusCode <= 201)
+          return json.decode(response.body);
+        else
+          return {"error": "Error logging in!"};
+        break;
       case "PUT":
-        var response = await http.put(uri, headers: headers, body: body);
+        var response =
+            await http.put(uri, headers: headers, body: json.encode(body));
         return json.decode(response.body);
       default:
         var response = await http.get(uri, headers: headers);

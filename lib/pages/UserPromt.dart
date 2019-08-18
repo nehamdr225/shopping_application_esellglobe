@@ -1,4 +1,6 @@
 import 'package:EsellGlobe/pages/Home.dart';
+import 'package:EsellGlobe/pages/Signin.dart';
+import 'package:EsellGlobe/pages/Signup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
@@ -20,14 +22,29 @@ class UserPromptApp extends StatelessWidget {
           children: <Widget>[
             BrandLogos(),
             Padding(padding: EdgeInsets.all(12.0)),
-            FRaisedButton(text: "Login"),
+            FRaisedButton(
+              text: "Login",
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SignInPage()));
+              },
+            ),
             Padding(padding: EdgeInsets.all(12.0)),
-            FRaisedButton(text: "Signup"),
+            FRaisedButton(
+              text: "Signup",
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SignUpPage()));
+              },
+            ),
             Padding(padding: EdgeInsets.all(12.0)),
-            FancyText(text: "Continue without signin!", size: 20.0, onTap:(){
-              Navigator.push(
-              context, MaterialPageRoute(builder: (context) =>  HomePageApp()));
-            } )
+            FancyText(
+                text: "Continue without signin!",
+                size: 20.0,
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => HomePageApp()));
+                })
           ]),
     ));
   }

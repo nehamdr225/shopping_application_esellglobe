@@ -1,3 +1,4 @@
+import 'package:EsellGlobe/helpers/Api.dart';
 import 'package:EsellGlobe/pages/Signin.dart';
 import 'package:flutter/material.dart';
 
@@ -53,6 +54,11 @@ class _PageState extends State<SignUpPage> {
         setState(() {
           passwordErr = "Password not valid!";
         });
+    };
+
+    var signupUser = () async {
+      String message = await signup(email, password, name);
+      print(message);
     };
 
     return SafeArea(
@@ -116,6 +122,7 @@ class _PageState extends State<SignUpPage> {
                       // FForms(type: TextInputType.phone, text: "Mobile No."),
                       FRaisedButton(
                         text: "Register",
+                        onPressed: signupUser,
                       ), //onPressed: () {}),
                       SizedBox(height: 30.0),
                       FancyText(
