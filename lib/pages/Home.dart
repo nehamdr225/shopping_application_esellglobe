@@ -16,9 +16,12 @@ class HomePageApp extends StatefulWidget {
 class _HomePageAppState extends State<HomePageApp> {
   List products;
   @override
-  void initState() async{
+  void initState() {
     super.initState();
-    products = await getProducts();
+    getProducts().then((data){
+      products = data;
+      print(data);
+    });
   }
 
   @override
@@ -80,8 +83,8 @@ class Products {
       this.media,
       this.stock});
 
-    factory Products.fromJson(Map< String, dynamic> json){
-      return Products(
+  factory Products.fromJson(Map<String, dynamic> json) {
+    return Products(
         category: json['category'],
         description: json['description'],
         id: json['id'],
@@ -89,7 +92,6 @@ class Products {
         name: json['name'],
         price: json['price'],
         seller: json['seller'],
-        stock: json['stock']
-      );
-    }
+        stock: json['stock']);
+  }
 }

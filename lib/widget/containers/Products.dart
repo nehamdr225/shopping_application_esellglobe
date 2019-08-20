@@ -3,7 +3,7 @@ import '../../pages/Products.dart';
 import '../Product.dart';
 
 class ProductContainer extends StatelessWidget {
-  final List<Map<String, dynamic>> products;
+  final  products;
   ProductContainer({this.products});
 
   @override
