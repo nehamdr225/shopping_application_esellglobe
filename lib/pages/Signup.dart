@@ -68,7 +68,7 @@ class _PageState extends State<SignUpPage> {
         body: Align(
           alignment: Alignment.center,
           child: Container(
-            height: screenHeight * 0.50,
+            height: screenHeight * 0.80,
             width: screenWidth * 0.95,
             decoration: BoxDecoration(
                 color: Colors.grey[100],
