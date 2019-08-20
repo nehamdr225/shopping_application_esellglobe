@@ -11,6 +11,7 @@ class Details extends StatelessWidget {
     return Container(
         child: Column(
           children: <Widget>[
+            Padding(padding: EdgeInsets.only(bottom: 10.0),),
             Text(
               name,
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.0),

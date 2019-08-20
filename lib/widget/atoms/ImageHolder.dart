@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:EsellGlobe/widget/atoms/centerText.dart';
 
 class ImageHolder extends StatelessWidget {
   final image;
@@ -8,7 +9,7 @@ class ImageHolder extends StatelessWidget {
     print(image);
     return Container(
       height: 130,
-      child: image != null ? Image.network(image) : Text("image load failed"),
+      child: image != null ? Image.network(image) : CenterText(text:"Image load failed", size: 12,),
     );
   }
 }

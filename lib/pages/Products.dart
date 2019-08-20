@@ -3,7 +3,7 @@ import '../widget/AppBar.dart';
 import '../widget/Product.dart';
 
 class ProductsPage extends StatelessWidget {
-  final List<Map<String, dynamic>> products;
+  final products;
   ProductsPage({this.products});
   @override
   Widget build(BuildContext context) {
@@ -15,16 +15,18 @@ class ProductsPage extends StatelessWidget {
         ),
         body: OrientationBuilder(builder: (context, orientation) {
           return GridView.builder(
-            itemCount: 20,
+            itemCount: 5,
             scrollDirection: Axis.vertical,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: orientation == Orientation.portrait ? 2 : 3,
-              childAspectRatio: 0.88,
+              childAspectRatio: 0.84,
             ),
             itemBuilder: (BuildContext context, int index) {
               return Product(
                   name: products[index]['name'],
-                  image: products[index]['picture'],
+                  image: products[index]['media'][0]['src'].length > 0
+                          ? products[index]['media'][0]['src'][0]
+                          : null,
                   price: products[index]['price'],
                   seller: products[index]['seller'],
                   oldPrice: products[index]['oldPrice'],

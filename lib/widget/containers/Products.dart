@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../pages/Products.dart';
 import '../Product.dart';
+import 'package:EsellGlobe/widget/atoms/centerText.dart';
 
 class ProductContainer extends StatelessWidget {
   final products;
@@ -37,7 +38,7 @@ class ProductContainer extends StatelessWidget {
               ])
             ])),
         Container(
-          height: 202.0,
+          height: 212.0,
           child: ListView.builder(
             itemCount: 5,
             scrollDirection: Axis.horizontal,
@@ -54,7 +55,11 @@ class ProductContainer extends StatelessWidget {
                           ? products[index]['oldPrice']
                           : products[index]['price'],
                       details: products[index]['details'])
-                  : Text('Products are being loaded...');
+                  : CenterText(
+                      text: 'Products are being loaded...',
+                      size: 12.0,
+                      indicator: true,
+                    );
             },
           ),
         ),
