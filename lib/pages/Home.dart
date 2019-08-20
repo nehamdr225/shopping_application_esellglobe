@@ -18,9 +18,10 @@ class _HomePageAppState extends State<HomePageApp> {
   @override
   void initState() {
     super.initState();
-    getProducts().then((data){
-      products = data;
-      print(data);
+    getProducts().then((data) {
+      setState(() {
+        products = data;
+      });
     });
   }
 

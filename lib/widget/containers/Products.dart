@@ -3,12 +3,11 @@ import '../../pages/Products.dart';
 import '../Product.dart';
 
 class ProductContainer extends StatelessWidget {
-  final  products;
+  final products;
   ProductContainer({this.products});
 
   @override
   Widget build(BuildContext context) {
-    
     return SliverList(
       delegate: SliverChildListDelegate(<Widget>[
         Padding(
@@ -40,16 +39,22 @@ class ProductContainer extends StatelessWidget {
         Container(
           height: 202.0,
           child: ListView.builder(
-            itemCount: 10,
+            itemCount: 5,
             scrollDirection: Axis.horizontal,
             itemBuilder: (BuildContext context, int index) {
-              return Product(
-                  name: products[index]['name'],
-                  image: products[index]['picture'],
-                  price: products[index]['price'],
-                  seller: products[index]['seller'],
-                  oldPrice: products[index]['oldPrice'],
-                  details: products[index]['details']);
+              return products != null
+                  ? Product(
+                      name: products[index]['name'],
+                      image: products[index]['media'][0]['src'].length > 0
+                          ? products[index]['media'][0]['src'][0]
+                          : null,
+                      price: products[index]['price'],
+                      seller: products[index]['seller'],
+                      oldPrice: products[index]['oldPrice'] != null
+                          ? products[index]['oldPrice']
+                          : products[index]['price'],
+                      details: products[index]['details'])
+                  : Text('Products are being loaded...');
             },
           ),
         ),

@@ -21,7 +21,6 @@ class Product extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Card(
       borderOnForeground: true,
       shape: RoundedRectangleBorder(
@@ -45,7 +44,10 @@ class Product extends StatelessWidget {
               children: <Widget>[
                 ImageHolder(image: image),
                 Divider(height: 1),
-                Details(name:name, price: price,),
+                Details(
+                  name: name,
+                  price: price.toString(),
+                ),
               ],
             ),
           ),

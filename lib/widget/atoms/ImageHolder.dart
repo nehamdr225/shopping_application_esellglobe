@@ -5,9 +5,10 @@ class ImageHolder extends StatelessWidget {
   ImageHolder({this.image});
   @override
   Widget build(BuildContext context) {
+    print(image);
     return Container(
       height: 130,
-      child: Image.asset(image),
+      child: image != null ? Image.network(image) : Text("image load failed"),
     );
   }
 }

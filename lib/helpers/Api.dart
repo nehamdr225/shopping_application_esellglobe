@@ -36,20 +36,17 @@ signup(String email, String password, String name) async {
 getProducts({result = 10, page = 1}) async {
   try {
     var response = await fetch(uri: '$url/products?result=$result&page=$page');
-    return response.products;
+    return response['products'];
   } catch (err) {
     return err;
   }
 }
 
 getProductsByCategory({category = "top", result = 10, page = 1}) async {
-  try {
-    var response = await fetch(
-        uri: '$url/products/category/$category?result=$result&page=$page');
+  fetch(uri: '$url/products/category/$category?result=$result&page=$page')
+      .then((response) {
     return response.products;
-  } catch (err) {
-    return err;
-  }
+  });
 }
 
 getUser(id) async {
