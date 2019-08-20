@@ -26,23 +26,15 @@ class HorizontalList extends StatelessWidget {
         children: <Widget>[
           Category(
             imageLocation: 'images/tshirt.png',
-            imageCaption: 'Shirt',
+            imageCaption: 'Top Wear',
           ),
           Category(
             imageLocation: 'images/pant.png',
-            imageCaption: 'Pant',
+            imageCaption: 'Bottom Wear',
           ),
           Category(
             imageLocation: 'images/shoe.png',
-            imageCaption: 'Shoes',
-          ),
-          Category(
-            imageLocation: 'images/briefcase-128.png',
-            imageCaption: 'Briefcase',
-          ),
-          Category(
-            imageLocation: 'images/tshirt.png',
-            imageCaption: 'Shirt',
+            imageCaption: 'Foot Wear',
           ),
         ],
       ),

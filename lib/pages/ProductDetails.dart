@@ -20,7 +20,7 @@ class _HeroDetailsState extends State<HeroDetails> {
   final price;
   final image;
   var rating = 0.0;
-  
+
   _HeroDetailsState({this.name, this.image, this.price});
   @override
   Widget build(BuildContext context) {
@@ -84,6 +84,12 @@ class _HeroDetailsState extends State<HeroDetails> {
       ],
       body: CustomScrollView(slivers: <Widget>[
         SliverAppBar(
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back),
+          ),
           iconTheme: IconThemeData(color: icontheme2),
           backgroundColor: Colors.grey[200],
           floating: true,
@@ -99,13 +105,15 @@ class _HeroDetailsState extends State<HeroDetails> {
             IconButton(
               icon: Icon(Icons.bookmark_border),
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => WishlistPage()));
               },
             ),
             IconButton(
               icon: Icon(Icons.shopping_cart),
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => CartPage()));
               },
             ),
           ],
@@ -177,7 +185,7 @@ class _HeroDetailsState extends State<HeroDetails> {
                                 style: Theme.of(context).textTheme.body2,
                               ),
                               Text(
-                                "Rs.2500 \n  ",
+                                "Rs.2500\n  ",
                                 style: Theme.of(context).textTheme.body2,
                               ),
                             ]),
