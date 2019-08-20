@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../widget/AppBar.dart';
-import '../pages/ProductDetails.dart';
+import 'package:EsellGlobe/widget/AppBar.dart';
+import 'package:EsellGlobe/pages/ProductDetails.dart';
 
 class WishlistPage extends StatelessWidget {
   final productList = [

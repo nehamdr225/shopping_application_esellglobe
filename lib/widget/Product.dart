@@ -1,7 +1,7 @@
 import 'package:EsellGlobe/widget/atoms/Details.dart';
 import 'package:EsellGlobe/widget/atoms/ImageHolder.dart';
 import 'package:flutter/material.dart';
-import '../pages/ProductDetails.dart';
+import 'package:EsellGlobe/pages/ProductDetails.dart';
 
 class Product extends StatelessWidget {
   final name;

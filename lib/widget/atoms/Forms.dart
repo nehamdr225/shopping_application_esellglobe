@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../widget/colors.dart';
+import 'package:EsellGlobe/widget/colors.dart';
 
 class FForms extends StatelessWidget {
   final bool obscure;

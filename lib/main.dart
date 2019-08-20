@@ -1,7 +1,7 @@
 import 'package:EsellGlobe/pages/Home.dart';
 import 'package:flutter/material.dart';
 
-import './pages/UserPromt.dart';
+import 'package:EsellGlobe/pages/UserPromt.dart';
 import 'package:EsellGlobe/store/Store.dart';
 
 void main() async {

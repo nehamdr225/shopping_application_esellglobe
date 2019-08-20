@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../widget/atoms/Forms.dart';
-import '../widget/atoms/RaisedButton.dart';
-import '../helpers/Validators.dart';
-import '../helpers/Api.dart';
+import 'package:EsellGlobe/widget/atoms/Forms.dart';
+import 'package:EsellGlobe/widget/atoms/RaisedButton.dart';
+import 'package:EsellGlobe/helpers/Validators.dart';
+import 'package:EsellGlobe/helpers/Api.dart';
 
 class SignInPage extends StatefulWidget {
   @override

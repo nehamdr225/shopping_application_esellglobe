@@ -4,9 +4,9 @@ import 'package:EsellGlobe/pages/Signup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
-import '../widget/atoms/BrandLogos.dart';
-import '../widget/atoms/RaisedButton.dart';
-import '../widget/atoms/FancyText.dart';
+import 'package:EsellGlobe/widget/atoms/BrandLogos.dart';
+import 'package:EsellGlobe/widget/atoms/RaisedButton.dart';
+import 'package:EsellGlobe/widget/atoms/FancyText.dart';
 
 class UserPromptApp extends StatelessWidget {
   @override

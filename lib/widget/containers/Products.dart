@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../pages/Products.dart';
-import '../Product.dart';
+import 'package:EsellGlobe/pages/Products.dart';
+import 'package:EsellGlobe/widget/Product.dart';
 import 'package:EsellGlobe/widget/atoms/centerText.dart';
 
 class ProductContainer extends StatelessWidget {
