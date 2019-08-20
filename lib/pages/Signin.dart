@@ -3,6 +3,8 @@ import 'package:EsellGlobe/widget/atoms/Forms.dart';
 import 'package:EsellGlobe/widget/atoms/RaisedButton.dart';
 import 'package:EsellGlobe/helpers/Validators.dart';
 import 'package:EsellGlobe/helpers/Api.dart';
+import 'package:EsellGlobe/widget/atoms/FancyText.dart';
+import 'package:EsellGlobe/pages/Signup.dart';
 
 class SignInPage extends StatefulWidget {
   @override
@@ -15,7 +17,6 @@ class _PageState extends State<SignInPage> {
 
   @override
   Widget build(BuildContext context) {
-    var screenHeight = MediaQuery.of(context).size.height;
     var screenWidth = MediaQuery.of(context).size.width;
 
     var setEmail = (data) {
@@ -53,7 +54,7 @@ class _PageState extends State<SignInPage> {
         body: Align(
           alignment: Alignment.center,
           child: Container(
-            height: screenHeight * 0.50,
+            height: 500.0,
             width: screenWidth * 0.95,
             decoration: BoxDecoration(
                 color: Colors.grey[100],
@@ -99,6 +100,15 @@ class _PageState extends State<SignInPage> {
                         onPressed: loginUser,
                       ), //onPressed: () {}),
                       SizedBox(height: 30.0),
+                      FancyText(
+                          text: "Don't have an account? Register Here !",
+                          size: 15.0,
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SignUpPage()));
+                          })
                     ],
                   ),
                 ),

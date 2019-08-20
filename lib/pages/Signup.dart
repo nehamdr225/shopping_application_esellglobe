@@ -17,7 +17,6 @@ class _PageState extends State<SignUpPage> {
   String nameErr, emailErr, passwordErr;
   @override
   Widget build(BuildContext context) {
-    var screenHeight = MediaQuery.of(context).size.height;
     var screenWidth = MediaQuery.of(context).size.width;
 
     var setName = (data) {
@@ -68,7 +67,7 @@ class _PageState extends State<SignUpPage> {
         body: Align(
           alignment: Alignment.center,
           child: Container(
-            height: screenHeight * 0.50,
+            height: 500.0,
             width: screenWidth * 0.95,
             decoration: BoxDecoration(
                 color: Colors.grey[100],
