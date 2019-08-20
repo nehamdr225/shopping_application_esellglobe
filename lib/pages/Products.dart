@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../widget/AppBar.dart';
-import '../widget/Product.dart';
+import 'package:EsellGlobe/widget/AppBar.dart';
+import 'package:EsellGlobe/widget/Product.dart';
+import 'package:EsellGlobe/widget/atoms/centerText.dart';
 
 class ProductsPage extends StatelessWidget {
   final products;
@@ -22,15 +23,21 @@ class ProductsPage extends StatelessWidget {
               childAspectRatio: 0.84,
             ),
             itemBuilder: (BuildContext context, int index) {
-              return Product(
-                  name: products[index]['name'],
-                  image: products[index]['media'][0]['src'].length > 0
+              return products != null
+                  ? Product(
+                      name: products[index]['name'],
+                      image: products[index]['media'][0]['src'].length > 0
                           ? products[index]['media'][0]['src'][0]
                           : null,
-                  price: products[index]['price'],
-                  seller: products[index]['seller'],
-                  oldPrice: products[index]['oldPrice'],
-                  details: products[index]['details']);
+                      price: products[index]['price'],
+                      seller: products[index]['seller'],
+                      oldPrice: products[index]['oldPrice'],
+                      details: products[index]['details'])
+                  : CenterText(
+                      text: 'Products are being loaded...',
+                      size: 12.0,
+                      indicator: true,
+                    );
             },
           );
         }));
