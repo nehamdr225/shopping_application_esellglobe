@@ -10,13 +10,13 @@ login(String email, String password) async {
       'email': email,
       'password': password,
     });
-    if (!response.error) {
-      savekeyVal('token', response.token);
-      return response.token;
+    if (response['token'] != null) {
+      savekeyVal('token', response['token']);
+      return {"token": response['token']};
     }
-    throw "Network error ocurred!";
+    return {"error": "Email or password is not valid!"};
   } catch (err) {
-    throw err;
+    return {"error": err};
   }
 }
 

@@ -50,10 +50,16 @@ class _PageState extends State<SignInPage> {
 
     var loginUser = () async {
       try {
-        String token = await login(email, password);
-        user.token = token;
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => HomePageApp()));
+        Map token = await login(email, password);
+        print(token);
+        if (token['error'] == null) {
+          user.token = token['token'];
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => HomePageApp()));
+        } else
+          setState(() {
+            loginErr = token['error'];
+          });
       } catch (err) {
         setState(() {
           loginErr = "Login failed!";
@@ -106,6 +112,9 @@ class _PageState extends State<SignInPage> {
                             )
                           : Text(''),
                       SizedBox(height: 15.0),
+                      loginErr != null
+                          ? Text(loginErr, style: TextStyle(color: Colors.red))
+                          : Text(''),
                       FRaisedButton(
                         text: "Login",
                         onPressed: loginUser,
@@ -119,8 +128,7 @@ class _PageState extends State<SignInPage> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => SignUpPage()));
-                          }),
-                      loginErr ?? Text(loginErr)
+                          })
                     ],
                   ),
                 ),

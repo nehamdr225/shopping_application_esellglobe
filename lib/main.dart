@@ -6,11 +6,20 @@ import 'package:EsellGlobe/pages/UserPromt.dart';
 
 import 'package:EsellGlobe/store/Store.dart';
 import 'package:EsellGlobe/store/ProductModel.dart';
+import 'package:EsellGlobe/store/CartModel.dart';
+import 'package:EsellGlobe/store/UserModel.dart';
+import 'package:EsellGlobe/store/WishlistModel.dart';
 
 void main() async {
   var token = await getValue("token");
-  runApp(ChangeNotifierProvider(
-      builder: (context) => ProductModel(),
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(builder: (context) => ProductModel()),
+        ChangeNotifierProvider(builder: (context) => UserModel()),
+        ChangeNotifierProvider(builder: (context) => CartModel()),
+        ChangeNotifierProvider(builder: (context) => WishlistModel()),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
@@ -25,6 +34,8 @@ void main() async {
               ),
               caption: TextStyle(fontSize: 14.0, color: Colors.black87)),
         ),
-        home: token != null ? HomePageApp(token:token) : UserPromptApp(),
-      )));
+        home: token != null ? HomePageApp(token: token) : UserPromptApp(),
+      ),
+    ),
+  );
 }

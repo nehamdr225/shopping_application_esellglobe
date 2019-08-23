@@ -55,8 +55,7 @@ class _HomePageAppState extends State<HomePageApp> {
               ],
             ),
             FSlider(),
-            ProductContainer(
-                products: Provider.of<ProductModel>(context).products)
+            ProductContainer(products: product.products)
           ],
         ),
       ),
