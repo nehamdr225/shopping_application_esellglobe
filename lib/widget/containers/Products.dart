@@ -43,7 +43,7 @@ class ProductContainer extends StatelessWidget {
             itemCount: 5,
             scrollDirection: Axis.horizontal,
             itemBuilder: (BuildContext context, int index) {
-              return products != null
+              return products.length > 0
                   ? Product(
                       name: products[index]['name'],
                       image: products[index]['media'][0]['src'].length > 0

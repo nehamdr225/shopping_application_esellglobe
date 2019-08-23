@@ -17,3 +17,11 @@ savekeyVal(key, value) async {
     throw err;
   }
 }
+// '''
+// class AuthCache {
+//   final _storage = new FlutterSecureStorage();
+
+//   get storage async => await _storage.read(key: 'token');
+//   set storage(value) => _storage.write(key: 'token', value: value);
+// }
+// '''

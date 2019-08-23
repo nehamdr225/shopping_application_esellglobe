@@ -7,6 +7,8 @@ import 'package:EsellGlobe/widget/Icons.dart';
 import 'package:EsellGlobe/pages/Drawer.dart';
 import 'package:EsellGlobe/widget/CategorySlider.dart';
 import 'package:EsellGlobe/widget/containers/Products.dart';
+import 'package:provider/provider.dart';
+import '../store/Models.dart';
 
 class HomePageApp extends StatefulWidget {
   @override
@@ -14,22 +16,14 @@ class HomePageApp extends StatefulWidget {
 }
 
 class _HomePageAppState extends State<HomePageApp> {
-  List products;
-  @override
-  void initState() {
-    super.initState();
-    getProducts().then((data) {
-      setState(() {
-        products = data;
-      });
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     FlutterStatusbarcolor.setStatusBarColor(Colors.black87);
     var screenHeight = MediaQuery.of(context).size.height;
-
+    var product = Provider.of<ProductModel>(context);
+    getProducts().then((data) {
+      product.products = data;
+    });
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.grey[200],
@@ -56,7 +50,8 @@ class _HomePageAppState extends State<HomePageApp> {
               ],
             ),
             FSlider(),
-            ProductContainer(products: products)
+            ProductContainer(
+                products: Provider.of<ProductModel>(context).products)
           ],
         ),
       ),
