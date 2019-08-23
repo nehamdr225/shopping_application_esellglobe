@@ -12,10 +12,11 @@ login(String email, String password) async {
     });
     if (!response.error) {
       savekeyVal('token', response.token);
+      return response.token;
     }
-    return response.token;
+    throw "Network error ocurred!";
   } catch (err) {
-    return err;
+    throw err;
   }
 }
 

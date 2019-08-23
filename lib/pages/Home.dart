@@ -9,8 +9,11 @@ import 'package:EsellGlobe/widget/CategorySlider.dart';
 import 'package:EsellGlobe/widget/containers/Products.dart';
 import 'package:provider/provider.dart';
 import '../store/ProductModel.dart';
+import '../store/UserModel.dart';
 
 class HomePageApp extends StatefulWidget {
+  final String token;
+  const HomePageApp({Key key, this.token}) : super(key: key);
   @override
   _HomePageAppState createState() => _HomePageAppState();
 }
@@ -18,6 +21,8 @@ class HomePageApp extends StatefulWidget {
 class _HomePageAppState extends State<HomePageApp> {
   @override
   Widget build(BuildContext context) {
+    var user = Provider.of<UserModel>(context);
+    if (widget.token != null) user.token = widget.token;
     FlutterStatusbarcolor.setStatusBarColor(Colors.black87);
     var screenHeight = MediaQuery.of(context).size.height;
     var product = Provider.of<ProductModel>(context);

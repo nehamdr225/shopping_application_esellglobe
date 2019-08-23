@@ -1,10 +1,11 @@
-import 'package:EsellGlobe/pages/Home.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import 'package:EsellGlobe/pages/Home.dart';
 import 'package:EsellGlobe/pages/UserPromt.dart';
+
 import 'package:EsellGlobe/store/Store.dart';
 import 'package:EsellGlobe/store/ProductModel.dart';
-import 'package:provider/provider.dart';
 
 void main() async {
   var token = await getValue("token");
@@ -24,6 +25,6 @@ void main() async {
               ),
               caption: TextStyle(fontSize: 14.0, color: Colors.black87)),
         ),
-        home: token != null ? HomePageApp() : UserPromptApp(),
+        home: token != null ? HomePageApp(token:token) : UserPromptApp(),
       )));
 }

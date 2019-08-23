@@ -1,3 +1,4 @@
+import 'package:EsellGlobe/pages/Home.dart';
 import 'package:flutter/material.dart';
 import 'package:EsellGlobe/widget/atoms/Forms.dart';
 import 'package:EsellGlobe/widget/atoms/RaisedButton.dart';
@@ -5,6 +6,8 @@ import 'package:EsellGlobe/helpers/Validators.dart';
 import 'package:EsellGlobe/helpers/Api.dart';
 import 'package:EsellGlobe/widget/atoms/FancyText.dart';
 import 'package:EsellGlobe/pages/Signup.dart';
+import 'package:EsellGlobe/store/UserModel.dart';
+import 'package:provider/provider.dart';
 
 class SignInPage extends StatefulWidget {
   @override
@@ -14,10 +17,12 @@ class SignInPage extends StatefulWidget {
 class _PageState extends State<SignInPage> {
   String email, password;
   String emailErr, passwordErr;
+  String loginErr;
 
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
+    var user = Provider.of<UserModel>(context);
 
     var setEmail = (data) {
       if (emailValidator(data) && data != email)
@@ -44,8 +49,16 @@ class _PageState extends State<SignInPage> {
     };
 
     var loginUser = () async {
-      String token = await login(email, password);
-      print(token);
+      try {
+        String token = await login(email, password);
+        user.token = token;
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => HomePageApp()));
+      } catch (err) {
+        setState(() {
+          loginErr = "Login failed!";
+        });
+      }
     };
 
     return SafeArea(
@@ -74,14 +87,12 @@ class _PageState extends State<SignInPage> {
                           type: TextInputType.emailAddress,
                           text: "Email",
                           onChanged: setEmail),
-
                       emailErr != null
                           ? Text(
                               emailErr,
                               textAlign: TextAlign.center,
                             )
                           : Text(''),
-
                       SizedBox(height: 15.0),
                       FForms(
                           type: TextInputType.text,
@@ -98,7 +109,7 @@ class _PageState extends State<SignInPage> {
                       FRaisedButton(
                         text: "Login",
                         onPressed: loginUser,
-                      ), //onPressed: () {}),
+                      ),
                       SizedBox(height: 30.0),
                       FancyText(
                           text: "Don't have an account? Register Here !",
@@ -108,7 +119,8 @@ class _PageState extends State<SignInPage> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => SignUpPage()));
-                          })
+                          }),
+                      loginErr ?? Text(loginErr)
                     ],
                   ),
                 ),
