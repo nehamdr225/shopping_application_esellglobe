@@ -8,7 +8,7 @@ import 'package:EsellGlobe/pages/Drawer.dart';
 import 'package:EsellGlobe/widget/CategorySlider.dart';
 import 'package:EsellGlobe/widget/containers/Products.dart';
 import 'package:provider/provider.dart';
-import '../store/Models.dart';
+import '../store/ProductModel.dart';
 
 class HomePageApp extends StatefulWidget {
   @override
