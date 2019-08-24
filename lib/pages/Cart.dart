@@ -81,12 +81,12 @@ class _CartPageState extends State<CartPage> {
               itemCount: cart.count,
               itemBuilder: (context, index) {
                 return CartListView(
-                  prodName: items[index]['name'],
-                  prodPicture: items[index]['picture'],
-                  prodPrice: items[index]['price'],
-                  prodSize: items[index]['size'],
-                  prodQuantity: items[index]['Quantity'],
-                  prodColor: items[index]['color'],
+                  name: items[index]['name'],
+                  picture: items[index]['media'][0]['src'][0],
+                  price: items[index]['price'],
+                  size: items[index]['size'],
+                  qty: items[index]['quantity'],
+                  color: items[index]['color'],
                 );
               },
             )

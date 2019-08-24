@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
 
 class CartListView extends StatelessWidget {
-  final prodName;
-  final prodPicture;
-  final prodSize;
-  final prodPrice;
-  final prodQuantity;
-  final prodColor;
+  final name;
+  final picture;
+  final size;
+  final price;
+  final qty;
+  final color;
 
   CartListView(
-      {this.prodName,
-      this.prodPrice,
-      this.prodSize,
-      this.prodPicture,
-      this.prodQuantity,
-      this.prodColor});
+      {this.name,
+      this.price,
+      this.size,
+      this.picture,
+      this.qty,
+      this.color});
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        leading: Image.asset(prodPicture, width: 80.0, height: 80.0),
-        title: Text(prodName),
+        leading: Image.asset(picture, width: 80.0, height: 80.0),
+        title: Text(name),
         subtitle: Column(
           children: <Widget>[
             Row(
@@ -34,7 +34,7 @@ class CartListView extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Text(
-                    prodSize,
+                    size,
                   ),
                 ),
                 Padding(
@@ -44,13 +44,13 @@ class CartListView extends StatelessWidget {
                 ),
                 Padding(
                   padding: EdgeInsets.all(8.0),
-                  child: Text(prodColor),
+                  child: Text(color),
                 ),
               ],
             ),
             Container(
               alignment: Alignment.topLeft,
-              child: Text(prodPrice,
+              child: Text(price,
                   style: TextStyle(
                       fontWeight: FontWeight.bold, color: Colors.red)),
             )

@@ -35,9 +35,7 @@ class Product extends StatelessWidget {
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => HeroDetails(
-                        name: name,
-                        image: image,
-                        price: price,
+                        id:"id"
                       )));
             },
             child: Column(

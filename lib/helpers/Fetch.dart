@@ -8,6 +8,7 @@ Map<String, String> headers = {
 
 fetch({uri, method: "GET", body: ''}) async {
   try {
+    print(uri);
     switch (method) {
       case "GET":
         var response = await http.get(uri, headers: headers);
