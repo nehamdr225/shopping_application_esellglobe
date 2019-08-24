@@ -10,10 +10,10 @@ login(String email, String password) async {
       'email': email,
       'password': password,
     });
-    if (response['token'] != null) {
-      savekeyVal('token', response['token']);
-      return {"token": response['token']};
+    if (response['error'] != null) {
+      return {"error": response['error']};
     }
+    savekeyVal('token', response['token']);
     return {"error": "Email or password is not valid!"};
   } catch (err) {
     return {"error": err};
@@ -27,7 +27,6 @@ signup(String email, String password, String name) async {
       'password': password,
       'name': name,
     });
-
     return response;
   } catch (err) {
     return {'error': err};

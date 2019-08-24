@@ -34,9 +34,7 @@ class Product extends StatelessWidget {
           child: InkWell(
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => HeroDetails(
-                        id:"id"
-                      )));
+                  builder: (context) => HeroDetails(id: "id")));
             },
             child: Column(
               children: <Widget>[

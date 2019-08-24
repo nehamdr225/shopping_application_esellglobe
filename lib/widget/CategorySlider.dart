@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:EsellGlobe/SubCategory/CategoryPage.dart';
+import 'package:provider/provider.dart';
+import '../store/ProductModel.dart';
+import 'package:EsellGlobe/helpers/Api.dart';
 
 class FSlider extends StatelessWidget {
+  final products;
+  FSlider({this.products});
+
   Widget build(BuildContext context) {
     return SliverList(
       delegate: SliverChildListDelegate(
@@ -36,6 +43,10 @@ class HorizontalList extends StatelessWidget {
             imageLocation: 'images/shoe.png',
             imageCaption: 'Foot Wear',
           ),
+          Category(
+            imageLocation: 'images/shoe.png',
+            imageCaption: 'Watches & Glasses',
+          ),
         ],
       ),
     );
@@ -45,28 +56,37 @@ class HorizontalList extends StatelessWidget {
 class Category extends StatelessWidget {
   final String imageLocation;
   final String imageCaption;
+  final products;
 
-  Category({this.imageCaption, this.imageLocation});
+  Category({this.imageCaption, this.imageLocation, this.products});
 
   @override
   Widget build(BuildContext context) {
+    var product = Provider.of<ProductModel>(context);
+    getProducts().then((data) {
+      product.products = data;
+    });
     return Padding(
         padding: EdgeInsets.all(2.0),
         child: InkWell(
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => CategoryPage(products: product.products)));
+          },
           child: Container(
               width: 90.0,
               child: ListTile(
                 title: Image.asset(
                   imageLocation,
-                  width: 80.0,
+                  width: 100.0,
                   height: 35.0,
                 ),
                 subtitle: Container(
                   alignment: Alignment.topCenter,
                   child: Text(
                     imageCaption,
-                    style: TextStyle(fontFamily: 'Montserrat', fontSize: 12.0),
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontFamily: 'Ropa Sans', fontSize: 12.0),
                   ),
                 ),
               )),

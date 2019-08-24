@@ -56,7 +56,7 @@ class _HomePageAppState extends State<HomePageApp> {
               ],
             ),
             FSlider(),
-            ProductContainer(products: product.products)
+            ProductContainer(products: product.products,)
           ],
         ),
       ),

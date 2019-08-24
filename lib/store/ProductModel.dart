@@ -18,6 +18,8 @@ class ProductModel extends ChangeNotifier {
   }
 
   set products(items) {
+    // for(var product in items){
+    // }
     _products.addAll(items);
     notifyListeners();
   }

@@ -9,7 +9,7 @@ class ImageHolder extends StatelessWidget {
     return Container(
       height: 130,
       child: image != null
-          ? Image.network(image)
+          ? Image.network(image,)
           : CenterText(
               text: "Image load failed",
               size: 12,

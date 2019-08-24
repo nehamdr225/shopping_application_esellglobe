@@ -16,10 +16,10 @@ fetch({uri, method: "GET", body: ''}) async {
       case "POST":
         var response =
             await http.post(uri, headers: headers, body: json.encode(body));
-        if (response.statusCode <= 201)
+        if (response.statusCode <= 400)
           return json.decode(response.body);
         else
-          return {"error": "Error logging in!"};
+          return {"error": "A problem occured while registering User"};
         break;
       case "PUT":
         var response =
