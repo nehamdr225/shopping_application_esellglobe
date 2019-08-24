@@ -9,7 +9,7 @@ class UserModel extends ChangeNotifier {
 
   set token(String token) {
     _token = token;
-    notifyListeners();
+    // notifyListeners();
   }
 
   set id(String id) {

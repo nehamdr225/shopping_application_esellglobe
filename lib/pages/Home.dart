@@ -22,7 +22,8 @@ class _HomePageAppState extends State<HomePageApp> {
   @override
   Widget build(BuildContext context) {
     var user = Provider.of<UserModel>(context);
-    if (widget.token != null) user.token = widget.token;
+    if (widget.token != null && widget.token != user.token)
+      user.token = widget.token;
     FlutterStatusbarcolor.setStatusBarColor(Colors.black87);
     var screenHeight = MediaQuery.of(context).size.height;
     var product = Provider.of<ProductModel>(context);
@@ -60,38 +61,5 @@ class _HomePageAppState extends State<HomePageApp> {
         ),
       ),
     );
-  }
-}
-
-class Products {
-  final String name;
-  final String description;
-  final String seller;
-  final int price;
-  final String category;
-  final int stock;
-  final int id;
-  final List media;
-
-  Products(
-      {this.name,
-      this.description,
-      this.category,
-      this.seller,
-      this.price,
-      this.id,
-      this.media,
-      this.stock});
-
-  factory Products.fromJson(Map<String, dynamic> json) {
-    return Products(
-        category: json['category'],
-        description: json['description'],
-        id: json['id'],
-        media: json['media'],
-        name: json['name'],
-        price: json['price'],
-        seller: json['seller'],
-        stock: json['stock']);
   }
 }

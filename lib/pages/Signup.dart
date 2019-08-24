@@ -14,7 +14,7 @@ class SignUpPage extends StatefulWidget {
 
 class _PageState extends State<SignUpPage> {
   String name, email, password;
-  String nameErr, emailErr, passwordErr;
+  String nameErr, emailErr, passwordErr, signupErr;
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
@@ -44,7 +44,8 @@ class _PageState extends State<SignUpPage> {
     };
 
     var setPassword = (data) {
-      if (pwdValidator(data) && data != password && data.length >= 8)
+      // pwdValidator(data) &&
+      if (data != password && data.length >= 8)
         setState(() {
           password = data;
           passwordErr = null;
@@ -56,8 +57,14 @@ class _PageState extends State<SignUpPage> {
     };
 
     var signupUser = () async {
-      String message = await signup(email, password, name);
-      print(message);
+      var message = await signup(email, password, name);
+      if (message['error'] != null)
+        setState(() {
+          signupErr = message['error'];
+        });
+      else
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => SignInPage()));
     };
 
     return SafeArea(
@@ -117,6 +124,7 @@ class _PageState extends State<SignUpPage> {
                               textAlign: TextAlign.center,
                             )
                           : Text(''),
+                      signupErr != null ? Text(signupErr) : Text(''),
                       SizedBox(height: 15.0),
                       // FForms(type: TextInputType.phone, text: "Mobile No."),
                       FRaisedButton(
@@ -129,9 +137,10 @@ class _PageState extends State<SignUpPage> {
                           size: 15.0,
                           onTap: () {
                             Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => SignInPage()));
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SignInPage()),
+                            );
                           })
                     ],
                   ),

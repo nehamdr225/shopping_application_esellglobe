@@ -28,9 +28,9 @@ signup(String email, String password, String name) async {
       'name': name,
     });
 
-    return response.message;
+    return response;
   } catch (err) {
-    return err;
+    return {'error': err};
   }
 }
 
