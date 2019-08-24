@@ -37,7 +37,8 @@ class _PageState extends State<SignInPage> {
     };
 
     var setPassword = (data) {
-      if (pwdValidator(data) && data != password && data.length >= 8)
+      // pwdValidator(data) &&
+      if (data != password && data.length >= 8)
         setState(() {
           password = data;
           passwordErr = null;
@@ -51,7 +52,7 @@ class _PageState extends State<SignInPage> {
     var loginUser = () async {
       try {
         Map token = await login(email, password);
-        print(token);
+        // print(token);
         if (token['error'] == null) {
           user.token = token['token'];
           Navigator.push(
