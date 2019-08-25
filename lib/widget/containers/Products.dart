@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:EsellGlobe/pages/Products.dart';
 import 'package:EsellGlobe/widget/Product.dart';
 import 'package:EsellGlobe/widget/atoms/centerText.dart';
+import 'package:provider/provider.dart';
+import '../../store/ProductModel.dart';
 
 class ProductContainer extends StatelessWidget {
-  final products;
-  ProductContainer({this.products});
-
   @override
   Widget build(BuildContext context) {
+    final product = Provider.of<ProductModel>(context);
     return SliverList(
       delegate: SliverChildListDelegate(<Widget>[
         Padding(
@@ -23,7 +23,7 @@ class ProductContainer extends StatelessWidget {
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) =>
-                              ProductsPage(products: products)));
+                              ProductsPage(products: product.products)));
                     },
                     child: Align(
                       alignment: Alignment.topRight,
@@ -43,6 +43,7 @@ class ProductContainer extends StatelessWidget {
             itemCount: 5,
             scrollDirection: Axis.horizontal,
             itemBuilder: (BuildContext context, int index) {
+              final products = product.products;
               return products.length > 0
                   ? Product(
                       name: products[index]['name'],

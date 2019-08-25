@@ -7,13 +7,8 @@ import 'package:EsellGlobe/widget/Icons.dart';
 import 'package:EsellGlobe/pages/Drawer.dart';
 import 'package:EsellGlobe/widget/CategorySlider.dart';
 import 'package:EsellGlobe/widget/containers/Products.dart';
-import 'package:provider/provider.dart';
-import '../store/ProductModel.dart';
-import '../store/UserModel.dart';
 
 class HomePageApp extends StatefulWidget {
-  final String token;
-  const HomePageApp({Key key, this.token}) : super(key: key);
   @override
   _HomePageAppState createState() => _HomePageAppState();
 }
@@ -21,15 +16,9 @@ class HomePageApp extends StatefulWidget {
 class _HomePageAppState extends State<HomePageApp> {
   @override
   Widget build(BuildContext context) {
-    var user = Provider.of<UserModel>(context);
-    if (widget.token != null && widget.token != user.token)
-      user.token = widget.token;
+    print("built main");
     FlutterStatusbarcolor.setStatusBarColor(Colors.black87);
     var screenHeight = MediaQuery.of(context).size.height;
-    var product = Provider.of<ProductModel>(context);
-    getProducts().then((data) {
-      product.products = data;
-    });
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.grey[200],
@@ -56,7 +45,7 @@ class _HomePageAppState extends State<HomePageApp> {
               ],
             ),
             FSlider(),
-            ProductContainer(products: product.products,)
+            ProductContainer()
           ],
         ),
       ),

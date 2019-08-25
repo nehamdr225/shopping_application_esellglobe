@@ -1,6 +1,12 @@
+import 'package:EsellGlobe/helpers/Api.dart';
 import 'package:flutter/cupertino.dart';
 
 class ProductModel extends ChangeNotifier {
+  ProductModel(){
+    getProducts().then((data) {
+      products = data;
+    });
+  }
   List _products = [];
 
   List get products => _products;
@@ -18,8 +24,6 @@ class ProductModel extends ChangeNotifier {
   }
 
   set products(items) {
-    // for(var product in items){
-    // }
     _products.addAll(items);
     notifyListeners();
   }

@@ -34,6 +34,7 @@ signup(String email, String password, String name) async {
 }
 
 getProducts({result = 10, page = 1}) async {
+  print("api called");
   try {
     var response = await fetch(uri: '$url/products?result=$result&page=$page');
     return response['products'];

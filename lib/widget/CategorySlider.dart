@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:EsellGlobe/SubCategory/CategoryPage.dart';
 import 'package:provider/provider.dart';
 import '../store/ProductModel.dart';
-import 'package:EsellGlobe/helpers/Api.dart';
+// import 'package:EsellGlobe/helpers/Api.dart';
 
 class FSlider extends StatelessWidget {
   final products;
@@ -63,9 +63,6 @@ class Category extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var product = Provider.of<ProductModel>(context);
-    getProducts().then((data) {
-      product.products = data;
-    });
     return Padding(
         padding: EdgeInsets.all(2.0),
         child: InkWell(

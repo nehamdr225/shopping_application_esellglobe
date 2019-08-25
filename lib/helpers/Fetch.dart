@@ -7,6 +7,7 @@ Map<String, String> headers = {
 };
 
 fetch({uri, method: "GET", body: ''}) async {
+  print("called");
   try {
     print(uri);
     switch (method) {

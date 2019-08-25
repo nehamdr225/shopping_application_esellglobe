@@ -9,23 +9,29 @@ class UserModel extends ChangeNotifier {
   String get name => _name;
 
   set token(String token) {
-    _token = token;
-    // notifyListeners();
+    if (token != null && token != _token) {
+      _token = token;
+      notifyListeners();
+    }
   }
 
   set id(String id) {
-    _id = id;
-    notifyListeners();
+    if (id != null && id != _id) {
+      _id = id;
+      notifyListeners();
+    }
   }
 
   set name(String name) {
-    _name = name;
-    notifyListeners();
+    if (name != null && name != _name) {
+      _name = name;
+      notifyListeners();
+    }
   }
 
-  setLocal(){
-    getValue('token').then((token){
-      if(token != null){
+  UserModel() {
+    getValue('token').then((token) {
+      if (token != null && token != _token) {
         _token = token;
         notifyListeners();
       }
