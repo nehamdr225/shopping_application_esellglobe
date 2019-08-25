@@ -1,3 +1,4 @@
+import 'package:EsellGlobe/store/Store.dart';
 import 'package:flutter/cupertino.dart';
 
 class UserModel extends ChangeNotifier {
@@ -20,5 +21,14 @@ class UserModel extends ChangeNotifier {
   set name(String name) {
     _name = name;
     notifyListeners();
+  }
+
+  setLocal(){
+    getValue('token').then((token){
+      if(token != null){
+        _token = token;
+        notifyListeners();
+      }
+    });
   }
 }
