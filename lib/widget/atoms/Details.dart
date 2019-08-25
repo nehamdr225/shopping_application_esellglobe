@@ -1,4 +1,4 @@
-import 'package:EsellGlobe/pages/Wishlist.dart';
+import 'package:EsellGlobe/pages/pages.dart';
 import 'package:EsellGlobe/widget/Icons.dart';
 import 'package:flutter/material.dart';
 

@@ -1,7 +1,7 @@
 import 'package:EsellGlobe/widget/atoms/Details.dart';
 import 'package:EsellGlobe/widget/atoms/ImageHolder.dart';
 import 'package:flutter/material.dart';
-import 'package:EsellGlobe/pages/ProductDetails.dart';
+import 'package:EsellGlobe/pages/pages.dart';
 
 class Product extends StatelessWidget {
   final name;
@@ -10,6 +10,7 @@ class Product extends StatelessWidget {
   final price;
   final oldPrice;
   final details;
+  final id;
 
   Product(
       {this.name,
@@ -17,7 +18,7 @@ class Product extends StatelessWidget {
       this.seller,
       this.image,
       this.oldPrice,
-      this.details});
+      this.details, this.id});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,7 @@ class Product extends StatelessWidget {
           child: InkWell(
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => HeroDetails(id: "id")));
+                  builder: (context) => ProductDetails(id: id)));
             },
             child: Column(
               children: <Widget>[

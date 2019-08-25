@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:EsellGlobe/widget/AppBar.dart';
-import 'package:EsellGlobe/pages/ProductDetails.dart';
+import 'package:EsellGlobe/pages/pages.dart';
 
 class WishlistPage extends StatelessWidget {
   final productList = [
@@ -87,7 +87,7 @@ class WishlistProduct extends StatelessWidget {
                   child: InkWell(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => HeroDetails(
+                          builder: (context) => ProductDetails(
                                 id: "id",
                               )));
                     },

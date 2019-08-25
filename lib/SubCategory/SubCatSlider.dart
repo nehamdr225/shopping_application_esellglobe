@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:EsellGlobe/pages/Products.dart';
+import 'package:EsellGlobe/pages/pages.dart';
 import 'package:EsellGlobe/SubCategory/SubCatProducts.dart';
 
 class SubCatSlider extends StatelessWidget {

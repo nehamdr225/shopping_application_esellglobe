@@ -1,35 +1,27 @@
-import 'package:EsellGlobe/helpers/Api.dart';
-import 'package:EsellGlobe/pages/Signin.dart';
+import 'package:EsellGlobe/pages/pages.dart';
 import 'package:flutter/material.dart';
-
-import 'package:EsellGlobe/helpers/Validators.dart';
 import 'package:EsellGlobe/widget/atoms/Forms.dart';
 import 'package:EsellGlobe/widget/atoms/RaisedButton.dart';
+import 'package:EsellGlobe/helpers/Validators.dart';
+import 'package:EsellGlobe/helpers/Api.dart';
 import 'package:EsellGlobe/widget/atoms/FancyText.dart';
+import 'package:EsellGlobe/store/UserModel.dart';
+import 'package:provider/provider.dart';
 
-class SignUpPage extends StatefulWidget {
+class SignInPage extends StatefulWidget {
   @override
   _PageState createState() => _PageState();
 }
 
-class _PageState extends State<SignUpPage> {
-  String name, email, password;
-  String nameErr, emailErr, passwordErr, signupErr;
+class _PageState extends State<SignInPage> {
+  String email, password;
+  String emailErr, passwordErr;
+  String loginErr;
+
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
-
-    var setName = (data) {
-      if (nameValidator(data) && data != name)
-        setState(() {
-          name = data;
-          nameErr = null;
-        });
-      else if (emailErr != null)
-        setState(() {
-          nameErr = "name is not valid!";
-        });
-    };
+    var user = Provider.of<UserModel>(context);
 
     var setEmail = (data) {
       if (emailValidator(data) && data != email)
@@ -37,7 +29,7 @@ class _PageState extends State<SignUpPage> {
           email = data;
           emailErr = null;
         });
-      else if (emailErr != null)
+      else if (emailErr == null)
         setState(() {
           emailErr = "email is not valid!";
         });
@@ -50,26 +42,33 @@ class _PageState extends State<SignUpPage> {
           password = data;
           passwordErr = null;
         });
-      else if (passwordErr != null)
+      else if (passwordErr == null)
         setState(() {
           passwordErr = "Password not valid!";
         });
     };
 
-    var signupUser = () async {
-      var message = await signup(email, password, name);
-      if (message['error'] != null)
+    var loginUser = () async {
+      try {
+        Map token = await login(email, password);
+        // print(token);
+        if (token['error'] == null) {
+          user.token = token['token'];
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => HomePageApp()));
+        } else
+          setState(() {
+            loginErr = token['error'];
+          });
+      } catch (err) {
         setState(() {
-          signupErr = message['error'];
+          loginErr = "Login failed!";
         });
-      else
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => SignInPage()));
+      }
     };
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.grey[200],
         resizeToAvoidBottomPadding: false,
         body: Align(
           alignment: Alignment.center,
@@ -90,18 +89,6 @@ class _PageState extends State<SignUpPage> {
                       top: 5.0, left: 20.0, right: 20.0, bottom: 20.0),
                   child: Column(
                     children: <Widget>[
-                      FForms(
-                        type: TextInputType.text,
-                        text: "Name",
-                        onChanged: setName,
-                      ),
-                      nameErr != null
-                          ? Text(
-                              nameErr,
-                              textAlign: TextAlign.center,
-                            )
-                          : Text(''),
-                      SizedBox(height: 15.0),
                       FForms(
                           type: TextInputType.emailAddress,
                           text: "Email",
@@ -124,23 +111,23 @@ class _PageState extends State<SignUpPage> {
                               textAlign: TextAlign.center,
                             )
                           : Text(''),
-                      signupErr != null ? Text(signupErr) : Text(''),
                       SizedBox(height: 15.0),
-                      // FForms(type: TextInputType.phone, text: "Mobile No."),
+                      loginErr != null
+                          ? Text(loginErr, style: TextStyle(color: Colors.red))
+                          : Text(''),
                       FRaisedButton(
-                        text: "Register",
-                        onPressed: signupUser,
-                      ), //onPressed: () {}),
+                        text: "Login",
+                        onPressed: loginUser,
+                      ),
                       SizedBox(height: 30.0),
                       FancyText(
-                          text: "Already have an account?",
+                          text: "Don't have an account? Register Here !",
                           size: 15.0,
                           onTap: () {
                             Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => SignInPage()),
-                            );
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SignUpPage()));
                           })
                     ],
                   ),

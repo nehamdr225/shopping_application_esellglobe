@@ -1,10 +1,9 @@
-import 'package:EsellGlobe/helpers/Api.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:EsellGlobe/widget/Carousel.dart';
 import 'package:EsellGlobe/widget/colors.dart';
 import 'package:EsellGlobe/widget/Icons.dart';
-import 'package:EsellGlobe/pages/Drawer.dart';
+import 'package:EsellGlobe/pages/pages.dart';
 import 'package:EsellGlobe/widget/CategorySlider.dart';
 import 'package:EsellGlobe/widget/containers/Products.dart';
 

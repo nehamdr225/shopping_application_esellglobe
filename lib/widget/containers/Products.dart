@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:EsellGlobe/pages/Products.dart';
+import 'package:EsellGlobe/pages/pages.dart';
 import 'package:EsellGlobe/widget/Product.dart';
 import 'package:EsellGlobe/widget/atoms/centerText.dart';
 import 'package:provider/provider.dart';
@@ -55,7 +55,8 @@ class ProductContainer extends StatelessWidget {
                       oldPrice: products[index]['oldPrice'] != null
                           ? products[index]['oldPrice']
                           : products[index]['price'],
-                      details: products[index]['details'])
+                      details: products[index]['details'],
+                      id: products[index]['_id'])
                   : CenterText(
                       text: 'Products are being loaded...',
                       size: 12.0,

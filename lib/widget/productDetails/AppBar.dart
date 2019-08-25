@@ -1,5 +1,4 @@
-import 'package:EsellGlobe/pages/Cart.dart';
-import 'package:EsellGlobe/pages/Wishlist.dart';
+import 'package:EsellGlobe/pages/pages.dart';
 import 'package:EsellGlobe/widget/colors.dart';
 import 'package:EsellGlobe/widget/productDetails/Carousel.dart';
 import 'package:flutter/material.dart';

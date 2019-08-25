@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:EsellGlobe/widget/colors.dart';
-import 'package:EsellGlobe/pages/Signin.dart';
-import 'package:EsellGlobe/pages/Cart.dart';
-import 'package:EsellGlobe/pages/Wishlist.dart';
+import 'package:EsellGlobe/pages/pages.dart';
 
 class DrawerApp extends StatelessWidget {
   @override

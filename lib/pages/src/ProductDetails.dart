@@ -7,19 +7,17 @@ import 'package:EsellGlobe/widget/productDetails/Info.dart';
 import 'package:EsellGlobe/widget/productDetails/Promo.dart';
 import 'package:EsellGlobe/widget/productDetails/SizeSelector.dart';
 import 'package:EsellGlobe/widget/productDetails/Footer.dart';
+import 'package:provider/provider.dart';
+import 'package:EsellGlobe/store/ProductModel.dart';
 
-class HeroDetails extends StatefulWidget {
+class ProductDetails extends StatelessWidget {
   final String id;
-  HeroDetails({this.id});
-  @override
-  _HeroDetailsState createState() => _HeroDetailsState();
-}
-
-class _HeroDetailsState extends State<HeroDetails> {
-  final String id;
-  _HeroDetailsState({this.id});
+  ProductDetails({this.id});
   @override
   Widget build(BuildContext context) {
+    final product = Provider.of<ProductModel>(context).one(id);
+    if (product['error'] != null)
+      return Text('Error occured fetching product info!');
     return SafeArea(
         child: Scaffold(
             backgroundColor: Colors.grey[200],
