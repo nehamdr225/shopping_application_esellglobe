@@ -1,11 +1,7 @@
 import 'package:EsellGlobe/store/Store.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'package:EsellGlobe/pages/Home.dart';
-import 'package:EsellGlobe/pages/UserPromt.dart';
-
-// import 'package:EsellGlobe/store/Store.dart';
+import 'package:EsellGlobe/pages/pages.dart';
 import 'package:EsellGlobe/store/ProductModel.dart';
 import 'package:EsellGlobe/store/CartModel.dart';
 import 'package:EsellGlobe/store/UserModel.dart';

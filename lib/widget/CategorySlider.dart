@@ -1,7 +1,5 @@
+import 'package:EsellGlobe/pages/src/SubCategory/CategoryPage.dart';
 import 'package:flutter/material.dart';
-import 'package:EsellGlobe/SubCategory/CategoryPage.dart';
-import 'package:provider/provider.dart';
-import '../store/ProductModel.dart';
 // import 'package:EsellGlobe/helpers/Api.dart';
 
 class FSlider extends StatelessWidget {
@@ -24,30 +22,43 @@ class FSlider extends StatelessWidget {
 }
 
 class HorizontalList extends StatelessWidget {
+  final scrollList = [
+    {
+      "name": "top",
+      "imageCaption": "Top Wear",
+      "imageLocation": "images/tshirt.png"
+    },
+    {
+      "name": "bottom",
+      "imageCaption": "Bottom Wear",
+      "imageLocation": 'images/pant.png',
+    },
+    {
+      "name": "foot",
+      "imageCaption": "Foot Wear",
+      "imageLocation": 'images/shoe.png',
+    },
+    {
+      "name": "watchesNglasses",
+      "imageCaption": "Watches & Glasses",
+      "imageLocation": 'images/shoe.png',
+    }
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 70.0,
-      child: ListView(
+      child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        children: <Widget>[
-          Category(
-            imageLocation: 'images/tshirt.png',
-            imageCaption: 'Top Wear',
-          ),
-          Category(
-            imageLocation: 'images/pant.png',
-            imageCaption: 'Bottom Wear',
-          ),
-          Category(
-            imageLocation: 'images/shoe.png',
-            imageCaption: 'Foot Wear',
-          ),
-          Category(
-            imageLocation: 'images/shoe.png',
-            imageCaption: 'Watches & Glasses',
-          ),
-        ],
+        itemCount: 4,
+        itemBuilder: (BuildContext context, int index) {
+          return Category(
+            index: index,
+            imageCaption: scrollList[index]['imageCaption'],
+            imageLocation: scrollList[index]['imageLocation'],
+          );
+        },
       ),
     );
   }
@@ -55,20 +66,36 @@ class HorizontalList extends StatelessWidget {
 
 class Category extends StatelessWidget {
   final String imageLocation;
-  final String imageCaption;
-  final products;
+  final imageCaption;
+  final int index;
 
-  Category({this.imageCaption, this.imageLocation, this.products});
+  Category({this.imageCaption, this.imageLocation, this.index});
 
   @override
   Widget build(BuildContext context) {
-    var product = Provider.of<ProductModel>(context);
     return Padding(
         padding: EdgeInsets.all(2.0),
         child: InkWell(
           onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => CategoryPage(products: product.products)));
+            switch (index) {
+              case 0:
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => CategoryPage(text: "top")));
+                break;
+              case 1:
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => CategoryPage(text: "bottom")));
+                break;
+              case 2:
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => CategoryPage(text: "foot")));
+                break;
+              case 3:
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) =>
+                        CategoryPage(text: "watchNglass")));
+                break;
+            }
           },
           child: Container(
               width: 90.0,
