@@ -8,6 +8,7 @@ class FRaisedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+      height: 60.0,
       child: RaisedButton(
           color: Colors.white,
           child: Padding(
@@ -18,7 +19,7 @@ class FRaisedButton extends StatelessWidget {
                 style: TextStyle(
                   color: color,
                   fontFamily: 'Victorian',
-                  fontSize: 26.0,
+                  fontSize: 25.0,
                 ),
               )),
           shape: const RoundedRectangleBorder(

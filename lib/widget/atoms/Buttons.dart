@@ -8,7 +8,7 @@ class FButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
         width: 150.0,
-        height: 50.0,
+        height: 40.0,
         child: RaisedButton(
           color: Colors.deepPurple[900],
           child: Text(

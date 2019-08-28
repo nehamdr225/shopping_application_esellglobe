@@ -5,7 +5,6 @@ class PDDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         padding: EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 8.0),
-        height: 250.0,
         width: 360.0,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.only(bottomLeft: Radius.circular(12.0))),
@@ -52,6 +51,9 @@ class PDDetails extends StatelessWidget {
               "Suit Piece: 50% Cotton\n Dry Cleaning",
               style: Theme.of(context).textTheme.title,
               textAlign: TextAlign.left,
+            ),
+            Padding(
+              padding: EdgeInsets.all(8.0),
             ),
           ]),
         ));

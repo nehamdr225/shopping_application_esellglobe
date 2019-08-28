@@ -10,7 +10,6 @@ class PDInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         padding: EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 8.0),
-        height: 230.0,
         width: 360.0,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.only(bottomLeft: Radius.circular(12.0))),
@@ -27,6 +26,9 @@ class PDInfo extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(left: 20.0),
+                  ),
                   FText(text: name),
                   Padding(
                     padding: EdgeInsets.only(right: 40.0),

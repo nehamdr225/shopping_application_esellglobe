@@ -8,6 +8,7 @@ class PDAppBar extends StatelessWidget {
   PDAppBar(this.images);
   @override
   Widget build(BuildContext context) {
+    var screenWidth = MediaQuery.of(context).size.width;
     return SliverAppBar(
       leading: IconButton(
         onPressed: () {
@@ -18,7 +19,7 @@ class PDAppBar extends StatelessWidget {
       iconTheme: IconThemeData(color: icontheme2),
       backgroundColor: Colors.grey[200],
       floating: true,
-      flexibleSpace: PDCarousel(images: images),
+      flexibleSpace: PDCarousel(images: images, width: screenWidth * 0.90 ),
       expandedHeight: 400,
       actions: <Widget>[
         IconButton(
