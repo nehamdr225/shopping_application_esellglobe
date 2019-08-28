@@ -4,6 +4,8 @@ import 'package:EsellGlobe/widget/productDetails/Carousel.dart';
 import 'package:flutter/material.dart';
 
 class PDAppBar extends StatelessWidget {
+  final List<Image> images;
+  PDAppBar(this.images);
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
@@ -16,8 +18,7 @@ class PDAppBar extends StatelessWidget {
       iconTheme: IconThemeData(color: icontheme2),
       backgroundColor: Colors.grey[200],
       floating: true,
-      flexibleSpace: PDCarousel(
-          images: [AssetImage('images/1.jpg'), AssetImage('images/1.jpg')]),
+      flexibleSpace: PDCarousel(images: images),
       expandedHeight: 400,
       actions: <Widget>[
         IconButton(

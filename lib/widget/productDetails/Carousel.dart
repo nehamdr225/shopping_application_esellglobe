@@ -2,7 +2,7 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
 
 class PDCarousel extends StatelessWidget {
-  final List<AssetImage> images;
+  final List<Image> images;
   PDCarousel({this.images});
   @override
   Widget build(BuildContext context) {

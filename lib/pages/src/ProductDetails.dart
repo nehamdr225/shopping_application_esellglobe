@@ -1,13 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'package:EsellGlobe/widget/productDetails/AppBar.dart';
-import 'package:EsellGlobe/widget/productDetails/Details.dart';
-import 'package:EsellGlobe/widget/productDetails/Feedback.dart';
-import 'package:EsellGlobe/widget/productDetails/Info.dart';
-import 'package:EsellGlobe/widget/productDetails/Promo.dart';
-import 'package:EsellGlobe/widget/productDetails/SizeSelector.dart';
-import 'package:EsellGlobe/widget/productDetails/Footer.dart';
 import 'package:provider/provider.dart';
+import 'package:EsellGlobe/widget/productDetails/details.dart';
 import 'package:EsellGlobe/store/ProductModel.dart';
 
 class ProductDetails extends StatelessWidget {
@@ -16,24 +9,32 @@ class ProductDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final product = Provider.of<ProductModel>(context).one(id);
+    List<Image> images = [];
+    for(String src in product['media'][0]['src']){
+      images.add(Image.network(src));
+    }
+    print(product);
     if (product['error'] != null)
       return Text('Error occured fetching product info!');
     return SafeArea(
-        child: Scaffold(
-            backgroundColor: Colors.grey[200],
-            //footer icon buttons
-            persistentFooterButtons: <Widget>[PDFooter()],
-            body: CustomScrollView(slivers: <Widget>[
-              PDAppBar(),
-              SliverList(
-                delegate: SliverChildListDelegate(<Widget>[
-                  PDInfo(),
-                  PDPromo(),
-                  PDSizeSelector(),
-                  PDDetails(),
-                  PDFeedback(),
-                ]),
-              ),
-            ])));
+      child: Scaffold(
+        backgroundColor: Colors.grey[200],
+        persistentFooterButtons: <Widget>[PDFooter()],
+        body: CustomScrollView(
+          slivers: <Widget>[
+            PDAppBar(images),
+            SliverList(
+              delegate: SliverChildListDelegate(<Widget>[
+                PDInfo(name: product['name'], price: product['price'].toString(), details: product['description']),
+                // PDPromo(),
+                PDSizeSelector(),
+                PDDetails(),
+                // PDFeedback(),
+              ]),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

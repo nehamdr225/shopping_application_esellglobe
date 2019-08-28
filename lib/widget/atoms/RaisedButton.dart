@@ -3,22 +3,24 @@ import 'package:flutter/material.dart';
 class FRaisedButton extends StatelessWidget {
   final String text;
   final Function onPressed;
-  FRaisedButton({this.text, this.onPressed});
+  final Color color;
+  FRaisedButton({this.text, this.onPressed, this.color: Colors.deepPurple});
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 200.0,
-      height: 40.0,
       child: RaisedButton(
-          color: Colors.deepPurple[900],
-          child: Text(
-            text,
-            style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'Victorian',
-              fontSize: 32.0,
-            ),
-          ),
+          color: Colors.white,
+          child: Padding(
+              padding:
+                  EdgeInsets.only(left: 30, right: 30, top: 20, bottom: 20),
+              child: Text(
+                text,
+                style: TextStyle(
+                  color: color,
+                  fontFamily: 'Victorian',
+                  fontSize: 26.0,
+                ),
+              )),
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(12.0)),
           ),

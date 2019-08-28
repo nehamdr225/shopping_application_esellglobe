@@ -11,11 +11,13 @@ class ProductModel extends ChangeNotifier {
 
   List get products => _products;
 
-  one(name) {
-    for (var item in products) {
-      if (item['name'] == name) return item;
-      return {'error': 'Product not found!'};
+  one(id) {
+    for (var item in _products) {
+      print(item['_id']);
+      print(id);
+      if (item['_id'] == id) return item;
     }
+    return {'error': 'Product not found!'};
   }
 
   set product(item) {
