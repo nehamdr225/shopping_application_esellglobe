@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:EsellGlobe/widget/AppBar.dart';
-import 'package:EsellGlobe/widget/Product.dart';
-import 'package:EsellGlobe/widget/atoms/centerText.dart';
+import 'package:esell/widget/molecules/AppBar.dart';
+import 'package:esell/widget/molecules/Product.dart';
+import 'package:esell/widget/atoms/centerText.dart';
 
 class ProductsPage extends StatelessWidget {
   final products;

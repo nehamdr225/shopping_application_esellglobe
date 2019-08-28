@@ -1,11 +1,11 @@
-import 'package:EsellGlobe/helpers/Api.dart';
-import 'package:EsellGlobe/pages/pages.dart';
+import 'package:esell/helpers/Api.dart';
+import 'package:esell/pages/pages.dart';
 import 'package:flutter/material.dart';
 
-import 'package:EsellGlobe/helpers/Validators.dart';
-import 'package:EsellGlobe/widget/atoms/Forms.dart';
-import 'package:EsellGlobe/widget/atoms/RaisedButton.dart';
-import 'package:EsellGlobe/widget/atoms/FancyText.dart';
+import 'package:esell/helpers/Validators.dart';
+import 'package:esell/widget/atoms/Forms.dart';
+import 'package:esell/widget/atoms/RaisedButton.dart';
+import 'package:esell/widget/atoms/FancyText.dart';
 
 class SignUpPage extends StatefulWidget {
   @override

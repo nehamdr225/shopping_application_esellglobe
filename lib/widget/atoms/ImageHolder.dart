@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:EsellGlobe/widget/atoms/centerText.dart';
+import 'package:esell/widget/atoms/centerText.dart';
 
 class ImageHolder extends StatelessWidget {
   final image;

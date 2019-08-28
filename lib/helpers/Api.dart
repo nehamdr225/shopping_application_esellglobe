@@ -1,5 +1,5 @@
 import './Fetch.dart';
-import '../store/Store.dart';
+import '../state/state.dart';
 
 final String url = "https://apiesell.herokuapp.com";
 String method = "GET";

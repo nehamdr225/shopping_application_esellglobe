@@ -1,4 +1,4 @@
-import 'package:EsellGlobe/store/Store.dart';
+import 'package:esell/state/state.dart';
 import 'package:flutter/cupertino.dart';
 
 class UserModel extends ChangeNotifier {

@@ -1,8 +1,8 @@
-import 'package:EsellGlobe/widget/CartList.dart';
+import 'package:esell/widget/molecules/CartList.dart';
 import 'package:flutter/material.dart';
-import 'package:EsellGlobe/widget/colors.dart';
+import 'package:esell/widget/molecules/colors.dart';
 import 'package:provider/provider.dart';
-import 'package:EsellGlobe/store/CartModel.dart';
+import 'package:esell/state/state.dart';
 //import '../widget/appbar.dart';
 
 class CartPage extends StatefulWidget {

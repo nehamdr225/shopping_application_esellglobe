@@ -1,4 +1,4 @@
-import 'package:EsellGlobe/pages/src/SubCategory/CategoryPage.dart';
+import 'package:esell/pages/src/SubCategory/CategoryPage.dart';
 import 'package:flutter/material.dart';
 // import 'package:EsellGlobe/helpers/Api.dart';
 

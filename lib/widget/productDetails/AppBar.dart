@@ -1,6 +1,6 @@
-import 'package:EsellGlobe/pages/pages.dart';
-import 'package:EsellGlobe/widget/colors.dart';
-import 'package:EsellGlobe/widget/productDetails/Carousel.dart';
+import 'package:esell/pages/pages.dart';
+import 'package:esell/widget/molecules/colors.dart';
+import 'package:esell/widget/productDetails/Carousel.dart';
 import 'package:flutter/material.dart';
 
 class PDAppBar extends StatelessWidget {

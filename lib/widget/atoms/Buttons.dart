@@ -19,7 +19,7 @@ class FButton extends StatelessWidget {
               fontSize: 24.0,
             ),
           ),
-          shape: const BeveledRectangleBorder(
+          shape: BeveledRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(2.0)),
           ),
           onPressed: onPressed,

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:EsellGlobe/pages/pages.dart';
-import 'package:EsellGlobe/widget/Product.dart';
-import 'package:EsellGlobe/widget/atoms/centerText.dart';
+import 'package:esell/pages/pages.dart';
+import 'package:esell/widget/molecules/Product.dart';
+import 'package:esell/widget/atoms/centerText.dart';
 import 'package:provider/provider.dart';
-import '../../store/ProductModel.dart';
+import 'package:esell/state/state.dart';
 
 class ProductContainer extends StatelessWidget {
   @override

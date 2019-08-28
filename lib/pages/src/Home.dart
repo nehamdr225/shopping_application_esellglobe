@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
-import 'package:EsellGlobe/widget/Carousel.dart';
-import 'package:EsellGlobe/widget/colors.dart';
-import 'package:EsellGlobe/widget/Icons.dart';
-import 'package:EsellGlobe/pages/pages.dart';
-import 'package:EsellGlobe/widget/CategorySlider.dart';
-import 'package:EsellGlobe/widget/containers/Products.dart';
+import 'package:esell/widget/molecules/Carousel.dart';
+import 'package:esell/widget/molecules/colors.dart';
+import 'package:esell/widget/molecules/Icons.dart';
+import 'package:esell/pages/pages.dart';
+import 'package:esell/widget/molecules/CategorySlider.dart';
+import 'package:esell/widget/containers/Products.dart';
 
 class HomePageApp extends StatefulWidget {
   @override

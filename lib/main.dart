@@ -1,16 +1,10 @@
-import 'package:EsellGlobe/store/Store.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:EsellGlobe/pages/pages.dart';
-import 'package:EsellGlobe/store/ProductModel.dart';
-import 'package:EsellGlobe/store/CartModel.dart';
-import 'package:EsellGlobe/store/UserModel.dart';
-import 'package:EsellGlobe/store/WishlistModel.dart';
-import 'package:EsellGlobe/store/theme.dart';
+import 'package:esell/pages/pages.dart';
+import 'package:esell/state/state.dart';
 
 main() async {
-  final token = await getValue('token');
-  runApp(BootStrapper(token));
+  runApp(BootStrapper(await getValue('token')));
 }
 
 class BootStrapper extends StatelessWidget {
@@ -24,9 +18,7 @@ class BootStrapper extends StatelessWidget {
         ChangeNotifierProvider(builder: (context) => UserModel()),
         ChangeNotifierProvider(builder: (context) => CartModel()),
         ChangeNotifierProvider(builder: (context) => WishlistModel()),
-        ChangeNotifierProvider(
-          builder: (context) => FTheme(),
-        )
+        ChangeNotifierProvider(builder: (context) => FTheme())
       ],
       child: EsellApp(token),
     );

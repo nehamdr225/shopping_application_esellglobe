@@ -1,4 +1,4 @@
-import 'package:EsellGlobe/helpers/Api.dart';
+import 'package:esell/helpers/Api.dart';
 import 'package:flutter/cupertino.dart';
 
 class ProductModel extends ChangeNotifier {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:EsellGlobe/widget/colors.dart';
+import 'package:esell/widget/molecules/colors.dart';
 // import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 

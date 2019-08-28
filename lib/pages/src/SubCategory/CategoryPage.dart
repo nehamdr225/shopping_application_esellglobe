@@ -1,5 +1,5 @@
-import 'package:EsellGlobe/pages/src/SubCategory/subCategory.dart';
-import 'package:EsellGlobe/widget/AppBar.dart';
+import 'package:esell/pages/src/SubCategory/subCategory.dart';
+import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:flutter/material.dart';
 
 class CategoryPage extends StatefulWidget {
