@@ -17,7 +17,7 @@ class ProductDetails extends StatelessWidget {
       return Text('Error occured fetching product info!');
     return SafeArea(
       child: Scaffold(
-        persistentFooterButtons: <Widget>[PDFooter()],
+        persistentFooterButtons: <Widget>[PDFooter({id:product["id"]})],
         backgroundColor: Colors.grey[200],
         body: CustomScrollView(
           slivers: <Widget>[

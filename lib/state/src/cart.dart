@@ -2,14 +2,17 @@ import 'package:flutter/cupertino.dart';
 
 class CartModel extends ChangeNotifier {
   List<Map> _cart = [];
-  int _count = 0;
 
   get cart => _cart;
-  get count => _count;
+  get count => _cart.length;
 
-  set cart(List<Map> product) {
-    _cart.addAll(product);
-    _count = _cart.length;
+  set cart(List<Map> products) {
+    _cart.addAll(products);
+    notifyListeners();
+  }
+
+  one(product) {
+    _cart.add(product);
     notifyListeners();
   }
 }

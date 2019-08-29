@@ -1,3 +1,4 @@
+import 'package:esell/pages/pages.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/widget/molecules/colors.dart';
 // import 'package:carousel_pro/carousel_pro.dart';
@@ -34,7 +35,10 @@ class FAppBar extends StatelessWidget {
                 Icons.shopping_cart,
               ),
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CartPage()),
+                );
               },
             ),
           ],
