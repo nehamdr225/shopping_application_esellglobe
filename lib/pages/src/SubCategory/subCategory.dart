@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 //import '../store/ProductModel.dart';
 
 class SubCategory extends StatelessWidget {
-  final String imageCaption;
-  final imageLocation;
-  SubCategory({this.imageCaption, this.imageLocation});
+  final String cap;
+  final src;
+  SubCategory({this.cap, this.src});
   @override
   Widget build(BuildContext context) {
     //var product = Provider.of<ProductModel>(context);
@@ -28,23 +28,23 @@ class SubCategory extends StatelessWidget {
             },
             child: Stack(
               children: <Widget>[
-                Image.asset(imageLocation),
+                Image.asset(src),
                 // Container(
                 //   color: Colors.black45,
                 //   decoration: BoxDecoration(
-                //     borderRadius: 
+                //     borderRadius:
                 //   )
                 // )
                 //Divider(height: 1),
                 // Details(
-                //   name: imageCaption,
+                //   name: cap,
                 //   price: ''
                 // ),
               ],
             ),
           ),
         ),
-      ),      
+      ),
     );
   }
 }

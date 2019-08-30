@@ -1,4 +1,5 @@
 import 'package:esell/pages/src/SubCategory/subCategory.dart';
+import 'package:esell/state/state.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:flutter/material.dart';
 
@@ -12,62 +13,6 @@ class CategoryPage extends StatefulWidget {
 class _CategoryPageState extends State<CategoryPage> {
   final String text;
   _CategoryPageState({this.text});
-
-  final topList = [
-    {
-      "imageCaption": "Casual Shirt", 
-      "imageLocation": "images/tshirt.png"
-    },
-    {
-      "imageCaption": "Formal Shirt",
-      "imageLocation": 'images/pant.png',
-    },
-    {
-      "imageCaption": "T-shirt",
-      "imageLocation": 'images/shoe.png',
-    },
-    {
-      "imageCaption": "Jacket",
-      "imageLocation": 'images/shoe.png',
-    }
-  ];
-  final bottomList = [
-    {"imageCaption": "Jean Pants", "imageLocation": "images/tshirt.png"},
-    {
-      "imageCaption": "Formal Pants",
-      "imageLocation": 'images/pant.png',
-    },
-    {
-      "imageCaption": "Track Pants/ Sports Wear",
-      "imageLocation": 'images/shoe.png',
-    }
-  ];
-  final footList = [
-    {"imageCaption": "Casual Shoes", "imageLocation": "images/tshirt.png"},
-    {
-      "imageCaption": "Formal Shoes",
-      "imageLocation": 'images/pant.png',
-    },
-    {
-      "imageCaption": "Sports Shoes",
-      "imageLocation": 'images/shoe.png',
-    },
-    {
-      "imageCaption": "Sandals",
-      "imageLocation": 'images/shoe.png',
-    }
-  ];
-  final watchNglass = [
-    {
-      "imageCaption": "Watches",
-      "imageLocation": 'images/shoe.png',
-    },
-    {
-      "imageCaption": "Glasses",
-      "imageLocation": 'images/shoe.png',
-    }
-  ];
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -82,37 +27,37 @@ class _CategoryPageState extends State<CategoryPage> {
             crossAxisCount: orientation == Orientation.portrait ? 2 : 3,
             childAspectRatio: 0.84,
           ),
-          itemCount: topList.length,
+          itemCount: TOP.length,
           itemBuilder: (BuildContext context, int index) {
             switch (text) {
               case 'top':
                 return SubCategory(
-                  imageCaption: topList[index]['imageCaption'],
-                  imageLocation: topList[index]['imageLocation'],
+                  cap: TOP[index]['cap'],
+                  src: TOP[index]['src'],
                 );
                 break;
               case 'bottom':
                 return SubCategory(
-                  imageCaption: bottomList[index]['imageCaption'],
-                  imageLocation: bottomList[index]['imageLocation'],
+                  cap: BOTTOM[index]['cap'],
+                  src: BOTTOM[index]['src'],
                 );
                 break;
               case 'foot':
                 return SubCategory(
-                  imageCaption: footList[index]['imageCaption'],
-                  imageLocation: footList[index]['imageLocation'],
+                  cap: FOOT[index]['cap'],
+                  src: FOOT[index]['src'],
                 );
                 break;
               case 'watchNglass':
                 return SubCategory(
-                  imageCaption: watchNglass[index]['imageCaption'],
-                  imageLocation: watchNglass[index]['imageLocation'],
+                  cap: WATCH_GLASSES[index]['cap'],
+                  src: WATCH_GLASSES[index]['src'],
                 );
                 break;
               default:
                 return SubCategory(
-                  imageCaption: topList[index]['imageCaption'],
-                  imageLocation: topList[index]['imageLocation'],
+                  cap: TOP[index]['cap'],
+                  src: TOP[index]['src'],
                 );
             }
           },

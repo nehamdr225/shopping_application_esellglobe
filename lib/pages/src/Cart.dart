@@ -14,6 +14,7 @@ class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     var cart = Provider.of<CartModel>(context);
+    var product = Provider.of<ProductModel>(context);
     var items = cart.cart;
     return SafeArea(
         child: Scaffold(
@@ -80,13 +81,14 @@ class _CartPageState extends State<CartPage> {
           ? ListView.builder(
               itemCount: cart.count,
               itemBuilder: (context, index) {
+                var each = product.one(items[index]);
                 return CartListView(
-                  name: items[index]['name'],
-                  picture: items[index]['media'][0]['src'][0],
-                  price: items[index]['price'],
-                  size: items[index]['size'],
-                  qty: items[index]['quantity'],
-                  color: items[index]['color'],
+                  name: each['name'],
+                  picture: each['media'][0]['src'][0],
+                  price: each['price'],
+                  // size: each['size'],
+                  // qty: each['quantity'],
+                  // color: each['color'],
                 );
               },
             )

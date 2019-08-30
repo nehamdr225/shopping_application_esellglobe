@@ -18,7 +18,8 @@ class Product extends StatelessWidget {
       this.seller,
       this.image,
       this.oldPrice,
-      this.details, this.id});
+      this.details,
+      this.id});
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +44,7 @@ class Product extends StatelessWidget {
                 Divider(height: 1),
                 Details(
                   name: name,
-                  price: price.toString(),
+                  price: 'Rs. $price',
                 ),
               ],
             ),

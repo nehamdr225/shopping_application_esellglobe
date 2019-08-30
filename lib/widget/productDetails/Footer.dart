@@ -17,15 +17,26 @@ class PDFooter extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          FRaisedButton(
-            onPressed: addToWish,
-            text: 'Wishlist',
-            color: Colors.black,
-          ),
-          FRaisedButton(
-            onPressed: addToCart,
-            text: 'Add to cart',
-          ),
+          wishlist.find(id) == true
+              ? FRaisedButton(
+                  onPressed: () {},
+                  text: 'In Wishlist',
+                  color: Colors.black,
+                )
+              : FRaisedButton(
+                  onPressed: addToWish,
+                  text: 'Wishlist',
+                  color: Colors.black,
+                ),
+          cart.find(id) == true
+              ? FRaisedButton(
+                  onPressed: () {},
+                  text: 'Added to cart',
+                )
+              : FRaisedButton(
+                  onPressed: addToCart,
+                  text: 'Add to cart',
+                ),
         ],
       ),
     );

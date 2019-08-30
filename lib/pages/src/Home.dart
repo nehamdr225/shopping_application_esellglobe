@@ -15,7 +15,6 @@ class HomePageApp extends StatefulWidget {
 class _HomePageAppState extends State<HomePageApp> {
   @override
   Widget build(BuildContext context) {
-    print("built main");
     FlutterStatusbarcolor.setStatusBarColor(Colors.black87);
     var screenHeight = MediaQuery.of(context).size.height;
     return SafeArea(

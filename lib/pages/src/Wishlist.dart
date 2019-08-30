@@ -1,28 +1,15 @@
+import 'package:esell/widget/molecules/Product.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
-import 'package:esell/pages/pages.dart';
+import 'package:esell/state/state.dart';
+import 'package:provider/provider.dart';
 
 class WishlistPage extends StatelessWidget {
-  final productList = [
-    {
-      "name": "Suit",
-      "picture": "images/1.jpg",
-      "price": "Rs. 1500",
-      "seller": " eSellglobe",
-      "oldPrice": "Rs. 2800",
-      "details": " it is a very nice product"
-    },
-    {
-      "name": "Shoes",
-      "picture": "images/o3.jpg",
-      "price": "Rs. 1300",
-      "seller": " eSellglobe",
-      "oldPrice": "Rs. 1800",
-      "details": " it is a very nice product"
-    }
-  ];
   @override
   Widget build(BuildContext context) {
+    final products = Provider.of<ProductModel>(context);
+    final wishlist = Provider.of<WishlistModel>(context);
+    final items = wishlist.wishList;
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(40.0),
@@ -34,109 +21,25 @@ class WishlistPage extends StatelessWidget {
         child: OrientationBuilder(builder: (context, orientation) {
           return GridView.builder(
             scrollDirection: Axis.vertical,
-            itemCount: 2,
+            itemCount: wishlist.count(),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: orientation == Orientation.portrait ? 2 : 3,
             ),
             itemBuilder: (BuildContext context, int index) {
-              return WishlistProduct(
-                  prodName: productList[index]['name'],
-                  prodPicture: productList[index]['picture'],
-                  prodPrice: productList[index]['price'],
-                  prodSeller: productList[index]['seller'],
-                  oldPrice: productList[index]['oldPrice'],
-                  prodDetails: productList[index]['details']);
+              var product = products.one(items[index]);
+              return Container(
+                height: 212.0,
+                child:Product(
+                  id: product['_id'],
+                  name: product['name'],
+                  image: product['media'][0]['src'][0],
+                  price: product['price'],
+                  seller: product['seller'],
+                  details: product['description']),);
             },
           );
         }),
       ),
     );
-  }
-}
-
-class WishlistProduct extends StatelessWidget {
-  final prodName;
-  final prodPicture;
-  final prodSeller;
-  final prodPrice;
-  final oldPrice;
-  final prodDetails;
-
-  WishlistProduct(
-      {this.prodName,
-      this.prodPrice,
-      this.prodSeller,
-      this.prodPicture,
-      this.oldPrice,
-      this.prodDetails});
-
-  Widget build(BuildContext context) {
-    return Card(
-        borderOnForeground: true,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12.0),
-        ),
-        child: Container(
-            height: 500.0,
-            width: 50.0,
-            padding: EdgeInsets.all(1.0),
-            child: Column(
-              children: <Widget>[
-                Material(
-                  borderRadius: BorderRadius.circular(12.0),
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => ProductDetails(
-                                id: "id",
-                              )));
-                    },
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          height: 100.0,
-                          child: Image.asset(prodPicture),
-                        ),
-                        Divider(),
-                        Container(
-                            alignment: Alignment.bottomCenter,
-                            height: 10.0,
-                            child: Text(
-                              prodName,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 13.0),
-                            )),
-                        Padding(
-                          padding: EdgeInsets.all(4.0),
-                        ),
-                        Container(
-                            alignment: Alignment.bottomCenter,
-                            height: 5.0,
-                            child: Text(prodDetails)),
-                        Padding(
-                          padding: EdgeInsets.all(4.0),
-                        ),
-                        Container(
-                            alignment: Alignment.bottomCenter,
-                            height: 5.0,
-                            child: Text(prodPrice)),
-                      ],
-                    ),
-                  ),
-                ),
-                // ButtonTheme(
-                //               minWidth: 165.0,
-                //               height: 45.0,
-
-                //               child: RaisedButton(
-
-                //                 color: Colors.pink,
-                //                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
-                //                 onPressed: (){},
-                //                 child: Text('Move to Cart', style:TextStyle(fontFamily: 'Victorian', fontSize: 26.0, color: Colors.white)),
-                //                 )
-                //             ),
-              ],
-            )));
   }
 }

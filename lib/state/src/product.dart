@@ -13,8 +13,6 @@ class ProductModel extends ChangeNotifier {
 
   one(id) {
     for (var item in _products) {
-      print(item['_id']);
-      print(id);
       if (item['_id'] == id) return item;
     }
     return {'error': 'Product not found!'};
