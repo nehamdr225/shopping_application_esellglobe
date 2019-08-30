@@ -10,32 +10,15 @@ class Category extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    pusher(text) {
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => CategoryPage(text: text),
-        ),
-      );
-    }
-
     return Padding(
         padding: EdgeInsets.all(2.0),
         child: InkWell(
           onTap: () {
-            switch (name) {
-              case "top":
-                pusher("top");
-                break;
-              case "bottom":
-                pusher("bottom");
-                break;
-              case "foot":
-                pusher("foot");
-                break;
-              case "watchNglass":
-                pusher("watchNglass");
-                break;
-            }
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => CategoryPage(text: name),
+              ),
+            );
           },
           child: Container(
               width: 90.0,

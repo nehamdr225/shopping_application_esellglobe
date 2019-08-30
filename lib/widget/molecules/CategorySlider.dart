@@ -31,9 +31,9 @@ class HorizontalList extends StatelessWidget {
         itemCount: 4,
         itemBuilder: (BuildContext context, int index) {
           return Category(
-            name: SCROLL_LIST[index]['name'],
-            caption: SCROLL_LIST[index]['cap'],
-            src: SCROLL_LIST[index]['src'],
+            name: MAIN[index]['name'],
+            caption: MAIN[index]['cap'],
+            src: MAIN[index]['src'],
           );
         },
       ),

@@ -3,18 +3,14 @@ import 'package:esell/state/state.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:flutter/material.dart';
 
-class CategoryPage extends StatefulWidget {
+class CategoryPage extends StatelessWidget {
   final String text;
   CategoryPage({this.text});
   @override
-  _CategoryPageState createState() => _CategoryPageState();
-}
-
-class _CategoryPageState extends State<CategoryPage> {
-  final String text;
-  _CategoryPageState({this.text});
-  @override
   Widget build(BuildContext context) {
+    var CAT = text == 'top'
+        ? TOP
+        : text == 'bottom' ? BOTTOM : text == "foot" ? FOOT : WATCH_GLASSES;
     return SafeArea(
         child: Scaffold(
       appBar: PreferredSize(
@@ -27,39 +23,12 @@ class _CategoryPageState extends State<CategoryPage> {
             crossAxisCount: orientation == Orientation.portrait ? 2 : 3,
             childAspectRatio: 0.84,
           ),
-          itemCount: TOP.length,
+          itemCount: CAT.length,
           itemBuilder: (BuildContext context, int index) {
-            switch (text) {
-              case 'top':
-                return SubCategory(
-                  cap: TOP[index]['cap'],
-                  src: TOP[index]['src'],
-                );
-                break;
-              case 'bottom':
-                return SubCategory(
-                  cap: BOTTOM[index]['cap'],
-                  src: BOTTOM[index]['src'],
-                );
-                break;
-              case 'foot':
-                return SubCategory(
-                  cap: FOOT[index]['cap'],
-                  src: FOOT[index]['src'],
-                );
-                break;
-              case 'watchNglass':
-                return SubCategory(
-                  cap: WATCH_GLASSES[index]['cap'],
-                  src: WATCH_GLASSES[index]['src'],
-                );
-                break;
-              default:
-                return SubCategory(
-                  cap: TOP[index]['cap'],
-                  src: TOP[index]['src'],
-                );
-            }
+            return SubCategory(
+              cap: CAT[index]['cap'],
+              src: CAT[index]['src'],
+            );
           },
         );
       }),

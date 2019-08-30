@@ -1,4 +1,4 @@
-const SCROLL_LIST = [
+const MAIN = [
   {"name": "top", "cap": "Top Wear", "src": "images/tshirt.png"},
   {
     "name": "bottom",
