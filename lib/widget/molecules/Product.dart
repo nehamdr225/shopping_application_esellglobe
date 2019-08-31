@@ -45,6 +45,7 @@ class Product extends StatelessWidget {
                 Details(
                   name: name,
                   price: 'Rs. $price',
+                  id: id
                 ),
               ],
             ),

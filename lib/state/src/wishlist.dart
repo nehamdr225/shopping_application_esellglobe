@@ -11,6 +11,8 @@ class WishlistModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  set setOne (id) => _wishList.add(id);
+
   find(id) {
     return _wishList.contains(id);
   }

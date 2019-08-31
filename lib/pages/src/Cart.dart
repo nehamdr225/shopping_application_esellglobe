@@ -1,3 +1,4 @@
+import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:esell/widget/molecules/CartList.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/widget/molecules/colors.dart';
@@ -15,33 +16,13 @@ class _CartPageState extends State<CartPage> {
   Widget build(BuildContext context) {
     var cart = Provider.of<CartModel>(context);
     var product = Provider.of<ProductModel>(context);
+    var user = Provider.of<UserModel>(context);
     var items = cart.cart;
     return SafeArea(
         child: Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(40.0),
-        child: AppBar(
-          elevation: 0.0,
-          iconTheme: IconThemeData(color: icontheme2),
-          backgroundColor: Colors.white,
-          title: Text(
-            'My cart',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.pink,
-              fontFamily: 'Ropa Sans',
-            ),
-            textAlign: TextAlign.center,
-          ),
-          leading: IconButton(
-            icon: Icon(
-              Icons.arrow_back,
-            ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-        ),
+        child: FAppBar(wishlist: true,)
       ),
       backgroundColor: Colors.grey[200],
       //footer icon buttons
@@ -69,7 +50,7 @@ class _CartPageState extends State<CartPage> {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12.0)),
             onPressed: () {},
-            child: Text('Check Out',
+            child: Text(user.token != null?'Check Out': 'Login to checkout',
                 style: TextStyle(
                     fontFamily: 'Victorian',
                     fontSize: 26.0,

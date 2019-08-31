@@ -13,7 +13,7 @@ class WishlistPage extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(40.0),
-        child: FAppBar(),
+        child: FAppBar(cart: true,),
       ),
       backgroundColor: Colors.grey,
       body: Container(

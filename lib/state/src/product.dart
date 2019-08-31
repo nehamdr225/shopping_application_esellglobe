@@ -2,7 +2,7 @@ import 'package:esell/helpers/Api.dart';
 import 'package:flutter/cupertino.dart';
 
 class ProductModel extends ChangeNotifier {
-  ProductModel(){
+  ProductModel() {
     getProducts().then((data) {
       products = data;
     });
@@ -10,7 +10,7 @@ class ProductModel extends ChangeNotifier {
   List _products = [];
 
   List get products => _products;
-
+  get count => _products.length;
   one(id) {
     for (var item in _products) {
       if (item['_id'] == id) return item;

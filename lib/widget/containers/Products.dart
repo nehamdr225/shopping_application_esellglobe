@@ -8,7 +8,7 @@ import 'package:esell/state/state.dart';
 class ProductContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final product = Provider.of<ProductModel>(context);
+    final product = Provider.of<ProductModel>(context);    
     return SliverList(
         delegate: SliverChildListDelegate(<Widget>[
       Padding(
@@ -23,7 +23,7 @@ class ProductContainer extends StatelessWidget {
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) =>
-                            ProductsPage(products: product.products)));
+                            ProductsPage()));
                   },
                   child: Align(
                     alignment: Alignment.topRight,

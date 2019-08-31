@@ -1,17 +1,17 @@
 const MAIN = [
-  {"name": "top", "cap": "Top Wear", "src": "images/tshirt.png"},
+  {"name": "Top Wear", "cap": "Top Wear", "src": "images/tshirt.png"},
   {
-    "name": "bottom",
+    "name": "Bottom Wear",
     "cap": "Bottom Wear",
     "src": 'images/pant.png',
   },
   {
-    "name": "foot",
+    "name": "Foot Wear",
     "cap": "Foot Wear",
     "src": 'images/shoe.png',
   },
   {
-    "name": "watchesNglasses",
+    "name": "Watches & Glasses",
     "cap": "Watches & Glasses",
     "src": 'images/shoe.png',
   }
@@ -23,7 +23,7 @@ const List<List<String>> TOP = [
 ];
 
 const List<List<String>> BOTTOM = [
-  ["Jean Pants", "Formal Pants", "Track/Sports Wear"],
+  ["Jeans Pants", "Formal Pants", "Track/Sports Wear"],
   ["images/tshirt.png", 'images/pant.png', 'images/shoe.png']
 ];
 const List<List<String>> FOOT = [

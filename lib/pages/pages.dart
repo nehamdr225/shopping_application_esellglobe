@@ -8,3 +8,4 @@ export './src/Signup.dart';
 export './src/UserPromt.dart';
 export './src/Wishlist.dart';
 export './src/CategoryPage.dart';
+export './src/AboutPage.dart';

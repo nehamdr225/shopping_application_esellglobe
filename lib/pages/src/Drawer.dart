@@ -1,29 +1,60 @@
-import 'package:esell/pages/src/AboutPage.dart';
 import 'package:esell/widget/atoms/DrawerElements.dart';
+import 'package:esell/widget/atoms/FancyText.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/widget/molecules/colors.dart';
 import 'package:esell/pages/pages.dart';
+import 'package:esell/state/state.dart';
+import 'package:provider/provider.dart';
 
 class DrawerApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<UserModel>(context).token;
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          UserAccountsDrawerHeader(
-            accountName: Text('esellglobe'),
-            accountEmail: Text('esellglobe@gmail.com'),
-            currentAccountPicture: GestureDetector(
-              child: CircleAvatar(
-                backgroundColor: Colors.white24,
-                child: Icon(Icons.person, color: Colors.black45),
-              ),
-            ),
-            decoration: BoxDecoration(
-              gradient: drawercolor,
-            ),
-          ),
+          user != null
+              ? UserAccountsDrawerHeader(
+                  accountName: Text('esellglobe'),
+                  accountEmail: Text('esellglobe@gmail.com'),
+                  currentAccountPicture: GestureDetector(
+                    child: CircleAvatar(
+                      backgroundColor: Colors.white24,
+                      child: Icon(Icons.person, color: Colors.black45),
+                    ),
+                  ),
+                  decoration: BoxDecoration(
+                    gradient: drawercolor,
+                  ),
+                )
+              : DrawerHeader(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      FancyText(
+                        text: "Login",
+                        size: 24.0,
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SignInPage()));
+                        },
+                      ),
+                      FancyText(
+                        text: "Signup",
+                        size: 24.0,
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SignUpPage()));
+                        },
+                      )
+                    ],
+                  ),
+                ),
           DrawerElements(
             title: 'Home Page',
             icon: Icons.home,
@@ -43,11 +74,12 @@ class DrawerApp extends StatelessWidget {
             },
           ),
           DrawerElements(
-            title: 'Category',
-            icon: Icons.category,
+            title: 'Cart',
+            icon: Icons.shopping_cart,
             color: Colors.greenAccent,
             onTap: () {
-              Navigator.pop(context);
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => CartPage()));
             },
           ),
           DrawerElements(
@@ -59,7 +91,7 @@ class DrawerApp extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => WishlistPage()));
             },
           ),
-          DrawerElements(
+          user != null?DrawerElements(
             title: 'Account',
             icon: Icons.person,
             color: Colors.grey,
@@ -67,7 +99,7 @@ class DrawerApp extends StatelessWidget {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => SignInPage()));
             },
-          ),
+          ): Text(''),
           Divider(
             height: 80.0,
           ),

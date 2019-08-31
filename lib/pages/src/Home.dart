@@ -42,6 +42,14 @@ class _HomePageAppState extends State<HomePageApp> {
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => CartPage()));
+                    }),
+                FIcons(
+                    icon: Icons.bookmark,
+                    alignment: Alignment.centerRight,
+                    color: icontheme,
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => WishlistPage()));
                     })
               ],
             ),
