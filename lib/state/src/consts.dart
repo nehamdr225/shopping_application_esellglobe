@@ -17,54 +17,20 @@ const MAIN = [
   }
 ];
 
-const TOP = [
-  {"cap": "Casual Shirt", "src": "images/tshirt.png"},
-  {
-    "cap": "Formal Shirt",
-    "src": 'images/pant.png',
-  },
-  {
-    "cap": "T-shirt",
-    "src": 'images/shoe.png',
-  },
-  {
-    "cap": "Jacket",
-    "src": 'images/shoe.png',
-  }
+const List<List<String>> TOP = [
+  ["Casual Shirt", "Formal Shirt", "T-Shirt", "Jacket"],
+  ["images/tshirt.png", "images/pant.png", "images/shoe.png", "images/shoe.png"]
 ];
-const BOTTOM = [
-  {"cap": "Jean Pants", "src": "images/tshirt.png"},
-  {
-    "cap": "Formal Pants",
-    "src": 'images/pant.png',
-  },
-  {
-    "cap": "Track Pants/ Sports Wear",
-    "src": 'images/shoe.png',
-  }
+
+const List<List<String>> BOTTOM = [
+  ["Jean Pants", "Formal Pants", "Track/Sports Wear"],
+  ["images/tshirt.png", 'images/pant.png', 'images/shoe.png']
 ];
-const FOOT = [
-  {"cap": "Casual Shoes", "src": "images/tshirt.png"},
-  {
-    "cap": "Formal Shoes",
-    "src": 'images/pant.png',
-  },
-  {
-    "cap": "Sports Shoes",
-    "src": 'images/shoe.png',
-  },
-  {
-    "cap": "Sandals",
-    "src": 'images/shoe.png',
-  }
+const List<List<String>> FOOT = [
+  ["Casual Shoes", "Formal Shoes", "Sports Shoes", "Sandals"],
+  ["images/tshirt.png", 'images/pant.png', 'images/shoe.png', 'images/shoe.png']
 ];
-const WATCH_GLASSES = [
-  {
-    "cap": "Watches",
-    "src": 'images/shoe.png',
-  },
-  {
-    "cap": "Glasses",
-    "src": 'images/shoe.png',
-  }
+const List<List<String>> WATCH_GLASSES = [
+  ["Watches", "Glasses"],
+  ['images/shoe.png', 'images/shoe.png']
 ];

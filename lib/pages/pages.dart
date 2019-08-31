@@ -7,3 +7,4 @@ export './src/Signin.dart';
 export './src/Signup.dart';
 export './src/UserPromt.dart';
 export './src/Wishlist.dart';
+export './src/CategoryPage.dart';

@@ -1,4 +1,4 @@
-import 'package:esell/pages/src/SubCategory/CategoryPage.dart';
+import 'package:esell/pages/pages.dart';
 import 'package:flutter/material.dart';
 
 class Category extends StatelessWidget {
