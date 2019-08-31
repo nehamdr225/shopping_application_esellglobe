@@ -54,7 +54,7 @@ class _CartPageState extends State<CartPage> {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12.0)),
             onPressed: () {},
-            child: Text('Total',
+            child: Text('Total: ',
                 style: TextStyle(
                     fontFamily: 'Victorian',
                     fontSize: 26.0,
@@ -92,7 +92,10 @@ class _CartPageState extends State<CartPage> {
                 );
               },
             )
-          : Text("Your cart is empty!"),
+          : Container(
+            alignment: Alignment.center,
+            child: Text("Your cart is empty!",
+            style: TextStyle(fontSize: 24.0),),),
     ));
   }
 }

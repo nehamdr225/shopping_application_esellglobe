@@ -14,15 +14,19 @@ class DropDown extends StatefulWidget {
 class _DropDownState extends State<DropDown> {
   @override
   Widget build(BuildContext context) {
+    var screenWidth = MediaQuery.of(context).size.width;
     String dropdownValue = widget.cap[0];
     return Container(
+      alignment: Alignment.topCenter,
+      width: screenWidth*0.90,
       child: DropdownButton<String>(
-        value: dropdownValue,
         onChanged: (String newValue) {
           setState(() {
             dropdownValue = newValue;
           });
         },
+        value: dropdownValue,
+        hint: Text('Select a category'),
         items: widget.cap.map<DropdownMenuItem<String>>((value) {
           return DropdownMenuItem<String>(
             value: value,

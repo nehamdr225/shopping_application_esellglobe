@@ -1,3 +1,5 @@
+import 'package:esell/pages/src/AboutPage.dart';
+import 'package:esell/widget/atoms/DrawerElements.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/widget/molecules/colors.dart';
 import 'package:esell/pages/pages.dart';
@@ -22,72 +24,68 @@ class DrawerApp extends StatelessWidget {
               gradient: drawercolor,
             ),
           ),
-          ListTile(
-            title: Text('Home Page'),
-            leading: Icon(
-              Icons.home,
-              color: Colors.blue,
-            ),
-            trailing: Icon(Icons.arrow_right),
+          DrawerElements(
+            title: 'Home Page',
+            icon: Icons.home,
+            color: Colors.blue,
             onTap: () {
-              Navigator.pop(context);
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => HomePageApp()));
             },
           ),
-          ListTile(
-            title: Text('My Orders'),
-            leading: Icon(Icons.shopping_basket, color: Colors.orangeAccent),
-            trailing: Icon(Icons.arrow_right),
+          DrawerElements(
+            title: 'My Orders',
+            icon: Icons.shopping_basket,
+            color: Colors.orangeAccent,
             onTap: () {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => CartPage()));
             },
           ),
-          ListTile(
-            title: Text('Category'),
-            leading: Icon(Icons.category, color: Colors.greenAccent),
-            trailing: Icon(Icons.arrow_right),
+          DrawerElements(
+            title: 'Category',
+            icon: Icons.category,
+            color: Colors.greenAccent,
             onTap: () {
               Navigator.pop(context);
             },
           ),
-          ListTile(
-            title: Text('Wishlist'),
-            leading: Icon(Icons.favorite, color: Colors.red),
-            trailing: Icon(Icons.arrow_right),
+          DrawerElements(
+            title: 'Wishlist',
+            icon: Icons.favorite_border,
+            color: Colors.red,
             onTap: () {
-             Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => WishlistPage()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => WishlistPage()));
             },
           ),
-          ListTile(
-            title: Text('Account'),
-            leading: Icon(Icons.person),
-            trailing: Icon(Icons.arrow_right),
+          DrawerElements(
+            title: 'Account',
+            icon: Icons.person,
+            color: Colors.grey,
             onTap: () {
-//                Navigator.pop(context);
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SignInPage()),
-              );
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => SignInPage()));
             },
           ),
           Divider(
             height: 80.0,
           ),
-          ListTile(
-            title: Text('Settings'),
-            leading: Icon(Icons.settings, color: Colors.blueGrey),
-            trailing: Icon(Icons.arrow_right),
+          // DrawerElements(
+          //   title: 'Settings',
+          //   icon: Icons.settings,
+          //   color: Colors.blueGrey,
+          //   onTap: () {
+          //     Navigator.pop(context);
+          //   },
+          // ),
+          DrawerElements(
+            title: 'About',
+            icon: Icons.help_outline,
+            color: Colors.black,
             onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            title: Text('About'),
-            leading: Icon(Icons.help_outline, color: Colors.black),
-            trailing: Icon(Icons.arrow_right),
-            onTap: () {
-              Navigator.pop(context);
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => AboutPage()));
             },
           ),
         ],

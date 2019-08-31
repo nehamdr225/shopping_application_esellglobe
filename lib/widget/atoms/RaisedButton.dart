@@ -7,8 +7,8 @@ class FRaisedButton extends StatelessWidget {
   FRaisedButton(
       {this.text,
       this.onPressed,
-      this.color: Colors.black,
-      this.bg: Colors.white});
+      this.color,
+      this.bg});
   @override
   Widget build(BuildContext context) {
     return SizedBox(

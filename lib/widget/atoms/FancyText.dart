@@ -8,16 +8,19 @@ class FancyText extends StatelessWidget {
   FancyText({this.text, this.size, this.onTap});
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: InkWell(
-        onTap: onTap,
-        child: Text(text,
-            style: TextStyle(
-                fontFamily: 'Ropa Sans',
-                fontSize: size,
-                color: Colors.deepPurple[900],
-                decoration: TextDecoration.underline,
-                decorationColor: Colors.deepPurple[900])),
+    return Container(
+      height: 30.0,
+      child: Material(
+        child: InkWell(
+          onTap: onTap,
+          child: Text(text,
+              style: TextStyle(
+                  fontFamily: 'Ropa Sans',
+                  fontSize: size,
+                  color: Colors.deepPurple[900],
+                  decoration: TextDecoration.underline,
+                  decorationColor: Colors.deepPurple[900])),
+        ),
       ),
     );
   }

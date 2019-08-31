@@ -11,17 +11,19 @@ class UserPromptApp extends StatelessWidget {
   Widget build(BuildContext context) {
     FlutterStatusbarcolor.setStatusBarColor(Colors.white);
     return SafeArea(
-        child: Container(
-      color: Colors.white,
-      width: 130.0,
-      alignment: Alignment.center,
-      child: Column(
+      child: Container(
+        color: Colors.white,
+        width: 130.0,
+        //alignment: Alignment.center,
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             BrandLogos(),
             Padding(padding: EdgeInsets.all(12.0)),
             FRaisedButton(
-              text: "Login",
+              text: "Signin",
+              color: Colors.white,
+              bg:  Colors.purple[900],
               onPressed: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => SignInPage()));
@@ -30,6 +32,8 @@ class UserPromptApp extends StatelessWidget {
             Padding(padding: EdgeInsets.all(12.0)),
             FRaisedButton(
               text: "Signup",
+              color: Colors.white,
+              bg:  Colors.purple[900],
               onPressed: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => SignUpPage()));

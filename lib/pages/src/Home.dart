@@ -39,7 +39,10 @@ class _HomePageAppState extends State<HomePageApp> {
                     icon: Icons.shopping_cart,
                     alignment: Alignment.centerRight,
                     color: icontheme,
-                    onPressed: () {})
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => CartPage()));
+                    })
               ],
             ),
             FSlider(),

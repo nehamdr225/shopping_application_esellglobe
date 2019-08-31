@@ -19,17 +19,19 @@ class FAppBar extends StatelessWidget {
             icon: Icon(
               Icons.arrow_back,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
           ),
           actions: <Widget>[
-            IconButton(
-              icon: Icon(
-                Icons.search,
-              ),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
+            // IconButton(
+            //   icon: Icon(
+            //     Icons.search,
+            //   ),
+            //   onPressed: () {
+            //     Navigator.pop(context);
+            //   },
+            // ),
             IconButton(
               icon: Icon(
                 Icons.shopping_cart,

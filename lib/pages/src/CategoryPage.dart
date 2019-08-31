@@ -8,7 +8,7 @@ class CategoryPage extends StatelessWidget {
   CategoryPage({this.text});
   @override
   Widget build(BuildContext context) {
-    var CAT = text == 'top'
+    var cat = text == 'top'
         ? TOP
         : text == 'bottom' ? BOTTOM : text == "foot" ? FOOT : WATCH_GLASSES;
     return SafeArea(
@@ -18,8 +18,8 @@ class CategoryPage extends StatelessWidget {
               child: FAppBar(),
             ),
             body:  DropDown(
-              cap: CAT[0],
-              src: CAT[1],
+              cap: cat[0],
+              src: cat[1],
             )));
   }
 }
