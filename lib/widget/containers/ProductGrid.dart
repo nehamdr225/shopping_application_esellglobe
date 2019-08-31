@@ -34,6 +34,5 @@ class ProductGrid extends StatelessWidget {
               );
       },
     );
-    ;
   }
 }
