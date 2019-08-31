@@ -12,12 +12,14 @@ class CategoryPage extends StatelessWidget {
         ? TOP
         : text == 'bottom' ? BOTTOM : text == "foot" ? FOOT : WATCH_GLASSES;
     return SafeArea(
-      child: Scaffold(
-          appBar: PreferredSize(
-            preferredSize: Size.fromHeight(40.0),
-            child: FAppBar(),
-          ),
-          body: ),
-    );
+        child: Scaffold(
+            appBar: PreferredSize(
+              preferredSize: Size.fromHeight(40.0),
+              child: FAppBar(),
+            ),
+            body:  DropDown(
+              cap: CAT[0],
+              src: CAT[1],
+            )));
   }
 }
