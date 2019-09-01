@@ -46,6 +46,7 @@ class ProductContainer extends StatelessWidget {
             final products = product.products;
             return products.length > 0
                 ? Product(
+                  imgheight: 130.0,
                     name: products[index]['name'],
                     image: products[index]['media'][0]['src'].length > 0
                         ? products[index]['media'][0]['src'][0]

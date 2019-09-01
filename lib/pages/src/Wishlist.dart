@@ -26,15 +26,14 @@ class WishlistPage extends StatelessWidget {
             ),
             itemBuilder: (BuildContext context, int index) {
               var product = products.one(items[index]);
-              return Container(
-                height: 212.0,
-                child:Product(
+              return Product(
                   id: product['_id'],
                   name: product['name'],
                   image: product['media'][0]['src'][0],
+                  imgheight: 98.0,
                   price: product['price'],
                   seller: product['seller'],
-                  details: product['description']),);
+                  details: product['description']);
             },
           );
         }),

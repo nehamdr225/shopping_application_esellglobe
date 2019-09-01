@@ -6,6 +6,7 @@ import 'package:esell/pages/pages.dart';
 class Product extends StatelessWidget {
   final name;
   final image;
+  final double imgheight;
   final seller;
   final price;
   final oldPrice;
@@ -17,6 +18,7 @@ class Product extends StatelessWidget {
       this.price,
       this.seller,
       this.image,
+      this.imgheight,
       this.oldPrice,
       this.details,
       this.id});
@@ -30,7 +32,6 @@ class Product extends StatelessWidget {
       ),
       child: Container(
         width: 150,
-        height: 202.0,
         child: Material(
           borderRadius: BorderRadius.circular(8.0),
           child: InkWell(
@@ -40,7 +41,7 @@ class Product extends StatelessWidget {
             },
             child: Column(
               children: <Widget>[
-                ImageHolder(image: image),
+                ImageHolder(image: image, imgheight: imgheight),
                 Divider(height: 1),
                 Details(
                   name: name,

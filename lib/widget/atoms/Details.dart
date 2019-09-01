@@ -18,8 +18,7 @@ class _DetailsState extends State<Details> {
   Widget build(BuildContext context) {
     final wishlist = Provider.of<WishlistModel>(context);
 
-    return Container(
-        child: Column(
+    return Column(
       children: <Widget>[
         Padding(
           padding: EdgeInsets.only(bottom: 10.0),
@@ -49,6 +48,6 @@ class _DetailsState extends State<Details> {
                   ))
         ]),
       ],
-    ));
+    );
   }
 }

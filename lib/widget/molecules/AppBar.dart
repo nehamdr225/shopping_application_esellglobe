@@ -8,7 +8,8 @@ import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 class FAppBar extends StatelessWidget {
   final wishlist;
   final cart;
-  FAppBar({this.wishlist, this.cart});
+  final search;
+  FAppBar({this.wishlist, this.cart, this.search});
   @override
   Widget build(BuildContext context) {
     FlutterStatusbarcolor.setStatusBarColor(Colors.black87);
@@ -28,12 +29,12 @@ class FAppBar extends StatelessWidget {
             },
           ),
           actions: <Widget>[
-            FIcons(
+            search != null? FIcons(
               icon: Icons.search,
               alignment: Alignment.centerRight,
               color: Colors.deepPurple[900],
               onPressed: () {},
-            ),
+            ):Text(''),
             cart != null? FIcons(
                 icon: Icons.shopping_cart,
                 alignment: Alignment.centerRight,
