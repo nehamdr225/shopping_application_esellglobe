@@ -15,9 +15,8 @@ class WishlistPage extends StatelessWidget {
         preferredSize: Size.fromHeight(40.0),
         child: FAppBar(cart: true,),
       ),
-      backgroundColor: Colors.grey,
-      body: Container(
-        color: Colors.white,
+      backgroundColor: Colors.grey[200],
+      body: Container(  
         child: OrientationBuilder(builder: (context, orientation) {
           return GridView.builder(
             scrollDirection: Axis.vertical,

@@ -12,6 +12,7 @@ class FancyText extends StatelessWidget {
     return Container(
       height: 30.0,
       child: Material(
+        color: Colors.transparent,
         child: InkWell(
           onTap: onTap,
           child: Text(text,
@@ -19,7 +20,7 @@ class FancyText extends StatelessWidget {
                   fontFamily: 'Ropa Sans',
                   fontSize: size,
                   color: Colors.deepPurple[900],
-                  decoration: decoration != null?TextDecoration.underline:TextDecoration.none,
+                  decoration: decoration != null? TextDecoration.underline:TextDecoration.none,
                   decorationColor: Colors.deepPurple[900])),
         ),
       ),

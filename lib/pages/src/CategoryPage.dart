@@ -26,10 +26,12 @@ class CategoryPage extends StatelessWidget {
               preferredSize: Size.fromHeight(40.0),
               child: FAppBar(wishlist: true, cart: true),
             ),
-            body: Column(
+            body: Container(
+              height: height,
+              child: Column(
               children: <Widget>[
                 Container(
-                  height: height*0.06,
+                  height: 50.0,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,7 +51,7 @@ class CategoryPage extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  height: height*0.85,
+                  height: height*(84/100),
                   
                   child: OrientationBuilder(builder: (context, orientation) {
                     return ProductGrid(
@@ -58,6 +60,6 @@ class CategoryPage extends StatelessWidget {
                       count: product.count);}
                 ))
               ],
-            )));
+            ))));
   }
 }

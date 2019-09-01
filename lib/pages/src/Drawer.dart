@@ -34,12 +34,27 @@ class DrawerApp extends StatelessWidget {
                   ),
                 )
               : DrawerHeader(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    //gradient: drawercolor
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: <Widget>[
-                      FancyText(
+                      CircleAvatar(
+                        backgroundColor: Colors.white,
+                        radius: 50.0,
+                        child: FlutterLogo(),
+                      ),
+                      Padding(padding: EdgeInsets.all(12.0),),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          FancyText(
                         text: "Login",
-                        size: 24.0,
+                        size: 16.0,
                         onTap: () {
                           Navigator.push(
                               context,
@@ -47,9 +62,10 @@ class DrawerApp extends StatelessWidget {
                                   builder: (context) => SignInPage()));
                         },
                       ),
+                      Padding(padding: EdgeInsets.all(8.0),),
                       FancyText(
                         text: "Signup",
-                        size: 24.0,
+                        size: 16.0,
                         onTap: () {
                           Navigator.push(
                               context,
@@ -57,6 +73,9 @@ class DrawerApp extends StatelessWidget {
                                   builder: (context) => SignUpPage()));
                         },
                       )
+                        ],
+                      )
+                      
                     ],
                   ),
                 ),
