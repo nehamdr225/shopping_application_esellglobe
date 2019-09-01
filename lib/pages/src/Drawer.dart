@@ -9,15 +9,16 @@ import 'package:provider/provider.dart';
 class DrawerApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<UserModel>(context).token;
+    final user = Provider.of<UserModel>(context);
+    final userData = user.user;
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
           user != null
               ? UserAccountsDrawerHeader(
-                  accountName: Text('esellglobe'),
-                  accountEmail: Text('esellglobe@gmail.com'),
+                  accountName: Text(userData['name']),
+                  accountEmail: Text(userData['email']),
                   currentAccountPicture: GestureDetector(
                     child: CircleAvatar(
                       backgroundColor: Colors.white24,

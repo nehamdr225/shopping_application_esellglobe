@@ -14,7 +14,7 @@ login(String email, String password) async {
       return {"error": response['error']};
     }
     savekeyVal('token', response['token']);
-    return {"error": "Email or password is not valid!"};
+    return {"token": response['token']};
   } catch (err) {
     return {"error": err};
   }
@@ -34,9 +34,10 @@ signup(String email, String password, String name) async {
 }
 
 getProducts({result = 10, page = 1}) async {
-  print("api called");
   try {
-    var response = await fetch(uri: '$url/products?result=$result&page=$page');
+    var response = await fetch(
+      uri: '$url/products?result=$result&page=$page',
+    );
     return response['products'];
   } catch (err) {
     return err;
@@ -44,16 +45,18 @@ getProducts({result = 10, page = 1}) async {
 }
 
 getProductsByCategory({category = "top", result = 10, page = 1}) async {
-  fetch(uri: '$url/products/category/$category?result=$result&page=$page')
-      .then((response) {
-    return response.products;
+  fetch(
+    uri: '$url/products/category/$category?result=$result&page=$page',
+  ).then((response) {
+    return response['products'];
   });
 }
 
-getUser(id) async {
+getUser(token) async {
+  if (headers['X-Access-Token'] == null) updateAccessToken(token);
   try {
     var response = await fetch(uri: "$url/user");
-    return response.result;
+    return response['result'];
   } catch (err) {
     return err;
   }

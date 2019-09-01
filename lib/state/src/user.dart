@@ -1,12 +1,24 @@
+import 'package:esell/helpers/Api.dart';
+// import 'package:esell/helpers/Fetch.dart';
 import 'package:esell/state/state.dart';
 import 'package:flutter/cupertino.dart';
 
 class UserModel extends ChangeNotifier {
-  String _token, _id, _name;
-
+  UserModel() {
+    getValue('token').then((token) {
+      if (token != null && token != _token) {
+        _token = token;
+        getUser(token).then((result) {
+          user = result;
+        });
+        notifyListeners();
+      }
+    });
+  }
+  String _token;
+  Map _user;
   String get token => _token;
-  String get id => _id;
-  String get name => _name;
+  Map get user => _user;
 
   set token(String token) {
     if (token != null && token != _token) {
@@ -15,26 +27,10 @@ class UserModel extends ChangeNotifier {
     }
   }
 
-  set id(String id) {
-    if (id != null && id != _id) {
-      _id = id;
+  set user(Map user) {
+    if (user != null && user != _user) {
+      _user = user;
       notifyListeners();
     }
-  }
-
-  set name(String name) {
-    if (name != null && name != _name) {
-      _name = name;
-      notifyListeners();
-    }
-  }
-
-  UserModel() {
-    getValue('token').then((token) {
-      if (token != null && token != _token) {
-        _token = token;
-        notifyListeners();
-      }
-    });
   }
 }
