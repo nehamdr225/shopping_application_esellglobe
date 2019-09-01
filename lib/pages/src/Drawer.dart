@@ -1,3 +1,4 @@
+import 'package:esell/helpers/Api.dart';
 import 'package:esell/widget/atoms/DrawerElements.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
 import 'package:flutter/material.dart';
@@ -11,14 +12,17 @@ class DrawerApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final user = Provider.of<UserModel>(context);
     final userData = user.user;
+    final token = user.token;
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          user != null
+          token != null
               ? UserAccountsDrawerHeader(
-                  accountName: Text(userData['name']),
-                  accountEmail: Text(userData['email']),
+                  accountName: Text(
+                      userData.length > 0 ? userData['name'] : "Loading ..."),
+                  accountEmail: Text(
+                      userData.length > 0 ? userData['email'] : "Loading ..."),
                   currentAccountPicture: GestureDetector(
                     child: CircleAvatar(
                       backgroundColor: Colors.white24,
@@ -92,26 +96,32 @@ class DrawerApp extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => WishlistPage()));
             },
           ),
-          user != null?DrawerElements(
-            title: 'Account',
+          token != null
+              ? DrawerElements(
+                  title: 'Account',
+                  icon: Icons.person,
+                  color: Colors.grey,
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => SignInPage()));
+                  },
+                )
+              : Text(''),
+          token != null?DrawerElements(
+            title: 'Logout',
             icon: Icons.person,
-            color: Colors.grey,
+            color: Colors.blueGrey,
             onTap: () {
+              logout();
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => SignInPage()));
+                  MaterialPageRoute(builder: (context) => HomePageApp()));
+              user.token = null;
+              user.user = {};
             },
-          ): Text(''),
+          ): Text(""),
           Divider(
-            height: 80.0,
+            height: 10.0,
           ),
-          // DrawerElements(
-          //   title: 'Settings',
-          //   icon: Icons.settings,
-          //   color: Colors.blueGrey,
-          //   onTap: () {
-          //     Navigator.pop(context);
-          //   },
-          // ),
           DrawerElements(
             title: 'About',
             icon: Icons.help_outline,

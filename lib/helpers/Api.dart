@@ -4,12 +4,11 @@ import '../state/state.dart';
 final String url = "https://apiesell.herokuapp.com";
 String method = "GET";
 
-logout(){
-  try{
-    delKeyVal("token").then((){
-      return "success";
-    });
-  }catch(err){
+logout() async {
+  try {
+    await delKeyVal("token");
+    return "success";
+  } catch (err) {
     return "failed";
   }
 }

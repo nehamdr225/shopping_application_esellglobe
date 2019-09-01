@@ -21,7 +21,7 @@ class UserModel extends ChangeNotifier {
   Map get user => _user;
 
   set token(String token) {
-    if (token != null && token != _token) {
+    if (token != _token) {
       _token = token;
       notifyListeners();
     }

@@ -51,9 +51,11 @@ class _PageState extends State<SignInPage> {
     var loginUser = () async {
       try {
         Map token = await login(email, password);
-        // print(token);
         if (token['error'] == null) {
           user.token = token['token'];
+          getUser(token['token']).then((userData) {
+            user.user = userData;
+          });
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => HomePageApp()));
         } else
