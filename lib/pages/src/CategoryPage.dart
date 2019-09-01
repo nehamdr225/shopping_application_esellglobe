@@ -13,7 +13,6 @@ class CategoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
-    var orientation = MediaQuery.of(context).orientation;
     final product = Provider.of<ProductModel>(context);
     var cat = text == 'Top Wear'
         ? TOP
@@ -52,11 +51,12 @@ class CategoryPage extends StatelessWidget {
                 Container(
                   height: height*0.85,
                   
-                  child: ProductGrid(
+                  child: OrientationBuilder(builder: (context, orientation) {
+                    return ProductGrid(
                       orientation: orientation,
                       products: products,
-                      count: product.count),
-                )
+                      count: product.count);}
+                ))
               ],
             )));
   }
