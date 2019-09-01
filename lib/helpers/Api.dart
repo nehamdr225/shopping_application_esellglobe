@@ -4,6 +4,16 @@ import '../state/state.dart';
 final String url = "https://apiesell.herokuapp.com";
 String method = "GET";
 
+logout(){
+  try{
+    delKeyVal("token").then((){
+      return "success";
+    });
+  }catch(err){
+    return "failed";
+  }
+}
+
 login(String email, String password) async {
   try {
     var response = await fetch(uri: '$url/user/login', method: "POST", body: {

@@ -17,6 +17,14 @@ savekeyVal(key, value) async {
     throw err;
   }
 }
+
+delKeyVal(key) async {
+  try {
+    await _storage.delete(key: key);
+  } catch (err) {
+    throw err;
+  }
+}
 // '''
 // class AuthCache {
 //   final _storage = new FlutterSecureStorage();
