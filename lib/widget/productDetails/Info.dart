@@ -32,10 +32,13 @@ class PDInfo extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  Padding(padding: EdgeInsets.only(left: 20.0)),
-                  FText(text: name),
-                  Padding(padding: EdgeInsets.only(right: 40.0)),
+                  Padding(padding: EdgeInsets.only(left: 5.0)),
+                  Container(
+                    width: 170.0,
+                    child: FText(text: name)),
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    //mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       FText(
                         text: 'Rate this item',

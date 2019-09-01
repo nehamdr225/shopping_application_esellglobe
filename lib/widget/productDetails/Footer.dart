@@ -1,5 +1,6 @@
 import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
+import 'package:esell/widget/molecules/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -21,21 +22,27 @@ class PDFooter extends StatelessWidget {
               ? FRaisedButton(
                   onPressed: () {},
                   text: 'In Wishlist',
-                  color: Colors.black,
+                  color: Colors.white,
+                  bg: icontheme2,
                 )
               : FRaisedButton(
                   onPressed: addToWish,
                   text: 'Wishlist',
-                  color: Colors.black,
+                  color: Colors.white,
+                  bg: icontheme2,
                 ),
           cart.find(id) == true
               ? FRaisedButton(
                   onPressed: () {},
                   text: 'Added to cart',
+                  color: Colors.white,
+                  bg: icontheme2,
                 )
               : FRaisedButton(
                   onPressed: addToCart,
                   text: 'Add to cart',
+                  color: Colors.white,
+                  bg: icontheme2,
                 ),
         ],
       ),
