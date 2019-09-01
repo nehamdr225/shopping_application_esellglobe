@@ -41,7 +41,7 @@ class Product extends StatelessWidget {
             },
             child: Column(
               children: <Widget>[
-                ImageHolder(image: image, imgheight: imgheight),
+                ImageHolder(image: image, imgheight: imgheight,),
                 Divider(height: 1),
                 Details(
                   name: name,

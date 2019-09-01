@@ -27,6 +27,7 @@ class ProductGrid extends StatelessWidget {
                     image: products[index]['media'][0]['src'].length > 0
                         ? products[index]['media'][0]['src'][0]
                         : null,
+                    imgheight: 130.0,
                     price: products[index]['price'],
                     seller: products[index]['seller'],
                     oldPrice: products[index]['oldPrice'] != null
