@@ -1,5 +1,6 @@
 import 'package:esell/helpers/Api.dart';
 import 'package:esell/pages/pages.dart';
+import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:flutter/material.dart';
 
 import 'package:esell/helpers/Validators.dart';
@@ -69,6 +70,17 @@ class _PageState extends State<SignUpPage> {
 
     return SafeArea(
       child: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(40.0),
+          child: FAppBar(
+            title: Text(
+              "Sign-up",
+              style: TextStyle(
+                color: Colors.grey[900],
+              ),
+            ),
+          ),
+        ),
         backgroundColor: Colors.grey[200],
         resizeToAvoidBottomPadding: false,
         body: Align(

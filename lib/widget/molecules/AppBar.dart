@@ -9,7 +9,8 @@ class FAppBar extends StatelessWidget {
   final wishlist;
   final cart;
   final search;
-  FAppBar({this.wishlist, this.cart, this.search});
+  final title;
+  FAppBar({this.wishlist, this.cart, this.search, this.title});
   @override
   Widget build(BuildContext context) {
     FlutterStatusbarcolor.setStatusBarColor(Colors.black87);
@@ -17,7 +18,9 @@ class FAppBar extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(40.0),
         child: AppBar(
-          elevation: 0.0,
+          title: title,
+          centerTitle: true,
+          elevation: 2.0,
           iconTheme: IconThemeData(color: icontheme2),
           backgroundColor: Colors.white,
           leading: IconButton(

@@ -26,6 +26,7 @@ class HorizontalList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 70.0,
+      width: 100.0,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: 4,
@@ -35,7 +36,7 @@ class HorizontalList extends StatelessWidget {
             caption: MAIN[index]['cap'],
             src: MAIN[index]['src'],
           );
-        },
+        },//
       ),
     );
   }

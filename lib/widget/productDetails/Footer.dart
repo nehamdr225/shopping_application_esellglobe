@@ -23,22 +23,30 @@ class PDFooter extends StatelessWidget {
                   onPressed: () {},
                   text: 'In Wishlist',
                   color: Colors.white,
+                  height: 50.0,
+                  width: 140.0,
                   bg: icontheme2,
                 )
               : FRaisedButton(
                   onPressed: addToWish,
                   text: 'Wishlist',
+                  height: 50.0,
+                  width: 140.0,
                   color: Colors.white,
                   bg: icontheme2,
                 ),
           cart.find(id) == true
               ? FRaisedButton(
+                  height: 50.0,
+                  width: 140.0,
                   onPressed: () {},
                   text: 'Added to cart',
                   color: Colors.white,
                   bg: icontheme2,
                 )
               : FRaisedButton(
+                  height: 50.0,
+                  width: 140.0,
                   onPressed: addToCart,
                   text: 'Add to cart',
                   color: Colors.white,

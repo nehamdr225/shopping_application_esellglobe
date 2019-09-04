@@ -10,10 +10,11 @@ class FCarousel extends StatelessWidget {
       child: Carousel(
         boxFit: BoxFit.fill,
         images: [
-          AssetImage('images/heroimg4.jpeg'),
-          AssetImage('images/heroimg1.jpeg'),
-          AssetImage('images/heroimg2.jpeg'),
-          AssetImage('images/heroimg3.jpeg'),
+          AssetImage('images/heroimg1.jpg'),
+          AssetImage('images/heroimg5.jpg'),
+          AssetImage('images/heroimg2.jpg'),
+          AssetImage('images/heroimg3.jpg'),
+          AssetImage('images/heroimg6.jpg'),
         ],
         animationCurve: Curves.ease,
         autoplay: false,

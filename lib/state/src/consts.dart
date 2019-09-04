@@ -1,19 +1,23 @@
 const MAIN = [
-  {"name": "Top Wear", "cap": "Top Wear", "src": "images/tshirt.png"},
+  {
+    "name": "Top Wear", 
+    "cap": "Top Wear", 
+    "src": "images/shirt.jpg"
+    },
   {
     "name": "Bottom Wear",
     "cap": "Bottom Wear",
-    "src": 'images/pant.png',
+    "src": 'images/pants.jpg',
   },
   {
     "name": "Foot Wear",
     "cap": "Foot Wear",
-    "src": 'images/shoe.png',
+    "src": 'images/shoes.jpg',
   },
   {
     "name": "Watches & Glasses",
     "cap": "Watches & Glasses",
-    "src": 'images/shoe.png',
+    "src": 'images/watchesNglasses.jpg',
   }
 ];
 

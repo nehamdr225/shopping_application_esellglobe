@@ -1,6 +1,5 @@
 import 'package:esell/helpers/Api.dart';
 import 'package:esell/widget/atoms/DrawerElements.dart';
-import 'package:esell/widget/atoms/FancyText.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/widget/molecules/colors.dart';
 import 'package:esell/pages/pages.dart';
@@ -35,72 +34,98 @@ class DrawerApp extends StatelessWidget {
                 )
               : DrawerHeader(
                   decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    //gradient: drawercolor
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: <Widget>[
-                      CircleAvatar(
-                        backgroundColor: Colors.white,
-                        radius: 50.0,
-                        child: FlutterLogo(),
-                      ),
-                      Padding(padding: EdgeInsets.all(12.0),),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: <Widget>[
-                          FancyText(
-                        text: "Login",
-                        size: 16.0,
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => SignInPage()));
-                        },
-                      ),
-                      Padding(padding: EdgeInsets.all(8.0),),
-                      FancyText(
-                        text: "Signup",
-                        size: 16.0,
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => SignUpPage()));
-                        },
-                      )
-                        ],
-                      )
-                      
-                    ],
-                  ),
+                      //color: Colors.grey[200],
+                      gradient: drawercolor),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        CircleAvatar(
+                          backgroundColor: Colors.white,
+                          radius: 40.0,
+                          child: Image.asset(
+                            'images/myntralogo.png',
+                            height: 45.0,
+                            width: 45.0,
+                          ),
+                        ),
+                        // Padding(
+                        //   padding: EdgeInsets.all(2.0),
+                        // ),
+                        Container(
+                          color: Colors.transparent,
+                          alignment: Alignment.bottomLeft,
+                          child: ListTile(
+                            title: Text(
+                              'Log in   .   Sign up',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            trailing: Icon(
+                              Icons.arrow_right,
+                              color: Colors.white,
+                            ),
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => UserPromptApp()));
+                            },
+                          ),
+                        )
+                      ])),
+          DrawerElements(
+            title: 'Top Wear',
+            icon: 'images/tshirt.png',
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => CategoryPage(text: 'Top Wear'),
                 ),
+              );
+            },
+          ),
+          DrawerElements(
+            title: 'Bottom Wear',
+            icon: 'images/pant.png',
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => CategoryPage(text: 'Bottom Wear'),
+              ));
+            },
+          ),
+          DrawerElements(
+            title: 'FootWear',
+            icon: 'images/shoe.png',
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => CategoryPage(text: 'Foot Wear'),
+              ));
+            },
+          ),
+          DrawerElements(
+            title: 'Watches & Glasses',
+            icon: 'images/glassesandjunga.png',
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => CategoryPage(text: 'Watches & Glasses'),
+              ));
+            },
+          ),
+          Divider(
+            color: Colors.grey[500],
+            height: 10.0,
+          ),
           DrawerElements(
             title: 'Home Page',
-            icon: Icons.home,
-            color: Colors.blue,
+            icon: 'images/homepage.png',
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => HomePageApp()));
             },
           ),
           DrawerElements(
-            title: 'My Orders',
-            icon: Icons.shopping_basket,
-            color: Colors.orangeAccent,
-            onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => CartPage()));
-            },
-          ),
-          DrawerElements(
             title: 'Cart',
-            icon: Icons.shopping_cart,
-            color: Colors.greenAccent,
+            icon: 'images/cart.png',
             onTap: () {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => CartPage()));
@@ -108,8 +133,7 @@ class DrawerApp extends StatelessWidget {
           ),
           DrawerElements(
             title: 'Wishlist',
-            icon: Icons.favorite_border,
-            color: Colors.red,
+            icon: 'images/wishlist.png',
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => WishlistPage()));
@@ -118,33 +142,40 @@ class DrawerApp extends StatelessWidget {
           token != null
               ? DrawerElements(
                   title: 'Account',
-                  icon: Icons.person,
-                  color: Colors.grey,
+                  icon: 'images/account.png',
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => SignInPage()));
                   },
                 )
               : Text(''),
-          token != null?DrawerElements(
-            title: 'Logout',
-            icon: Icons.person,
-            color: Colors.blueGrey,
-            onTap: () {
-              logout();
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => HomePageApp()));
-              user.token = null;
-              user.user = {};
-            },
-          ): Text(""),
-          Divider(
-            height: 10.0,
-          ),
+          token != null
+              ? Column(children: [
+                  DrawerElements(
+                    title: 'Logout',
+                    icon: 'images/logout.png',
+                    onTap: () {
+                      logout();
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HomePageApp()));
+                      user.token = null;
+                      user.user = {};
+                    },
+                  ),
+                  Divider(
+                    color: Colors.grey[500],
+                    height: 10.0,
+                  ),
+                ])
+              : Divider(
+                  color: Colors.grey[500],
+                  height: 5.0,
+                ),
           DrawerElements(
             title: 'About',
-            icon: Icons.help_outline,
-            color: Colors.black,
+            icon: 'images/about.png',
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => AboutPage()));

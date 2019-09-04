@@ -1,4 +1,5 @@
 import 'package:esell/pages/pages.dart';
+import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/widget/atoms/Forms.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
@@ -71,6 +72,18 @@ class _PageState extends State<SignInPage> {
 
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.grey[200],
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(40.0),
+          child: FAppBar(
+            title: Text(
+              "Sign-in",
+              style: TextStyle(
+                color: Colors.grey[900],
+              ),
+            ),
+          ),
+        ),
         resizeToAvoidBottomPadding: false,
         body: Align(
           alignment: Alignment.center,
@@ -118,7 +131,7 @@ class _PageState extends State<SignInPage> {
                           ? Text(loginErr, style: TextStyle(color: Colors.red))
                           : Text(''),
                       FRaisedButton(
-                        text: "Login",
+                        text: "Sign-in",
                         onPressed: loginUser,
                       ),
                       SizedBox(height: 30.0),

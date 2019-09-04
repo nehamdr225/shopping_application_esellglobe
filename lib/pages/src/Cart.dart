@@ -20,63 +20,75 @@ class _CartPageState extends State<CartPage> {
     var items = cart.cart;
     return SafeArea(
         child: Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(40.0),
-        child: FAppBar(wishlist: true,)
-      ),
-      backgroundColor: Colors.grey[200],
-      //footer icon buttons
-      persistentFooterButtons: <Widget>[
-        ButtonTheme(
-          minWidth: 165.0,
-          height: 45.0,
-          child: RaisedButton(
-            color: Colors.white,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12.0)),
-            onPressed: () {},
-            child: Text('Total: ',
-                style: TextStyle(
-                    fontFamily: 'Victorian',
-                    fontSize: 26.0,
-                    color: Colors.black)),
-          ),
-        ),
-        ButtonTheme(
-          minWidth: 165.0,
-          height: 45.0,
-          child: RaisedButton(
-            color: icontheme2,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12.0)),
-            onPressed: () {},
-            child: Text(user.token != null?'Check Out': 'Login to checkout',
-                style: TextStyle(
-                    fontFamily: 'Victorian',
-                    fontSize: 26.0,
-                    color: Colors.white)),
-          ),
-        ),
-      ],
-      body: cart.count > 0
-          ? ListView.builder(
-              itemCount: cart.count,
-              itemBuilder: (context, index) {
-                var each = product.one(items[index]);
-                return CartListView(
-                  name: each['name'],
-                  picture: each['media'][0]['src'][0],
-                  price: each['price'],
-                  // size: each['size'],
-                  // qty: each['quantity'],
-                  // color: each['color'],
-                );
-              },
-            )
-          : Container(
-            alignment: Alignment.center,
-            child: Text("Your cart is empty!",
-            style: TextStyle(fontSize: 24.0),),),
-    ));
+            appBar: PreferredSize(
+                preferredSize: Size.fromHeight(40.0),
+                child: FAppBar(
+                  wishlist: true,
+                )),
+            backgroundColor: Colors.grey[200],
+            //footer icon buttons
+            persistentFooterButtons: <Widget>[
+              ButtonTheme(
+                minWidth: 165.0,
+                height: 45.0,
+                child: RaisedButton(
+                  color: Colors.white,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12.0)),
+                  onPressed: () {},
+                  child: Text('Total: ',
+                      style: TextStyle(
+                          fontFamily: 'Victorian',
+                          fontSize: 26.0,
+                          color: Colors.black)),
+                ),
+              ),
+              ButtonTheme(
+                minWidth: 165.0,
+                height: 45.0,
+                child: RaisedButton(
+                  color: icontheme2,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12.0)),
+                  onPressed: () {},
+                  child: Text(
+                      user.token != null ? 'Check Out' : 'Login to checkout',
+                      style: TextStyle(
+                          fontFamily: 'Victorian',
+                          fontSize: 26.0,
+                          color: Colors.white)),
+                ),
+              ),
+            ],
+            body: cart.count > 0
+                ? ListView.builder(
+                    itemCount: cart.count,
+                    itemBuilder: (context, index) {
+                      var each = product.one(items[index]);
+                      return CartListView(
+                        name: each['name'],
+                        picture: each['media'][0]['src'][0],
+                        price: each['price'],
+                        // size: each['size'],
+                        // qty: each['quantity'],
+                        // color: each['color'],
+                      );
+                    },
+                  )
+                : Center(
+                  child:Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        height: 200.0,
+                        width: 300.0,
+                        child: Image.asset('images/emptycart.png'),
+                      ),
+                      Text(
+                        "Your cart is empty!",
+                        style: TextStyle(fontSize: 24.0),
+                      ),
+                    ],
+                  ))));
   }
 }

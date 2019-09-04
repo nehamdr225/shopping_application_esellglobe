@@ -2,18 +2,17 @@ import 'package:flutter/material.dart';
 
 class FRaisedButton extends StatelessWidget {
   final String text;
+  final height;
+  final width;
   final Function onPressed;
   final Color color, bg;
-  FRaisedButton(
-      {this.text,
-      this.onPressed,
-      this.color,
-      this.bg});
+  final shape;
+  FRaisedButton({this.text, this.shape, this.onPressed, this.color, this.bg, this.width, this.height});
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 140,
-      height: 50,
+      width: width,
+      height: height,
       child: RaisedButton(
           color: bg,
           child: Text(
@@ -24,10 +23,12 @@ class FRaisedButton extends StatelessWidget {
               fontSize: 25.0,
             ),
           ),
-          shape: const RoundedRectangleBorder(
+          shape: shape != null? Border.all(width: 0.0, color: Colors.black38):
+          const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(6.0)),
           ),
-          onPressed: onPressed),
+          onPressed: onPressed
+      ),
     );
   }
 }

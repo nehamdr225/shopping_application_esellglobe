@@ -5,12 +5,14 @@ const primarycolor = Colors.white;
 const icontheme = Colors.white;
 const icontheme2 = Color(0xff311b92);
 const lightprimary= Color(0xff6746c3);
+
 const drawercolor = LinearGradient(
   begin: Alignment.topLeft,
   end: Alignment.topRight,
   colors: [
+     Color(0xff311b92),
     Colors.grey,
-    Color(0xff311b92),
+  
   ]
 );
 

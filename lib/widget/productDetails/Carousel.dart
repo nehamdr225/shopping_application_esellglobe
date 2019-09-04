@@ -12,8 +12,9 @@ class PDCarousel extends StatelessWidget {
       child: Carousel(
         boxFit: BoxFit.contain,
         images: images,
-        autoplay: false,
+        autoplay: true,
         dotSize: 6.0,
+        animationDuration: Duration(seconds: 2),
         overlayShadowColors: Color(0xff0d47a1),
         dotBgColor: Colors.transparent,
         indicatorBgPadding: 12.0,
