@@ -92,6 +92,7 @@ class _PageState extends State<SignUpPage> {
                       top: 5.0, left: 20.0, right: 20.0),
             child: Column(
               children: <Widget>[
+                Padding(padding: EdgeInsets.all(10.0),),
                 FForms(
                   type: TextInputType.text,
                   text: "Name",

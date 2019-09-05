@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:esell/pages/pages.dart';
 import 'package:esell/state/state.dart';
 
-main() async {
+Future main() async {
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(BootStrapper(await getValue('token')));
 }
 
