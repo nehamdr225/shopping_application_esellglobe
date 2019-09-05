@@ -88,21 +88,11 @@ class _PageState extends State<SignInPage> {
         body: Align(
           alignment: Alignment.center,
           child: Container(
-            height: 500.0,
+            height: 600.0,
             width: screenWidth * 0.95,
-            decoration: BoxDecoration(
-                color: Colors.grey[100],
-                boxShadow: [
-                  BoxShadow(color: Colors.grey, blurRadius: 10.0),
-                ],
-                borderRadius: BorderRadius.all(Radius.circular(12.0))),
+            padding: EdgeInsets.only(
+                      top: 5.0, left: 20.0, right: 20.0),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  padding: EdgeInsets.only(
-                      top: 5.0, left: 20.0, right: 20.0, bottom: 20.0),
-                  child: Column(
                     children: <Widget>[
                       FForms(
                           type: TextInputType.emailAddress,
@@ -132,10 +122,14 @@ class _PageState extends State<SignInPage> {
                           : Text(''),
                       FRaisedButton(
                         text: "Sign-in",
+                        bg: Colors.deepPurple[900],
+                        color: Colors.white,
                         onPressed: loginUser,
                       ),
                       SizedBox(height: 30.0),
                       FancyText(
+                        color: Colors.deepPurple[900],
+                        decoration: TextDecoration.underline,
                           text: "Don't have an account? Register Here !",
                           size: 15.0,
                           onTap: () {
@@ -147,11 +141,11 @@ class _PageState extends State<SignInPage> {
                     ],
                   ),
                 ),
-              ],
+              
             ),
           ),
-        ),
-      ),
+        
+      
     );
   }
 }

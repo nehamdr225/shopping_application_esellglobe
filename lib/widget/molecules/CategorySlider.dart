@@ -25,18 +25,20 @@ class HorizontalList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 70.0,
-      width: 100.0,
+      height: 100.0,
+      width: 200.0,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: 4,
         itemBuilder: (BuildContext context, int index) {
-          return Category(
-            name: MAIN[index]['name'],
-            caption: MAIN[index]['cap'],
-            src: MAIN[index]['src'],
+          return Card(
+            child: Category(
+              name: MAIN[index]['name'],
+              caption: MAIN[index]['cap'],
+              src: MAIN[index]['src'],
+            ),
           );
-        },//
+        }, //
       ),
     );
   }

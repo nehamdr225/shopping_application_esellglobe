@@ -21,13 +21,14 @@ class Category extends StatelessWidget {
             );
           },
           child: Container(
-              width: 90.0,
+            width: 100.0,
               child: ListTile(
                 title: Image.asset(
                   src,
-                  width: 100.0,
-                  height: 35.0,
+                  width: 70.0,
+                  height: 70.0,
                 ),
+                contentPadding: EdgeInsets.all(1.0),
                 subtitle: Container(
                   alignment: Alignment.topCenter,
                   child: Text(

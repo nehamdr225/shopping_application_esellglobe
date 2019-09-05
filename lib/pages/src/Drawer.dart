@@ -60,6 +60,7 @@ class DrawerApp extends StatelessWidget {
                               'Log in   .   Sign up',
                               style: TextStyle(color: Colors.white),
                             ),
+                            contentPadding: EdgeInsets.only(left: 20.0),
                             trailing: Icon(
                               Icons.arrow_right,
                               color: Colors.white,

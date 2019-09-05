@@ -3,7 +3,7 @@ const MAIN = [
     "name": "Top Wear", 
     "cap": "Top Wear", 
     "src": "images/shirt.jpg"
-    },
+  },
   {
     "name": "Bottom Wear",
     "cap": "Bottom Wear",
