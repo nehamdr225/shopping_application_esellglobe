@@ -16,7 +16,7 @@ class DrawerApp extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          token != null
+          userData != null && token != null
               ? UserAccountsDrawerHeader(
                   accountName: Text(
                       userData.length > 0 ? userData['name'] : "Loading ..."),
