@@ -65,6 +65,7 @@ getUser(token) async {
   if (headers['X-Access-Token'] == null) updateAccessToken(token);
   try {
     var response = await fetch(uri: "$url/user");
+    if (response['message'] != null) return "token expired";
     return response['result'];
   } catch (err) {
     return err;

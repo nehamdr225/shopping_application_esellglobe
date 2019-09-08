@@ -9,6 +9,10 @@ class UserModel extends ChangeNotifier {
       if (token != null && token != _token) {
         _token = token;
         getUser(token).then((result) {
+          if (result == "token expired") {
+            _token = null;
+            return;
+          }
           user = result;
         });
         notifyListeners();
