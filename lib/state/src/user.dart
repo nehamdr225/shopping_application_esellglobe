@@ -10,8 +10,10 @@ class UserModel extends ChangeNotifier {
         _token = token;
         getUser(token).then((result) {
           if (result == "token expired") {
-            _token = null;
-            return;
+            delKeyVal("token").then(() {
+              _token = null;
+              return;
+            });
           }
           user = result;
         });
