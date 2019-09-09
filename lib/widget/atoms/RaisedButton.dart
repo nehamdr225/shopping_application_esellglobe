@@ -19,7 +19,7 @@ class FRaisedButton extends StatelessWidget {
             text,
             style: TextStyle(
               color: color,
-              fontFamily: 'Victorian',
+              fontFamily: 'Lobster',
               fontSize: 25.0,
             ),
           ),

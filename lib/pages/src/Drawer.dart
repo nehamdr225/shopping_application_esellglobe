@@ -44,7 +44,7 @@ class DrawerApp extends StatelessWidget {
                           backgroundColor: Colors.white,
                           radius: 40.0,
                           child: Image.asset(
-                            'images/myntralogo.png',
+                            'images/logo/myntralogo.png',
                             height: 45.0,
                             width: 45.0,
                           ),
@@ -76,7 +76,7 @@ class DrawerApp extends StatelessWidget {
                       ])),
           DrawerElements(
             title: 'Top Wear',
-            icon: 'images/tshirt.png',
+            icon: 'images/icons/tshirt.png',
             onTap: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
@@ -87,7 +87,7 @@ class DrawerApp extends StatelessWidget {
           ),
           DrawerElements(
             title: 'Bottom Wear',
-            icon: 'images/pant.png',
+            icon: 'images/icons/pant.png',
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => CategoryPage(text: 'Bottom Wear'),
@@ -96,7 +96,7 @@ class DrawerApp extends StatelessWidget {
           ),
           DrawerElements(
             title: 'FootWear',
-            icon: 'images/shoe.png',
+            icon: 'images/icons/shoe.png',
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => CategoryPage(text: 'Foot Wear'),
@@ -105,7 +105,7 @@ class DrawerApp extends StatelessWidget {
           ),
           DrawerElements(
             title: 'Watches & Glasses',
-            icon: 'images/glassesandjunga.png',
+            icon: 'images/icons/glassesandjunga.png',
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => CategoryPage(text: 'Watches & Glasses'),
@@ -118,7 +118,7 @@ class DrawerApp extends StatelessWidget {
           ),
           DrawerElements(
             title: 'Home Page',
-            icon: 'images/homepage.png',
+            icon: 'images/icons/homepage.png',
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => HomePageApp()));
@@ -126,7 +126,7 @@ class DrawerApp extends StatelessWidget {
           ),
           DrawerElements(
             title: 'Cart',
-            icon: 'images/cart.png',
+            icon: 'images/icons/cart.png',
             onTap: () {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => CartPage()));
@@ -134,7 +134,7 @@ class DrawerApp extends StatelessWidget {
           ),
           DrawerElements(
             title: 'Wishlist',
-            icon: 'images/wishlist.png',
+            icon: 'images/icons/wishlist.png',
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => WishlistPage()));
@@ -143,7 +143,7 @@ class DrawerApp extends StatelessWidget {
           token != null
               ? DrawerElements(
                   title: 'Account',
-                  icon: 'images/account.png',
+                  icon: 'images/icons/account.png',
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => SignInPage()));
@@ -154,7 +154,7 @@ class DrawerApp extends StatelessWidget {
               ? Column(children: [
                   DrawerElements(
                     title: 'Logout',
-                    icon: 'images/logout.png',
+                    icon: 'images/icons/logout.png',
                     onTap: () {
                       logout();
                       Navigator.push(
@@ -176,7 +176,7 @@ class DrawerApp extends StatelessWidget {
                 ),
           DrawerElements(
             title: 'About',
-            icon: 'images/about.png',
+            icon: 'images/icons/about.png',
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => AboutPage()));

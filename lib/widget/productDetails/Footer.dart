@@ -15,8 +15,7 @@ class PDFooter extends StatelessWidget {
     final addToWish = () => wishlist.one(id);
     return Container(
       width: MediaQuery.of(context).size.width - 16,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      child: ButtonBar(
         children: <Widget>[
           wishlist.find(id) == true
               ? FRaisedButton(
@@ -52,6 +51,7 @@ class PDFooter extends StatelessWidget {
                   color: Colors.white,
                   bg: icontheme2,
                 ),
+
         ],
       ),
     );

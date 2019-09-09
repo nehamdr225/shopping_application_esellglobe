@@ -2,22 +2,22 @@ const MAIN = [
   {
     "name": "Top Wear", 
     "cap": "Top Wear", 
-    "src": "images/shirt.jpg"
+    "src": "images/categoryimg/shirt.jpg"
   },
   {
     "name": "Bottom Wear",
     "cap": "Bottom Wear",
-    "src": 'images/pants.jpg',
+    "src": 'images/categoryimg/pants.jpg',
   },
   {
     "name": "Foot Wear",
     "cap": "Foot Wear",
-    "src": 'images/shoes.jpg',
+    "src": 'images/categoryimg/shoes.jpg',
   },
   {
     "name": "Watches & Glasses",
     "cap": "Watches & Glasses",
-    "src": 'images/watchesNglasses.jpg',
+    "src": 'images/categoryimg/watchesNglasses.jpg',
   }
 ];
 
