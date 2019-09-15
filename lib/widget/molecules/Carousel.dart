@@ -6,11 +6,9 @@ class FCarousel extends StatelessWidget {
   // FCarousel({this.images});
   Widget build(BuildContext context) {
     return Container(
-      height: 350.0,
       child: Carousel(
         boxFit: BoxFit.fill,
         images: [
-          //AssetImage('images/myntra images/sc/hero0.jpg'),
           AssetImage('images/myntra images/sc/hero1.jpg'),
           AssetImage('images/myntra images/sc/hero2.jpg'),
           AssetImage('images/myntra images/sc/hero3.jpg'),

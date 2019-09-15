@@ -6,8 +6,9 @@ class FancyText extends StatelessWidget {
   final Function onTap;
   final TextDecoration decoration;
   final Color color;
+  final fontfamily;
 
-  FancyText({this.text, this.color, this.size, this.onTap, this.decoration});
+  FancyText({this.text, this.color, this.fontfamily, this.size, this.onTap, this.decoration});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,7 +19,7 @@ class FancyText extends StatelessWidget {
           onTap: onTap,
           child: Text(text,
               style: TextStyle(
-                  fontFamily: 'Ropa Sans',
+                  fontFamily: fontfamily,
                   fontSize: size,
                   color: color,
                   decoration: decoration != null? TextDecoration.underline:TextDecoration.none,

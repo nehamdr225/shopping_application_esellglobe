@@ -21,11 +21,8 @@ class TopBrands extends StatelessWidget {
             );
           },
           child: Container(
-            width: 100.0,
             child: Image.asset(
               src,
-              width: 170.0,
-              height: 270.0,
             ),
           ),
         ));

@@ -14,30 +14,29 @@ class PDFooter extends StatelessWidget {
     final addToCart = () => cart.one(id);
     final addToWish = () => wishlist.one(id);
     return Container(
+      height: 40.0,
+      color: Colors.transparent,
       width: MediaQuery.of(context).size.width - 16,
-      child: ButtonBar(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           wishlist.find(id) == true
-              ? FRaisedButton(
-                  onPressed: () {},
-                  text: 'In Wishlist',
-                  color: Colors.white,
-                  height: 50.0,
-                  width: 140.0,
-                  bg: icontheme2,
-                )
-              : FRaisedButton(
-                  onPressed: addToWish,
-                  text: 'Wishlist',
-                  height: 50.0,
-                  width: 140.0,
-                  color: Colors.white,
-                  bg: icontheme2,
-                ),
+              ? FloatingActionButton(
+                backgroundColor: icontheme,
+                child: Icon(Icons.bookmark, color: icontheme2,),
+                onPressed: (){},
+              )
+              :
+              FloatingActionButton(
+                backgroundColor: icontheme,
+                child: Icon(Icons.bookmark_border, color: icontheme2,),
+                onPressed: addToWish,
+              ),
+              Padding(padding: EdgeInsets.all(10.0),),
           cart.find(id) == true
               ? FRaisedButton(
                   height: 50.0,
-                  width: 140.0,
+                  width: 200.0,
                   onPressed: () {},
                   text: 'Added to cart',
                   color: Colors.white,
@@ -45,7 +44,7 @@ class PDFooter extends StatelessWidget {
                 )
               : FRaisedButton(
                   height: 50.0,
-                  width: 140.0,
+                  width: 200.0,
                   onPressed: addToCart,
                   text: 'Add to cart',
                   color: Colors.white,

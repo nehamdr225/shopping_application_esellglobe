@@ -18,7 +18,7 @@ class ProductDetails extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         persistentFooterButtons: <Widget>[PDFooter(id: id, )],
-        backgroundColor: Colors.grey[200],
+        backgroundColor: Colors.grey[100],
         body: CustomScrollView(
           slivers: <Widget>[
             PDAppBar(images),

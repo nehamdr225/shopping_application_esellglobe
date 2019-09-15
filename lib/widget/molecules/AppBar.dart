@@ -10,7 +10,8 @@ class FAppBar extends StatelessWidget {
   final cart;
   final search;
   final title;
-  FAppBar({this.wishlist, this.cart, this.search, this.title});
+  final drawer;
+  FAppBar({this.wishlist, this.drawer,this.cart, this.search, this.title});
   @override
   Widget build(BuildContext context) {
     FlutterStatusbarcolor.setStatusBarColor(Colors.black87);
@@ -23,14 +24,16 @@ class FAppBar extends StatelessWidget {
           elevation: 2.0,
           iconTheme: IconThemeData(color: icontheme2),
           backgroundColor: Colors.white,
-          leading: IconButton(
-            icon: Icon(
-              Icons.arrow_back,
-            ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
+          // leading: drawer ==true?
+          // null:
+          // IconButton(
+          //   icon: Icon(
+          //     Icons.arrow_back,
+          //   ),
+          //   onPressed: () {
+          //     Navigator.pop(context);
+          //   },
+          // ),
           actions: <Widget>[
             search != null? FIcons(
               icon: Icons.search,

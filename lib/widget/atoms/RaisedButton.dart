@@ -20,13 +20,15 @@ class FRaisedButton extends StatelessWidget {
             style: TextStyle(
               color: color,
               fontFamily: 'Bree',
-              //fontWeight: FontWeight.bold,
               fontSize: 18.0,
             ),
           ),
-          shape: shape != null? Border.all(width: 0.0, color: Colors.black38):
+          shape: shape != null
+          ? 
+          Border.all(width: 0.0, color: Colors.black38)
+          :
           const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(6.0)),
+            borderRadius: BorderRadius.all(Radius.circular(30.0)),
           ),
           onPressed: onPressed
       ),

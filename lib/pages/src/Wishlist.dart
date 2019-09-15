@@ -17,7 +17,7 @@ class WishlistPage extends StatelessWidget {
             cart: true,
           ),
         ),
-        backgroundColor: Colors.grey[200],
+        backgroundColor: Colors.white,
         body: wishlist.count() > 0
             ? Container(
                 child: OrientationBuilder(builder: (context, orientation) {
@@ -52,7 +52,7 @@ class WishlistPage extends StatelessWidget {
                     child: Image.asset('images/emptywishlist.png'),
                   ),
                   Text(
-                    "Your wishlist is empty!",
+                    "Oops..Your wishlist is empty!",
                     style: TextStyle(fontSize: 24.0),
                   ),
                 ],

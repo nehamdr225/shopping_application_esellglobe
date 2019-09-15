@@ -1,3 +1,4 @@
+import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:esell/widget/molecules/CartList.dart';
 import 'package:flutter/material.dart';
@@ -25,22 +26,16 @@ class _CartPageState extends State<CartPage> {
                 child: FAppBar(
                   wishlist: true,
                 )),
-            backgroundColor: Colors.grey[200],
+            backgroundColor: Colors.white,
             //footer icon buttons
             persistentFooterButtons: <Widget>[
               ButtonTheme(
                 minWidth: 165.0,
                 height: 45.0,
-                child: RaisedButton(
-                  color: Colors.white,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12.0)),
-                  onPressed: () {},
-                  child: Text('Total: ',
-                      style: TextStyle(
-                          fontFamily: 'Victorian',
-                          fontSize: 26.0,
-                          color: Colors.black)),
+                child: FRaisedButton(
+                  text: "Total",
+                 // bg: Colors.deepPurple,
+                  color: icontheme,
                 ),
               ),
               ButtonTheme(
@@ -69,9 +64,6 @@ class _CartPageState extends State<CartPage> {
                         name: each['name'],
                         picture: each['media'][0]['src'][0],
                         price: each['price'],
-                        // size: each['size'],
-                        // qty: each['quantity'],
-                        // color: each['color'],
                       );
                     },
                   )
@@ -82,10 +74,10 @@ class _CartPageState extends State<CartPage> {
                       Container(
                         height: 200.0,
                         width: 300.0,
-                        child: Image.asset('images/emptycart.png'),
+                        child: Image.asset('images/emptywishlist.png'),
                       ),
                       Text(
-                        "Your cart is empty!",
+                        "Oops...Your cart is empty!",
                         style: TextStyle(fontSize: 24.0),
                       ),
                     ],

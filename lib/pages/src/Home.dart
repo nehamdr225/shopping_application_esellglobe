@@ -1,3 +1,4 @@
+import 'package:esell/widget/atoms/FancyText.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:esell/widget/molecules/Carousel.dart';
@@ -5,7 +6,7 @@ import 'package:esell/widget/molecules/colors.dart';
 import 'package:esell/widget/molecules/Icons.dart';
 import 'package:esell/pages/pages.dart';
 import 'package:esell/widget/molecules/CategorySlider.dart';
-import 'package:esell/widget/containers/Products.dart';
+//import 'package:esell/widget/containers/Products.dart';
 
 class HomePageApp extends StatefulWidget {
   @override
@@ -16,29 +17,25 @@ class _HomePageAppState extends State<HomePageApp> {
   @override
   Widget build(BuildContext context) {
     FlutterStatusbarcolor.setStatusBarColor(Colors.black87);
-    var screenHeight = MediaQuery.of(context).size.height;
+    var screenWidth = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.grey[200],
-        drawer: DrawerApp(),
-        body: CustomScrollView(
-          slivers: <Widget>[
-            SliverAppBar(
-              backgroundColor: Colors.grey[200],
-              floating: true,
-              flexibleSpace: FCarousel(),
-              expandedHeight: screenHeight * 0.40,
-              actions: <Widget>[
-                FIcons(
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(50.0),
+          child: AppBar(
+            iconTheme: IconThemeData(color: Colors.deepPurple[900]),
+            backgroundColor: Colors.white,
+            actions: <Widget>[
+              FIcons(
                   icon: Icons.search,
                   alignment: Alignment.centerRight,
-                  color: icontheme,
+                  color: icontheme2,
                   onPressed: () {},
                 ),
                 FIcons(
                     icon: Icons.shopping_cart,
                     alignment: Alignment.centerRight,
-                    color: icontheme,
+                    color: icontheme2,
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => CartPage()));
@@ -46,20 +43,60 @@ class _HomePageAppState extends State<HomePageApp> {
                 FIcons(
                     icon: Icons.bookmark,
                     alignment: Alignment.centerRight,
-                    color: icontheme,
+                    color: icontheme2,
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => WishlistPage()));
                     })
-              ],
-            ),
-            FSlider(text: 'Category',),
+            ],
+          ),
+        ),
+        backgroundColor: Colors.grey[200],
+        drawer: DrawerApp(),
+        body: ListView(
+          children: <Widget>[
             Container(
-              child: Image.asset('images/myntra images/sc/hero0.jpg'),),
-            FSlider(text: 'Special Offers'),
+              color: Colors.white,
+              child: HorizontalList()
+            ),
+            Container(
+              height: 100.0,
+              width: screenWidth,
+              child: Specialoffers(),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(10.0, 8.0, 0.0, 2.0),
+              child: FancyText(
+                text: 'Featured',
+                fontfamily: 'Bree',
+                size: 20.0,
+                color: Colors.deepPurple[900],
+              ),
+            ),
+            Container(
+              height: 420,
+              child: FCarousel()
+            ),
+            Padding(padding: EdgeInsets.all(10.0),),         
+            Container(
+              child: Image.asset('images/myntra images/sc/hero0.jpg'),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(10.0, 8.0, 0.0, 2.0),
+              child: FancyText(
+                text: 'Top Brands',
+                fontfamily: 'Bree',
+                size: 20.0,
+                color: Colors.deepPurple[900],
+              ),
+            ),
+            Container(
+              height: 300.0,
+              child: Topbrands(),
+            ),
             Container(
               child: Image.asset('images/10poff.jpg'),),
-            ProductContainer()
+            //ProductContainer()
           ],
         ),
       ),

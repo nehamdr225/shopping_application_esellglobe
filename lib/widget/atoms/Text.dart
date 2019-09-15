@@ -9,7 +9,7 @@ class FText extends StatelessWidget {
   final List padding;
   FText(
       {this.text,
-      this.family: 'Victorian',
+      this.family: 'Bree',
       this.size: 32.0,
       this.color: Colors.black,
       this.style,

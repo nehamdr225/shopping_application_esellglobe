@@ -25,53 +25,66 @@ class UserPromptApp extends StatelessWidget {
               ),
               UPImage(),
               BrandLogos(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              Container(
+                width: 260.0,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  FRaisedButton(
-                    height: 50.0,
-                    width: 160.0,
-                    shape: true,
-                    text: "Facebook",
-                    color: Colors.black87,
-                    bg: Colors.white,
-                    onPressed: (){},
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      FRaisedButton(
+                        height: 50.0,
+                        width: 120.0,
+                        shape: true,
+                        text: "Facebook",
+                        color: Colors.black87,
+                        bg: Colors.white,
+                        onPressed: () {},
+                      ),
+                      FRaisedButton(
+                        height: 50.0,
+                        width: 120.0,
+                        shape: true,
+                        text: "Google",
+                        color: Colors.black87,
+                        bg: Colors.white,
+                        onPressed: () {},
+                      )
+                    ],
                   ),
+                  Padding(padding: EdgeInsets.all(8.0),),
                   FRaisedButton(
                     height: 50.0,
-                    width: 160.0,
                     shape: true,
-                    text: "Google",
+                    width: 260.0,
+                    text: "Login with email",
                     color: Colors.black87,
                     bg: Colors.white,
-                    onPressed: (){},
-                  )
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SignInPage()));
+                    },
+                  ),
+                  Padding(padding: EdgeInsets.all(8.0),),
+                  FRaisedButton(
+                    height: 50.0,
+                    width: 260.0,
+                    shape: true,
+                    text: "Create a new account",
+                    color: Colors.black87,
+                    bg: Colors.white,
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SignUpPage()));
+                    },
+                  ),
                 ],
-              ),
-              FRaisedButton(
-                height: 50.0,
-                shape: true,
-                width: 260.0,
-                text: "Login with email",
-                color: Colors.black87,
-                bg: Colors.white,
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SignInPage()));
-                },
-              ),
-              FRaisedButton(
-                height: 50.0,
-                width: 260.0,
-                shape: true,
-                text: "Create a new account",
-                color: Colors.black87,
-                bg: Colors.white,
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SignUpPage()));
-                },
-              ),
+              )),
               FancyText(
                   color: Colors.deepPurple[900],
                   text: "Continue without signin!",
