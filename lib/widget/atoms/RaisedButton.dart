@@ -19,8 +19,9 @@ class FRaisedButton extends StatelessWidget {
             text,
             style: TextStyle(
               color: color,
-              fontFamily: 'Lobster',
-              fontSize: 25.0,
+              fontFamily: 'Bree',
+              //fontWeight: FontWeight.bold,
+              fontSize: 18.0,
             ),
           ),
           shape: shape != null? Border.all(width: 0.0, color: Colors.black38):

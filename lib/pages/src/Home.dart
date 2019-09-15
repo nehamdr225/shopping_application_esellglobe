@@ -27,7 +27,7 @@ class _HomePageAppState extends State<HomePageApp> {
               backgroundColor: Colors.grey[200],
               floating: true,
               flexibleSpace: FCarousel(),
-              expandedHeight: screenHeight * 0.30,
+              expandedHeight: screenHeight * 0.40,
               actions: <Widget>[
                 FIcons(
                   icon: Icons.search,
@@ -53,7 +53,12 @@ class _HomePageAppState extends State<HomePageApp> {
                     })
               ],
             ),
-            FSlider(),
+            FSlider(text: 'Category',),
+            Container(
+              child: Image.asset('images/myntra images/sc/hero0.jpg'),),
+            FSlider(text: 'Special Offers'),
+            Container(
+              child: Image.asset('images/10poff.jpg'),),
             ProductContainer()
           ],
         ),

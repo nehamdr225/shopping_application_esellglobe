@@ -25,12 +25,35 @@ class UserPromptApp extends StatelessWidget {
               ),
               UPImage(),
               BrandLogos(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  FRaisedButton(
+                    height: 50.0,
+                    width: 160.0,
+                    shape: true,
+                    text: "Facebook",
+                    color: Colors.black87,
+                    bg: Colors.white,
+                    onPressed: (){},
+                  ),
+                  FRaisedButton(
+                    height: 50.0,
+                    width: 160.0,
+                    shape: true,
+                    text: "Google",
+                    color: Colors.black87,
+                    bg: Colors.white,
+                    onPressed: (){},
+                  )
+                ],
+              ),
               FRaisedButton(
                 height: 50.0,
                 shape: true,
-                width: 270.0,
+                width: 260.0,
                 text: "Login with email",
-                color: Colors.black,
+                color: Colors.black87,
                 bg: Colors.white,
                 onPressed: () {
                   Navigator.push(context,
@@ -39,10 +62,10 @@ class UserPromptApp extends StatelessWidget {
               ),
               FRaisedButton(
                 height: 50.0,
-                width: 270.0,
+                width: 260.0,
                 shape: true,
                 text: "Create a new account",
-                color: Colors.black,
+                color: Colors.black87,
                 bg: Colors.white,
                 onPressed: () {
                   Navigator.push(context,
