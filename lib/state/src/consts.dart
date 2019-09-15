@@ -61,18 +61,25 @@ const topBrands = [
 
 const List<List<String>> TOP = [
   ["Casual Shirt", "Formal Shirt", "T-Shirt", "Jacket"],
-  ["images/tshirt.png", "images/pant.png", "images/shoe.png", "images/shoe.png"]
+  ["images/tshirt.png", "images/pant.png", "images/shoe.png", "images/shoe.png"],
+  ["top"]
 ];
 
 const List<List<String>> BOTTOM = [
   ["Jeans Pants", "Formal Pants", "Track/Sports Wear"],
-  ["images/tshirt.png", 'images/pant.png', 'images/shoe.png']
+  ["images/tshirt.png", 'images/pant.png', 'images/shoe.png'],
+  ["bottom"]
 ];
 const List<List<String>> FOOT = [
   ["Casual Shoes", "Formal Shoes", "Sports Shoes", "Sandals"],
-  ["images/tshirt.png", 'images/pant.png', 'images/shoe.png', 'images/shoe.png']
+  ["images/tshirt.png", 'images/pant.png', 'images/shoe.png', 'images/shoe.png'],
+  ["shoes"]
 ];
 const List<List<String>> WATCH_GLASSES = [
   ["Watches", "Glasses"],
-  ['images/shoe.png', 'images/shoe.png']
+  ['images/shoe.png', 'images/shoe.png'],
+  ["glasses"]
 ];
+
+const List<String> GENDER = ["Male", "Female"];
+

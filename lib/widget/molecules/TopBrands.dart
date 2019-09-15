@@ -14,6 +14,7 @@ class TopBrands extends StatelessWidget {
         padding: EdgeInsets.all(2.0),
         child: InkWell(
           onTap: () {
+            print(name);
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => CategoryPage(text: name),

@@ -50,7 +50,7 @@ class _CartPageState extends State<CartPage> {
                       user.token != null ? 'Check Out' : 'Login to checkout',
                       style: TextStyle(
                           fontFamily: 'Victorian',
-                          fontSize: 26.0,
+                          fontSize: 18.0,
                           color: Colors.white)),
                 ),
               ),

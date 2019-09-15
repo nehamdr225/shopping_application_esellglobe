@@ -1,8 +1,8 @@
 import 'package:esell/widget/atoms/centerText.dart';
 import 'package:esell/widget/molecules/Product.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:esell/state/state.dart';
+// import 'package:provider/provider.dart';
+// import 'package:esell/state/state.dart';
 
 class ProductGrid extends StatelessWidget {
   final Orientation orientation;
@@ -11,7 +11,7 @@ class ProductGrid extends StatelessWidget {
   ProductGrid({this.orientation, this.products, this.count});
   @override
   Widget build(BuildContext context) {
-    final product = Provider.of<ProductModel>(context);    
+    // final product = Provider.of<ProductModel>(context);    
       return GridView.builder(
         itemCount: count,
         scrollDirection: Axis.vertical,
@@ -20,7 +20,7 @@ class ProductGrid extends StatelessWidget {
           childAspectRatio: 0.84,
         ),
         itemBuilder: (BuildContext context, int index) {
-            final products = product.products;
+            // final products = product.products;
             return products.length > 0
                 ? Product(
                     name: products[index]['name'],
