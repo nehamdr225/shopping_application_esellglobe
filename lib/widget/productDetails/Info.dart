@@ -8,7 +8,7 @@ class PDInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final caption = Theme.of(context).textTheme.caption;
+    //final caption = Theme.of(context).textTheme.caption;
     final title = Theme.of(context).textTheme.body2;
 
     return Container(

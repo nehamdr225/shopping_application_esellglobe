@@ -132,6 +132,7 @@ class _PageState extends State<SignUpPage> {
                 // FForms(type: TextInputType.phone, text: "Mobile No."),
                 FRaisedButton(
                   text: "Sign-up",
+                  width: 160.0,
                   color: Colors.white,
                   bg: Colors.deepPurple[900],
                   onPressed: signupUser,
