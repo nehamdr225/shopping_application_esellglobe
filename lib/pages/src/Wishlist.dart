@@ -1,4 +1,7 @@
+import 'package:esell/pages/src/Cart.dart';
+import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/molecules/Product.dart';
+import 'package:esell/widget/molecules/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:esell/state/state.dart';
@@ -18,6 +21,17 @@ class WishlistPage extends StatelessWidget {
           ),
         ),
         backgroundColor: Colors.white,
+        persistentFooterButtons: <Widget>[
+          FRaisedButton(
+              width: 160.0,
+              color: icontheme,
+              bg: icontheme2,
+              onPressed: () {
+                Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => CartPage()));
+              },
+              text: 'Proceed to Cart'),
+        ],
         body: wishlist.count() > 0
             ? Container(
                 child: OrientationBuilder(builder: (context, orientation) {

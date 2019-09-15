@@ -27,33 +27,30 @@ class _CartPageState extends State<CartPage> {
                   wishlist: true,
                 )),
             backgroundColor: Colors.white,
-            //footer icon buttons
             persistentFooterButtons: <Widget>[
-              ButtonTheme(
-                minWidth: 165.0,
-                height: 45.0,
-                child: FRaisedButton(
-                  text: "Total",
-                 // bg: Colors.deepPurple,
-                  color: icontheme,
-                ),
-              ),
-              ButtonTheme(
-                minWidth: 165.0,
-                height: 45.0,
-                child: RaisedButton(
-                  color: icontheme2,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12.0)),
-                  onPressed: () {},
-                  child: Text(
-                      user.token != null ? 'Check Out' : 'Login to checkout',
-                      style: TextStyle(
-                          fontFamily: 'Victorian',
-                          fontSize: 18.0,
-                          color: Colors.white)),
-                ),
-              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Padding(padding: EdgeInsets.all(2.0),),
+                  FRaisedButton(
+                    width: 160.0,
+                    text: "Total",
+                    bg: icontheme,
+                    color: icontheme2,
+                    onPressed: () {},
+                  ),
+                  Padding(padding: EdgeInsets.all(8.0),),
+                  FRaisedButton(
+                    width: 160.0,
+                    color: icontheme,
+                    bg: icontheme2,
+                    onPressed: () {},
+                    text: user.token != null ? 'Check Out' : 'Login to proceed',
+                  ),
+                  Padding(padding: EdgeInsets.all(2.0),),
+                ],
+              )
             ],
             body: cart.count > 0
                 ? ListView.builder(
@@ -68,8 +65,8 @@ class _CartPageState extends State<CartPage> {
                     },
                   )
                 : Center(
-                  child:Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                    child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Container(
                         height: 200.0,

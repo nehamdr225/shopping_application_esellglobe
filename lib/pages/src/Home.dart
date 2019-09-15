@@ -59,6 +59,7 @@ class _HomePageAppState extends State<HomePageApp> {
               color: Colors.white,
               child: HorizontalList()
             ),
+            Padding(padding: EdgeInsets.all(8.0),),
             Container(
               height: 100.0,
               width: screenWidth,

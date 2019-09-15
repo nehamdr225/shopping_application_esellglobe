@@ -123,6 +123,7 @@ class _PageState extends State<SignInPage> {
                           : Text(''),
                       FRaisedButton(
                         text: "Sign-in",
+                        width: 160.0,
                         bg: Colors.deepPurple[900],
                         color: Colors.white,
                         onPressed: loginUser,
