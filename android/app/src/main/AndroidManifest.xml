@@ -9,7 +9,7 @@
     <application
         android:name="io.flutter.app.FlutterApplication"
         android:label="Esell Globe"
-        android:icon="@mipmap/myntralogo">
+        android:icon="@mipmap/logoonly1">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

@@ -11,7 +11,7 @@ class BrandLogos extends StatelessWidget {
     return Container(
       height: 60.0,
       width: 60.0,
-      child: Image.asset('images/logo/myntralogo.png'),
+      child: Image.asset('images/logo/logoonly1.png'),
     );
   }
 }

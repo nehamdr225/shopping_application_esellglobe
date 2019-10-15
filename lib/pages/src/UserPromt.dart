@@ -33,6 +33,14 @@ class UserPromptApp extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          IconButton(
+                            icon: Image.asset('images/icons/facebookicon.png'),
+                            onPressed: (){},
+                          )
+                        ],
+                      ),
                       FRaisedButton(
                         height: 50.0,
                         width: 120.0,

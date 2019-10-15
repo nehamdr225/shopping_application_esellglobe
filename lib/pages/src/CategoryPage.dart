@@ -3,6 +3,7 @@ import 'package:esell/widget/atoms/Dropdown.dart';
 import 'package:esell/widget/atoms/Text.dart';
 import 'package:esell/widget/containers/ProductGrid.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
+import 'package:esell/widget/molecules/CategorySlider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -27,32 +28,12 @@ class CategoryPage extends StatelessWidget {
               preferredSize: Size.fromHeight(40.0),
               child: FAppBar(wishlist: true, cart: true),
             ),
-            body: Container(
-                height: height,
-                child: Column(
+            body: ListView(
                   children: <Widget>[
                     Container(
-                      height: 50.0,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          FText(
-                            text: "Filter by:",
-                            family: 'Ropa Sans',
-                            size: 18.0,
-                            padding: [15.0, 14.0],
-                            color: Colors.deepPurple[900],
-                          ),
-                          DropDown(
-                            cap: cat[0],
-                            src: cat[1],
-                          ),
-                          DropDown(
-                            cap: GENDER,
-                            src: [],
-                          )
-                        ],
+                      child: Consts(
+                        cap: cat[0],
+                        src: cat[1],
                       ),
                     ),
                     Container(
@@ -65,6 +46,6 @@ class CategoryPage extends StatelessWidget {
                               count: products.length);
                         }))
                   ],
-                ))));
+                )));
   }
 }
