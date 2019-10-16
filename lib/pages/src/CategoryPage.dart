@@ -3,7 +3,8 @@ import 'package:esell/state/state.dart';
 // import 'package:esell/widget/atoms/Text.dart';
 import 'package:esell/widget/containers/ProductGrid.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
-import 'package:esell/widget/molecules/HorizontalList.dart';
+// import 'package:esell/widget/molecules/HorizontalList.dart';
+import 'package:esell/widget/molecules/SubMainSlider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -17,10 +18,10 @@ class CategoryPage extends StatelessWidget {
     // print("height: $height");
     final product = Provider.of<ProductModel>(context);
     var cat = text == 'Top Wear'
-        ? TOP
+        ? SubMain['top']
         : text == 'Bottom Wear'
-            ? BOTTOM
-            : text == "Foot Wear" ? SHOES : GLASSES;
+            ? SubMain['bottom']
+            : text == "Foot Wear" ? SubMain['shoes'] : SubMain['glasses'];
     // print(cat.toString().toLowerCase());
     List products = product.category(MAPPER[text]);
     return SafeArea(
@@ -32,7 +33,7 @@ class CategoryPage extends StatelessWidget {
             body: ListView(
               children: <Widget>[
                 Container(
-                  child: HorizontalList(
+                  child: SubMainSlider(
                     listViews: cat,
                   ),
                 ),

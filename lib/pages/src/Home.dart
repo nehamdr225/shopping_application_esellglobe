@@ -95,7 +95,7 @@ class _HomePageAppState extends State<HomePageApp> {
             ),
             Container(
               height: 300.0,
-              child: Topbrands(),
+              child: HorizontalList(listViews: topBrands)
             ),
             Container(
               child: Image.asset('images/10poff.jpg'),

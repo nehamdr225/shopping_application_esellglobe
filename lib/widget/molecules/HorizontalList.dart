@@ -34,7 +34,7 @@ class HorizontalList extends StatelessWidget {
           );
         }, //
       ),
-    );
+    ) ;
   }
 }
 
@@ -51,25 +51,6 @@ class Specialoffers extends StatelessWidget {
           return Card(
             child: SpecialOffers(
               src: specialOffers[index]['src'],
-            ),
-          );
-        }, //
-      ),
-    );
-  }
-}
-
-class Topbrands extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: 4,
-        itemBuilder: (BuildContext context, int index) {
-          return Card(
-            child: TopBrands(
-              src: topBrands[index]['src'],
             ),
           );
         }, //

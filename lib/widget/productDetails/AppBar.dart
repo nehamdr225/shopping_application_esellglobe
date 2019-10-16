@@ -11,6 +11,8 @@ class PDAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
     return SliverAppBar(
+      elevation: 2.0,
+      forceElevated: true,
       leading: IconButton(
         onPressed: () {
           Navigator.pop(context);
@@ -21,7 +23,7 @@ class PDAppBar extends StatelessWidget {
       backgroundColor: Colors.grey[200],
       floating: true,
       flexibleSpace: PDCarousel(images: images, width: screenWidth * 0.90),
-      expandedHeight: 400,
+      expandedHeight: 500,
       actions: <Widget>[
         FIcons(
             icon: Icons.shopping_cart,
