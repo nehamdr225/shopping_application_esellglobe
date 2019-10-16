@@ -1,3 +1,4 @@
+import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
@@ -27,27 +28,29 @@ class _HomePageAppState extends State<HomePageApp> {
             backgroundColor: Colors.white,
             actions: <Widget>[
               FIcons(
-                  icon: Icons.search,
+                icon: Icons.search,
+                alignment: Alignment.centerRight,
+                color: icontheme2,
+                onPressed: () {},
+              ),
+              FIcons(
+                  icon: Icons.shopping_cart,
                   alignment: Alignment.centerRight,
                   color: icontheme2,
-                  onPressed: () {},
-                ),
-                FIcons(
-                    icon: Icons.shopping_cart,
-                    alignment: Alignment.centerRight,
-                    color: icontheme2,
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => CartPage()));
-                    }),
-                FIcons(
-                    icon: Icons.bookmark,
-                    alignment: Alignment.centerRight,
-                    color: icontheme2,
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => WishlistPage()));
-                    })
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => CartPage()));
+                  }),
+              FIcons(
+                  icon: Icons.bookmark,
+                  alignment: Alignment.centerRight,
+                  color: icontheme2,
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => WishlistPage()));
+                  })
             ],
           ),
         ),
@@ -55,11 +58,10 @@ class _HomePageAppState extends State<HomePageApp> {
         drawer: DrawerApp(),
         body: ListView(
           children: <Widget>[
-            Container(
-              color: Colors.white,
-              child: HorizontalList()
+            Container(color: Colors.white, child: HorizontalList(type: MAIN)),
+            Padding(
+              padding: EdgeInsets.all(8.0),
             ),
-            Padding(padding: EdgeInsets.all(8.0),),
             Container(
               height: 100.0,
               width: screenWidth,
@@ -74,11 +76,10 @@ class _HomePageAppState extends State<HomePageApp> {
                 color: Colors.deepPurple[900],
               ),
             ),
-            Container(
-              height: 420,
-              child: FCarousel()
+            Container(height: 420, child: FCarousel()),
+            Padding(
+              padding: EdgeInsets.all(10.0),
             ),
-            Padding(padding: EdgeInsets.all(10.0),),         
             Container(
               child: Image.asset('images/myntra images/sc/hero0.jpg'),
             ),
@@ -96,7 +97,8 @@ class _HomePageAppState extends State<HomePageApp> {
               child: Topbrands(),
             ),
             Container(
-              child: Image.asset('images/10poff.jpg'),),
+              child: Image.asset('images/10poff.jpg'),
+            ),
             //ProductContainer()
           ],
         ),

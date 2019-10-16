@@ -11,17 +11,18 @@ class ProductGrid extends StatelessWidget {
   ProductGrid({this.orientation, this.products, this.count});
   @override
   Widget build(BuildContext context) {
-    // final product = Provider.of<ProductModel>(context);    
-      return GridView.builder(
-        itemCount: count,
-        scrollDirection: Axis.vertical,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: orientation == Orientation.portrait ? 2 : 3,
-          childAspectRatio: 0.84,
-        ),
-        itemBuilder: (BuildContext context, int index) {
-            // final products = product.products;
-            return products.length > 0
+    // final product = Provider.of<ProductModel>(context);
+    return GridView.builder(
+      itemCount: count,
+      scrollDirection: Axis.vertical,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: orientation == Orientation.portrait ? 2 : 3,
+        childAspectRatio: 0.84,
+      ),
+      itemBuilder: (BuildContext context, int index) {
+        // final products = product.products;
+        return products != null
+            ? products.length > 0
                 ? Product(
                     name: products[index]['name'],
                     image: products[index]['media'][0]['src'].length > 0
@@ -39,9 +40,13 @@ class ProductGrid extends StatelessWidget {
                     text: 'Products are being loaded...',
                     size: 12.0,
                     indicator: true,
-                  );
-          },
-      );
-    }
+                  )
+            : CenterText(
+                text: 'Products are being loaded...',
+                size: 12.0,
+                indicator: true,
+              );
+      },
+    );
   }
-
+}

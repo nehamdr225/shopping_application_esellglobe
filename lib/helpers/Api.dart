@@ -47,9 +47,10 @@ getProducts({result = 10, page = 1}) async {
     var response = await fetch(
       uri: '$url/products?result=$result&page=$page',
     );
-    return response['products'];
+    if (response['error'] != null) return {"error": response['error']};
+    return {"result":response['products']};
   } catch (err) {
-    return err;
+    return {"error": err};
   }
 }
 

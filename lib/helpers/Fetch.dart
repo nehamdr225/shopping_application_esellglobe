@@ -32,7 +32,7 @@ fetch({uri, method: "GET", body: ''}) async {
         return json.decode(response.body);
     }
   } catch (err) {
-    throw err;
+    return {"error": err};
   }
 }
 

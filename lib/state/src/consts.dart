@@ -1,7 +1,7 @@
 const MAIN = [
   {
-    "name": "Top Wear", 
-    "cap": "Top Wear", 
+    "name": "Top Wear",
+    "cap": "Top Wear",
     "src": "images/categoryimg/shirt.jpg"
   },
   {
@@ -22,7 +22,7 @@ const MAIN = [
 ];
 
 const specialOffers = [
-    {
+  {
     "src": 'images/offers/one.jpg',
   },
   {
@@ -37,8 +37,8 @@ const specialOffers = [
 
 const topBrands = [
   {
-    "name": "United", 
-    "cap": "United", 
+    "name": "United",
+    "cap": "United",
     "src": "images/myntra images/sc/cardT1.jpg",
   },
   {
@@ -58,28 +58,27 @@ const topBrands = [
   }
 ];
 
-
-const List<List<String>> TOP =  [
-  ["Casual Shirt", "Formal Shirt", "T-Shirt", "Jacket"],
-  ["images/tshirt.png", "images/pant.png", "images/shoe.png", "images/shoe.png"],
-  ["top"]
+const TOP = [
+  {"name": "Casual Shirt", "cap": "Casual Shirt", "src": "images/tshirt.jpg"},
+  {"name": "Formal Shirt", "cap": "Formal Shirt", "src": "images/tshirt.jpg"},
+  {"name": "T-Shirts", "cap": "T-Shirt", "src": "images/tshirt.jpg"},
+  {"name": "Jacket", "cap": "Jacket", "src": "images/tshirt.jpg"}
 ];
 
-const List<List<String>> BOTTOM = [
-  ["Jeans Pants", "Formal Pants", "Track/Sports Wear"],
-  ["images/tshirt.png", 'images/pant.png', 'images/shoe.png'],
-  ["bottom"]
-];
-const List<List<String>> FOOT = [
-  ["Casual Shoes", "Formal Shoes", "Sports Shoes", "Sandals"],
-  ["images/tshirt.png", 'images/pant.png', 'images/shoe.png', 'images/shoe.png'],
-  ["shoes"]
-];
-const List<List<String>> WATCH_GLASSES = [
-  ["Watches", "Glasses"],
-  ['images/shoe.png', 'images/shoe.png'],
-  ["glasses"]
+const BOTTOM = [
+  {"name": "Jeans Pants", "cap": "Jeans Pants", "src": "images/pant.png"},
+  {"name": "Formal Pants", "cap": "Formal Pants", "src": "images/pant.png"},
+  {"name": "Track/Sports Wear", "cap": "Sports Wear", "src": "images/pant.png"},
 ];
 
-const List<String> GENDER = ["Male", "Female"];
+const FOOT = [
+  {"name": "Casual Shoes", "cap": "Casual Shoes", "src": "images/shoe.jpg"},
+  {"name": "Formal Shoes", "cap": "Formal Shoes", "src": "images/shoe.jpg"},
+  {"name": "Sports Shoes", "cap": "Sports Shoes", "src": "images/shoe.jpg"},
+  {"name": "Sandals", "cap": "Sandals", "src": "images/shoe.jpg"}
+];
 
+const WATCH_GLASSES = [
+  {"name": "Watches", "cap": "Watches", "src": "images/shoe.png"},
+  {"name": "Glasses", "cap": "Glasses", "src": "images/pant.png"},
+];

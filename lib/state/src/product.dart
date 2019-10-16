@@ -4,7 +4,10 @@ import 'package:flutter/cupertino.dart';
 class ProductModel extends ChangeNotifier {
   ProductModel() {
     getProducts().then((data) {
-      products = data;
+      if (data['error'] == null)
+        products = data['result'];
+      else
+        print(data['error']);
     });
   }
   List _products = [];
