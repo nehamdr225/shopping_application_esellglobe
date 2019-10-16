@@ -26,69 +26,82 @@ class UserPromptApp extends StatelessWidget {
               UPImage(),
               BrandLogos(),
               Container(
-                width: 260.0,
+                  width: 260.0,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      FRaisedButton(
-                        height: 50.0,
-                        width: 120.0,
-                        shape: true,
-                        text: "Facebook",
-                        color: Colors.black87,
-                        bg: Colors.white,
-                        onPressed: () {},
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          FRaisedButton(
+                            height: 50.0,
+                            width: 125.0,
+                            shape: true,
+                            needIcon: true,
+                            image: 'images/icons/facebookicon.png',
+                            text: "Facebook",
+                            color: Colors.black87,
+                            bg: Colors.white,
+                            onPressed: () {},
+                          ),
+                          FRaisedButton(
+                            height: 50.0,
+                            width: 125.0,
+                            shape: true,
+                            image: 'images/icons/googleicon.png',
+                            needIcon: true,
+                            text: "Google",
+                            color: Colors.black87,
+                            bg: Colors.white,
+                            onPressed: () {},
+                          )
+                        ],
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(8.0),
                       ),
                       FRaisedButton(
                         height: 50.0,
-                        width: 120.0,
                         shape: true,
-                        text: "Google",
+                        width: 260.0,
+                        needIcon: true,
+                        image: 'images/icons/email.png',
+                        text: "Login with Email Address",
                         color: Colors.black87,
                         bg: Colors.white,
-                        onPressed: () {},
-                      )
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SignInPage()));
+                        },
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(8.0),
+                      ),
+                      FRaisedButton(
+                        height: 50.0,
+                        width: 260.0,
+                        shape: true,
+                        needIcon: true,
+                        image: 'images/icons/phone.png',
+                        text: "Login with Mobile Number",
+                        color: Colors.black87,
+                        bg: Colors.white,
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SignUpPage()));
+                        },
+                      ),
                     ],
-                  ),
-                  Padding(padding: EdgeInsets.all(8.0),),
-                  FRaisedButton(
-                    height: 50.0,
-                    shape: true,
-                    width: 260.0,
-                    text: "Login with email",
-                    color: Colors.black87,
-                    bg: Colors.white,
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SignInPage()));
-                    },
-                  ),
-                  Padding(padding: EdgeInsets.all(8.0),),
-                  FRaisedButton(
-                    height: 50.0,
-                    width: 260.0,
-                    shape: true,
-                    text: "Create a new account",
-                    color: Colors.black87,
-                    bg: Colors.white,
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SignUpPage()));
-                    },
-                  ),
-                ],
-              )),
+                  )),
               FancyText(
                   color: Colors.deepPurple[900],
                   text: "Continue without signin!",
-                  size: 20.0,
+                  size: 18.0,
+                  fontfamily: 'Bree',
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => HomePageApp()));
