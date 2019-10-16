@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 
 
 class HorizontalList extends StatelessWidget {
-  final type;
-  HorizontalList({this.type});
+  final listViews;
+  HorizontalList({this.listViews});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -15,18 +15,18 @@ class HorizontalList extends StatelessWidget {
       width: 200.0,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: type.length,
+        itemCount: listViews.length,
         itemBuilder: (BuildContext context, int index) {
           return Card(
             child: Category(
-              name: type[index]['name'],
-              caption: type[index]['cap'],
-              src: type[index]['src'],
+              name: listViews[index]['name'],
+              caption: listViews[index]['cap'],
+              src: listViews[index]['src'],
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) =>
-                        CategoryPage(text: type[index]['name']),
+                        CategoryPage(text: listViews[index]['name']),
                   ),
                 );
               },

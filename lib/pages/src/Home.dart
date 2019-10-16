@@ -6,7 +6,7 @@ import 'package:esell/widget/molecules/Carousel.dart';
 import 'package:esell/widget/molecules/colors.dart';
 import 'package:esell/widget/molecules/Icons.dart';
 import 'package:esell/pages/pages.dart';
-import 'package:esell/widget/molecules/CategorySlider.dart';
+import 'package:esell/widget/molecules/HorizontalList.dart';
 //import 'package:esell/widget/containers/Products.dart';
 
 class HomePageApp extends StatefulWidget {
@@ -58,7 +58,8 @@ class _HomePageAppState extends State<HomePageApp> {
         drawer: DrawerApp(),
         body: ListView(
           children: <Widget>[
-            Container(color: Colors.white, child: HorizontalList(type: MAIN)),
+            Container(
+                color: Colors.white, child: HorizontalList(listViews: MAIN)),
             Padding(
               padding: EdgeInsets.all(8.0),
             ),

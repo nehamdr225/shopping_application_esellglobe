@@ -3,7 +3,7 @@ import 'package:esell/state/state.dart';
 // import 'package:esell/widget/atoms/Text.dart';
 import 'package:esell/widget/containers/ProductGrid.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
-import 'package:esell/widget/molecules/CategorySlider.dart';
+import 'package:esell/widget/molecules/HorizontalList.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -20,8 +20,9 @@ class CategoryPage extends StatelessWidget {
         ? TOP
         : text == 'Bottom Wear'
             ? BOTTOM
-            : text == "Foot Wear" ? FOOT : WATCH_GLASSES;
-    List products = product.category(text);
+            : text == "Foot Wear" ? SHOES : GLASSES;
+    // print(cat.toString().toLowerCase());
+    List products = product.category(MAPPER[text]);
     return SafeArea(
         child: Scaffold(
             appBar: PreferredSize(
@@ -32,7 +33,7 @@ class CategoryPage extends StatelessWidget {
               children: <Widget>[
                 Container(
                   child: HorizontalList(
-                    type: cat,
+                    listViews: cat,
                   ),
                 ),
                 Container(

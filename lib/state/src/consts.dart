@@ -21,6 +21,13 @@ const MAIN = [
   }
 ];
 
+const MAPPER = {
+  "Top Wear": "top",
+  "Bottom Wear": "bottom",
+  "Foot Wear": "shoes",
+  "Watches & Glasses": "glasses"
+};
+
 const specialOffers = [
   {
     "src": 'images/offers/one.jpg',
@@ -59,26 +66,66 @@ const topBrands = [
 ];
 
 const TOP = [
-  {"name": "Casual Shirt", "cap": "Casual Shirt", "src": "images/tshirt.jpg"},
-  {"name": "Formal Shirt", "cap": "Formal Shirt", "src": "images/tshirt.jpg"},
-  {"name": "T-Shirts", "cap": "T-Shirt", "src": "images/tshirt.jpg"},
-  {"name": "Jacket", "cap": "Jacket", "src": "images/tshirt.jpg"}
+  {
+    "name": "Casual Shirt",
+    "cap": "Casual Shirt",
+    "src": "images/categoryimg/shirt.jpg"
+  },
+  {
+    "name": "Formal Shirt",
+    "cap": "Formal Shirt",
+    "src": "images/categoryimg/shirt.jpg"
+  },
+  {"name": "T-Shirts", "cap": "T-Shirt", "src": "images/categoryimg/shirt.jpg"},
+  {"name": "Jacket", "cap": "Jacket", "src": "images/categoryimg/shirt.jpg"}
 ];
 
 const BOTTOM = [
-  {"name": "Jeans Pants", "cap": "Jeans Pants", "src": "images/pant.png"},
-  {"name": "Formal Pants", "cap": "Formal Pants", "src": "images/pant.png"},
-  {"name": "Track/Sports Wear", "cap": "Sports Wear", "src": "images/pant.png"},
+  {
+    "name": "Jeans Pants",
+    "cap": "Jeans Pants",
+    "src": "images/categoryimg/pants.jpg"
+  },
+  {
+    "name": "Formal Pants",
+    "cap": "Formal Pants",
+    "src": "images/categoryimg/pants.jpg"
+  },
+  {
+    "name": "Track/Sports Wear",
+    "cap": "Sports Wear",
+    "src": "images/categoryimg/pants.jpg"
+  },
 ];
 
-const FOOT = [
-  {"name": "Casual Shoes", "cap": "Casual Shoes", "src": "images/shoe.jpg"},
-  {"name": "Formal Shoes", "cap": "Formal Shoes", "src": "images/shoe.jpg"},
-  {"name": "Sports Shoes", "cap": "Sports Shoes", "src": "images/shoe.jpg"},
-  {"name": "Sandals", "cap": "Sandals", "src": "images/shoe.jpg"}
+const SHOES = [
+  {
+    "name": "Casual Shoes",
+    "cap": "Casual Shoes",
+    "src": "images/categoryimg/shoes.jpg"
+  },
+  {
+    "name": "Formal Shoes",
+    "cap": "Formal Shoes",
+    "src": "images/categoryimg/shoes.jpg"
+  },
+  {
+    "name": "Sports Shoes",
+    "cap": "Sports Shoes",
+    "src": "images/categoryimg/shoes.jpg"
+  },
+  {"name": "Sandals", "cap": "Sandals", "src": "images/categoryimg/shoes.jpg"}
 ];
 
-const WATCH_GLASSES = [
-  {"name": "Watches", "cap": "Watches", "src": "images/shoe.png"},
-  {"name": "Glasses", "cap": "Glasses", "src": "images/pant.png"},
+const GLASSES = [
+  {
+    "name": "Watches",
+    "cap": "Watches",
+    "src": "images/categoryimg/watchesNglasses.jpg"
+  },
+  {
+    "name": "Glasses",
+    "cap": "Glasses",
+    "src": "images/categoryimg/watchesNglasses.jpg"
+  },
 ];
