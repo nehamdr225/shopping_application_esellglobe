@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 
 class SubMainSlider extends StatelessWidget {
   final listViews;
-  
+
   SubMainSlider({this.listViews});
   @override
   Widget build(BuildContext context) {
-    print(listViews);
     return Container(
       height: 100.0,
       width: 200.0,
@@ -21,17 +20,12 @@ class SubMainSlider extends StatelessWidget {
               caption: listViews[index]['cap'],
               src: listViews[index]['src'],
               onTap: () {
-                // Navigator.of(context).push(
-                //   MaterialPageRoute(
-                //     builder: (context) =>
-                //         CategoryPage(text: listViews[index]['name']),
-                //   ),
-                // );
+                print(listViews[index]['name']);
               },
             ),
           );
         }, //
       ),
-    ) ;
+    );
   }
 }

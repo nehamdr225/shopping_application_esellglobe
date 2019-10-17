@@ -1,9 +1,8 @@
-import 'package:esell/pages/pages.dart';
+import 'package:esell/pages/CategoryPage.dart';
 import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/Category.dart';
 import 'package:esell/widget/molecules/TopBrands.dart';
 import 'package:flutter/material.dart';
-
 
 class HorizontalList extends StatelessWidget {
   final listViews;
@@ -34,7 +33,7 @@ class HorizontalList extends StatelessWidget {
           );
         }, //
       ),
-    ) ;
+    );
   }
 }
 

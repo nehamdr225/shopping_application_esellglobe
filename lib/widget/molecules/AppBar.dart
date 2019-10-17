@@ -1,4 +1,5 @@
-import 'package:esell/pages/pages.dart';
+import 'package:esell/pages/Cart.dart';
+import 'package:esell/pages/Wishlist.dart';
 import 'package:esell/widget/molecules/Icons.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/widget/molecules/colors.dart';
@@ -11,7 +12,7 @@ class FAppBar extends StatelessWidget {
   final search;
   final title;
   final drawer;
-  FAppBar({this.wishlist, this.drawer,this.cart, this.search, this.title});
+  FAppBar({this.wishlist, this.drawer, this.cart, this.search, this.title});
   @override
   Widget build(BuildContext context) {
     FlutterStatusbarcolor.setStatusBarColor(Colors.black87);
@@ -35,20 +36,24 @@ class FAppBar extends StatelessWidget {
           //   },
           // ),
           actions: <Widget>[
-            search != null? FIcons(
-              icon: Icons.search,
-              alignment: Alignment.centerRight,
-              color: Colors.deepPurple[900],
-              onPressed: () {},
-            ):Text(''),
-            cart != null? FIcons(
-                icon: Icons.shopping_cart,
-                alignment: Alignment.centerRight,
-                color: Colors.deepPurple[900],
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => CartPage()));
-                }): Text(''),
+            search != null
+                ? FIcons(
+                    icon: Icons.search,
+                    alignment: Alignment.centerRight,
+                    color: Colors.deepPurple[900],
+                    onPressed: () {},
+                  )
+                : Text(''),
+            cart != null
+                ? FIcons(
+                    icon: Icons.shopping_cart,
+                    alignment: Alignment.centerRight,
+                    color: Colors.deepPurple[900],
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => CartPage()));
+                    })
+                : Text(''),
             wishlist != null
                 ? FIcons(
                     icon: Icons.bookmark,

@@ -8,8 +8,7 @@ class ProductsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final product = Provider.of<ProductModel>(context);
-    var products = product.products;
-    print("Ths page");
+    List products = product.products;
     return Scaffold(
         backgroundColor: Colors.grey[200],
         appBar: PreferredSize(

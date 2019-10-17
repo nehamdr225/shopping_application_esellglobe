@@ -1,5 +1,5 @@
 import 'package:esell/helpers/Api.dart';
-import 'package:esell/pages/pages.dart';
+import 'package:esell/pages/Signin.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:flutter/material.dart';
 
@@ -88,11 +88,12 @@ class _PageState extends State<SignUpPage> {
           child: Container(
             height: 600.0,
             width: screenWidth * 0.95,
-            padding: EdgeInsets.only(
-                      top: 5.0, left: 20.0, right: 20.0),
+            padding: EdgeInsets.only(top: 5.0, left: 20.0, right: 20.0),
             child: Column(
               children: <Widget>[
-                Padding(padding: EdgeInsets.all(10.0),),
+                Padding(
+                  padding: EdgeInsets.all(10.0),
+                ),
                 FForms(
                   type: TextInputType.text,
                   text: "Name",

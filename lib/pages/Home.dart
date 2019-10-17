@@ -5,9 +5,11 @@ import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:esell/widget/molecules/Carousel.dart';
 import 'package:esell/widget/molecules/colors.dart';
 import 'package:esell/widget/molecules/Icons.dart';
-import 'package:esell/pages/pages.dart';
+import 'package:esell/pages/Cart.dart';
+import 'package:esell/pages/Wishlist.dart';
+import 'package:esell/pages/Drawer.dart';
+
 import 'package:esell/widget/molecules/HorizontalList.dart';
-//import 'package:esell/widget/containers/Products.dart';
 
 class HomePageApp extends StatefulWidget {
   @override
@@ -94,9 +96,7 @@ class _HomePageAppState extends State<HomePageApp> {
               ),
             ),
             Container(
-              height: 300.0,
-              child: HorizontalList(listViews: topBrands)
-            ),
+                height: 300.0, child: HorizontalList(listViews: topBrands)),
             Container(
               child: Image.asset('images/10poff.jpg'),
             ),

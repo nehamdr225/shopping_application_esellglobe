@@ -1,4 +1,4 @@
-import 'package:esell/pages/src/Cart.dart';
+import 'package:esell/pages/Cart.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/molecules/Product.dart';
 import 'package:esell/widget/molecules/colors.dart';
@@ -28,7 +28,7 @@ class WishlistPage extends StatelessWidget {
               bg: icontheme2,
               onPressed: () {
                 Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => CartPage()));
+                    MaterialPageRoute(builder: (context) => CartPage()));
               },
               text: 'Proceed to Cart'),
         ],

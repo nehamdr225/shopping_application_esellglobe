@@ -2,7 +2,14 @@ import 'package:esell/helpers/Api.dart';
 import 'package:esell/widget/atoms/DrawerElements.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/widget/molecules/colors.dart';
-import 'package:esell/pages/pages.dart';
+import 'package:esell/pages/UserPromt.dart';
+import 'package:esell/pages/AboutPage.dart';
+import 'package:esell/pages/Cart.dart';
+import 'package:esell/pages/CategoryPage.dart';
+import 'package:esell/pages/Home.dart';
+import 'package:esell/pages/Wishlist.dart';
+import 'package:esell/pages/Signin.dart';
+
 import 'package:esell/state/state.dart';
 import 'package:provider/provider.dart';
 

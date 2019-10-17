@@ -1,4 +1,5 @@
-import 'package:esell/pages/pages.dart';
+import 'package:esell/pages/Cart.dart';
+import 'package:esell/pages/Wishlist.dart';
 import 'package:esell/widget/molecules/Icons.dart';
 import 'package:esell/widget/molecules/colors.dart';
 import 'package:esell/widget/productDetails/Carousel.dart';

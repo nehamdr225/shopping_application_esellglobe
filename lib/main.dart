@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:esell/pages/pages.dart';
+import 'package:esell/pages/Home.dart';
+import 'package:esell/pages/UserPromt.dart';
+
 import 'package:esell/state/state.dart';
 
 Future main() async {
-  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(BootStrapper(await getValue('token')));
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 }
 
 class BootStrapper extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:esell/pages/pages.dart';
+import 'package:esell/pages/Products.dart';
 import 'package:esell/widget/molecules/Product.dart';
 import 'package:esell/widget/atoms/centerText.dart';
 import 'package:provider/provider.dart';
@@ -8,7 +8,7 @@ import 'package:esell/state/state.dart';
 class ProductContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final product = Provider.of<ProductModel>(context);    
+    final product = Provider.of<ProductModel>(context);
     return SliverList(
         delegate: SliverChildListDelegate(<Widget>[
       Padding(
@@ -22,8 +22,7 @@ class ProductContainer extends StatelessWidget {
               TableRowInkWell(
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) =>
-                            ProductsPage()));
+                        builder: (context) => ProductsPage()));
                   },
                   child: Align(
                     alignment: Alignment.topRight,
@@ -46,7 +45,7 @@ class ProductContainer extends StatelessWidget {
             final products = product.products;
             return products.length > 0
                 ? Product(
-                  imgheight: 130.0,
+                    imgheight: 130.0,
                     name: products[index]['name'],
                     image: products[index]['media'][0]['src'].length > 0
                         ? products[index]['media'][0]['src'][0]

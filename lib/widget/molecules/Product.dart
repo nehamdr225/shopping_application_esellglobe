@@ -1,7 +1,7 @@
 import 'package:esell/widget/atoms/Details.dart';
 import 'package:esell/widget/atoms/ImageHolder.dart';
 import 'package:flutter/material.dart';
-import 'package:esell/pages/pages.dart';
+import 'package:esell/pages/ProductDetails.dart';
 
 class Product extends StatelessWidget {
   final name;
@@ -41,13 +41,12 @@ class Product extends StatelessWidget {
             },
             child: Column(
               children: <Widget>[
-                ImageHolder(image: image, imgheight: imgheight,),
-                Divider(height: 1),
-                Details(
-                  name: name,
-                  price: 'Rs. $price',
-                  id: id
+                ImageHolder(
+                  image: image,
+                  imgheight: imgheight,
                 ),
+                Divider(height: 1),
+                Details(name: name, price: 'Rs. $price', id: id),
               ],
             ),
           ),
