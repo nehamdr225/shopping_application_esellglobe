@@ -10,6 +10,7 @@ class SubMainSlider extends StatelessWidget {
     return Container(
       height: 100.0,
       width: 200.0,
+      color: Colors.white,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: listViews.length,

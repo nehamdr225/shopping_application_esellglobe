@@ -1,5 +1,6 @@
 import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
+import 'package:esell/widget/atoms/loginOptions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:esell/widget/molecules/Carousel.dart';
@@ -17,12 +18,74 @@ class HomePageApp extends StatefulWidget {
 }
 
 class _HomePageAppState extends State<HomePageApp> {
+  _showBottomSheet(context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) {
+          return Container(
+            color: Colors.white,
+            height: 310.0,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Container(
+                  // close button
+                  height: 10.0,
+                  padding: EdgeInsets.only(top: 0.0),
+                  child: ListTile(
+                    trailing: IconButton(
+                      color: Colors.deepPurple[900],
+                      icon: Icon(Icons.close),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ),
+                ),
+                Container(
+                  // logo
+                  height: 50.0,
+                  padding: EdgeInsets.only(top: 0.0, bottom: 10.0),
+                  child: ListTile(
+                    title: Center(
+                        child: Image.asset(
+                      'images/logo/logoonly1.png',
+                      height: 50.0,
+                      width: 50.0,
+                    )),
+                    // trailing: IconButton(
+                    //   color: Colors.transparent,
+                    //   icon: Icon(Icons.close),
+                    //   onPressed: () {
+                    //     Navigator.pop(context);
+                    //   },
+                    // ),
+                  ),
+                ),
+                Container(
+                  // buttons
+                  child: LoginOptions(),
+                ),
+              ],
+            ),
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     FlutterStatusbarcolor.setStatusBarColor(Colors.black87);
     var screenWidth = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
+        //bottomSheet: _showBottomSheet(context),//showBottomSheet(),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.deepPurple[900],
+          child: Icon(Icons.account_box),
+          onPressed: () {
+            _showBottomSheet(context);
+          },
+        ),
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(50.0),
           child: AppBar(
@@ -96,7 +159,7 @@ class _HomePageAppState extends State<HomePageApp> {
               ),
             ),
             Container(
-                height: 300.0, child: HorizontalList(listViews: topBrands)),
+                height: 100.0, child: HorizontalList(listViews: topBrands)),
             Container(
               child: Image.asset('images/10poff.jpg'),
             ),
@@ -106,4 +169,10 @@ class _HomePageAppState extends State<HomePageApp> {
       ),
     );
   }
+  // Widget showBottomSheet(){
+  //   return BottomSheet(
+  //     builder: ,
+  //     onClosing: ,
+  //   );
+  // }
 }

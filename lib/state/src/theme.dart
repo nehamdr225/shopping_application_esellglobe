@@ -4,6 +4,7 @@ class FTheme with ChangeNotifier {
   ThemeData esellDarkTheme = ThemeData.dark();
 
   ThemeData esellDefaultTheme = ThemeData(
+    canvasColor: Colors.transparent,
     fontFamily: 'Ropa Sans',
     textSelectionColor: Colors.black38,
     textTheme: TextTheme(

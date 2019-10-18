@@ -4,13 +4,13 @@ class BrandLogos extends StatelessWidget {
   final image;
   final height;
   final width;
-  BrandLogos({this.image, this.height, this.width});
+  BrandLogos({this.image, this.height: 60.0, this.width: 60.0});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 60.0,
-      width: 60.0,
+      height: height,
+      width: width,
       child: Image.asset('images/logo/logoonly1.png'),
     );
   }
