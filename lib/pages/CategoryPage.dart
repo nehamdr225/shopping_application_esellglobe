@@ -33,6 +33,7 @@ class CategoryPage extends StatelessWidget {
                     listViews: cat,
                   ),
                 ),
+                Padding(padding: EdgeInsets.all(12.0),),
                 Container(
                     height: height * (80 / 100),
                     child: OrientationBuilder(builder: (context, orientation) {

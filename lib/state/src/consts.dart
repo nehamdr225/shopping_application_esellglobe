@@ -32,61 +32,61 @@ const SubMain = {
   [{
     "name": "Casual Shirt",
     "cap": "Casual Shirt",
-    "src": "images/categoryimg/shirt.jpg"
+    "src": "images/SubMain/Shirt/casualShirt.jpg"
   },
   {
     "name": "Formal Shirt",
     "cap": "Formal Shirt",
-    "src": "images/categoryimg/shirt.jpg"
+    "src": "images/SubMain/Shirt/formalShirt.jpeg"
   },
   {
     "name": "T-Shirts", 
     "cap": "T-Shirt", 
-    "src": "images/categoryimg/shirt.jpg"
+    "src": "images/SubMain/Shirt/tshirt.jpg"
   },
   {
     "name": "Jacket", 
     "cap": "Jacket", 
-    "src": "images/categoryimg/shirt.jpg"
+    "src": "images/SubMain/Shirt/jacket.jpg"
   },
   ],
   "bottom" : [
   {
     "name": "Jeans Pants",
     "cap": "Jeans Pants",
-    "src": "images/categoryimg/pants.jpg"
+    "src": "images/SubMain/pant/jeans.jpeg"
   },
   {
     "name": "Formal Pants",
     "cap": "Formal Pants",
-    "src": "images/categoryimg/pants.jpg"
+    "src": "images/SubMain/pant/formalpant.jpg"
   },
   {
     "name": "Track/Sports Wear",
     "cap": "Sports Wear",
-    "src": "images/categoryimg/pants.jpg"
+    "src": "images/SubMain/pant/sportswear.jpg"
   },
   ],
   "shoes" : [
   {
     "name": "Casual Shoes",
     "cap": "Casual Shoes",
-    "src": "images/categoryimg/shoes.jpg"
+    "src": "images/SubMain/foot/casualshoes.jpg"
   },
   {
     "name": "Formal Shoes",
     "cap": "Formal Shoes",
-    "src": "images/categoryimg/shoes.jpg"
+    "src": "images/SubMain/foot/formalshoes.jpg"
   },
   {
     "name": "Sports Shoes",
     "cap": "Sports Shoes",
-    "src": "images/categoryimg/shoes.jpg"
+    "src": "images/SubMain/foot/sportsshoes.jpg"
   },
   {
     "name": "Sandals", 
     "cap": "Sandals", 
-    "src": "images/categoryimg/shoes.jpg"
+    "src": "images/SubMain/foot/sandals.jpeg"
   },
   ],
 
@@ -94,12 +94,12 @@ const SubMain = {
   {
     "name": "Watches",
     "cap": "Watches",
-    "src": "images/categoryimg/watchesNglasses.jpg"
+    "src": "images/SubMain/watchNglass/watch.jpg"
   },
   {
     "name": "Glasses",
     "cap": "Glasses",
-    "src": "images/categoryimg/watchesNglasses.jpg"
+    "src": "images/SubMain/watchNglass/glasses.png"
   },
 ],
 

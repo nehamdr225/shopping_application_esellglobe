@@ -1,3 +1,4 @@
+import 'package:esell/pages/LoginPhone.dart';
 import 'package:esell/pages/Signin.dart';
 import 'package:esell/pages/Signup.dart';
 import 'package:esell/pages/Home.dart';
@@ -95,7 +96,7 @@ class UserPromptApp extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => SignUpPage()));
+                                  builder: (context) => LoginPhone()));
                         },
                       ),
                     ],
@@ -109,6 +110,16 @@ class UserPromptApp extends StatelessWidget {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => HomePageApp()));
                   }),
+              FancyText(
+                  color: Colors.deepPurple[900],
+                  text: "New here? Sign Up",
+                  size: 18.0,
+                  fontfamily: 'Bree',
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => SignUpPage()));
+                  }),
+                
               Padding(
                 padding: EdgeInsets.all(10.0),
               ),
