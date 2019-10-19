@@ -22,6 +22,7 @@ class CategoryPage extends StatelessWidget {
 
     return SafeArea(
         child: Scaffold(
+          backgroundColor: Colors.grey[100],
             appBar: PreferredSize(
               preferredSize: Size.fromHeight(40.0),
               child: FAppBar(wishlist: true, cart: true),
