@@ -38,7 +38,7 @@ class EsellApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: theme.getTheme(),
-      home: token != null ? HomePageApp() : UserPromptApp(),
+      home: token != null ? HomePageApp() : HomePageApp(),
     );
   }
 }

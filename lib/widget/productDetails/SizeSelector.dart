@@ -15,12 +15,13 @@ class PDSizeSelector extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.all(8.0),
+                padding: EdgeInsets.all(2.0),
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.only(right: 12.0),
+                    padding: EdgeInsets.only(right: 0.0, top: 0.0),
                   ),
                   Text(
                     "Select Size ",
@@ -28,38 +29,34 @@ class PDSizeSelector extends StatelessWidget {
                     textAlign: TextAlign.left,
                   ),
                   Padding(
-                    padding: EdgeInsets.only(right: 160.0),
+                    padding: EdgeInsets.only(right: 180.0),
                   ),
-                  InkWell(
-                    onTap: () {},
-                    child: Text(
-                      "view size chart",
-                      style: Theme.of(context)
-                          .textTheme
-                          .caption
-                          .copyWith(decoration: TextDecoration.underline),
-                      textAlign: TextAlign.right,
-                    ),
+                  IconButton(
+                    icon: Icon(Icons.more_vert),
+                    onPressed: (){},
                   )
                 ],
               ),
               Padding(
                 padding: EdgeInsets.all(18.0),
-                child: Row(children: [
+                child: Row(
+                  children: [
+
                   InkWell(
                     onTap: () {},
                     child: Container(
-                      height: 40.0,
-                      width: 40.0,
+                      height: 37.0,
+                      width: 34.0,
+                      alignment: Alignment.center,
                       decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(color: Colors.black45)),
+                          shape: BoxShape.rectangle,
+                          border: Border.all(color: Colors.black87)),
                       child: Text(
                         "S",
                         style: TextStyle(
-                            fontFamily: "Ropa Sans",
-                            fontSize: 32.0,
-                            color: Colors.black38),
+                            fontFamily: "Helvetica",
+                            fontSize: 15.0,
+                            color: Colors.black87),
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -70,17 +67,18 @@ class PDSizeSelector extends StatelessWidget {
                   InkWell(
                     onTap: () {},
                     child: Container(
-                      height: 40.0,
-                      width: 40.0,
+                      height: 37.0,
+                      width: 34.0,
+                      alignment: Alignment.center,
                       decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(color: Colors.black45)),
+                          shape: BoxShape.rectangle,
+                          border: Border.all(color: Colors.black87)),
                       child: Text(
                         "M",
                         style: TextStyle(
-                            fontFamily: "Ropa Sans",
-                            fontSize: 32.0,
-                            color: Colors.black38),
+                            fontFamily: "Helvetica",
+                            fontSize: 15.0,
+                            color: Colors.black87),
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -91,17 +89,18 @@ class PDSizeSelector extends StatelessWidget {
                   InkWell(
                     onTap: () {},
                     child: Container(
-                      height: 40.0,
-                      width: 40.0,
+                      height: 37.0,
+                      width: 34.0,
+                      alignment: Alignment.center,
                       decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(color: Colors.black45)),
+                          shape: BoxShape.rectangle,
+                          border: Border.all(color: Colors.black87)),
                       child: Text(
                         "L",
                         style: TextStyle(
-                            fontFamily: "Ropa Sans",
-                            fontSize: 32.0,
-                            color: Colors.black38),
+                            fontFamily: "Helvetica",
+                            fontSize: 15.0,
+                            color: Colors.black87),
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -112,17 +111,18 @@ class PDSizeSelector extends StatelessWidget {
                   InkWell(
                     onTap: () {},
                     child: Container(
-                      height: 40.0,
-                      width: 40.0,
+                      height: 37.0,
+                      width: 34.0,
+                      alignment: Alignment.center,
                       decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(color: Colors.black45)),
+                          shape: BoxShape.rectangle,
+                          border: Border.all(color: Colors.black87)),
                       child: Text(
                         "XL",
                         style: TextStyle(
-                            fontFamily: "Ropa Sans",
-                            fontSize: 32.0,
-                            color: Colors.black38),
+                            fontFamily: "Helvetica",
+                            fontSize: 15.0,
+                            color: Colors.black87),
                         textAlign: TextAlign.center,
                       ),
                     ),

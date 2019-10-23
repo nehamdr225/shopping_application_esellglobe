@@ -24,7 +24,7 @@ class PDAppBar extends StatelessWidget {
       backgroundColor: Colors.grey[200],
       floating: true,
       flexibleSpace: PDCarousel(images: images, width: screenWidth * 0.90),
-      expandedHeight: 500,
+      expandedHeight: 450,
       actions: <Widget>[
         FIcons(
             icon: Icons.shopping_cart,
