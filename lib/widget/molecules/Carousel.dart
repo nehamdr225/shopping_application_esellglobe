@@ -7,13 +7,13 @@ class FCarousel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Carousel(
-        boxFit: BoxFit.fill,
+        boxFit: BoxFit.fitHeight,
         images: [
-          AssetImage('images/myntra images/sc/hero1.jpg'),
-          AssetImage('images/myntra images/sc/hero2.jpg'),
-          AssetImage('images/myntra images/sc/hero3.jpg'),
-          AssetImage('images/myntra images/sc/hero4.jpg'),
-          AssetImage('images/myntra images/sc/hero5.jpg'),
+          AssetImage("images/esell photo/1black_vert.jpg",),
+          AssetImage("images/esell photo/7red_vert.jpg",),
+          AssetImage("images/esell photo/10beach_vert.jpeg"),
+          AssetImage("images/esell photo/2bnw_vert.jpg"),
+          AssetImage("images/esell photo/9black_vert.jpeg",),
         ],
         animationCurve: Curves.ease,
         autoplay: true,

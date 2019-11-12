@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+const primary = Colors.deepPurple;
+const errorColor = const Color(0xffc5032b);
+const splash = Colors.black12;
+const textColor = Colors.black87; 
+
 class FTheme with ChangeNotifier {
   ThemeData esellDarkTheme = ThemeData.dark();
 
@@ -7,14 +12,15 @@ class FTheme with ChangeNotifier {
     canvasColor: Colors.transparent,
     fontFamily: 'Ropa Sans',
     textSelectionColor: Colors.black38,
-    textTheme: TextTheme(
+    textTheme: TextTheme( 
         headline: TextStyle(fontSize: 24.0, color: Colors.black38),
         title: TextStyle(fontSize: 18.0, color: Colors.black87),
         body1: TextStyle(fontSize: 12.0),
         body2: TextStyle(
           fontSize: 18.0,
+          color: Colors.blueAccent[200],
         ),
-        caption: TextStyle(fontSize: 14.0, color: Colors.black87)),
+        caption: TextStyle(fontSize: 14.0, color: Colors.black87,),),
   );
 
   ThemeData _themeData;

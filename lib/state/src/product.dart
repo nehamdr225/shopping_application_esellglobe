@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 class ProductModel extends ChangeNotifier {
   ProductModel() {
     getProducts().then((data) {
+      print(data);
       if (data['error'] == null)
         products = data['result'];
       else
@@ -24,6 +25,7 @@ class ProductModel extends ChangeNotifier {
   category(String cat) {
     return _products.where((product) {
       return product["category"].contains(cat.toLowerCase());
+      
     }).toList();
   }
 

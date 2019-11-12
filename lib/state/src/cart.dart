@@ -20,3 +20,15 @@ class CartModel extends ChangeNotifier {
     notifyListeners();
   }
 }
+
+// removeFromCart(String id) {
+//     if (id != null && id.length > 0 && .length > 0) {
+//       deleteFavourites(id, token).then((response) {
+//         if (response["result"] != null) {
+//           if (favourites.contains(id)) state["favourites"].remove(id);
+//           notifyListeners();
+//           return response;
+//         }
+//       });
+//     }
+//   }

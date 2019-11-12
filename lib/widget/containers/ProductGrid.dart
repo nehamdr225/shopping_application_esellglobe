@@ -11,6 +11,7 @@ class ProductGrid extends StatelessWidget {
   ProductGrid({this.orientation, this.products, this.count});
   @override
   Widget build(BuildContext context) {
+    print(products);
     // final product = Provider.of<ProductModel>(context);
     return GridView.builder(
       itemCount: count,

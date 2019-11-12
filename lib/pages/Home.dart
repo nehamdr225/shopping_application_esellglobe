@@ -22,7 +22,7 @@ class _HomePageAppState extends State<HomePageApp> {
   @override
   Widget build(BuildContext context) {
     FlutterStatusbarcolor.setStatusBarColor(Colors.black87);
-    var screenWidth = MediaQuery.of(context).size.width;
+    //var screenWidth = MediaQuery.of(context).size.width;
     var user = Provider.of<UserModel>(context);
     return SafeArea(
       child: Scaffold(
@@ -70,11 +70,11 @@ class _HomePageAppState extends State<HomePageApp> {
             Padding(
               padding: EdgeInsets.all(8.0),
             ),
-            Container(
-              height: 100.0,
-              width: screenWidth,
-              child: Specialoffers(),
-            ),
+            // Container(
+            //   height: 100.0,
+            //   width: screenWidth,
+            //   child: Specialoffers(),
+            // ),
             Padding(
               padding: EdgeInsets.fromLTRB(10.0, 8.0, 0.0, 2.0),
               child: FancyText(
@@ -88,9 +88,6 @@ class _HomePageAppState extends State<HomePageApp> {
             Padding(
               padding: EdgeInsets.all(10.0),
             ),
-            Container(
-              child: Image.asset('images/myntra images/sc/hero0.jpg'),
-            ),
             Padding(
               padding: EdgeInsets.fromLTRB(10.0, 8.0, 0.0, 2.0),
               child: FancyText(
@@ -102,6 +99,10 @@ class _HomePageAppState extends State<HomePageApp> {
             ),
             Container(
                 height: 100.0, child: HorizontalList(listViews: topBrands)),
+            Container(
+              padding: EdgeInsets.only(top: 15.0),
+              child: Image.asset('images/esell photo/8shoeshirt.jpeg'),
+            ),
             Container(
               child: Image.asset('images/10poff.jpg'),
             ),

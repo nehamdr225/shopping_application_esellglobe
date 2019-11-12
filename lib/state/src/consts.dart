@@ -10,8 +10,8 @@ const MAIN = [
     "src": 'images/categoryimg/pants.jpg',
   },
   {
-    "name": "Foot Wear",
-    "cap": "Foot Wear",
+    "name": "Foot Wear",//"Shoe",
+    "cap": "Foot Wear",//"Shoe",
     "src": 'images/categoryimg/shoes.jpg',
   },
   {
@@ -69,27 +69,26 @@ const SubMain = {
   ],
   "shoes" : [
   {
-    "name": "Casual Shoes",
-    "cap": "Casual Shoes",
+    "name": "Casual",
+    "cap": "Casual",
     "src": "images/SubMain/foot/casualshoes.jpg"
   },
   {
-    "name": "Formal Shoes",
-    "cap": "Formal Shoes",
+    "name": "Formal",
+    "cap": "Formal",
     "src": "images/SubMain/foot/formalshoes.jpg"
   },
   {
-    "name": "Sports Shoes",
-    "cap": "Sports Shoes",
+    "name": "Sports ",
+    "cap": "Sports ",
     "src": "images/SubMain/foot/sportsshoes.jpg"
   },
   {
-    "name": "Sandals", 
-    "cap": "Sandals", 
+    "name": "Slipper", 
+    "cap": "Slipper", 
     "src": "images/SubMain/foot/sandals.jpeg"
   },
   ],
-
   "glasses" : [
   {
     "name": "Watches",
@@ -109,40 +108,40 @@ const specialOffers = [
   {
     "name": "Watches & Glasses",
     "cap": "Watches & Glasses",
-    "src": 'images/offers/one.jpg',
+    "src": "images/esell photo/3brown.jpg",
   },
   {
     "name": "Watches & Glasses",
     "cap": "Watches & Glasses",
-    "src": 'images/offers/two.jpg',
+    "src": 'images/esell photo/5green_sq.jpg',
   },
   {
     "name": "Watches & Glasses",
     "cap": "Watches & Glasses",
-    "src": 'images/offers/three.jpg',
+    "src": 'images/esell photo/4red.jpg',
   }
 ];
 
 const topBrands = [
   {
     "name": "United",
-    "cap": "United",
-    "src": "images/myntra images/sc/cardT1.jpg",
+    "cap": "United", 
+    "src": "images/esell photo/1black_vert.jpg",
   },
   {
     "name": "Kook N Keech",
     "cap": "Kook N Keech",
-    "src": 'images/myntra images/sc/cardT2.jpg',
+    "src": "images/esell photo/7red_vert.jpg",
   },
   {
     "name": "Indian Terrain",
     "cap": "Indian Terrain",
-    "src": 'images/myntra images/sc/cardT3.jpg',
+    "src": "images/esell photo/10beach_vert.jpeg",
   },
   {
     "name": "Lee",
     "cap": "Lee",
-    "src": 'images/myntra images/sc/cardT4.jpg',
+    "src": "images/esell photo/2bnw_vert.jpg",
   }
 ];
 
