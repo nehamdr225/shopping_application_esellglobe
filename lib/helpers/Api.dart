@@ -42,13 +42,13 @@ signup(String email, String password, String name) async {
   }
 }
 
-getProducts({result = 10, page = 1}) async {
+getProducts({result = 15, page = 1}) async {
   try {
     var response = await fetch(
       uri: '$url/products?result=$result&page=$page',
     );
     if (response['error'] != null) return {"error": response['error']};
-    return {"result":response['products']};
+    return response;
   } catch (err) {
     return {"error": err};
   }

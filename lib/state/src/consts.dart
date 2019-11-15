@@ -24,7 +24,7 @@ const MAIN = [
 const MAPPER = {
   "Top Wear": "top",
   "Bottom Wear": "bottom",
-  "Foot Wear": "shoes",
+  "Foot Wear": "shoe",
   "Watches & Glasses": "glasses"
 };
 const SubMain = {

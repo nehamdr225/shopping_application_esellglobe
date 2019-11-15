@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-const primary = Colors.deepPurple;
+const primary = Color(0xff78daff);
+const secondary = Color(0xffffa378);
 const errorColor = const Color(0xffc5032b);
 const splash = Colors.black12;
 const textColor = Colors.black87; 
