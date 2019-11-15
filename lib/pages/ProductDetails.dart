@@ -10,18 +10,27 @@ class ProductDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     final product = Provider.of<ProductModel>(context).one(id);
     List<Image> images = [];
-    for (String src in product['media'][0]['src']) {
-      images.add(Image.network(src));
-    }
+    if (product['media'][0]['src'] != null)
+      for (String src in product['media'][0]['src']) {
+        images.add(Image.network(src));
+      }
     if (product['error'] != null)
       return Text('Error occured fetching product info!');
     return SafeArea(
       child: Scaffold(
-        persistentFooterButtons: <Widget>[PDFooter(id: id, )],
+        persistentFooterButtons: <Widget>[
+          PDFooter(
+            id: id,
+          )
+        ],
         backgroundColor: Colors.grey[100],
         body: CustomScrollView(
           slivers: <Widget>[
-            PDAppBar(images),
+            images.length > 0
+                ? PDAppBar(images)
+                : SliverPadding(
+                    padding: EdgeInsets.all(0),
+                  ),
             SliverList(
               delegate: SliverChildListDelegate(<Widget>[
                 PDInfo(

@@ -14,9 +14,9 @@ class CategoryGrid extends StatelessWidget {
         color: Colors.white,
         child: OrientationBuilder(builder: (context, orientation) {
           return ProductGrid(
-              orientation: orientation,
-              products: products,
-              count: product.count);
+            orientation: orientation,
+            products: products,
+          );
         }));
   }
 }

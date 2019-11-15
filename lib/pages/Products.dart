@@ -7,8 +7,7 @@ import 'package:provider/provider.dart';
 class ProductsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final product = Provider.of<ProductModel>(context);
-    List products = product.products;
+    final products = Provider.of<ProductModel>(context).products;
     return Scaffold(
         backgroundColor: Colors.grey[200],
         appBar: PreferredSize(
@@ -17,9 +16,9 @@ class ProductsPage extends StatelessWidget {
         ),
         body: OrientationBuilder(builder: (context, orientation) {
           return ProductGrid(
-              orientation: orientation,
-              products: products,
-              count: product.count);
+            orientation: orientation,
+            products: products,
+          );
         }));
   }
 }

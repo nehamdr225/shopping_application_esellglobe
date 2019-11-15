@@ -39,9 +39,9 @@ class CategoryPage extends StatelessWidget {
                     height: height * (80 / 100),
                     child: OrientationBuilder(builder: (context, orientation) {
                       return ProductGrid(
-                          orientation: orientation,
-                          products: products,
-                          count: products.length);
+                        orientation: orientation,
+                        products: products,
+                      );
                     }))
               ],
             )));
