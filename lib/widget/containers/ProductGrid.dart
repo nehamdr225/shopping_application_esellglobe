@@ -1,16 +1,17 @@
 import 'package:esell/widget/atoms/BottomLoader.dart';
 import 'package:esell/widget/molecules/Product.dart';
 import 'package:flutter/material.dart';
-// import 'package:provider/provider.dart';
-// import 'package:esell/state/state.dart';
+
+import 'package:esell/state/state.dart';
+import 'package:provider/provider.dart';
 
 class ProductGrid extends StatelessWidget {
   final Orientation orientation;
-  final List products;
-  ProductGrid({this.orientation, this.products});
+  final String category;
+  ProductGrid({this.orientation, this.category});
   @override
   Widget build(BuildContext context) {
-    // final product = Provider.of<ProductModel>(context);
+    final products = Provider.of<ProductModel>(context).category(category);
     return products.length > 0
         ? GridView.builder(
             itemCount: products.length + 1,

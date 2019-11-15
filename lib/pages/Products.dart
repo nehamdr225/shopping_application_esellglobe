@@ -1,13 +1,10 @@
 import 'package:esell/widget/containers/ProductGrid.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
-import 'package:esell/state/state.dart';
-import 'package:provider/provider.dart';
 
 class ProductsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final products = Provider.of<ProductModel>(context).products;
     return Scaffold(
         backgroundColor: Colors.grey[200],
         appBar: PreferredSize(
@@ -17,7 +14,6 @@ class ProductsPage extends StatelessWidget {
         body: OrientationBuilder(builder: (context, orientation) {
           return ProductGrid(
             orientation: orientation,
-            products: products,
           );
         }));
   }

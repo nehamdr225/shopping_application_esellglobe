@@ -15,6 +15,13 @@ class ProductModel extends ChangeNotifier {
   List _products = [];
   int _maxCount;
   int _page = 1;
+  bool _isRefreshing = false;
+
+  get isRefreshing => _isRefreshing;
+  set isRefreshing(value) {
+    _isRefreshing = value;
+    notifyListeners();
+  }
 
   List get products => _products;
   get count => _products.length;
@@ -38,45 +45,58 @@ class ProductModel extends ChangeNotifier {
   }
 
   category(String cat) {
-    return _products.where((product) {
+    return products.where((product) {
       return product["category"].contains(cat.toLowerCase());
     }).toList();
   }
 
   set product(Map item) {
-    if (!products.firstWhere((each) => each['_id'] == item['_id']))
+    if (products.firstWhere((each) => each['_id'] == item['_id']).length == 0)
       _products.add(item);
     notifyListeners();
   }
 
   set products(List items) {
     if (products.length > 0) {
-      final filtered = items.where(
-          (test) => !products.firstWhere((each) => each['_id'] == test['_id']));
+      final filtered = items.where((test) {
+        final tests = _products.any((el) => el['_id'] == test['_id']);
+        print(tests);
+        return tests;
+      }).toList();
+      print("filtered");
+      print(filtered);
       _products.addAll(filtered);
     } else {
-      print(items);
       _products = items;
     }
     notifyListeners();
   }
 
   refresh() {
-    if (count < maxCount) {
-      print("refresh $count");
-      getProducts(page: page + 1).then((data) {
-        if (!data['error']) {
-          if (maxCount != data['count']) maxCount = data['count'];
-          products = data['result'];
-          page = page + 1;
-          if (count < maxCount) return "halfway";
-          if (count >= maxCount) return "done";
-        } else {
-          print(data['error']);
-          return "Oops something wrong happened!";
-        }
-      });
-    } else
+    try {
+      if (count < maxCount && !isRefreshing) {
+        isRefreshing = true;
+        print("refresh $page");
+        getProducts(page: page + 1).then((data) {
+          if (data['error'] == null) {
+            if (maxCount != data['count']) maxCount = data['count'];
+            products = data['products'];
+            page = page + 1;
+            isRefreshing = false;
+            return "done";
+          } else {
+            print(data['error']);
+            isRefreshing = false;
+            return "Oops something wrong happened!";
+          }
+        });
+      } else {
+        isRefreshing = false;
+        return "done";
+      }
+    } catch (e) {
+      isRefreshing = false;
       return "done";
+    }
   }
 }
