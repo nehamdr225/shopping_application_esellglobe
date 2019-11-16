@@ -1,5 +1,6 @@
 import 'package:esell/pages/Cart.dart';
 import 'package:esell/pages/Wishlist.dart';
+import 'package:esell/state/state.dart';
 import 'package:esell/widget/molecules/Icons.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/widget/molecules/colors.dart';
@@ -23,8 +24,8 @@ class FAppBar extends StatelessWidget {
           title: title,
           centerTitle: true,
           elevation: 2.0,
-          iconTheme: IconThemeData(color: icontheme2),
-          backgroundColor: Colors.white,
+          iconTheme: IconThemeData(color: icontheme3),
+          backgroundColor: primary,
           // leading: drawer ==true?
           // null:
           // IconButton(
@@ -40,7 +41,7 @@ class FAppBar extends StatelessWidget {
                 ? FIcons(
                     icon: Icons.search,
                     alignment: Alignment.centerRight,
-                    color: Colors.deepPurple[900],
+                    color: icontheme3,
                     onPressed: () {},
                   )
                 : Text(''),
@@ -48,7 +49,7 @@ class FAppBar extends StatelessWidget {
                 ? FIcons(
                     icon: Icons.shopping_cart,
                     alignment: Alignment.centerRight,
-                    color: Colors.deepPurple[900],
+                    color: icontheme3,
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => CartPage()));
@@ -58,7 +59,7 @@ class FAppBar extends StatelessWidget {
                 ? FIcons(
                     icon: Icons.bookmark,
                     alignment: Alignment.centerRight,
-                    color: Colors.deepPurple[900],
+                    color: icontheme3,
                     onPressed: () {
                       Navigator.push(
                           context,

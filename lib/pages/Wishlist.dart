@@ -24,8 +24,9 @@ class WishlistPage extends StatelessWidget {
         persistentFooterButtons: <Widget>[
           FRaisedButton(
               width: 160.0,
-              color: icontheme,
-              bg: icontheme2,
+              shape: true,
+              color: textColor,
+              bg: secondary,
               onPressed: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => CartPage()));

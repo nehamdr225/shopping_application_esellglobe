@@ -67,12 +67,12 @@ class DrawerApp extends StatelessWidget {
                             child: ListTile(
                               title: Text(
                                 'Log in   .   Sign up',
-                                style: TextStyle(color: Colors.white),
+                                style: TextStyle(color: textColor),
                               ),
                               contentPadding: EdgeInsets.only(left: 20.0),
                               trailing: Icon(
                                 Icons.arrow_right,
-                                color: Colors.white,
+                                color: textColor,
                               ),
                               onTap: () {
                                 Navigator.push(

@@ -29,19 +29,19 @@ class _HomePageAppState extends State<HomePageApp> {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(50.0),
           child: AppBar(
-            iconTheme: IconThemeData(color: Colors.deepPurple[900]),
-            backgroundColor: Colors.white,
+            iconTheme: IconThemeData(color: icontheme3,),
+            backgroundColor: primary,
             actions: <Widget>[
               FIcons(
                 icon: Icons.search,
                 alignment: Alignment.centerRight,
-                color: icontheme2,
+                color: icontheme3,
                 onPressed: () {},
               ),
               FIcons(
                   icon: Icons.shopping_cart,
                   alignment: Alignment.centerRight,
-                  color: icontheme2,
+                  color: icontheme3,
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => CartPage()));
@@ -49,7 +49,7 @@ class _HomePageAppState extends State<HomePageApp> {
               FIcons(
                   icon: Icons.bookmark,
                   alignment: Alignment.centerRight,
-                  color: icontheme2,
+                  color: icontheme3,
                   onPressed: () {
                     user.token != null
                         ? Navigator.push(
@@ -81,7 +81,7 @@ class _HomePageAppState extends State<HomePageApp> {
                 text: 'Featured',
                 fontfamily: 'Bree',
                 size: 20.0,
-                color: Colors.deepPurple[900],
+                color: textColor,
               ),
             ),
             Container(height: 420, child: FCarousel()),
@@ -94,7 +94,7 @@ class _HomePageAppState extends State<HomePageApp> {
                 text: 'Top Brands',
                 fontfamily: 'Bree',
                 size: 20.0,
-                color: Colors.deepPurple[900],
+                color: textColor,
               ),
             ),
             Container(
@@ -132,7 +132,7 @@ class _HomePageAppState extends State<HomePageApp> {
                       width: 30.0,
                       padding: EdgeInsets.only(top: 0.0),
                       child: IconButton(
-                        color: Colors.deepPurple[900],
+                        color: icontheme3,
                         icon: Icon(Icons.close),
                         onPressed: () {
                           Navigator.pop(context);

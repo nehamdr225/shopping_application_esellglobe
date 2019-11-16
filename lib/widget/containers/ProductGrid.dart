@@ -39,6 +39,8 @@ class ProductGrid extends StatelessWidget {
             },
           )
         : Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[CircularProgressIndicator()],
           );
   }

@@ -1,6 +1,7 @@
 import 'package:esell/pages/LoginPhone.dart';
 import 'package:esell/pages/Signin.dart';
 import 'package:esell/pages/Signup.dart';
+import 'package:esell/state/src/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
@@ -80,7 +81,7 @@ class LoginOptions extends StatelessWidget {
             padding: EdgeInsets.all(10.0),
           ),
           FancyText(
-              color: Colors.deepPurple[900],
+              color: textColor,
               text: "New here? Sign Up",
               size: 16.0,
               fontfamily: 'Bree',

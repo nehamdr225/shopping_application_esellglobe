@@ -2,6 +2,7 @@
 // import 'package:esell/pages/Signin.dart';
 //import 'package:esell/pages/Signup.dart';
 import 'package:esell/pages/Home.dart';
+import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/loginOptions.dart';
 
 //import 'package:esell/widget/atoms/UP_Image.dart';
@@ -48,7 +49,7 @@ class UserPromptApp extends StatelessWidget {
                   text: "Terms & Conditions",
                   decoration: TextDecoration.underline,
                   size: 17.0,
-                  color: Colors.deepPurple[900],
+                  color: textColor,
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => HomePageApp()));
