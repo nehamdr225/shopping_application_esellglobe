@@ -23,12 +23,15 @@ class Category extends StatelessWidget {
                   height: 70.0,
                 ),
                 contentPadding: EdgeInsets.all(1.0),
-                subtitle: Container(
-                  alignment: Alignment.topCenter,
-                  child: Text(
-                    caption,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontFamily: 'Ropa Sans', fontSize: 12.0),
+                subtitle: Padding(
+                  padding: const EdgeInsets.only(top:10.0),
+                  child: Container(
+                    alignment: Alignment.topCenter,
+                    child: Text(
+                      caption,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontFamily: 'Ropa Sans', fontSize: 12.0),
+                    ),
                   ),
                 ),
               )),

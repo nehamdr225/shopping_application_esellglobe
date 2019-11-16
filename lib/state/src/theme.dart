@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 const primary = Color(0xff78daff);
+//const bgcolor = Color(0xffe5f3ff);
+const bgcolor = Color(0xffEEEEEE);
+const iconcolor= Color(0xff78ff9c);
 const secondary = Color(0xffffa378);
 const errorColor = const Color(0xffc5032b);
 const splash = Colors.black12;

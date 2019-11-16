@@ -1,7 +1,6 @@
 import 'package:esell/pages/Cart.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/molecules/Product.dart';
-import 'package:esell/widget/molecules/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:esell/state/state.dart';

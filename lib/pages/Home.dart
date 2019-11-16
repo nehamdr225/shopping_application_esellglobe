@@ -10,34 +10,66 @@ import 'package:esell/pages/Cart.dart';
 import 'package:esell/pages/Wishlist.dart';
 import 'package:provider/provider.dart';
 import 'package:esell/pages/Drawer.dart';
-
 import 'package:esell/widget/molecules/HorizontalList.dart';
 
-class HomePageApp extends StatefulWidget {
-  @override
-  _HomePageAppState createState() => _HomePageAppState();
-}
+class HomePageApp extends StatelessWidget {
+  const HomePageApp({Key key, this.searchController});
+  final searchController;
 
-class _HomePageAppState extends State<HomePageApp> {
   @override
   Widget build(BuildContext context) {
-    FlutterStatusbarcolor.setStatusBarColor(Colors.black87);
-    //var screenWidth = MediaQuery.of(context).size.width;
+    FlutterStatusbarcolor.setStatusBarColor(primary);
     var user = Provider.of<UserModel>(context);
     return SafeArea(
       child: Scaffold(
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(50.0),
+          preferredSize: Size.fromHeight(100.0),
           child: AppBar(
-            iconTheme: IconThemeData(color: icontheme3,),
+            //centerTitle: true,
+            title: Text('esellglobe',
+                style: TextStyle(fontFamily: 'Bree', color: textColor)),
+            flexibleSpace: Padding(
+              padding:
+                  const EdgeInsets.only(top: 50.0, right: 25.0, left: 25.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5.0),
+                    color: Colors.white, border: Border.all(width: 1.0, color: Colors.black26)),
+                height: 40.0,
+                
+                child: TextField(
+                  autofocus: true,
+                  onChanged: (value) {
+                    searchController(value);
+                  },
+                  style: TextStyle(color: Colors.black),
+                  decoration: InputDecoration(
+                    icon: Icon(Icons.search, color: textColor),
+                      contentPadding:
+                          EdgeInsets.fromLTRB(10.0, 10.0, 20.0, 11.0),
+                      hintText: "Search for Fashion",
+                      hintStyle: TextStyle(
+                          fontFamily: 'Helvetica',
+                          fontSize: 12,
+                          color: Colors.black54),
+                      // labelStyle: ,
+                      focusedBorder: UnderlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                          borderSide: BorderSide(color: Colors.white))),
+                ),
+              ),
+            ),
+            iconTheme: IconThemeData(
+              color: icontheme3,
+            ),
             backgroundColor: primary,
             actions: <Widget>[
-              FIcons(
-                icon: Icons.search,
-                alignment: Alignment.centerRight,
-                color: icontheme3,
-                onPressed: () {},
-              ),
+              // FIcons(
+              //   icon: Icons.search,
+              //   alignment: Alignment.centerRight,
+              //   color: icontheme3,
+              //   onPressed: () {},
+              // ),
               FIcons(
                   icon: Icons.shopping_cart,
                   alignment: Alignment.centerRight,
@@ -61,28 +93,12 @@ class _HomePageAppState extends State<HomePageApp> {
             ],
           ),
         ),
-        backgroundColor: Colors.grey[200],
+        backgroundColor: bgcolor,
         drawer: DrawerApp(),
         body: ListView(
           children: <Widget>[
-            Container(
-                color: Colors.white, child: HorizontalList(listViews: MAIN)),
             Padding(
-              padding: EdgeInsets.all(8.0),
-            ),
-            // Container(
-            //   height: 100.0,
-            //   width: screenWidth,
-            //   child: Specialoffers(),
-            // ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(10.0, 8.0, 0.0, 2.0),
-              child: FancyText(
-                text: 'Featured',
-                fontfamily: 'Bree',
-                size: 20.0,
-                color: textColor,
-              ),
+              padding: EdgeInsets.all(10.0),
             ),
             Container(height: 420, child: FCarousel()),
             Padding(
@@ -91,22 +107,30 @@ class _HomePageAppState extends State<HomePageApp> {
             Padding(
               padding: EdgeInsets.fromLTRB(10.0, 8.0, 0.0, 2.0),
               child: FancyText(
-                text: 'Top Brands',
+                text: "Men's Fashion",
                 fontfamily: 'Bree',
                 size: 20.0,
                 color: textColor,
               ),
             ),
             Container(
-                height: 100.0, child: HorizontalList(listViews: topBrands)),
-            Container(
-              padding: EdgeInsets.only(top: 15.0),
-              child: Image.asset('images/esell photo/8shoeshirt.jpeg'),
+              child: GridList(listViews: MEN),
+            ),
+            Padding(
+               padding: EdgeInsets.all(10.0),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 2.0),
+              child: FancyText(
+                text: "Women's Fashion",
+                fontfamily: 'Bree',
+                size: 20.0,
+                color: textColor,
+              ),
             ),
             Container(
-              child: Image.asset('images/10poff.jpg'),
+              child: GridList(listViews: WOMEN),
             ),
-            //ProductContainer()
           ],
         ),
       ),

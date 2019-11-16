@@ -1,4 +1,4 @@
-const MAIN = [
+const MEN = [
   {
     "name": "Top Wear",
     "cap": "Top Wear",
@@ -15,7 +15,50 @@ const MAIN = [
     "src": 'images/categoryimg/shoes.jpg',
   },
   {
-    "name": "Watches & Glasses",
+    "name": "Backpacks",//"Shoe",
+    "cap": "Backpacks",//"Shoe",
+    "src": 'images/categoryimg/shoes.jpg',
+  },
+  {
+    "name": "Sunglasses",//"Shoe",
+    "cap": "Sunglasses",//"Shoe",
+    "src": 'images/categoryimg/shoes.jpg',
+  },
+  {
+    "name": "Watches",
+    "cap": "Watches & Glasses",
+    "src": 'images/categoryimg/watchesNglasses.jpg',
+  }
+];
+
+const WOMEN = [
+  {
+    "name": "Top Wear",
+    "cap": "Top Wear",
+    "src": "images/categoryimg/shirt.jpg"
+  },
+  {
+    "name": "Bottom Wear",
+    "cap": "Bottom Wear",
+    "src": 'images/categoryimg/pants.jpg',
+  },
+  {
+    "name": "Foot Wear",//"Shoe",
+    "cap": "Foot Wear",//"Shoe",
+    "src": 'images/categoryimg/shoes.jpg',
+  },
+  {
+    "name": "Backpacks",//"Shoe",
+    "cap": "Backpacks",//"Shoe",
+    "src": 'images/categoryimg/shoes.jpg',
+  },
+  {
+    "name": "Sunglasses",//"Shoe",
+    "cap": "Sunglasses",//"Shoe",
+    "src": 'images/categoryimg/shoes.jpg',
+  },
+  {
+    "name": "Watches",
     "cap": "Watches & Glasses",
     "src": 'images/categoryimg/watchesNglasses.jpg',
   }
