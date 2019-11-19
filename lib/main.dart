@@ -1,8 +1,7 @@
+import 'package:esell/pages/OrdertrackPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:esell/pages/Home.dart';
-
 import 'package:esell/state/state.dart';
 
 Future main() async {
@@ -37,7 +36,7 @@ class EsellApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: theme.getTheme(),
-      home: token != null ? HomePageApp() : HomePageApp(),
+      home: token != null ? OrdetrackPage() : OrdetrackPage(),
     );
   }
 }

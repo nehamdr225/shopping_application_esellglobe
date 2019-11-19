@@ -14,7 +14,7 @@ class FTheme with ChangeNotifier {
 
   ThemeData esellDefaultTheme = ThemeData(
     canvasColor: Colors.transparent,
-    fontFamily: 'Ropa Sans',
+    fontFamily: 'Montserrat',
     textSelectionColor: Colors.black38,
     textTheme: TextTheme( 
         headline: TextStyle(fontSize: 24.0, color: Colors.black38),

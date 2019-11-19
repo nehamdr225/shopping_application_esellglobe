@@ -1,5 +1,6 @@
+import 'package:esell/state/state.dart';
 import 'package:flutter/material.dart';
-import 'package:esell/widget/molecules/colors.dart';
+import 'package:esell/state/src/theme.dart';
 
 class FForms extends StatelessWidget {
   final bool obscure;
@@ -21,6 +22,9 @@ class FForms extends StatelessWidget {
       obscureText: obscure,
       onChanged: onChanged,
       decoration: InputDecoration(
+        border: OutlineInputBorder(
+          borderSide: BorderSide(color: primary,)
+        ),
           icon: type == TextInputType.phone ? Icon(Icons.call) : null,
           contentPadding: type == TextInputType.phone
               ? EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0)
@@ -28,8 +32,11 @@ class FForms extends StatelessWidget {
           hintText: text,
           labelStyle: style,
           labelText: text,
-          focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: primarycolor))),
+          disabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: primary)),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: primary))
+      ),
     );
   }
 }

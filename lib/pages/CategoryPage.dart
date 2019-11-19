@@ -1,7 +1,7 @@
 import 'package:esell/state/state.dart';
 import 'package:esell/widget/containers/ProductGrid.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
-import 'package:esell/widget/molecules/SubMainSlider.dart';
+//import 'package:esell/widget/molecules/SubMainSlider.dart';
 import 'package:flutter/material.dart';
 
 class CategoryPage extends StatelessWidget {
@@ -32,7 +32,7 @@ class CategoryPage extends StatelessWidget {
                 //   ),
                 // ),
                 Container(
-                  child: Expansion(),
+                  child: Expansion(cat: cat),
                 ),
                 Padding(
                   padding: EdgeInsets.all(12.0),
@@ -62,23 +62,17 @@ class Item {
   bool isExpanded;
 }
 
-List<Item> generateItems(int numberOfItems) {
-  return List.generate(numberOfItems, (int index) {
-    return Item(
-      headerValue: 'Panel $index',
-      expandedValue: 'This is item number $index',
-    );
-  });
-}
 class Expansion extends StatefulWidget {
-  Expansion({Key key}) : super(key: key);
+  Expansion({Key key, this.cat}) : super(key: key);
+  final cat;
 
   @override
-  _ExpansionState createState() => _ExpansionState();
+  _ExpansionState createState() => _ExpansionState(cat: cat);
 }
 
 class _ExpansionState extends State<Expansion> {
-  List<Item> _data = generateItems(8);
+  _ExpansionState({this.cat});
+  final cat;
 
   @override
   Widget build(BuildContext context) {
@@ -92,11 +86,11 @@ class _ExpansionState extends State<Expansion> {
   Widget _buildPanel() {
     return ExpansionPanelList(
       expansionCallback: (int index, bool isExpanded) {
-        // setState(() {
-        //   _data[index].isExpanded = !isExpanded;
-        // });
+        setState(() {
+          cat[index].isExpanded = !isExpanded;
+        });
       },
-      children: _data.map<ExpansionPanel>((Item item) {
+      children: cat.map<ExpansionPanel>((Item item) {
         return ExpansionPanel(
           headerBuilder: (BuildContext context, bool isExpanded) {
             return ListTile(

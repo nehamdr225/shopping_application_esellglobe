@@ -1,3 +1,4 @@
+import 'package:esell/pages/SearchPage.dart';
 import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
 import 'package:esell/widget/atoms/loginOptions.dart';
@@ -13,8 +14,10 @@ import 'package:esell/pages/Drawer.dart';
 import 'package:esell/widget/molecules/HorizontalList.dart';
 
 class HomePageApp extends StatelessWidget {
-  const HomePageApp({Key key, this.searchController});
+  const HomePageApp({Key key, this.searchBar, this.searchController, this.title});
+  final searchBar;
   final searchController;
+  final title;
 
   @override
   Widget build(BuildContext context) {
@@ -23,53 +26,26 @@ class HomePageApp extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(100.0),
+          preferredSize: Size.fromHeight(40.0),
           child: AppBar(
-            //centerTitle: true,
             title: Text('esellglobe',
                 style: TextStyle(fontFamily: 'Bree', color: textColor)),
-            flexibleSpace: Padding(
-              padding:
-                  const EdgeInsets.only(top: 50.0, right: 25.0, left: 25.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5.0),
-                    color: Colors.white, border: Border.all(width: 1.0, color: Colors.black26)),
-                height: 40.0,
-                
-                child: TextField(
-                  autofocus: true,
-                  onChanged: (value) {
-                    searchController(value);
-                  },
-                  style: TextStyle(color: Colors.black),
-                  decoration: InputDecoration(
-                    icon: Icon(Icons.search, color: textColor),
-                      contentPadding:
-                          EdgeInsets.fromLTRB(10.0, 10.0, 20.0, 11.0),
-                      hintText: "Search for Fashion",
-                      hintStyle: TextStyle(
-                          fontFamily: 'Helvetica',
-                          fontSize: 12,
-                          color: Colors.black54),
-                      // labelStyle: ,
-                      focusedBorder: UnderlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                          borderSide: BorderSide(color: Colors.white))),
-                ),
-              ),
-            ),
             iconTheme: IconThemeData(
               color: icontheme3,
             ),
             backgroundColor: primary,
             actions: <Widget>[
-              // FIcons(
-              //   icon: Icons.search,
-              //   alignment: Alignment.centerRight,
-              //   color: icontheme3,
-              //   onPressed: () {},
-              // ),
+              FIcons(
+                icon: Icons.search,
+                alignment: Alignment.centerRight,
+                color: icontheme3,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SearchPage()),
+                  );
+                },
+              ),
               FIcons(
                   icon: Icons.shopping_cart,
                   alignment: Alignment.centerRight,
@@ -98,9 +74,23 @@ class HomePageApp extends StatelessWidget {
         body: ListView(
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.all(10.0),
+              padding: EdgeInsets.all(3.0),
             ),
-            Container(height: 420, child: FCarousel()),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(width: 2.0, color: textColor),
+                  borderRadius: BorderRadius.circular(5.0)
+                ),
+                height: 420, 
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+                  child: FCarousel(),
+                )
+               
+              ),
+            ),
             Padding(
               padding: EdgeInsets.all(10.0),
             ),
