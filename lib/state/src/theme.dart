@@ -17,14 +17,12 @@ class FTheme with ChangeNotifier {
     fontFamily: 'Montserrat',
     textSelectionColor: Colors.black38,
     textTheme: TextTheme( 
-        headline: TextStyle(fontSize: 24.0, color: Colors.black38),
-        title: TextStyle(fontSize: 18.0, color: Colors.black87),
-        body1: TextStyle(fontSize: 12.0),
-        body2: TextStyle(
-          fontSize: 18.0,
-          color: Colors.blueAccent[200],
-        ),
-        caption: TextStyle(fontSize: 14.0, color: Colors.black87,),),
+        headline: TextStyle(fontSize: 24.0, color: textColor),
+        title: TextStyle(fontSize: 18.0, color: textColor),
+        body1: TextStyle(fontSize: 12.0, color: textColor),
+        body2: TextStyle(fontSize: 18.0, color: primary),
+        caption: TextStyle(fontSize: 14.0, color: textColor),
+    ),
   );
 
   ThemeData _themeData;

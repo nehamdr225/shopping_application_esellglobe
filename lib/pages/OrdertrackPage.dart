@@ -5,59 +5,73 @@ import 'package:flutter/material.dart';
 class OrdetrackPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var y = 80.0;
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50.0),
         child: FAppBar(wishlist: true, cart: true),
       ),
-      body: ListView(
-        children: <Widget>[
-          Container(
-            color: Colors.white,
-            height: 200.0,
-            width: 50.0,
-            child: CustomPaint(
-              painter: MakeLine(),
-              child: Container(
-                child: Text('hello'),
-                //height: 700.0,
-                // child: Column(
-                //   children: <Widget>[
-                //     Text('Order'),
-                //   ],
-                // ),
+      body: Table(
+        children: <TableRow>[
+        
+        TableRow(
+            children: <Widget>[
+              Container(
+                color: Colors.green,
+                height: y+107,
+                //width: 50.0,
+                child: CustomPaint(
+                  painter: MakeLine(y: y, z: y + 100.0),
+                  child: Container(),
+                ),
               ),
-            ),
-          ),
-          Container(
-            color: Colors.white,
-            height: 200.0,
-            width: 50.0,
-            child: CustomPaint(
-              painter: MakeLine(),
-              child: Container(),
-            ),
-          ),
-          Container(
-            color: Colors.white,
-            height: 100.0,
-            width: 50.0,
-            child: CustomPaint(
-              painter: MakeLine(),
-              child: Container(
+              Container(
+                height: 200.0,
+                width: 100.0,
+                child: Text('data')
               ),
-            ),
+            ],
           ),
-        ],
-      ),
+          // TableRow(
+          //   children: <Widget>[
+          //     CustomPaint(
+          //       painter: MakeLine(y: y + 100.0, z: y + 200.0),
+          //       child: Container(
+          //         child: Text('data'),
+          //       ),
+          //     ),
+          //     Container(
+          //       width: 100.0,
+          //       //child: Text('data')
+          //     ),
+          //   ],
+          // ),
+          // TableRow(
+          //   children: <Widget>[
+          //     CustomPaint(
+          //       painter: MakeLine(y: y + 200.0, z: y + 300.0),
+          //       child: Container(),
+          //     ),
+          //     Container(
+          //       width: 100.0,
+          //       child: Text('data')
+          //     ),
+          //   ],
+          // ),
+      ],),
+                
+      
     );
   }
 }
 
 class MakeLine extends CustomPainter {
+  final double y;
+  final double z;
+
   Paint _paint;
-  MakeLine() {
+  MakeLine({this.y, this.z}) {
     _paint = Paint()
       ..color = Colors.grey[400]
       ..strokeWidth = 3
@@ -65,22 +79,15 @@ class MakeLine extends CustomPainter {
   }
   @override
   void paint(Canvas canvas, Size size) {
+    var x = 20.0;
     final paint = Paint();
     paint.color = Colors.grey[400];
-    //var center = Offset(size.width / 2, size.height / 2);
-    //canvas.drawCircle(Offset(20.0, 80.0), 7.0, paint);
-    canvas.drawLine(Offset(20.0, 80.0), Offset(20.0, 180.0), _paint);
-    canvas.drawCircle(Offset(20.0, 180.0), 7.0, paint);
-    // canvas.drawLine(Offset(20.0, 180.0), Offset(20.0, 280.0), _paint);
-    // canvas.drawCircle(Offset(20.0, 280.0), 7.0, paint);
-    // canvas.drawLine(Offset(20.0, 280.0), Offset(20.0, 380.0), _paint);
-    // canvas.drawCircle(Offset(20.0, 380.0), 7.0, paint);
-    // canvas.drawLine(Offset(20.0, 380.0), Offset(20.0, 480.0), _paint);
-    // canvas.drawCircle(Offset(20.0, 480.0), 7.0, paint);
+    canvas.drawLine(Offset(x, y), Offset(x, z), _paint);
+    canvas.drawCircle(Offset(x, z), 7.0, paint);
   }
 
   @override
-  bool shouldRepaint(CustomPainter oldDelegate){
+  bool shouldRepaint(CustomPainter oldDelegate) {
     return true;
   }
 }

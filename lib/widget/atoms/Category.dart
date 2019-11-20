@@ -1,5 +1,5 @@
+//import 'package:esell/state/src/theme.dart';
 import 'package:flutter/material.dart';
-
 class Category extends StatelessWidget {
   final String src;
   final caption;
@@ -30,7 +30,7 @@ class Category extends StatelessWidget {
                     child: Text(
                       caption,
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontFamily: 'Ropa Sans', fontSize: 12.0),
+                      style: Theme.of(context).textTheme.body1,
                     ),
                   ),
                 ),

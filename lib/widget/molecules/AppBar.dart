@@ -26,6 +26,7 @@ class FAppBar extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50.0),
         child: AppBar(
+          iconTheme: IconThemeData(color: icontheme3),
           backgroundColor: primary,
           title: searchBar != null
           ? TextField(

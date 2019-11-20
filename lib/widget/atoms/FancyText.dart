@@ -12,7 +12,7 @@ class FancyText extends StatelessWidget {
   FancyText(
       {this.text,
       this.color,
-      this.fontfamily,
+      this.fontfamily: 'Montserrat',
       this.size,
       this.onTap,
       this.decoration,

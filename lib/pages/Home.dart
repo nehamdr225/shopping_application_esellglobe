@@ -2,6 +2,7 @@ import 'package:esell/pages/SearchPage.dart';
 import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
 import 'package:esell/widget/atoms/loginOptions.dart';
+import 'package:esell/widget/molecules/GridList.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:esell/widget/molecules/Carousel.dart';
@@ -11,7 +12,6 @@ import 'package:esell/pages/Cart.dart';
 import 'package:esell/pages/Wishlist.dart';
 import 'package:provider/provider.dart';
 import 'package:esell/pages/Drawer.dart';
-import 'package:esell/widget/molecules/HorizontalList.dart';
 
 class HomePageApp extends StatelessWidget {
   const HomePageApp({Key key, this.searchBar, this.searchController, this.title});
@@ -98,13 +98,14 @@ class HomePageApp extends StatelessWidget {
               padding: EdgeInsets.fromLTRB(10.0, 8.0, 0.0, 2.0),
               child: FancyText(
                 text: "Men's Fashion",
-                fontfamily: 'Bree',
+                fontfamily: 'Montserrat',
                 size: 20.0,
                 color: textColor,
               ),
             ),
             Container(
-              child: GridList(listViews: MEN),
+              height: 250.0,
+              child: GridList(listViews: MEN, crossAxisCount: 3,),
             ),
             Padding(
                padding: EdgeInsets.all(10.0),
@@ -113,13 +114,14 @@ class HomePageApp extends StatelessWidget {
               padding: EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 2.0),
               child: FancyText(
                 text: "Women's Fashion",
-                fontfamily: 'Bree',
+                fontfamily: 'Montserrat',
                 size: 20.0,
                 color: textColor,
               ),
             ),
             Container(
-              child: GridList(listViews: WOMEN),
+              height: 250.0,
+              child: GridList(listViews: WOMEN, crossAxisCount: 3,),
             ),
           ],
         ),

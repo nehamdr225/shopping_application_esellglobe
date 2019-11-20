@@ -1,16 +1,24 @@
 import 'package:esell/state/state.dart';
-import 'package:esell/widget/containers/ProductGrid.dart';
+import 'package:esell/widget/atoms/InfoNavBar.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
-//import 'package:esell/widget/molecules/SubMainSlider.dart';
+import 'package:esell/widget/molecules/CardView.dart';
+//import 'package:esell/widget/molecules/GridList.dart';
 import 'package:flutter/material.dart';
 
 class CategoryPage extends StatelessWidget {
   final String text;
-  CategoryPage({this.text});
+  CategoryPage({this.text}); 
+  final List category= [
+    'Top Wear',
+    'Bottom Wear',
+    'Foot Wear',
+    'Backpacks',
+    'Watches and Glasses'
+  ];
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
+    //final height = MediaQuery.of(context).size.height;
     final cat = text == 'Top Wear'
         ? SubMain['top']
         : text == 'Bottom Wear'
@@ -26,89 +34,17 @@ class CategoryPage extends StatelessWidget {
             ),
             body: ListView(
               children: <Widget>[
-                // Container(
-                //   child: SubMainSlider(
-                //     listViews: cat,
-                //   ),
-                // ),
+                InfoNavBar(
+                  text: 'Top Wear',
+                ),
                 Container(
-                  child: Expansion(cat: cat),
+                  child: CardView(cat: cat),
                 ),
                 Padding(
                   padding: EdgeInsets.all(12.0),
                 ),
-                Container(
-                    height: height * (80 / 100),
-                    child: OrientationBuilder(builder: (context, orientation) {
-                      return ProductGrid(
-                        orientation: orientation,
-                        category: MAPPER[text],
-                      );
-                    }))
+              
               ],
             )));
-  }
-}
-
-class Item {
-  Item({
-    this.expandedValue,
-    this.headerValue,
-    this.isExpanded = false,
-  });
-
-  String expandedValue;
-  String headerValue;
-  bool isExpanded;
-}
-
-class Expansion extends StatefulWidget {
-  Expansion({Key key, this.cat}) : super(key: key);
-  final cat;
-
-  @override
-  _ExpansionState createState() => _ExpansionState(cat: cat);
-}
-
-class _ExpansionState extends State<Expansion> {
-  _ExpansionState({this.cat});
-  final cat;
-
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        child: _buildPanel(),
-      ),
-    );
-  }
-
-  Widget _buildPanel() {
-    return ExpansionPanelList(
-      expansionCallback: (int index, bool isExpanded) {
-        setState(() {
-          cat[index].isExpanded = !isExpanded;
-        });
-      },
-      children: cat.map<ExpansionPanel>((Item item) {
-        return ExpansionPanel(
-          headerBuilder: (BuildContext context, bool isExpanded) {
-            return ListTile(
-              title: Text(item.headerValue),
-            );
-          },
-          body: ListTile(
-              title: Text(item.expandedValue),
-              subtitle: Text('To delete this panel, tap the trash can icon'),
-              trailing: Icon(Icons.delete),
-              onTap: () {
-                // setState(() {
-                //   _data.removeWhere((currentItem) => item == currentItem);
-                // });
-              }),
-          isExpanded: item.isExpanded,
-        );
-      }).toList(),
-    );
   }
 }
