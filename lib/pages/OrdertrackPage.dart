@@ -1,79 +1,116 @@
-//import 'package:esell/state/src/theme.dart';
-import 'package:esell/widget/molecules/AppBar.dart';
+import 'package:esell/widget/atoms/DataContainer.dart';
 import 'package:flutter/material.dart';
 
-class OrdetrackPage extends StatelessWidget {
+class OrdetrackPage extends AnimatedWidget {
+  final double _width = 30.0;
+  final double _height = 107.0;
+  final Color color;
+  final bool order;
+  OrdetrackPage({AnimationController controller, this.order: true, this.color})
+      : super(
+            listenable: Tween<double>(begin: 0, end: 200).animate(controller));
   @override
   Widget build(BuildContext context) {
-    var y = 80.0;
-    return Scaffold(
-      backgroundColor: Colors.grey[100],
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(50.0),
-        child: FAppBar(wishlist: true, cart: true),
-      ),
-      body: Table(
-        children: <TableRow>[
+    Animation<double> animation = listenable;
+    return ListView(
+      children: [
+        Container(
+          height: 60.0,
+          width: 100.0,
+          //color: Colors.green,
+        ),
+        // Center(  // sample square
+        //   child: Container(
+        //     height: animation.value,
+        //     width: animation.value,
+        //     color: Colors.red,
+        //   ),
+        // ),
         
-        TableRow(
-            children: <Widget>[
-              Container(
-                color: Colors.green,
-                height: y+107,
-                //width: 50.0,
-                child: CustomPaint(
-                  painter: MakeLine(y: y, z: y + 100.0),
-                  child: Container(),
-                ),
+        Row(
+          children: <Widget>[
+            AnimatedContainer(
+              duration: Duration(seconds: 3),
+              curve: Curves.fastOutSlowIn,
+              height: _height,
+              width: _width,
+              child: CustomPaint(
+                painter: 
+                order == true? MakeLine(
+                  color: Colors.green
+                ):
+                MakeLine(),
               ),
-              Container(
-                height: 200.0,
-                width: 100.0,
-                child: Text('data')
-              ),
-            ],
-          ),
-          // TableRow(
-          //   children: <Widget>[
-          //     CustomPaint(
-          //       painter: MakeLine(y: y + 100.0, z: y + 200.0),
-          //       child: Container(
-          //         child: Text('data'),
-          //       ),
-          //     ),
-          //     Container(
-          //       width: 100.0,
-          //       //child: Text('data')
-          //     ),
-          //   ],
-          // ),
-          // TableRow(
-          //   children: <Widget>[
-          //     CustomPaint(
-          //       painter: MakeLine(y: y + 200.0, z: y + 300.0),
-          //       child: Container(),
-          //     ),
-          //     Container(
-          //       width: 100.0,
-          //       child: Text('data')
-          //     ),
-          //   ],
-          // ),
-      ],),
+            ),
+            DataContainer(),
+          ],
+        ),
+        Row(
+          children: <Widget>[
+            Container(
+              height: _height,
+              width: _width,
+              child: CustomPaint(
+                painter: MakeLine(),
                 
-      
+              ),
+            ),
+            DataContainer(),
+          ],
+        ),
+        Row(
+          children: <Widget>[
+            Container(
+              height: _height,
+              width: _width,
+              child: CustomPaint(
+                painter: MakeLine(),
+                //child: Container(),
+              ),
+            ),
+            DataContainer(),
+          ],
+        ),
+        Row(
+          children: <Widget>[
+            Container(
+              height: _height,
+              width: _width,
+              child: CustomPaint(
+                painter: MakeLine(),
+                //child: Container(),
+              ),
+            ),
+            DataContainer(),
+          ],
+        ),
+        Row(
+          children: <Widget>[
+            AnimatedContainer(
+              duration: Duration(seconds: 3),
+              height: _height,
+              width: _width,
+              child: CustomPaint(
+                painter: MakeLine(lastline: false),
+                //child: Container(),
+              ),
+            ),
+            DataContainer(),
+          ],
+        ),
+      ],
     );
   }
 }
 
 class MakeLine extends CustomPainter {
-  final double y;
-  final double z;
+  final bool lastline;
+  final Color color;
 
   Paint _paint;
-  MakeLine({this.y, this.z}) {
+  MakeLine({this.lastline: true, this.color: Colors.grey}) {
     _paint = Paint()
-      ..color = Colors.grey[400]
+      ..color = color
       ..strokeWidth = 3
       ..strokeCap = StrokeCap.round;
   }
@@ -82,8 +119,11 @@ class MakeLine extends CustomPainter {
     var x = 20.0;
     final paint = Paint();
     paint.color = Colors.grey[400];
-    canvas.drawLine(Offset(x, y), Offset(x, z), _paint);
-    canvas.drawCircle(Offset(x, z), 7.0, paint);
+    canvas.drawCircle(Offset(x, 0), 7.0, _paint);
+    lastline == true
+        ? canvas.drawLine(Offset(x, 0), Offset(x, 100.0), _paint)
+        : canvas.drawLine(
+            Offset(x, 0), Offset(x, 0), Paint()..color = Colors.transparent);
   }
 
   @override

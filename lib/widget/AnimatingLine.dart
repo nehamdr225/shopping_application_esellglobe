@@ -39,7 +39,7 @@ class _AnimatingLineState extends State<AnimatingLine> with TickerProviderStateM
         preferredSize: Size.fromHeight(50.0),
         child: FAppBar(wishlist: true, cart: true),
       ),
-      body: OrdetrackPage(controller: controller, color: color,)
+      body: OrdetrackPage()
     );
   }
 }

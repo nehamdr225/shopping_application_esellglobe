@@ -45,7 +45,7 @@ signup(String email, String password, String name) async {
 getProducts({result = 15, page = 1}) async {
   try {
     var response = await fetch(
-      uri: '$url/products?result=$result&page=$page',
+      uri: '$url/products?page=$page& result=15 lai url/products/page?result=$result',
     );
     if (response['error'] != null) return {"error": response['error']};
     return response;

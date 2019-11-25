@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:esell/state/state.dart';
 import 'package:provider/provider.dart';
 
-class ProductGrid extends StatelessWidget {
+class ProductGrid extends StatelessWidget { 
   final Orientation orientation;
   final String category;
   ProductGrid({this.orientation, this.category});

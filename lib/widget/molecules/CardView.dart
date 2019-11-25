@@ -9,13 +9,14 @@ class CardView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
+      primary: false,
       children: cat
           .map(
             (category) => SubMainCards(
               image: category["image"],
               text: category["name"],
               height: 200.0,
-              onTap: () {
+              onTap: () { 
                 Navigator.push(
                   context,
                   MaterialPageRoute(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class SubMainCards extends StatelessWidget {
+class SubMainCards extends StatelessWidget { 
   final image;
   final text;
   final height;
