@@ -4,7 +4,8 @@ class DataContainer extends StatelessWidget {
   final data;
   final height;
   final Alignment alignment;
-  DataContainer({this.data:'data', this.height:108.0, this.alignment: Alignment.topCenter});
+  final TextStyle style;
+  DataContainer({this.data:'data', this.height:108.0, this.alignment: Alignment.topCenter, this.style});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,7 @@ class DataContainer extends StatelessWidget {
         alignment: alignment,
         height: height,
         width: 100.0,
-        child: Text(data, style: Theme.of(context).textTheme.title,)
+        child: Text(data, style: style,)
     );
   }
 }
