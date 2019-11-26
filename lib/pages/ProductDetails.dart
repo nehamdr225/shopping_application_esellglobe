@@ -1,3 +1,4 @@
+import 'package:esell/widget/atoms/services.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:esell/widget/productDetails/details.dart';
@@ -30,6 +31,7 @@ class ProductDetails extends StatelessWidget {
                 ? PDAppBar(images)
                 : SliverPadding(
                     padding: EdgeInsets.all(0),
+
                   ),
             SliverList(
               delegate: SliverChildListDelegate(<Widget>[
@@ -37,6 +39,7 @@ class ProductDetails extends StatelessWidget {
                     name: product['name'],
                     price: product['price'].toString(),
                     details: product['description']),
+                Services(),
                 PDSizeSelector(),
                 PDDetails(),
               ]),
