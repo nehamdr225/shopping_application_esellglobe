@@ -10,6 +10,18 @@ const orderBar = Color(0xfffc773a);
 const errorColor = const Color(0xffc5032b);
 const splash = Colors.black12;
 const textColor = Colors.black87; 
+const begin = TextStyle(
+  fontWeight: FontWeight.w400, 
+  color: Colors.grey, 
+  fontSize: 16,
+  fontFamily: 'Montserrat'
+);
+const end = TextStyle(
+  fontWeight: FontWeight.w600, 
+  color: Colors.black87, 
+  fontSize: 16,
+  fontFamily: 'Montserrat'
+);
 
 class FTheme with ChangeNotifier {
   ThemeData esellDarkTheme = ThemeData.dark();

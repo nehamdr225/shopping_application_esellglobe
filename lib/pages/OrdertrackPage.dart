@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class OrdetrackPage extends StatelessWidget {
   final dotSize = 20.0;
   final double _width = 30.0;
-  final double _height = 107.0;
+  final double _height = 120.0;
   final AnimationController controller;
   final Animation<Color> dotOneColor;
   final Animation<TextStyle> textOneStyle;
@@ -35,10 +35,8 @@ class OrdetrackPage extends StatelessWidget {
           ),
         ),
         textOneStyle = TextStyleTween(
-          begin: TextStyle(
-              fontWeight: FontWeight.w400, color: Colors.grey, fontSize: 12),
-          end: TextStyle(
-              fontWeight: FontWeight.w600, color: Colors.black87, fontSize: 12),
+          begin: begin,
+          end: end
         ).animate(
           CurvedAnimation(
             parent: controller,
@@ -63,10 +61,8 @@ class OrdetrackPage extends StatelessWidget {
           ),
         ),
         textTwoStyle = TextStyleTween(
-          begin: TextStyle(
-              fontWeight: FontWeight.w400, color: Colors.grey, fontSize: 12),
-          end: TextStyle(
-              fontWeight: FontWeight.w600, color: Colors.black87, fontSize: 12),
+          begin: begin,
+          end: end,
         ).animate(
           CurvedAnimation(
             parent: controller,
@@ -91,10 +87,8 @@ class OrdetrackPage extends StatelessWidget {
           ),
         ),
         textThreeStyle = TextStyleTween(
-          begin: TextStyle(
-              fontWeight: FontWeight.w400, color: Colors.grey, fontSize: 12),
-          end: TextStyle(
-              fontWeight: FontWeight.w600, color: Colors.black87, fontSize: 12),
+          begin: begin,
+          end: end,
         ).animate(
           CurvedAnimation(
             parent: controller,
@@ -119,10 +113,8 @@ class OrdetrackPage extends StatelessWidget {
           ),
         ),
         textFourStyle = TextStyleTween(
-          begin: TextStyle(
-              fontWeight: FontWeight.w400, color: Colors.grey, fontSize: 12),
-          end: TextStyle(
-              fontWeight: FontWeight.w600, color: Colors.black87, fontSize: 12),
+          begin: begin,
+          end: end,
         ).animate(
           CurvedAnimation(
             parent: controller,
@@ -149,7 +141,7 @@ class OrdetrackPage extends StatelessWidget {
           builder: (BuildContext context, Widget child) => ListView(
             children: [
               Container(
-                height: 60.0,
+                height: 80.0,
                 width: 100.0,
                 //color: Colors.green,
               ),
@@ -164,7 +156,9 @@ class OrdetrackPage extends StatelessWidget {
                       ),
                     ),
                   ),
+                  SizedBox(width: 40.0,),
                   DataContainer(
+                    data: 'Ordered and Approved',
                     style: textOneStyle.value,
                   ),
                 ],
@@ -179,6 +173,7 @@ class OrdetrackPage extends StatelessWidget {
                     ),
                   ),
                   DataContainer(
+                    data: 'Packed',
                     style: textTwoStyle.value,
                   ),
                 ],
@@ -196,6 +191,7 @@ class OrdetrackPage extends StatelessWidget {
                     ),
                   ),
                   DataContainer(
+                    data: 'Shipped',
                     style: textThreeStyle.value,
                   ),
                 ],
@@ -207,30 +203,14 @@ class OrdetrackPage extends StatelessWidget {
                     width: _width,
                     child: CustomPaint(
                       painter: MakeLine(
+                        lastline: false,
                         color: dotFourColor.value
                       ),
                       //child: Container(),
                     ),
                   ),
                   DataContainer(
-                    style: textFourStyle.value,
-                  ),
-                ],
-              ),
-              Row( //FIVE
-                children: <Widget>[
-                  Container(
-                    height: _height,
-                    width: _width,
-                    child: CustomPaint(
-                      painter: MakeLine(
-                        color: dotFourColor.value,
-                        lastline: false
-                      ),
-                      //child: Container(),
-                    ),
-                  ),
-                  DataContainer(
+                    data: 'Delivered',
                     style: textFourStyle.value,
                   ),
                 ],
@@ -259,7 +239,7 @@ class MakeLine extends CustomPainter {
     paint.color = Colors.grey[400];
     canvas.drawCircle(Offset(x, 0), 7.0, _paint);
     lastline ==true
-    ?canvas.drawLine(Offset(x, 0), Offset(x, 100.0), _paint)
+    ?canvas.drawLine(Offset(x, 0), Offset(x, 120.0), _paint)
     :canvas.drawLine(Offset(x, 0), Offset(x, 0.0), Paint()..color = Colors.transparent);
   }
 

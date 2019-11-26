@@ -53,14 +53,14 @@ flutter:
     - images/icons/
     - images/logo/
     - images/esell photo/
-    - images/myntra images/
-    - images/myntra images/sc/
     - images/categoryimg/
     - images/offers/
     - images/SubMain/Shirt/
     - images/SubMain/pant/
     - images/SubMain/foot/    
     - images/SubMain/watchNglass/
+    - images/women/
+
     # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
 

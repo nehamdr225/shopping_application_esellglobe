@@ -35,32 +35,32 @@ const WOMEN = [
   {
     "name": "Top Wear",
     "cap": "Top Wear",
-    "src": "images/categoryimg/shirt.jpg"
+    "src": "images/women/shirt.jpeg"
   },
   {
     "name": "Bottom Wear",
     "cap": "Bottom Wear",
-    "src": 'images/categoryimg/pants.jpg',
+    "src": 'images/women/pant.jpeg',
   },
   {
     "name": "Foot Wear",//"Shoe",
     "cap": "Foot Wear",//"Shoe",
-    "src": 'images/categoryimg/shoes.jpg',
+    "src": 'images/women/shoes.jpeg',
   },
   {
-    "name": "Backpacks",//"Shoe",
-    "cap": "Backpacks",//"Shoe",
-    "src": 'images/categoryimg/shoes.jpg',
+    "name": "Bags",//"Shoe",
+    "cap": "Bags",//"Shoe",
+    "src": 'images/women/bag.jpeg',
   },
   {
     "name": "Sunglasses",//"Shoe",
     "cap": "Sunglasses",//"Shoe",
-    "src": 'images/categoryimg/shoes.jpg',
+    "src": 'images/women/sunglass.jpeg',
   },
   {
     "name": "Watches",
-    "cap": "Watches & Glasses",
-    "src": 'images/categoryimg/watchesNglasses.jpg',
+    "cap": "Watches",
+    "src": 'images/women/watches.jpeg',
   }
 ];
 
@@ -146,45 +146,3 @@ const SubMain = {
 ],
 
 };
-
-const specialOffers = [
-  {
-    "name": "Watches & Glasses",
-    "cap": "Watches & Glasses",
-    "src": "images/esell photo/3brown.jpg",
-  },
-  {
-    "name": "Watches & Glasses",
-    "cap": "Watches & Glasses",
-    "src": 'images/esell photo/5green_sq.jpg',
-  },
-  {
-    "name": "Watches & Glasses",
-    "cap": "Watches & Glasses",
-    "src": 'images/esell photo/4red.jpg',
-  }
-];
-
-const topBrands = [
-  {
-    "name": "United",
-    "cap": "United", 
-    "src": "images/esell photo/1black_vert.jpg",
-  },
-  {
-    "name": "Kook N Keech",
-    "cap": "Kook N Keech",
-    "src": "images/esell photo/7red_vert.jpg",
-  },
-  {
-    "name": "Indian Terrain",
-    "cap": "Indian Terrain",
-    "src": "images/esell photo/10beach_vert.jpeg",
-  },
-  {
-    "name": "Lee",
-    "cap": "Lee",
-    "src": "images/esell photo/2bnw_vert.jpg",
-  }
-];
-

@@ -1,4 +1,4 @@
-//import 'package:esell/state/src/consts.dart';
+import 'package:esell/state/src/consts.dart';
 import 'package:esell/widget/atoms/SubMainCards.dart';
 import 'package:esell/widget/containers/ProductGrid.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +10,7 @@ class CardView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       primary: false,
-      children: cat
+      children: SubMain[cat] 
           .map(
             (category) => SubMainCards(
               image: category["image"],

@@ -26,7 +26,7 @@ class GridList extends StatelessWidget {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) =>
-                        CategoryPage(text: listViews[index]['name']),
+                        CategoryPage(text: listViews[index]['name']), 
                   ),
                 );
               },

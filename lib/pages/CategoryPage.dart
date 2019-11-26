@@ -20,10 +20,10 @@ class CategoryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     //final height = MediaQuery.of(context).size.height;
     final cat = text == 'Top Wear'
-        ? SubMain['top']
+        ? 'top'
         : text == 'Bottom Wear'
-            ? SubMain['bottom']
-            : text == "Foot Wear" ? SubMain['shoes'] : SubMain['glasses'];
+            ? 'bottom'
+            : text == "Foot Wear" ? 'shoes' : 'glasses';
 
     return SafeArea(
         child: Scaffold(
@@ -33,8 +33,9 @@ class CategoryPage extends StatelessWidget {
               child: FAppBar(wishlist: true, cart: true),
             ),
             body: ListView(
+              primary: false,
               children: <Widget>[
-                InfoNavBar(
+                InfoNavBar( 
                   text: 'Top Wear',
                 ),
                 Container(

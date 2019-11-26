@@ -12,7 +12,7 @@ class DataContainer extends StatelessWidget {
     return Container(
         alignment: alignment,
         height: height,
-        width: 100.0,
+        width: 150.0,
         child: Text(data, style: style,)
     );
   }

@@ -28,6 +28,7 @@ class HomePageApp extends StatelessWidget {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(40.0),
           child: AppBar(
+            elevation: 0.0,
             title: Text('esellglobe',
                 style: TextStyle(fontFamily: 'Bree', color: textColor)),
             iconTheme: IconThemeData(
@@ -98,7 +99,6 @@ class HomePageApp extends StatelessWidget {
               padding: EdgeInsets.fromLTRB(10.0, 8.0, 0.0, 2.0),
               child: FancyText(
                 text: "Men's Fashion",
-                fontfamily: 'Montserrat',
                 size: 20.0,
                 color: textColor,
               ),
@@ -114,7 +114,6 @@ class HomePageApp extends StatelessWidget {
               padding: EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 2.0),
               child: FancyText(
                 text: "Women's Fashion",
-                fontfamily: 'Montserrat',
                 size: 20.0,
                 color: textColor,
               ),
