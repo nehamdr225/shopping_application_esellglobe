@@ -6,22 +6,25 @@ import 'package:flutter/material.dart';
 class CardView extends StatelessWidget {
   final cat;
   CardView({this.cat});
+
   @override
   Widget build(BuildContext context) {
+    print(SubMain[cat]);
     return ListView(
       primary: false,
-      children: SubMain[cat] 
-          .map(
+      children: SubMain[cat]
+          .map<Widget>(
             (category) => SubMainCards(
-              image: category["image"],
+              image: category["src"],
               text: category["name"],
               height: 200.0,
-              onTap: () { 
+              onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) =>
-                          ProductGrid()),
+                      builder: (context) => ProductGrid(
+                            category: category['name'],
+                          )),
                 );
               },
             ),

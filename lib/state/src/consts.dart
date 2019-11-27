@@ -110,7 +110,7 @@ const SubMain = {
     "src": "images/SubMain/pant/sportswear.jpg"
   },
   ],
-  "shoes" : [
+  "shoe" : [
   {
     "name": "Casual",
     "cap": "Casual",

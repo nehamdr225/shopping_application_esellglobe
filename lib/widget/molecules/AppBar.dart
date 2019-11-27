@@ -17,7 +17,14 @@ class FAppBar extends StatelessWidget {
   final title;
   final drawer;
   final searchController;
-  FAppBar({this.wishlist, this.drawer, this.cart, this.search, this.title, this.searchBar, this.searchController});
+  FAppBar(
+      {this.wishlist,
+      this.drawer,
+      this.cart,
+      this.search,
+      this.title,
+      this.searchBar,
+      this.searchController});
   @override
   Widget build(BuildContext context) {
     FlutterStatusbarcolor.setStatusBarColor(Colors.black87);
@@ -27,30 +34,31 @@ class FAppBar extends StatelessWidget {
         preferredSize: Size.fromHeight(50.0),
         child: AppBar(
           elevation: 0.0,
-          iconTheme: IconThemeData(color: icontheme3),
+          iconTheme: IconThemeData(color: Colors.white),
           backgroundColor: primary,
           title: searchBar != null
-          ? TextField(
-              autofocus: true,
-              onChanged: (value) {
-                searchController(value);
-              },
-              style: TextStyle(color: Colors.black),
-              decoration: InputDecoration(
-                  contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                  hintText: "Search for Fashion!",
-                  hintStyle: TextStyle(
-                      fontFamily: 'Helvetica',
-                      fontSize: 12,
-                      color: Colors.black54),
-                  // labelStyle: ,
-                  focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.transparent))),
-          )
-          : title != null
-              ? Text(title,
-                style: TextStyle(fontFamily: 'Bree', color: textColor))
-              : null,            
+              ? TextField(
+                  autofocus: true,
+                  onChanged: (value) {
+                    searchController(value);
+                  },
+                  style: TextStyle(color: Colors.black),
+                  decoration: InputDecoration(
+                      contentPadding:
+                          EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                      hintText: "Search for Fashion!",
+                      hintStyle: TextStyle(
+                          fontFamily: 'Helvetica',
+                          fontSize: 12,
+                          color: Colors.black54),
+                      // labelStyle: ,
+                      focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.transparent))),
+                )
+              : title != null
+                  ? Text(title,
+                      style: TextStyle(fontFamily: 'Bree', color: textColor))
+                  : null,
           actions: <Widget>[
             search != null
                 ? FIcons(
@@ -64,7 +72,7 @@ class FAppBar extends StatelessWidget {
                 ? FIcons(
                     icon: Icons.shopping_cart,
                     alignment: Alignment.centerRight,
-                    color: icontheme3,
+                    color: Colors.white,
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => CartPage()));
@@ -74,14 +82,14 @@ class FAppBar extends StatelessWidget {
                 ? FIcons(
                     icon: Icons.bookmark,
                     alignment: Alignment.centerRight,
-                    color: icontheme3,
+                    color: Colors.white,
                     onPressed: () {
                       user.token != null
-                        ? Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => WishlistPage()))
-                        : _showBottomSheet(context);
+                          ? Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => WishlistPage()))
+                          : _showBottomSheet(context);
                     })
                 : Text('')
           ],
@@ -89,6 +97,7 @@ class FAppBar extends StatelessWidget {
       ),
     );
   }
+
   _showBottomSheet(context) {
     showModalBottomSheet(
         context: context,
