@@ -31,10 +31,10 @@ class FAppBar extends StatelessWidget {
     var user = Provider.of<UserModel>(context);
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(50.0),
+        preferredSize: Size.fromHeight(40.0),
         child: AppBar(
           elevation: 0.0,
-          iconTheme: IconThemeData(color: Colors.white),
+          iconTheme: IconThemeData(color: icontheme3),
           backgroundColor: primary,
           title: searchBar != null
               ? TextField(
@@ -64,7 +64,6 @@ class FAppBar extends StatelessWidget {
                 ? FIcons(
                     icon: Icons.search,
                     alignment: Alignment.centerRight,
-                    color: icontheme3,
                     onPressed: () {},
                   )
                 : Text(''),
@@ -72,7 +71,6 @@ class FAppBar extends StatelessWidget {
                 ? FIcons(
                     icon: Icons.shopping_cart,
                     alignment: Alignment.centerRight,
-                    color: Colors.white,
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => CartPage()));
@@ -82,7 +80,6 @@ class FAppBar extends StatelessWidget {
                 ? FIcons(
                     icon: Icons.bookmark,
                     alignment: Alignment.centerRight,
-                    color: Colors.white,
                     onPressed: () {
                       user.token != null
                           ? Navigator.push(

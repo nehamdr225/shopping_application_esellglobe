@@ -31,16 +31,15 @@ class HomePageApp extends StatelessWidget {
           child: AppBar(
             elevation: 0.0,
             title: Text('esellglobe',
-                style: TextStyle(fontFamily: 'Bree', color: Colors.white)),
+                style: TextStyle(fontFamily: 'Bree', color: textColor)),
             iconTheme: IconThemeData(
-              color: Colors.white,
+              color: icontheme3,
             ),
             backgroundColor: primary,
             actions: <Widget>[
               FIcons(
                 icon: Icons.search,
                 alignment: Alignment.centerRight,
-                color: Colors.white,
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -51,7 +50,6 @@ class HomePageApp extends StatelessWidget {
               FIcons(
                   icon: Icons.shopping_cart,
                   alignment: Alignment.centerRight,
-                  color: Colors.white,
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => CartPage()));
@@ -59,7 +57,6 @@ class HomePageApp extends StatelessWidget {
               FIcons(
                   icon: Icons.bookmark,
                   alignment: Alignment.centerRight,
-                  color: Colors.white,
                   onPressed: () {
                     user.token != null
                         ? Navigator.push(

@@ -29,8 +29,9 @@ class DrawerApp extends StatelessWidget {
                 ? UserAccountsDrawerHeader(
                     accountName: Text(
                         userData.length > 0 ? userData['name'] : "Loading ..."),
-                    accountEmail: Text(
-                        userData.length > 0 ? userData['email'] : "Loading ..."),
+                    accountEmail: Text(userData.length > 0
+                        ? userData['email']
+                        : "Loading ..."),
                     currentAccountPicture: GestureDetector(
                       child: CircleAvatar(
                         backgroundColor: Colors.white24,
@@ -43,8 +44,9 @@ class DrawerApp extends StatelessWidget {
                   )
                 : DrawerHeader(
                     decoration: BoxDecoration(
-                        //color: Colors.grey[200],
-                        gradient: drawercolor),
+                      //color: primary,
+                      gradient: drawercolor,
+                    ),
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,18 +60,16 @@ class DrawerApp extends StatelessWidget {
                               width: 45.0,
                             ),
                           ),
-                          // Padding(
-                          //   padding: EdgeInsets.all(2.0),
-                          // ),
                           Container(
                             color: Colors.transparent,
                             alignment: Alignment.bottomLeft,
                             child: ListTile(
-                              title: Text(
-                                'Log in   .   Sign up',
-                                style: Theme.of(context).textTheme.title,
-                              ),
-                              contentPadding: EdgeInsets.only(left: 20.0),
+                              title: Text('Log in   .   Sign up',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .caption
+                                      .copyWith(fontSize: 16.0, fontWeight: FontWeight.w500)),
+                              contentPadding: EdgeInsets.only(left: 5.0),
                               trailing: Icon(
                                 Icons.arrow_right,
                                 color: textColor,
@@ -83,6 +83,13 @@ class DrawerApp extends StatelessWidget {
                             ),
                           )
                         ])),
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0, left: 14.0, bottom: 5.0,),
+              child: Text(
+                'Search for Fashion',
+                style: Theme.of(context).textTheme.body2.copyWith(fontSize: 16.0, color: primaryDark),
+              ),
+            ),
             DrawerElements(
               title: 'Top Wear',
               icon: 'images/icons/tshirt.png',
@@ -125,8 +132,15 @@ class DrawerApp extends StatelessWidget {
               color: Colors.grey[500],
               height: 10.0,
             ),
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0, left: 14.0, bottom: 5.0,),
+              child: Text(
+                'Find your style',
+                style: Theme.of(context).textTheme.body2.copyWith(fontSize: 16.0, color: primaryDark),
+              ),
+            ),
             DrawerElements(
-              title: 'Home Page',
+              title: 'Home',
               icon: 'images/icons/homepage.png',
               onTap: () {
                 Navigator.push(context,
@@ -137,8 +151,8 @@ class DrawerApp extends StatelessWidget {
               title: 'Cart',
               icon: 'images/icons/cart.png',
               onTap: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => CartPage()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => CartPage()));
               },
             ),
             DrawerElements(
@@ -154,8 +168,10 @@ class DrawerApp extends StatelessWidget {
                     title: 'Account',
                     icon: 'images/icons/account.png',
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => SignInPage()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SignInPage()));
                     },
                   )
                 : Text(''),

@@ -34,7 +34,7 @@ class FTheme with ChangeNotifier {
         headline: TextStyle(fontSize: 24.0, color: textColor),
         title: TextStyle(fontSize: 16.0, color: textColor),
         body1: TextStyle(fontSize: 12.0, color: textColor),
-        body2: TextStyle(fontSize: 18.0, color: primary),
+        body2: TextStyle(fontSize: 18.0, color: primaryDark),
         caption: TextStyle(fontSize: 14.0, color: textColor),
     ),
   );
