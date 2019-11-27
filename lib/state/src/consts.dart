@@ -17,12 +17,12 @@ const MEN = [
   {
     "name": "Backpacks",//"Shoe",
     "cap": "Backpacks",//"Shoe",
-    "src": 'images/categoryimg/shoes.jpg',
+    "src": 'images/categoryimg/bagmen.jpeg',
   },
   {
     "name": "Sunglasses",//"Shoe",
     "cap": "Sunglasses",//"Shoe",
-    "src": 'images/categoryimg/shoes.jpg',
+    "src": 'images/categoryimg/sunglassmen.jpe',
   },
   {
     "name": "Watches",
@@ -40,7 +40,7 @@ const WOMEN = [
   {
     "name": "Bottom Wear",
     "cap": "Bottom Wear",
-    "src": 'images/women/pant.jpeg',
+    "src": 'images/women/pantwomen.jpeg',
   },
   {
     "name": "Foot Wear",//"Shoe",
