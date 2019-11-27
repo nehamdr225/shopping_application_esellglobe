@@ -7,7 +7,8 @@ class InfoNavBar extends StatelessWidget {
   final type;
   final text;
   final offerCard;
-  const InfoNavBar({Key key, this.type, this.text, this.offerCard:false}) : super(key: key);
+  const InfoNavBar({Key key, this.type, this.text, this.offerCard: false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,11 +16,12 @@ class InfoNavBar extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         Padding(
-          padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 15.0),
+          padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
           child: FancyText(
             text: text,
             //textColor: color.navColor,
-            size: 18.0,
+            fontfamily: "Bree",
+            size: 20.0,
             textAlign: TextAlign.center,
           ),
         ),
@@ -34,8 +36,8 @@ class InfoNavBar extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     builder: (context) => ProductsPage(
-                          // type: type,
-                          // offerCard: offerCard,
+                        // type: type,
+                        // offerCard: offerCard,
                         ) //type: type,)
                     ));
           },

@@ -14,7 +14,8 @@ import 'package:provider/provider.dart';
 import 'package:esell/pages/Drawer.dart';
 
 class HomePageApp extends StatelessWidget {
-  const HomePageApp({Key key, this.searchBar, this.searchController, this.title});
+  const HomePageApp(
+      {Key key, this.searchBar, this.searchController, this.title});
   final searchBar;
   final searchController;
   final title;
@@ -30,16 +31,16 @@ class HomePageApp extends StatelessWidget {
           child: AppBar(
             elevation: 0.0,
             title: Text('esellglobe',
-                style: TextStyle(fontFamily: 'Bree', color: textColor)),
+                style: TextStyle(fontFamily: 'Bree', color: Colors.white)),
             iconTheme: IconThemeData(
-              color: icontheme3,
+              color: Colors.white,
             ),
             backgroundColor: primary,
             actions: <Widget>[
               FIcons(
                 icon: Icons.search,
                 alignment: Alignment.centerRight,
-                color: icontheme3,
+                color: Colors.white,
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -50,7 +51,7 @@ class HomePageApp extends StatelessWidget {
               FIcons(
                   icon: Icons.shopping_cart,
                   alignment: Alignment.centerRight,
-                  color: icontheme3,
+                  color: Colors.white,
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => CartPage()));
@@ -58,7 +59,7 @@ class HomePageApp extends StatelessWidget {
               FIcons(
                   icon: Icons.bookmark,
                   alignment: Alignment.centerRight,
-                  color: icontheme3,
+                  color: Colors.white,
                   onPressed: () {
                     user.token != null
                         ? Navigator.push(
@@ -70,7 +71,7 @@ class HomePageApp extends StatelessWidget {
             ],
           ),
         ),
-        backgroundColor: bgcolor,
+        backgroundColor: Colors.white,
         drawer: DrawerApp(),
         body: ListView(
           children: <Widget>[
@@ -78,49 +79,58 @@ class HomePageApp extends StatelessWidget {
               padding: EdgeInsets.all(3.0),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+              padding:
+                  const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
               child: Container(
-                decoration: BoxDecoration(
-                  border: Border.all(width: 2.0, color: textColor),
-                  borderRadius: BorderRadius.circular(5.0)
-                ),
-                height: 420, 
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-                  child: FCarousel(),
-                )
-               
+                  // decoration: BoxDecoration(
+                  //     border: Border.all(width: 2.0, color: textColor),
+                  //     borderRadius: BorderRadius.circular(5.0)),
+                  height: 420,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10.0, horizontal: 10.0),
+                    child: FCarousel(),
+                  )),
+            ),
+            Padding(
+              padding: EdgeInsets.all(10.0),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(10.0, 8.0, 0.0, 8.0),
+              child: FancyText(
+                text: "Men's Fashion",
+                size: 20.0,
+                color: textColor,
+                textAlign: TextAlign.start,
+                fontfamily: "Bree",
+              ),
+            ),
+            Container(
+              height: 250.0,
+              child: GridList(
+                listViews: MEN,
+                crossAxisCount: 3,
               ),
             ),
             Padding(
               padding: EdgeInsets.all(10.0),
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(10.0, 8.0, 0.0, 2.0),
-              child: FancyText(
-                text: "Men's Fashion",
-                size: 20.0,
-                color: textColor,
-              ),
-            ),
-            Container(
-              height: 250.0,
-              child: GridList(listViews: MEN, crossAxisCount: 3,),
-            ),
-            Padding(
-               padding: EdgeInsets.all(10.0),
-            ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 2.0),
+              padding: EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 8.0),
               child: FancyText(
                 text: "Women's Fashion",
                 size: 20.0,
                 color: textColor,
+                fontfamily: "Bree",
+                textAlign: TextAlign.start,
               ),
             ),
             Container(
               height: 250.0,
-              child: GridList(listViews: WOMEN, crossAxisCount: 3,),
+              child: GridList(
+                listViews: WOMEN,
+                crossAxisCount: 3,
+              ),
             ),
           ],
         ),
