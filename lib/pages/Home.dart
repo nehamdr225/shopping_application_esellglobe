@@ -22,7 +22,7 @@ class HomePageApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FlutterStatusbarcolor.setStatusBarColor(primaryDark);
+    FlutterStatusbarcolor.setStatusBarColor(Theme.of(context).colorScheme.primaryVariant);
     var user = Provider.of<UserModel>(context);
     return SafeArea(
       child: Scaffold(
@@ -35,7 +35,7 @@ class HomePageApp extends StatelessWidget {
             iconTheme: IconThemeData(
               color: icontheme3,
             ),
-            backgroundColor: primary,
+            backgroundColor: Theme.of(context).colorScheme.primary,
             actions: <Widget>[
               FIcons(
                 icon: Icons.search,

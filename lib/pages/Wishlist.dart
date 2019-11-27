@@ -25,7 +25,7 @@ class WishlistPage extends StatelessWidget {
               width: 160.0,
               shape: true,
               color: textColor,
-              bg: secondary,
+              bg: Theme.of(context).colorScheme.secondary,
               onPressed: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => CartPage()));

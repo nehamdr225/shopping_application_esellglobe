@@ -1,7 +1,5 @@
 import 'package:esell/pages/CategoryPage.dart';
-import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/Category.dart';
-//import 'package:esell/widget/molecules/TopBrands.dart';
 import 'package:flutter/material.dart';
 
 class HorizontalList extends StatelessWidget {
@@ -10,7 +8,7 @@ class HorizontalList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: bgcolor,
+      color: Theme.of(context).colorScheme.background,
       height: 100.0,
       width: 200.0,
       child: ListView.builder(

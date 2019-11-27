@@ -1,6 +1,5 @@
-import 'package:esell/state/state.dart';
 import 'package:flutter/material.dart';
-import 'package:esell/state/src/theme.dart';
+
 
 class FForms extends StatelessWidget {
   final bool obscure;
@@ -23,7 +22,7 @@ class FForms extends StatelessWidget {
       onChanged: onChanged,
       decoration: InputDecoration(
         border: OutlineInputBorder(
-          borderSide: BorderSide(color: primary,)
+          borderSide: BorderSide(color: Theme.of(context).colorScheme.primary,)
         ),
           icon: type == TextInputType.phone ? Icon(Icons.call) : null,
           contentPadding: type == TextInputType.phone
@@ -33,9 +32,9 @@ class FForms extends StatelessWidget {
           labelStyle: style,
           labelText: text,
           disabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: primary)),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary)),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: primary))
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary))
       ),
     );
   }

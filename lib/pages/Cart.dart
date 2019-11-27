@@ -46,7 +46,7 @@ class _CartPageState extends State<CartPage> {
                     width: 160.0,
                     color: textColor,
                     shape: true,
-                    bg: secondary,
+                    bg: Theme.of(context).colorScheme.secondary,
                     onPressed: () {},
                     text: user.token != null ? 'Check Out' : 'Login to proceed',
                   ),

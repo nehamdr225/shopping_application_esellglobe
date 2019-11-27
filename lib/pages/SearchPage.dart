@@ -11,12 +11,6 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
   List searchResult = [];
-  TextStyle style = const TextStyle(
-      fontFamily: 'Helvetica',
-      fontWeight: FontWeight.bold,
-      fontSize: 15,
-      color: primary);
-
   @override
   Widget build(BuildContext context) {
     //final merchants = Provider.of<MerchantsModel>(context).merchants;
@@ -44,7 +38,7 @@ class _SearchPageState extends State<SearchPage> {
               searchController: search),
         ),
         body: Container(
-          color: bgcolor,
+          color: Theme.of(context).colorScheme.background,
             child: ListView(
           padding: EdgeInsets.symmetric(vertical: 20.0),
           children: searchResult.length > 0
@@ -65,7 +59,7 @@ class _SearchPageState extends State<SearchPage> {
                           color: Colors.white,
                         ),
                         radius: 12.0,
-                        backgroundColor: primary,
+                        backgroundColor: Theme.of(context).colorScheme.primary,
                       ),
                       trailing: Icon(Icons.arrow_forward_ios, size: 14),
                       title: Text(

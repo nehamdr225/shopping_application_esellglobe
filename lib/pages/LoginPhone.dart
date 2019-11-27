@@ -1,4 +1,3 @@
-import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/BrandLogos.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
 import 'package:esell/widget/atoms/Forms.dart';
@@ -37,7 +36,7 @@ class LoginPhone extends StatelessWidget {
                     padding: EdgeInsets.all(25.0),
                   ),
                   FancyText( // continue w/o signin
-                  color:  primary,
+                  color:  Theme.of(context).colorScheme.primary,
                   text: "Enter Verified Mobile Number",
                   size: 18.0,
                   fontfamily: 'Bree',

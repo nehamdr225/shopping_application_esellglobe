@@ -1,6 +1,7 @@
 import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/DataContainer.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
+import 'package:esell/widget/molecules/MakeLine.dart';
 import 'package:flutter/material.dart';
 
 class OrdetrackPage extends StatelessWidget {
@@ -8,123 +9,33 @@ class OrdetrackPage extends StatelessWidget {
   final double _width = 30.0;
   final double _height = 120.0;
   final AnimationController controller;
-  final Animation<Color> dotOneColor;
-  final Animation<TextStyle> textOneStyle;
-  final Animation<Color> dotTwoColor;
-  final Animation<TextStyle> textTwoStyle;
-  final Animation<Color> dotThreeColor;
-  final Animation<TextStyle> textThreeStyle;
-  final Animation<Color> dotFourColor;
-  final Animation<TextStyle> textFourStyle;
-  // final Color color;
-  final bool order;
+  final Animation<Color> dotColor;
+  final Animation<TextStyle> textStyle;
+  final bool ordered;
+  final bool packed;
+  final bool shipped;
+  final bool delivered;
 
   OrdetrackPage(
-      {Key key, this.controller, this.order:true}) //this.order: true, this.color})
-      : dotOneColor = ColorTween(
+      {Key key, this.controller, this.ordered, this.packed, this.shipped, this.delivered})
+      : dotColor = ColorTween(
           begin: barGrey,
           end: orderBar,
         ).animate(
           CurvedAnimation(
             parent: controller,
-            curve: Interval(
-              0.000,
-              0.200,
-              curve: Curves.linear,
-            ),
+            curve: Curves.fastLinearToSlowEaseIn
           ),
         ),
-        textOneStyle = TextStyleTween(
+        textStyle = TextStyleTween(
           begin: begin,
           end: end
         ).animate(
           CurvedAnimation(
             parent: controller,
-            curve: Interval(
-              0.000,
-              0.200,
-              curve: Curves.linear,
+            curve: Curves.fastOutSlowIn
             ),
           ),
-        ),
-        dotTwoColor = ColorTween(
-          begin: barGrey,
-          end: orderBar,
-        ).animate(
-          CurvedAnimation(
-            parent: controller,
-            curve: Interval(
-              0.200,
-              0.400,
-              curve: Curves.linear,
-            ),
-          ),
-        ),
-        textTwoStyle = TextStyleTween(
-          begin: begin,
-          end: end,
-        ).animate(
-          CurvedAnimation(
-            parent: controller,
-            curve: Interval(
-              0.200,
-              0.400,
-              curve: Curves.linear,
-            ),
-          ),
-        ),
-        dotThreeColor = ColorTween(
-          begin: barGrey,
-          end: orderBar,
-        ).animate(
-          CurvedAnimation(
-            parent: controller,
-            curve: Interval(
-              0.400,
-              0.600,
-              curve: Curves.linear,
-            ),
-          ),
-        ),
-        textThreeStyle = TextStyleTween(
-          begin: begin,
-          end: end,
-        ).animate(
-          CurvedAnimation(
-            parent: controller,
-            curve: Interval(
-              0.400,
-              0.600,
-              curve: Curves.linear,
-            ),
-          ),
-        ),
-        dotFourColor = ColorTween(
-          begin: barGrey,
-          end: orderBar,
-        ).animate(
-          CurvedAnimation(
-            parent: controller,
-            curve: Interval(
-              0.600,
-              0.800,
-              curve: Curves.linear,
-            ),
-          ),
-        ),
-        textFourStyle = TextStyleTween(
-          begin: begin,
-          end: end,
-        ).animate(
-          CurvedAnimation(
-            parent: controller,
-            curve: Interval(
-              0.600,
-              0.800,
-              curve: Curves.linear,
-            ),
-          ),
-        ),
         super(key: key);
 
   @override
@@ -143,7 +54,6 @@ class OrdetrackPage extends StatelessWidget {
               Container(
                 height: 80.0,
                 width: 100.0,
-                //color: Colors.green,
               ),
               Row( //ONE
                 children: <Widget>[
@@ -152,14 +62,18 @@ class OrdetrackPage extends StatelessWidget {
                     width: _width,
                     child: CustomPaint(
                       painter: MakeLine(
-                        color: dotOneColor.value
+                        color: ordered == true
+                        ? dotColor.value
+                        : barGrey
                       ),
                     ),
                   ),
                   SizedBox(width: 40.0,),
                   DataContainer(
                     data: 'Ordered and Approved',
-                    style: textOneStyle.value,
+                    style: ordered == true? 
+                    textStyle.value:
+                    begin,
                   ),
                 ],
               ),
@@ -169,12 +83,18 @@ class OrdetrackPage extends StatelessWidget {
                     height: _height,
                     width: _width,
                     child: CustomPaint(
-                      painter: MakeLine(color: dotTwoColor.value),
+                      painter: MakeLine(
+                        color: ordered == true
+                        ? barGrey
+                        : dotColor.value                         
+                      ),
                     ),
                   ),
                   DataContainer(
                     data: 'Packed',
-                    style: textTwoStyle.value,
+                    style: ordered == true? 
+                    textStyle.value:
+                    begin,
                   ),
                 ],
               ),
@@ -185,14 +105,18 @@ class OrdetrackPage extends StatelessWidget {
                     width: _width,
                     child: CustomPaint(
                       painter: MakeLine(
-                        color: dotThreeColor.value
+                        color: ordered == true
+                        ? dotColor.value
+                        : barGrey
                       ),
                       //child: Container(),
                     ),
                   ),
                   DataContainer(
                     data: 'Shipped',
-                    style: textThreeStyle.value,
+                    style: ordered == true? 
+                    textStyle.value:
+                    begin,
                   ),
                 ],
               ),
@@ -203,15 +127,18 @@ class OrdetrackPage extends StatelessWidget {
                     width: _width,
                     child: CustomPaint(
                       painter: MakeLine(
-                        lastline: false,
-                        color: dotFourColor.value
+                        color: ordered == true
+                        ? dotColor.value
+                        : barGrey
                       ),
                       //child: Container(),
                     ),
                   ),
                   DataContainer(
                     data: 'Delivered',
-                    style: textFourStyle.value,
+                    style: ordered == true? 
+                    textStyle.value:
+                    begin,
                   ),
                 ],
               ),
@@ -221,30 +148,3 @@ class OrdetrackPage extends StatelessWidget {
   }
 }
 
-class MakeLine extends CustomPainter {
-  final color;
-  final lastline;
-
-  Paint _paint;
-  MakeLine({this.color: Colors.grey, this.lastline:true}) {
-    _paint = Paint()
-      ..color = color
-      ..strokeWidth = 3
-      ..strokeCap = StrokeCap.round;
-  }
-  @override
-  void paint(Canvas canvas, Size size) {
-    var x = 20.0;
-    final paint = Paint();
-    paint.color = Colors.grey[400];
-    canvas.drawCircle(Offset(x, 0), 7.0, _paint);
-    lastline ==true
-    ?canvas.drawLine(Offset(x, 0), Offset(x, 120.0), _paint)
-    :canvas.drawLine(Offset(x, 0), Offset(x, 0.0), Paint()..color = Colors.transparent);
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) {
-    return true;
-  }
-}

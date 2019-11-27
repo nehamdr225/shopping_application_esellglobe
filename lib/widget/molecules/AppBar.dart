@@ -35,7 +35,7 @@ class FAppBar extends StatelessWidget {
         child: AppBar(
           elevation: 0.0,
           iconTheme: IconThemeData(color: icontheme3),
-          backgroundColor: primary,
+          backgroundColor: Theme.of(context).colorScheme.primary,
           title: searchBar != null
               ? TextField(
                   autofocus: true,

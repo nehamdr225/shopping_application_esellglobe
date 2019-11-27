@@ -87,7 +87,7 @@ class DrawerApp extends StatelessWidget {
               padding: const EdgeInsets.only(top: 8.0, left: 14.0, bottom: 5.0,),
               child: Text(
                 'Search for Fashion',
-                style: Theme.of(context).textTheme.body2.copyWith(fontSize: 16.0, color: primaryDark),
+                style: Theme.of(context).textTheme.body2.copyWith(fontSize: 16.0),
               ),
             ),
             DrawerElements(
@@ -136,7 +136,7 @@ class DrawerApp extends StatelessWidget {
               padding: const EdgeInsets.only(top: 8.0, left: 14.0, bottom: 5.0,),
               child: Text(
                 'Find your style',
-                style: Theme.of(context).textTheme.body2.copyWith(fontSize: 16.0, color: primaryDark),
+                style: Theme.of(context).textTheme.body2.copyWith(fontSize: 16.0),
               ),
             ),
             DrawerElements(

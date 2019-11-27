@@ -64,7 +64,7 @@ class ReturnPage extends StatelessWidget {
               child: FRaisedButton(
                 text: "Submit",
                 width: 160.0,
-                bg: primary,
+                bg: Theme.of(context).colorScheme.primary,
                 color: textColor,
                 onPressed: (){
                   showDialog(
@@ -75,7 +75,7 @@ class ReturnPage extends StatelessWidget {
                         width:  150.0,
                         text: 'Close',
                         color: textColor,
-                        bg: primary,
+                        bg: Theme.of(context).colorScheme.primary,
                         onPressed: (){
                           Navigator.pop(context);
                         },
