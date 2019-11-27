@@ -22,12 +22,12 @@ const MEN = [
   {
     "name": "Sunglasses",//"Shoe",
     "cap": "Sunglasses",//"Shoe",
-    "src": 'images/categoryimg/sunglassmen.jpe',
+    "src": 'images/categoryimg/sunglassmen.jpeg',
   },
   {
     "name": "Watches",
     "cap": "Watches & Glasses",
-    "src": 'images/categoryimg/watchesNglasses.jpeg',
+    "src": 'images/categoryimg/watchesNglasses.jpg',
   }
 ];
 

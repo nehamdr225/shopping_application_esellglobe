@@ -22,7 +22,7 @@ class HomePageApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FlutterStatusbarcolor.setStatusBarColor(primary);
+    FlutterStatusbarcolor.setStatusBarColor(primaryDark);
     var user = Provider.of<UserModel>(context);
     return SafeArea(
       child: Scaffold(

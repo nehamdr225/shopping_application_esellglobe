@@ -53,7 +53,7 @@ class DrawerApp extends StatelessWidget {
                             backgroundColor: Colors.white,
                             radius: 40.0,
                             child: Image.asset(
-                              'images/logo/myntralogo.png',
+                              'images/logo/logoonly1.png',
                               height: 45.0,
                               width: 45.0,
                             ),
@@ -67,7 +67,7 @@ class DrawerApp extends StatelessWidget {
                             child: ListTile(
                               title: Text(
                                 'Log in   .   Sign up',
-                                style: TextStyle(color: textColor),
+                                style: Theme.of(context).textTheme.title,
                               ),
                               contentPadding: EdgeInsets.only(left: 20.0),
                               trailing: Icon(

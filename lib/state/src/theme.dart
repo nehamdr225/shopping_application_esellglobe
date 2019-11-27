@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 const primary = Color(0xff78daff);
-//const bgcolor = Color(0xffe5f3ff);
+const primaryDark = Color(0xff3ea8cc);
 const bgcolor = Color(0xffEEEEEE);
 const iconcolor= Color(0xff78ff9c);
 const secondary = Color(0xffffa378);
@@ -32,7 +32,7 @@ class FTheme with ChangeNotifier {
     textSelectionColor: Colors.black38,
     textTheme: TextTheme( 
         headline: TextStyle(fontSize: 24.0, color: textColor),
-        title: TextStyle(fontSize: 18.0, color: textColor),
+        title: TextStyle(fontSize: 16.0, color: textColor),
         body1: TextStyle(fontSize: 12.0, color: textColor),
         body2: TextStyle(fontSize: 18.0, color: primary),
         caption: TextStyle(fontSize: 14.0, color: textColor),

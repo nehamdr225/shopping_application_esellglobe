@@ -9,7 +9,7 @@ class DrawerElements extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(title, style: TextStyle(fontSize: 16.0,),),
+      title: Text(title, style: Theme.of(context).textTheme.caption),
             leading: Image.asset(
               icon, 
               height: 25.0,
