@@ -27,7 +27,7 @@ const MEN = [
   {
     "name": "Watches",
     "cap": "Watches & Glasses",
-    "src": 'images/categoryimg/watchesNglasses.jpg',
+    "src": 'images/categoryimg/watchesNglasses.jpeg',
   }
 ];
 
