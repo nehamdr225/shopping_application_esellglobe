@@ -2,7 +2,6 @@ import 'package:esell/state/state.dart';
 import 'package:esell/state/src/consts.dart';
 import 'package:esell/widget/atoms/InfoNavBar.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
-import 'package:esell/widget/molecules/Product.dart';
 //import 'package:esell/widget/molecules/GridList.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -32,19 +31,32 @@ class CategoryPage extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     itemCount: 5,
                     itemBuilder: (context, index) {
-                      return Product(
-                        name: products[index]['name'],
-                        image: products[index]['media'][0]['src']
+                      return 
+                      Card(
+                        elevation: 2.0,
+                      child: InkWell(
+                          onTap: () {},
+                          child: Container(
+                              width: 150.0,
+                              child: ListTile(
+                                title: products[index]['media'][0]['src']
                                             .length != 0
                                     ? Image.network(products[index]['media'][0]['src'][0], height: 100.0, width: 100.0,)
                                     : Image.asset(
                                         'images/SubMain/foot/casualshoes.jpg', height: 100.0, width: 100.0,),
-                        imgheight: 120.0,
-                        price: products[index]['price'],
-                        id: products[index]['_id'],
-                      );
-                      
-                      
+                                contentPadding: EdgeInsets.all(1.0),
+                                subtitle: Padding(
+                                  padding:
+                                      const EdgeInsets.only(top: 10.0),
+                                  child: Container(
+                                      alignment: Alignment.topCenter,
+                                      child: Text(products[index]['name'],
+                                          softWrap: true,
+                                          textAlign: TextAlign.center,
+                                          style: Theme.of(context).textTheme.body1.copyWith(fontSize: 14.0),
+                                      )),
+                                ),
+                              ))));
                     })
                 : CircularProgressIndicator()),
         Padding(

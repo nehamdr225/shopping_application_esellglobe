@@ -25,7 +25,7 @@ class ProductGrid extends StatelessWidget {
               ),
               itemBuilder: (BuildContext context, int index) {
                 return index != products.length
-                    ? Product( 
+                    ? Product(  
                         name: products[index]['name'],
                         image: products[index]['media'][0]['src'].length > 0
                             ? products[index]['media'][0]['src'][0]
