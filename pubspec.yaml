@@ -28,7 +28,6 @@ dependencies:
   provider: ^3.0.0+1
   smooth_star_rating: ^1.0.3
   flutter_statusbarcolor: ^0.2.1
-  flutter_redux: ^0.5.3
   flutter_secure_storage: ^3.2.1
 dev_dependencies:
   flutter_test:
