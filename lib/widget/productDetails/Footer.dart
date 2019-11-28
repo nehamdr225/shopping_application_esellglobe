@@ -3,6 +3,7 @@ import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/molecules/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:esell/state/src/theme.dart';
 
 class PDFooter extends StatelessWidget {
   final String id;
@@ -22,14 +23,13 @@ class PDFooter extends StatelessWidget {
         children: <Widget>[
           wishlist.find(id) == true
               ? FloatingActionButton(
-                backgroundColor: icontheme,
-                child: Icon(Icons.bookmark, color: icontheme2,),
+                backgroundColor: primary,
+                child: Icon(Icons.bookmark, color: icontheme3,),
                 onPressed: (){},
               )
-              :
-              FloatingActionButton(
+              : FloatingActionButton(
                 backgroundColor: icontheme,
-                child: Icon(Icons.bookmark_border, color: icontheme2,),
+                child: Icon(Icons.bookmark_border, color: icontheme3,),
                 onPressed: addToWish,
               ),
               Padding(padding: EdgeInsets.all(10.0),),
@@ -39,16 +39,18 @@ class PDFooter extends StatelessWidget {
                   width: 200.0,
                   onPressed: () {},
                   text: 'Added to cart',
-                  color: Colors.white,
-                  bg: icontheme2,
+                  color: textColor,
+                  bg: primary,
+                  shape: true,
                 )
               : FRaisedButton(
                   height: 50.0,
                   width: 200.0,
                   onPressed: addToCart,
                   text: 'Add to cart',
-                  color: Colors.white,
-                  bg: icontheme2,
+                  color: textColor,
+                  shape: true,
+                  bg: primary,
                 ),
 
         ],

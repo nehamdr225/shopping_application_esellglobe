@@ -1,4 +1,5 @@
 import 'package:esell/pages/Cart.dart';
+import 'package:esell/pages/SearchPage.dart';
 import 'package:esell/pages/Wishlist.dart';
 import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/loginOptions.dart';
@@ -14,9 +15,9 @@ class FAppBar extends StatelessWidget {
   final cart;
   final search;
   final searchBar;
-  final title;
+  final Widget title;
   final drawer;
-  final searchController;
+  
   FAppBar(
       {this.wishlist,
       this.drawer,
@@ -24,7 +25,7 @@ class FAppBar extends StatelessWidget {
       this.search,
       this.title,
       this.searchBar,
-      this.searchController});
+      });
   @override
   Widget build(BuildContext context) {
     FlutterStatusbarcolor.setStatusBarColor(Colors.black87);
@@ -36,35 +37,16 @@ class FAppBar extends StatelessWidget {
           elevation: 0.0,
           iconTheme: IconThemeData(color: icontheme3),
           backgroundColor: Theme.of(context).colorScheme.primary,
-          title: searchBar != null
-              ? TextField(
-                  autofocus: true,
-                  onChanged: (value) {
-                    searchController(value);
-                  },
-                  style: TextStyle(color: Colors.black),
-                  decoration: InputDecoration(
-                      contentPadding:
-                          EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                      hintText: "Search for Fashion!",
-                      hintStyle: TextStyle(
-                          fontFamily: 'Helvetica',
-                          fontSize: 12,
-                          color: Colors.black54),
-                      // labelStyle: ,
-                      focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.transparent))),
-                )
-              : title != null
-                  ? Text(title,
-                      style: TextStyle(fontFamily: 'Bree', color: textColor))
-                  : null,
+          title: title,
           actions: <Widget>[
             search != null
                 ? FIcons(
                     icon: Icons.search,
                     alignment: Alignment.centerRight,
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => SearchPage()));
+                    },
                   )
                 : Text(''),
             cart != null

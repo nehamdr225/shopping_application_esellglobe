@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class PDDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final title = Theme.of(context).textTheme.body2;
+    final body1 = Theme.of(context).textTheme.body1.copyWith(fontSize: 16.0);
     return Container(
         padding: EdgeInsets.fromLTRB(0.0, 1.0, 0.0, 8.0),
         width: 360.0,
@@ -21,37 +21,37 @@ class PDDetails extends StatelessWidget {
               padding: EdgeInsets.all(8.0),
             ),
             Container(
-              child: FText(
+              child: FText( 
                 text: "Product Details",
-                family: 'Bree',
+                color: Theme.of(context).colorScheme.primaryVariant,
                 size: 18.0,
                   )),
             Container(
               child: FText(
                 text: "It is a three piece suit.",
-                style: title,
+                style: body1,
                   )),
             Container(
               child: FText(
                 text: "Size & Fit",
-                family: 'Bree',
+                color: Theme.of(context).colorScheme.primaryVariant,
                 size: 18.0,
                   )),
             Container(
               child: FText(
                 text: "The model in the photo is of height: 6' 1'' and is wearing a size L" ,
-                style: title,
+                style: body1,
                   )),
             Container(
               child: FText(
                 text: "Material & Care" ,
-                family: 'Bree',
+                color: Theme.of(context).colorScheme.primaryVariant,
                 size: 18.0,
             )),
             Container(
               child: FText(
                 text: "Suit Piece: 50% Cotton. It should be dry cleaned" ,
-                style: title,
+                style: body1,
             )),
             Padding(
               padding: EdgeInsets.all(8.0),

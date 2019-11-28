@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
-
-
-
 const barGrey = Colors.grey;
 const orderBar = Color(0xfffc773a);
 const splash = Colors.black12;
 const textColor = Colors.black87; 
 const primaryDark = Color(0xff3ea8cc);
+const primary= Color(0xff78daff);
 
 const begin = TextStyle(
   fontWeight: FontWeight.w400, 

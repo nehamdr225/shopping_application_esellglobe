@@ -26,7 +26,7 @@ class LoginOptions extends StatelessWidget {
                 text: "Facebook",
                 color: Colors.black87,
                 bg: Colors.white,
-                onPressed: () {},
+                onPressed: () {}, 
               ),
               FRaisedButton(
                 height: 50.0,
@@ -89,6 +89,9 @@ class LoginOptions extends StatelessWidget {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => SignUpPage()));
               }),
+           Padding(
+            padding: EdgeInsets.all(8.0),
+          ),
         ],
       ),
     );

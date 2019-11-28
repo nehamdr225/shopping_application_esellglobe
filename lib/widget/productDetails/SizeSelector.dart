@@ -5,7 +5,7 @@ class PDSizeSelector extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 8.0),
-        height: 150.0,
+        height: 150.0, 
         width: 360.0,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.only(bottomLeft: Radius.circular(0.0))),
@@ -32,7 +32,7 @@ class PDSizeSelector extends StatelessWidget {
                     padding: EdgeInsets.only(right: 180.0),
                   ),
                   IconButton(
-                    icon: Icon(Icons.more_vert),
+                    icon: Icon(Icons.more_vert, color: Theme.of(context).colorScheme.primaryVariant,),
                     onPressed: (){},
                   )
                 ],

@@ -19,18 +19,21 @@ class _BottomLoaderState extends State<BottomLoader> {
         });
     });
     return Container(
-      child: Row(
-        children: <Widget>[
-          state == "done"
-              ? Column(
-                  children: <Widget>[
-                    Text("Seems we are done!"),
-                    Icon(Icons.check)
-                  ],
-                )
-              : CircularProgressIndicator()
-        ],
-      ),
+      alignment: Alignment.center,
+      child: state == "done"
+          ? Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Text("Nothing more to show!"),
+                Icon(Icons.check)
+              ],
+            )
+          : CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation(
+                  Theme.of(context).colorScheme.primaryVariant),
+              strokeWidth: 5.0
+          )
     );
   }
 }

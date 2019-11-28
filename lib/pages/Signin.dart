@@ -1,6 +1,7 @@
 import 'package:esell/pages/Signup.dart';
 import 'package:esell/pages/Home.dart';
-
+import 'package:esell/widget/atoms/BrandLogos.dart';
+import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/widget/atoms/Forms.dart';
@@ -23,6 +24,7 @@ class _PageState extends State<SignInPage> {
 
   @override
   Widget build(BuildContext context) {
+    FlutterStatusbarcolor.setStatusBarColor(Theme.of(context).colorScheme.primaryVariant);
     var screenWidth = MediaQuery.of(context).size.width;
     var user = Provider.of<UserModel>(context);
 
@@ -78,7 +80,8 @@ class _PageState extends State<SignInPage> {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(40.0),
           child: FAppBar(
-            title: Text(
+            title: 
+            Text(
               "Sign-in",
               style: TextStyle(
                 color: Colors.grey[900],
@@ -95,8 +98,9 @@ class _PageState extends State<SignInPage> {
             padding: EdgeInsets.only(top: 5.0, left: 20.0, right: 20.0),
             child: Column(
               children: <Widget>[
+                BrandLogos(),
                 Padding(
-                  padding: EdgeInsets.all(10.0),
+                  padding: EdgeInsets.all(20.0),
                 ),
                 FForms(
                     type: TextInputType.emailAddress,
@@ -108,7 +112,6 @@ class _PageState extends State<SignInPage> {
                         textAlign: TextAlign.center,
                       )
                     : Text(''),
-                SizedBox(height: 15.0),
                 FForms(
                     type: TextInputType.text,
                     text: "Password",
@@ -120,20 +123,20 @@ class _PageState extends State<SignInPage> {
                         textAlign: TextAlign.center,
                       )
                     : Text(''),
-                SizedBox(height: 15.0),
                 loginErr != null
                     ? Text(loginErr, style: TextStyle(color: Colors.red))
                     : Text(''),
                 FRaisedButton(
                   text: "Sign-in",
                   width: 160.0,
-                  bg: Colors.deepPurple[900],
-                  color: Colors.white,
+                  height: 45.0,
+                  bg: primary,
+                  color: textColor,
                   onPressed: loginUser,
                 ),
                 SizedBox(height: 30.0),
                 FancyText(
-                    color: Colors.deepPurple[900],
+                    color: primaryDark,
                     decoration: TextDecoration.underline,
                     text: "Don't have an account? Register Here !",
                     size: 15.0,

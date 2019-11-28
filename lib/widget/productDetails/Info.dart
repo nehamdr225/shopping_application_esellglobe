@@ -7,9 +7,9 @@ class PDInfo extends StatelessWidget {
   PDInfo({this.name, this.price, this.details, this.color: "N/A"});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { 
     //final caption = Theme.of(context).textTheme.caption;
-    final title = Theme.of(context).textTheme.body2;
+    final title = Theme.of(context).textTheme.body1.copyWith(fontSize: 16.0);
 
     return Container(
       width: 360.0,
@@ -33,11 +33,13 @@ class PDInfo extends StatelessWidget {
                   Container(
                     child: FText(
                     text: name,
+                    color: Theme.of(context).colorScheme.primaryVariant,
                     size: 24.0,
                   )),
                   Container(
                     child: FText(
                     text: details,
+                    //color: textColor,
                     style: title,
                   )),
                   Container(

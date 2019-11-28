@@ -1,3 +1,4 @@
+// import 'package:esell/state/state.dart';
 import 'package:esell/state/state.dart';
 import 'package:flutter/material.dart';
 
@@ -13,46 +14,57 @@ class Services extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: <Widget>[
-        payOnDelivery
-            ? Column(children: [
-                Icon(Icons.payment),
-                Text(
-                  'Pay on Delivery',
-                  style: TextStyle(color: textColor),
-                )
-              ])
-            : Text(''),
-        replacement
-            ? Column(children: [
-                Icon(Icons.change_history),
-                Text(
-                  '10 Days Replacement',
-                  style: TextStyle(color: textColor),
-                )
-              ])
-            : Text(''),
-        amazonDelivery
-            ? Column(children: [
-                Icon(Icons.directions_bus),
-                Text(
-                  'Amazon Delivered',
-                  style: TextStyle(color: textColor),
-                )
-              ])
-            : Text(''),
-        aYearWarranty
-            ? Column(children: [
-                Icon(Icons.check_circle_outline),
-                Text(
-                  'Parking',
-                  style: TextStyle(color: textColor),
-                )
-              ])
-            : Text(''),
-      ]
+    final body1 = Theme.of(context).textTheme.body1.copyWith(color: primaryDark);
+    return Card(
+      child: Container(
+        padding: EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 8.0),
+        height: 70.0,
+        alignment: Alignment.center,
+        color: Colors.white,
+        child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              payOnDelivery
+                  ? Column(children: [
+                      Icon(Icons.payment,
+                      color: primary,),
+                      Text(
+                        'Pay on \nDelivery',
+                        style: body1,
+                      )
+                    ])
+                  : Text(''),
+              replacement
+                  ? Column(children: [
+                      Icon(Icons.change_history,color: primary,),
+                      Text(
+                        '10 Days\n Replacement',
+                        textAlign: TextAlign.center,
+                        style: body1,
+                      )
+                    ])
+                  : Text(''),
+              amazonDelivery
+                  ? Column(children: [
+                      Icon(Icons.directions_bus,color: primary,),
+                      Text(
+                        'Amazon \nDelivered',
+                        style: body1,
+                      )
+                    ])
+                  : Text(''),
+              aYearWarranty
+                  ? Column(children: [
+                      Icon(Icons.check_circle_outline,color: primary,),
+                      Text(
+                        'Parking',
+                        style: body1,
+                      )
+                    ])
+                  : Text(''),
+            ]),
+      ),
     );
   }
 }

@@ -31,7 +31,6 @@ class ProductDetails extends StatelessWidget {
                 ? PDAppBar(images)
                 : SliverPadding(
                     padding: EdgeInsets.all(0),
-
                   ),
             SliverList(
               delegate: SliverChildListDelegate(<Widget>[
@@ -39,6 +38,9 @@ class ProductDetails extends StatelessWidget {
                     name: product['name'],
                     price: product['price'].toString(),
                     details: product['description']),
+                Padding(
+                  padding: EdgeInsets.only(top: 1.0),
+                ),
                 Services(),
                 PDSizeSelector(),
                 PDDetails(),

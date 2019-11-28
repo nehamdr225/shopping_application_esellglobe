@@ -31,7 +31,8 @@ class Product extends StatelessWidget {
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Container(
-        width: 150,
+        // width: 150,
+        // height: 220.0,
         child: Material(
           borderRadius: BorderRadius.circular(8.0),
           child: InkWell(
@@ -40,12 +41,13 @@ class Product extends StatelessWidget {
                   builder: (context) => ProductDetails(id: id)));
             },
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                ImageHolder(
+                ImageHolder( 
                   image: image,
                   imgheight: imgheight,
                 ),
-                Divider(height: 1),
+                Divider(height: 2),
                 Details(name: name, price: 'Rs. $price', id: id),
               ],
             ),

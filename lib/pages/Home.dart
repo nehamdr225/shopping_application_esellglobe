@@ -3,6 +3,7 @@ import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
 import 'package:esell/widget/atoms/loginOptions.dart';
 import 'package:esell/widget/molecules/GridList.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:esell/widget/molecules/Carousel.dart';

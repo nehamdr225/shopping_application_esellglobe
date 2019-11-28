@@ -1,8 +1,11 @@
 import 'package:esell/helpers/Api.dart';
 import 'package:esell/pages/Signin.dart';
+import 'package:esell/state/src/theme.dart';
+import 'package:esell/widget/atoms/BrandLogos.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
+import 'package:esell/widget/molecules/colors.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:esell/helpers/Validators.dart';
 import 'package:esell/widget/atoms/Forms.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
@@ -18,6 +21,7 @@ class _PageState extends State<SignUpPage> {
   String nameErr, emailErr, passwordErr, signupErr;
   @override
   Widget build(BuildContext context) {
+    FlutterStatusbarcolor.setStatusBarColor(Theme.of(context).colorScheme.primaryVariant);
     var screenWidth = MediaQuery.of(context).size.width;
 
     var setName = (data) {
@@ -88,11 +92,12 @@ class _PageState extends State<SignUpPage> {
           child: Container(
             height: 600.0,
             width: screenWidth * 0.95,
-            padding: EdgeInsets.only(top: 5.0, left: 20.0, right: 20.0),
+            padding: EdgeInsets.only(top: 0.0, left: 20.0, right: 20.0),
             child: Column(
               children: <Widget>[
+                BrandLogos(),
                 Padding(
-                  padding: EdgeInsets.all(10.0),
+                  padding: EdgeInsets.all(20.0),
                 ),
                 FForms(
                   type: TextInputType.text,
@@ -105,7 +110,6 @@ class _PageState extends State<SignUpPage> {
                         textAlign: TextAlign.center,
                       )
                     : Text(''),
-                SizedBox(height: 15.0),
                 FForms(
                     type: TextInputType.emailAddress,
                     text: "Email",
@@ -116,7 +120,6 @@ class _PageState extends State<SignUpPage> {
                         textAlign: TextAlign.center,
                       )
                     : Text(''),
-                SizedBox(height: 15.0),
                 FForms(
                     type: TextInputType.text,
                     text: "Password",
@@ -129,19 +132,19 @@ class _PageState extends State<SignUpPage> {
                       )
                     : Text(''),
                 signupErr != null ? Text(signupErr) : Text(''),
-                SizedBox(height: 15.0),
                 // FForms(type: TextInputType.phone, text: "Mobile No."),
                 FRaisedButton(
                   text: "Sign-up",
                   width: 160.0,
-                  color: Colors.white,
-                  bg: Colors.deepPurple[900],
+                  height: 45.0,
+                  color: icontheme3,
+                  bg: primary,
                   onPressed: signupUser,
                 ), //onPressed: () {}),
                 SizedBox(height: 30.0),
                 FancyText(
                     text: "Already have an account?",
-                    color: Colors.deepPurple[900],
+                    color: primaryDark,
                     decoration: TextDecoration.underline,
                     size: 15.0,
                     onTap: () {

@@ -1,3 +1,4 @@
+import 'package:esell/state/src/theme.dart';
 import 'package:flutter/material.dart';
 
 class FancyText extends StatelessWidget {
@@ -31,12 +32,10 @@ class FancyText extends StatelessWidget {
                   fontFamily: fontfamily,
                   fontSize: size,
                   color: color,
-                  decoration: decoration != null
-                      ? TextDecoration.underline
-                      : TextDecoration.none,
-                  decorationColor: Colors.deepPurple[900])),
+                  decoration: decoration,
+                  decorationColor: primaryDark),
         ),
       ),
-    );
+    ));
   }
 }

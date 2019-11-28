@@ -65,7 +65,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
           preferredSize: Size.fromHeight(40.0),
           child: FAppBar(
             wishlist: true,
-            title: "Checkout",
+            title: Text('Checkout'),
           )),
       backgroundColor: Colors.white,
       body: Column(

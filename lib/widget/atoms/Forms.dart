@@ -1,3 +1,4 @@
+import 'package:esell/state/src/theme.dart';
 import 'package:flutter/material.dart';
 
 
@@ -7,7 +8,7 @@ class FForms extends StatelessWidget {
   final TextInputType type;
   final Function onChanged;
   final style = TextStyle(
-      fontFamily: 'Ropa Sans',
+      fontFamily: 'Montserrat',
       fontWeight: FontWeight.bold,
       fontSize: 18,
       color: Colors.black54);
@@ -24,15 +25,15 @@ class FForms extends StatelessWidget {
         border: OutlineInputBorder(
           borderSide: BorderSide(color: Theme.of(context).colorScheme.primary,)
         ),
-          icon: type == TextInputType.phone ? Icon(Icons.call) : null,
+          icon: type == TextInputType.phone ? Icon(Icons.call, color: primary,) : null,
           contentPadding: type == TextInputType.phone
               ? EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0)
               : null,
           hintText: text,
           labelStyle: style,
           labelText: text,
-          disabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary)),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primaryVariant)),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Theme.of(context).colorScheme.primary))
       ),

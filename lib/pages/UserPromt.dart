@@ -29,27 +29,21 @@ class UserPromptApp extends StatelessWidget {
                 padding: EdgeInsets.all(10.0),
               ),
               //UPImage(),
-              BrandLogos(height: 100.0, width: 100.0,),
-              
+              BrandLogos(
+                height: 100.0,
+                width: 100.0,
+              ),
+
               LoginOptions(),
-              // FancyText(
-              //     color: Colors.deepPurple[900],
-              //     text: "Continue without signin!",
-              //     size: 18.0,
-              //     fontfamily: 'Bree',
-              //     onTap: () {
-              //       Navigator.push(context,
-              //           MaterialPageRoute(builder: (context) => HomePageApp()));
-              //     }),
-                
+
               Padding(
                 padding: EdgeInsets.all(10.0),
               ),
               FancyText(
                   text: "Terms & Conditions",
                   decoration: TextDecoration.underline,
-                  size: 17.0,
-                  color: textColor,
+                  size: 16.0,
+                  color: primaryDark,
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => HomePageApp()));
