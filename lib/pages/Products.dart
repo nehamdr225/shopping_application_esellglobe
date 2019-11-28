@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 
 class ProductsPage extends StatelessWidget {
+  final category;
+  ProductsPage({this.category});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,6 +16,7 @@ class ProductsPage extends StatelessWidget {
         body: OrientationBuilder(builder: (context, orientation) {
           return ProductGrid(
             orientation: orientation,
+            category: category,
           );
         }));
   }

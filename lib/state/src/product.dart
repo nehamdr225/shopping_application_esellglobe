@@ -47,7 +47,6 @@ class ProductModel extends ChangeNotifier {
   category(String cat) {
     return products.where((product) {
       return product["category"].contains(cat.toLowerCase());
-      
     }).toList();
   }
 
@@ -58,43 +57,30 @@ class ProductModel extends ChangeNotifier {
   }
 
   set products(List items) {
-    if (products.length > 0) {
-      final filtered = items.where((test) {
-        final tests = _products.any((el) => el['_id'] == test['_id']);
-        print(tests);
-        return tests;
-      }).toList();
-      print("filtered");
-      print(filtered);
-      _products.addAll(filtered);
+    if (_products.length > 0) {
+      items.forEach((el) {
+        final check = _products.any((product) => product['_id'] == el['_id']);
+        if (!check) _products.add(el);
+      });
     } else {
       _products = items;
     }
     notifyListeners();
   }
 
-  refresh() {
+  refresh() async {
     try {
-      if (count < maxCount && !isRefreshing) {
-        isRefreshing = true;
-        print("refresh $page");
-        getProducts(page: page + 1).then((data) {
-          if (data['error'] == null) {
-            if (maxCount != data['count']) maxCount = data['count'];
-            products = data['products'];
-            page = page + 1;
-            isRefreshing = false;
-            return "done";
-          } else {
-            print(data['error']);
-            isRefreshing = false;
-            return "Oops something wrong happened!";
-          }
-        });
-      } else {
-        isRefreshing = false;
+      if (maxCount != null && products.length < maxCount) {
+        final res = await getProducts(page: page + 1);
+        if (res['products'].length > 0) {
+          page = page + 1;
+          products = res['products'];
+          notifyListeners();
+          return "success";
+        }
         return "done";
       }
+      return "done";
     } catch (e) {
       isRefreshing = false;
       return "done";

@@ -5,12 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:esell/state/state.dart';
 import 'package:provider/provider.dart';
 
-class ProductGrid extends StatelessWidget { 
+class ProductGrid extends StatelessWidget {
   final Orientation orientation;
   final String category;
   ProductGrid({this.orientation, this.category});
   @override
   Widget build(BuildContext context) {
+    print(category);
     final products = Provider.of<ProductModel>(context).category(category);
     return products.length > 0
         ? GridView.builder(
@@ -18,7 +19,7 @@ class ProductGrid extends StatelessWidget {
             scrollDirection: Axis.vertical,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: orientation == Orientation.portrait ? 2 : 3,
-              childAspectRatio: 0.84,
+              childAspectRatio: 0.8,
             ),
             itemBuilder: (BuildContext context, int index) {
               return index != products.length
@@ -39,8 +40,8 @@ class ProductGrid extends StatelessWidget {
             },
           )
         : Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[CircularProgressIndicator()],
           );
   }
