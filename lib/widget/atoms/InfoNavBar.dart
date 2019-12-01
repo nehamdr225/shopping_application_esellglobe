@@ -36,7 +36,7 @@ class InfoNavBar extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     builder: (context) => ProductsPage(
-                          category: text,
+                          category: type,
                         )));
           },
         ),

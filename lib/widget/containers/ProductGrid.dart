@@ -12,7 +12,7 @@ class ProductGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print(category);
-    final products = Provider.of<ProductModel>(context).category(category);
+    final products = Provider.of<ProductModel>(context).category([category]);
     return Padding(
       padding: EdgeInsets.all(4.0),
       child: products.length > 0
@@ -25,7 +25,7 @@ class ProductGrid extends StatelessWidget {
               ),
               itemBuilder: (BuildContext context, int index) {
                 return index != products.length
-                    ? Product(  
+                    ? Product(
                         name: products[index]['name'],
                         image: products[index]['media'][0]['src'].length > 0
                             ? products[index]['media'][0]['src'][0]
@@ -45,13 +45,13 @@ class ProductGrid extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                CircularProgressIndicator(  
+                CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation(
-                    Theme.of(context).colorScheme.primaryVariant),
+                      Theme.of(context).colorScheme.primaryVariant),
                   value: 12.0,
                 )
               ],
             ),
-    ); 
+    );
   }
 }

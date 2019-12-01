@@ -44,9 +44,11 @@ class ProductModel extends ChangeNotifier {
     return {'error': 'Product not found!'};
   }
 
-  category(String cat) {
+  category(List<String> cat) {
     return products.where((product) {
-      return product["category"].contains(cat.toLowerCase());
+      return cat
+          .every((each) => product["category"].contains(each.toLowerCase()));
+      // return product["category"].contains(cat.toLowerCase());
     }).toList();
   }
 
