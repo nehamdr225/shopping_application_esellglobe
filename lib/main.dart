@@ -1,4 +1,5 @@
 // import 'package:esell/pages/Home.dart';
+import 'package:esell/pages/CheckoutPage.dart';
 import 'package:esell/pages/Home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -33,7 +34,7 @@ class EsellApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: theme.getTheme(),
-      home: HomePageApp(),
+      home: CheckoutPage(),
     );
   }
 }

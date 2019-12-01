@@ -1,4 +1,4 @@
-#Fri Nov 29 21:43:59 NPT 2019
+#Sat Nov 30 00:39:54 NPT 2019
 base.0=/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/transforms/dexMerger/debug/0
 path.0=classes.dex
 renamed.0=classes.dex

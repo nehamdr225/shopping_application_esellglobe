@@ -56,10 +56,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
   // }
   @override
   Widget build(BuildContext context) {
-    //final ProductModel products = Provider.of<ProductModel>(context);
-    //var cart = Provider.of<CartModel>(context);
+    final ProductModel products = Provider.of<ProductModel>(context);
+    var cart = Provider.of<CartModel>(context);
     final user = Provider.of<UserModel>(context);
-    //var items = cart.count;
+    var items = cart.count;
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(40.0),
@@ -76,21 +76,36 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 Row(
                   children: <Widget>[
                     Icon(Icons.location_on),
-                    Text('$user', style: Theme.of(context).textTheme.title,),
+                    Text(
+                      '$user',
+                      style: Theme.of(context).textTheme.title,
+                    ),
                     InkWell(
-                      onTap: (){},
-                      child: Text('EDIT', style: Theme.of(context).textTheme.body2,),
+                      onTap: () {},
+                      child: Text(
+                        'EDIT',
+                        style: Theme.of(context).textTheme.body2,
+                      ),
                     ),
                   ],
                 ),
-                Text('User Address', style: Theme.of(context).textTheme.title,),                
+                Text(
+                  'User Address',
+                  style: Theme.of(context).textTheme.title,
+                ),
                 Row(
                   children: <Widget>[
                     Icon(Icons.receipt),
-                    Text('Bill to', style: Theme.of(context).textTheme.title,),
+                    Text(
+                      'Bill to',
+                      style: Theme.of(context).textTheme.title,
+                    ),
                     InkWell(
-                      onTap: (){},
-                      child: Text('EDIT', style: Theme.of(context).textTheme.body2,),
+                      onTap: () {},
+                      child: Text(
+                        'EDIT',
+                        style: Theme.of(context).textTheme.body2,
+                      ),
                     ),
                   ],
                 ),
@@ -98,125 +113,109 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   children: <Widget>[
                     Icon(Icons.phone),
                     FForms(
-                    type: TextInputType.phone,
-                    text: "Phone number",
-                    obscure: false,
-                    onChanged: (String x){
-                      Navigator.pop(context);
-                    }),
-                // passwordErr != null
-                //     ? Text(
-                //         passwordErr,
-                //         textAlign: TextAlign.center,
-                //       )
-                //     : Text(''),
+                        type: TextInputType.phone,
+                        text: "Phone number",
+                        obscure: false,
+                        onChanged: (String x) {
+                          Navigator.pop(context);
+                        }),
+                    // passwordErr != null
+                    //     ? Text(
+                    //         passwordErr,
+                    //         textAlign: TextAlign.center,
+                    //       )
+                    //     : Text(''),
                   ],
-                ), 
+                ),
                 Row(
                   children: <Widget>[
                     Icon(Icons.email),
                     FForms(
-                    type: TextInputType.emailAddress,
-                    text: "Email Address",
-                    obscure: false,
-                    onChanged: (String x){
-                      Navigator.pop(context);
-                    }),
-                // passwordErr != null
-                //     ? Text(
-                //         passwordErr,
-                //         textAlign: TextAlign.center,
-                //       )
-                //     : Text(''),
+                        type: TextInputType.emailAddress,
+                        text: "Email Address",
+                        obscure: false,
+                        onChanged: (String x) {
+                          Navigator.pop(context);
+                        }),
+                    // passwordErr != null
+                    //     ? Text(
+                    //         passwordErr,
+                    //         textAlign: TextAlign.center,
+                    //       )
+                    //     : Text(''),
                   ],
-                ), 
+                ),
               ],
             ),
           ),
           Divider(),
-          // ListView(
-          //   scrollDirection: Axis.vertical,
-          //   children: items.length > 0
-          //       ? items.map((fav) {
-          //           final product = products.one(fav);
-          //           return Container(
-          //             margin: EdgeInsets.only(top: 15),
-          //             height: 70.0,
-          //             decoration: BoxDecoration(
-          //               color: Colors.white,
-          //               boxShadow: [
-          //                 BoxShadow(
-          //                     color: Colors.black12,
-          //                     offset: Offset.fromDirection(1, 1),
-          //                     blurRadius: 1),
-          //                 BoxShadow(
-          //                     color: Colors.black12,
-          //                     offset: Offset.fromDirection(-1, 1),
-          //                     blurRadius: 1)
-          //               ],
-          //             ),
-          //             child: Row(
-          //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //               children: <Widget>[
-          //                 Padding(
-          //                   padding: EdgeInsets.all(3.0),
-          //                   child: Image.network(product['media']['src'][0],
-          //                   height: 100.0,
-          //                   width: 100.0),
-          //                 ),
-          //                 Padding(
-          //                   padding: EdgeInsets.only(left: 10.0),
-          //                   child: Column(
-          //                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          //                     crossAxisAlignment: CrossAxisAlignment.end,
-          //                     children: <Widget>[
-          //                       Text(
-          //                         product['name'],
-          //                         style: TextStyle(
-          //                             fontFamily: "Helvetica",
-          //                             color: textColor,
-          //                             fontSize: 16.0),
-          //                       ),
-          //                       Text(
-          //                         product['address'],
-          //                         style: TextStyle(
-          //                             fontFamily: "Helvetica",
-          //                             color: textColor,
-          //                             fontSize: 16.0),
-          //                       ),
-          //                     ],
-          //                   ),
-          //                 ),
-          //                 IconButton(
-          //                   color: errorColor,
-          //                   splashColor: primary,
-          //                   icon: Icon(
-          //                     Icons.remove_circle_outline,
-          //                   ),
-          //                   onPressed: () async {
-          //                     //  await _neverSatisfied(() {
-          //                     // //   user.removeFromFav(product['_id']);
-          //                     // });
-          //                   },
-          //                 )
-          //               ],
-          //             ),
-          //           );
-          //         }).toList()
-          //       : <Widget>[
-          //           Container(
-          //             height: MediaQuery.of(context).size.height * 0.7,
-          //             alignment: Alignment.center,
-          //             child: Text(
-          //               "Your favourites list is empty.",
-          //               style: TextStyle(
-          //                   fontFamily: "Helvetica",
-          //                   color: textColor,
-          //                   fontSize: 16.0),
-          //             ),
-          //           ),
-          //         ],
-          // ),
+          ListView(
+              scrollDirection: Axis.vertical,
+              children: items.map((fav) {
+                final product = products.one(fav);
+                return Container(
+                  margin: EdgeInsets.only(top: 15),
+                  height: 70.0,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.black12,
+                          offset: Offset.fromDirection(1, 1),
+                          blurRadius: 1),
+                      BoxShadow(
+                          color: Colors.black12,
+                          offset: Offset.fromDirection(-1, 1),
+                          blurRadius: 1)
+                    ],
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.all(3.0),
+                        child: Image.network(product['media']['src'][0],
+                            height: 100.0, width: 100.0),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 10.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: <Widget>[
+                            Text(
+                              product['name'],
+                              style: TextStyle(
+                                  fontFamily: "Helvetica",
+                                  color: textColor,
+                                  fontSize: 16.0),
+                            ),
+                            Text(
+                              product['address'],
+                              style: TextStyle(
+                                  fontFamily: "Helvetica",
+                                  color: textColor,
+                                  fontSize: 16.0),
+                            ),
+                          ],
+                        ),
+                      ),
+                      IconButton(
+                        color: Theme.of(context).colorScheme.error,
+                        splashColor: primary,
+                        icon: Icon(
+                          Icons.remove_circle_outline,
+                        ),
+                        onPressed: () async {
+                          //  await _neverSatisfied(() {
+                          // //   user.removeFromFav(product['_id']);
+                          // });
+                        },
+                      )
+                    ],
+                  ),
+                );
+              }).toList()),
         ],
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:esell/pages/CheckoutPage.dart';
 import 'package:esell/pages/UserPromt.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
@@ -49,7 +50,10 @@ class _CartPageState extends State<CartPage> {
                     shape: true,
                     bg: Theme.of(context).colorScheme.primary,
                     onPressed: () {
-                      Navigator.push(context,
+                      user.token != null
+                      ? Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => CheckoutPage()))
+                      : Navigator.push(context,
                           MaterialPageRoute(builder: (context) => UserPromptApp()));
                     },
                     text: user.token != null ? 'Check Out' : 'Login to proceed',
