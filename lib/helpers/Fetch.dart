@@ -1,12 +1,7 @@
 import 'dart:convert';
-import 'dart:io';
 import 'package:http/http.dart' as http;
 
-Map<String, String> headers = {
-  HttpHeaders.contentTypeHeader: 'application/json',
-};
-
-fetch({uri, method: "GET", body: ''}) async {
+fetch({uri, method: "GET", body: '', headers: ''}) async {
   try {
     switch (method) {
       case "GET":
@@ -26,13 +21,5 @@ fetch({uri, method: "GET", body: ''}) async {
     }
   } catch (err) {
     return {"error": err};
-  }
-}
-
-updateAccessToken(token) async {
-  try {
-    headers['X-Access-Token'] = token;
-  } catch (err) {
-    throw err;
   }
 }

@@ -21,10 +21,12 @@ class _PageState extends State<SignInPage> {
   String email, password;
   String emailErr, passwordErr;
   String loginErr;
+  bool remember = true;
 
   @override
   Widget build(BuildContext context) {
-    FlutterStatusbarcolor.setStatusBarColor(Theme.of(context).colorScheme.primaryVariant);
+    FlutterStatusbarcolor.setStatusBarColor(
+        Theme.of(context).colorScheme.primaryVariant);
     var screenWidth = MediaQuery.of(context).size.width;
     var user = Provider.of<UserModel>(context);
 
@@ -55,7 +57,7 @@ class _PageState extends State<SignInPage> {
 
     var loginUser = () async {
       try {
-        Map token = await login(email, password);
+        Map token = await login(email, password, remember);
         if (token['error'] == null) {
           user.token = token['token'];
           getUser(token['token']).then((userData) {
@@ -80,8 +82,7 @@ class _PageState extends State<SignInPage> {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(40.0),
           child: FAppBar(
-            title: 
-            Text(
+            title: Text(
               "Sign-in",
               style: TextStyle(
                 color: Colors.grey[900],

@@ -13,16 +13,18 @@ logout() async {
   }
 }
 
-login(String email, String password) async {
+login(String email, String password, bool remember) async {
   try {
-    var response = await fetch(uri: '$url/user/login', method: "POST", body: {
+    final response = await fetch(uri: '$url/user/login', method: "POST", body: {
       'email': email,
       'password': password,
+    }, headers: {
+      "Content-Type": "application/json"
     });
     if (response['error'] != null) {
       return {"error": response['error']};
     }
-    savekeyVal('token', response['token']);
+    if (remember) savekeyVal('token', response['token']);
     return {"token": response['token']};
   } catch (err) {
     return {"error": err};
@@ -31,10 +33,13 @@ login(String email, String password) async {
 
 signup(String email, String password, String name) async {
   try {
-    var response = await fetch(uri: '$url/user/signup', method: "POST", body: {
+    final response =
+        await fetch(uri: '$url/user/signup', method: "POST", body: {
       'email': email,
       'password': password,
       'name': name,
+    }, headers: {
+      "Content-Type": "application/json",
     });
     return response;
   } catch (err) {
@@ -44,7 +49,7 @@ signup(String email, String password, String name) async {
 
 getProducts({result = 15, page = 1}) async {
   try {
-    var response = await fetch(
+    final response = await fetch(
       uri: '$url/products/$page?result=15',
     );
     if (response['error'] != null) return {"error": response['error']};
@@ -58,17 +63,126 @@ getProductsByCategory({category = "top", result = 10, page = 1}) async {
   fetch(
     uri: '$url/products/category/$category?result=$result&page=$page',
   ).then((response) {
-    return response['products'];
+    return response;
   });
 }
 
 getUser(token) async {
-  if (headers['X-Access-Token'] == null) updateAccessToken(token);
   try {
-    var response = await fetch(uri: "$url/user");
+    final response = await fetch(
+        uri: "$url/user",
+        headers: {"Content-Type": "application/json", "X-Access-Token": token});
     if (response['message'] != null) return "token expired";
     return response['result'];
   } catch (err) {
     return err;
+  }
+}
+
+getCart(token) async {
+  try {
+    final response =
+        await fetch(uri: "$url/cart", headers: {"X-Access-Token": token});
+    return response;
+  } catch (err) {
+    return {"error": err};
+  }
+}
+
+registerCart(token, products) async {
+  try {
+    final response = await fetch(
+        uri: "$url/cart",
+        headers: {"X-Access-Token": token},
+        body: {'products': products},
+        method: "POST");
+    return response;
+  } catch (err) {
+    return {"error": err};
+  }
+}
+
+updateCart(token, id) async {
+  try {
+    final response = await fetch(
+        uri: "$url/cart/$id",
+        headers: {"X-Access-Token": token},
+        method: "PUT");
+    return response;
+  } catch (err) {
+    return {"error": err};
+  }
+}
+
+deleteCartItem(token, id) async {
+  try {
+    final response = await fetch(
+        uri: "$url/cart/$id",
+        headers: {"X-Access-Token": token},
+        method: "DELETE");
+    return response;
+  } catch (err) {
+    return {"error": err};
+  }
+}
+
+emptyCartItems(token) async {
+  try {
+    final response = await fetch(
+        uri: "$url/cart/empty",
+        headers: {"X-Access-Token": token},
+        method: "DELETE");
+    return response;
+  } catch (err) {
+    return {"error": err};
+  }
+}
+
+getOrders(token) async {
+  try {
+    final response = await fetch(
+      uri: "$url/orders/",
+      headers: {"X-Access-Token": token},
+    );
+    return response;
+  } catch (err) {
+    return {"error": err};
+  }
+}
+
+createOrder(token, products) async {
+  try {
+    final response = await fetch(
+        uri: "$url/orders/",
+        headers: {"X-Access-Token": token},
+        method: "POST",
+        body: {'products': products});
+    return response;
+  } catch (err) {
+    return {"error": err};
+  }
+}
+
+updateOrder(token, productId) async {
+  try {
+    final response = await fetch(
+        uri: "$url/orders/$productId",
+        headers: {"X-Access-Token": token},
+        method: "PUT");
+    return response;
+  } catch (err) {
+    return {"error": err};
+  }
+}
+
+deleteOrder(token, id) async {
+  try {
+    final response = await fetch(
+        uri: "$url/orders/$id",
+        headers: {"X-Access-Token": token},
+        method: "DELETE");
+    return response;
+  } catch (err) {
+    return {"error": err};
   }
 }
