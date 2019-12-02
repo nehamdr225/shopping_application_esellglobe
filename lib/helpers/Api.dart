@@ -102,10 +102,10 @@ registerCart(token, products) async {
   }
 }
 
-updateCart(token, id) async {
+updateCart(token, productId) async {
   try {
     final response = await fetch(
-        uri: "$url/cart/$id",
+        uri: "$url/cart/$productId",
         headers: {"X-Access-Token": token},
         method: "PUT");
     return response;
@@ -163,12 +163,13 @@ createOrder(token, products) async {
   }
 }
 
-updateOrder(token, productId) async {
+updateOrder(token, productId, status) async {
   try {
     final response = await fetch(
         uri: "$url/orders/$productId",
         headers: {"X-Access-Token": token},
-        method: "PUT");
+        method: "PUT",
+        body: {'status': status});
     return response;
   } catch (err) {
     return {"error": err};
@@ -179,6 +180,56 @@ deleteOrder(token, id) async {
   try {
     final response = await fetch(
         uri: "$url/orders/$id",
+        headers: {"X-Access-Token": token},
+        method: "DELETE");
+    return response;
+  } catch (err) {
+    return {"error": err};
+  }
+}
+
+getWishList(token) async {
+  try {
+    final response = await fetch(
+      uri: "$url/wishlist",
+      headers: {"X-Access-Token": token},
+    );
+    return response;
+  } catch (err) {
+    return {"error": err};
+  }
+}
+
+createWishList(token, products) async {
+  try {
+    final response = await fetch(
+        uri: "$url/wishlist/",
+        headers: {"X-Access-Token": token},
+        method: "POST",
+        body: {'products': products});
+    return response;
+  } catch (err) {
+    return {"error": err};
+  }
+}
+
+updateWishList(token, productId) async {
+  try {
+    final response = await fetch(
+      uri: "$url/wishlist/$productId",
+      headers: {"X-Access-Token": token},
+      method: "PUT",
+    );
+    return response;
+  } catch (err) {
+    return {"error": err};
+  }
+}
+
+deleteWishListItem(token, id) async {
+  try {
+    final response = await fetch(
+        uri: "$url/wishlist/$id",
         headers: {"X-Access-Token": token},
         method: "DELETE");
     return response;
