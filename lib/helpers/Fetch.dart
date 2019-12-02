@@ -1,19 +1,21 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-fetch({uri, method: "GET", body: '', headers: ''}) async {
+const DefaultHeaders = {"Content-Type": "application/json"};
+
+fetch({uri, method: "GET", body, headers}) async {
   try {
     switch (method) {
       case "GET":
-        var response = await http.get(uri, headers: headers);
+        var response = await http.get(uri, headers: headers ?? DefaultHeaders);
         return json.decode(response.body);
       case "POST":
-        var response =
-            await http.post(uri, headers: headers, body: json.encode(body));
+        var response = await http.post(uri,
+            headers: headers, body: json.encode(body ?? ''));
         return json.decode(response.body);
       case "PUT":
-        var response =
-            await http.put(uri, headers: headers, body: json.encode(body));
+        var response = await http.put(uri,
+            headers: headers, body: json.encode(body ?? ''));
         return json.decode(response.body);
       default:
         var response = await http.get(uri, headers: headers);

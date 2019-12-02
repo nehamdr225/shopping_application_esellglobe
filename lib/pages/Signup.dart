@@ -19,11 +19,11 @@ class SignUpPage extends StatefulWidget {
 class _PageState extends State<SignUpPage> {
   String name, email, password;
   String nameErr, emailErr, passwordErr, signupErr;
+  bool isActive = false;
   @override
   Widget build(BuildContext context) {
-    FlutterStatusbarcolor.setStatusBarColor(Theme.of(context).colorScheme.primaryVariant);
-    var screenWidth = MediaQuery.of(context).size.width;
-
+    FlutterStatusbarcolor.setStatusBarColor(
+        Theme.of(context).colorScheme.primary);
     var setName = (data) {
       if (nameValidator(data) && data != name)
         setState(() {
@@ -62,23 +62,33 @@ class _PageState extends State<SignUpPage> {
     };
 
     var signupUser = () async {
+      setState(() {
+        isActive = true;
+      });
       var message = await signup(email, password, name);
+      print(message);
       if (message['error'] != null)
         setState(() {
           signupErr = message['error'];
+          isActive = false;
         });
-      else
+      else {
+        setState(() {
+          isActive = false;
+        });
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => SignInPage()));
+      }
     };
 
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: true,
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(40.0),
           child: FAppBar(
             title: Text(
-              "Sign-up",
+              "Sign up",
               style: TextStyle(
                 color: Colors.grey[900],
               ),
@@ -86,76 +96,84 @@ class _PageState extends State<SignUpPage> {
           ),
         ),
         backgroundColor: Colors.grey[200],
-        resizeToAvoidBottomPadding: false,
-        body: Align(
-          alignment: Alignment.center,
-          child: Container(
-            height: 600.0,
-            width: screenWidth * 0.95,
-            padding: EdgeInsets.only(top: 0.0, left: 20.0, right: 20.0),
-            child: Column(
-              children: <Widget>[
-                BrandLogos(),
-                Padding(
-                  padding: EdgeInsets.all(20.0),
-                ),
-                FForms(
-                  type: TextInputType.text,
-                  text: "Name",
-                  onChanged: setName,
-                ),
-                nameErr != null
-                    ? Text(
-                        nameErr,
-                        textAlign: TextAlign.center,
-                      )
-                    : Text(''),
-                FForms(
-                    type: TextInputType.emailAddress,
-                    text: "Email",
-                    onChanged: setEmail),
-                emailErr != null
-                    ? Text(
-                        emailErr,
-                        textAlign: TextAlign.center,
-                      )
-                    : Text(''),
-                FForms(
-                    type: TextInputType.text,
-                    text: "Password",
-                    obscure: true,
-                    onChanged: setPassword),
-                passwordErr != null
-                    ? Text(
-                        passwordErr,
-                        textAlign: TextAlign.center,
-                      )
-                    : Text(''),
-                signupErr != null ? Text(signupErr) : Text(''),
-                // FForms(type: TextInputType.phone, text: "Mobile No."),
-                FRaisedButton(
-                  text: "Sign-up",
-                  width: 160.0,
-                  height: 45.0,
-                  color: icontheme3,
-                  bg: primary,
-                  onPressed: signupUser,
-                ), //onPressed: () {}),
-                SizedBox(height: 30.0),
-                FancyText(
-                    text: "Already have an account?",
-                    color: primaryDark,
-                    decoration: TextDecoration.underline,
-                    size: 15.0,
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => SignInPage()),
-                      );
-                    })
-              ],
+        body: ListView(
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(top: 30.0),
+              child: BrandLogos(),
             ),
-          ),
+            Padding(
+              padding: EdgeInsets.all(20.0),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25),
+              child: FForms(
+                type: TextInputType.text,
+                text: "Name",
+                onChanged: setName,
+              ),
+            ),
+            nameErr != null
+                ? Text(
+                    nameErr,
+                    textAlign: TextAlign.center,
+                  )
+                : Text(''),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25),
+              child: FForms(
+                  type: TextInputType.emailAddress,
+                  text: "Email",
+                  onChanged: setEmail),
+            ),
+            emailErr != null
+                ? Text(
+                    emailErr,
+                    textAlign: TextAlign.center,
+                  )
+                : Text(''),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25),
+              child: FForms(
+                  type: TextInputType.text,
+                  text: "Password",
+                  obscure: true,
+                  onChanged: setPassword),
+            ),
+            passwordErr != null
+                ? Text(
+                    passwordErr,
+                    textAlign: TextAlign.center,
+                  )
+                : Text(''),
+            signupErr != null ? Text(signupErr) : Text(''),
+            // FForms(type: TextInputType.phone, text: "Mobile No."),
+            Align(
+              alignment: Alignment.center,
+              child: isActive
+                  ? CircularProgressIndicator()
+                  : FRaisedButton(
+                      text: "Register now",
+                      width: 160.0,
+                      height: 45.0,
+                      color: icontheme3,
+                      bg: primary,
+                      onPressed: signupUser,
+                    ),
+            ), //onPressed: () {}),
+            SizedBox(height: 30.0),
+            FancyText(
+                text: "Already have an account?",
+                color: primaryDark,
+                decoration: TextDecoration.underline,
+                size: 15.0,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SignInPage()),
+                  );
+                })
+          ],
         ),
       ),
     );

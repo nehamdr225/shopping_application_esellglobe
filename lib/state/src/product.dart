@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 class ProductModel extends ChangeNotifier {
   ProductModel() {
     getProducts(page: page).then((data) {
-      print(data['count']);
       if (data['products'] != null && data['error'] == null) {
         products = data['products'];
         maxCount = data['count'];

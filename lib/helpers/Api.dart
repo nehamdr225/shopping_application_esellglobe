@@ -52,7 +52,6 @@ getProducts({result = 15, page = 1}) async {
     final response = await fetch(
       uri: '$url/products/$page?result=15',
     );
-    if (response['error'] != null) return {"error": response['error']};
     return response;
   } catch (err) {
     return {"error": err};

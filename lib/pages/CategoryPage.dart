@@ -1,5 +1,6 @@
 import 'package:esell/state/state.dart';
 import 'package:esell/state/src/consts.dart';
+import 'package:esell/widget/atoms/BottomLoader.dart';
 import 'package:esell/widget/atoms/InfoNavBar.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 //import 'package:esell/widget/molecules/GridList.dart';
@@ -77,7 +78,7 @@ class CategoryPage extends StatelessWidget {
                                       ),
                                     ))));
                       })
-                  : CircularProgressIndicator()),
+                  : BottomLoader()),
           Padding(
             padding: EdgeInsets.symmetric(vertical: 10.0),
           )

@@ -1,8 +1,8 @@
 import 'package:esell/pages/Home.dart';
 // import 'package:esell/pages/CheckoutPage.dart';
-import 'package:esell/pages/Home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:provider/provider.dart';
 import 'package:esell/state/state.dart';
 
@@ -31,6 +31,7 @@ class EsellApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Provider.of<FTheme>(context);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: theme.getTheme(),

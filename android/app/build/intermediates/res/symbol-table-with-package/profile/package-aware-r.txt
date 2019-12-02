@@ -1,0 +1,5 @@
+com.example.esellglobe
+drawable launch_background
+mipmap logo
+mipmap logoonly1
+style LaunchTheme

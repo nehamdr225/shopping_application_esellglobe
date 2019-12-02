@@ -22,6 +22,7 @@ class _PageState extends State<SignInPage> {
   String emailErr, passwordErr;
   String loginErr;
   bool remember = true;
+  bool isActive = false;
 
   @override
   Widget build(BuildContext context) {
@@ -57,20 +58,29 @@ class _PageState extends State<SignInPage> {
 
     var loginUser = () async {
       try {
+        setState(() {
+          isActive = true;
+        });
         Map token = await login(email, password, remember);
         if (token['error'] == null) {
           user.token = token['token'];
           getUser(token['token']).then((userData) {
             user.user = userData;
           });
+          setState(() {
+            isActive = false;
+          });
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => HomePageApp()));
-        } else
+        } else {
           setState(() {
             loginErr = token['error'];
+            isActive = false;
           });
+        }
       } catch (err) {
         setState(() {
+          isActive = false;
           loginErr = "Login failed!";
         });
       }
@@ -78,6 +88,7 @@ class _PageState extends State<SignInPage> {
 
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: true,
         backgroundColor: Colors.grey[200],
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(40.0),
@@ -91,65 +102,69 @@ class _PageState extends State<SignInPage> {
           ),
         ),
         resizeToAvoidBottomPadding: false,
-        body: Align(
-          alignment: Alignment.center,
-          child: Container(
-            height: 600.0,
-            width: screenWidth * 0.95,
-            padding: EdgeInsets.only(top: 5.0, left: 20.0, right: 20.0),
-            child: Column(
-              children: <Widget>[
-                BrandLogos(),
-                Padding(
-                  padding: EdgeInsets.all(20.0),
-                ),
-                FForms(
-                    type: TextInputType.emailAddress,
-                    text: "Email",
-                    onChanged: setEmail),
-                emailErr != null
-                    ? Text(
-                        emailErr,
-                        textAlign: TextAlign.center,
-                      )
-                    : Text(''),
-                FForms(
-                    type: TextInputType.text,
-                    text: "Password",
-                    obscure: true,
-                    onChanged: setPassword),
-                passwordErr != null
-                    ? Text(
-                        passwordErr,
-                        textAlign: TextAlign.center,
-                      )
-                    : Text(''),
-                loginErr != null
-                    ? Text(loginErr, style: TextStyle(color: Colors.red))
-                    : Text(''),
-                FRaisedButton(
-                  text: "Sign-in",
-                  width: 160.0,
-                  height: 45.0,
-                  bg: primary,
-                  color: textColor,
-                  onPressed: loginUser,
-                ),
-                SizedBox(height: 30.0),
-                FancyText(
-                    color: primaryDark,
-                    decoration: TextDecoration.underline,
-                    text: "Don't have an account? Register Here !",
-                    size: 15.0,
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SignUpPage()));
-                    })
-              ],
+        body: ListView(
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(top: 30),
+              child: BrandLogos(),
             ),
-          ),
+            Padding(
+              padding: EdgeInsets.all(20.0),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+              child: FForms(
+                  type: TextInputType.emailAddress,
+                  text: "Email",
+                  onChanged: setEmail),
+            ),
+            emailErr != null
+                ? Text(
+                    emailErr,
+                    textAlign: TextAlign.center,
+                  )
+                : Text(''),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+              child: FForms(
+                  type: TextInputType.text,
+                  text: "Password",
+                  obscure: true,
+                  onChanged: setPassword),
+            ),
+            passwordErr != null
+                ? Text(
+                    passwordErr,
+                    textAlign: TextAlign.center,
+                  )
+                : Text(''),
+            loginErr != null
+                ? Text(loginErr, style: TextStyle(color: Colors.red))
+                : Text(''),
+            Align(
+              alignment: Alignment.center,
+              child: isActive
+                  ? CircularProgressIndicator()
+                  : FRaisedButton(
+                      text: "Sign in",
+                      width: 160.0,
+                      height: 45.0,
+                      bg: primary,
+                      color: textColor,
+                      onPressed: loginUser,
+                    ),
+            ),
+            SizedBox(height: 30.0),
+            FancyText(
+                color: primaryDark,
+                decoration: TextDecoration.underline,
+                text: "Don't have an account? Register Here !",
+                size: 15.0,
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SignUpPage()));
+                })
+          ],
         ),
       ),
     );
