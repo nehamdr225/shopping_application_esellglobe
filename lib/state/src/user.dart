@@ -9,6 +9,7 @@ class UserModel extends ChangeNotifier {
       if (token != null && token != _token) {
         _token = token;
         getUser(token).then((result) {
+          print(result);
           if (result == "token expired") {
             delKeyVal("token").then(() {
               _token = null;
@@ -21,11 +22,13 @@ class UserModel extends ChangeNotifier {
       }
     });
   }
+
   String _token;
   Map _user;
-  String get token => _token;
-  Map get user => _user;
+  List<String> _wishList = [];
+  List _cart = [];
 
+  String get token => _token;
   set token(String token) {
     if (token != _token) {
       _token = token;
@@ -33,10 +36,32 @@ class UserModel extends ChangeNotifier {
     }
   }
 
+  Map get user => _user;
   set user(Map user) {
     if (user != null && user != _user) {
       _user = user;
       notifyListeners();
     }
+  }
+
+  get cart => _cart;
+  addToCart(String product) {
+    _cart.add(product);
+    notifyListeners();
+  }
+
+  findCartItem(id) {
+    return _cart.contains(id);
+  }
+
+  get wishList => _wishList;
+  addToWishList(String product) {
+    _wishList.add(product);
+    notifyListeners();
+  }
+
+  findWishlistItem(id) {
+    if (_wishList.length == 0) return false;
+    return _wishList.contains(id);
   }
 }

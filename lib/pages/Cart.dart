@@ -17,10 +17,10 @@ class CartPage extends StatefulWidget {
 class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
-    var cart = Provider.of<CartModel>(context);
     var product = Provider.of<ProductModel>(context);
     var user = Provider.of<UserModel>(context);
-    var items = cart.cart;
+    var items = user.cart;
+    print(items);
     return SafeArea(
         child: Scaffold(
             appBar: PreferredSize(
@@ -34,7 +34,9 @@ class _CartPageState extends State<CartPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Padding(padding: EdgeInsets.all(2.0),),
+                  Padding(
+                    padding: EdgeInsets.all(2.0),
+                  ),
                   FRaisedButton(
                     width: 160.0,
                     text: "Total: ",
@@ -43,7 +45,9 @@ class _CartPageState extends State<CartPage> {
                     color: textColor,
                     onPressed: () {},
                   ),
-                  Padding(padding: EdgeInsets.all(8.0),),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                  ),
                   FRaisedButton(
                     width: 160.0,
                     color: textColor,
@@ -51,27 +55,38 @@ class _CartPageState extends State<CartPage> {
                     bg: Theme.of(context).colorScheme.primary,
                     onPressed: () {
                       user.token != null
-                      ? Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => CheckoutPage()))
-                      : Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => UserPromptApp()));
+                          ? Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => CheckoutPage()))
+                          : Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => UserPromptApp()));
                     },
                     text: user.token != null ? 'Check Out' : 'Login to proceed',
                   ),
-                  Padding(padding: EdgeInsets.all(2.0),),
+                  Padding(
+                    padding: EdgeInsets.all(2.0),
+                  ),
                 ],
               )
             ],
-            body: cart.count > 0
+            body: items.length > 0
                 ? ListView.builder(
-                    itemCount: cart.count,
+                    itemCount: items.length,
                     itemBuilder: (context, index) {
                       var each = product.one(items[index]);
-                      return CartListView(
-                        name: each['name'],
-                        picture: each['media'][0]['src'][0],
-                        price: each['price'],
-                      );
+                      print(each);
+                      return each["error"] == null
+                          ? CartListView(
+                              name: each['name'],
+                              picture: each['media'][0]['src'].length > 0
+                                  ? each['media'][0]['src'][0]
+                                  : '',
+                              price: each['price'],
+                            )
+                          : CircularProgressIndicator();
                     },
                   )
                 : Center(

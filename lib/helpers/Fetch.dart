@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-const DefaultHeaders = {"Content-Type": "application/json"};
+const Map<String, String> DefaultHeaders = {"Content-Type": "application/json"};
 
-fetch({uri, method: "GET", body, headers}) async {
+fetch({uri, method: "GET", body, Map<String, String> headers}) async {
   try {
     switch (method) {
       case "GET":

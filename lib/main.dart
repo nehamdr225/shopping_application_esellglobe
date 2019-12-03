@@ -2,7 +2,6 @@ import 'package:esell/pages/Home.dart';
 // import 'package:esell/pages/CheckoutPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:provider/provider.dart';
 import 'package:esell/state/state.dart';
 

@@ -1,17 +1,17 @@
 import 'package:flutter/cupertino.dart';
 
 class CartModel extends ChangeNotifier {
-  List<String> _cart = [];
+  List _cart = [];
 
   get cart => _cart;
   get count => _cart.length;
 
-  set cart(List<String> ids) {
+  set cart(List ids) {
     _cart.addAll(ids);
     notifyListeners();
   }
 
-  find(id){
+  find(id) {
     return _cart.contains(id);
   }
 

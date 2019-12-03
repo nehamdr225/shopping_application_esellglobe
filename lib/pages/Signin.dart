@@ -28,7 +28,6 @@ class _PageState extends State<SignInPage> {
   Widget build(BuildContext context) {
     FlutterStatusbarcolor.setStatusBarColor(
         Theme.of(context).colorScheme.primaryVariant);
-    var screenWidth = MediaQuery.of(context).size.width;
     var user = Provider.of<UserModel>(context);
 
     var setEmail = (data) {

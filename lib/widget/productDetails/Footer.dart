@@ -10,10 +10,9 @@ class PDFooter extends StatelessWidget {
   PDFooter({this.id});
   @override
   Widget build(BuildContext context) {
-    final cart = Provider.of<CartModel>(context);
-    final wishlist = Provider.of<WishlistModel>(context);
-    final addToCart = () => cart.one(id);
-    final addToWish = () => wishlist.one(id);
+    final user = Provider.of<UserModel>(context);
+    final addToCart = () => user.addToCart(id);
+    final addToWish = () => user.addToWishList(id);
     return Container(
       height: 40.0,
       color: Colors.transparent,
@@ -21,19 +20,27 @@ class PDFooter extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          wishlist.find(id) == true
+          user.findWishlistItem(id) == true
               ? FloatingActionButton(
-                backgroundColor: primary,
-                child: Icon(Icons.bookmark, color: icontheme3,),
-                onPressed: (){},
-              )
+                  backgroundColor: primary,
+                  child: Icon(
+                    Icons.bookmark,
+                    color: icontheme3,
+                  ),
+                  onPressed: () {},
+                )
               : FloatingActionButton(
-                backgroundColor: icontheme,
-                child: Icon(Icons.bookmark_border, color: icontheme3,),
-                onPressed: addToWish,
-              ),
-              Padding(padding: EdgeInsets.all(10.0),),
-          cart.find(id) == true
+                  backgroundColor: icontheme,
+                  child: Icon(
+                    Icons.bookmark_border,
+                    color: icontheme3,
+                  ),
+                  onPressed: addToWish,
+                ),
+          Padding(
+            padding: EdgeInsets.all(10.0),
+          ),
+          user.findCartItem(id) == true
               ? FRaisedButton(
                   height: 50.0,
                   width: 200.0,
@@ -52,7 +59,6 @@ class PDFooter extends StatelessWidget {
                   shape: true,
                   bg: primary,
                 ),
-
         ],
       ),
     );

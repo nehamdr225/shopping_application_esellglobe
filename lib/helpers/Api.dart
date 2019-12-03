@@ -71,10 +71,9 @@ getUser(token) async {
     final response = await fetch(
         uri: "$url/user",
         headers: {"Content-Type": "application/json", "X-Access-Token": token});
-    if (response['message'] != null) return "token expired";
-    return response['result'];
+    return response;
   } catch (err) {
-    return err;
+    return {"error": err};
   }
 }
 
