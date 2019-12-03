@@ -10,8 +10,8 @@ class WishlistPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final products = Provider.of<ProductModel>(context);
-    final wishlist = Provider.of<WishlistModel>(context);
-    final items = wishlist.wishList;
+    final user = Provider.of<UserModel>(context);
+    final items = user.wishList;
     return Scaffold(
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(40.0),
@@ -32,12 +32,12 @@ class WishlistPage extends StatelessWidget {
               },
               text: 'Proceed to Cart'),
         ],
-        body: wishlist.count() > 0
+        body: items.length > 0
             ? Container(
                 child: OrientationBuilder(builder: (context, orientation) {
                   return GridView.builder(
                     scrollDirection: Axis.vertical,
-                    itemCount: wishlist.count(),
+                    itemCount: items.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount:
                           orientation == Orientation.portrait ? 2 : 3,

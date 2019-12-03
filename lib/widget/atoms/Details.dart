@@ -16,7 +16,7 @@ class Details extends StatefulWidget {
 class _DetailsState extends State<Details> {
   @override
   Widget build(BuildContext context) {
-    final wishlist = Provider.of<WishlistModel>(context);
+    final user = Provider.of<UserModel>(context);
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -27,32 +27,31 @@ class _DetailsState extends State<Details> {
         Text(
           widget.name,
           style: Theme.of(context).textTheme.body1.copyWith(
-            fontSize: 14.0,
-            fontWeight: FontWeight.w500,
-          ), 
+                fontSize: 14.0,
+                fontWeight: FontWeight.w500,
+              ),
           textAlign: TextAlign.center,
         ),
         Row(children: <Widget>[
           Expanded(
               child: Text(
             widget.price,
-            style:Theme.of(context).textTheme.body1.copyWith(
-            fontSize: 13.0,
-            fontWeight: FontWeight.w500,
-          ), 
+            style: Theme.of(context).textTheme.body1.copyWith(
+                  fontSize: 13.0,
+                  fontWeight: FontWeight.w500,
+                ),
             textAlign: TextAlign.center,
           )),
           Expanded(
               child: FIcons(
-                  icon: Icons.bookmark_border,
-                  alignment: Alignment.centerRight,
-                  onPressed: () {
-                    wishlist.find(widget.id) != true
-                        ? wishlist.setOne = widget.id
-                        : print("already in wishlist");
-                  },  
-              )
-          )
+            icon: Icons.bookmark_border,
+            alignment: Alignment.centerRight,
+            onPressed: () {
+              user.findWishlistItem(widget.id) != true
+                  ? user.addToWishList(widget.id)
+                  : print("already in wishlist");
+            },
+          ))
         ]),
       ],
     );

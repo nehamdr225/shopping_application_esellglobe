@@ -87,12 +87,11 @@ getCart(token) async {
   }
 }
 
-registerCart(token, products) async {
+registerCart(token, id) async {
   try {
     final response = await fetch(
-        uri: "$url/cart",
+        uri: "$url/cart/$id",
         headers: {"X-Access-Token": token},
-        body: {'products': products},
         method: "POST");
     return response;
   } catch (err) {
@@ -148,13 +147,12 @@ getOrders(token) async {
   }
 }
 
-createOrder(token, products) async {
+createOrder(token, id) async {
   try {
     final response = await fetch(
-        uri: "$url/orders/",
+        uri: "$url/orders/$id",
         headers: {"X-Access-Token": token},
-        method: "POST",
-        body: {'products': products});
+        method: "POST");
     return response;
   } catch (err) {
     return {"error": err};

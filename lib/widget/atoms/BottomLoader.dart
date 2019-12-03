@@ -8,7 +8,7 @@ class BottomLoader extends StatefulWidget {
 }
 
 class _BottomLoaderState extends State<BottomLoader> {
-  String state = "success";
+  String state;
   @override
   Widget build(BuildContext context) {
     final status = Provider.of<ProductModel>(context).refresh();
@@ -19,21 +19,19 @@ class _BottomLoaderState extends State<BottomLoader> {
         });
     });
     return Container(
-      alignment: Alignment.center,
-      child: state == "done"
-          ? Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Text("Nothing more to show!"),
-                Icon(Icons.check)
-              ],
-            )
-          : CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation(
-                  Theme.of(context).colorScheme.primaryVariant),
-              strokeWidth: 5.0
-          )
-    );
+        alignment: Alignment.center,
+        child: state == "done" && state != null
+            ? Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Text("Nothing more to show!"),
+                  Icon(Icons.check)
+                ],
+              )
+            : CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation(
+                    Theme.of(context).colorScheme.primaryVariant),
+                strokeWidth: 5.0));
   }
 }

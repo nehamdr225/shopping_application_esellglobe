@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 class ProductModel extends ChangeNotifier {
   ProductModel() {
     getProducts(page: page).then((data) {
-      if (data['products'] != null && data['error'] == null) {
+      if (data['error'] == null) {
         products = data['products'];
         maxCount = data['count'];
       } else
@@ -70,21 +70,22 @@ class ProductModel extends ChangeNotifier {
   }
 
   refresh() async {
-    try {
-      if (maxCount != null && products.length < maxCount) {
-        final res = await getProducts(page: page + 1);
-        if (res['products'].length > 0) {
-          page = page + 1;
-          products = res['products'];
-          notifyListeners();
-          return "success";
-        }
-        return "done";
-      }
-      return "done";
-    } catch (e) {
-      isRefreshing = false;
-      return "done";
-    }
+    //   try {
+    //     if (maxCount != null && products.length < maxCount) {
+    //       final res = await getProducts(page: page + 1);
+    //       if (res['products'].length > 0) {
+    //         page = page + 1;
+    //         products = res['products'];
+    //         return "success";
+    //       }
+    //       return "done";
+    //     }
+    //     return "done";
+    //   } catch (e) {
+    //     print(e);
+    //     isRefreshing = false;
+    //     return "done";
+    //   }
+    // }
   }
 }
