@@ -93,63 +93,63 @@ class CheckoutPage extends StatelessWidget {
           Divider(),
           Column(
               children: items.map<Widget>((fav) {
-                final product = products.one(fav);
-                return Container(
-                  margin: EdgeInsets.only(top: 15),
-                  height: 70.0,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.black12,
-                          offset: Offset.fromDirection(1, 1),
-                          blurRadius: 1),
-                      BoxShadow(
-                          color: Colors.black12,
-                          offset: Offset.fromDirection(-1, 1),
-                          blurRadius: 1)
-                    ],
+            final product = products.one(fav['product']);
+            return Container(
+              margin: EdgeInsets.only(top: 15),
+              height: 70.0,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.black12,
+                      offset: Offset.fromDirection(1, 1),
+                      blurRadius: 1),
+                  BoxShadow(
+                      color: Colors.black12,
+                      offset: Offset.fromDirection(-1, 1),
+                      blurRadius: 1)
+                ],
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.all(3.0),
+                    child: Image.network(
+                        product['media'][0]['src'].length > 0
+                            ? product['media']['src'][0]
+                            : '',
+                        height: 100.0,
+                        width: 100.0),
                   ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Padding(
-                        padding: EdgeInsets.all(3.0),
-                        child: Image.network(
-                            product['media'][0]['src'].length > 0
-                                ? product['media']['src'][0]
-                                : '',
-                            height: 100.0,
-                            width: 100.0),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 10.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: <Widget>[
-                            Text(
-                              product['name'],
-                              style: TextStyle(
-                                  fontFamily: "Helvetica",
-                                  color: textColor,
-                                  fontSize: 16.0),
-                            ),
-                          ],
+                  Padding(
+                    padding: EdgeInsets.only(left: 10.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: <Widget>[
+                        Text(
+                          product['name'],
+                          style: TextStyle(
+                              fontFamily: "Helvetica",
+                              color: textColor,
+                              fontSize: 16.0),
                         ),
-                      ),
-                      IconButton(
-                        color: Theme.of(context).colorScheme.error,
-                        splashColor: primary,
-                        icon: Icon(
-                          Icons.remove_circle_outline,
-                        ),
-                        onPressed: () async {},
-                      )
-                    ],
+                      ],
+                    ),
                   ),
-                );
-              }).toList()),
+                  IconButton(
+                    color: Theme.of(context).colorScheme.error,
+                    splashColor: primary,
+                    icon: Icon(
+                      Icons.remove_circle_outline,
+                    ),
+                    onPressed: () async {},
+                  )
+                ],
+              ),
+            );
+          }).toList()),
         ],
       ),
     );

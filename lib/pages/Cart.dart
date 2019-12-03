@@ -76,7 +76,7 @@ class _CartPageState extends State<CartPage> {
                 ? ListView.builder(
                     itemCount: items.length,
                     itemBuilder: (context, index) {
-                      var each = product.one(items[index]);
+                      var each = product.one(items[index]['product']);
                       print(each);
                       return each["error"] == null
                           ? CartListView(

@@ -16,6 +16,13 @@ class UserModel extends ChangeNotifier {
               return;
             });
           }
+          if (result['result']['cart'] != null) {
+            getCart(token).then((data) {
+              print(data);
+              if (data['error'] == null) _cart = data['result']['products'];
+              notifyListeners();
+            });
+          }
           user = result['result'];
         });
         notifyListeners();
@@ -75,6 +82,7 @@ class UserModel extends ChangeNotifier {
 
   get wishList => _wishList;
   addToWishList(String product) {
+    print(product);
     _wishList.add(product);
     notifyListeners();
   }

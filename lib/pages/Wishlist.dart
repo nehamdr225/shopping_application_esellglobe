@@ -12,6 +12,7 @@ class WishlistPage extends StatelessWidget {
     final products = Provider.of<ProductModel>(context);
     final user = Provider.of<UserModel>(context);
     final items = user.wishList;
+    print(items);
     return Scaffold(
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(40.0),
@@ -47,7 +48,9 @@ class WishlistPage extends StatelessWidget {
                       return Product(
                           id: product['_id'],
                           name: product['name'],
-                          image: product['media'][0]['src'][0],
+                          image: product['media'][0]['src'].length > 0
+                              ? product['media'][0]['src'][0]
+                              : "",
                           imgheight: 98.0,
                           price: product['price'],
                           seller: product['seller'],
