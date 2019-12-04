@@ -6,7 +6,7 @@ const splash = Colors.black12;
 const textColor = Colors.black87; 
 const primaryDark = Color(0xff3ea8cc);
 const primary= Color(0xff78daff);
-
+const primary_accent = Color(0xff1724f5);
 const begin = TextStyle(
   fontWeight: FontWeight.w400, 
   color: Colors.grey, 
@@ -25,10 +25,10 @@ class FTheme with ChangeNotifier {
 
   ThemeData esellDefaultTheme = ThemeData(
     iconTheme: IconThemeData(
-      color: Colors.black87,
+      color: Colors.white,
     ),
     colorScheme: ColorScheme(
-      primary: Color(0xff78daff),
+      primary: Color(0xff3ea8cc),
       primaryVariant:Color(0xff3ea8cc),
       secondary: Color(0xffffa378),
       secondaryVariant: Color(0xfff06449),

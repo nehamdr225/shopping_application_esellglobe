@@ -23,8 +23,10 @@ class HomePageApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FlutterStatusbarcolor.setStatusBarColor(Theme.of(context).colorScheme.primaryVariant);
+    var color= Theme.of(context).colorScheme;
+    FlutterStatusbarcolor.setStatusBarColor(color.primaryVariant);
     var user = Provider.of<UserModel>(context);
+    
     return SafeArea(
       child: Scaffold(
         appBar: PreferredSize(
@@ -32,7 +34,7 @@ class HomePageApp extends StatelessWidget {
           child: AppBar(
             elevation: 0.0,
             title: Text('esellglobe',
-                style: TextStyle(fontFamily: 'Bree', color: textColor)),
+                style: TextStyle(fontFamily: 'Bree', color: icontheme3)),
             iconTheme: IconThemeData(
               color: icontheme3,
             ),
@@ -69,7 +71,7 @@ class HomePageApp extends StatelessWidget {
             ],
           ),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: color.background,
         drawer: DrawerApp(),
         body: ListView(
           children: <Widget>[
