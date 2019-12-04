@@ -17,8 +17,6 @@ class BootStrapper extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(builder: (context) => ProductModel()),
         ChangeNotifierProvider(builder: (context) => UserModel()),
-        ChangeNotifierProvider(builder: (context) => CartModel()),
-        ChangeNotifierProvider(builder: (context) => WishlistModel()),
         ChangeNotifierProvider(builder: (context) => FTheme())
       ],
       child: EsellApp(),

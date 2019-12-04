@@ -16,7 +16,14 @@ class UserModel extends ChangeNotifier {
               return;
             });
           }
-          user = result;
+          if (result['result']['cart'] != null) {
+            getCart(token).then((data) {
+              print(data);
+              if (data['error'] == null) _cart = data['result']['products'];
+              notifyListeners();
+            });
+          }
+          user = result['result'];
         });
         notifyListeners();
       }
@@ -46,8 +53,27 @@ class UserModel extends ChangeNotifier {
 
   get cart => _cart;
   addToCart(String product) {
-    _cart.add(product);
-    notifyListeners();
+    if (user['cart'] == null) {
+      registerCart(token, product).then((data) {
+        print(data);
+        if (data['error'] == null) {
+          _cart.add(product);
+          _user.addAll({'cart': data['result']['_id']});
+          notifyListeners();
+          return "success";
+        }
+        return "failed";
+      });
+    } else
+      updateCart(token, product).then((result) {
+        print(result);
+        if (result['error'] == null) {
+          _cart.add(product);
+          notifyListeners();
+          return "success";
+        }
+        return "failed";
+      });
   }
 
   findCartItem(id) {
@@ -56,6 +82,7 @@ class UserModel extends ChangeNotifier {
 
   get wishList => _wishList;
   addToWishList(String product) {
+    print(product);
     _wishList.add(product);
     notifyListeners();
   }
