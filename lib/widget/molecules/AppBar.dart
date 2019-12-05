@@ -17,15 +17,15 @@ class FAppBar extends StatelessWidget {
   final searchBar;
   final String title;
   final drawer;
-  
-  FAppBar(
-      {this.wishlist,
-      this.drawer,
-      this.cart,
-      this.search,
-      this.title,
-      this.searchBar,
-      });
+
+  FAppBar({
+    this.wishlist,
+    this.drawer,
+    this.cart,
+    this.search,
+    this.title,
+    this.searchBar,
+  });
   @override
   Widget build(BuildContext context) {
     FlutterStatusbarcolor.setStatusBarColor(Colors.black87);
@@ -37,15 +37,18 @@ class FAppBar extends StatelessWidget {
           elevation: 0.0,
           iconTheme: IconThemeData(color: icontheme3),
           backgroundColor: Theme.of(context).colorScheme.primary,
-          title: Text(title, style: TextStyle(fontFamily: 'Bree', color: icontheme3)),
+          title: Text(title,
+              style: TextStyle(fontFamily: 'Bree', color: icontheme3)),
           actions: <Widget>[
             search != null
                 ? FIcons(
                     icon: Icons.search,
                     alignment: Alignment.centerRight,
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => SearchPage()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SearchPage()));
                     },
                   )
                 : Text(''),
@@ -84,38 +87,24 @@ class FAppBar extends StatelessWidget {
           return SafeArea(
             child: Container(
               color: Colors.white,
-              height: 330.0,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              child: ListView(
                 children: <Widget>[
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: Container(
-                      // close button
-                      height: 30.0,
-                      width: 30.0,
-                      padding: EdgeInsets.only(top: 0.0),
-                      child: IconButton(
-                        color: icontheme3,
-                        icon: Icon(Icons.close),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                      ),
-                    ),
+                  IconButton(
+                    alignment: Alignment.centerRight,
+                    color: primary,
+                    icon: Icon(Icons.close),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                   ),
-                  Container(
-                    // logo
-                    height: 60.0,
-                    padding: EdgeInsets.only(top: 0.0, bottom: 10.0),
-                    child: ListTile(
-                      title: Center(
-                          child: Image.asset(
-                        'images/logo/logoonly1.png',
-                        height: 60.0,
-                        width: 50.0,
-                      )),
-                    ),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 10),
+                    child: Center(
+                        child: Image.asset(
+                      'images/logo/logoonly1.png',
+                      height: 60.0,
+                      width: 60.0,
+                    )),
                   ),
                   Container(
                     // buttons

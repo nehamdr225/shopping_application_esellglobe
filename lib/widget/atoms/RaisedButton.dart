@@ -27,23 +27,24 @@ class FRaisedButton extends StatelessWidget {
       child: RaisedButton(
           color: bg,
           child: needIcon == true
-              ? ListTile(
-                  contentPadding: EdgeInsets.all(0.0),
-                  leading: Image.asset(
+              ? Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Image.asset(
                     image,
                     height: 25.0,
                     width: 25.0,
                   ),
-                  trailing: Text(
+                  Text(
                     text,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: color,
-                      fontFamily: 'Bree',
+                      fontFamily: 'Helvetica',
                       fontSize: 16.0,
                     ),
                   ),
-                )
+                ])
               : Text(
                   text,
                   style: TextStyle(
