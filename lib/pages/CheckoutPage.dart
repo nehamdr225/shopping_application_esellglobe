@@ -1,5 +1,9 @@
 //import 'package:esell/state/src/theme.dart';
 // import 'package:esell/widget/atoms/Forms.dart';
+import 'package:esell/widget/atoms/FancyText.dart';
+import 'package:esell/widget/atoms/Forms.dart';
+import 'package:esell/widget/atoms/InfoNavBar.dart';
+import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -10,86 +14,77 @@ class CheckoutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final products = Provider.of<ProductModel>(context);
     final user = Provider.of<UserModel>(context);
+    final width = MediaQuery.of(context).size.width;
     var items = user.cart;
     return Scaffold(
+      persistentFooterButtons: <Widget>[
+        SizedBox(
+          width: width - 150.0,
+          child: RaisedButton(
+            color: primary,
+            child:
+                Text('Place Order', style: Theme.of(context).textTheme.title),
+            onPressed: () {},
+          ),
+        )
+      ],
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(40.0),
           child: FAppBar(
             wishlist: true,
-            title: Text('Checkout'),
+            title: 'Checkout',
           )),
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: ListView(
         children: <Widget>[
-          // Card(
-          //   child: Column(
-          //     children: <Widget>[
-          //       Row(
-          //         children: <Widget>[
-          //           Icon(Icons.location_on),
-          //           Text(
-          //             'Here is name',
-          //             style: Theme.of(context).textTheme.title,
-          //           ),
-          //           InkWell(
-          //             onTap: () {},
-          //             child: Text(
-          //               'EDIT',
-          //               style: Theme.of(context).textTheme.body2,
-          //             ),
-          //           ),
-          //         ],
-          //       ),
-          //       Text(
-          //         'User Address',
-          //         style: Theme.of(context).textTheme.title,
-          //       ),
-          //       Row(
-          //         children: <Widget>[
-          //           Icon(Icons.receipt),
-          //           Text(
-          //             'Bill to',
-          //             style: Theme.of(context).textTheme.title,
-          //           ),
-          //           InkWell(
-          //             onTap: () {},
-          //             child: Text(
-          //               'EDIT',
-          //               style: Theme.of(context).textTheme.body2,
-          //             ),
-          //           ),
-          //         ],
-          //       ),
-          //       Row(
-          //         children: <Widget>[
-          //           Icon(Icons.phone),
-          //           FForms(
-          //               type: TextInputType.phone,
-          //               text: "Phone number",
-          //               obscure: false,
-          //               onChanged: (String x) {
-          //                 Navigator.pop(context);
-          //               }),
-          //         ],
-          //       ),
-          //       Row(
-          //         children: <Widget>[
-          //           Icon(
-          //             Icons.email,
-          //             size: 20,
-          //           ),
-          //           FForms(
-          //               type: TextInputType.emailAddress,
-          //               text: "Email Address",
-          //               obscure: false,
-          //               onChanged: (String x) {
-          //                 Navigator.pop(context);
-          //               }),
-          //         ],
-          //       ),
-          //     ],
-          //   ),
-          // ),
+          Card(
+            child: Column(
+              children: <Widget>[
+                InfoNavBar(
+                  text: 'Name',
+                  size: 18.0,
+                  gotoproduct: false,
+                ),
+                SizedBox(
+                  height: 10.0,
+                ),
+                Text('House number, City, State, Country'),
+                SizedBox(
+                  height: 20.0,
+                ),
+                InfoNavBar(
+                  text: 'Bill to default billing address',
+                  size: 18.0,
+                  gotoproduct: false,
+                ),
+                SizedBox(
+                  height: 10.0,
+                ),
+                Container(
+                  height: 40.0,
+                  width: width - 40.0,
+                  child: FForms(
+                    type: TextInputType.phone,
+                    text: 'Enter your phone number',
+                  ),
+                ),
+                SizedBox(
+                  height: 10.0,
+                ),
+                Container(
+                  height: 40.0,
+                  width: width - 40.0,
+                  child: FForms(
+                    type: TextInputType.emailAddress,
+                    text: 'Enter your email address',
+                  ),
+                ),
+                SizedBox(
+                  height: 50.0,
+                ),
+              ],
+            ),
+          ),
           Divider(),
           Column(
               children: items.map<Widget>((fav) {
@@ -120,7 +115,7 @@ class CheckoutPage extends StatelessWidget {
                             ? product['media']['src'][0]
                             : '',
                         height: 100.0,
-                        width: 100.0),
+                        width: 50.0),
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: 10.0),
@@ -133,7 +128,7 @@ class CheckoutPage extends StatelessWidget {
                           style: TextStyle(
                               fontFamily: "Helvetica",
                               color: textColor,
-                              fontSize: 16.0),
+                              fontSize: 14.0),
                         ),
                       ],
                     ),
@@ -144,7 +139,32 @@ class CheckoutPage extends StatelessWidget {
                     icon: Icon(
                       Icons.remove_circle_outline,
                     ),
-                    onPressed: () async {},
+                    onPressed: () async {
+                      showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                                title: FancyText(
+                                  text: 'Remove from cart?',
+                                  size: 18.0,
+                                  textAlign: TextAlign.center,
+                                ),
+                                elevation: 2.0,
+                                content: Container(
+                                    alignment: Alignment.center,
+                                    height: 70.0,
+                                    width: 200.0,
+                                    child: Text(
+                                        'Are you sure you want to remove this product?')),
+                                actions: <Widget>[
+                                  FRaisedButton(
+                                    text: 'Remove',
+                                    color: Colors.red,
+                                    bg: Colors.red,
+
+                                  )
+                                ],
+                              ));
+                    },
                   )
                 ],
               ),

@@ -14,7 +14,7 @@ class ReturnPage extends StatelessWidget {
           preferredSize: Size.fromHeight(50.0),
           child: FAppBar(
             wishlist: true,
-            title: Text("Return or Exchange",), 
+            title: "Return or Exchange",
           )),
       backgroundColor: Colors.white,
       body: Container(

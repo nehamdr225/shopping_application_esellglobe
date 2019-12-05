@@ -95,7 +95,7 @@ class CategoryPage extends StatelessWidget {
           child: FAppBar(
               wishlist: true,
               cart: true,
-              title: Text('$text', style: TextStyle(color: textColor))),
+              title: '$text'),
         ),
         body: ListView(primary: false, children: createWidgets()),
       ),

@@ -12,7 +12,7 @@ const drawercolor = LinearGradient(
   begin: Alignment.topLeft,
   end: Alignment.topRight,
   colors: [
-    Color(0xff78daff),
+    Color(0xff3ea8cc),
     Color(0xffEEEEEE),
   
   ]

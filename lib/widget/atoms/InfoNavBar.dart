@@ -1,3 +1,4 @@
+import 'package:esell/pages/AddressPage.dart';
 import 'package:esell/pages/Products.dart';
 import 'package:esell/state/src/theme.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
@@ -6,8 +7,10 @@ import 'package:flutter/material.dart';
 class InfoNavBar extends StatelessWidget {
   final type;
   final text;
+  final size;
   final offerCard;
-  const InfoNavBar({Key key, this.type, this.text, this.offerCard: false})
+  final bool gotoproduct;
+  const InfoNavBar({Key key, this.type, this.text, this.size: 20.0, this.offerCard: false, this.gotoproduct: true})
       : super(key: key);
 
   @override
@@ -21,7 +24,7 @@ class InfoNavBar extends StatelessWidget {
             text: text,
             //textColor: color.navColor,
             fontfamily: "Bree",
-            size: 20.0,
+            size: size,
             textAlign: TextAlign.center,
           ),
         ),
@@ -32,12 +35,17 @@ class InfoNavBar extends StatelessWidget {
             color: textColor,
           ),
           onPressed: () {
-            Navigator.push(
+            gotoproduct == true
+            ? Navigator.push(
                 context,
                 MaterialPageRoute(
                     builder: (context) => ProductsPage(
                           category: type,
-                        )));
+                        )))
+            : Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AddressPage()));
           },
         ),
       ]),

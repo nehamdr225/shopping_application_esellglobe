@@ -22,11 +22,12 @@ class _CartPageState extends State<CartPage> {
     var items = user.cart;
     print(items);
     return SafeArea(
-        child: Scaffold(
+        child: Scaffold( 
             appBar: PreferredSize(
                 preferredSize: Size.fromHeight(40.0),
                 child: FAppBar(
                   wishlist: true,
+                  title: 'Cart',
                 )),
             backgroundColor: Colors.white,
             persistentFooterButtons: <Widget>[
@@ -50,7 +51,7 @@ class _CartPageState extends State<CartPage> {
                   ),
                   FRaisedButton(
                     width: 160.0,
-                    color: textColor,
+                    color: Colors.white,
                     shape: true,
                     bg: Theme.of(context).colorScheme.primary,
                     onPressed: () {

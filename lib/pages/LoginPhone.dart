@@ -8,7 +8,8 @@ import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 class LoginPhone extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    FlutterStatusbarcolor.setStatusBarColor(Theme.of(context).colorScheme.primaryVariant);
+    FlutterStatusbarcolor.setStatusBarColor(
+        Theme.of(context).colorScheme.primaryVariant);
     var screenWidth = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
@@ -16,12 +17,7 @@ class LoginPhone extends StatelessWidget {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(40.0),
           child: FAppBar(
-            title: Text(
-              "Login with Phone",
-              style: TextStyle(
-                color: Colors.grey[900],
-              ),
-            ),
+            title: "Login with Phone",
           ),
         ),
         resizeToAvoidBottomPadding: false,
@@ -32,31 +28,31 @@ class LoginPhone extends StatelessWidget {
             width: screenWidth * 0.95,
             padding: EdgeInsets.only(top: 5.0, left: 20.0, right: 20.0),
             child: Column(
-                children: <Widget>[
-                  BrandLogos(),
-                  Padding(
-                    padding: EdgeInsets.all(25.0),
-                  ),
-                  FancyText( // continue w/o signin
-                  color:  Theme.of(context).colorScheme.primary,
-                  text: "Enter Verified Mobile Number",
-                  size: 18.0,
-                  fontfamily: 'Bree',
-                  onTap: () {
-                    // Navigator.push(context,
-                    //     MaterialPageRoute(builder: (context) => HomePageApp()));
-                  }),
-
-                  Padding(
-                    padding: EdgeInsets.all(10.0),
-                  ),
-                  FForms(
-                      type: TextInputType.phone,
-                      text: "Phone Number",
-                      //onChanged: setEmail
-                  ),
-                ],
-              ),
+              children: <Widget>[
+                BrandLogos(),
+                Padding(
+                  padding: EdgeInsets.all(25.0),
+                ),
+                FancyText(
+                    // continue w/o signin
+                    color: Theme.of(context).colorScheme.primary,
+                    text: "Enter Verified Mobile Number",
+                    size: 18.0,
+                    fontfamily: 'Bree',
+                    onTap: () {
+                      // Navigator.push(context,
+                      //     MaterialPageRoute(builder: (context) => HomePageApp()));
+                    }),
+                Padding(
+                  padding: EdgeInsets.all(10.0),
+                ),
+                FForms(
+                  type: TextInputType.phone,
+                  text: "Phone Number",
+                  //onChanged: setEmail
+                ),
+              ],
+            ),
           ),
         ),
       ),

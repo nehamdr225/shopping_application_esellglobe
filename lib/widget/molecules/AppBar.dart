@@ -15,7 +15,7 @@ class FAppBar extends StatelessWidget {
   final cart;
   final search;
   final searchBar;
-  final Widget title;
+  final String title;
   final drawer;
   
   FAppBar(
@@ -37,7 +37,7 @@ class FAppBar extends StatelessWidget {
           elevation: 0.0,
           iconTheme: IconThemeData(color: icontheme3),
           backgroundColor: Theme.of(context).colorScheme.primary,
-          title: title,
+          title: Text(title, style: TextStyle(fontFamily: 'Bree', color: icontheme3)),
           actions: <Widget>[
             search != null
                 ? FIcons(

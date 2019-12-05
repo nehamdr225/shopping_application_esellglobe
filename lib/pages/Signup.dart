@@ -87,12 +87,7 @@ class _PageState extends State<SignUpPage> {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(40.0),
           child: FAppBar(
-            title: Text(
-              "Sign up",
-              style: TextStyle(
-                color: Colors.grey[900],
-              ),
-            ),
+            title: "Sign up",
           ),
         ),
         backgroundColor: Colors.grey[200],

@@ -92,12 +92,7 @@ class _PageState extends State<SignInPage> {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(40.0),
           child: FAppBar(
-            title: Text(
-              "Sign-in",
-              style: TextStyle(
-                color: Colors.grey[900],
-              ),
-            ),
+            title: "Sign-in",
           ),
         ),
         resizeToAvoidBottomPadding: false,

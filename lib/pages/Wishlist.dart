@@ -18,6 +18,7 @@ class WishlistPage extends StatelessWidget {
           preferredSize: Size.fromHeight(40.0),
           child: FAppBar(
             cart: true,
+            title: 'Wishlist',
           ),
         ),
         backgroundColor: Colors.white,
@@ -26,7 +27,7 @@ class WishlistPage extends StatelessWidget {
               width: 160.0,
               shape: true,
               color: textColor,
-              bg: Theme.of(context).colorScheme.secondary,
+              bg: Theme.of(context).colorScheme.primary,
               onPressed: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => CartPage()));
@@ -50,7 +51,7 @@ class WishlistPage extends StatelessWidget {
                           name: product['name'],
                           image: product['media'][0]['src'].length > 0
                               ? product['media'][0]['src'][0]
-                              : "",
+                              : "no images",
                           imgheight: 98.0,
                           price: product['price'],
                           seller: product['seller'],

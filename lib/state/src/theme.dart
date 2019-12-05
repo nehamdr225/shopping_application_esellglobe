@@ -29,7 +29,7 @@ class FTheme with ChangeNotifier {
     ),
     colorScheme: ColorScheme(
       primary: Color(0xff3ea8cc),
-      primaryVariant:Color(0xff3ea8cc),
+      primaryVariant:Color(0xff3288a6),
       secondary: Color(0xffffa378),
       secondaryVariant: Color(0xfff06449),
       background: Color(0xffEEEEEE),

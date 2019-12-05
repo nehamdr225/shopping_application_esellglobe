@@ -26,6 +26,7 @@ class DrawerApp extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: <Widget>[
             userData != null && token != null
+            //token != null
                 ? UserAccountsDrawerHeader(
                     accountName: Text(
                         userData.length > 0 ? userData['name'] : "Loading ..."),
