@@ -9,23 +9,22 @@ class UserModel extends ChangeNotifier {
       if (token != null && token != _token) {
         _token = token;
         getUser(token).then((result) {
-          print(result);
-          if (result == "token expired") {
-            delKeyVal("token").then(() {
-              _token = null;
-              return;
-            });
+          if (result['error'] == null) {
+            if (result['message'] == "Auth failed") {
+              delKeyVal("token").then(() {
+                _token = null;
+                notifyListeners();
+              });
+            } else if (result['result']['cart'] != null) {
+              getCart(token).then((data) {
+                if (data['error'] == null) _cart = data['result']['products'];
+                notifyListeners();
+              });
+            }
+            user = result['result'];
+            notifyListeners();
           }
-          if (result['result']['cart'] != null) {
-            getCart(token).then((data) {
-              print(data);
-              if (data['error'] == null) _cart = data['result']['products'];
-              notifyListeners();
-            });
-          }
-          user = result['result'];
         });
-        notifyListeners();
       }
     });
   }
@@ -55,7 +54,6 @@ class UserModel extends ChangeNotifier {
   addToCart(String product) {
     if (user['cart'] == null) {
       registerCart(token, product).then((data) {
-        print(data);
         if (data['error'] == null) {
           _cart.add(product);
           _user.addAll({'cart': data['result']['_id']});
@@ -66,7 +64,6 @@ class UserModel extends ChangeNotifier {
       });
     } else
       updateCart(token, product).then((result) {
-        print(result);
         if (result['error'] == null) {
           _cart.add(product);
           notifyListeners();
