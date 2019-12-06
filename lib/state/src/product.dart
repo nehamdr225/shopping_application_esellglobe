@@ -12,6 +12,72 @@ class ProductModel extends ChangeNotifier {
     });
   }
   List _products = [];
+  // Map _productsStore = {
+  //   "men": {
+  //     "top": {"casual": [], "formal": [], "t-shirt": [], "jacket": []},
+  //     "bottom": {"jeans": [], "formal": [], "sports": []},
+  //     "shoe": {"casual": [], "formal": [], "sports": [], "slipper": []},
+  //     "bags": [],
+  //     "glasses": [],
+  //     "watches": []
+  //   },
+  //   "women": {}
+  // };
+
+  // getStore(List tree) {
+  //   int flag = 2;
+  //   final int length = tree.length;
+  //   recurse(value) {
+  //     if (flag >= length) {
+  //       return value;
+  //     } else {
+  //       final retval = value[tree[flag]];
+  //       flag++;
+  //       return recurse(retval);
+  //     }
+  //   }
+
+  //   return recurse(_productsStore[tree[0]][tree[1]]);
+  // }
+
+  // setStore(List data) {
+  //   data.forEach((point) {
+  //     final String pCategory = point["category"];
+  //     if (pCategory.contains("men") && pCategory.contains("top")) {
+  //       if (pCategory.contains("casual"))
+  //         _productsStore["men"]["top"]["casual"].add(point);
+  //       else if (pCategory.contains("formal"))
+  //         _productsStore["men"]["top"]["formal"].add(point);
+  //       else if (pCategory.contains("t-shirt"))
+  //         _productsStore["men"]["top"]["t-shirt"].add(point);
+  //       else if (pCategory.contains("jacket"))
+  //         _productsStore["men"]["top"]["jacket"].add(point);
+  //     } else if (pCategory.contains("men") && pCategory.contains("bottom")) {
+  //       if (pCategory.contains("jeans"))
+  //         _productsStore["men"]["bottom"]["jeans"].add(point);
+  //       else if (pCategory.contains("formal"))
+  //         _productsStore["men"]["bottom"]["formal"].add(point);
+  //       else if (pCategory.contains("sports"))
+  //         _productsStore["men"]["bottom"]["sports"].add(point);
+  //     } else if (pCategory.contains("men") && pCategory.contains("shoe")) {
+  //       if (pCategory.contains("casual"))
+  //         _productsStore["men"]["shoe"]["casual"].add(point);
+  //       else if (pCategory.contains("formal"))
+  //         _productsStore["men"]["shoe"]["formal"].add(point);
+  //       else if (pCategory.contains("sports"))
+  //         _productsStore["men"]["shoe"]["sports"].add(point);
+  //       else if (pCategory.contains("slipper"))
+  //         _productsStore["men"]["shoe"]["slipper"].add(point);
+  //     } else if (pCategory.contains("men") && pCategory.contains("bags")) {
+  //       _productsStore["men"]["bags"].add(point);
+  //     } else if (pCategory.contains("men") && pCategory.contains("glasses")) {
+  //       _productsStore["men"]["glasses"].add(point);
+  //     } else if (pCategory.contains("men") && pCategory.contains("watches")) {
+  //       _productsStore["men"]["watches"].add(point);
+  //     }
+  //   });
+  // }
+
   int _maxCount;
   int _page = 1;
   bool _isRefreshing = false;
@@ -70,22 +136,21 @@ class ProductModel extends ChangeNotifier {
   }
 
   refresh() async {
-    //   try {
-    //     if (maxCount != null && products.length < maxCount) {
-    //       final res = await getProducts(page: page + 1);
-    //       if (res['products'].length > 0) {
-    //         page = page + 1;
-    //         products = res['products'];
-    //         return "success";
-    //       }
-    //       return "done";
-    //     }
-    //     return "done";
-    //   } catch (e) {
-    //     print(e);
-    //     isRefreshing = false;
-    //     return "done";
-    //   }
-    // }
+    try {
+      if (maxCount != null && page * 15 < maxCount) {
+        final res = await getProducts(page: page + 1);
+        if (res['products'].length > 0) {
+          page = page + 1;
+          products = res['products'];
+          return "success";
+        }
+        return "done";
+      }
+      return "done";
+    } catch (e) {
+      print(e);
+      isRefreshing = false;
+      return "done";
+    }
   }
 }

@@ -64,7 +64,10 @@ const MAPPER = {
   "Top Wear": "top",
   "Bottom Wear": "bottom",
   "Foot Wear": "shoe",
-  "Watches & Glasses": "glasses"
+  "Watches": "watches",
+  "Sunglasses": "glasses",
+  "Backpacks": "bags",
+  "Bags": "bags"
 };
 const SubMain = {
   "top": [
