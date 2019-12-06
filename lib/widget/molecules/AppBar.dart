@@ -38,7 +38,7 @@ class FAppBar extends StatelessWidget {
           iconTheme: IconThemeData(color: icontheme3),
           backgroundColor: Theme.of(context).colorScheme.primary,
           title: Text(title,
-              style: TextStyle(fontFamily: 'Bree', color: icontheme3)),
+              style: TextStyle(fontFamily: 'Helvetica', color: icontheme3)),
           actions: <Widget>[
             search != null
                 ? FIcons(

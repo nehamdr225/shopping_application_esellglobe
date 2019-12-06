@@ -23,7 +23,7 @@ class InfoNavBar extends StatelessWidget {
           child: FancyText(
             text: text,
             //textColor: color.navColor,
-            fontfamily: "Bree",
+            fontfamily: "Ropa sans",
             size: size,
             textAlign: TextAlign.center,
           ),

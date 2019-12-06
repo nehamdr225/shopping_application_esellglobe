@@ -19,14 +19,14 @@ class CheckoutPage extends StatelessWidget {
     return Scaffold(
       persistentFooterButtons: <Widget>[
         SizedBox(
-          width: width - 150.0,
+          width: width - 20,
           child: RaisedButton(
             color: primary,
             child:
                 Text('Place Order', style: Theme.of(context).textTheme.title),
             onPressed: () {},
           ),
-        )
+        ),
       ],
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(40.0),
@@ -41,7 +41,7 @@ class CheckoutPage extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 InfoNavBar(
-                  text: 'Name',
+                  text: 'Billing details',
                   size: 18.0,
                   gotoproduct: false,
                 ),
@@ -160,7 +160,6 @@ class CheckoutPage extends StatelessWidget {
                                     text: 'Remove',
                                     color: Colors.red,
                                     bg: Colors.red,
-
                                   )
                                 ],
                               ));
