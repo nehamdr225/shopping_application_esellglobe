@@ -3,6 +3,7 @@ import 'package:esell/widget/atoms/DataContainer.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:esell/widget/molecules/MakeLine.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
 class OrdetrackPage extends StatelessWidget {
   final dotSize = 20.0;
@@ -40,6 +41,7 @@ class OrdetrackPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FlutterStatusbarcolor.setStatusBarColor(Theme.of(context).colorScheme.primaryVariant);
     //Animation<double> animation = listenable;
     return Scaffold(
         backgroundColor: Colors.grey[100],

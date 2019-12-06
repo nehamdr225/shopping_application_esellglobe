@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:esell/widget/productDetails/details.dart';
 import 'package:esell/state/state.dart';
+import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
 class ProductDetails extends StatelessWidget {
   final String id;
   ProductDetails({this.id});
   @override
   Widget build(BuildContext context) {
+    FlutterStatusbarcolor.setStatusBarColor(Theme.of(context).colorScheme.primaryVariant);
     final product = Provider.of<ProductModel>(context).one(id);
     List<Image> images = [];
     if (product['media'][0]['src'] != null)

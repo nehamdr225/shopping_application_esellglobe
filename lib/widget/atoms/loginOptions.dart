@@ -14,30 +14,33 @@ class LoginOptions extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              FRaisedButton(
-                height: 50.0,
-                width: 125.0,
-                needIcon: true,
-                image: 'images/icons/facebookicon.png',
-                text: "Facebook",
-                color: Colors.black87,
-                bg: Colors.white,
-                onPressed: () {},
-              ),
-              FRaisedButton(
-                height: 50.0,
-                width: 125.0,
-                image: 'images/icons/googleicon.png',
-                needIcon: true,
-                text: "Google",
-                color: Colors.black87,
-                bg: Colors.white,
-                onPressed: () {},
-              )
-            ],
+          Container(
+            width: 270.0,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                FRaisedButton(
+                  height: 50.0,
+                  width: 130.0,
+                  needIcon: true,
+                  image: 'images/icons/facebookicon.png',
+                  text: "Facebook",
+                  color: Colors.black87,
+                  bg: Colors.white,
+                  onPressed: () {},
+                ),
+                FRaisedButton(
+                  height: 50.0,
+                  width: 130.0,
+                  image: 'images/icons/googleicon.png',
+                  needIcon: true,
+                  text: "Google",
+                  color: Colors.black87,
+                  bg: Colors.white,
+                  onPressed: () {},
+                )
+              ],
+            ),
           ),
           Padding(
             padding: EdgeInsets.all(8.0),
@@ -78,7 +81,7 @@ class LoginOptions extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(vertical: 15.0),
             child: FancyText(
-                color: primary,
+                color: primaryDark,
                 text: "New here? Register now!",
                 size: 16.0,
                 fontfamily: 'Helvetica',

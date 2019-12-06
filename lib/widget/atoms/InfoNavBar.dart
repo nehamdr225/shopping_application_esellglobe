@@ -9,8 +9,8 @@ class InfoNavBar extends StatelessWidget {
   final text;
   final size;
   final offerCard;
-  final bool gotoproduct;
-  const InfoNavBar({Key key, this.type, this.text, this.size: 20.0, this.offerCard: false, this.gotoproduct: true})
+  final bool gotoproduct; 
+  const InfoNavBar({Key key, this.type, this.text, this.size: 18.0, this.offerCard: false, this.gotoproduct: true})
       : super(key: key);
 
   @override
@@ -23,7 +23,7 @@ class InfoNavBar extends StatelessWidget {
           child: FancyText(
             text: text,
             //textColor: color.navColor,
-            fontfamily: "Ropa sans",
+            fontfamily: "Helvetica",
             size: size,
             textAlign: TextAlign.center,
           ),

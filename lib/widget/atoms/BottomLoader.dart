@@ -26,7 +26,7 @@ class _BottomLoaderState extends State<BottomLoader> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Text("Nothing more to show!"),
-                  Icon(Icons.check)
+                  Icon(Icons.check, color: primaryDark,)
                 ],
               )
             : CircularProgressIndicator(

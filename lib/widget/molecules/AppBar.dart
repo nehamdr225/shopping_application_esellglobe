@@ -35,10 +35,10 @@ class FAppBar extends StatelessWidget {
         preferredSize: Size.fromHeight(40.0),
         child: AppBar(
           elevation: 0.0,
-          iconTheme: IconThemeData(color: icontheme3),
+          iconTheme: IconThemeData(color: iconthemelight),
           backgroundColor: Theme.of(context).colorScheme.primary,
           title: Text(title,
-              style: TextStyle(fontFamily: 'Helvetica', color: icontheme3)),
+              style: TextStyle(fontFamily: 'Helvetica', color: iconthemelight)),
           actions: <Widget>[
             search != null
                 ? FIcons(

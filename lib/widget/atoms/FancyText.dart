@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class FancyText extends StatelessWidget {
   final String text;
   final double size;
+  final fontWeight;
   final Function onTap;
   final TextDecoration decoration;
   final Color color;
@@ -13,6 +14,7 @@ class FancyText extends StatelessWidget {
   FancyText(
       {this.text,
       this.color,
+      this.fontWeight,
       this.fontfamily: 'Montserrat',
       this.size,
       this.onTap,
@@ -29,6 +31,7 @@ class FancyText extends StatelessWidget {
           child: Text(text,
               textAlign: textAlign,
               style: TextStyle(
+                fontWeight: fontWeight,
                   fontFamily: fontfamily,
                   fontSize: size,
                   color: color,

@@ -4,11 +4,13 @@ import 'package:esell/widget/atoms/Forms.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 //import 'package:esell/state/src/theme.dart';
 
 class ReturnPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    FlutterStatusbarcolor.setStatusBarColor(Theme.of(context).colorScheme.primaryVariant);
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(50.0),

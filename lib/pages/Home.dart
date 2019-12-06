@@ -5,7 +5,6 @@ import 'package:esell/widget/atoms/loginOptions.dart';
 import 'package:esell/widget/molecules/GridList.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:esell/widget/molecules/Carousel.dart';
 import 'package:esell/widget/molecules/colors.dart';
 import 'package:esell/widget/molecules/Icons.dart';
@@ -13,6 +12,7 @@ import 'package:esell/pages/Cart.dart';
 import 'package:esell/pages/Wishlist.dart';
 import 'package:provider/provider.dart';
 import 'package:esell/pages/Drawer.dart';
+import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
 class HomePageApp extends StatelessWidget {
   const HomePageApp(
@@ -24,8 +24,8 @@ class HomePageApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var color = Theme.of(context).colorScheme;
-    FlutterStatusbarcolor.setStatusBarColor(color.primaryVariant);
     var user = Provider.of<UserModel>(context);
+    FlutterStatusbarcolor.setStatusBarColor(color.primaryVariant);
 
     return SafeArea(
       child: Scaffold(
@@ -34,9 +34,9 @@ class HomePageApp extends StatelessWidget {
           child: AppBar(
             elevation: 0.0,
             title: Text('esellglobe',
-                style: TextStyle(fontFamily: 'Bree', color: icontheme3)),
+                style: TextStyle(fontFamily: 'Bree', color: iconthemelight)),
             iconTheme: IconThemeData(
-              color: icontheme3,
+              color: iconthemelight,
             ),
             backgroundColor: Theme.of(context).colorScheme.primary,
             actions: <Widget>[

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 const barGrey = Colors.grey;
 const orderBar = Color(0xfffc773a);
@@ -6,7 +7,7 @@ const splash = Colors.black12;
 const textColor = Colors.black87; 
 const primaryDark = Color(0xff3ea8cc);
 const primary= Color(0xff78daff);
-const primary_accent = Color(0xff1724f5);
+
 const begin = TextStyle(
   fontWeight: FontWeight.w400, 
   color: Colors.grey, 
@@ -22,7 +23,6 @@ const end = TextStyle(
 
 class FTheme with ChangeNotifier {
   ThemeData esellDarkTheme = ThemeData.dark();
-
   ThemeData esellDefaultTheme = ThemeData(
     iconTheme: IconThemeData(
       color: Colors.white,

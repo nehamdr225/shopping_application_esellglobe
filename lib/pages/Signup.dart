@@ -23,7 +23,7 @@ class _PageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     FlutterStatusbarcolor.setStatusBarColor(
-        Theme.of(context).colorScheme.primary);
+        Theme.of(context).colorScheme.primaryVariant);
     var setName = (data) {
       if (nameValidator(data) && data != name)
         setState(() {
@@ -151,7 +151,7 @@ class _PageState extends State<SignUpPage> {
                       text: "Register now",
                       width: 160.0,
                       height: 45.0,
-                      color: icontheme3,
+                      color: iconthemelight,
                       bg: primary,
                       onPressed: signupUser,
                     ),

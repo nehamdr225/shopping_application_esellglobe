@@ -1,6 +1,7 @@
 import 'package:esell/state/state.dart';
 import 'package:esell/widget/molecules/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 //import 'package:provider/provider.dart';
 
 class SearchPage extends StatefulWidget {
@@ -16,6 +17,7 @@ class _SearchPageState extends State<SearchPage> {
   List searchResult = [];
   @override
   Widget build(BuildContext context) {
+    FlutterStatusbarcolor.setStatusBarColor(Theme.of(context).colorScheme.primaryVariant);
     //final merchants = Provider.of<MerchantsModel>(context).merchants;
 
     //void search(String query) {
@@ -37,7 +39,7 @@ class _SearchPageState extends State<SearchPage> {
           preferredSize: Size.fromHeight(40.0),
           child: AppBar(
               elevation: 0.0,
-              iconTheme: IconThemeData(color: icontheme3),
+              iconTheme: IconThemeData(color: iconthemelight),
               backgroundColor: Theme.of(context).colorScheme.primary,
               title: TextField(
                 autofocus: true,

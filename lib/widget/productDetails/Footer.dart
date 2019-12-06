@@ -25,15 +25,15 @@ class PDFooter extends StatelessWidget {
                   backgroundColor: primary,
                   child: Icon(
                     Icons.bookmark,
-                    color: icontheme3,
+                    color: iconthemedark,
                   ),
                   onPressed: () {},
                 )
               : FloatingActionButton(
-                  backgroundColor: icontheme,
+                  backgroundColor: iconthemelight,
                   child: Icon(
                     Icons.bookmark_border,
-                    color: icontheme3,
+                    color: iconthemedark,
                   ),
                   onPressed: addToWish,
                 ),

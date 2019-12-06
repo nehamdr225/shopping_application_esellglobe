@@ -1,29 +1,67 @@
-//import 'package:esell/state/src/theme.dart';
-// import 'package:esell/widget/atoms/Forms.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
 import 'package:esell/widget/atoms/Forms.dart';
 import 'package:esell/widget/atoms/InfoNavBar.dart';
-import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:esell/state/state.dart';
+import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
 class CheckoutPage extends StatelessWidget {
+  final price;
+  CheckoutPage({this.price: 200});
   @override
   Widget build(BuildContext context) {
+    FlutterStatusbarcolor.setStatusBarColor(
+        Theme.of(context).colorScheme.primaryVariant);
     final products = Provider.of<ProductModel>(context);
     final user = Provider.of<UserModel>(context);
     final width = MediaQuery.of(context).size.width;
     var items = user.cart;
     return Scaffold(
       persistentFooterButtons: <Widget>[
+        Container(
+            alignment: Alignment.centerLeft,
+            height: 50.0,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    FancyText(
+                      text: 'Total Price:  ',
+                      size: 15.0,
+                    ),
+                    FancyText(
+                      text: 'Rs. $price',
+                      color: Colors.red,
+                      fontWeight: FontWeight.bold,
+                      size: 15.0,
+                    ),
+                  ],
+                ),
+                FancyText(
+                  text: 'VAT included',
+                  size: 14.0,
+                  color: Colors.grey[600],
+                  fontWeight: FontWeight.w300,
+
+                ),
+              ],
+            )),
         SizedBox(
-          width: width - 20,
+          width: 10.0,
+        ),
+        SizedBox(
+          width: 180.0,
           child: RaisedButton(
-            color: primary,
-            child:
-                Text('Place Order', style: Theme.of(context).textTheme.title),
+            color: primaryDark,
+            child: Text('Place Order',
+                style: Theme.of(context)
+                    .textTheme
+                    .title
+                    .copyWith(color: Colors.white)),
             onPressed: () {},
           ),
         ),
@@ -41,14 +79,14 @@ class CheckoutPage extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 InfoNavBar(
-                  text: 'Billing details',
+                  text: 'Shipping Details',
                   size: 18.0,
                   gotoproduct: false,
                 ),
                 SizedBox(
                   height: 10.0,
                 ),
-                Text('House number, City, State, Country'),
+                Text('House number, City, Country'),
                 SizedBox(
                   height: 20.0,
                 ),
@@ -80,7 +118,7 @@ class CheckoutPage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 50.0,
+                  height: 40.0,
                 ),
               ],
             ),
@@ -91,7 +129,7 @@ class CheckoutPage extends StatelessWidget {
             final product = products.one(fav['product']);
             return Container(
               margin: EdgeInsets.only(top: 15),
-              height: 70.0,
+              height: 80.0,
               decoration: BoxDecoration(
                 color: Colors.white,
                 boxShadow: [
@@ -106,7 +144,7 @@ class CheckoutPage extends StatelessWidget {
                 ],
               ),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   Padding(
                     padding: EdgeInsets.all(3.0),
@@ -115,13 +153,13 @@ class CheckoutPage extends StatelessWidget {
                             ? product['media']['src'][0]
                             : '',
                         height: 100.0,
-                        width: 50.0),
+                        width: 70.0),
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: 10.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      crossAxisAlignment: CrossAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
                           product['name'],
@@ -130,41 +168,56 @@ class CheckoutPage extends StatelessWidget {
                               color: textColor,
                               fontSize: 14.0),
                         ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.all(3.0),
+                              child: Text('Quantity:',
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(3.0),
+                              child: Text(
+                                "N/A",
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(3.0),
+                              child: Text('Size:',
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(3.0),
+                              child: Text(
+                                "N/A",
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(3.0),
+                              child: Text('Color:',
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(3.0),
+                              child: Text("N/A"),
+                            ),
+                          ],
+                        ),
+                        Container(
+                          alignment: Alignment.topLeft,
+                          padding: EdgeInsets.all(3.0),
+                          child: Text("Rs. $price",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.red)),
+                        )
                       ],
                     ),
                   ),
-                  IconButton(
-                    color: Theme.of(context).colorScheme.error,
-                    splashColor: primary,
-                    icon: Icon(
-                      Icons.remove_circle_outline,
-                    ),
-                    onPressed: () async {
-                      showDialog(
-                          context: context,
-                          builder: (context) => AlertDialog(
-                                title: FancyText(
-                                  text: 'Remove from cart?',
-                                  size: 18.0,
-                                  textAlign: TextAlign.center,
-                                ),
-                                elevation: 2.0,
-                                content: Container(
-                                    alignment: Alignment.center,
-                                    height: 70.0,
-                                    width: 200.0,
-                                    child: Text(
-                                        'Are you sure you want to remove this product?')),
-                                actions: <Widget>[
-                                  FRaisedButton(
-                                    text: 'Remove',
-                                    color: Colors.red,
-                                    bg: Colors.red,
-                                  )
-                                ],
-                              ));
-                    },
-                  )
                 ],
               ),
             );

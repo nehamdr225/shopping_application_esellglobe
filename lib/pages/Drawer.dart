@@ -1,5 +1,6 @@
 import 'package:esell/helpers/Api.dart';
 import 'package:esell/widget/atoms/DrawerElements.dart';
+import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/widget/molecules/colors.dart';
 import 'package:esell/pages/UserPromt.dart';
@@ -175,7 +176,7 @@ class DrawerApp extends StatelessWidget {
                               builder: (context) => SignInPage()));
                     },
                   )
-                : Text(''),
+                : Text('null'),
             token != null
                 ? Column(children: [
                     DrawerElements(
@@ -208,6 +209,11 @@ class DrawerApp extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => AboutPage()));
               },
             ),
+            FRaisedButton(
+              text: 'Sign Out',
+              width: 100.0,
+              color: Colors.red,
+            )
           ],
         ),
       ),

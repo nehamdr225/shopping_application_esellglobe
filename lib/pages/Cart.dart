@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:esell/widget/molecules/colors.dart';
 import 'package:provider/provider.dart';
 import 'package:esell/state/state.dart';
+import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 //import '../widget/appbar.dart';
 
 class CartPage extends StatefulWidget {
@@ -17,6 +18,7 @@ class CartPage extends StatefulWidget {
 class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
+    FlutterStatusbarcolor.setStatusBarColor(Theme.of(context).colorScheme.primaryVariant);
     var product = Provider.of<ProductModel>(context);
     var user = Provider.of<UserModel>(context);
     var items = user.cart;
@@ -41,7 +43,7 @@ class _CartPageState extends State<CartPage> {
                   FRaisedButton(
                     width: 160.0,
                     text: "Total: ",
-                    bg: icontheme,
+                    bg: iconthemelight,
                     shape: true,
                     color: textColor,
                     onPressed: () {},

@@ -8,6 +8,9 @@ import 'package:esell/state/state.dart';
 Future main() async {
   runApp(BootStrapper());
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: Color(0xff3288a6),
+  ));
 }
 
 class BootStrapper extends StatelessWidget {
@@ -28,7 +31,6 @@ class EsellApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Provider.of<FTheme>(context);
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: theme.getTheme(),

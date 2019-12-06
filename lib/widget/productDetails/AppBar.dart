@@ -20,7 +20,7 @@ class PDAppBar extends StatelessWidget {
         },
         icon: Icon(Icons.arrow_back),
       ),
-      iconTheme: IconThemeData(color: icontheme2),
+      iconTheme: IconThemeData(color: iconthemedark),
       backgroundColor: Colors.grey[200],
       floating: true,
       flexibleSpace: PDCarousel(images: images, width: screenWidth * 0.90),

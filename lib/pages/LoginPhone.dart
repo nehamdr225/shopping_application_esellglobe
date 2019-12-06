@@ -49,6 +49,7 @@ class LoginPhone extends StatelessWidget {
                 FForms(
                   type: TextInputType.phone,
                   text: "Phone Number",
+                  icon: Icon(Icons.phone),
                   //onChanged: setEmail
                 ),
               ],
