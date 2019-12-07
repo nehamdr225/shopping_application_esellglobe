@@ -63,8 +63,21 @@ class _PageState extends State<SignInPage> {
         Map token = await login(email, password, remember);
         if (token['error'] == null) {
           user.token = token['token'];
-          getUser(token['token']).then((userData) {
-            user.user = userData;
+          getUser(token['token']).then((result) {
+            if (result['error'] == null) {
+              if (result['message'] != null &&
+                  result['message'] == "Auth failed") {
+                delKeyVal("token").then((data) {
+                  user.token = null;
+                });
+              } else if (result['result']['cart'] != null) {
+                getCart(token['token']).then((data) {
+                  if (data['error'] == null)
+                    user.cart = data['result']['products'];
+                });
+              }
+              user.user = result['result'];
+            }
           });
           setState(() {
             isActive = false;

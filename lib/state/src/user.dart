@@ -11,7 +11,7 @@ class UserModel extends ChangeNotifier {
         getUser(token).then((result) {
           if (result['error'] == null) {
             if (result['message'] == "Auth failed") {
-              delKeyVal("token").then(() {
+              delKeyVal("token").then((data) {
                 _token = null;
                 notifyListeners();
               });
@@ -51,6 +51,7 @@ class UserModel extends ChangeNotifier {
   }
 
   get cart => _cart;
+  set cart(items) => _cart = items;
   addToCart(String product) {
     if (user['cart'] == null) {
       registerCart(token, product).then((data) {
