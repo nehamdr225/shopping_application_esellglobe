@@ -65,8 +65,14 @@ class UserModel extends ChangeNotifier {
       });
     } else
       updateCart(token, product, qty ?? 1, size, color).then((result) {
+        print(result);
         if (result['error'] == null) {
-          _cart.add(product);
+          _cart.add({
+            'product': product,
+            'quantity': qty ?? 1,
+            'size': size,
+            'color': color
+          });
           notifyListeners();
           return "success";
         }

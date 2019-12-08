@@ -18,6 +18,7 @@ class _CartPageState extends State<CartPage> {
   List items = [];
   List sizes = [];
   List colors = [];
+  num price = 1000.0;
 
   @override
   Widget build(BuildContext context) {
@@ -80,8 +81,10 @@ class _CartPageState extends State<CartPage> {
                           ? Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                      CheckoutPage(items: items)))
+                                  builder: (context) => CheckoutPage(
+                                        items: items,
+                                        price: price,
+                                      )))
                           : Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -100,6 +103,7 @@ class _CartPageState extends State<CartPage> {
                     itemCount: items.length,
                     itemBuilder: (context, index) {
                       var each = product.one(items[index]['product']);
+
                       return each["error"] == null
                           ? CartListView(
                               name: each['name'],

@@ -10,7 +10,7 @@ class CheckoutPage extends StatelessWidget {
   final price;
   final items;
 
-  CheckoutPage({this.price: 200, this.items});
+  CheckoutPage({this.price, this.items});
   @override
   Widget build(BuildContext context) {
     final products = Provider.of<ProductModel>(context);

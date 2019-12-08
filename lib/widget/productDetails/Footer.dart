@@ -12,7 +12,8 @@ class PDFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserModel>(context);
-    final addToCart = () => user.addToCart(id, quantity, size, color);
+    final addToCart =
+        () => user.addToCart(id, quantity, size ?? "S", color ?? "black");
     final addToWish = () => user.addToWishList(id);
     return Container(
       height: 40.0,
