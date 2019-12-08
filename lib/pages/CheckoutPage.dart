@@ -1,3 +1,4 @@
+import 'package:esell/widget/AnimatingLine.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
 import 'package:esell/widget/atoms/Forms.dart';
 import 'package:esell/widget/atoms/InfoNavBar.dart';
@@ -52,7 +53,7 @@ class CheckoutPage extends StatelessWidget {
           width: 10.0,
         ),
         SizedBox(
-          width: 180.0,
+          width: 150.0,
           child: RaisedButton(
             color: primaryDark,
             child: Text('Place Order',
@@ -60,7 +61,12 @@ class CheckoutPage extends StatelessWidget {
                     .textTheme
                     .title
                     .copyWith(color: Colors.white)),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => AnimatingLine()));
+            },
           ),
         ),
       ],

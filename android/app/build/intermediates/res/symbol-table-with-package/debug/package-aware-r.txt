@@ -1,4 +1,4 @@
-com.example.esellglobe
+com.lwg.esellglobe
 drawable launch_background
 mipmap logo
 mipmap logoonly1
