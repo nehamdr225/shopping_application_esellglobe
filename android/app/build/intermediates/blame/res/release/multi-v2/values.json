@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/incremental/mergeReleaseResources/merged.dir/values/values.xml",
+            "outputFile": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/incremental/mergeReleaseResources/merged.dir/values/values.xml",
             "map": [
                 {
-                    "source": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/src/main/res/values/styles.xml",
+                    "source": "/run/media/bee/workshop/workshop/flutter/esell/android/app/src/main/res/values/styles.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
