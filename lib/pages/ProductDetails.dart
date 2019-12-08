@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:esell/widget/productDetails/details.dart';
 import 'package:esell/state/state.dart';
+import 'dart:convert';
 
 class ProductDetails extends StatefulWidget {
   final String id;
@@ -13,7 +14,7 @@ class ProductDetails extends StatefulWidget {
 }
 
 class _ProductDetailsState extends State<ProductDetails> {
-  String size, color;
+  String size = "S", color;
   int quantity = 1;
   @override
   Widget build(BuildContext context) {
@@ -41,15 +42,18 @@ class _ProductDetailsState extends State<ProductDetails> {
             SliverList(
               delegate: SliverChildListDelegate(<Widget>[
                 PDInfo(
-                    name: product['name'],
-                    price: product['price'].toString(),
-                    details: product['description']),
+                  name: product['name'],
+                ),
                 Padding(
                   padding: EdgeInsets.only(top: 1.0),
                 ),
                 Services(),
                 PDSizeSelector(),
-                PDDetails(),
+                PDDetails(
+                    details: json.decode(product['description']),
+                    price: product['price'].toString(),
+                    colors: product['colors'],
+                    sizes: json.decode(product['sizes']))
               ]),
             ),
           ],

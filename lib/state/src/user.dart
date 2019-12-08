@@ -54,7 +54,7 @@ class UserModel extends ChangeNotifier {
   set cart(items) => _cart = items;
   addToCart(String product, qty, size, color) {
     if (user['cart'] == null) {
-      registerCart(token, product, qty, size, color).then((data) {
+      registerCart(token, product, qty ?? 1, size, color).then((data) {
         if (data['error'] == null) {
           _cart.add(product);
           _user.addAll({'cart': data['result']['_id']});
@@ -64,7 +64,7 @@ class UserModel extends ChangeNotifier {
         return "failed";
       });
     } else
-      updateCart(token, product, qty, size, color).then((result) {
+      updateCart(token, product, qty ?? 1, size, color).then((result) {
         if (result['error'] == null) {
           _cart.add(product);
           notifyListeners();

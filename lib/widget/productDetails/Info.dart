@@ -3,19 +3,17 @@ import 'package:flutter/material.dart';
 //import 'package:esell/widget/atoms/StarRating.dart';
 
 class PDInfo extends StatelessWidget {
-  final String name, details, color, price;
-  PDInfo({this.name, this.price, this.details, this.color: "N/A"});
+  final String name, details;
+  PDInfo({this.name, this.details});
 
   @override
-  Widget build(BuildContext context) { 
+  Widget build(BuildContext context) {
     //final caption = Theme.of(context).textTheme.caption;
-    final title = Theme.of(context).textTheme.body1.copyWith(fontSize: 16.0);
 
     return Container(
       width: 360.0,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.only(bottomLeft: Radius.circular(0.0))),
-
       child: Card(
         color: Colors.white,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0.0)),
@@ -31,26 +29,10 @@ class PDInfo extends StatelessWidget {
                 children: <Widget>[
                   Padding(padding: EdgeInsets.only(left: 5.0)),
                   Container(
-                    child: FText(
+                      child: FText(
                     text: name,
                     color: Theme.of(context).colorScheme.primaryVariant,
                     size: 24.0,
-                  )),
-                  Container(
-                    child: FText(
-                    text: details,
-                    //color: textColor,
-                    style: title,
-                  )),
-                  Container(
-                    child: FText(
-                    text: "Rs. $price",
-                    style: title,
-                  )),
-                  Container(
-                    child: FText(
-                    text: "Available Colors: $color",
-                    style: title,
                   )),
 
                   ///

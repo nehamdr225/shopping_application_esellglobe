@@ -2,6 +2,9 @@ import 'package:esell/widget/atoms/Text.dart';
 import 'package:flutter/material.dart';
 
 class PDDetails extends StatelessWidget {
+  final details;
+  final price, colors, sizes;
+  PDDetails({this.details, this.price, this.colors, this.sizes});
   @override
   Widget build(BuildContext context) {
     final body1 = Theme.of(context).textTheme.body1.copyWith(fontSize: 16.0);
@@ -15,48 +18,109 @@ class PDDetails extends StatelessWidget {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(0.0)),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-            Padding(
-              padding: EdgeInsets.all(8.0),
-            ),
-            Container(
-              child: FText( 
-                text: "Product Details",
-                color: Theme.of(context).colorScheme.primaryVariant,
-                size: 18.0,
-                  )),
-            Container(
-              child: FText(
-                text: "It is a three piece suit.",
-                style: body1,
-                  )),
-            Container(
-              child: FText(
-                text: "Size & Fit",
-                color: Theme.of(context).colorScheme.primaryVariant,
-                size: 18.0,
-                  )),
-            Container(
-              child: FText(
-                text: "The model in the photo is of height: 6' 1'' and is wearing a size L" ,
-                style: body1,
-                  )),
-            Container(
-              child: FText(
-                text: "Material & Care" ,
-                color: Theme.of(context).colorScheme.primaryVariant,
-                size: 18.0,
-            )),
-            Container(
-              child: FText(
-                text: "Suit Piece: 50% Cotton. It should be dry cleaned" ,
-                style: body1,
-            )),
-            Padding(
-              padding: EdgeInsets.all(8.0),
-            ),
-          ]),
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.all(8.0),
+                ),
+                Container(
+                    child: FText(
+                  text: "Product Details",
+                  color: Theme.of(context).colorScheme.primaryVariant,
+                  size: 20.0,
+                )),
+                Container(
+                    child: FText(
+                  text: "Material",
+                  color: Theme.of(context).colorScheme.primaryVariant,
+                  size: 18.0,
+                )),
+                Container(
+                    child: FText(
+                  text: details['material'],
+                  style: body1,
+                )),
+                Container(
+                    child: FText(
+                  text: "Closure",
+                  color: Theme.of(context).colorScheme.primaryVariant,
+                  size: 18.0,
+                )),
+                Container(
+                    child: FText(
+                  text: details['closure'],
+                  style: body1,
+                )),
+                Container(
+                    child: FText(
+                  text: "Warranty",
+                  color: Theme.of(context).colorScheme.primaryVariant,
+                  size: 18.0,
+                )),
+                Container(
+                    child: FText(
+                  text: details['warranty'],
+                  style: body1,
+                )),
+                Container(
+                    child: FText(
+                  text: "Care Instructions",
+                  color: Theme.of(context).colorScheme.primaryVariant,
+                  size: 18.0,
+                )),
+                Container(
+                    child: FText(
+                  text: details['care_instructions'],
+                  style: body1,
+                )),
+                Container(
+                    child: FText(
+                  text: "Details",
+                  color: Theme.of(context).colorScheme.primaryVariant,
+                  size: 18.0,
+                )),
+                Container(
+                    child: FText(
+                  text: details['details'],
+                  style: body1,
+                )),
+                Container(
+                    child: FText(
+                  text: "Price",
+                  color: Theme.of(context).colorScheme.primaryVariant,
+                  size: 18.0,
+                )),
+                Container(
+                    child: FText(
+                  text: "Rs. $price",
+                  style: body1,
+                )),
+                Container(
+                    child: FText(
+                  text: "Available Colors",
+                  color: Theme.of(context).colorScheme.primaryVariant,
+                  size: 18.0,
+                )),
+                Container(
+                    child: FText(
+                  text: colors,
+                  style: body1,
+                )),
+                Container(
+                    child: FText(
+                  text: "Sizes",
+                  color: Theme.of(context).colorScheme.primaryVariant,
+                  size: 18.0,
+                )),
+                Container(
+                    child: FText(
+                  text: 'EU:  ${sizes['eu']}\nUK:  ${sizes['uk']}',
+                  style: body1,
+                )),
+                Padding(
+                  padding: EdgeInsets.all(8.0),
+                ),
+              ]),
         ));
   }
 }
