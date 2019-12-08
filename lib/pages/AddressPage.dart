@@ -2,13 +2,10 @@ import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/Forms.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
 class AddressPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    FlutterStatusbarcolor.setStatusBarColor(
-        Theme.of(context).colorScheme.primaryVariant);
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
       persistentFooterButtons: <Widget>[
@@ -37,21 +34,24 @@ class AddressPage extends StatelessWidget {
               width: width - 50.0,
               child: Column(
                 children: <Widget>[
-                  Padding( // full name
+                  Padding(
+                    // full name
                     padding: const EdgeInsets.all(8.0),
                     child: FForms(
                       text: 'Full Name',
                       type: TextInputType.text,
                     ),
                   ),
-                  Padding( //phone number
+                  Padding(
+                    //phone number
                     padding: const EdgeInsets.all(8.0),
                     child: FForms(
                       text: 'Mobile number',
                       type: TextInputType.phone,
                     ),
                   ),
-                  Table( //house no. and city
+                  Table(
+                    //house no. and city
                     children: [
                       TableRow(children: [
                         Padding(
@@ -71,7 +71,8 @@ class AddressPage extends StatelessWidget {
                       ])
                     ],
                   ),
-                  Padding( //country
+                  Padding(
+                    //country
                     padding: const EdgeInsets.all(8.0),
                     child: FForms(
                       text: 'Country',

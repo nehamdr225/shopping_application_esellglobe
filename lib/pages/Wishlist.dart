@@ -5,12 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:esell/state/state.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
 class WishlistPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    FlutterStatusbarcolor.setStatusBarColor(Theme.of(context).colorScheme.primaryVariant);
     final products = Provider.of<ProductModel>(context);
     final user = Provider.of<UserModel>(context);
     final items = user.wishList;

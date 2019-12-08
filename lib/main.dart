@@ -6,11 +6,11 @@ import 'package:provider/provider.dart';
 import 'package:esell/state/state.dart';
 
 Future main() async {
-  runApp(BootStrapper());
-  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     statusBarColor: Color(0xff3288a6),
   ));
+  runApp(BootStrapper());
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 }
 
 class BootStrapper extends StatelessWidget {

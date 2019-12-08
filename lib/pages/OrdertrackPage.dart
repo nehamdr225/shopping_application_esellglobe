@@ -3,7 +3,6 @@ import 'package:esell/widget/atoms/DataContainer.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:esell/widget/molecules/MakeLine.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
 class OrdetrackPage extends StatelessWidget {
   final dotSize = 20.0;
@@ -18,30 +17,26 @@ class OrdetrackPage extends StatelessWidget {
   final bool delivered;
 
   OrdetrackPage(
-      {Key key, this.controller, this.ordered, this.packed, this.shipped, this.delivered})
+      {Key key,
+      this.controller,
+      this.ordered,
+      this.packed,
+      this.shipped,
+      this.delivered})
       : dotColor = ColorTween(
           begin: barGrey,
           end: orderBar,
         ).animate(
           CurvedAnimation(
-            parent: controller,
-            curve: Curves.fastLinearToSlowEaseIn
-          ),
+              parent: controller, curve: Curves.fastLinearToSlowEaseIn),
         ),
-        textStyle = TextStyleTween(
-          begin: begin,
-          end: end
-        ).animate(
-          CurvedAnimation(
-            parent: controller,
-            curve: Curves.fastOutSlowIn
-            ),
-          ),
+        textStyle = TextStyleTween(begin: begin, end: end).animate(
+          CurvedAnimation(parent: controller, curve: Curves.fastOutSlowIn),
+        ),
         super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    FlutterStatusbarcolor.setStatusBarColor(Theme.of(context).colorScheme.primaryVariant);
     //Animation<double> animation = listenable;
     return Scaffold(
         backgroundColor: Colors.grey[100],
@@ -57,90 +52,76 @@ class OrdetrackPage extends StatelessWidget {
                 height: 80.0,
                 width: 100.0,
               ),
-              Row( //ONE
+              Row(
+                //ONE
                 children: <Widget>[
                   Container(
                     height: _height,
                     width: _width,
                     child: CustomPaint(
                       painter: MakeLine(
-                        color: ordered == true
-                        ? dotColor.value
-                        : barGrey
-                      ),
+                          color: ordered == true ? dotColor.value : barGrey),
                     ),
                   ),
-                  SizedBox(width: 40.0,),
+                  SizedBox(
+                    width: 40.0,
+                  ),
                   DataContainer(
                     data: 'Ordered and Approved',
-                    style: ordered == true? 
-                    textStyle.value:
-                    begin,
+                    style: ordered == true ? textStyle.value : begin,
                   ),
                 ],
               ),
-              Row( //TWO
+              Row(
+                //TWO
                 children: <Widget>[
                   Container(
                     height: _height,
                     width: _width,
                     child: CustomPaint(
                       painter: MakeLine(
-                        color: ordered == true
-                        ? barGrey
-                        : dotColor.value                         
-                      ),
+                          color: ordered == true ? barGrey : dotColor.value),
                     ),
                   ),
                   DataContainer(
                     data: 'Packed',
-                    style: ordered == true? 
-                    textStyle.value:
-                    begin,
+                    style: ordered == true ? textStyle.value : begin,
                   ),
                 ],
               ),
-              Row( //THREE
+              Row(
+                //THREE
                 children: <Widget>[
                   Container(
                     height: _height,
                     width: _width,
                     child: CustomPaint(
                       painter: MakeLine(
-                        color: ordered == true
-                        ? dotColor.value
-                        : barGrey
-                      ),
+                          color: ordered == true ? dotColor.value : barGrey),
                       //child: Container(),
                     ),
                   ),
                   DataContainer(
                     data: 'Shipped',
-                    style: ordered == true? 
-                    textStyle.value:
-                    begin,
+                    style: ordered == true ? textStyle.value : begin,
                   ),
                 ],
               ),
-              Row( //FOUR
+              Row(
+                //FOUR
                 children: <Widget>[
                   Container(
                     height: _height,
                     width: _width,
                     child: CustomPaint(
                       painter: MakeLine(
-                        color: ordered == true
-                        ? dotColor.value
-                        : barGrey
-                      ),
+                          color: ordered == true ? dotColor.value : barGrey),
                       //child: Container(),
                     ),
                   ),
                   DataContainer(
                     data: 'Delivered',
-                    style: ordered == true? 
-                    textStyle.value:
-                    begin,
+                    style: ordered == true ? textStyle.value : begin,
                   ),
                 ],
               ),
@@ -149,4 +130,3 @@ class OrdetrackPage extends StatelessWidget {
         ));
   }
 }
-

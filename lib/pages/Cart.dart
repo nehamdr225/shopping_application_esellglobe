@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:esell/widget/molecules/colors.dart';
 import 'package:provider/provider.dart';
 import 'package:esell/state/state.dart';
-import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 //import '../widget/appbar.dart';
 
 class CartPage extends StatefulWidget {
@@ -16,15 +15,35 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
+  List items = [];
+  List sizes = [];
+  List colors = [];
+
   @override
   Widget build(BuildContext context) {
-    FlutterStatusbarcolor.setStatusBarColor(Theme.of(context).colorScheme.primaryVariant);
     var product = Provider.of<ProductModel>(context);
     var user = Provider.of<UserModel>(context);
-    var items = user.cart;
-    print(items);
+    setState(() {
+      items = user.cart;
+      print(items);
+    });
+
+    updateCartItem(id, quan) {
+      try {
+        items.forEach((el) {
+          if (el['product'] == id) {
+            setState(() {
+              el['quantity'] = quan;
+            });
+          }
+        });
+      } catch (err) {
+        print(err);
+      }
+    }
+
     return SafeArea(
-        child: Scaffold( 
+        child: Scaffold(
             appBar: PreferredSize(
                 preferredSize: Size.fromHeight(40.0),
                 child: FAppBar(
@@ -61,7 +80,8 @@ class _CartPageState extends State<CartPage> {
                           ? Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => CheckoutPage()))
+                                  builder: (context) =>
+                                      CheckoutPage(items: items)))
                           : Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -80,7 +100,6 @@ class _CartPageState extends State<CartPage> {
                     itemCount: items.length,
                     itemBuilder: (context, index) {
                       var each = product.one(items[index]['product']);
-                      print(each);
                       return each["error"] == null
                           ? CartListView(
                               name: each['name'],
@@ -88,7 +107,11 @@ class _CartPageState extends State<CartPage> {
                                   ? each['media'][0]['src'][0]
                                   : '',
                               price: each['price'],
-                            )
+                              id: each['_id'],
+                              quantity: items[index]['quantity'] ?? 1,
+                              setQuantity: updateCartItem,
+                              token: user.token,
+                              deleteFromCart: user.deleteFromCart)
                           : CircularProgressIndicator();
                     },
                   )

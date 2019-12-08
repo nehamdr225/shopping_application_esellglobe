@@ -3,15 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:esell/widget/productDetails/details.dart';
 import 'package:esell/state/state.dart';
-import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
-class ProductDetails extends StatelessWidget {
+class ProductDetails extends StatefulWidget {
   final String id;
   ProductDetails({this.id});
+
+  @override
+  _ProductDetailsState createState() => _ProductDetailsState();
+}
+
+class _ProductDetailsState extends State<ProductDetails> {
+  String size, color;
+  int quantity = 1;
   @override
   Widget build(BuildContext context) {
-    FlutterStatusbarcolor.setStatusBarColor(Theme.of(context).colorScheme.primaryVariant);
-    final product = Provider.of<ProductModel>(context).one(id);
+    final product = Provider.of<ProductModel>(context).one(widget.id);
     List<Image> images = [];
     if (product['media'][0]['src'] != null)
       for (String src in product['media'][0]['src']) {
@@ -22,9 +28,7 @@ class ProductDetails extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         persistentFooterButtons: <Widget>[
-          PDFooter(
-            id: id,
-          )
+          PDFooter(id: widget.id, quantity: quantity, size: size, color: color)
         ],
         backgroundColor: Colors.grey[100],
         body: CustomScrollView(

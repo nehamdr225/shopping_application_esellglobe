@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:esell/widget/molecules/colors.dart';
 // import 'package:carousel_pro/carousel_pro.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
 class FAppBar extends StatelessWidget {
   final wishlist;
@@ -28,7 +27,6 @@ class FAppBar extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    FlutterStatusbarcolor.setStatusBarColor(Colors.black87);
     var user = Provider.of<UserModel>(context);
     return Scaffold(
       appBar: PreferredSize(

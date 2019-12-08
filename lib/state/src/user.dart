@@ -52,9 +52,9 @@ class UserModel extends ChangeNotifier {
 
   get cart => _cart;
   set cart(items) => _cart = items;
-  addToCart(String product) {
+  addToCart(String product, qty, size, color) {
     if (user['cart'] == null) {
-      registerCart(token, product).then((data) {
+      registerCart(token, product, qty, size, color).then((data) {
         if (data['error'] == null) {
           _cart.add(product);
           _user.addAll({'cart': data['result']['_id']});
@@ -64,7 +64,7 @@ class UserModel extends ChangeNotifier {
         return "failed";
       });
     } else
-      updateCart(token, product).then((result) {
+      updateCart(token, product, qty, size, color).then((result) {
         if (result['error'] == null) {
           _cart.add(product);
           notifyListeners();
@@ -76,6 +76,18 @@ class UserModel extends ChangeNotifier {
 
   findCartItem(id) {
     return _cart.contains(id);
+  }
+
+  deleteFromCart(id) {
+    deleteCartItem(token, id).then((data) {
+      print(data);
+      if (data['error'] == null) {
+        _cart.removeWhere((each) => each['product'] == id);
+        notifyListeners();
+        return "done";
+      }
+      return "failed";
+    });
   }
 
   get wishList => _wishList;

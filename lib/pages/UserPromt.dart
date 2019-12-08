@@ -1,14 +1,12 @@
 import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/loginOptions.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:esell/widget/atoms/BrandLogos.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
 
 class UserPromptApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    FlutterStatusbarcolor.setStatusBarColor(Theme.of(context).colorScheme.primaryVariant);
     return SafeArea(
       top: false,
       child: Container(
@@ -25,9 +23,7 @@ class UserPromptApp extends StatelessWidget {
                 height: 100.0,
                 width: 100.0,
               ),
-
               LoginOptions(),
-
               Padding(
                 padding: EdgeInsets.all(10.0),
               ),

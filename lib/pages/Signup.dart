@@ -5,7 +5,6 @@ import 'package:esell/widget/atoms/BrandLogos.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:esell/widget/molecules/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:esell/helpers/Validators.dart';
 import 'package:esell/widget/atoms/Forms.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
@@ -22,8 +21,6 @@ class _PageState extends State<SignUpPage> {
   bool isActive = false;
   @override
   Widget build(BuildContext context) {
-    FlutterStatusbarcolor.setStatusBarColor(
-        Theme.of(context).colorScheme.primaryVariant);
     var setName = (data) {
       if (nameValidator(data) && data != name)
         setState(() {

@@ -87,10 +87,10 @@ getCart(token) async {
   }
 }
 
-registerCart(token, id) async {
+registerCart(token, id, qty, size, color) async {
   try {
     final response = await fetch(
-        uri: "$url/cart/$id",
+        uri: "$url/cart/$id?quantity=$qty&size=$size&color=$color",
         headers: {"X-Access-Token": token},
         method: "POST");
     return response;
@@ -99,10 +99,10 @@ registerCart(token, id) async {
   }
 }
 
-updateCart(token, productId) async {
+updateCart(token, productId, qty, size, color) async {
   try {
     final response = await fetch(
-        uri: "$url/cart/$productId",
+        uri: "$url/cart/$productId?quantity=$qty&size=$size&color=$color",
         headers: {"X-Access-Token": token},
         method: "PUT");
     return response;

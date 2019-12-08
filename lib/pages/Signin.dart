@@ -1,7 +1,6 @@
 import 'package:esell/pages/Signup.dart';
 import 'package:esell/pages/Home.dart';
 import 'package:esell/widget/atoms/BrandLogos.dart';
-import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/widget/atoms/Forms.dart';
@@ -26,8 +25,6 @@ class _PageState extends State<SignInPage> {
 
   @override
   Widget build(BuildContext context) {
-    FlutterStatusbarcolor.setStatusBarColor(
-        Theme.of(context).colorScheme.primaryVariant);
     var user = Provider.of<UserModel>(context);
 
     var setEmail = (data) {

@@ -1,5 +1,4 @@
 import 'package:esell/state/src/theme.dart';
-import 'package:esell/widget/atoms/FancyText.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -7,19 +6,28 @@ import 'package:flutter/material.dart';
 class CartListView extends StatelessWidget {
   final name;
   final picture;
+  final id;
   // final size;
   final price;
   // final qty;
   // final color;
+  final quantity;
+  final setQuantity;
+  final token;
+  final deleteFromCart;
 
-  CartListView({
-    this.name,
-    this.price,
-    // this.size,
-    this.picture,
-    // this.qty,
-    // this.color
-  });
+  CartListView(
+      {this.name,
+      this.price,
+      this.token,
+      // this.size,
+      this.picture,
+      this.id,
+      this.quantity,
+      this.setQuantity,
+      this.deleteFromCart
+      // this.color
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +40,8 @@ class CartListView extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Container( // quantity selector
+                Container(
+                  // quantity selector
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
@@ -42,11 +51,15 @@ class CartListView extends StatelessWidget {
                           color: Colors.black,
                           size: 20.0,
                         ),
-                        onPressed: () {},
+                        onPressed: quantity > 1
+                            ? () {
+                                setQuantity(id, quantity - 1);
+                              }
+                            : null,
                       ),
                       Container(
                         color: Colors.white,
-                        child: Text('1'),
+                        child: Text(quantity.toString()),
                       ),
                       IconButton(
                         icon: Icon(
@@ -54,12 +67,15 @@ class CartListView extends StatelessWidget {
                           color: Colors.black,
                           size: 20.0,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          setQuantity(id, quantity + 1);
+                        },
                       ),
                     ],
                   ),
                 ),
-                IconButton(  // delete button
+                IconButton(
+                  // delete button
                   color: Theme.of(context).colorScheme.error,
                   splashColor: primary,
                   icon: Icon(
@@ -69,11 +85,6 @@ class CartListView extends StatelessWidget {
                     showDialog(
                         context: context,
                         builder: (context) => AlertDialog(
-                              title: FancyText(
-                                text: 'Remove from cart?',
-                                size: 18.0,
-                                textAlign: TextAlign.center,
-                              ),
                               elevation: 2.0,
                               content: Container(
                                   alignment: Alignment.center,
@@ -84,8 +95,12 @@ class CartListView extends StatelessWidget {
                               actions: <Widget>[
                                 FRaisedButton(
                                   text: 'Remove',
-                                  color: Colors.red,
+                                  color: Colors.white,
                                   bg: Colors.red,
+                                  onPressed: () {
+                                    deleteFromCart(id);
+                                    Navigator.pop(context);
+                                  },
                                 )
                               ],
                             ));

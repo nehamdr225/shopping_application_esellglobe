@@ -6,14 +6,12 @@ import 'package:esell/widget/molecules/AppBar.dart';
 //import 'package:esell/widget/molecules/GridList.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
 class CategoryPage extends StatelessWidget {
   final String text;
   CategoryPage({this.text});
   @override
   Widget build(BuildContext context) {
-    FlutterStatusbarcolor.setStatusBarColor(Theme.of(context).colorScheme.primaryVariant);
     final cat = text == 'Top Wear'
         ? 'top'
         : text == 'Bottom Wear'
@@ -94,10 +92,7 @@ class CategoryPage extends StatelessWidget {
         backgroundColor: Colors.white,
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(40.0),
-          child: FAppBar(
-              wishlist: true,
-              cart: true,
-              title: '$text'),
+          child: FAppBar(wishlist: true, cart: true, title: '$text'),
         ),
         body: ListView(primary: false, children: createWidgets()),
       ),

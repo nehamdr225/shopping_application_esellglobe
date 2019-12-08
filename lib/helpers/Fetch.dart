@@ -17,6 +17,9 @@ fetch({uri, method: "GET", body, Map<String, String> headers}) async {
         var response = await http.put(uri,
             headers: headers, body: json.encode(body ?? ''));
         return json.decode(response.body);
+      case "DELETE":
+        var response = await http.delete(uri, headers: headers);
+        return json.decode(response.body);
       default:
         var response = await http.get(uri, headers: headers);
         return json.decode(response.body);

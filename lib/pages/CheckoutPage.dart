@@ -5,19 +5,18 @@ import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:esell/state/state.dart';
-import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
 class CheckoutPage extends StatelessWidget {
   final price;
-  CheckoutPage({this.price: 200});
+  final items;
+
+  CheckoutPage({this.price: 200, this.items});
   @override
   Widget build(BuildContext context) {
-    FlutterStatusbarcolor.setStatusBarColor(
-        Theme.of(context).colorScheme.primaryVariant);
     final products = Provider.of<ProductModel>(context);
-    final user = Provider.of<UserModel>(context);
+    // final user = Provider.of<UserModel>(context);
     final width = MediaQuery.of(context).size.width;
-    var items = user.cart;
+    // var items = user.cart;
     return Scaffold(
       persistentFooterButtons: <Widget>[
         Container(
@@ -46,7 +45,6 @@ class CheckoutPage extends StatelessWidget {
                   size: 14.0,
                   color: Colors.grey[600],
                   fontWeight: FontWeight.w300,
-
                 ),
               ],
             )),
@@ -180,7 +178,7 @@ class CheckoutPage extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.all(3.0),
                               child: Text(
-                                "N/A",
+                                fav['quantity'].toString(),
                               ),
                             ),
                             Padding(
@@ -192,7 +190,7 @@ class CheckoutPage extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.all(3.0),
                               child: Text(
-                                "N/A",
+                                fav['size'] ?? "N/A",
                               ),
                             ),
                             Padding(
@@ -203,14 +201,14 @@ class CheckoutPage extends StatelessWidget {
                             ),
                             Padding(
                               padding: const EdgeInsets.all(3.0),
-                              child: Text("N/A"),
+                              child: Text(fav['color'] ?? "N/A"),
                             ),
                           ],
                         ),
                         Container(
                           alignment: Alignment.topLeft,
                           padding: EdgeInsets.all(3.0),
-                          child: Text("Rs. $price",
+                          child: Text("Rs. ${product['price']}",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.red)),

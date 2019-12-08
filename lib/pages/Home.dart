@@ -12,7 +12,6 @@ import 'package:esell/pages/Cart.dart';
 import 'package:esell/pages/Wishlist.dart';
 import 'package:provider/provider.dart';
 import 'package:esell/pages/Drawer.dart';
-import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
 class HomePageApp extends StatelessWidget {
   const HomePageApp(
@@ -25,7 +24,7 @@ class HomePageApp extends StatelessWidget {
   Widget build(BuildContext context) {
     var color = Theme.of(context).colorScheme;
     var user = Provider.of<UserModel>(context);
-    FlutterStatusbarcolor.setStatusBarColor(color.primaryVariant);
+    // FlutterStatusbarcolor.setStatusBarColor(color.primaryVariant);
 
     return SafeArea(
       child: Scaffold(

@@ -6,12 +6,13 @@ import 'package:provider/provider.dart';
 import 'package:esell/state/src/theme.dart';
 
 class PDFooter extends StatelessWidget {
-  final String id;
-  PDFooter({this.id});
+  final String id, size, color;
+  final int quantity;
+  PDFooter({this.id, this.quantity, this.color, this.size});
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserModel>(context);
-    final addToCart = () => user.addToCart(id);
+    final addToCart = () => user.addToCart(id, quantity, size, color);
     final addToWish = () => user.addToWishList(id);
     return Container(
       height: 40.0,
