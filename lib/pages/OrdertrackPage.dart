@@ -19,8 +19,8 @@ class OrdetrackPage extends StatelessWidget {
   OrdetrackPage(
       {Key key,
       this.controller,
-      this.ordered,
-      this.packed,
+      this.ordered: true,
+      this.packed: false,
       this.shipped,
       this.delivered})
       : dotColor = ColorTween(
@@ -42,7 +42,9 @@ class OrdetrackPage extends StatelessWidget {
         backgroundColor: Colors.grey[100],
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(50.0),
-          child: FAppBar(wishlist: true, cart: true),
+          child: FAppBar(
+            title: 'Track your order',
+          ),
         ),
         body: AnimatedBuilder(
           animation: controller,
@@ -80,12 +82,12 @@ class OrdetrackPage extends StatelessWidget {
                     width: _width,
                     child: CustomPaint(
                       painter: MakeLine(
-                          color: ordered == true ? barGrey : dotColor.value),
+                          color: packed == true ? dotColor.value : barGrey),
                     ),
                   ),
                   DataContainer(
                     data: 'Packed',
-                    style: ordered == true ? textStyle.value : begin,
+                    style: packed == true ? textStyle.value : begin,
                   ),
                 ],
               ),
@@ -97,13 +99,13 @@ class OrdetrackPage extends StatelessWidget {
                     width: _width,
                     child: CustomPaint(
                       painter: MakeLine(
-                          color: ordered == true ? dotColor.value : barGrey),
+                          color: shipped == true ? dotColor.value : barGrey),
                       //child: Container(),
                     ),
                   ),
                   DataContainer(
                     data: 'Shipped',
-                    style: ordered == true ? textStyle.value : begin,
+                    style: shipped == true ? textStyle.value : begin,
                   ),
                 ],
               ),
@@ -115,13 +117,13 @@ class OrdetrackPage extends StatelessWidget {
                     width: _width,
                     child: CustomPaint(
                       painter: MakeLine(
-                          color: ordered == true ? dotColor.value : barGrey),
+                          color: delivered == true ? dotColor.value : barGrey),
                       //child: Container(),
                     ),
                   ),
                   DataContainer(
                     data: 'Delivered',
-                    style: ordered == true ? textStyle.value : begin,
+                    style: delivered == true ? textStyle.value : begin,
                   ),
                 ],
               ),
