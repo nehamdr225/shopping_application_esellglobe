@@ -10,8 +10,10 @@ import 'package:esell/state/state.dart';
 class CheckoutPage extends StatelessWidget {
   final price;
   final items;
+  final String name, city, country, location;
+  final int mobileno, houseno;
 
-  CheckoutPage({this.price, this.items});
+  CheckoutPage({this.price, this.items, this.name, this.city, this.country, this.location, this.mobileno, this.houseno});
   @override
   Widget build(BuildContext context) {
     final products = Provider.of<ProductModel>(context);
