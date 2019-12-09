@@ -176,7 +176,7 @@ class DrawerApp extends StatelessWidget {
                               builder: (context) => SignInPage()));
                     },
                   )
-                : Text('null'),
+                : Text(' '),
             token != null
                 ? Column(children: [
                     DrawerElements(
