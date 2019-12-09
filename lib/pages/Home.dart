@@ -84,7 +84,7 @@ class HomePageApp extends StatelessWidget {
                   // decoration: BoxDecoration(
                   //     border: Border.all(width: 2.0, color: textColor),
                   //     borderRadius: BorderRadius.circular(5.0)),
-                  height: height * 0.45,
+                  height: height * 0.55,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                         vertical: 10.0, horizontal: 10.0),

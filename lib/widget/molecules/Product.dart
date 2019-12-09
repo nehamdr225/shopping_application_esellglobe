@@ -12,6 +12,7 @@ class Product extends StatelessWidget {
   final oldPrice;
   final details;
   final id;
+  final wishlist;
 
   Product(
       {this.name,
@@ -21,6 +22,7 @@ class Product extends StatelessWidget {
       this.imgheight,
       this.oldPrice,
       this.details,
+      this.wishlist,
       this.id});
 
   @override
@@ -31,8 +33,6 @@ class Product extends StatelessWidget {
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Container(
-        // width: 150,
-        // height: 220.0,
         child: Material(
           borderRadius: BorderRadius.circular(8.0),
           child: InkWell(
@@ -44,11 +44,11 @@ class Product extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 ImageHolder( 
-                  image: image,
+                  image: image, 
                   imgheight: imgheight,
                 ),
                 Divider(height: 2),
-                Details(name: name, price: 'Rs. $price', id: id),
+                Details(name: name, price: 'Rs. $price', id: id, wishlist: wishlist,),
               ],
             ),
           ),

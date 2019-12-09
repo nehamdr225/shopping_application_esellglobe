@@ -3,6 +3,7 @@ import 'package:esell/state/src/consts.dart';
 import 'package:esell/widget/atoms/BottomLoader.dart';
 import 'package:esell/widget/atoms/InfoNavBar.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
+import 'package:esell/widget/molecules/Product.dart';
 //import 'package:esell/widget/molecules/GridList.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -31,53 +32,41 @@ class CategoryPage extends StatelessWidget {
         widgets.addAll([
           InfoNavBar(text: each['name'], type: each['cap']),
           Container(
-              height: 170,
+              height: 250,
+              width: 70,
               alignment: Alignment.center,
               child: categoryProduct.length > 0
-                  ? ListView.builder(
+                  ? GridView.builder(
+                      itemCount: categoryProduct.length + 1,
                       scrollDirection: Axis.horizontal,
-                      itemCount: categoryProduct.length,
-                      itemBuilder: (context, index) {
-                        return Card(
-                            elevation: 2.0,
-                            child: InkWell(
-                                onTap: () {},
-                                child: Container(
-                                    width: 150.0,
-                                    child: ListTile(
-                                      title: categoryProduct[index]['media'][0]
-                                                      ['src']
-                                                  .length !=
-                                              0
-                                          ? Image.network(
-                                              categoryProduct[index]['media'][0]
-                                                  ['src'][0],
-                                              height: 100.0,
-                                              width: 100.0,
-                                            )
-                                          : Image.asset(
-                                              'images/SubMain/foot/casualshoes.jpg',
-                                              height: 100.0,
-                                              width: 100.0,
-                                            ),
-                                      contentPadding: EdgeInsets.all(1.0),
-                                      subtitle: Padding(
-                                        padding:
-                                            const EdgeInsets.only(top: 10.0),
-                                        child: Container(
-                                            alignment: Alignment.topCenter,
-                                            child: Text(
-                                              categoryProduct[index]['name'],
-                                              softWrap: true,
-                                              textAlign: TextAlign.center,
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .body1
-                                                  .copyWith(fontSize: 14.0),
-                                            )),
-                                      ),
-                                    ))));
-                      })
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 1,
+                        childAspectRatio: 1.2,
+                      ),
+                      itemBuilder: (BuildContext context, int index) {
+                        return index != categoryProduct.length
+                            ? Product(
+                                name: categoryProduct[index]['name'],
+                                image: categoryProduct[index]['media'][0]['src']
+                                            .length >
+                                        0
+                                    ? categoryProduct[index]['media'][0]['src']
+                                        [0]
+                                    : null,
+                                imgheight: 120.0,
+                                price: categoryProduct[index]['price'],
+                                seller: categoryProduct[index]['seller'],
+                                oldPrice:
+                                    categoryProduct[index]['oldPrice'] != null
+                                        ? categoryProduct[index]['oldPrice']
+                                        : categoryProduct[index]['price'],
+                                details: categoryProduct[index]['details'],
+                                id: categoryProduct[index]['_id'],
+                                wishlist: true,
+                              )
+                            : BottomLoader();
+                      },
+                    )
                   : BottomLoader()),
           Padding(
             padding: EdgeInsets.symmetric(vertical: 10.0),

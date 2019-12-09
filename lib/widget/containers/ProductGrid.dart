@@ -21,7 +21,7 @@ class ProductGrid extends StatelessWidget {
               scrollDirection: Axis.vertical,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: orientation == Orientation.portrait ? 2 : 3,
-                childAspectRatio: 0.8,
+                childAspectRatio: 0.8, 
               ),
               itemBuilder: (BuildContext context, int index) {
                 return index != products.length
@@ -37,7 +37,9 @@ class ProductGrid extends StatelessWidget {
                             ? products[index]['oldPrice']
                             : products[index]['price'],
                         details: products[index]['details'],
-                        id: products[index]['_id'])
+                        id: products[index]['_id'],
+                        wishlist: true,
+                      )
                     : BottomLoader();
               },
             )

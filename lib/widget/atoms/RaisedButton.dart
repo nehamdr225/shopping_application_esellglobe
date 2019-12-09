@@ -9,6 +9,8 @@ class FRaisedButton extends StatelessWidget {
   final shape;
   final needIcon;
   final image;
+  final imgcolor;
+  final elevation;
   FRaisedButton(
       {this.text,
       this.shape,
@@ -17,7 +19,9 @@ class FRaisedButton extends StatelessWidget {
       this.bg,
       this.width,
       this.height,
+      this.elevation,
       this.image,
+      this.imgcolor,
       this.needIcon: false});
   @override
   Widget build(BuildContext context) {
@@ -25,6 +29,7 @@ class FRaisedButton extends StatelessWidget {
       width: width,
       height: height,
       child: RaisedButton(
+        elevation: elevation,
           color: bg,
           child: needIcon == true
               ? Row(
@@ -34,6 +39,7 @@ class FRaisedButton extends StatelessWidget {
                     image,
                     height: 25.0,
                     width: 25.0,
+                    color: imgcolor,
                   ),
                   Text(
                     text,

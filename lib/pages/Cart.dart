@@ -116,7 +116,9 @@ class _CartPageState extends State<CartPage> {
                               setQuantity: updateCartItem,
                               token: user.token,
                               deleteFromCart: user.deleteFromCart)
-                          : CircularProgressIndicator();
+                          : Center(
+                            child: CircularProgressIndicator(),
+                          );
                     },
                   )
                 : Center(

@@ -192,7 +192,7 @@ class DrawerApp extends StatelessWidget {
                       ),
                       Divider(
                         color: Colors.grey[500],
-                        height: 10.0,
+                        height: 5.0,
                       ),
                     ],
                   )
@@ -210,8 +210,8 @@ class DrawerApp extends StatelessWidget {
             ),
             token != null
                 ? FRaisedButton(
+                  elevation: 0.0,
                     text: 'Sign Out',
-                    width: 100.0,
                     bg: Colors.white,
                     color: Colors.red,
                     onPressed: () {
@@ -225,6 +225,7 @@ class DrawerApp extends StatelessWidget {
                     },
                   )
                 : Text(''),
+                SizedBox(height: 5.0,)
           ],
         ),
       ),
