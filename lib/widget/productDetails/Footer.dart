@@ -1,3 +1,4 @@
+import 'package:esell/pages/Cart.dart';
 import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/molecules/colors.dart';
@@ -9,12 +10,34 @@ class PDFooter extends StatelessWidget {
   final String id, size, color;
   final int quantity;
   PDFooter({this.id, this.quantity, this.color, this.size});
+  
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserModel>(context);
     final addToCart =
         () => user.addToCart(id, quantity, size ?? "S", color ?? "black");
     final addToWish = () => user.addToWishList(id);
+
+  final snackBar = (text, label, onPressed) => SnackBar(
+          backgroundColor: primary,
+          duration: Duration(seconds: 2),
+          content: Text(text, style: Theme.of(context).textTheme.caption),
+          action: SnackBarAction(
+            label: label,
+            textColor: Colors.white,
+            onPressed: onPressed
+          ),
+        );
+    
+    void addToCartSnackBar(){
+      if (user.findCartItem(id) == true)
+      {
+        Scaffold.of(context).showSnackBar(snackBar(
+        "You item has been added to cart", "undo", ()=> Navigator.pop(context)));
+      }
+      
+    }
+
     return Container(
       height: 40.0,
       color: Colors.transparent,
@@ -46,8 +69,13 @@ class PDFooter extends StatelessWidget {
               ? FRaisedButton(
                   height: 50.0,
                   width: 200.0,
-                  onPressed: () {},
-                  text: 'Added to cart',
+                  onPressed: () {
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CartPage()),
+                  );
+                  },
+                  text: 'Goto cart',
                   color: textColor,
                   bg: primary,
                   shape: true,
@@ -55,7 +83,7 @@ class PDFooter extends StatelessWidget {
               : FRaisedButton(
                   height: 50.0,
                   width: 200.0,
-                  onPressed: addToCart,
+                  onPressed: addToCart,  ///###
                   text: 'Add to cart',
                   color: textColor,
                   shape: true,

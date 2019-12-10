@@ -45,20 +45,12 @@ class Services extends StatelessWidget {
                       )
                     ])
                   : Text(''),
-              amazonDelivery
-                  ? Column(children: [
-                      Icon(Icons.directions_bus,color: primary,),
-                      Text(
-                        'Amazon \nDelivered',
-                        style: body1,
-                      )
-                    ])
-                  : Text(''),
+            
               aYearWarranty
                   ? Column(children: [
                       Icon(Icons.check_circle_outline,color: primary,),
                       Text(
-                        'Parking',
+                        'One Year Warranty',
                         style: body1,
                       )
                     ])

@@ -24,7 +24,7 @@ class HomePageApp extends StatelessWidget {
   Widget build(BuildContext context) {
     var color = Theme.of(context).colorScheme;
     var user = Provider.of<UserModel>(context);
-    // FlutterStatusbarcolor.setStatusBarColor(color.primaryVariant);
+    final height = MediaQuery.of(context).size.height;
 
     return SafeArea(
       child: Scaffold(
@@ -84,7 +84,7 @@ class HomePageApp extends StatelessWidget {
                   // decoration: BoxDecoration(
                   //     border: Border.all(width: 2.0, color: textColor),
                   //     borderRadius: BorderRadius.circular(5.0)),
-                  height: 420,
+                  height: height * 0.55,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                         vertical: 10.0, horizontal: 10.0),

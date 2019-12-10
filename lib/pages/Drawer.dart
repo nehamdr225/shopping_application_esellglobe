@@ -27,7 +27,7 @@ class DrawerApp extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: <Widget>[
             userData != null && token != null
-            //token != null
+                //token != null
                 ? UserAccountsDrawerHeader(
                     accountName: Text(
                         userData.length > 0 ? userData['name'] : "Loading ..."),
@@ -70,7 +70,9 @@ class DrawerApp extends StatelessWidget {
                                   style: Theme.of(context)
                                       .textTheme
                                       .caption
-                                      .copyWith(fontSize: 16.0, fontWeight: FontWeight.w500)),
+                                      .copyWith(
+                                          fontSize: 16.0,
+                                          fontWeight: FontWeight.w500)),
                               contentPadding: EdgeInsets.only(left: 5.0),
                               trailing: Icon(
                                 Icons.arrow_right,
@@ -86,10 +88,15 @@ class DrawerApp extends StatelessWidget {
                           )
                         ])),
             Padding(
-              padding: const EdgeInsets.only(top: 8.0, left: 14.0, bottom: 5.0,),
+              padding: const EdgeInsets.only(
+                top: 8.0,
+                left: 14.0,
+                bottom: 5.0,
+              ),
               child: Text(
                 'Search for Fashion',
-                style: Theme.of(context).textTheme.body2.copyWith(fontSize: 16.0),
+                style:
+                    Theme.of(context).textTheme.body2.copyWith(fontSize: 16.0),
               ),
             ),
             DrawerElements(
@@ -135,10 +142,15 @@ class DrawerApp extends StatelessWidget {
               height: 10.0,
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 8.0, left: 14.0, bottom: 5.0,),
+              padding: const EdgeInsets.only(
+                top: 8.0,
+                left: 14.0,
+                bottom: 5.0,
+              ),
               child: Text(
                 'Find your style',
-                style: Theme.of(context).textTheme.body2.copyWith(fontSize: 16.0),
+                style:
+                    Theme.of(context).textTheme.body2.copyWith(fontSize: 16.0),
               ),
             ),
             DrawerElements(
@@ -166,37 +178,24 @@ class DrawerApp extends StatelessWidget {
               },
             ),
             token != null
-                ? DrawerElements(
-                    title: 'Account',
-                    icon: 'images/icons/account.png',
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SignInPage()));
-                    },
+                ? Column(
+                    children: <Widget>[
+                      DrawerElements(
+                        title: 'Account',
+                        icon: 'images/icons/account.png',
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SignInPage()));
+                        },
+                      ),
+                      Divider(
+                        color: Colors.grey[500],
+                        height: 5.0,
+                      ),
+                    ],
                   )
-                : Text('null'),
-            token != null
-                ? Column(children: [
-                    DrawerElements(
-                      title: 'Logout',
-                      icon: 'images/icons/logout.png',
-                      onTap: () {
-                        logout();
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => HomePageApp()));
-                        user.token = null;
-                        user.user = {};
-                      },
-                    ),
-                    Divider(
-                      color: Colors.grey[500],
-                      height: 10.0,
-                    ),
-                  ])
                 : Divider(
                     color: Colors.grey[500],
                     height: 5.0,
@@ -209,11 +208,24 @@ class DrawerApp extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => AboutPage()));
               },
             ),
-            FRaisedButton(
-              text: 'Sign Out',
-              width: 100.0,
-              color: Colors.red,
-            )
+            token != null
+                ? FRaisedButton(
+                  elevation: 0.0,
+                    text: 'Sign Out',
+                    bg: Colors.white,
+                    color: Colors.red,
+                    onPressed: () {
+                      logout();
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HomePageApp()));
+                      user.token = null;
+                      user.user = {};
+                    },
+                  )
+                : Text(''),
+                SizedBox(height: 5.0,)
           ],
         ),
       ),

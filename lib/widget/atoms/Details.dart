@@ -1,5 +1,6 @@
 import 'package:esell/state/state.dart';
 import 'package:esell/widget/molecules/Icons.dart';
+import 'package:esell/widget/molecules/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -7,7 +8,8 @@ class Details extends StatefulWidget {
   final String name;
   final String price;
   final String id;
-  Details({this.name, this.price, this.id});
+  final wishlist;
+  Details({this.name, this.price, this.id, this.wishlist:true});
 
   @override
   _DetailsState createState() => _DetailsState();
@@ -32,7 +34,9 @@ class _DetailsState extends State<Details> {
               ),
           textAlign: TextAlign.center,
         ),
-        Row(children: <Widget>[
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
           Expanded(
               child: Text(
             widget.price,
@@ -42,16 +46,22 @@ class _DetailsState extends State<Details> {
                 ),
             textAlign: TextAlign.center,
           )),
+          widget.wishlist == true? 
           Expanded(
-              child: FIcons(
-            icon: Icons.bookmark_border,
+            child: FIcons(
+            icon: user.findWishlistItem(widget.id) != true 
+            ? Icons.bookmark_border
+            : Icons.bookmark,
+            color: iconthemedark,
             alignment: Alignment.centerRight,
             onPressed: () {
               user.findWishlistItem(widget.id) != true
                   ? user.addToWishList(widget.id)
                   : print("already in wishlist");
             },
-          ))
+          )
+          )
+          :Text('')
         ]),
       ],
     );
