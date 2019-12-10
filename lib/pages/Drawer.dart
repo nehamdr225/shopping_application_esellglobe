@@ -213,6 +213,7 @@ class DrawerApp extends StatelessWidget {
                   elevation: 0.0,
                     text: 'Sign Out',
                     bg: Colors.white,
+                    shape: true,
                     color: Colors.red,
                     onPressed: () {
                       logout();

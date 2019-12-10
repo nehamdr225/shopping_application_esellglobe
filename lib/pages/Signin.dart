@@ -151,10 +151,11 @@ class _PageState extends State<SignInPage> {
                   ? CircularProgressIndicator()
                   : FRaisedButton(
                       text: "Sign in",
+                      shape: true,
                       width: 160.0,
                       height: 45.0,
-                      bg: primary,
-                      color: textColor,
+                      bg: primaryDark,
+                      color: Colors.white,
                       onPressed: loginUser,
                     ),
             ),

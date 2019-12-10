@@ -2,6 +2,7 @@ import 'package:esell/widget/AnimatingLine.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
 import 'package:esell/widget/atoms/Forms.dart';
 import 'package:esell/widget/atoms/InfoNavBar.dart';
+import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -56,13 +57,11 @@ class CheckoutPage extends StatelessWidget {
         ),
         SizedBox(
           width: 150.0,
-          child: RaisedButton(
-            color: primaryDark,
-            child: Text('Place Order',
-                style: Theme.of(context)
-                    .textTheme
-                    .title
-                    .copyWith(color: Colors.white)),
+          child: FRaisedButton(
+            bg: primaryDark,
+            text: 'Place Order',
+            color: Colors.white,
+            shape: true,
             onPressed: () {
               Navigator.push(
                   context,

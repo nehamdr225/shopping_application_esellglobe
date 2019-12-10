@@ -1,6 +1,8 @@
+import 'package:esell/state/src/theme.dart';
 import 'package:esell/widget/atoms/BrandLogos.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
 import 'package:esell/widget/atoms/Forms.dart';
+import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:flutter/material.dart';
 
@@ -49,6 +51,18 @@ class LoginPhone extends StatelessWidget {
                   icon: Icon(Icons.phone),
                   //onChanged: setEmail
                 ),
+                Padding(
+                  padding: EdgeInsets.all(15.0),
+                ),
+                FRaisedButton(
+                      text: "Register now",
+                      width: 160.0,
+                      height: 45.0,
+                      shape: true,
+                      color: Colors.white,
+                      bg: primaryDark,
+                      onPressed: (){}//signupUser,
+                    ),
               ],
             ),
           ),

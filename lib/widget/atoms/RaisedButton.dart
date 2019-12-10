@@ -13,7 +13,7 @@ class FRaisedButton extends StatelessWidget {
   final elevation;
   FRaisedButton(
       {this.text,
-      this.shape,
+      this.shape: false,
       this.onPressed,
       this.color,
       this.bg,
@@ -59,9 +59,9 @@ class FRaisedButton extends StatelessWidget {
                     fontSize: 18.0,
                   ),
                 ),
-          shape: shape != null
+          shape: shape == false
               ? Border.all(width: 0.0, color: Colors.black38)
-              : const RoundedRectangleBorder(
+              : RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(30.0)),
                 ),
           onPressed: onPressed),

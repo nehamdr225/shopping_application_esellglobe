@@ -94,6 +94,7 @@ class CartListView extends StatelessWidget {
                                       'Are you sure you want to remove this product?')),
                               actions: <Widget>[
                                 FRaisedButton(
+                                  shape: true,
                                   text: 'Remove',
                                   color: Colors.white,
                                   bg: Colors.red,
