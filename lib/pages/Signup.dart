@@ -3,7 +3,6 @@ import 'package:esell/pages/Signin.dart';
 import 'package:esell/state/src/theme.dart';
 import 'package:esell/widget/atoms/BrandLogos.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
-import 'package:esell/widget/molecules/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/helpers/Validators.dart';
 import 'package:esell/widget/atoms/Forms.dart';

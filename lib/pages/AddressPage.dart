@@ -4,108 +4,53 @@ import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:flutter/material.dart';
 
-class AddressPage extends StatefulWidget {
-  @override
-  _AddressPageState createState() => _AddressPageState();
-}
-
-class _AddressPageState extends State<AddressPage> {
-  String name, city, country, location;
-  int mobileno, houseno;
-  String nameErr, mobilenoErr, housenoErr,cityErr, countryErr, locationErr;
+class AddressPage extends StatelessWidget {
+  final String name, city, country, location;
+  final int mobileno, houseno;
+  final String nameErr,
+      mobilenoErr,
+      housenoErr,
+      cityErr,
+      countryErr,
+      locationErr;
+  final Function setName,
+      setMobileNo,
+      setHouseNo,
+      setCountry,
+      setCity,
+      setLocation;
+  AddressPage(
+      {this.name,
+      this.city,
+      this.country,
+      this.location,
+      this.mobileno,
+      this.houseno,
+      this.setCity,
+      this.setCountry,
+      this.setHouseNo,
+      this.setLocation,
+      this.setMobileNo,
+      this.setName,
+      this.cityErr,
+      this.countryErr,
+      this.housenoErr,
+      this.locationErr,
+      this.mobilenoErr,
+      this.nameErr});
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-    final setName = (data) {
-    //   if (nameValidator(data) && data != name && data != null)
-    //     setState(() {
-    //       name = data;
-    //       nameErr = null;
-    //     });
-    //   else {
-    //     setState(() {
-    //       nameErr = "Name is not valid!";
-    //     });
-    //   }
-    };
-
-   final setMobileno = (data) {
-    //   if (mobilenoValidator(data) && data != mobileno && data != null)
-    //     setState(() {
-    //       mobileno = data;
-    //       mobilenoErr = null;
-    //     });
-    //   else
-    //     setState(() {
-    //       mobilenoErr = "mobile is not valid!";
-    //     });
-   };
-
-    final setHouseno = (id) {
-    //   if (housenoValidator(id) && id != houseno && id.length > 7)
-    //     setState(() {
-    //       housenoErr = null;
-    //       houseno = id;
-    //     });
-    //   else
-    //     setState(() {
-    //       housenoErr =
-    //           "houseno not valid! (Use AlphaNumeric with special characters e.g. AbC123@#!)";
-    //     });
-   };
-
-   final setCity = (data) {
-    //   if (data != city && data != null && cityValidator(data))
-    //     setState(() {
-    //       city = data;
-    //       cityErr = null;
-    //     });
-    //   else
-    //     setState(() {
-    //       cityErr = "City name is not valid!";
-    //     });
-   };
-
-   final setCountry = (data) {
-    //   if (data != country && data != null && countryValidator(data))
-    //     setState(() {
-    //       country = data;
-    //       countryErr = null;
-    //     });
-    //   else
-    //     setState(() {
-    //       countryErr = "country name is not valid!";
-    //     });
-   };
-
-   final setLocation  = (data) {
-    //   if (data == 'Office'){
-    //     setState(() {
-    //       location = data;
-    //       locationErr = null;
-    //     });
-    //   }
-    //   else{
-    //     setState(() {
-    //       location = data;
-    //       locationErr = null;
-    //     });
-    //   }
-   };
-
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       persistentFooterButtons: <Widget>[
-        SizedBox(
-          width: width - 150.0,
-          child: FRaisedButton(
-            text: 'Save',
-            shape: true,
-            color: Colors.white,
-            bg: primaryDark,
-            onPressed: (){},
-          ),
-        )
+        FRaisedButton(
+          text: 'Save',
+          shape: true,
+          color: Colors.white,
+          bg: primaryDark,
+          onPressed: () {},
+        ),
       ],
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(40.0),
@@ -114,116 +59,125 @@ class _AddressPageState extends State<AddressPage> {
             title: 'Add Shipping Address',
           )),
       backgroundColor: Colors.white,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              width: width - 50.0,
-              child: Column(
-                children: <Widget>[
-                  Padding(
-                    // full name
-                    padding: const EdgeInsets.all(8.0),
-                    child: FForms(
-                      onChanged: setName,
-                      text: 'Full Name',
-                      type: TextInputType.text,
-                    ),
-                  ),
-                  Padding(
-                    //phone number
-                    padding: const EdgeInsets.all(8.0),
-                    child: FForms(
-                      onChanged: setMobileno,
-                      text: 'Mobile number',
-                      type: TextInputType.phone,
-                    ),
-                  ),
-                  Table(
-                    //house no. and city
-                    children: [
-                      TableRow(children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: FForms(
-                            onChanged: setHouseno,
-                            text: 'House no.',
-                            type: TextInputType.number,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: FForms(
-                            onChanged: setCity,
-                            text: 'City',
-                            type: TextInputType.text,
-                          ),
-                        ),
-                      ])
-                    ],
-                  ),
-                  Padding(
-                    //country
-                    padding: const EdgeInsets.all(8.0),
-                    child: FForms(
-                      onChanged: setCountry,
-                      text: 'Country',
-                      type: TextInputType.text,
-                    ),
-                  ),
-                ],
-              ),
+      body: ListView(
+        children: <Widget>[
+          Padding(
+            // full name
+            padding: const EdgeInsets.only(
+                bottom: 8.0, left: 8.0, right: 8.0, top: 15.0),
+            child: FForms(
+              icon: Icon(Icons.person, color: primary),
+              onChanged: setName,
+              text: 'Full Name',
+              type: TextInputType.text,
             ),
-            Container(
-              width: width - 50.0,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text('Select a label for effective delivery'),
-                  SizedBox(
-                    height: 20.0,
+          ),
+          Padding(
+            //phone number
+            padding: const EdgeInsets.all(8.0),
+            child: FForms(
+              icon: Icon(Icons.phone, color: primary),
+              onChanged: setMobileNo,
+              text: 'Mobile number',
+              type: TextInputType.phone,
+            ),
+          ),
+          Table(
+            //house no. and city
+            children: [
+              TableRow(children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: FForms(
+                    icon: Icon(Icons.home, color: primary),
+                    onChanged: setHouseNo,
+                    text: 'House no.',
+                    type: TextInputType.number,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      Card(
-                        child: Container(
-                          color: Colors.grey[200],
-                          alignment: Alignment.center,
-                          height: 70.0,
-                          width: 110.0,
-                          child: InkWell(
-                            onTap: setLocation('Office'),// not sure if this works please check <3 
-                            child: Text('OFFICE'),
-                          ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: FForms(
+                    icon: Icon(Icons.location_city, color: primary),
+                    onChanged: setCity,
+                    text: 'City',
+                    type: TextInputType.text,
+                  ),
+                ),
+              ])
+            ],
+          ),
+          Padding(
+            //country
+            padding: const EdgeInsets.all(8.0),
+            child: FForms(
+              icon: Icon(Icons.place, color: primary),
+              onChanged: setCountry,
+              text: 'Country',
+              type: TextInputType.text,
+            ),
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding:
+                      EdgeInsets.symmetric(vertical: 15.0, horizontal: 8.0),
+                  child: Text(
+                    'Select a label for effective delivery',
+                    style:
+                        TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    child: InkWell(
+                      onTap: () {
+                        setLocation('Office');
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 30.0, vertical: 15.0),
+                        child: Text(
+                          'OFFICE',
+                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),
-                      Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.0),
+                    ),
+                  ),
+                  Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    child: InkWell(
+                      onTap: () {
+                        setLocation('Home');
+                      },
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 30.0, vertical: 15.0),
+                        alignment: Alignment.center,
+                        child: Text(
+                          'HOME',
+                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8.0),
-                            color: Colors.grey[200],
-                          ),
-                          alignment: Alignment.center,
-                          height: 70.0,
-                          width: 110.0,
-                          child: InkWell(
-                            child: Text('HOME'),
-                          ),
-                        ),
-                      )
-                    ],
+                      ),
+                    ),
                   )
                 ],
-              ),
-            )
-          ],
-        ),
+              )
+            ],
+          ),
+        ],
       ),
     );
   }

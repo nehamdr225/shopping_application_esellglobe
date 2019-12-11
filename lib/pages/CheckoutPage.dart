@@ -1,3 +1,4 @@
+import 'package:esell/pages/AddressPage.dart';
 import 'package:esell/widget/AnimatingLine.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
 import 'package:esell/widget/atoms/Forms.dart';
@@ -8,13 +9,20 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:esell/state/state.dart';
 
-class CheckoutPage extends StatelessWidget {
+class CheckoutPage extends StatefulWidget {
   final price;
   final items;
-  final String name, city, country, location;
-  final int mobileno, houseno;
 
-  CheckoutPage({this.price, this.items, this.name, this.city, this.country, this.location, this.mobileno, this.houseno});
+  CheckoutPage({this.price, this.items});
+
+  @override
+  _CheckoutPageState createState() => _CheckoutPageState();
+}
+
+class _CheckoutPageState extends State<CheckoutPage> {
+  String name, city, country, location, mobileno;
+  int houseno;
+  String nameErr, mobilenoErr, housenoErr, cityErr, countryErr, locationErr;
   @override
   Widget build(BuildContext context) {
     final products = Provider.of<ProductModel>(context);
@@ -37,7 +45,7 @@ class CheckoutPage extends StatelessWidget {
                       size: 15.0,
                     ),
                     FancyText(
-                      text: 'Rs. $price',
+                      text: 'Rs. ${widget.price}',
                       color: Colors.red,
                       fontWeight: FontWeight.bold,
                       size: 15.0,
@@ -63,10 +71,8 @@ class CheckoutPage extends StatelessWidget {
             color: Colors.white,
             shape: true,
             onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => AnimatingLine()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => AnimatingLine()));
             },
           ),
         ),
@@ -86,7 +92,8 @@ class CheckoutPage extends StatelessWidget {
                 InfoNavBar(
                   text: 'Shipping Details',
                   size: 18.0,
-                  gotoproduct: false,
+                  onPressed: Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => AddressPage())),
                 ),
                 SizedBox(
                   height: 10.0,
@@ -98,7 +105,8 @@ class CheckoutPage extends StatelessWidget {
                 InfoNavBar(
                   text: 'Bill to default billing address',
                   size: 18.0,
-                  gotoproduct: false,
+                  onPressed: Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => AddressPage())),
                 ),
                 SizedBox(
                   height: 10.0,
@@ -130,7 +138,7 @@ class CheckoutPage extends StatelessWidget {
           ),
           Divider(),
           Column(
-              children: items.map<Widget>((fav) {
+              children: widget.items.map<Widget>((fav) {
             final product = products.one(fav['product']);
             return Container(
               margin: EdgeInsets.only(top: 15),

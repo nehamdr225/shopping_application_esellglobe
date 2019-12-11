@@ -35,10 +35,7 @@ class FForms extends StatelessWidget {
             borderSide: BorderSide(
           color: Theme.of(context).colorScheme.primary,
         )),
-        icon: icon,
-        contentPadding: type == TextInputType.phone
-            ? EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0)
-            : null,
+        prefixIcon: icon,
         hintText: text,
         labelStyle: style,
         labelText: text,

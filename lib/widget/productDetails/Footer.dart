@@ -10,7 +10,7 @@ class PDFooter extends StatelessWidget {
   final String id, size, color;
   final int quantity;
   PDFooter({this.id, this.quantity, this.color, this.size});
-  
+
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserModel>(context);
@@ -18,25 +18,22 @@ class PDFooter extends StatelessWidget {
         () => user.addToCart(id, quantity, size ?? "S", color ?? "black");
     final addToWish = () => user.addToWishList(id);
 
-  final snackBar = (text, label, onPressed) => SnackBar(
-          backgroundColor: primary,
-          duration: Duration(seconds: 2),
-          content: Text(text, style: Theme.of(context).textTheme.caption),
-          action: SnackBarAction(
-            label: label,
-            textColor: Colors.white,
-            onPressed: onPressed
-          ),
-        );
-    
-    void addToCartSnackBar(){
-      if (user.findCartItem(id) == true)
-      {
-        Scaffold.of(context).showSnackBar(snackBar(
-        "You item has been added to cart", "undo", ()=> Navigator.pop(context)));
-      }
-      
-    }
+    // final snackBar = (text, label, onPressed) => SnackBar(
+    //       backgroundColor: primary,
+    //       duration: Duration(seconds: 2),
+    //       content: Text(text, style: Theme.of(context).textTheme.caption),
+    //       action: SnackBarAction(
+    //           label: label, textColor: Colors.white, onPressed: onPressed),
+    //     );
+
+    // void addToCartSnackBar(){
+    //   if (user.findCartItem(id) == true)
+    //   {
+    //     Scaffold.of(context).showSnackBar(snackBar(
+    //     "You item has been added to cart", "undo", ()=> Navigator.pop(context)));
+    //   }
+
+    // }
 
     return Container(
       height: 40.0,
@@ -71,9 +68,9 @@ class PDFooter extends StatelessWidget {
                   width: 200.0,
                   onPressed: () {
                     Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => CartPage()),
-                  );
+                      context,
+                      MaterialPageRoute(builder: (context) => CartPage()),
+                    );
                   },
                   text: 'Goto cart',
                   color: textColor,
@@ -83,7 +80,9 @@ class PDFooter extends StatelessWidget {
               : FRaisedButton(
                   height: 50.0,
                   width: 200.0,
-                  onPressed: addToCart,  ///###
+                  onPressed: addToCart,
+
+                  ///###
                   text: 'Add to cart',
                   color: textColor,
                   shape: true,

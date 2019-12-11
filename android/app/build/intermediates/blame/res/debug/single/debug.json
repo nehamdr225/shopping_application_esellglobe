@@ -1,46 +1,46 @@
 [
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/mipmap-mdpi_logoonly1.png.flat",
-        "source": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/src/main/res/mipmap-mdpi/logoonly1.png"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_logoonly1.png.flat",
+        "source": "/run/media/bee/workshop/workshop/flutter/esell/android/app/src/main/res/mipmap-xxhdpi/logoonly1.png"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi_logo.png.flat",
-        "source": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/src/main/res/mipmap-xhdpi/logo.png"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi_logo.png.flat",
+        "source": "/run/media/bee/workshop/workshop/flutter/esell/android/app/src/main/res/mipmap-xhdpi/logo.png"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/mipmap-hdpi_logoonly1.png.flat",
-        "source": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/src/main/res/mipmap-hdpi/logoonly1.png"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/drawable_launch_background.xml.flat",
+        "source": "/run/media/bee/workshop/workshop/flutter/esell/android/app/src/main/res/drawable/launch_background.xml"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_logo.png.flat",
-        "source": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/src/main/res/mipmap-xxhdpi/logo.png"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi_logoonly1.png.flat",
+        "source": "/run/media/bee/workshop/workshop/flutter/esell/android/app/src/main/res/mipmap-xhdpi/logoonly1.png"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_logo.png.flat",
-        "source": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/src/main/res/mipmap-xxxhdpi/logo.png"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_logo.png.flat",
+        "source": "/run/media/bee/workshop/workshop/flutter/esell/android/app/src/main/res/mipmap-xxhdpi/logo.png"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/mipmap-hdpi_logo.png.flat",
-        "source": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/src/main/res/mipmap-hdpi/logo.png"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/mipmap-mdpi_logo.png.flat",
+        "source": "/run/media/bee/workshop/workshop/flutter/esell/android/app/src/main/res/mipmap-mdpi/logo.png"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/mipmap-mdpi_logo.png.flat",
-        "source": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/src/main/res/mipmap-mdpi/logo.png"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/mipmap-mdpi_logoonly1.png.flat",
+        "source": "/run/media/bee/workshop/workshop/flutter/esell/android/app/src/main/res/mipmap-mdpi/logoonly1.png"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi_logoonly1.png.flat",
-        "source": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/src/main/res/mipmap-xhdpi/logoonly1.png"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_logoonly1.png.flat",
+        "source": "/run/media/bee/workshop/workshop/flutter/esell/android/app/src/main/res/mipmap-xxxhdpi/logoonly1.png"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/drawable_launch_background.xml.flat",
-        "source": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/src/main/res/drawable/launch_background.xml"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_logo.png.flat",
+        "source": "/run/media/bee/workshop/workshop/flutter/esell/android/app/src/main/res/mipmap-xxxhdpi/logo.png"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_logoonly1.png.flat",
-        "source": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/src/main/res/mipmap-xxhdpi/logoonly1.png"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/mipmap-hdpi_logoonly1.png.flat",
+        "source": "/run/media/bee/workshop/workshop/flutter/esell/android/app/src/main/res/mipmap-hdpi/logoonly1.png"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_logoonly1.png.flat",
-        "source": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/src/main/res/mipmap-xxxhdpi/logoonly1.png"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/mipmap-hdpi_logo.png.flat",
+        "source": "/run/media/bee/workshop/workshop/flutter/esell/android/app/src/main/res/mipmap-hdpi/logo.png"
     }
 ]

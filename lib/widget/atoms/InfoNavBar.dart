@@ -1,4 +1,3 @@
-import 'package:esell/pages/AddressPage.dart';
 import 'package:esell/pages/Products.dart';
 import 'package:esell/state/src/theme.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
@@ -9,8 +8,14 @@ class InfoNavBar extends StatelessWidget {
   final text;
   final size;
   final offerCard;
-  final bool gotoproduct; 
-  const InfoNavBar({Key key, this.type, this.text, this.size: 18.0, this.offerCard: false, this.gotoproduct: true})
+  final onPressed;
+  const InfoNavBar(
+      {Key key,
+      this.type,
+      this.text,
+      this.size: 18.0,
+      this.offerCard: false,
+      this.onPressed})
       : super(key: key);
 
   @override
@@ -34,19 +39,15 @@ class InfoNavBar extends StatelessWidget {
             size: 16,
             color: textColor,
           ),
-          onPressed: () {
-            gotoproduct == true
-            ? Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => ProductsPage(
-                          category: type,
-                        )))
-            : Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => AddressPage()));
-          },
+          onPressed: onPressed ??
+              () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ProductsPage(
+                              category: type,
+                            )));
+              },
         ),
       ]),
     );
