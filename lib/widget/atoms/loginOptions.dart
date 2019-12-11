@@ -23,6 +23,7 @@ class LoginOptions extends StatelessWidget {
                   height: 50.0,
                   width: 130.0,
                   needIcon: true,
+                  shape: true,
                   image: 'images/icons/facebookicon.png',
                   text: "Facebook",
                   color: Colors.black87,
@@ -32,6 +33,7 @@ class LoginOptions extends StatelessWidget {
                 FRaisedButton(
                   height: 50.0,
                   width: 130.0,
+                  shape: true,
                   image: 'images/icons/googleicon.png',
                   needIcon: true,
                   text: "Google",
@@ -48,8 +50,8 @@ class LoginOptions extends StatelessWidget {
           FRaisedButton(
             // email
             height: 50.0,
-
             width: 260.0,
+            shape: true,
             needIcon: true,
             image: 'images/icons/email.png',
             text: "Login with Email Address",
@@ -67,7 +69,7 @@ class LoginOptions extends StatelessWidget {
             // phone no.
             height: 50.0,
             width: 260.0,
-
+            shape: true,
             needIcon: true,
             image: 'images/icons/phone.png',
             text: "Login with Mobile Number",

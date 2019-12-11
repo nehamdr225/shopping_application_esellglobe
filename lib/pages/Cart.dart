@@ -61,7 +61,7 @@ class _CartPageState extends State<CartPage> {
                     padding: EdgeInsets.all(2.0),
                   ),
                   FRaisedButton(
-                    width: 160.0,
+                    width: 160.0, 
                     text: "Total: ",
                     bg: iconthemelight,
                     shape: true,
@@ -103,7 +103,6 @@ class _CartPageState extends State<CartPage> {
                     itemCount: items.length,
                     itemBuilder: (context, index) {
                       var each = product.one(items[index]['product']);
-
                       return each["error"] == null
                           ? CartListView(
                               name: each['name'],

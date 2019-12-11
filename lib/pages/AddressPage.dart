@@ -1,5 +1,6 @@
 import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/Forms.dart';
+import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:flutter/material.dart';
 
@@ -97,10 +98,12 @@ class _AddressPageState extends State<AddressPage> {
       persistentFooterButtons: <Widget>[
         SizedBox(
           width: width - 150.0,
-          child: RaisedButton(
-            color: primary,
-            child: Text('Save', style: Theme.of(context).textTheme.title),
-            onPressed: () {},
+          child: FRaisedButton(
+            text: 'Save',
+            shape: true,
+            color: Colors.white,
+            bg: primaryDark,
+            onPressed: (){},
           ),
         )
       ],
