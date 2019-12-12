@@ -24,6 +24,7 @@ class _CartPageState extends State<CartPage> {
   Widget build(BuildContext context) {
     var product = Provider.of<ProductModel>(context);
     var user = Provider.of<UserModel>(context);
+    var width = MediaQuery.of(context).size.width;
     setState(() {
       items = user.cart;
       print(items);
@@ -54,14 +55,12 @@ class _CartPageState extends State<CartPage> {
             backgroundColor: Colors.white,
             persistentFooterButtons: <Widget>[
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Padding(
                     padding: EdgeInsets.all(2.0),
                   ),
                   FRaisedButton(
-                    width: 160.0, 
+                    width: width * 0.45, 
                     text: "Total: ",
                     bg: iconthemelight,
                     shape: true,
@@ -69,10 +68,10 @@ class _CartPageState extends State<CartPage> {
                     onPressed: () {},
                   ),
                   Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(5.0),
                   ),
                   FRaisedButton(
-                    width: 160.0,
+                    width: width * 0.45, 
                     color: Colors.white,
                     shape: true,
                     bg: Theme.of(context).colorScheme.primary,

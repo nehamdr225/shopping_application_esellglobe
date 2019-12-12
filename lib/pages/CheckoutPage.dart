@@ -153,12 +153,13 @@ class _CheckoutPageState extends State<CheckoutPage> {
             height: 50.0,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     FancyText(
-                      text: 'Rs. ${widget.price}',
+                      text: 'Total : Rs. ${widget.price}',
                       color: Colors.red,
                       fontWeight: FontWeight.bold,
                       size: 15.0,
@@ -176,16 +177,14 @@ class _CheckoutPageState extends State<CheckoutPage> {
         SizedBox(
           width: 10.0,
         ),
-        SizedBox(
-          width: 150.0,
-          child: FRaisedButton(
+        FRaisedButton(
+            width: width * 0.45,
             bg: primaryDark,
             text: 'Place Order',
             color: Colors.white,
             shape: true,
             onPressed: name != null ? placeOrder : null,
-          ),
-        ),
+            ),
       ],
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(40.0),
