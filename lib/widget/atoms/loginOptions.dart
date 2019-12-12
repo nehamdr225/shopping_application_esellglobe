@@ -5,6 +5,7 @@ import 'package:esell/state/src/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
+import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 
 class LoginOptions extends StatelessWidget {
   @override
