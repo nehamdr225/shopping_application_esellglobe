@@ -13,7 +13,8 @@ class AddressPage extends StatelessWidget {
       setHouseNo,
       setCountry,
       setCity,
-      setLocation;
+      setLocation,
+      save;
   AddressPage(
       {this.name,
       this.city,
@@ -30,7 +31,8 @@ class AddressPage extends StatelessWidget {
       this.cityErr,
       this.countryErr,
       this.mobilenoErr,
-      this.nameErr});
+      this.nameErr,
+      this.save});
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +44,10 @@ class AddressPage extends StatelessWidget {
           shape: true,
           color: Colors.white,
           bg: primaryDark,
-          onPressed: () {},
+          onPressed: () {
+            final status = save();
+            print(status);
+          },
         ),
       ],
       appBar: PreferredSize(

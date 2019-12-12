@@ -18,9 +18,9 @@ class BootStrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(builder: (context) => ProductModel()),
-        ChangeNotifierProvider(builder: (context) => UserModel()),
-        ChangeNotifierProvider(builder: (context) => FTheme())
+        ChangeNotifierProvider(builder: (_) => ProductModel()),
+        ChangeNotifierProvider(builder: (_) => UserModel()),
+        ChangeNotifierProvider(builder: (_) => FTheme())
       ],
       child: EsellApp(),
     );
