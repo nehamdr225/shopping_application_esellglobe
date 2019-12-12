@@ -1,3 +1,4 @@
+import 'package:esell/helpers/Api.dart';
 import 'package:esell/pages/AddressPage.dart';
 import 'package:esell/widget/AnimatingLine.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
@@ -23,8 +24,9 @@ class _CheckoutPageState extends State<CheckoutPage> {
   String name, city, country, location, mobileNo;
   String nameErr, mobileNoErr, cityErr, countryErr;
   int houseNo;
+  Map shippingInfo, billingInfo;
 
-  setName(value) {
+  void setName(String value) {
     if (value.length > 10) {
       setState(() {
         name = value;
@@ -38,7 +40,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
     }
   }
 
-  setCity(value) {
+  void setCity(String value) {
     if (value.length > 5) {
       setState(() {
         city = value;
@@ -52,7 +54,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
     }
   }
 
-  setCountry(value) {
+  void setCountry(String value) {
     if (value.length > 5) {
       setState(() {
         country = value;
@@ -66,13 +68,13 @@ class _CheckoutPageState extends State<CheckoutPage> {
     }
   }
 
-  setLocation(value) {
+  void setLocation(String value) {
     setState(() {
       location = value;
     });
   }
 
-  setMobileNo(value) {
+  void setMobileNo(String value) {
     if (value.length >= 10) {
       setState(() {
         mobileNo = value;
@@ -86,18 +88,65 @@ class _CheckoutPageState extends State<CheckoutPage> {
     }
   }
 
-  setHouseNo(value) {
+  void setHouseNo(int value) {
     setState(() {
       houseNo = value;
     });
   }
 
+  String saveShippingInfo() {
+    if (name != null && city != null && country != null && mobileNo != null) {
+      setState(() {
+        shippingInfo = {
+          'name': name,
+          'house': houseNo ?? 'N/A',
+          'city': city,
+          'country': country,
+          'location': location,
+          'mobile': mobileNo
+        };
+      });
+      return 'done';
+    }
+    return 'error';
+  }
+
+  String saveBillingInfo() {
+    if (name != null && city != null && country != null && mobileNo != null) {
+      setState(() {
+        billingInfo = {
+          'name': name,
+          'house': houseNo ?? 'N/A',
+          'city': city,
+          'country': country,
+          'location': location,
+          'mobile': mobileNo
+        };
+      });
+      return 'done';
+    }
+    return 'error';
+  }
+
   @override
   Widget build(BuildContext context) {
     final products = Provider.of<ProductModel>(context);
-    // final user = Provider.of<UserModel>(context);
+    final user = Provider.of<UserModel>(context);
     final width = MediaQuery.of(context).size.width;
-    // var items = user.cart;
+
+    void placeOrder() {
+      if (name != null && city != null && country != null && mobileNo != null) {
+        createOrder(user.token).then((result) {
+          if (result['error'] == null) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AnimatingLine()),
+            );
+          }
+        });
+      }
+    }
+
     return Scaffold(
       persistentFooterButtons: <Widget>[
         Container(
@@ -109,10 +158,6 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
-                    FancyText(
-                      text: 'Total Price:  ',
-                      size: 15.0,
-                    ),
                     FancyText(
                       text: 'Rs. ${widget.price}',
                       color: Colors.red,
@@ -139,10 +184,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
             text: 'Place Order',
             color: Colors.white,
             shape: true,
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => AnimatingLine()));
-            },
+            onPressed: name != null ? placeOrder : null,
           ),
         ),
       ],
@@ -192,7 +234,9 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 SizedBox(
                   height: 10.0,
                 ),
-                Text('House number, City, Country'),
+                Text(country != null
+                    ? '$houseNo, $city, $country'
+                    : 'Please provide shipping details.'),
                 SizedBox(
                   height: 20.0,
                 ),

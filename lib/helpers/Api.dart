@@ -147,10 +147,10 @@ getOrders(token) async {
   }
 }
 
-createOrder(token, id) async {
+createOrder(token) async {
   try {
     final response = await fetch(
-        uri: "$url/orders/$id",
+        uri: "$url/orders/",
         headers: {"X-Access-Token": token},
         method: "POST");
     return response;
