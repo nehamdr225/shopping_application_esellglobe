@@ -1,32 +1,34 @@
-import 'package:esell/helpers/Api.dart';
-// import 'package:esell/helpers/Fetch.dart';
-import 'package:esell/state/state.dart';
+import 'package:esell/core/SecureStorage.dart';
+import 'package:esell/entities/user.api.dart';
 import 'package:flutter/cupertino.dart';
 
 class UserModel extends ChangeNotifier {
-  UserModel() {
-    getValue('token').then((token) {
-      if (token != null && token != _token) {
-        _token = token;
-        getUser(token).then((result) {
-          if (result['error'] == null) {
-            if (result['message'] == "Auth failed") {
-              delKeyVal("token").then((data) {
-                _token = null;
-                notifyListeners();
-              });
-            } else if (result['result']['cart'] != null) {
-              getCart(token).then((data) {
-                if (data['error'] == null) _cart = data['result']['products'];
-                notifyListeners();
-              });
-            }
-            user = result['result'];
-            notifyListeners();
-          }
-        });
+  final UserApi _api;
+  final CoreSecureStorage _storage;
+
+  UserModel(this._api, this._storage) {
+    init();
+  }
+
+  Future init() async {
+    final token = await _storage.getValue('token');
+    if (token != null) {
+      _token = token;
+      final result = await _api.getUser(token);
+      if (result['error'] == null) {
+        if (result['message'] == "Auth failed") {
+          _storage.delKeyVal("token");
+          _token = null;
+          notifyListeners();
+        } else if (result['result']['cart'] != null) {
+          final data = await _api.getCart(token);
+          if (data['error'] == null) _cart = data['result']['products'];
+          notifyListeners();
+        }
+        user = result['result'];
+        notifyListeners();
       }
-    });
+    }
   }
 
   String _token;
@@ -44,7 +46,7 @@ class UserModel extends ChangeNotifier {
 
   Map get user => _user;
   set user(Map user) {
-    if (user != null && user != _user) {
+    if (user != null) {
       _user = user;
       notifyListeners();
     }
@@ -53,31 +55,34 @@ class UserModel extends ChangeNotifier {
   get cart => _cart;
   set cart(items) => _cart = items;
   addToCart(String product, qty, size, color) {
-    if (user['cart'] == null) {
-      registerCart(token, product, qty ?? 1, size, color).then((data) {
-        if (data['error'] == null) {
-          _cart.add(product);
-          _user.addAll({'cart': data['result']['_id']});
-          notifyListeners();
-          return "success";
-        }
-        return "failed";
-      });
-    } else
-      updateCart(token, product, qty ?? 1, size, color).then((result) {
-        print(result);
-        if (result['error'] == null) {
-          _cart.add({
-            'product': product,
-            'quantity': qty ?? 1,
-            'size': size,
-            'color': color
-          });
-          notifyListeners();
-          return "success";
-        }
-        return "failed";
-      });
+    if (!_cart.contains(product)) {
+      if (user['cart'] == null) {
+        _api.registerCart(token, product, qty ?? 1, size, color).then((data) {
+          if (data['error'] == null) {
+            _cart.add(product);
+            _user.addAll({'cart': data['result']['_id']});
+            notifyListeners();
+            return "success";
+          }
+          return "failed";
+        });
+      } else
+        _api
+            .updateCart(token, product, qty ?? 1, size ?? "S", color ?? "Black")
+            .then((result) {
+          if (result['error'] == null) {
+            _cart.add({
+              'product': product,
+              'quantity': qty ?? 1,
+              'size': size,
+              'color': color
+            });
+            notifyListeners();
+            return "success";
+          }
+          return "failed";
+        });
+    }
   }
 
   findCartItem(id) {
@@ -85,7 +90,7 @@ class UserModel extends ChangeNotifier {
   }
 
   deleteFromCart(id) {
-    deleteCartItem(token, id).then((data) {
+    _api.deleteCartItem(token, id).then((data) {
       print(data);
       if (data['error'] == null) {
         _cart.removeWhere((each) => each['product'] == id);
@@ -98,7 +103,6 @@ class UserModel extends ChangeNotifier {
 
   get wishList => _wishList;
   addToWishList(String product) {
-    print(product);
     _wishList.add(product);
     notifyListeners();
   }
@@ -106,5 +110,15 @@ class UserModel extends ChangeNotifier {
   findWishlistItem(id) {
     if (_wishList.length == 0) return false;
     return _wishList.contains(id);
+  }
+
+  placeOrder() async {
+    await _api.createOrder(token);
+  }
+
+  logout() async {
+    token = null;
+    user = {};
+    _storage.delKeyVal("token");
   }
 }

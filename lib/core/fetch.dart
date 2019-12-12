@@ -10,6 +10,7 @@ class Fetch {
       var response = await http.get(url, headers: headers ?? DefaultHeaders);
       return json.decode(response.body);
     } catch (e) {
+      print(e);
       return Error;
     }
   }
@@ -31,11 +32,12 @@ class Fetch {
     try {
       var response = await http.put(
         url,
-        headers: headers ?? DefaultHeaders,
-        body: json.encode(body),
+        headers: headers,
+        body: body != null ? json.encode(body) : '',
       );
       return json.decode(response.body);
     } catch (e) {
+      print(e);
       return Error;
     }
   }

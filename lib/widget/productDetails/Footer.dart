@@ -17,6 +17,7 @@ class PDFooter extends StatelessWidget {
     final addToCart =
         () => user.addToCart(id, quantity, size ?? "S", color ?? "black");
     final addToWish = () => user.addToWishList(id);
+    bool inCart = user.cart.any((cartItem) => cartItem['product'] == id);
 
     // final snackBar = (text, label, onPressed) => SnackBar(
     //       backgroundColor: primary,
@@ -80,10 +81,10 @@ class PDFooter extends StatelessWidget {
               : FRaisedButton(
                   height: 50.0,
                   width: 200.0,
-                  onPressed: addToCart,
+                  onPressed: inCart ? () {} : addToCart,
 
                   ///###
-                  text: 'Add to cart',
+                  text: inCart ? 'In Cart' : 'Add to cart',
                   color: textColor,
                   shape: true,
                   bg: primary,

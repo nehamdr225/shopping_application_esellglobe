@@ -75,7 +75,7 @@ class AddressPage extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: FForms(
               icon: Icon(Icons.phone, color: primary),
-              onChanged: setMobileNo,
+              onChanged: (value){setMobileNo(value);},
               text: 'Mobile number',
               type: TextInputType.phone,
             ),
@@ -88,7 +88,7 @@ class AddressPage extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: FForms(
                     icon: Icon(Icons.home, color: primary),
-                    onChanged: setHouseNo,
+                    onChanged: (value){setHouseNo(value);},
                     text: 'House no.',
                     type: TextInputType.number,
                   ),

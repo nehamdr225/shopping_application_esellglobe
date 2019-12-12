@@ -1,4 +1,3 @@
-import 'package:esell/helpers/Api.dart';
 import 'package:esell/widget/atoms/DrawerElements.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:flutter/material.dart';
@@ -210,23 +209,23 @@ class DrawerApp extends StatelessWidget {
             ),
             token != null
                 ? FRaisedButton(
-                  elevation: 0.0,
+                    elevation: 0.0,
                     text: 'Sign Out',
                     bg: Colors.white,
                     shape: true,
                     color: Colors.red,
                     onPressed: () {
-                      logout();
+                      user.logout();
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => HomePageApp()));
-                      user.token = null;
-                      user.user = {};
                     },
                   )
                 : Text(''),
-                SizedBox(height: 5.0,)
+            SizedBox(
+              height: 5.0,
+            )
           ],
         ),
       ),

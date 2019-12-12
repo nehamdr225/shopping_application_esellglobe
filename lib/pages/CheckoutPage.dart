@@ -1,4 +1,3 @@
-import 'package:esell/helpers/Api.dart';
 import 'package:esell/pages/AddressPage.dart';
 import 'package:esell/widget/AnimatingLine.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
@@ -136,7 +135,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
 
     void placeOrder() {
       if (name != null && city != null && country != null && mobileNo != null) {
-        createOrder(user.token).then((result) {
+        user.placeOrder().then((result) {
           if (result['error'] == null) {
             Navigator.push(
               context,

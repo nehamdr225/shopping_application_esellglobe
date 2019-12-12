@@ -1,3 +1,7 @@
+import 'package:esell/core/SecureStorage.dart';
+import 'package:esell/core/fetch.dart';
+import 'package:esell/entities/product.api.dart';
+import 'package:esell/entities/user.api.dart';
 import 'package:esell/pages/Home.dart';
 // import 'package:esell/pages/CheckoutPage.dart';
 import 'package:flutter/material.dart';
@@ -16,10 +20,15 @@ Future main() async {
 class BootStrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Fetch _fetch = Fetch();
+    CoreSecureStorage _storage = CoreSecureStorage();
+    ProductApi _productApi = ProductApi(_fetch);
+    UserApi _userApi = UserApi(_fetch, _storage);
+
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(builder: (_) => ProductModel()),
-        ChangeNotifierProvider(builder: (_) => UserModel()),
+        ChangeNotifierProvider(builder: (_) => ProductModel(_productApi)),
+        ChangeNotifierProvider(builder: (_) => UserModel(_userApi, _storage)),
         ChangeNotifierProvider(builder: (_) => FTheme())
       ],
       child: EsellApp(),

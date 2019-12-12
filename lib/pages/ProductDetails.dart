@@ -19,6 +19,7 @@ class _ProductDetailsState extends State<ProductDetails> {
   @override
   Widget build(BuildContext context) {
     final product = Provider.of<ProductModel>(context).one(widget.id);
+
     List<Image> images = [];
     if (product['media'][0]['src'] != null)
       for (String src in product['media'][0]['src']) {

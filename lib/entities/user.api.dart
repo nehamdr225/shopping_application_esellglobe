@@ -8,15 +8,6 @@ class UserApi {
 
   UserApi(this._fetch, this._storage);
 
-  logout() async {
-    try {
-      await _storage.delKeyVal("token");
-      return "success";
-    } catch (err) {
-      return "failed";
-    }
-  }
-
   login(String email, String password, bool remember) async {
     try {
       final response = await _fetch.post(url: '$url/user/login', body: {
@@ -50,22 +41,22 @@ class UserApi {
     }
   }
 
-  getUser(token) async {
-    try {
-      final response = await _fetch.get(url: "$url/user", headers: {
-        "Content-Type": "application/json",
-        "X-Access-Token": token
-      });
-      return response;
-    } catch (err) {
-      return {"error": err};
-    }
+  getUser(String token) async {
+    Map<String, String> headers = {
+      "Content-Type": "application/json",
+      "X-Access-Token": token
+    };
+    final response = await _fetch.get(url: "$url/user", headers: headers);
+    return response;
   }
 
   getCart(token) async {
+    Map<String, String> headers = {
+      "Content-Type": "application/json",
+      "X-Access-Token": token
+    };
     try {
-      final response = await _fetch
-          .get(url: "$url/cart", headers: {"X-Access-Token": token});
+      final response = await _fetch.get(url: "$url/cart", headers: headers);
       return response;
     } catch (err) {
       return {"error": err};
@@ -73,10 +64,14 @@ class UserApi {
   }
 
   registerCart(token, id, qty, size, color) async {
+    Map<String, String> headers = {
+      "Content-Type": "application/json",
+      "X-Access-Token": token
+    };
     try {
       final response = await _fetch.post(
         url: "$url/cart/$id?quantity=$qty&size=$size&color=$color",
-        headers: {"X-Access-Token": token},
+        headers: headers,
       );
       return response;
     } catch (err) {
@@ -86,9 +81,13 @@ class UserApi {
 
   updateCart(token, productId, qty, size, color) async {
     try {
+      Map<String, String> headers = {
+        "Content-Type": "application/json",
+        "X-Access-Token": token
+      };
       final response = await _fetch.put(
         url: "$url/cart/$productId?quantity=$qty&size=$size&color=$color",
-        headers: {"X-Access-Token": token},
+        headers: headers,
       );
       return response;
     } catch (err) {
@@ -97,10 +96,14 @@ class UserApi {
   }
 
   deleteCartItem(token, id) async {
+    Map<String, String> headers = {
+      "Content-Type": "application/json",
+      "X-Access-Token": token
+    };
     try {
       final response = await _fetch.delete(
         url: "$url/cart/$id",
-        headers: {"X-Access-Token": token},
+        headers: headers,
       );
       return response;
     } catch (err) {
@@ -110,9 +113,13 @@ class UserApi {
 
   emptyCartItems(token) async {
     try {
+      Map<String, String> headers = {
+        "Content-Type": "application/json",
+        "X-Access-Token": token
+      };
       final response = await _fetch.delete(
         url: "$url/cart/empty",
-        headers: {"X-Access-Token": token},
+        headers: headers,
       );
       return response;
     } catch (err) {
@@ -122,9 +129,13 @@ class UserApi {
 
   getOrders(token) async {
     try {
+      Map<String, String> headers = {
+        "Content-Type": "application/json",
+        "X-Access-Token": token
+      };
       final response = await _fetch.get(
         url: "$url/orders/",
-        headers: {"X-Access-Token": token},
+        headers: headers,
       );
       return response;
     } catch (err) {
@@ -134,9 +145,13 @@ class UserApi {
 
   createOrder(token) async {
     try {
+      Map<String, String> headers = {
+        "Content-Type": "application/json",
+        "X-Access-Token": token
+      };
       final response = await _fetch.post(
         url: "$url/orders/",
-        headers: {"X-Access-Token": token},
+        headers: headers,
       );
       return response;
     } catch (err) {
@@ -146,9 +161,13 @@ class UserApi {
 
   updateOrder(token, productId, status) async {
     try {
+      Map<String, String> headers = {
+        "Content-Type": "application/json",
+        "X-Access-Token": token
+      };
       final response = await _fetch.put(
           url: "$url/orders/$productId",
-          headers: {"X-Access-Token": token},
+          headers: headers,
           body: {'status': status});
       return response;
     } catch (err) {
@@ -158,9 +177,13 @@ class UserApi {
 
   deleteOrder(token, id) async {
     try {
+      Map<String, String> headers = {
+        "Content-Type": "application/json",
+        "X-Access-Token": token
+      };
       final response = await _fetch.delete(
         url: "$url/orders/$id",
-        headers: {"X-Access-Token": token},
+        headers: headers,
       );
       return response;
     } catch (err) {
@@ -170,9 +193,13 @@ class UserApi {
 
   getWishList(token) async {
     try {
+      Map<String, String> headers = {
+        "Content-Type": "application/json",
+        "X-Access-Token": token
+      };
       final response = await _fetch.get(
         url: "$url/wishlist",
-        headers: {"X-Access-Token": token},
+        headers: headers,
       );
       return response;
     } catch (err) {
@@ -182,9 +209,13 @@ class UserApi {
 
   createWishList(token, products) async {
     try {
+      Map<String, String> headers = {
+        "Content-Type": "application/json",
+        "X-Access-Token": token
+      };
       final response = await _fetch.post(
         url: "$url/wishlist/",
-        headers: {"X-Access-Token": token},
+        headers: headers,
         body: {'products': products},
       );
       return response;
@@ -195,9 +226,13 @@ class UserApi {
 
   updateWishList(token, productId) async {
     try {
+      Map<String, String> headers = {
+        "Content-Type": "application/json",
+        "X-Access-Token": token
+      };
       final response = await _fetch.put(
         url: "$url/wishlist/$productId",
-        headers: {"X-Access-Token": token},
+        headers: headers,
       );
       return response;
     } catch (err) {
@@ -207,9 +242,13 @@ class UserApi {
 
   deleteWishListItem(token, id) async {
     try {
+      Map<String, String> headers = {
+        "Content-Type": "application/json",
+        "X-Access-Token": token
+      };
       final response = await _fetch.delete(
         url: "$url/wishlist/$id",
-        headers: {"X-Access-Token": token},
+        headers: headers,
       );
       return response;
     } catch (err) {

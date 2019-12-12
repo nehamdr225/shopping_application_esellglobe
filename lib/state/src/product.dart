@@ -1,9 +1,10 @@
-import 'package:esell/helpers/Api.dart';
+import 'package:esell/entities/product.api.dart';
 import 'package:flutter/cupertino.dart';
 
 class ProductModel extends ChangeNotifier {
-  ProductModel() {
-    getProducts(page: page).then((data) {
+  final ProductApi _api;
+  ProductModel(this._api) {
+    _api.getProducts(page: page).then((data) {
       if (data['error'] == null) {
         products = data['products'];
         maxCount = data['count'];
@@ -138,7 +139,7 @@ class ProductModel extends ChangeNotifier {
   refresh() async {
     try {
       if (maxCount != null && page * 15 < maxCount) {
-        final res = await getProducts(page: page + 1);
+        final res = await _api.getProducts(page: page + 1);
         if (res['products'].length > 0) {
           page = page + 1;
           products = res['products'];

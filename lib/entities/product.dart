@@ -1,14 +1,15 @@
 import 'package:flutter/foundation.dart';
 
-class ProductModel {
+class Product {
   String name, article, category;
-  ProductModel({
+
+  Product({
     @required this.name,
     @required this.article,
     @required this.category,
   });
 
-  ProductModel.fromJson(jsonData) {
+  Product.fromJson(jsonData) {
     this.name = jsonData['name'];
     this.article = jsonData['article'];
     this.category = jsonData['category'];
