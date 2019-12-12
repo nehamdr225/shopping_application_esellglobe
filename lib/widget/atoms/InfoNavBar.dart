@@ -9,13 +9,15 @@ class InfoNavBar extends StatelessWidget {
   final size;
   final offerCard;
   final onPressed;
+  final icon;
   const InfoNavBar(
       {Key key,
       this.type,
       this.text,
       this.size: 18.0,
       this.offerCard: false,
-      this.onPressed})
+      this.onPressed,
+      this.icon})
       : super(key: key);
 
   @override
@@ -33,22 +35,23 @@ class InfoNavBar extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
         ),
-        IconButton(
-          icon: Icon(
-            Icons.arrow_forward_ios,
-            size: 16,
-            color: textColor,
-          ),
-          onPressed: onPressed ??
-              () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => ProductsPage(
-                              category: type,
-                            )));
-              },
-        ),
+        icon ??
+            IconButton(
+              icon: Icon(
+                Icons.arrow_forward_ios,
+                size: 16,
+                color: textColor,
+              ),
+              onPressed: onPressed ??
+                  () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ProductsPage(
+                                  category: type,
+                                )));
+                  },
+            ),
       ]),
     );
   }

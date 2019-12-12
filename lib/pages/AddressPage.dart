@@ -5,14 +5,9 @@ import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:flutter/material.dart';
 
 class AddressPage extends StatelessWidget {
-  final String name, city, country, location;
-  final int mobileno, houseno;
-  final String nameErr,
-      mobilenoErr,
-      housenoErr,
-      cityErr,
-      countryErr,
-      locationErr;
+  final String name, city, country, location, mobileNo;
+  final int houseNo;
+  final String nameErr, mobilenoErr, cityErr, countryErr;
   final Function setName,
       setMobileNo,
       setHouseNo,
@@ -24,8 +19,8 @@ class AddressPage extends StatelessWidget {
       this.city,
       this.country,
       this.location,
-      this.mobileno,
-      this.houseno,
+      this.mobileNo,
+      this.houseNo,
       this.setCity,
       this.setCountry,
       this.setHouseNo,
@@ -34,8 +29,6 @@ class AddressPage extends StatelessWidget {
       this.setName,
       this.cityErr,
       this.countryErr,
-      this.housenoErr,
-      this.locationErr,
       this.mobilenoErr,
       this.nameErr});
 

@@ -20,9 +20,78 @@ class CheckoutPage extends StatefulWidget {
 }
 
 class _CheckoutPageState extends State<CheckoutPage> {
-  String name, city, country, location, mobileno;
-  int houseno;
-  String nameErr, mobilenoErr, housenoErr, cityErr, countryErr, locationErr;
+  String name, city, country, location, mobileNo;
+  String nameErr, mobileNoErr, cityErr, countryErr;
+  int houseNo;
+
+  setName(value) {
+    if (value.length > 10) {
+      setState(() {
+        name = value;
+        nameErr = null;
+      });
+    } else {
+      setState(() {
+        name = value;
+        nameErr = 'Name is not valid!';
+      });
+    }
+  }
+
+  setCity(value) {
+    if (value.length > 5) {
+      setState(() {
+        city = value;
+        cityErr = null;
+      });
+    } else {
+      setState(() {
+        city = value;
+        cityErr = 'City is not valid!';
+      });
+    }
+  }
+
+  setCountry(value) {
+    if (value.length > 5) {
+      setState(() {
+        country = value;
+        countryErr = null;
+      });
+    } else {
+      setState(() {
+        country = value;
+        countryErr = 'Country is not valid!';
+      });
+    }
+  }
+
+  setLocation(value) {
+    setState(() {
+      location = value;
+    });
+  }
+
+  setMobileNo(value) {
+    if (value.length >= 10) {
+      setState(() {
+        mobileNo = value;
+        mobileNoErr = null;
+      });
+    } else {
+      setState(() {
+        mobileNo = value;
+        mobileNoErr = 'Mobile no. is not valid!';
+      });
+    }
+  }
+
+  setHouseNo(value) {
+    setState(() {
+      houseNo = value;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final products = Provider.of<ProductModel>(context);
@@ -92,8 +161,33 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 InfoNavBar(
                   text: 'Shipping Details',
                   size: 18.0,
-                  onPressed: Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => AddressPage())),
+                  icon: FlatButton(
+                      child: Text('Edit'),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AddressPage(
+                              name: name,
+                              city: city,
+                              country: country,
+                              location: location,
+                              mobileNo: mobileNo,
+                              houseNo: houseNo,
+                              nameErr: nameErr,
+                              cityErr: cityErr,
+                              countryErr: countryErr,
+                              mobilenoErr: mobileNoErr,
+                              setCity: setCity,
+                              setCountry: setCountry,
+                              setHouseNo: setHouseNo,
+                              setLocation: setLocation,
+                              setMobileNo: setHouseNo,
+                              setName: setName,
+                            ),
+                          ),
+                        );
+                      }),
                 ),
                 SizedBox(
                   height: 10.0,
@@ -105,8 +199,33 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 InfoNavBar(
                   text: 'Bill to default billing address',
                   size: 18.0,
-                  onPressed: Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => AddressPage())),
+                  icon: FlatButton(
+                      child: Text('Edit'),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AddressPage(
+                              name: name,
+                              city: city,
+                              country: country,
+                              location: location,
+                              mobileNo: mobileNo,
+                              houseNo: houseNo,
+                              nameErr: nameErr,
+                              cityErr: cityErr,
+                              countryErr: countryErr,
+                              mobilenoErr: mobileNoErr,
+                              setCity: setCity,
+                              setCountry: setCountry,
+                              setHouseNo: setHouseNo,
+                              setLocation: setLocation,
+                              setMobileNo: setHouseNo,
+                              setName: setName,
+                            ),
+                          ),
+                        );
+                      }),
                 ),
                 SizedBox(
                   height: 10.0,
