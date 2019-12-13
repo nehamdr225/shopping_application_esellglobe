@@ -4,7 +4,6 @@ import 'package:esell/core/validators.dart';
 import 'package:esell/entities/product.api.dart';
 import 'package:esell/entities/user.api.dart';
 import 'package:esell/pages/Home.dart';
-// import 'package:esell/pages/CheckoutPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';

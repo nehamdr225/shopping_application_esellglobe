@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:esell/widget/molecules/colors.dart';
 import 'package:provider/provider.dart';
 import 'package:esell/state/state.dart';
-//import '../widget/appbar.dart';
 
 class CartPage extends StatefulWidget {
   @override
@@ -18,7 +17,7 @@ class _CartPageState extends State<CartPage> {
   List items = [];
   List sizes = [];
   List colors = [];
-  num price = 1000.0;
+  double price = 0.0;
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +26,20 @@ class _CartPageState extends State<CartPage> {
     var width = MediaQuery.of(context).size.width;
     setState(() {
       items = user.cart;
-      print(items);
+      // print(items);
     });
+    if (items.length > 0) {
+      double temp = 0;
+      items.forEach((item) {
+        temp += double.parse(product.one(item['product'])['price']) *
+                item['quantity'] ??
+            1;
+      });
+      if (temp > 0)
+        setState(() {
+          price = temp;
+        });
+    }
 
     updateCartItem(id, quan) {
       try {
@@ -60,8 +71,8 @@ class _CartPageState extends State<CartPage> {
                     padding: EdgeInsets.all(2.0),
                   ),
                   FRaisedButton(
-                    width: width * 0.45, 
-                    text: "Total: ",
+                    width: width * 0.45,
+                    text: "$price",
                     bg: iconthemelight,
                     shape: true,
                     color: textColor,
@@ -71,7 +82,7 @@ class _CartPageState extends State<CartPage> {
                     padding: EdgeInsets.all(5.0),
                   ),
                   FRaisedButton(
-                    width: width * 0.45, 
+                    width: width * 0.45,
                     color: Colors.white,
                     shape: true,
                     bg: Theme.of(context).colorScheme.primary,
@@ -115,8 +126,8 @@ class _CartPageState extends State<CartPage> {
                               token: user.token,
                               deleteFromCart: user.deleteFromCart)
                           : Center(
-                            child: CircularProgressIndicator(),
-                          );
+                              child: CircularProgressIndicator(),
+                            );
                     },
                   )
                 : Center(
