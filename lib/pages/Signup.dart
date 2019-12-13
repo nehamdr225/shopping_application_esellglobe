@@ -1,13 +1,14 @@
-import 'package:esell/helpers/Api.dart';
+import 'package:esell/core/validators.dart';
+import 'package:esell/entities/user.api.dart';
 import 'package:esell/pages/Signin.dart';
-import 'package:esell/state/src/theme.dart';
+import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/BrandLogos.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:flutter/material.dart';
-import 'package:esell/helpers/Validators.dart';
 import 'package:esell/widget/atoms/Forms.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
+import 'package:provider/provider.dart';
 
 class SignUpPage extends StatefulWidget {
   @override
@@ -20,8 +21,11 @@ class _PageState extends State<SignUpPage> {
   bool isActive = false;
   @override
   Widget build(BuildContext context) {
+    final UserApi api = Provider.of<UserModel>(context).api;
+    final Validator v = Provider.of<UserModel>(context).validator;
+
     var setName = (data) {
-      if (nameValidator(data) && data != name)
+      if (v.nameValidator(data) && data != name)
         setState(() {
           name = data;
           nameErr = null;
@@ -33,7 +37,7 @@ class _PageState extends State<SignUpPage> {
     };
 
     var setEmail = (data) {
-      if (emailValidator(data) && data != email)
+      if (v.emailValidator(data) && data != email)
         setState(() {
           email = data;
           emailErr = null;
@@ -61,7 +65,7 @@ class _PageState extends State<SignUpPage> {
       setState(() {
         isActive = true;
       });
-      var message = await signup(email, password, name);
+      var message = await api.signup(email, password, name);
       print(message);
       if (message['error'] != null)
         setState(() {

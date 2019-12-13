@@ -1,3 +1,5 @@
+import 'package:esell/core/validators.dart';
+import 'package:esell/entities/user.api.dart';
 import 'package:esell/pages/Signup.dart';
 import 'package:esell/pages/Home.dart';
 import 'package:esell/widget/atoms/BrandLogos.dart';
@@ -5,8 +7,6 @@ import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/widget/atoms/Forms.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
-import 'package:esell/helpers/Validators.dart';
-import 'package:esell/helpers/Api.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
 import 'package:esell/state/state.dart';
 import 'package:provider/provider.dart';
@@ -25,10 +25,12 @@ class _PageState extends State<SignInPage> {
 
   @override
   Widget build(BuildContext context) {
-    var user = Provider.of<UserModel>(context);
+    final UserModel user = Provider.of<UserModel>(context);
+    final UserApi api = user.api;
+    final Validator v = user.validator;
 
     var setEmail = (data) {
-      if (emailValidator(data) && data != email)
+      if (v.emailValidator(data) && data != email)
         setState(() {
           email = data;
           emailErr = null;
@@ -57,10 +59,10 @@ class _PageState extends State<SignInPage> {
         setState(() {
           isActive = true;
         });
-        Map token = await login(email, password, remember);
+        Map token = await api.login(email, password, remember);
         if (token['error'] == null) {
           user.token = token['token'];
-          getUser(token['token']).then((result) {
+          api.getUser(token['token']).then((result) {
             if (result['error'] == null) {
               if (result['message'] != null &&
                   result['message'] == "Auth failed") {
@@ -68,7 +70,7 @@ class _PageState extends State<SignInPage> {
                   user.token = null;
                 });
               } else if (result['result']['cart'] != null) {
-                getCart(token['token']).then((data) {
+                api.getCart(token['token']).then((data) {
                   if (data['error'] == null)
                     user.cart = data['result']['products'];
                 });

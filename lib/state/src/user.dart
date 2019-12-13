@@ -1,12 +1,14 @@
 import 'package:esell/core/SecureStorage.dart';
+import 'package:esell/core/validators.dart';
 import 'package:esell/entities/user.api.dart';
 import 'package:flutter/cupertino.dart';
 
 class UserModel extends ChangeNotifier {
   final UserApi _api;
+  final Validator _validator;
   final CoreSecureStorage _storage;
 
-  UserModel(this._api, this._storage) {
+  UserModel(this._api, this._storage, this._validator) {
     init();
   }
 
@@ -36,6 +38,8 @@ class UserModel extends ChangeNotifier {
   List<String> _wishList = [];
   List _cart = [];
 
+  Validator get validator => _validator;
+  UserApi get api => _api;
   String get token => _token;
   set token(String token) {
     if (token != _token) {
