@@ -7,12 +7,12 @@ import 'package:provider/provider.dart';
 
 class ProductGrid extends StatelessWidget {
   final Orientation orientation;
-  final String category;
+  final List category;
   ProductGrid({this.orientation, this.category});
   @override
   Widget build(BuildContext context) {
     print(category);
-    final products = Provider.of<ProductModel>(context).category([category]);
+    final products = Provider.of<ProductModel>(context).category(category);
     return Padding(
       padding: EdgeInsets.all(4.0),
       child: products.length > 0

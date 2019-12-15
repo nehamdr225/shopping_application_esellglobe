@@ -107,6 +107,7 @@ class HomePageApp extends StatelessWidget {
             Container(
               height: 250.0,
               child: GridList(
+                type: 'men',
                 listViews: MEN,
                 crossAxisCount: 3,
               ),
@@ -127,6 +128,7 @@ class HomePageApp extends StatelessWidget {
             Container(
               height: 250.0,
               child: GridList(
+                type: 'women',
                 listViews: WOMEN,
                 crossAxisCount: 3,
               ),

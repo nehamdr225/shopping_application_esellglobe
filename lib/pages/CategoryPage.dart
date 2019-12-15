@@ -1,3 +1,4 @@
+import 'package:esell/pages/Products.dart';
 import 'package:esell/state/state.dart';
 import 'package:esell/state/src/consts.dart';
 import 'package:esell/widget/atoms/BottomLoader.dart';
@@ -10,7 +11,8 @@ import 'package:provider/provider.dart';
 
 class CategoryPage extends StatelessWidget {
   final String text;
-  CategoryPage({this.text});
+  final String type;
+  CategoryPage({this.text, this.type});
   @override
   Widget build(BuildContext context) {
     final cat = text == 'Top Wear'
@@ -27,10 +29,24 @@ class CategoryPage extends StatelessWidget {
 
     createWidgets() {
       List<Widget> widgets = [];
+
       SubMain[cat].forEach((each) {
         final categoryProduct = getCategoryItems(each['cap'].toLowerCase());
+        onpressed() {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => ProductsPage(
+                        category: [cat, each['cap'].toLowerCase()],//type
+                      )));
+        }
+
         widgets.addAll([
-          InfoNavBar(text: each['name'], type: each['cap']),
+          InfoNavBar(
+            text: each['name'],
+            type: each['cap'],
+            onPressed: onpressed,
+          ),
           Container(
               height: 250,
               width: 70,
@@ -47,15 +63,15 @@ class CategoryPage extends StatelessWidget {
                         return index != categoryProduct.length
                             ? Product(
                                 name: categoryProduct[index]['name'],
-                                image:
-                                    categoryProduct[index]['media'].length != 0 &&
-                                            categoryProduct[index]['media'][0]
-                                                        ['src']
-                                                    .length >
-                                                0
-                                        ? categoryProduct[index]['media'][0]
-                                            ['src'][0]
-                                        : null,
+                                image: categoryProduct[index]['media'].length !=
+                                            0 &&
+                                        categoryProduct[index]['media'][0]
+                                                    ['src']
+                                                .length >
+                                            0
+                                    ? categoryProduct[index]['media'][0]['src']
+                                        [0]
+                                    : null,
                                 imgheight: 120.0,
                                 price: categoryProduct[index]['price'],
                                 seller: categoryProduct[index]['seller'],

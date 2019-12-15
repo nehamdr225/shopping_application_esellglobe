@@ -3,8 +3,9 @@ import 'package:esell/widget/atoms/Category.dart';
 import 'package:flutter/material.dart';
 
 class GridList extends StatelessWidget {
-  GridList({this.listViews, this.crossAxisCount});
+  GridList({this.listViews, this.crossAxisCount, this.type});
   final listViews;
+  final type;
   final crossAxisCount;
   @override
   Widget build(BuildContext context) {
@@ -24,8 +25,8 @@ class GridList extends StatelessWidget {
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) =>
-                          CategoryPage(text: listViews[index]['name']),
+                      builder: (context) => CategoryPage(
+                          text: listViews[index]['name'], type: type),
                     ),
                   );
                 },

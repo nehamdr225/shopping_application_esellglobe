@@ -23,7 +23,7 @@ class CardView extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) => ProductGrid(
-                            category: category['name'],
+                            category: [category['name']],
                           )),
                 );
               },

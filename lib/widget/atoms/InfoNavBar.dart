@@ -1,4 +1,3 @@
-import 'package:esell/pages/Products.dart';
 import 'package:esell/state/src/theme.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
 import 'package:flutter/material.dart';
@@ -38,21 +37,12 @@ class InfoNavBar extends StatelessWidget {
         ),
         icon ??
             IconButton(
-              icon: Icon(
-                Icons.arrow_forward_ios,
-                size: 16,
-                color: textColor,
-              ),
-              onPressed: onPressed ??
-                  () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ProductsPage(
-                                  category: type,
-                                )));
-                  },
-            ),
+                icon: Icon(
+                  Icons.arrow_forward_ios,
+                  size: 16,
+                  color: textColor,
+                ),
+                onPressed: onPressed),
       ]),
     );
   }
