@@ -21,13 +21,14 @@ class ProductGrid extends StatelessWidget {
               scrollDirection: Axis.vertical,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: orientation == Orientation.portrait ? 2 : 3,
-                childAspectRatio: 0.8, 
+                childAspectRatio: 0.8,
               ),
               itemBuilder: (BuildContext context, int index) {
                 return index != products.length
                     ? Product(
                         name: products[index]['name'],
-                        image: products[index]['media'][0]['src'].length > 0
+                        image: products[index]['media'].length != 0 &&
+                                products[index]['media'][0]['src'].length > 0
                             ? products[index]['media'][0]['src'][0]
                             : null,
                         imgheight: 120.0,

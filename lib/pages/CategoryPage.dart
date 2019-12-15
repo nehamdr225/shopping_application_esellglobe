@@ -47,12 +47,15 @@ class CategoryPage extends StatelessWidget {
                         return index != categoryProduct.length
                             ? Product(
                                 name: categoryProduct[index]['name'],
-                                image: categoryProduct[index]['media'][0]['src']
-                                            .length >
-                                        0
-                                    ? categoryProduct[index]['media'][0]['src']
-                                        [0]
-                                    : null,
+                                image:
+                                    categoryProduct[index]['media'].length != 0 &&
+                                            categoryProduct[index]['media'][0]
+                                                        ['src']
+                                                    .length >
+                                                0
+                                        ? categoryProduct[index]['media'][0]
+                                            ['src'][0]
+                                        : null,
                                 imgheight: 120.0,
                                 price: categoryProduct[index]['price'],
                                 seller: categoryProduct[index]['seller'],

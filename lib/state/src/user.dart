@@ -116,8 +116,8 @@ class UserModel extends ChangeNotifier {
     return _wishList.contains(id);
   }
 
-  placeOrder() async {
-    await _api.createOrder(token);
+  placeOrder(body) async {
+    return await _api.createOrder(token, body);
   }
 
   logout() async {

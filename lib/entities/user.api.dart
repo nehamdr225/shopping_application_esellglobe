@@ -9,36 +9,37 @@ class UserApi {
   UserApi(this._fetch, this._storage);
 
   login(String email, String password, bool remember) async {
-    try {
-      final response = await _fetch.post(url: '$url/user/login', body: {
+    Map<String, String> headers = {
+      "Content-Type": "application/json",
+    };
+    final response = await _fetch.post(
+      url: '$url/user/login',
+      body: {
         'email': email,
         'password': password,
-      }, headers: {
-        "Content-Type": "application/json"
-      });
-      if (response['error'] != null) {
-        return {"error": response['error']};
-      }
-      if (remember) _storage.savekeyVal('token', response['token']);
-      return {"token": response['token']};
-    } catch (err) {
-      return {"error": err};
+      },
+      headers: headers,
+    );
+    if (response['error'] != null) {
+      return {"error": response['error']};
     }
+    if (remember) _storage.savekeyVal('token', response['token']);
+    return {"token": response['token']};
   }
 
   signup(String email, String password, String name) async {
-    try {
-      final response = await _fetch.post(url: '$url/user/signup', body: {
-        'email': email,
-        'password': password,
-        'name': name,
-      }, headers: {
-        "Content-Type": "application/json",
-      });
-      return response;
-    } catch (err) {
-      return {'error': err};
-    }
+    Map<String, String> headers = {
+      "Content-Type": "application/json",
+    };
+    final response = await _fetch.post(
+        url: '$url/user/signup',
+        body: {
+          'email': email,
+          'password': password,
+          'name': name,
+        },
+        headers: headers);
+    return response;
   }
 
   getUser(String token) async {
@@ -143,20 +144,12 @@ class UserApi {
     }
   }
 
-  createOrder(token) async {
-    try {
-      Map<String, String> headers = {
-        "Content-Type": "application/json",
-        "X-Access-Token": token
-      };
-      final response = await _fetch.post(
-        url: "$url/orders/",
-        headers: headers,
-      );
-      return response;
-    } catch (err) {
-      return {"error": err};
-    }
+  createOrder(token, body) async {
+    Map<String, String> headers = {
+      "Content-Type": "application/json",
+      "X-Access-Token": token
+    };
+    return await _fetch.post(url: "$url/orders/", headers: headers, body: body);
   }
 
   updateOrder(token, productId, status) async {

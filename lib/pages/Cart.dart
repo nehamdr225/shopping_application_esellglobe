@@ -21,13 +21,14 @@ class _CartPageState extends State<CartPage> {
 
   @override
   Widget build(BuildContext context) {
-    var product = Provider.of<ProductModel>(context);
-    var user = Provider.of<UserModel>(context);
-    var width = MediaQuery.of(context).size.width;
+    final product = Provider.of<ProductModel>(context);
+    final user = Provider.of<UserModel>(context);
+    final width = MediaQuery.of(context).size.width;
     setState(() {
       items = user.cart;
       // print(items);
     });
+
     if (items.length > 0) {
       double temp = 0;
       items.forEach((item) {
@@ -35,7 +36,7 @@ class _CartPageState extends State<CartPage> {
                 item['quantity'] ??
             1;
       });
-      if (temp > 0)
+      if (temp > 0.0)
         setState(() {
           price = temp;
         });
@@ -70,14 +71,16 @@ class _CartPageState extends State<CartPage> {
                   Padding(
                     padding: EdgeInsets.all(2.0),
                   ),
-                  FRaisedButton(
-                    width: width * 0.45,
-                    text: "$price",
-                    bg: iconthemelight,
-                    shape: true,
-                    color: textColor,
-                    onPressed: () {},
-                  ),
+                  price != 0.0
+                      ? FRaisedButton(
+                          width: width * 0.45,
+                          text: "RS. $price",
+                          bg: iconthemelight,
+                          shape: true,
+                          color: textColor,
+                          onPressed: () {},
+                        )
+                      : CircularProgressIndicator(),
                   Padding(
                     padding: EdgeInsets.all(5.0),
                   ),
@@ -91,14 +94,14 @@ class _CartPageState extends State<CartPage> {
                           ? Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => CheckoutPage(
+                                  builder: (_) => CheckoutPage(
                                         items: items,
                                         price: price,
                                       )))
                           : Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => UserPromptApp()));
+                                  builder: (_) => UserPromptApp()));
                     },
                     text: user.token != null ? 'Check Out' : 'Login to proceed',
                   ),

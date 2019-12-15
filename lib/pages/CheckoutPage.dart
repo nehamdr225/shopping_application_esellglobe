@@ -20,9 +20,9 @@ class CheckoutPage extends StatefulWidget {
 }
 
 class _CheckoutPageState extends State<CheckoutPage> {
-  String name, city, country, location, mobileNo;
+  String name, city, country, location = "Home", mobileNo;
   String nameErr, mobileNoErr, cityErr, countryErr;
-  int houseNo;
+  String houseNo;
   Map shippingInfo, billingInfo;
 
   void setName(String value) {
@@ -87,7 +87,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
     }
   }
 
-  void setHouseNo(int value) {
+  void setHouseNo(String value) {
     setState(() {
       houseNo = value;
     });
@@ -104,13 +104,28 @@ class _CheckoutPageState extends State<CheckoutPage> {
           'location': location,
           'mobile': mobileNo
         };
+        print(shippingInfo);
       });
       return 'done';
     }
     return 'error';
   }
 
-  String saveBillingInfo() {
+  String saveBillingInfo(type) {
+    if (type == "ship" && shippingInfo != null) {
+      print('Shipping');
+      setState(() {
+        billingInfo = {
+          'name': shippingInfo['name'],
+          'house': shippingInfo['houseNo'] ?? 'N/A',
+          'city': shippingInfo['city'],
+          'country': shippingInfo['country'],
+          'mobile': shippingInfo['mobileNo']
+        };
+        print(billingInfo);
+      });
+      return 'done';
+    }
     if (name != null && city != null && country != null && mobileNo != null) {
       setState(() {
         billingInfo = {
@@ -118,7 +133,6 @@ class _CheckoutPageState extends State<CheckoutPage> {
           'house': houseNo ?? 'N/A',
           'city': city,
           'country': country,
-          'location': location,
           'mobile': mobileNo
         };
       });
@@ -134,8 +148,16 @@ class _CheckoutPageState extends State<CheckoutPage> {
     final width = MediaQuery.of(context).size.width;
 
     void placeOrder() {
-      if (name != null && city != null && country != null && mobileNo != null) {
-        user.placeOrder().then((result) {
+      if (shippingInfo != null) {
+        print("Place order");
+        final orderData = {
+          "userInfo": shippingInfo,
+          "billing": billingInfo ?? shippingInfo,
+          "products": widget.items.map((each) => each['product'])
+        };
+        print(orderData);
+        user.placeOrder(orderData).then((result) {
+          print(result);
           if (result['error'] == null) {
             Navigator.push(
               context,
@@ -202,7 +224,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   text: 'Shipping Details',
                   size: 18.0,
                   icon: FlatButton(
-                      child: Text('Edit'),
+                      child: Text('Edit', style: TextStyle(color: primary)),
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -222,7 +244,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                 setCountry: setCountry,
                                 setHouseNo: setHouseNo,
                                 setLocation: setLocation,
-                                setMobileNo: setHouseNo,
+                                setMobileNo: setMobileNo,
                                 setName: setName,
                                 save: saveShippingInfo),
                           ),
@@ -242,7 +264,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   text: 'Bill to default billing address',
                   size: 18.0,
                   icon: FlatButton(
-                      child: Text('Edit'),
+                      child: Text('Edit', style: TextStyle(color: primary)),
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -262,9 +284,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                 setCountry: setCountry,
                                 setHouseNo: setHouseNo,
                                 setLocation: setLocation,
-                                setMobileNo: setHouseNo,
+                                setMobileNo: setMobileNo,
                                 setName: setName,
-                                save: saveBillingInfo),
+                                save: saveBillingInfo,
+                                isBilling: true),
                           ),
                         );
                       }),
@@ -272,23 +295,22 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 SizedBox(
                   height: 10.0,
                 ),
-                Container(
-                  height: 40.0,
-                  width: width - 40.0,
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
                   child: FForms(
                     type: TextInputType.phone,
                     text: 'Enter your phone number',
+                    icon: Icon(Icons.phone, color: primary),
                   ),
                 ),
-                SizedBox(
-                  height: 10.0,
-                ),
-                Container(
-                  height: 40.0,
-                  width: width - 40.0,
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
                   child: FForms(
                     type: TextInputType.emailAddress,
                     text: 'Enter your email address',
+                    icon: Icon(Icons.mail, color: primary),
                   ),
                 ),
                 SizedBox(
@@ -324,7 +346,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     padding: EdgeInsets.all(3.0),
                     child: Image.network(
                         product['media'][0]['src'].length > 0
-                            ? product['media']['src'][0]
+                            ? product['media'][0]['src'][0]
                             : '',
                         height: 100.0,
                         width: 70.0),

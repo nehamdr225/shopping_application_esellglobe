@@ -33,6 +33,7 @@ class InfoNavBar extends StatelessWidget {
             fontfamily: "Helvetica",
             size: size,
             textAlign: TextAlign.center,
+            fontWeight: FontWeight.bold,
           ),
         ),
         icon ??

@@ -1,6 +1,7 @@
+import 'package:esell/data/product.model.dart';
 import 'package:flutter/foundation.dart';
 
-class Product {
+class Product implements ProductModel {
   String name, article, category;
 
   Product({

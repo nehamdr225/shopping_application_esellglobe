@@ -18,6 +18,7 @@
     -->
     <application
         android:name="io.flutter.app.FlutterApplication"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:icon="@mipmap/logoonly1"
         android:label="Esell Globe" >
         <activity

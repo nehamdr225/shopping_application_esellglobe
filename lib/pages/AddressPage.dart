@@ -4,9 +4,9 @@ import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:flutter/material.dart';
 
-class AddressPage extends StatelessWidget {
+class AddressPage extends StatefulWidget {
   final String name, city, country, location, mobileNo;
-  final int houseNo;
+  final String houseNo;
   final String nameErr, mobilenoErr, cityErr, countryErr;
   final Function setName,
       setMobileNo,
@@ -15,6 +15,7 @@ class AddressPage extends StatelessWidget {
       setCity,
       setLocation,
       save;
+  final bool isBilling;
   AddressPage(
       {this.name,
       this.city,
@@ -32,8 +33,15 @@ class AddressPage extends StatelessWidget {
       this.countryErr,
       this.mobilenoErr,
       this.nameErr,
-      this.save});
+      this.save,
+      this.isBilling: false});
 
+  @override
+  _AddressPageState createState() => _AddressPageState();
+}
+
+class _AddressPageState extends State<AddressPage> {
+  String active = "Home";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +53,7 @@ class AddressPage extends StatelessWidget {
           color: Colors.white,
           bg: primaryDark,
           onPressed: () {
-            final status = save();
+            final status = widget.save();
             print(status);
           },
         ),
@@ -54,7 +62,9 @@ class AddressPage extends StatelessWidget {
           preferredSize: Size.fromHeight(40.0),
           child: FAppBar(
             wishlist: true,
-            title: 'Add Shipping Address',
+            title: widget.isBilling
+                ? 'Add Billing Address'
+                : 'Add Shipping Address',
           )),
       backgroundColor: Colors.white,
       body: ListView(
@@ -65,7 +75,7 @@ class AddressPage extends StatelessWidget {
                 bottom: 8.0, left: 8.0, right: 8.0, top: 15.0),
             child: FForms(
               icon: Icon(Icons.person, color: primary),
-              onChanged: setName,
+              onChanged: widget.setName,
               text: 'Full Name',
               type: TextInputType.text,
             ),
@@ -75,7 +85,7 @@ class AddressPage extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: FForms(
               icon: Icon(Icons.phone, color: primary),
-              onChanged: (value){setMobileNo(value);},
+              onChanged: widget.setMobileNo,
               text: 'Mobile number',
               type: TextInputType.phone,
             ),
@@ -88,7 +98,7 @@ class AddressPage extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: FForms(
                     icon: Icon(Icons.home, color: primary),
-                    onChanged: (value){setHouseNo(value);},
+                    onChanged: widget.setHouseNo,
                     text: 'House no.',
                     type: TextInputType.number,
                   ),
@@ -97,7 +107,7 @@ class AddressPage extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: FForms(
                     icon: Icon(Icons.location_city, color: primary),
-                    onChanged: setCity,
+                    onChanged: widget.setCity,
                     text: 'City',
                     type: TextInputType.text,
                   ),
@@ -110,70 +120,116 @@ class AddressPage extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: FForms(
               icon: Icon(Icons.place, color: primary),
-              onChanged: setCountry,
+              onChanged: widget.setCountry,
               text: 'Country',
               type: TextInputType.text,
             ),
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding:
-                      EdgeInsets.symmetric(vertical: 15.0, horizontal: 8.0),
-                  child: Text(
-                    'Select a label for effective delivery',
-                    style:
-                        TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    child: InkWell(
-                      onTap: () {
-                        setLocation('Office');
-                      },
-                      child: Container(
-                        alignment: Alignment.center,
+            children: widget.isBilling
+                ? <Widget>[
+                    // ClipRRect(
+                    //   borderRadius: BorderRadius.circular(32.0),
+                    //   child: FlatButton(
+                    //     color: primary,
+                    //     child: Text(
+                    //       'Copy Shipping Address',
+                    //       style: TextStyle(color: Colors.white, fontSize: 18.0),
+                    //     ),
+                    //     onPressed: () {
+                    //       widget.save('ship');
+                    //     },
+                    //   ),
+                    // )
+                  ]
+                : <Widget>[
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Padding(
                         padding: EdgeInsets.symmetric(
-                            horizontal: 30.0, vertical: 15.0),
+                            vertical: 15.0, horizontal: 8.0),
                         child: Text(
-                          'OFFICE',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          'Select a label for effective delivery',
+                          style: TextStyle(
+                              fontSize: 16.0, fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),
-                  ),
-                  Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    child: InkWell(
-                      onTap: () {
-                        setLocation('Home');
-                      },
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 30.0, vertical: 15.0),
-                        alignment: Alignment.center,
-                        child: Text(
-                          'HOME',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          child: InkWell(
+                            onTap: () {
+                              widget.setLocation('Office');
+                              setState(() {
+                                active = 'Office';
+                              });
+                            },
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: active == 'Office'
+                                      ? primary
+                                      : Colors.transparent,
+                                ),
+                                alignment: Alignment.center,
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 30.0, vertical: 15.0),
+                                child: Text(
+                                  'OFFICE',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: active != "Office"
+                                          ? textColor
+                                          : Colors.white),
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                  )
-                ],
-              )
-            ],
+                        Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          child: InkWell(
+                            onTap: () {
+                              widget.setLocation('Home');
+                              setState(() {
+                                active = 'Home';
+                              });
+                            },
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: active == 'Home'
+                                      ? primary
+                                      : Colors.transparent,
+                                ),
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 30.0, vertical: 15.0),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  'HOME',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: active != "Home"
+                                          ? textColor
+                                          : Colors.white),
+                                ),
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    )
+                  ],
           ),
         ],
       ),
