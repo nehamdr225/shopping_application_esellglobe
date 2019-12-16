@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-gu/values-gu.xml",
+            "outputFile": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-gu/values-gu.xml",
             "map": [
                 {
-                    "source": "/home/bee/.gradle/caches/transforms-2/files-2.1/7e62454a41e3fdd264a7c69779e83bb2/res/values-gu/values-gu.xml",
+                    "source": "/home/nae/.gradle/caches/transforms-2/files-2.1/2642cfd6837f88c0bffe18dd4caf23d9/res/values-gu/values-gu.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
