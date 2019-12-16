@@ -9,6 +9,7 @@ class PDInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //final caption = Theme.of(context).textTheme.caption;
+    //var width = MediaQuery.of(context).size.width;
 
     return Container(
       width: 360.0,

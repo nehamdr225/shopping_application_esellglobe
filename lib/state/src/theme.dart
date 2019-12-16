@@ -42,7 +42,7 @@ class FTheme with ChangeNotifier {
       brightness: Brightness.light,
       surface: Color(0xffEEEEEE),
     ),
-    canvasColor: Colors.transparent,
+    canvasColor: Colors.white,
     fontFamily: 'Montserrat',
     textSelectionColor: Colors.black38,
     textTheme: TextTheme( 
