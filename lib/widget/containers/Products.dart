@@ -51,10 +51,6 @@ class ProductContainer extends StatelessWidget {
                         ? products[index]['media'][0]['src'][0]
                         : null,
                     price: products[index]['price'],
-                    seller: products[index]['seller'],
-                    oldPrice: products[index]['oldPrice'] != null
-                        ? products[index]['oldPrice']
-                        : products[index]['price'],
                     details: products[index]['details'],
                     id: products[index]['_id'])
                 : CenterText(

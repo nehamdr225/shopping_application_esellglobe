@@ -37,7 +37,7 @@ class CategoryPage extends StatelessWidget {
               context,
               MaterialPageRoute(
                   builder: (context) => ProductsPage(
-                        category: [cat, each['cap'].toLowerCase()],//type
+                        category: [cat, each['cap'].toLowerCase()], //type
                       )));
         }
 
@@ -74,11 +74,6 @@ class CategoryPage extends StatelessWidget {
                                     : null,
                                 imgheight: 120.0,
                                 price: categoryProduct[index]['price'],
-                                seller: categoryProduct[index]['seller'],
-                                oldPrice:
-                                    categoryProduct[index]['oldPrice'] != null
-                                        ? categoryProduct[index]['oldPrice']
-                                        : categoryProduct[index]['price'],
                                 details: categoryProduct[index]['details'],
                                 id: categoryProduct[index]['_id'],
                                 wishlist: true,

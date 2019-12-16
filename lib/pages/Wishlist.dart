@@ -55,7 +55,6 @@ class WishlistPage extends StatelessWidget {
                               : "no images",
                           imgheight: 98.0,
                           price: product['price'],
-                          seller: product['seller'],
                           details: product['description'],
                           wishlist: false);
                     },

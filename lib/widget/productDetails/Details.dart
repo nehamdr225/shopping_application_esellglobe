@@ -37,7 +37,7 @@ class PDDetails extends StatelessWidget {
                 )),
                 Container(
                     child: FText(
-                  text: details['material'],
+                  text: details['material'] ?? "N/A",
                   style: body1,
                 )),
                 Container(
@@ -48,7 +48,7 @@ class PDDetails extends StatelessWidget {
                 )),
                 Container(
                     child: FText(
-                  text: details['closure'],
+                  text: details['closure'] ?? "N/A",
                   style: body1,
                 )),
                 Container(
@@ -59,7 +59,7 @@ class PDDetails extends StatelessWidget {
                 )),
                 Container(
                     child: FText(
-                  text: details['warranty'],
+                  text: details['warranty'] ?? "N/A",
                   style: body1,
                 )),
                 Container(
@@ -70,7 +70,7 @@ class PDDetails extends StatelessWidget {
                 )),
                 Container(
                     child: FText(
-                  text: details['care_instructions'],
+                  text: details['care_instructions'] ?? "N/A",
                   style: body1,
                 )),
                 Container(
@@ -81,7 +81,7 @@ class PDDetails extends StatelessWidget {
                 )),
                 Container(
                     child: FText(
-                  text: details['details'],
+                  text: details['details'] ?? "N/A",
                   style: body1,
                 )),
                 Container(
@@ -103,7 +103,7 @@ class PDDetails extends StatelessWidget {
                 )),
                 Container(
                     child: FText(
-                  text: colors,
+                  text: colors ?? "N/A",
                   style: body1,
                 )),
                 Container(

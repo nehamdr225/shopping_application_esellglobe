@@ -7,9 +7,7 @@ class Product extends StatelessWidget {
   final name;
   final image;
   final double imgheight;
-  final seller;
   final price;
-  final oldPrice;
   final details;
   final id;
   final wishlist;
@@ -17,10 +15,8 @@ class Product extends StatelessWidget {
   Product(
       {this.name,
       this.price,
-      this.seller,
       this.image,
       this.imgheight,
-      this.oldPrice,
       this.details,
       this.wishlist,
       this.id});
@@ -43,12 +39,17 @@ class Product extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                ImageHolder( 
-                  image: image, 
+                ImageHolder(
+                  image: image,
                   imgheight: imgheight,
                 ),
                 Divider(height: 2),
-                Details(name: name, price: 'Rs. $price', id: id, wishlist: wishlist,),
+                Details(
+                  name: name,
+                  price: 'Rs. $price',
+                  id: id,
+                  wishlist: wishlist,
+                ),
               ],
             ),
           ),

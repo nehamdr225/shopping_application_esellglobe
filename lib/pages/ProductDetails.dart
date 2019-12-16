@@ -22,7 +22,7 @@ class _ProductDetailsState extends State<ProductDetails> {
     final product = Provider.of<ProductModel>(context).one(widget.id);
 
     List<Image> images = [];
-    if (product['media'][0].length != 0 && product['media'][0]['src'] != null)
+    if (product['media'].length != 0 && product['media'][0]['src'] != null)
       for (String src in product['media'][0]['src']) {
         images.add(Image.network(src));
       }
@@ -36,7 +36,7 @@ class _ProductDetailsState extends State<ProductDetails> {
         backgroundColor: Colors.grey[100],
         body: CustomScrollView(
           slivers: <Widget>[
-            images.length > 0
+            images.length != 0
                 ? PDAppBar(images)
                 : SliverPadding(
                     padding: EdgeInsets.all(0),
