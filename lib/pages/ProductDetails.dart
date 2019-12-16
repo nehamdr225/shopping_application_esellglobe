@@ -1,4 +1,5 @@
 import 'package:esell/widget/atoms/services.dart';
+import 'package:esell/widget/productDetails/ColorSelector.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:esell/widget/productDetails/details.dart';
@@ -50,6 +51,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                 ),
                 Services(),
                 PDSizeSelector(),
+                PDColorSelector(),
                 PDDetails(
                     details: json.decode(product['description']),
                     price: product['price'].toString(),

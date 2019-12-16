@@ -1,6 +1,18 @@
+import 'package:esell/state/src/theme.dart';
 import 'package:flutter/material.dart';
 
-class PDSizeSelector extends StatelessWidget {
+class PDSizeSelector extends StatefulWidget {
+  final Function setSize,
+                setColor;
+  PDSizeSelector({this.setColor, this.setSize});
+
+  @override
+  _PDSizeSelectorState createState() => _PDSizeSelectorState();
+}
+
+class _PDSizeSelectorState extends State<PDSizeSelector> {
+  String active = "S";
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -43,12 +55,20 @@ class PDSizeSelector extends StatelessWidget {
                   children: [
 
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      widget.setSize('S');
+                      setState((){
+                        active = 'S';
+                      });
+                    },
                     child: Container(
                       height: 37.0,
                       width: 34.0,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
+                        color: active == "S"
+                          ? primary
+                          : Colors.transparent,
                           shape: BoxShape.rectangle,
                           border: Border.all(color: Colors.black87)),
                       child: Text(
@@ -65,12 +85,20 @@ class PDSizeSelector extends StatelessWidget {
                     padding: EdgeInsets.all(5.0),
                   ),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      widget.setSize('M');
+                      setState((){
+                        active = 'M';
+                      });
+                    },
                     child: Container(
                       height: 37.0,
                       width: 34.0,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
+                        color: active == "M"
+                          ? primary
+                          : Colors.transparent,
                           shape: BoxShape.rectangle,
                           border: Border.all(color: Colors.black87)),
                       child: Text(
@@ -87,12 +115,20 @@ class PDSizeSelector extends StatelessWidget {
                     padding: EdgeInsets.all(5.0),
                   ),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      widget.setSize('L');
+                      setState((){
+                        active = 'L';
+                      });
+                    },
                     child: Container(
                       height: 37.0,
                       width: 34.0,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
+                        color: active == "L"
+                          ? primary
+                          : Colors.transparent,
                           shape: BoxShape.rectangle,
                           border: Border.all(color: Colors.black87)),
                       child: Text(
@@ -109,12 +145,20 @@ class PDSizeSelector extends StatelessWidget {
                     padding: EdgeInsets.all(5.0),
                   ),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      widget.setSize('XL');
+                      setState((){
+                        active = 'XL';
+                      });
+                    },
                     child: Container(
                       height: 37.0,
                       width: 34.0,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
+                        color: active == "XL"
+                          ? primary
+                          : Colors.transparent,
                           shape: BoxShape.rectangle,
                           border: Border.all(color: Colors.black87)),
                       child: Text(
