@@ -26,7 +26,7 @@ const MEN = [
   },
   {
     "name": "Watches",
-    "cap": "Watches & Glasses",
+    "cap": "Watches",
     "src": 'images/categoryimg/watchesNglasses.jpg',
   }
 ];
@@ -133,14 +133,23 @@ const SubMain = {
   ],
   "glasses": [
     {
-      "name": "Watches",
-      "cap": "Watches",
-      "src": "images/SubMain/watchNglass/watch.jpg"
-    },
-    {
       "name": "Glasses",
       "cap": "Glasses",
       "src": "images/SubMain/watchNglass/glasses.png"
     },
   ],
+  "watches": [
+    {
+      "name": "Watches",
+      "cap": "Watches",
+      "src": "images/SubMain/watchNglass/watch.jpg"
+    },
+  ],
+  "bags": [
+    {
+      "name": "Bags & Backpacks",
+      "cap": "Bags",
+      "src": "images/SubMain/watchNglass/watch.jpg"
+    },
+  ]
 };

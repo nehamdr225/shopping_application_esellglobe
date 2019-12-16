@@ -19,7 +19,11 @@ class CategoryPage extends StatelessWidget {
         ? 'top'
         : text == 'Bottom Wear'
             ? 'bottom'
-            : text == "Foot Wear" ? 'shoe' : 'glasses';
+            : text == "Foot Wear"
+                ? 'shoe'
+                : text == "Backpacks" || text == "Bags"
+                    ? 'bags'
+                    : text == 'Sunglasses' ? 'glasses' : 'watches';
 
     getCategoryItems(reqCategory) {
       List<String> filter =
