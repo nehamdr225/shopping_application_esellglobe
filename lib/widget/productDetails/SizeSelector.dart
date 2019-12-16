@@ -2,8 +2,7 @@ import 'package:esell/state/src/theme.dart';
 import 'package:flutter/material.dart';
 
 class PDSizeSelector extends StatefulWidget {
-  final Function setSize,
-                setColor;
+  final Function setSize, setColor;
   PDSizeSelector({this.setColor, this.setSize});
 
   @override
@@ -17,12 +16,13 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
   Widget build(BuildContext context) {
     return Container(
         padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 8.0),
-        height: 150.0, 
+        height: 150.0,
         width: 360.0,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(0.0))),
+            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(0.0))),
         child: Card(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0.0)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(0.0)),
           color: Colors.white,
           child: Column(
             children: <Widget>[
@@ -44,20 +44,22 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
                     padding: EdgeInsets.only(right: 180.0),
                   ),
                   IconButton(
-                    icon: Icon(Icons.more_vert, color: Theme.of(context).colorScheme.primaryVariant,),
-                    onPressed: (){},
+                    icon: Icon(
+                      Icons.more_vert,
+                      color: Theme.of(context).colorScheme.primaryVariant,
+                    ),
+                    onPressed: () {},
                   )
                 ],
               ),
               Padding(
                 padding: EdgeInsets.all(18.0),
-                child: Row(
-                  children: [
-
+                child:
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   InkWell(
                     onTap: () {
                       widget.setSize('S');
-                      setState((){
+                      setState(() {
                         active = 'S';
                       });
                     },
@@ -66,9 +68,7 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
                       width: 34.0,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        color: active == "S"
-                          ? primary
-                          : Colors.transparent,
+                          color: active == "S" ? primary : Colors.transparent,
                           shape: BoxShape.rectangle,
                           border: Border.all(color: Colors.black87)),
                       child: Text(
@@ -87,7 +87,7 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
                   InkWell(
                     onTap: () {
                       widget.setSize('M');
-                      setState((){
+                      setState(() {
                         active = 'M';
                       });
                     },
@@ -96,9 +96,7 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
                       width: 34.0,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        color: active == "M"
-                          ? primary
-                          : Colors.transparent,
+                          color: active == "M" ? primary : Colors.transparent,
                           shape: BoxShape.rectangle,
                           border: Border.all(color: Colors.black87)),
                       child: Text(
@@ -117,7 +115,7 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
                   InkWell(
                     onTap: () {
                       widget.setSize('L');
-                      setState((){
+                      setState(() {
                         active = 'L';
                       });
                     },
@@ -126,9 +124,7 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
                       width: 34.0,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        color: active == "L"
-                          ? primary
-                          : Colors.transparent,
+                          color: active == "L" ? primary : Colors.transparent,
                           shape: BoxShape.rectangle,
                           border: Border.all(color: Colors.black87)),
                       child: Text(
@@ -147,7 +143,7 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
                   InkWell(
                     onTap: () {
                       widget.setSize('XL');
-                      setState((){
+                      setState(() {
                         active = 'XL';
                       });
                     },
@@ -156,9 +152,7 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
                       width: 34.0,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        color: active == "XL"
-                          ? primary
-                          : Colors.transparent,
+                          color: active == "XL" ? primary : Colors.transparent,
                           shape: BoxShape.rectangle,
                           border: Border.all(color: Colors.black87)),
                       child: Text(

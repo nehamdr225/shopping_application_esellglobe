@@ -1,166 +1,166 @@
 [
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi_logo.png.flat",
-        "source": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/src/main/res/mipmap-xhdpi/logo.png"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/layout_notification_template_part_time.xml.flat",
+        "source": "/home/bee/.gradle/caches/transforms-2/files-2.1/7e62454a41e3fdd264a7c69779e83bb2/res/layout/notification_template_part_time.xml"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/layout-v21_notification_action.xml.flat",
-        "source": "/home/nae/.gradle/caches/transforms-2/files-2.1/2642cfd6837f88c0bffe18dd4caf23d9/res/layout-v21/notification_action.xml"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/drawable_launch_background.xml.flat",
+        "source": "/run/media/bee/workshop/workshop/flutter/esell/android/app/src/main/res/drawable/launch_background.xml"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_notification_bg_normal_pressed.9.png.flat",
-        "source": "/home/nae/.gradle/caches/transforms-2/files-2.1/2642cfd6837f88c0bffe18dd4caf23d9/res/drawable-hdpi-v4/notification_bg_normal_pressed.9.png"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_notification_bg_normal_pressed.9.png.flat",
+        "source": "/home/bee/.gradle/caches/transforms-2/files-2.1/7e62454a41e3fdd264a7c69779e83bb2/res/drawable-mdpi-v4/notification_bg_normal_pressed.9.png"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_logo.png.flat",
-        "source": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/src/main/res/mipmap-xxhdpi/logo.png"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_notification_bg_normal_pressed.9.png.flat",
+        "source": "/home/bee/.gradle/caches/transforms-2/files-2.1/7e62454a41e3fdd264a7c69779e83bb2/res/drawable-xhdpi-v4/notification_bg_normal_pressed.9.png"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_notification_bg_normal_pressed.9.png.flat",
-        "source": "/home/nae/.gradle/caches/transforms-2/files-2.1/2642cfd6837f88c0bffe18dd4caf23d9/res/drawable-mdpi-v4/notification_bg_normal_pressed.9.png"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_notification_bg_low_pressed.9.png.flat",
+        "source": "/home/bee/.gradle/caches/transforms-2/files-2.1/7e62454a41e3fdd264a7c69779e83bb2/res/drawable-hdpi-v4/notification_bg_low_pressed.9.png"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_notification_bg_normal.9.png.flat",
-        "source": "/home/nae/.gradle/caches/transforms-2/files-2.1/2642cfd6837f88c0bffe18dd4caf23d9/res/drawable-xhdpi-v4/notification_bg_normal.9.png"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_notification_bg_low_normal.9.png.flat",
+        "source": "/home/bee/.gradle/caches/transforms-2/files-2.1/7e62454a41e3fdd264a7c69779e83bb2/res/drawable-xhdpi-v4/notification_bg_low_normal.9.png"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/layout_notification_template_part_chronometer.xml.flat",
-        "source": "/home/nae/.gradle/caches/transforms-2/files-2.1/2642cfd6837f88c0bffe18dd4caf23d9/res/layout/notification_template_part_chronometer.xml"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/mipmap-mdpi_logo.png.flat",
+        "source": "/run/media/bee/workshop/workshop/flutter/esell/android/app/src/main/res/mipmap-mdpi/logo.png"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/drawable-v21_notification_action_background.xml.flat",
-        "source": "/home/nae/.gradle/caches/transforms-2/files-2.1/2642cfd6837f88c0bffe18dd4caf23d9/res/drawable-v21/notification_action_background.xml"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_notification_bg_normal.9.png.flat",
+        "source": "/home/bee/.gradle/caches/transforms-2/files-2.1/7e62454a41e3fdd264a7c69779e83bb2/res/drawable-mdpi-v4/notification_bg_normal.9.png"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/layout-v21_notification_template_custom_big.xml.flat",
-        "source": "/home/nae/.gradle/caches/transforms-2/files-2.1/2642cfd6837f88c0bffe18dd4caf23d9/res/layout-v21/notification_template_custom_big.xml"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/layout_notification_template_icon_group.xml.flat",
+        "source": "/home/bee/.gradle/caches/transforms-2/files-2.1/7e62454a41e3fdd264a7c69779e83bb2/res/layout/notification_template_icon_group.xml"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_notification_bg_normal_pressed.9.png.flat",
-        "source": "/home/nae/.gradle/caches/transforms-2/files-2.1/2642cfd6837f88c0bffe18dd4caf23d9/res/drawable-xhdpi-v4/notification_bg_normal_pressed.9.png"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/layout-v21_notification_template_custom_big.xml.flat",
+        "source": "/home/bee/.gradle/caches/transforms-2/files-2.1/7e62454a41e3fdd264a7c69779e83bb2/res/layout-v21/notification_template_custom_big.xml"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/drawable_notification_bg.xml.flat",
-        "source": "/home/nae/.gradle/caches/transforms-2/files-2.1/2642cfd6837f88c0bffe18dd4caf23d9/res/drawable/notification_bg.xml"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/drawable-v21_notification_action_background.xml.flat",
+        "source": "/home/bee/.gradle/caches/transforms-2/files-2.1/7e62454a41e3fdd264a7c69779e83bb2/res/drawable-v21/notification_action_background.xml"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/mipmap-mdpi_logoonly1.png.flat",
-        "source": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/src/main/res/mipmap-mdpi/logoonly1.png"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_notification_bg_low_normal.9.png.flat",
+        "source": "/home/bee/.gradle/caches/transforms-2/files-2.1/7e62454a41e3fdd264a7c69779e83bb2/res/drawable-mdpi-v4/notification_bg_low_normal.9.png"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/drawable_notification_icon_background.xml.flat",
-        "source": "/home/nae/.gradle/caches/transforms-2/files-2.1/2642cfd6837f88c0bffe18dd4caf23d9/res/drawable/notification_icon_background.xml"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_notification_bg_normal_pressed.9.png.flat",
+        "source": "/home/bee/.gradle/caches/transforms-2/files-2.1/7e62454a41e3fdd264a7c69779e83bb2/res/drawable-hdpi-v4/notification_bg_normal_pressed.9.png"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_logo.png.flat",
-        "source": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/src/main/res/mipmap-xxxhdpi/logo.png"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_logo.png.flat",
+        "source": "/run/media/bee/workshop/workshop/flutter/esell/android/app/src/main/res/mipmap-xxxhdpi/logo.png"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_notify_panel_notification_icon_bg.png.flat",
-        "source": "/home/nae/.gradle/caches/transforms-2/files-2.1/2642cfd6837f88c0bffe18dd4caf23d9/res/drawable-mdpi-v4/notify_panel_notification_icon_bg.png"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/mipmap-hdpi_logo.png.flat",
+        "source": "/run/media/bee/workshop/workshop/flutter/esell/android/app/src/main/res/mipmap-hdpi/logo.png"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_notification_bg_normal.9.png.flat",
-        "source": "/home/nae/.gradle/caches/transforms-2/files-2.1/2642cfd6837f88c0bffe18dd4caf23d9/res/drawable-hdpi-v4/notification_bg_normal.9.png"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_notify_panel_notification_icon_bg.png.flat",
+        "source": "/home/bee/.gradle/caches/transforms-2/files-2.1/7e62454a41e3fdd264a7c69779e83bb2/res/drawable-hdpi-v4/notify_panel_notification_icon_bg.png"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_notify_panel_notification_icon_bg.png.flat",
-        "source": "/home/nae/.gradle/caches/transforms-2/files-2.1/2642cfd6837f88c0bffe18dd4caf23d9/res/drawable-xhdpi-v4/notify_panel_notification_icon_bg.png"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/layout-v21_notification_action_tombstone.xml.flat",
+        "source": "/home/bee/.gradle/caches/transforms-2/files-2.1/7e62454a41e3fdd264a7c69779e83bb2/res/layout-v21/notification_action_tombstone.xml"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/mipmap-mdpi_logo.png.flat",
-        "source": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/src/main/res/mipmap-mdpi/logo.png"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi_logoonly1.png.flat",
+        "source": "/run/media/bee/workshop/workshop/flutter/esell/android/app/src/main/res/mipmap-xhdpi/logoonly1.png"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/layout_notification_template_icon_group.xml.flat",
-        "source": "/home/nae/.gradle/caches/transforms-2/files-2.1/2642cfd6837f88c0bffe18dd4caf23d9/res/layout/notification_template_icon_group.xml"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_logo.png.flat",
+        "source": "/run/media/bee/workshop/workshop/flutter/esell/android/app/src/main/res/mipmap-xxhdpi/logo.png"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/drawable_launch_background.xml.flat",
-        "source": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/src/main/res/drawable/launch_background.xml"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_notification_bg_normal.9.png.flat",
+        "source": "/home/bee/.gradle/caches/transforms-2/files-2.1/7e62454a41e3fdd264a7c69779e83bb2/res/drawable-xhdpi-v4/notification_bg_normal.9.png"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_notify_panel_notification_icon_bg.png.flat",
-        "source": "/home/nae/.gradle/caches/transforms-2/files-2.1/2642cfd6837f88c0bffe18dd4caf23d9/res/drawable-hdpi-v4/notify_panel_notification_icon_bg.png"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/drawable_notification_icon_background.xml.flat",
+        "source": "/home/bee/.gradle/caches/transforms-2/files-2.1/7e62454a41e3fdd264a7c69779e83bb2/res/drawable/notification_icon_background.xml"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/layout_notification_action.xml.flat",
-        "source": "/home/nae/.gradle/caches/transforms-2/files-2.1/2642cfd6837f88c0bffe18dd4caf23d9/res/layout/notification_action.xml"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_notify_panel_notification_icon_bg.png.flat",
+        "source": "/home/bee/.gradle/caches/transforms-2/files-2.1/7e62454a41e3fdd264a7c69779e83bb2/res/drawable-mdpi-v4/notify_panel_notification_icon_bg.png"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/mipmap-hdpi_logoonly1.png.flat",
-        "source": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/src/main/res/mipmap-hdpi/logoonly1.png"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/drawable_notification_bg.xml.flat",
+        "source": "/home/bee/.gradle/caches/transforms-2/files-2.1/7e62454a41e3fdd264a7c69779e83bb2/res/drawable/notification_bg.xml"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/layout-v21_notification_action_tombstone.xml.flat",
-        "source": "/home/nae/.gradle/caches/transforms-2/files-2.1/2642cfd6837f88c0bffe18dd4caf23d9/res/layout-v21/notification_action_tombstone.xml"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_logoonly1.png.flat",
+        "source": "/run/media/bee/workshop/workshop/flutter/esell/android/app/src/main/res/mipmap-xxhdpi/logoonly1.png"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/layout-v16_notification_template_custom_big.xml.flat",
-        "source": "/home/nae/.gradle/caches/transforms-2/files-2.1/2642cfd6837f88c0bffe18dd4caf23d9/res/layout-v16/notification_template_custom_big.xml"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/drawable_notification_bg_low.xml.flat",
+        "source": "/home/bee/.gradle/caches/transforms-2/files-2.1/7e62454a41e3fdd264a7c69779e83bb2/res/drawable/notification_bg_low.xml"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_notification_bg_low_pressed.9.png.flat",
-        "source": "/home/nae/.gradle/caches/transforms-2/files-2.1/2642cfd6837f88c0bffe18dd4caf23d9/res/drawable-hdpi-v4/notification_bg_low_pressed.9.png"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/layout-v21_notification_action.xml.flat",
+        "source": "/home/bee/.gradle/caches/transforms-2/files-2.1/7e62454a41e3fdd264a7c69779e83bb2/res/layout-v21/notification_action.xml"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_notification_bg_low_pressed.9.png.flat",
-        "source": "/home/nae/.gradle/caches/transforms-2/files-2.1/2642cfd6837f88c0bffe18dd4caf23d9/res/drawable-xhdpi-v4/notification_bg_low_pressed.9.png"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/layout_notification_action_tombstone.xml.flat",
+        "source": "/home/bee/.gradle/caches/transforms-2/files-2.1/7e62454a41e3fdd264a7c69779e83bb2/res/layout/notification_action_tombstone.xml"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_notification_bg_low_normal.9.png.flat",
-        "source": "/home/nae/.gradle/caches/transforms-2/files-2.1/2642cfd6837f88c0bffe18dd4caf23d9/res/drawable-hdpi-v4/notification_bg_low_normal.9.png"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_notification_bg_normal.9.png.flat",
+        "source": "/home/bee/.gradle/caches/transforms-2/files-2.1/7e62454a41e3fdd264a7c69779e83bb2/res/drawable-hdpi-v4/notification_bg_normal.9.png"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_notification_bg_low_pressed.9.png.flat",
-        "source": "/home/nae/.gradle/caches/transforms-2/files-2.1/2642cfd6837f88c0bffe18dd4caf23d9/res/drawable-mdpi-v4/notification_bg_low_pressed.9.png"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/drawable_notification_tile_bg.xml.flat",
+        "source": "/home/bee/.gradle/caches/transforms-2/files-2.1/7e62454a41e3fdd264a7c69779e83bb2/res/drawable/notification_tile_bg.xml"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_notification_bg_low_normal.9.png.flat",
-        "source": "/home/nae/.gradle/caches/transforms-2/files-2.1/2642cfd6837f88c0bffe18dd4caf23d9/res/drawable-mdpi-v4/notification_bg_low_normal.9.png"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/mipmap-mdpi_logoonly1.png.flat",
+        "source": "/run/media/bee/workshop/workshop/flutter/esell/android/app/src/main/res/mipmap-mdpi/logoonly1.png"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/layout_notification_action_tombstone.xml.flat",
-        "source": "/home/nae/.gradle/caches/transforms-2/files-2.1/2642cfd6837f88c0bffe18dd4caf23d9/res/layout/notification_action_tombstone.xml"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_logoonly1.png.flat",
+        "source": "/run/media/bee/workshop/workshop/flutter/esell/android/app/src/main/res/mipmap-xxxhdpi/logoonly1.png"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_notification_bg_normal.9.png.flat",
-        "source": "/home/nae/.gradle/caches/transforms-2/files-2.1/2642cfd6837f88c0bffe18dd4caf23d9/res/drawable-mdpi-v4/notification_bg_normal.9.png"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/mipmap-hdpi_logoonly1.png.flat",
+        "source": "/run/media/bee/workshop/workshop/flutter/esell/android/app/src/main/res/mipmap-hdpi/logoonly1.png"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/layout-v21_notification_template_icon_group.xml.flat",
-        "source": "/home/nae/.gradle/caches/transforms-2/files-2.1/2642cfd6837f88c0bffe18dd4caf23d9/res/layout-v21/notification_template_icon_group.xml"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_notify_panel_notification_icon_bg.png.flat",
+        "source": "/home/bee/.gradle/caches/transforms-2/files-2.1/7e62454a41e3fdd264a7c69779e83bb2/res/drawable-xhdpi-v4/notify_panel_notification_icon_bg.png"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/drawable_notification_bg_low.xml.flat",
-        "source": "/home/nae/.gradle/caches/transforms-2/files-2.1/2642cfd6837f88c0bffe18dd4caf23d9/res/drawable/notification_bg_low.xml"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi_logo.png.flat",
+        "source": "/run/media/bee/workshop/workshop/flutter/esell/android/app/src/main/res/mipmap-xhdpi/logo.png"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/mipmap-hdpi_logo.png.flat",
-        "source": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/src/main/res/mipmap-hdpi/logo.png"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_notification_bg_low_pressed.9.png.flat",
+        "source": "/home/bee/.gradle/caches/transforms-2/files-2.1/7e62454a41e3fdd264a7c69779e83bb2/res/drawable-xhdpi-v4/notification_bg_low_pressed.9.png"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/layout_notification_template_part_time.xml.flat",
-        "source": "/home/nae/.gradle/caches/transforms-2/files-2.1/2642cfd6837f88c0bffe18dd4caf23d9/res/layout/notification_template_part_time.xml"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/layout_notification_template_part_chronometer.xml.flat",
+        "source": "/home/bee/.gradle/caches/transforms-2/files-2.1/7e62454a41e3fdd264a7c69779e83bb2/res/layout/notification_template_part_chronometer.xml"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi_logoonly1.png.flat",
-        "source": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/src/main/res/mipmap-xhdpi/logoonly1.png"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/layout-v16_notification_template_custom_big.xml.flat",
+        "source": "/home/bee/.gradle/caches/transforms-2/files-2.1/7e62454a41e3fdd264a7c69779e83bb2/res/layout-v16/notification_template_custom_big.xml"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_notification_bg_low_normal.9.png.flat",
-        "source": "/home/nae/.gradle/caches/transforms-2/files-2.1/2642cfd6837f88c0bffe18dd4caf23d9/res/drawable-xhdpi-v4/notification_bg_low_normal.9.png"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_notification_bg_low_pressed.9.png.flat",
+        "source": "/home/bee/.gradle/caches/transforms-2/files-2.1/7e62454a41e3fdd264a7c69779e83bb2/res/drawable-mdpi-v4/notification_bg_low_pressed.9.png"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/drawable_notification_tile_bg.xml.flat",
-        "source": "/home/nae/.gradle/caches/transforms-2/files-2.1/2642cfd6837f88c0bffe18dd4caf23d9/res/drawable/notification_tile_bg.xml"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/layout-v21_notification_template_icon_group.xml.flat",
+        "source": "/home/bee/.gradle/caches/transforms-2/files-2.1/7e62454a41e3fdd264a7c69779e83bb2/res/layout-v21/notification_template_icon_group.xml"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_logoonly1.png.flat",
-        "source": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/src/main/res/mipmap-xxhdpi/logoonly1.png"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_notification_bg_low_normal.9.png.flat",
+        "source": "/home/bee/.gradle/caches/transforms-2/files-2.1/7e62454a41e3fdd264a7c69779e83bb2/res/drawable-hdpi-v4/notification_bg_low_normal.9.png"
     },
     {
-        "merged": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_logoonly1.png.flat",
-        "source": "/run/media/nae/workshop/LightWebGroup/reesg/esellglobe/android/app/src/main/res/mipmap-xxxhdpi/logoonly1.png"
+        "merged": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/debug/layout_notification_action.xml.flat",
+        "source": "/home/bee/.gradle/caches/transforms-2/files-2.1/7e62454a41e3fdd264a7c69779e83bb2/res/layout/notification_action.xml"
     }
 ]

@@ -23,10 +23,11 @@ androidx.core.graphics.drawable.IconCompat -> androidx.core.graphics.drawable.Ic
     java.lang.String getResPackage() -> b
     java.lang.String getResPackage(android.graphics.drawable.Icon) -> b
     void onPostParceling() -> c
-androidx.lifecycle.GenericLifecycleObserver -> androidx.lifecycle.a:
-androidx.lifecycle.Lifecycle -> androidx.lifecycle.b:
-androidx.lifecycle.LifecycleObserver -> androidx.lifecycle.c:
-androidx.lifecycle.LiveData$ObserverWrapper -> androidx.lifecycle.d:
+androidx.lifecycle.DefaultLifecycleObserver -> androidx.lifecycle.a:
+androidx.lifecycle.FullLifecycleObserver -> androidx.lifecycle.b:
+androidx.lifecycle.GenericLifecycleObserver -> androidx.lifecycle.c:
+androidx.lifecycle.LifecycleObserver -> androidx.lifecycle.d:
+androidx.lifecycle.LiveData$ObserverWrapper -> androidx.lifecycle.e:
 androidx.versionedparcelable.ParcelImpl -> androidx.versionedparcelable.ParcelImpl:
     androidx.versionedparcelable.VersionedParcelable mParcel -> a
 androidx.versionedparcelable.ParcelImpl$1 -> androidx.versionedparcelable.a:
@@ -214,29 +215,23 @@ io.flutter.embedding.engine.FlutterJNI$AsyncWaitForVsyncDelegate -> io.flutter.e
     void asyncWaitForVsync(long) -> a
 io.flutter.embedding.engine.dart.DartExecutor -> io.flutter.embedding.engine.a.b:
     io.flutter.embedding.engine.FlutterJNI flutterJNI -> a
-    io.flutter.embedding.engine.dart.DartExecutor$IsolateServiceIdListener isolateServiceIdListener -> g
-    java.lang.String isolateServiceId -> f
-    io.flutter.embedding.engine.dart.DartMessenger dartMessenger -> c
-    io.flutter.plugin.common.BinaryMessenger$BinaryMessageHandler isolateChannelMessageHandler -> h
+    io.flutter.embedding.engine.dart.DartExecutor$IsolateServiceIdListener isolateServiceIdListener -> f
+    io.flutter.embedding.engine.dart.DartMessenger messenger -> c
+    io.flutter.plugin.common.BinaryMessenger$BinaryMessageHandler isolateChannelMessageHandler -> g
     android.content.res.AssetManager assetManager -> b
-    boolean isApplicationRunning -> e
-    io.flutter.plugin.common.BinaryMessenger binaryMessenger -> d
+    java.lang.String isolateServiceId -> e
+    boolean isApplicationRunning -> d
     java.lang.String access$000(io.flutter.embedding.engine.dart.DartExecutor) -> a
     java.lang.String access$002(io.flutter.embedding.engine.dart.DartExecutor,java.lang.String) -> a
-    io.flutter.plugin.common.BinaryMessenger getBinaryMessenger() -> a
+    void onAttachedToJNI() -> a
     void send(java.lang.String,java.nio.ByteBuffer,io.flutter.plugin.common.BinaryMessenger$BinaryReply) -> a
     void setMessageHandler(java.lang.String,io.flutter.plugin.common.BinaryMessenger$BinaryMessageHandler) -> a
     io.flutter.embedding.engine.dart.DartExecutor$IsolateServiceIdListener access$100(io.flutter.embedding.engine.dart.DartExecutor) -> b
-    void onAttachedToJNI() -> b
-    void onDetachedFromJNI() -> c
+    void onDetachedFromJNI() -> b
 io.flutter.embedding.engine.dart.DartExecutor$1 -> io.flutter.embedding.engine.a.a:
     io.flutter.embedding.engine.dart.DartExecutor this$0 -> a
     void onMessage(java.nio.ByteBuffer,io.flutter.plugin.common.BinaryMessenger$BinaryReply) -> a
-io.flutter.embedding.engine.dart.DartExecutor$DefaultBinaryMessenger -> io.flutter.embedding.engine.a.b$a:
-    io.flutter.embedding.engine.dart.DartMessenger messenger -> a
-    void send(java.lang.String,java.nio.ByteBuffer,io.flutter.plugin.common.BinaryMessenger$BinaryReply) -> a
-    void setMessageHandler(java.lang.String,io.flutter.plugin.common.BinaryMessenger$BinaryMessageHandler) -> a
-io.flutter.embedding.engine.dart.DartExecutor$IsolateServiceIdListener -> io.flutter.embedding.engine.a.b$b:
+io.flutter.embedding.engine.dart.DartExecutor$IsolateServiceIdListener -> io.flutter.embedding.engine.a.b$a:
     void onIsolateServiceIdAvailable(java.lang.String) -> a
 io.flutter.embedding.engine.dart.DartMessenger -> io.flutter.embedding.engine.a.c:
     io.flutter.embedding.engine.FlutterJNI flutterJNI -> a
@@ -355,7 +350,6 @@ io.flutter.embedding.engine.systemchannels.KeyEventChannel -> io.flutter.embeddi
     void keyDown(io.flutter.embedding.engine.systemchannels.KeyEventChannel$FlutterKeyEvent) -> a
     void keyUp(io.flutter.embedding.engine.systemchannels.KeyEventChannel$FlutterKeyEvent) -> b
 io.flutter.embedding.engine.systemchannels.KeyEventChannel$FlutterKeyEvent -> io.flutter.embedding.engine.d.c$a:
-    int repeatCount -> l
     int vendorId -> j
     int productId -> k
     int metaState -> h
@@ -543,7 +537,6 @@ io.flutter.embedding.engine.systemchannels.TextInputChannel -> io.flutter.embedd
     io.flutter.plugin.common.MethodChannel channel -> a
     io.flutter.embedding.engine.systemchannels.TextInputChannel$TextInputMethodHandler access$000(io.flutter.embedding.engine.systemchannels.TextInputChannel) -> a
     void done(int) -> a
-    void requestExistingInputState() -> a
     void setTextInputMethodHandler(io.flutter.embedding.engine.systemchannels.TextInputChannel$TextInputMethodHandler) -> a
     void updateEditingState(int,java.lang.String,int,int,int,int) -> a
     void go(int) -> b
@@ -557,13 +550,12 @@ io.flutter.embedding.engine.systemchannels.TextInputChannel$1 -> io.flutter.embe
     io.flutter.embedding.engine.systemchannels.TextInputChannel this$0 -> a
     void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> a
 io.flutter.embedding.engine.systemchannels.TextInputChannel$Configuration -> io.flutter.embedding.engine.d.p$a:
-    java.lang.String actionLabel -> g
-    java.lang.Integer inputAction -> f
-    io.flutter.embedding.engine.systemchannels.TextInputChannel$InputType inputType -> e
+    io.flutter.embedding.engine.systemchannels.TextInputChannel$TextCapitalization textCapitalization -> c
+    java.lang.String actionLabel -> f
+    java.lang.Integer inputAction -> e
+    io.flutter.embedding.engine.systemchannels.TextInputChannel$InputType inputType -> d
     boolean obscureText -> a
     boolean autocorrect -> b
-    boolean enableSuggestions -> c
-    io.flutter.embedding.engine.systemchannels.TextInputChannel$TextCapitalization textCapitalization -> d
     io.flutter.embedding.engine.systemchannels.TextInputChannel$Configuration fromJson(org.json.JSONObject) -> a
     java.lang.Integer inputActionFromTextInputAction(java.lang.String) -> a
 io.flutter.embedding.engine.systemchannels.TextInputChannel$InputType -> io.flutter.embedding.engine.d.p$b:
@@ -774,7 +766,7 @@ io.flutter.plugin.editing.TextInputPlugin -> b.a.b.b.c:
     android.view.inputmethod.InputConnection createInputConnection(android.view.View,android.view.inputmethod.EditorInfo) -> a
     android.view.inputmethod.InputMethodManager getInputMethodManager() -> a
     void hideTextInput(android.view.View) -> a
-    int inputTypeFromTextInputType(io.flutter.embedding.engine.systemchannels.TextInputChannel$InputType,boolean,boolean,boolean,io.flutter.embedding.engine.systemchannels.TextInputChannel$TextCapitalization) -> a
+    int inputTypeFromTextInputType(io.flutter.embedding.engine.systemchannels.TextInputChannel$InputType,boolean,boolean,io.flutter.embedding.engine.systemchannels.TextInputChannel$TextCapitalization) -> a
     void setTextInputClient(int,io.flutter.embedding.engine.systemchannels.TextInputChannel$Configuration) -> a
     void setTextInputEditingState(android.view.View,io.flutter.embedding.engine.systemchannels.TextInputChannel$TextEditState) -> a
     void access$200(io.flutter.plugin.editing.TextInputPlugin,android.view.View) -> b
@@ -1304,7 +1296,6 @@ io.flutter.view.AccessibilityViewEmbedder$ViewAndId -> io.flutter.view.Accessibi
     android.view.View view -> a
     int id -> b
 io.flutter.view.FlutterMain -> io.flutter.view.i:
-    boolean isRunningInRobolectricTest -> a
     void ensureInitializationComplete(android.content.Context,java.lang.String[]) -> a
     java.lang.String findAppBundlePath() -> a
     void startInitialization(android.content.Context) -> a
