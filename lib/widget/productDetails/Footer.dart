@@ -74,8 +74,8 @@ class PDFooter extends StatelessWidget {
                     );
                   },
                   text: 'Goto cart',
-                  color: textColor,
-                  bg: primary,
+                  color: Colors.white,
+                  bg: primaryDark,
                   shape: true,
                 )
               : FRaisedButton(
@@ -85,9 +85,9 @@ class PDFooter extends StatelessWidget {
 
                   ///###
                   text: inCart ? 'In Cart' : 'Add to cart',
-                  color: textColor,
+                  color: Colors.white,
                   shape: true,
-                  bg: primary,
+                  bg: primaryDark,
                 ),
         ],
       ),
