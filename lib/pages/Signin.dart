@@ -100,11 +100,10 @@ class _PageState extends State<SignInPage> {
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: true,
-        backgroundColor: Colors.grey[200],
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(40.0),
           child: FAppBar(
-            title: "Sign-in",
+            title: "Sign In",
           ),
         ),
         resizeToAvoidBottomPadding: false,

@@ -87,10 +87,9 @@ class _PageState extends State<SignUpPage> {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(40.0),
           child: FAppBar(
-            title: "Sign up",
+            title: "Register",
           ),
         ),
-        backgroundColor: Colors.grey[200],
         body: ListView(
           children: <Widget>[
             Padding(

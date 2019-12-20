@@ -1,5 +1,6 @@
 import 'package:esell/pages/SearchPage.dart';
 import 'package:esell/state/state.dart';
+import 'package:esell/widget/atoms/BrandLogos.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
 import 'package:esell/widget/atoms/loginOptions.dart';
 import 'package:esell/widget/molecules/GridList.dart';
@@ -29,15 +30,14 @@ class HomePageApp extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(40.0),
+          preferredSize: Size.fromHeight(50.0),
           child: AppBar(
             elevation: 0.0,
-            title: Text('esellglobe',
-                style: TextStyle(fontFamily: 'Bree', color: iconthemelight)),
             iconTheme: IconThemeData(
-              color: iconthemelight,
+              color: primaryDark,
             ),
-            backgroundColor: Theme.of(context).colorScheme.primary,
+            title: Image.asset('images/logo/logoonly1.png'),
+            backgroundColor: Colors.transparent,
             actions: <Widget>[
               FIcons(
                 icon: Icons.search,
@@ -70,7 +70,7 @@ class HomePageApp extends StatelessWidget {
             ],
           ),
         ),
-        backgroundColor: color.background,
+        // backgroundColor: color.background,
         drawer: DrawerApp(),
         body: ListView(
           children: <Widget>[
