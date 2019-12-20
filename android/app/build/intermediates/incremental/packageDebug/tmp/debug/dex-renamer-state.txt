@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 #Thu Dec 19 23:35:39 NPT 2019
 base.0=/run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/build/intermediates/transforms/dexMerger/debug/0
+=======
+#Fri Dec 20 16:45:41 NPT 2019
+base.0=/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/transforms/dexMerger/debug/0
+>>>>>>> 1b8aacb61a74cb74ad7f575b982831614d10674e
 path.0=classes.dex
 renamed.0=classes.dex

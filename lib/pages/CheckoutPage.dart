@@ -181,7 +181,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     FancyText(
-                      text: 'Total : Rs. ${widget.price}',
+                      text: 'Total : Rs. ${widget.price.toStringAsFixed(2)}',
                       color: Colors.red,
                       fontWeight: FontWeight.bold,
                       size: 15.0,
@@ -214,131 +214,131 @@ class _CheckoutPageState extends State<CheckoutPage> {
             wishlist: true,
             title: 'Checkout',
           )),
-      backgroundColor: Theme.of(context).colorScheme.background,
+      // backgroundColor: Theme.of(context).colorScheme.background,
       body: ListView(
         children: <Widget>[
-          Card(
-            child: Column(
-              children: <Widget>[
-                InfoNavBar(
-                  text: 'Shipping Details',
-                  size: 18.0,
-                  icon: FlatButton(
-                      child: Text('Edit', style: TextStyle(color: primary)),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => AddressPage(
-                                name: name,
-                                city: city,
-                                country: country,
-                                location: location,
-                                mobileNo: mobileNo,
-                                houseNo: houseNo,
-                                nameErr: nameErr,
-                                cityErr: cityErr,
-                                countryErr: countryErr,
-                                mobilenoErr: mobileNoErr,
-                                setCity: setCity,
-                                setCountry: setCountry,
-                                setHouseNo: setHouseNo,
-                                setLocation: setLocation,
-                                setMobileNo: setMobileNo,
-                                setName: setName,
-                                save: saveShippingInfo),
-                          ),
-                        );
-                      }),
+          Column(
+            children: <Widget>[
+              InfoNavBar(
+                text: 'Shipping Details',
+                size: 18.0,
+                icon: FlatButton(
+                    child: Text('Edit', style: TextStyle(color: primaryDark)),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AddressPage(
+                              name: name,
+                              city: city,
+                              country: country,
+                              location: location,
+                              mobileNo: mobileNo,
+                              houseNo: houseNo,
+                              nameErr: nameErr,
+                              cityErr: cityErr,
+                              countryErr: countryErr,
+                              mobilenoErr: mobileNoErr,
+                              setCity: setCity,
+                              setCountry: setCountry,
+                              setHouseNo: setHouseNo,
+                              setLocation: setLocation,
+                              setMobileNo: setMobileNo,
+                              setName: setName,
+                              save: saveShippingInfo),
+                        ),
+                      );
+                    }),
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              Text(country != null
+                  ? '$houseNo, $city, $country'
+                  : 'Please provide shipping details.'),
+              SizedBox(
+                height: 20.0,
+              ),
+              InfoNavBar(
+                text: 'Bill to default billing address',
+                size: 18.0,
+                icon: FlatButton(
+                    child: Text('Edit', style: TextStyle(color: primaryDark)),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AddressPage(
+                              name: name,
+                              city: city,
+                              country: country,
+                              location: location,
+                              mobileNo: mobileNo,
+                              houseNo: houseNo,
+                              nameErr: nameErr,
+                              cityErr: cityErr,
+                              countryErr: countryErr,
+                              mobilenoErr: mobileNoErr,
+                              setCity: setCity,
+                              setCountry: setCountry,
+                              setHouseNo: setHouseNo,
+                              setLocation: setLocation,
+                              setMobileNo: setMobileNo,
+                              setName: setName,
+                              save: saveBillingInfo,
+                              isBilling: true),
+                        ),
+                      );
+                    }),
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
+                child: FForms(
+                  type: TextInputType.phone,
+                  text: 'Enter your phone number',
+                  icon: Icon(Icons.phone, color: primary),
                 ),
-                SizedBox(
-                  height: 10.0,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
+                child: FForms(
+                  type: TextInputType.emailAddress,
+                  text: 'Enter your email address',
+                  icon: Icon(Icons.mail, color: primary),
                 ),
-                Text(country != null
-                    ? '$houseNo, $city, $country'
-                    : 'Please provide shipping details.'),
-                SizedBox(
-                  height: 20.0,
-                ),
-                InfoNavBar(
-                  text: 'Bill to default billing address',
-                  size: 18.0,
-                  icon: FlatButton(
-                      child: Text('Edit', style: TextStyle(color: primary)),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => AddressPage(
-                                name: name,
-                                city: city,
-                                country: country,
-                                location: location,
-                                mobileNo: mobileNo,
-                                houseNo: houseNo,
-                                nameErr: nameErr,
-                                cityErr: cityErr,
-                                countryErr: countryErr,
-                                mobilenoErr: mobileNoErr,
-                                setCity: setCity,
-                                setCountry: setCountry,
-                                setHouseNo: setHouseNo,
-                                setLocation: setLocation,
-                                setMobileNo: setMobileNo,
-                                setName: setName,
-                                save: saveBillingInfo,
-                                isBilling: true),
-                          ),
-                        );
-                      }),
-                ),
-                SizedBox(
-                  height: 10.0,
-                ),
-                Padding(
-                  padding:
-                      EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
-                  child: FForms(
-                    type: TextInputType.phone,
-                    text: 'Enter your phone number',
-                    icon: Icon(Icons.phone, color: primary),
-                  ),
-                ),
-                Padding(
-                  padding:
-                      EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
-                  child: FForms(
-                    type: TextInputType.emailAddress,
-                    text: 'Enter your email address',
-                    icon: Icon(Icons.mail, color: primary),
-                  ),
-                ),
-                SizedBox(
-                  height: 40.0,
-                ),
-              ],
-            ),
+              ),
+              SizedBox(
+                height: 40.0,
+              ),
+            ],
           ),
-          Divider(),
+          InfoNavBar(
+            text: "Products & Details",
+            icon: Text(''),
+            onPressed: null,
+          ),
           Column(
               children: widget.items.map<Widget>((fav) {
             final product = products.one(fav['product']);
             return Container(
-              margin: EdgeInsets.only(top: 15),
+              margin: EdgeInsets.only(top: 20),
               height: 80.0,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                      color: Colors.black12,
-                      offset: Offset.fromDirection(1, 1),
-                      blurRadius: 1),
-                  BoxShadow(
-                      color: Colors.black12,
-                      offset: Offset.fromDirection(-1, 1),
-                      blurRadius: 1)
-                ],
-              ),
+              // decoration: BoxDecoration(
+              //   color: Colors.white,
+              //   boxShadow: [
+              //     BoxShadow(
+              //         color: Colors.black12,
+              //         offset: Offset.fromDirection(1, 1),
+              //         blurRadius: 1),
+              //     BoxShadow(
+              //         color: Colors.black12,
+              //         offset: Offset.fromDirection(-1, 1),
+              //         blurRadius: 1)
+              //   ],
+              // ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[

@@ -71,16 +71,14 @@ class _CartPageState extends State<CartPage> {
                   Padding(
                     padding: EdgeInsets.all(2.0),
                   ),
-                  price != 0.0
-                      ? FRaisedButton(
-                          width: width * 0.45,
-                          text: "RS. $price",
-                          bg: iconthemelight,
-                          shape: true,
-                          color: textColor,
-                          onPressed: () {},
-                        )
-                      : CircularProgressIndicator(),
+                  FRaisedButton(
+                    width: width * 0.45,
+                    text: "RS. ${price.toStringAsFixed(2)}",
+                    bg: iconthemelight,
+                    shape: true,
+                    color: textColor,
+                    onPressed: null ,
+                  ),
                   Padding(
                     padding: EdgeInsets.all(5.0),
                   ),

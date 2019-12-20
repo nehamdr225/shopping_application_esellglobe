@@ -40,7 +40,7 @@ class InfoNavBar extends StatelessWidget {
                 icon: Icon(
                   Icons.arrow_forward_ios,
                   size: 16,
-                  color: textColor,
+                  color: primaryDark,
                 ),
                 onPressed: onPressed),
       ]),

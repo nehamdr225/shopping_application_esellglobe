@@ -1,3 +1,4 @@
+import 'package:esell/state/src/theme.dart';
 import 'package:flutter/material.dart';
 
 class PDColorSelector extends StatefulWidget {
@@ -18,15 +19,28 @@ class _PDColorSelectorState extends State<PDColorSelector> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 8.0),
-        height: 200.0,
-        width: 360.0,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(0.0))),
-        child: Card(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(0.0)),
-            color: Colors.white,
+      padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 8.0),
+      // height: 200.0,
+      // width: 360.0,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(0.0))),
+      child: Card(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0.0)),
+        color: Colors.white,
+        child:
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+          Padding(
+            padding: EdgeInsets.only(left: 15.0),
+            child: Text(
+              'Select a color',
+              style: TextStyle(
+                  color: primaryDark,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w500),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(right: 15.0),
             child: DropdownButton(
               onChanged: (selectColor) {
                 setState(() {
@@ -34,7 +48,6 @@ class _PDColorSelectorState extends State<PDColorSelector> {
                 });
               },
               value: selectedColor,
-              hint: Text('Select a color'),
               items: _color
                   .map((value) => DropdownMenuItem(
                       child: Text(
@@ -43,6 +56,10 @@ class _PDColorSelectorState extends State<PDColorSelector> {
                       ),
                       value: value))
                   .toList(),
-            )));
+            ),
+          )
+        ]),
+      ),
+    );
   }
 }
