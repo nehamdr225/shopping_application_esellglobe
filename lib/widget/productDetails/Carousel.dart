@@ -8,9 +8,9 @@ class PDCarousel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: width,
+      //width: width,
       child: Carousel(
-        boxFit: BoxFit.cover,
+        boxFit: BoxFit.fill,
         images: images,
         autoplay: false,
         dotSize: 6.0,

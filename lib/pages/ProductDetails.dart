@@ -1,10 +1,14 @@
-import 'package:esell/widget/atoms/services.dart';
-import 'package:esell/widget/productDetails/ColorSelector.dart';
+//import 'package:esell/widget/atoms/ImageHolder.dart';
+//import 'package:esell/widget/atoms/services.dart';
+import 'package:esell/widget/molecules/AppBar.dart';
+import 'package:esell/widget/productDetails/Carousel.dart';
+//import 'package:esell/widget/productDetails/ColorSelector.dart';
+//import 'package:esell/widget/productDetails/TabView.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:esell/widget/productDetails/details.dart';
 import 'package:esell/state/state.dart';
-import 'dart:convert';
+//import 'dart:convert';
 
 class ProductDetails extends StatefulWidget {
   final String id;
@@ -14,11 +18,34 @@ class ProductDetails extends StatefulWidget {
   _ProductDetailsState createState() => _ProductDetailsState();
 }
 
-class _ProductDetailsState extends State<ProductDetails> {
+class _ProductDetailsState extends State<ProductDetails>
+    with SingleTickerProviderStateMixin {
+  _ProductDetailsState({Key view, Key bar});
   String size = "S", color;
   int quantity = 1;
+  TabController tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      tabController = new TabController(
+        length: 3,
+        vsync: this,
+      );
+    });
+  }
+
+  @override
+  void dispose() {
+    tabController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    var screenWidth = MediaQuery.of(context).size.width;
+    var screenHeight = MediaQuery.of(context).size.height;
     final product = Provider.of<ProductModel>(context).one(widget.id);
 
     List<Image> images = [];
@@ -33,34 +60,90 @@ class _ProductDetailsState extends State<ProductDetails> {
         persistentFooterButtons: <Widget>[
           PDFooter(id: widget.id, quantity: quantity, size: size, color: color)
         ],
-        backgroundColor: Colors.grey[100],
-        body: CustomScrollView(
-          slivers: <Widget>[
-            images.length != 0
-                ? PDAppBar(images)
-                : SliverPadding(
-                    padding: EdgeInsets.all(0),
-                  ),
-            SliverList(
-              delegate: SliverChildListDelegate(<Widget>[
-                PDInfo(
-                  name: product['name'],
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 1.0),
-                ),
-                Services(),
-                PDSizeSelector(),
-                PDColorSelector(),
-                PDDetails(
-                    details: json.decode(product['description']),
-                    price: product['price'].toString(),
-                    colors: product['colors'],
-                    sizes: json.decode(product['sizes']))
-              ]),
+        backgroundColor: Colors.white,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(40.0),
+          child: FAppBar(
+            wishlist: true,
+            title: "product",
+            cart: true,
+          ),
+        ),
+        body: ListView(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(right: 8.0, left: 8.0),
+              child: Container(
+                height: screenHeight * 0.40,
+                width: screenWidth * 0.95,
+                child: PDCarousel(images: images),
+              ),
             ),
+            PDInfo(
+              name: product['name'],
+              price: product['price'].toString(),
+            ),
+            Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: <Widget>[
+                    TabBar(
+                      controller: tabController,
+                      labelStyle: Theme.of(context).textTheme.title,
+                      labelColor: Theme.of(context).colorScheme.secondary,
+                      unselectedLabelColor: textColor,
+                      indicatorColor: Theme.of(context).colorScheme.secondary,
+                      tabs: <Widget>[
+                        Tab(
+                          text: "Style",
+                        ),
+                        Tab(
+                          text: "Details",
+                        ),
+                        Tab(
+                          text: "Review",
+                        ),
+                      ],
+                    ),
+                    TabBarView(
+                      controller: tabController,
+                      children: <Widget>[
+                        Icon(Icons.directions_car),
+                        Icon(Icons.directions_transit),
+                        Icon(Icons.directions_bike),
+                      ],
+                    ),
+                  ],
+                ))
           ],
         ),
+        // body: CustomScrollView(
+        //   slivers: <Widget>[
+        //     images.length != 0
+        //         ? PDAppBar(images)
+        //         : SliverPadding(
+        //             padding: EdgeInsets.all(0),
+        //           ),
+        //     SliverList(
+        //       delegate: SliverChildListDelegate(<Widget>[
+        //         PDInfo(
+        //           name: product['name'],
+        //         ),
+        //         Padding(
+        //           padding: EdgeInsets.only(top: 1.0),
+        //         ),
+        //         Services(),
+        //         PDSizeSelector(),
+        //         PDColorSelector(),
+        //         PDDetails(
+        //             details: json.decode(product['description']),
+        //             price: product['price'].toString(),
+        //             colors: product['colors'],
+        //             sizes: json.decode(product['sizes']))
+        //       ]),
+        //     ),
+        //   ],
+        // ),
       ),
     );
   }
