@@ -28,11 +28,28 @@ class _TabViewState extends State<TabView> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: widget.tabs.map<Widget>((each) {
-            return FlatButton(
-              child: Text(each),
-              onPressed: () {
+            return Container(
+              alignment: Alignment.center,
+              height: 40.0,
+              width: 90.0,
+              decoration: 
+              widget.tabs.indexOf(each) ==activeIndex 
+              ? BoxDecoration(
+                  border: Border(                    
+                    bottom: BorderSide(
+                      color: Theme.of(context).colorScheme.secondary,
+                      width: 2.0,
+                    )
+                  ))
+              : BoxDecoration(
+                border: Border()
+              ),
+              child: InkWell(
+                child: Text(each, style: Theme.of(context).textTheme.body1.copyWith(fontSize: 16.0),),
+                onTap: () {
                 handleTabChange(each);
-              },
+                },
+              )
             );
           }).toList(),
         ),

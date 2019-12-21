@@ -2,6 +2,7 @@
 //import 'package:esell/widget/atoms/services.dart';
 import 'dart:convert';
 
+import 'package:esell/widget/atoms/StarRating.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:esell/widget/productDetails/Carousel.dart';
 import 'package:esell/widget/productDetails/TabView.dart';
@@ -71,13 +72,18 @@ class _ProductDetailsState extends State<ProductDetails> {
                 child: TabView(
                   tabs: ['Styles', 'Details', 'Reviews'],
                   tabItems: <Widget>[
-                    Text('Styles'),
+                    PDSizeSelector(
+                      sizes: json.decode(product['sizes']),
+                      colors: product['colors'],
+                    ),
                     PDDetails(
                         details: json.decode(product['description']),
                         price: product['price'].toString(),
                         colors: product['colors'],
                         sizes: json.decode(product['sizes'])),
-                    Text('Reviews')
+                    PDStarRating(
+                      rating: 5.0,
+                    )
                   ],
                 ))
           ],

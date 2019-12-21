@@ -14,6 +14,7 @@ class PDDetails extends StatelessWidget {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.only(bottomLeft: Radius.circular(0.0))),
         child: Card(
+          elevation: 0.0,
           color: Colors.white,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(0.0)),
@@ -25,15 +26,9 @@ class PDDetails extends StatelessWidget {
                 ),
                 Container(
                     child: FText(
-                  text: "Product Details",
-                  color: Theme.of(context).colorScheme.primaryVariant,
-                  size: 20.0,
-                )),
-                Container(
-                    child: FText(
                   text: "Material",
                   color: Theme.of(context).colorScheme.primaryVariant,
-                  size: 18.0,
+                  size: 16.0,
                 )),
                 Container(
                     child: FText(
@@ -44,7 +39,7 @@ class PDDetails extends StatelessWidget {
                     child: FText(
                   text: "Closure",
                   color: Theme.of(context).colorScheme.primaryVariant,
-                  size: 18.0,
+                  size: 16.0,
                 )),
                 Container(
                     child: FText(
@@ -55,7 +50,7 @@ class PDDetails extends StatelessWidget {
                     child: FText(
                   text: "Warranty",
                   color: Theme.of(context).colorScheme.primaryVariant,
-                  size: 18.0,
+                  size: 16.0,
                 )),
                 Container(
                     child: FText(
@@ -66,7 +61,7 @@ class PDDetails extends StatelessWidget {
                     child: FText(
                   text: "Care Instructions",
                   color: Theme.of(context).colorScheme.primaryVariant,
-                  size: 18.0,
+                  size: 16.0,
                 )),
                 Container(
                     child: FText(
@@ -77,7 +72,7 @@ class PDDetails extends StatelessWidget {
                     child: FText(
                   text: "Details",
                   color: Theme.of(context).colorScheme.primaryVariant,
-                  size: 18.0,
+                  size: 16.0,
                 )),
                 Container(
                     child: FText(
@@ -86,20 +81,9 @@ class PDDetails extends StatelessWidget {
                 )),
                 Container(
                     child: FText(
-                  text: "Price",
-                  color: Theme.of(context).colorScheme.primaryVariant,
-                  size: 18.0,
-                )),
-                Container(
-                    child: FText(
-                  text: "Rs. $price",
-                  style: body1,
-                )),
-                Container(
-                    child: FText(
                   text: "Available Colors",
                   color: Theme.of(context).colorScheme.primaryVariant,
-                  size: 18.0,
+                  size: 16.0,
                 )),
                 Container(
                     child: FText(
@@ -110,7 +94,7 @@ class PDDetails extends StatelessWidget {
                     child: FText(
                   text: "Sizes",
                   color: Theme.of(context).colorScheme.primaryVariant,
-                  size: 18.0,
+                  size: 16.0,
                 )),
                 Container(
                     child: FText(
