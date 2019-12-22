@@ -68,12 +68,12 @@ class _ProductDetailsState extends State<ProductDetails> {
                   tabItems: <Widget>[
                     Column(
                       children: <Widget>[
+                        PDColorSelector(
+                          color: product['colors'],
+                        ),
                         PDSizeSelector(
                           sizes: json.decode(product['sizes']),
                         ),
-                        PDColorSelector(
-                          color: product['colors'],
-                        )
                       ],
                     ),
                     PDDetails(

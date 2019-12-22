@@ -45,12 +45,12 @@ class PDFooter extends StatelessWidget {
         children: <Widget>[
           user.findWishlistItem(id) == true
               ? FloatingActionButton(
-                  backgroundColor: primary,
+                  backgroundColor: Colors.white,
                   child: Icon(
                     Icons.bookmark,
                     color: iconthemedark,
                   ),
-                  onPressed: () {},
+                  onPressed: (){ },
                 )
               : FloatingActionButton(
                   backgroundColor: iconthemelight,

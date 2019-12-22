@@ -127,7 +127,7 @@ class CartListView extends StatelessWidget {
                       ),
                       IconButton(
                         icon: Icon(
-                          CupertinoIcons.add,
+                          CupertinoIcons.add_circled,
                           color: Colors.black,
                           size: 25.0,
                         ),

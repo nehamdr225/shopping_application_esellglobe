@@ -74,7 +74,7 @@ class _AddressPageState extends State<AddressPage> {
             padding: const EdgeInsets.only(
                 bottom: 8.0, left: 8.0, right: 8.0, top: 15.0),
             child: FForms(
-              icon: Icon(Icons.person, color: primary),
+              icon: Icon(Icons.person, color: primaryDark),
               onChanged: widget.setName,
               text: 'Full Name',
               type: TextInputType.text,
@@ -84,7 +84,7 @@ class _AddressPageState extends State<AddressPage> {
             //phone number
             padding: const EdgeInsets.all(8.0),
             child: FForms(
-              icon: Icon(Icons.phone, color: primary),
+              icon: Icon(Icons.phone, color: primaryDark),
               onChanged: widget.setMobileNo,
               text: 'Mobile number',
               type: TextInputType.phone,
@@ -97,7 +97,7 @@ class _AddressPageState extends State<AddressPage> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: FForms(
-                    icon: Icon(Icons.home, color: primary),
+                    icon: Icon(Icons.home, color: primaryDark),
                     onChanged: widget.setHouseNo,
                     text: 'House no.',
                     type: TextInputType.number,
@@ -106,7 +106,7 @@ class _AddressPageState extends State<AddressPage> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: FForms(
-                    icon: Icon(Icons.location_city, color: primary),
+                    icon: Icon(Icons.location_city, color: primaryDark),
                     onChanged: widget.setCity,
                     text: 'City',
                     type: TextInputType.text,
@@ -119,7 +119,7 @@ class _AddressPageState extends State<AddressPage> {
             //country
             padding: const EdgeInsets.all(8.0),
             child: FForms(
-              icon: Icon(Icons.place, color: primary),
+              icon: Icon(Icons.place, color: primaryDark),
               onChanged: widget.setCountry,
               text: 'Country',
               type: TextInputType.text,
