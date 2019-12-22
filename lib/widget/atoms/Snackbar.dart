@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
-buildAndShowSnackBar(content) {
-  return SnackBar(content: content);
+buildAndShowSnackBar(context, content) {
+  final snack = SnackBar(content: content);
+  Scaffold.of(context).showSnackBar(snack);
 }

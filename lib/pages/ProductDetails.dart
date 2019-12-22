@@ -1,23 +1,17 @@
-//import 'package:esell/widget/atoms/ImageHolder.dart';
-//import 'package:esell/widget/atoms/services.dart';
 import 'dart:convert';
-
 import 'package:esell/widget/atoms/StarRating.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:esell/widget/productDetails/Carousel.dart';
+import 'package:esell/widget/productDetails/ColorSelector.dart';
 import 'package:esell/widget/productDetails/TabView.dart';
-//import 'package:esell/widget/productDetails/ColorSelector.dart';
-//import 'package:esell/widget/productDetails/TabView.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:esell/widget/productDetails/details.dart';
 import 'package:esell/state/state.dart';
-//import 'dart:convert';
 
 class ProductDetails extends StatefulWidget {
   final String id;
   ProductDetails({this.id});
-
   @override
   _ProductDetailsState createState() => _ProductDetailsState();
 }
@@ -72,9 +66,15 @@ class _ProductDetailsState extends State<ProductDetails> {
                 child: TabView(
                   tabs: ['Styles', 'Details', 'Reviews'],
                   tabItems: <Widget>[
-                    PDSizeSelector(
-                      sizes: json.decode(product['sizes']),
-                      colors: product['colors'],
+                    Column(
+                      children: <Widget>[
+                        PDSizeSelector(
+                          sizes: json.decode(product['sizes']),
+                        ),
+                        PDColorSelector(
+                          color: product['colors'],
+                        )
+                      ],
                     ),
                     PDDetails(
                         details: json.decode(product['description']),
@@ -88,33 +88,6 @@ class _ProductDetailsState extends State<ProductDetails> {
                 ))
           ],
         ),
-        // body: CustomScrollView(
-        //   slivers: <Widget>[
-        //     images.length != 0
-        //         ? PDAppBar(images)
-        //         : SliverPadding(
-        //             padding: EdgeInsets.all(0),
-        //           ),
-        //     SliverList(
-        //       delegate: SliverChildListDelegate(<Widget>[
-        //         PDInfo(
-        //           name: product['name'],
-        //         ),
-        //         Padding(
-        //           padding: EdgeInsets.only(top: 1.0),
-        //         ),
-        //         Services(),
-        //         PDSizeSelector(),
-        //         PDColorSelector(),
-        //         PDDetails(
-        //             details: json.decode(product['description']),
-        //             price: product['price'].toString(),
-        //             colors: product['colors'],
-        //             sizes: json.decode(product['sizes']))
-        //       ]),
-        //     ),
-        //   ],
-        // ),
       ),
     );
   }
