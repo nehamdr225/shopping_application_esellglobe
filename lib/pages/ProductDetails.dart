@@ -17,8 +17,22 @@ class ProductDetails extends StatefulWidget {
 }
 
 class _ProductDetailsState extends State<ProductDetails> {
-  String size = "S", color;
-  int quantity = 1;
+  String color;
+  int quantity = 1, size;
+
+  void setSize(int newSize) {
+    if (newSize != size)
+      setState(() {
+        size = newSize;
+      });
+  }
+
+  void setColor(String newColor) {
+    if (newColor != color)
+      setState(() {
+        color = newColor;
+      });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,10 +83,10 @@ class _ProductDetailsState extends State<ProductDetails> {
                     Column(
                       children: <Widget>[
                         PDColorSelector(
-                          color: product['colors'],
-                        ),
+                            color: product['colors'], setColor: setColor),
                         PDSizeSelector(
                           sizes: json.decode(product['sizes']),
+                          setSize: setSize,
                         ),
                       ],
                     ),

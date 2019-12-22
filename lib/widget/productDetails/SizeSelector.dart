@@ -20,7 +20,7 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
         padding: const EdgeInsets.all(6.0),
         child: InkWell(
           onTap: () {
-            widget.setSize(i.toString());
+            widget.setSize(i);
             setState(() {
               active = i.toString();
             });
@@ -51,6 +51,7 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
 
   @override
   Widget build(BuildContext context) {
+    print(widget.sizes);
     var screenWidth = MediaQuery.of(context).size.width;
     List sizeList = widget.sizes['uk'].split('-');
     final mappedList = sizeList.map<int>((each) => int.parse(each)).toList();
@@ -69,12 +70,12 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Padding(
-                  padding: EdgeInsets.only(right: 0.0, top: 0.0),
-                ),
-                Text(
-                  "Select Size ",
-                  style: Theme.of(context).textTheme.body2,
-                  textAlign: TextAlign.left,
+                  padding: EdgeInsets.only(left: 14.0),
+                  child: Text(
+                    "Select Size ",
+                    style: Theme.of(context).textTheme.body2,
+                    textAlign: TextAlign.left,
+                  ),
                 ),
                 Text(
                   "UK",

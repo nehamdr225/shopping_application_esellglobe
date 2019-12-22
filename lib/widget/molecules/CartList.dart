@@ -7,10 +7,10 @@ class CartListView extends StatelessWidget {
   final name;
   final picture;
   final id;
-  // final size;
+  final size;
   final price;
   // final qty;
-  // final color;
+  final color;
   final quantity;
   final setQuantity;
   final token;
@@ -20,14 +20,13 @@ class CartListView extends StatelessWidget {
       {this.name,
       this.price,
       this.token,
-      // this.size,
+      this.size,
       this.picture,
       this.id,
       this.quantity,
       this.setQuantity,
-      this.deleteFromCart
-      // this.color
-      });
+      this.deleteFromCart,
+      this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +86,7 @@ class CartListView extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(3.0),
                       child: Text(
-                        "N/A",
+                        size.toString() ?? "N/A",
                       ),
                     ),
                     Padding(
@@ -97,7 +96,7 @@ class CartListView extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(3.0),
-                      child: Text("N/A"),
+                      child: Text(color ?? "N/A"),
                     ),
                   ],
                 ),

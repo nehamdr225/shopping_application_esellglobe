@@ -25,7 +25,6 @@ class PDInfo extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            
             FText(
               text: name,
               color: textColor,
@@ -33,8 +32,9 @@ class PDInfo extends StatelessWidget {
             ),
             FText(
               text: "Rs. $price",
-              color: textColor,
-              size: 16.0,
+              style: TextStyle(
+                fontSize: 18.0,
+              ),
             )
           ],
         ),

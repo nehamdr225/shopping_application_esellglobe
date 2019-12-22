@@ -1,21 +1,27 @@
 import 'package:esell/pages/Cart.dart';
 import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
+import 'package:esell/widget/atoms/Snackbar.dart';
 import 'package:esell/widget/molecules/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:esell/state/src/theme.dart';
 
 class PDFooter extends StatelessWidget {
-  final String id, size, color;
-  final int quantity;
+  final String id, color;
+  final int quantity, size;
   PDFooter({this.id, this.quantity, this.color, this.size});
 
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserModel>(context);
-    final addToCart =
-        () => user.addToCart(id, quantity, size ?? "S", color ?? "black");
+    addToCart() {
+      if (size != null && color != null)
+        user.addToCart(id, quantity, size, color);
+      else
+        buildAndShowSnackBar(context, 'Size or color not selected!');
+    }
+
     final addToWish = () => user.addToWishList(id);
     bool inCart = user.cart.any((cartItem) => cartItem['product'] == id);
 
@@ -50,7 +56,7 @@ class PDFooter extends StatelessWidget {
                     Icons.bookmark,
                     color: iconthemedark,
                   ),
-                  onPressed: (){ },
+                  onPressed: () {},
                 )
               : FloatingActionButton(
                   backgroundColor: iconthemelight,

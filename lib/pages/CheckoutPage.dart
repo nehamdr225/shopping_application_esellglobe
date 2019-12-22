@@ -299,7 +299,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 child: FForms(
                   type: TextInputType.phone,
                   text: 'Enter your phone number',
-                  icon: Icon(Icons.phone, color: primary),
+                  icon: Icon(Icons.phone, color: primaryDark),
                 ),
               ),
               Padding(
@@ -307,7 +307,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 child: FForms(
                   type: TextInputType.emailAddress,
                   text: 'Enter your email address',
-                  icon: Icon(Icons.mail, color: primary),
+                  icon: Icon(Icons.mail, color: primaryDark),
                 ),
               ),
               SizedBox(
@@ -388,7 +388,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                             Padding(
                               padding: const EdgeInsets.all(3.0),
                               child: Text(
-                                fav['size'] ?? "N/A",
+                                fav['size'].toString() ?? "N/A",
                               ),
                             ),
                             Padding(

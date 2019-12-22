@@ -2,8 +2,9 @@ import 'package:esell/state/src/theme.dart';
 import 'package:flutter/material.dart';
 
 class PDColorSelector extends StatefulWidget {
-  final color;
-  PDColorSelector({this.color});
+  final String color;
+  final Function setColor;
+  PDColorSelector({this.color, this.setColor});
   @override
   _PDColorSelectorState createState() => _PDColorSelectorState();
 }
@@ -24,10 +25,12 @@ class _PDColorSelectorState extends State<PDColorSelector> {
     return colorNames.map<Widget>((eachColor) {
       return InkWell(
         onTap: () {
-          if (eachColor != selectedColor)
+          if (eachColor != selectedColor) {
+            widget.setColor(eachColor);
             setState(() {
               selectedColor = eachColor;
             });
+          }
         },
         child: ClipRRect(
           borderRadius: BorderRadius.circular(10.0),
@@ -56,7 +59,7 @@ class _PDColorSelectorState extends State<PDColorSelector> {
     final List<Widget> colorWidgets = buildColorWidgets(colorList);
 
     return Container(
-      padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 8.0),
+      padding: EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 8.0),
       width: MediaQuery.of(context).size.width * 0.95,
       child: Column(
           mainAxisAlignment: MainAxisAlignment.start,

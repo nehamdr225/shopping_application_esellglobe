@@ -15,8 +15,6 @@ class CartPage extends StatefulWidget {
 
 class _CartPageState extends State<CartPage> {
   List items = [];
-  List sizes = [];
-  List colors = [];
   double price = 0.0;
 
   @override
@@ -26,7 +24,7 @@ class _CartPageState extends State<CartPage> {
     final width = MediaQuery.of(context).size.width;
     setState(() {
       items = user.cart;
-      // print(items);
+      print(items);
     });
 
     if (items.length > 0) {
@@ -77,7 +75,7 @@ class _CartPageState extends State<CartPage> {
                     bg: iconthemelight,
                     shape: true,
                     color: textColor,
-                    onPressed: null ,
+                    onPressed: null,
                   ),
                   Padding(
                     padding: EdgeInsets.all(5.0),
@@ -125,7 +123,10 @@ class _CartPageState extends State<CartPage> {
                               quantity: items[index]['quantity'] ?? 1,
                               setQuantity: updateCartItem,
                               token: user.token,
-                              deleteFromCart: user.deleteFromCart)
+                              deleteFromCart: user.deleteFromCart,
+                              size: items[index]['size'],
+                              color: items[index]['color'],
+                            )
                           : Center(
                               child: CircularProgressIndicator(),
                             );
