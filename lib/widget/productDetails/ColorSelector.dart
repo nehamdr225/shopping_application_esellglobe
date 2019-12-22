@@ -13,6 +13,8 @@ const COLOR_TYPES = {
   'blue': Colors.blue,
   'red': Colors.red,
   'green': Colors.green,
+  'brown': Colors.brown,
+  'white': Colors.white,
 };
 
 class _PDColorSelectorState extends State<PDColorSelector> {
@@ -33,7 +35,7 @@ class _PDColorSelectorState extends State<PDColorSelector> {
             alignment: Alignment.center,
             width: 20.0,
             height: 20.0,
-            color: eachColor == selectedColor ? primaryDark : orderBar,
+            color: eachColor == selectedColor ? Colors.red : Colors.white,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(7.5),
               child: Container(
