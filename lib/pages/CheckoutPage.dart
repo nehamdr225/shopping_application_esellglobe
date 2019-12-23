@@ -153,7 +153,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
         final orderData = {
           "userInfo": shippingInfo,
           "billing": billingInfo ?? shippingInfo,
-          "products": widget.items.map((each) => each['product'])
+          "products": widget.items
         };
         print(orderData);
         user.placeOrder(orderData).then((result) {
@@ -294,20 +294,15 @@ class _CheckoutPageState extends State<CheckoutPage> {
               SizedBox(
                 height: 10.0,
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
-                child: FForms(
-                  type: TextInputType.phone,
-                  text: 'Enter your phone number',
-                  icon: Icon(Icons.phone, color: primaryDark),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
-                child: FForms(
-                  type: TextInputType.emailAddress,
-                  text: 'Enter your email address',
-                  icon: Icon(Icons.mail, color: primaryDark),
+              Container(
+                alignment: Alignment.center,
+                child: FlatButton(
+                  color: orderBar,
+                  child: Text(
+                    'Copy Shipping Details',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  onPressed: () {},
                 ),
               ),
               SizedBox(
@@ -324,7 +319,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
               children: widget.items.map<Widget>((fav) {
             final product = products.one(fav['product']);
             return Container(
-              margin: EdgeInsets.only(top: 20),
+              margin: EdgeInsets.only(top: 20, bottom: 10),
               height: 80.0,
               // decoration: BoxDecoration(
               //   color: Colors.white,
@@ -342,76 +337,82 @@ class _CheckoutPageState extends State<CheckoutPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.all(3.0),
-                    child: Image.network(
-                        product['media'][0]['src'].length > 0
-                            ? product['media'][0]['src'][0]
-                            : '',
-                        height: 100.0,
-                        width: 70.0),
+                  Flexible(
+                    flex: 1,
+                    child: Padding(
+                      padding: EdgeInsets.all(3.0),
+                      child: Image.network(
+                          product['media'][0]['src'].length > 0
+                              ? product['media'][0]['src'][0]
+                              : '',
+                          height: 100.0,
+                          width: 70.0),
+                    ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 10.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          product['name'],
-                          style: TextStyle(
-                              fontFamily: "Helvetica",
-                              color: textColor,
-                              fontSize: 14.0),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.all(3.0),
-                              child: Text('Quantity:',
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.bold)),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(3.0),
-                              child: Text(
-                                fav['quantity'].toString(),
+                  Flexible(
+                    flex: 2,
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 10.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            product['name'],
+                            style: TextStyle(
+                                fontFamily: "Helvetica",
+                                color: textColor,
+                                fontSize: 14.0),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.all(3.0),
+                                child: Text('Quantity:',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold)),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(3.0),
-                              child: Text('Size:',
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.bold)),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(3.0),
-                              child: Text(
-                                fav['size'].toString() ?? "N/A",
+                              Padding(
+                                padding: const EdgeInsets.all(3.0),
+                                child: Text(
+                                  fav['quantity'].toString(),
+                                ),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(3.0),
-                              child: Text('Color:',
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.bold)),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(3.0),
-                              child: Text(fav['color'] ?? "N/A"),
-                            ),
-                          ],
-                        ),
-                        Container(
-                          alignment: Alignment.topLeft,
-                          padding: EdgeInsets.all(3.0),
-                          child: Text("Rs. ${product['price']}",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.red)),
-                        )
-                      ],
+                              Padding(
+                                padding: const EdgeInsets.all(3.0),
+                                child: Text('Size:',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold)),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(3.0),
+                                child: Text(
+                                  fav['size'].toString() ?? "N/A",
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(3.0),
+                                child: Text('Color:',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold)),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(3.0),
+                                child: Text(fav['color'] ?? "N/A"),
+                              ),
+                            ],
+                          ),
+                          Container(
+                            alignment: Alignment.topLeft,
+                            padding: EdgeInsets.all(3.0),
+                            child: Text("Rs. ${product['price']}",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.red)),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ],

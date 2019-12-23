@@ -29,28 +29,28 @@ class FRaisedButton extends StatelessWidget {
       width: width,
       height: height,
       child: RaisedButton(
-        elevation: elevation,
+          elevation: elevation,
           color: bg,
           child: needIcon == true
               ? Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Image.asset(
-                    image,
-                    height: 25.0,
-                    width: 25.0,
-                    color: imgcolor,
-                  ),
-                  Text(
-                    text,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: color,
-                      fontFamily: 'Helvetica',
-                      fontSize: 16.0,
-                    ),
-                  ),
-                ])
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                      Image.asset(
+                        image,
+                        height: 25.0,
+                        width: 25.0,
+                        color: imgcolor,
+                      ),
+                      Text(
+                        text,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: color,
+                          fontFamily: 'Helvetica',
+                          fontSize: 16.0,
+                        ),
+                      ),
+                    ])
               : Text(
                   text,
                   style: TextStyle(
