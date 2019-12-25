@@ -1,7 +1,6 @@
 import 'package:esell/pages/AddressPage.dart';
 import 'package:esell/widget/AnimatingLine.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
-import 'package:esell/widget/atoms/Forms.dart';
 import 'package:esell/widget/atoms/InfoNavBar.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
@@ -147,7 +146,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
     final user = Provider.of<UserModel>(context);
     final width = MediaQuery.of(context).size.width;
 
-    void placeOrder() {
+    void placeOrder() async {
       if (shippingInfo != null) {
         print("Place order");
         final orderData = {
@@ -159,6 +158,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
         user.placeOrder(orderData).then((result) {
           print(result);
           if (result['error'] == null) {
+            user.cart = [];
             Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(builder: (context) => AnimatingLine()),

@@ -2,6 +2,7 @@ import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/DataContainer.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:esell/widget/molecules/MakeLine.dart';
+import 'package:esell/widget/productDetails/TabView.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -39,93 +40,127 @@ class OrdetrackPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserModel>(context);
+    print(user.orders);
     //Animation<double> animation = listenable;
     return Scaffold(
-        // backgroundColor: Colors.grey[300],
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(50.0),
-          child: FAppBar(
-            title: 'Orders & Details',
-          ),
+      // backgroundColor: Colors.grey[300],
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(50.0),
+        child: FAppBar(
+          title: 'Orders & Details',
         ),
-        body: AnimatedBuilder(
-          animation: controller,
-          builder: (BuildContext context, Widget child) => ListView(
-            children: [
-              SizedBox(
-                height: 20.0,
+      ),
+      body: ListView(
+        children: [
+          TabView(
+            tabs: ['Pending', 'History'],
+            tabItems: <Widget>[
+              AnimatedBuilder(
+                animation: controller,
+                builder: (BuildContext context, Widget child) => Column(
+                  children: [
+                    SizedBox(
+                      height: 20.0,
+                    ),
+                    Row(
+                      //ONE
+                      children: <Widget>[
+                        CustomPaint(
+                          size: Size(_width, _height),
+                          painter: MakeLine(
+                              color: ordered == true
+                                  ? dotColor.value
+                                  : Colors.grey[300]),
+                        ),
+                        SizedBox(width: 20.0),
+                        DataContainer(
+                          data: 'Ordered and Approved',
+                          style: ordered == true ? textStyle.value : begin,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      //TWO
+                      children: <Widget>[
+                        CustomPaint(
+                          size: Size(_width, _height),
+                          painter: MakeLine(
+                              color: packed == true
+                                  ? dotColor.value
+                                  : Colors.grey[300]),
+                        ),
+                        SizedBox(width: 20.0),
+                        DataContainer(
+                          data: 'Packed',
+                          style: packed == true ? textStyle.value : begin,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      //THREE
+                      children: <Widget>[
+                        CustomPaint(
+                          size: Size(_width, _height),
+                          painter: MakeLine(
+                              color: shipped == true
+                                  ? dotColor.value
+                                  : Colors.grey[300]),
+                          //child: Container(),
+                        ),
+                        SizedBox(width: 20.0),
+                        DataContainer(
+                          data: 'Shipped',
+                          style: shipped == true ? textStyle.value : begin,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      //FOUR
+                      children: <Widget>[
+                        CustomPaint(
+                          size: Size(_width, _height),
+                          painter: MakeLine(
+                              color: delivered == true
+                                  ? dotColor.value
+                                  : Colors.grey[300]),
+                          //child: Container(),
+                        ),
+                        SizedBox(width: 20.0),
+                        DataContainer(
+                          data: 'Delivered',
+                          style: delivered == true ? textStyle.value : begin,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-              Row(
-                //ONE
-                children: <Widget>[
-                  CustomPaint(
-                    size: Size(_width, _height),
-                    painter: MakeLine(
-                        color: ordered == true
-                            ? dotColor.value
-                            : Colors.grey[300]),
-                  ),
-                  SizedBox(width: 20.0),
-                  DataContainer(
-                    data: 'Ordered and Approved',
-                    style: ordered == true ? textStyle.value : begin,
-                  ),
-                ],
-              ),
-              Row(
-                //TWO
-                children: <Widget>[
-                  CustomPaint(
-                    size: Size(_width, _height),
-                    painter: MakeLine(
-                        color:
-                            packed == true ? dotColor.value : Colors.grey[300]),
-                  ),
-                  SizedBox(width: 20.0),
-                  DataContainer(
-                    data: 'Packed',
-                    style: packed == true ? textStyle.value : begin,
-                  ),
-                ],
-              ),
-              Row(
-                //THREE
-                children: <Widget>[
-                  CustomPaint(
-                    size: Size(_width, _height),
-                    painter: MakeLine(
-                        color: shipped == true
-                            ? dotColor.value
-                            : Colors.grey[300]),
-                    //child: Container(),
-                  ),
-                  SizedBox(width: 20.0),
-                  DataContainer(
-                    data: 'Shipped',
-                    style: shipped == true ? textStyle.value : begin,
-                  ),
-                ],
-              ),
-              Row(
-                //FOUR
-                children: <Widget>[
-                  CustomPaint(
-                    size: Size(_width, _height),
-                    painter: MakeLine(
-                        color: delivered == true
-                            ? dotColor.value
-                            : Colors.grey[300]),
-                    //child: Container(),
-                  ),
-                  SizedBox(width: 20.0),
-                  DataContainer(
-                    data: 'Delivered',
-                    style: delivered == true ? textStyle.value : begin,
-                  ),
-                ],
-              ),
+              Column(
+                children: user.orders.length > 0
+                    ? user.orders.map<Widget>((each) {
+                        final time =
+                            DateTime.parse(each['timestamp']).toLocal();
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: <Widget>[
+                            Text("${time.year} - ${time.month} - ${time.day}"),
+                            Text("${each['status']}"),
+                            IconButton(
+                              icon: Icon(
+                                Icons.arrow_downward,
+                                color: primaryDark,
+                              ),
+                              onPressed: () {},
+                            )
+                          ],
+                        );
+                      }).toList()
+                    : [Text("No Orders found!")],
+              )
             ],
           ),
-        ));
+        ],
+      ),
+    );
   }
 }

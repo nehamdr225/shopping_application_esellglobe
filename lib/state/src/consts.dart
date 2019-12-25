@@ -105,7 +105,7 @@ const SubMain = {
     },
     {
       "name": "Track/Sports Wear",
-      "cap": "Sports",
+      "cap": "Sport",
       "src": "images/SubMain/pant/sportswear.jpg"
     },
   ],

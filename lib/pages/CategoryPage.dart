@@ -33,8 +33,8 @@ class CategoryPage extends StatelessWidget {
 
     createWidgets() {
       List<Widget> widgets = [];
-
       SubMain[cat].forEach((each) {
+        print(each['cap']);
         final categoryProduct = getCategoryItems(each['cap'].toLowerCase());
         onpressed() {
           Navigator.push(

@@ -23,10 +23,18 @@ class UserModel extends ChangeNotifier {
           _storage.delKeyVal("token");
           _token = null;
           notifyListeners();
-        } else if (result['result']['cart'] != null) {
-          final data = await _api.getCart(token);
-          if (data['error'] == null) _cart = data['result']['products'];
-          notifyListeners();
+        } else {
+          if (result['result']['cart'] != null) {
+            final data = await _api.getCart(token);
+            if (data['error'] == null) _cart = data['result']['products'];
+            notifyListeners();
+          }
+          if (result['result']['orders'].length > 0) {
+            final ordersNew = await _api.getOrders(token);
+            if (ordersNew['error'] == null) {
+              orders = ordersNew['result'];
+            }
+          }
         }
         user = result['result'];
         notifyListeners();
@@ -38,6 +46,7 @@ class UserModel extends ChangeNotifier {
   Map _user;
   List<String> _wishList = [];
   List _cart = [];
+  List _orders = [];
 
   Validator get validator => _validator;
   UserApi get api => _api;
@@ -115,6 +124,12 @@ class UserModel extends ChangeNotifier {
   findWishlistItem(id) {
     if (_wishList.length == 0) return false;
     return _wishList.contains(id);
+  }
+
+  get orders => _orders;
+  set orders(values) {
+    _orders = values;
+    notifyListeners();
   }
 
   placeOrder(body) async {
