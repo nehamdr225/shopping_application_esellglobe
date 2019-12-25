@@ -137,8 +137,10 @@ class UserModel extends ChangeNotifier {
   }
 
   logout() async {
-    token = null;
-    user = {};
+    _token = null;
+    _user = {};
+    _cart = [];
     _storage.delKeyVal("token");
+    notifyListeners();
   }
 }
