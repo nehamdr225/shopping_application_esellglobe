@@ -1,3 +1,5 @@
+import 'package:esell/pages/OrdertrackPage.dart';
+import 'package:esell/widget/AnimatingLine.dart';
 import 'package:esell/widget/atoms/DrawerElements.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:flutter/material.dart';
@@ -158,6 +160,16 @@ class DrawerApp extends StatelessWidget {
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => HomePageApp()));
+              },
+            ),
+            DrawerElements(
+              title: 'Orders',
+              icon: 'images/icons/about.png',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AnimatingLine()),
+                );
               },
             ),
             DrawerElements(

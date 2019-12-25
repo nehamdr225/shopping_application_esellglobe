@@ -1,4 +1,6 @@
 import 'package:esell/entities/product.api.dart';
+// import 'package:esell/entities/product.dart';
+// import 'package:esell/data/product.model.dart';
 import 'package:flutter/cupertino.dart';
 
 class ProductModel extends ChangeNotifier {
@@ -7,6 +9,8 @@ class ProductModel extends ChangeNotifier {
     _api.getProducts(page: page).then((data) {
       if (data['error'] == null) {
         products = data['products'];
+        //.map<ProductModel>((each) => Product.fromJson(each))
+        //.toList();
         maxCount = data['count'];
       } else
         print(data['error']);

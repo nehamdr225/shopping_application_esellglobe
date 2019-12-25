@@ -5,15 +5,26 @@ class DataContainer extends StatelessWidget {
   final height;
   final Alignment alignment;
   final TextStyle style;
-  DataContainer({this.data:'data', this.height:108.0, this.alignment: Alignment.topCenter, this.style});
+  DataContainer(
+      {this.data: 'data',
+      this.height: 108.0,
+      this.alignment: Alignment.topCenter,
+      this.style});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        alignment: alignment,
-        height: height,
-        width: 150.0,
-        child: Text(data, style: style,)
+    return Column(
+      // alignment: alignment,
+      // height: height,
+      // width: 150.0,
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          data,
+          style: style,
+        ),
+      ],
     );
   }
 }

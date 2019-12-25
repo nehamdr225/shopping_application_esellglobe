@@ -159,9 +159,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
         user.placeOrder(orderData).then((result) {
           print(result);
           if (result['error'] == null) {
-            Navigator.push(
+            Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(builder: (context) => AnimatingLine()),
+              (Route<dynamic> route) => false,
             );
           }
         });

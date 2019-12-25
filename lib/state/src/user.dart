@@ -18,6 +18,7 @@ class UserModel extends ChangeNotifier {
       _token = token;
       final result = await _api.getUser(token);
       if (result['error'] == null) {
+        print(result['result']);
         if (result['message'] == "Auth failed") {
           _storage.delKeyVal("token");
           _token = null;
