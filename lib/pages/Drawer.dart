@@ -164,7 +164,7 @@ class DrawerApp extends StatelessWidget {
             ),
             DrawerElements(
               title: 'Orders',
-              icon: 'images/icons/about.png',
+              icon: 'images/icons/order.png',
               onTap: () {
                 Navigator.push(
                   context,

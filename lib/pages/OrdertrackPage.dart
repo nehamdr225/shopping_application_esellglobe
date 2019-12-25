@@ -67,6 +67,7 @@ class OrdetrackPage extends StatelessWidget {
                   ),
                   SizedBox(width: 20.0),
                   DataContainer(
+                    time: '20th December, 2019',
                     data: 'Ordered and Approved',
                     style: ordered == true ? textStyle.value : begin,
                   ),
