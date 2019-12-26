@@ -5,8 +5,10 @@ class Category extends StatelessWidget {
   final caption;
   final String name;
   final Function onTap;
+  final width;
+  final height;
 
-  Category({this.caption, this.src, this.name, this.onTap});
+  Category({this.caption, this.src, this.name, this.onTap, this.height: 70.0, this.width: 70.0});
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +21,8 @@ class Category extends StatelessWidget {
             child: ListTile(
               title: Image.asset(
                 src,
-                width: 70.0,
-                height: 70.0,
+                width: width,
+                height: height,
               ),
               contentPadding: EdgeInsets.all(1.0),
               subtitle: Padding(

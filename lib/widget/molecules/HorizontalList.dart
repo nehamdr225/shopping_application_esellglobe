@@ -7,19 +7,23 @@ class HorizontalList extends StatelessWidget {
   HorizontalList({this.listViews});
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Theme.of(context).colorScheme.background,
-      height: 100.0,
-      width: 200.0,
+    return Container( 
+      color: Colors.white,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: listViews.length,
         itemBuilder: (BuildContext context, int index) {
-          return Card(
+          return Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              
+            ),
             child: Category(
               name: listViews[index]['name'],
               caption: listViews[index]['cap'],
               src: listViews[index]['src'],
+              height: 30.0,
+              width: 30.0,
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
