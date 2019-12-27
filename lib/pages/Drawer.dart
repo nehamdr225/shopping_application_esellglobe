@@ -1,4 +1,5 @@
 import 'package:esell/widget/AnimatingLine.dart';
+import 'package:esell/widget/atoms/DrawerEPanel.dart';
 import 'package:esell/widget/atoms/DrawerElements.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:flutter/material.dart';
@@ -63,6 +64,7 @@ class DrawerApp extends StatelessWidget {
                             ),
                           ),
                           Container(
+                            //login/signup
                             color: Colors.transparent,
                             alignment: Alignment.bottomLeft,
                             child: ListTile(
@@ -99,49 +101,118 @@ class DrawerApp extends StatelessWidget {
                     Theme.of(context).textTheme.body2.copyWith(fontSize: 16.0),
               ),
             ),
-            DrawerElements(
-              title: 'Top Wear',
-              icon: 'images/icons/tshirt.png',
-              onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => CategoryPage(text: 'Top Wear'),
-                  ),
-                );
-              },
+            DrawerEPanel(
+              [
+                ListItem(
+                    title: "images/icons/men.png",
+                    subtitle: "Men",
+                    bodyBuilder: (context) => Column(
+                          children: <Widget>[
+                            DrawerElements(
+                              title: 'Top Wear',
+                              icon: 'images/icons/tshirt.png',
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        CategoryPage(text: 'Top Wear'),
+                                  ),
+                                );
+                              },
+                            ),
+                            DrawerElements(
+                              title: 'Bottom Wear',
+                              icon: 'images/icons/pant.png',
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) =>
+                                      CategoryPage(text: 'Bottom Wear'),
+                                ));
+                              },
+                            ),
+                            DrawerElements(
+                              title: 'FootWear',
+                              icon: 'images/icons/shoe.png',
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) =>
+                                      CategoryPage(text: 'Foot Wear'),
+                                ));
+                              },
+                            ),
+                            DrawerElements(
+                              title: 'Watches & Glasses',
+                              icon: 'images/icons/glassesandjunga.png',
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) =>
+                                      CategoryPage(text: 'Watches & Glasses'),
+                                ));
+                              },
+                            ),
+                          ],
+                        )),
+              ],
             ),
-            DrawerElements(
-              title: 'Bottom Wear',
-              icon: 'images/icons/pant.png',
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => CategoryPage(text: 'Bottom Wear'),
-                ));
-              },
-            ),
-            DrawerElements(
-              title: 'FootWear',
-              icon: 'images/icons/shoe.png',
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => CategoryPage(text: 'Foot Wear'),
-                ));
-              },
-            ),
-            DrawerElements(
-              title: 'Watches & Glasses',
-              icon: 'images/icons/glassesandjunga.png',
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => CategoryPage(text: 'Watches & Glasses'),
-                ));
-              },
+            DrawerEPanel(
+              [
+                ListItem(
+                    title: "images/icons/women.png",
+                    subtitle: "Women",
+                    bodyBuilder: (context) => Column(
+                          children: <Widget>[
+                            DrawerElements(
+                              title: 'Top Wear',
+                              icon: 'images/icons/tshirt.png',
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        CategoryPage(text: 'Top Wear'),
+                                  ),
+                                );
+                              },
+                            ),
+                            DrawerElements(
+                              title: 'Bottom Wear',
+                              icon: 'images/icons/pant.png',
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) =>
+                                      CategoryPage(text: 'Bottom Wear'),
+                                ));
+                              },
+                            ),
+                            DrawerElements(
+                              title: 'FootWear',
+                              icon: 'images/icons/shoe.png',
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) =>
+                                      CategoryPage(text: 'Foot Wear'),
+                                ));
+                              },
+                            ),
+                            DrawerElements(
+                              title: 'Watches & Glasses',
+                              icon: 'images/icons/glassesandjunga.png',
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) =>
+                                      CategoryPage(text: 'Watches & Glasses'),
+                                ));
+                              },
+                            ),
+                          ],
+                        )),
+              ],
             ),
             Divider(
               color: Colors.grey[500],
               height: 10.0,
             ),
             Padding(
+              //text find your styke
               padding: const EdgeInsets.only(
                 top: 8.0,
                 left: 14.0,
@@ -154,15 +225,8 @@ class DrawerApp extends StatelessWidget {
               ),
             ),
             DrawerElements(
-              title: 'Home',
-              icon: 'images/icons/homepage.png',
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => HomePageApp()));
-              },
-            ),
-            DrawerElements(
-              title: 'Orders',
+              //Order
+              title: 'My Orders',
               icon: 'images/icons/order.png',
               onTap: () {
                 Navigator.push(
@@ -172,7 +236,26 @@ class DrawerApp extends StatelessWidget {
               },
             ),
             DrawerElements(
-              title: 'Cart',
+              //Coupons
+              title: 'My Coupons',
+              icon: 'images/icons/homepage.png',
+              onTap: () {
+                // Navigator.push(context,
+                //     MaterialPageRoute(builder: (context) => HomePageApp()));
+              },
+            ),
+            DrawerElements(
+              //Wishlist
+              title: 'My Wishlist',
+              icon: 'images/icons/wishlist.png',
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => WishlistPage()));
+              },
+            ),
+            DrawerElements(
+              //Cart
+              title: 'My Cart',
               icon: 'images/icons/cart.png',
               onTap: () {
                 Navigator.push(context,
@@ -180,7 +263,8 @@ class DrawerApp extends StatelessWidget {
               },
             ),
             DrawerElements(
-              title: 'Wishlist',
+              //Account
+              title: 'My Account',
               icon: 'images/icons/wishlist.png',
               onTap: () {
                 Navigator.push(context,
@@ -211,6 +295,7 @@ class DrawerApp extends StatelessWidget {
                     height: 5.0,
                   ),
             DrawerElements(
+              // About
               title: 'About',
               icon: 'images/icons/about.png',
               onTap: () {
@@ -220,6 +305,7 @@ class DrawerApp extends StatelessWidget {
             ),
             token != null
                 ? FRaisedButton(
+                    //Signout button
                     elevation: 0.0,
                     text: 'Sign Out',
                     bg: Colors.white,
