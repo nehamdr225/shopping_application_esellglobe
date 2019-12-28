@@ -1,3 +1,4 @@
+
 const MEN = [
   {
     "name": "Top Wear",
@@ -122,7 +123,7 @@ const SubMain = {
     },
     {
       "name": "Sports Shoes",
-      "cap": "Sports ",
+      "cap": "Sports",
       "src": "images/SubMain/foot/sportsshoes.jpg"
     },
     {
@@ -153,3 +154,32 @@ const SubMain = {
     },
   ]
 };
+
+const HList =[
+{
+    "name": "Top Wear",
+    "cap": "Top Wear",
+    "src": "images/icons/tshirt.png"
+  },
+  {
+    "name": "Bottom Wear",
+    "cap": "Bottom Wear",
+    "src": 'images/icons/pant.png',
+  },
+  {
+    "name": "Foot Wear", //"Shoe",
+    "cap": "Foot Wear", //"Shoe",
+    "src": 'images/icons/shoe.png',
+  },
+  // {
+  //   "name": "Backpacks", //"Shoe",
+  //   "cap": "Backpacks", //"Shoe",
+  //   "src": 'images/icons/bagmen.jpeg',
+  // },
+  {
+    "name": "Sunglasses", //"Shoe",
+    "cap": "Sunglasses", //"Shoe",
+    "src": 'images/icons/glassesandjunga.png',
+  },
+];
+

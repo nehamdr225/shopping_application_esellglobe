@@ -7,6 +7,7 @@ class FForms extends StatelessWidget {
   final TextInputType type;
   final Function onChanged;
   final height;
+  final width;
   final underline;
   final style = TextStyle(
       fontFamily: 'Montserrat',
@@ -16,6 +17,7 @@ class FForms extends StatelessWidget {
   FForms({
     this.text,
     this.height,
+    this.width,
     this.type,
     this.obscure: false,
     this.onChanged,
@@ -25,32 +27,36 @@ class FForms extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      keyboardType: type,
-      autofocus: false,
-      obscureText: obscure,
-      onChanged: onChanged,
-      decoration: InputDecoration(
-        border: OutlineInputBorder(
-            borderSide: BorderSide(
-          color: Theme.of(context).colorScheme.primary,
-        )),
-        prefixIcon: icon,
-        hintText: text,
-        labelStyle: style,
-        labelText: text,
-        enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-          color: Theme.of(context).colorScheme.primaryVariant,
-        )),
-        focusedBorder: underline == false
-            ? OutlineInputBorder(
-                borderSide:
-                    BorderSide(color: Theme.of(context).colorScheme.primary))
-            : UnderlineInputBorder(
-                borderSide: BorderSide(
-                color: Theme.of(context).colorScheme.primaryVariant,
-              )),
+    return SizedBox(
+      height: height,
+      width: width,
+          child: TextField(
+        keyboardType: type,
+        autofocus: false,
+        obscureText: obscure,
+        onChanged: onChanged,
+        decoration: InputDecoration(
+          border: OutlineInputBorder(
+              borderSide: BorderSide(
+            color: Theme.of(context).colorScheme.primary,
+          )),
+          prefixIcon: icon,
+          hintText: text,
+          labelStyle: style,
+          labelText: text,
+          enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+            color: Theme.of(context).colorScheme.primaryVariant,
+          )),
+          focusedBorder: underline == false
+              ? OutlineInputBorder(
+                  borderSide:
+                      BorderSide(color: Theme.of(context).colorScheme.primary))
+              : UnderlineInputBorder(
+                  borderSide: BorderSide(
+                  color: Theme.of(context).colorScheme.primaryVariant,
+                )),
+        ),
       ),
     );
   }
