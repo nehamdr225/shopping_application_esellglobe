@@ -41,16 +41,11 @@ class OrdetrackPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<UserModel>(context);
-    print(user.orders);
+    final userOrders = Provider.of<UserModel>(context).orders;
     final productModel = Provider.of<ProductModel>(context);
-    List orderedProducts = user.orders;
-    List products = orderedProducts.map((eachNew){
-      return productModel.one(eachNew['_id']);
-    }).toList();
+
     //Animation<double> animation = listenable;
     return Scaffold(
-      // backgroundColor: Colors.grey[300],
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50.0),
         child: FAppBar(
@@ -63,28 +58,34 @@ class OrdetrackPage extends StatelessWidget {
             tabs: ['History', 'Pending'],
             tabItems: <Widget>[
               Column(
-                children: user.orders.length > 0
-                    ? user.orders.map<Widget>((each) {
+                children: userOrders.length > 0
+                    ? userOrders.map<Widget>((eachOrder) {
                         final time =
-                            DateTime.parse(each['timestamp']).toLocal();
+                            DateTime.parse(eachOrder['timestamp']).toLocal();
                         return Card(
                             elevation: 0.0,
                             child: DrawerEPanel([
                               ListItem(
-                                title: 
+                                title:
                                     "${time.year} - ${time.month} - ${time.day}",
-                                subtitle: "${each['status']}",
-                                bodyBuilder: (context) => Column(
-                                  children: products.map<Widget>(
-                                    (eachNew){
+                                subtitle: "${eachOrder['status']}",
+                                bodyBuilder: (context) {
+                                  final products = eachOrder['products']
+                                      .map((item) =>
+                                          productModel.one(item['product']))
+                                      .toList();
+                                  return Column(
+                                    children:
+                                        products.map<Widget>((eachProducts) {
                                       return Row(
                                         children: <Widget>[
-                                          Text("${eachNew['name']}")?? "DATA",
+                                          Text("${eachProducts['name']}") ??
+                                              "DATA",
                                         ],
                                       );
-                                    }
-                                  ).toList() ,
-                                ),
+                                    }).toList(),
+                                  );
+                                },
                               ),
                             ]));
                       }).toList()
