@@ -107,7 +107,7 @@ class _CartPageState extends State<CartPage> {
                 ],
               )
             ],
-            body: items.length > 0
+            body: items != null && items.length > 0
                 ? ListView.builder(
                     itemCount: items.length,
                     itemBuilder: (context, index) {

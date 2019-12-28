@@ -1,5 +1,7 @@
+import 'package:esell/pages/OrderHistory.dart';
 import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/DataContainer.dart';
+import 'package:esell/widget/atoms/DrawerEPanel.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:esell/widget/molecules/MakeLine.dart';
 import 'package:esell/widget/productDetails/TabView.dart';
@@ -41,6 +43,11 @@ class OrdetrackPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final user = Provider.of<UserModel>(context);
     print(user.orders);
+    final productModel = Provider.of<ProductModel>(context);
+    List orderedProducts = user.orders;
+    List products = orderedProducts.map((eachNew){
+      return productModel.one(eachNew['_id']);
+    }).toList();
     //Animation<double> animation = listenable;
     return Scaffold(
       // backgroundColor: Colors.grey[300],
@@ -53,8 +60,36 @@ class OrdetrackPage extends StatelessWidget {
       body: ListView(
         children: [
           TabView(
-            tabs: ['Pending', 'History'],
+            tabs: ['History', 'Pending'],
             tabItems: <Widget>[
+              Column(
+                children: user.orders.length > 0
+                    ? user.orders.map<Widget>((each) {
+                        final time =
+                            DateTime.parse(each['timestamp']).toLocal();
+                        return Card(
+                            elevation: 0.0,
+                            child: DrawerEPanel([
+                              ListItem(
+                                title: 
+                                    "${time.year} - ${time.month} - ${time.day}",
+                                subtitle: "${each['status']}",
+                                bodyBuilder: (context) => Column(
+                                  children: products.map<Widget>(
+                                    (eachNew){
+                                      return Row(
+                                        children: <Widget>[
+                                          Text("${eachNew['name']}")?? "DATA",
+                                        ],
+                                      );
+                                    }
+                                  ).toList() ,
+                                ),
+                              ),
+                            ]));
+                      }).toList()
+                    : [Text("No Orders found!")],
+              ),
               AnimatedBuilder(
                 animation: controller,
                 builder: (BuildContext context, Widget child) => Column(
@@ -135,28 +170,6 @@ class OrdetrackPage extends StatelessWidget {
                   ],
                 ),
               ),
-              Column(
-                children: user.orders.length > 0
-                    ? user.orders.map<Widget>((each) {
-                        final time =
-                            DateTime.parse(each['timestamp']).toLocal();
-                        return Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: <Widget>[
-                            Text("${time.year} - ${time.month} - ${time.day}"),
-                            Text("${each['status']}"),
-                            IconButton(
-                              icon: Icon(
-                                Icons.arrow_downward,
-                                color: primaryDark,
-                              ),
-                              onPressed: () {},
-                            )
-                          ],
-                        );
-                      }).toList()
-                    : [Text("No Orders found!")],
-              )
             ],
           ),
         ],
