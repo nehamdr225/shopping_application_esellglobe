@@ -24,7 +24,7 @@ class _CartPageState extends State<CartPage> {
     final width = MediaQuery.of(context).size.width;
     setState(() {
       items = user.cart;
-      print(items);
+      //print(items);
     });
 
     if (items.length > 0) {
@@ -33,6 +33,7 @@ class _CartPageState extends State<CartPage> {
         temp += double.parse(product.one(item['product'])['price']) *
                 item['quantity'] ??
             1;
+            print(item);
       });
       if (temp > 0.0)
         setState(() {
@@ -112,10 +113,11 @@ class _CartPageState extends State<CartPage> {
           itemCount: items.length,
           itemBuilder: (context, index) {
             var each = product.one(items[index]['product']);
+            print(each['media']);
             return each["error"] == null
               ? CartListView(
                   name: each['name'],
-                  picture: each['media'][0]['src'].length > 0
+                  picture: each['media'][0]['src'] != null && each['media'][0]['src'].length > 0
                       ? each['media'][0]['src'][0]
                       : '',
                   price: each['price'],
