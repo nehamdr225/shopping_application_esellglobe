@@ -58,6 +58,7 @@ class OrdetrackPage extends StatelessWidget {
             tabs: ['History', 'Pending'],
             tabItems: <Widget>[
               Column(
+                //render each order
                 children: userOrders.length > 0
                     ? userOrders.map<Widget>((eachOrder) {
                         final time =
@@ -70,6 +71,7 @@ class OrdetrackPage extends StatelessWidget {
                                     "${time.year} - ${time.month} - ${time.day}",
                                 subtitle: "${eachOrder['status']}",
                                 bodyBuilder: (context) {
+                                  //Get the products
                                   final products = eachOrder['products']
                                       .map((item) =>
                                           productModel.one(item['product']))
