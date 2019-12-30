@@ -2,7 +2,7 @@ import 'package:esell/data/product.model.dart';
 import 'package:flutter/foundation.dart';
 
 class Product implements ProductModel {
-  String name, article, category, color, id;
+  String id, name, brand, article, category, stock, price, colors;
   Map sizes;
   List media;
 
@@ -11,7 +11,10 @@ class Product implements ProductModel {
     @required this.name,
     @required this.article,
     @required this.category,
-    this.color,
+    @required this.brand,
+    @required this.price,
+    this.stock,
+    this.colors,
     this.sizes,
     this.media,
   });
@@ -19,9 +22,12 @@ class Product implements ProductModel {
   Product.fromJson(jsonData) {
     this.id = jsonData['_id'];
     this.name = jsonData['name'];
+    this.brand = jsonData['brand'];
     this.article = jsonData['article'];
     this.category = jsonData['category'];
-    this.color = jsonData['color'];
+    this.stock = jsonData['stock'];
+    this.price = jsonData['price'];
+    this.colors = jsonData['colors'];
     this.sizes = jsonData['sizes'];
     this.media = jsonData['media'];
   }
