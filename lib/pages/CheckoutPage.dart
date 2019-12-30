@@ -343,7 +343,9 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     child: Padding(
                       padding: EdgeInsets.all(3.0),
                       child: Image.network(
-                          product['media'][0]['src'].length > 0
+                          product['media'] != null &&
+                                  product['media'].length > 0 &&
+                                  product['media'][0]['src'].length > 0
                               ? product['media'][0]['src'][0]
                               : '',
                           height: 100.0,
