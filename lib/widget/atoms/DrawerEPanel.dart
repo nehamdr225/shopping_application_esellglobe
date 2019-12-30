@@ -9,15 +9,20 @@ class ListItem {
 
   ListItem({
     @required this.bodyBuilder,
-    this.title ,
+    this.title,
     this.subtitle = "",
     this.isExpandedInitially = false,
   })  : assert(title != null),
         assert(bodyBuilder != null);
 
   ExpansionPanelHeaderBuilder get headerBuilder =>
-      (context, isExpanded) => new Row(children: [
-            new SizedBox(width: 60.0, child: new Image.asset(title, height: 20.0, width: 20.0, color: Colors.black87,)),
+      (context, isExpanded) => new Row(
+        children: [
+            new SizedBox(
+                width: 90.0,
+                child: Padding(padding: EdgeInsets.all(8.0),
+                  child: title,
+                )), // new Image.asset(title, height: 20.0, width: 20.0, color: Colors.black87,)),
             new Text(subtitle)
           ]);
 }
@@ -40,19 +45,19 @@ class DrawerEPanelState extends State<DrawerEPanel> {
   Widget build(BuildContext context) {
     return Card(
       elevation: 0.0,
-          child: new ExpansionPanelList(
+      child: new ExpansionPanelList(
         children: widget.items
             .map(
               (item) => new ExpansionPanel(
                   headerBuilder: item.headerBuilder,
                   body: new Builder(builder: item.bodyBuilder),
-                  isExpanded:
-                      expandedByTitle[item.title] ?? item.isExpandedInitially),
+                  isExpanded: expandedByTitle[item.subtitle] ??
+                      item.isExpandedInitially),
             )
             .toList(growable: false),
         expansionCallback: (int index, bool isExpanded) {
           setState(() {
-            expandedByTitle[widget.items[index].title] = !isExpanded;
+            expandedByTitle[widget.items[index].subtitle] = !isExpanded;
           });
         },
       ),

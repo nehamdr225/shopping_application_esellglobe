@@ -27,12 +27,15 @@ class AboutPage extends StatelessWidget {
         height: 400.0,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Text(
               'About',
+              textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 32.0,
                 fontWeight: FontWeight.bold,
+            
               ),
             ),
             Text(

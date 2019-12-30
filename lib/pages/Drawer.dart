@@ -104,7 +104,7 @@ class DrawerApp extends StatelessWidget {
             DrawerEPanel(
               [
                 ListItem(
-                    title: "images/icons/men.png",
+                    title: Image.asset("images/icons/men.png", height: 20.0, width: 20.0,),
                     subtitle: "Men",
                     bodyBuilder: (context) => Column(
                           children: <Widget>[
@@ -157,7 +157,7 @@ class DrawerApp extends StatelessWidget {
             DrawerEPanel(
               [
                 ListItem(
-                    title: "images/icons/women.png",
+                    title: Image.asset("images/icons/women.png", height: 20.0, width: 20.0),
                     subtitle: "Women",
                     bodyBuilder: (context) => Column(
                           children: <Widget>[

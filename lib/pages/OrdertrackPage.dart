@@ -1,10 +1,10 @@
-import 'package:esell/pages/OrderHistory.dart';
+//import 'package:esell/pages/OrderHistory.dart';
 import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/DataContainer.dart';
-import 'package:esell/widget/atoms/DrawerEPanel.dart';
+//import 'package:esell/widget/atoms/DrawerEPanel.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:esell/widget/molecules/MakeLine.dart';
-import 'package:esell/widget/productDetails/TabView.dart';
+//import 'package:esell/widget/productDetails/TabView.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -43,55 +43,57 @@ class OrdetrackPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final userOrders = Provider.of<UserModel>(context).orders;
     final productModel = Provider.of<ProductModel>(context);
-
     //Animation<double> animation = listenable;
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(50.0),
-        child: FAppBar(
-          title: 'Orders & Details',
-        ),
-      ),
-      body: ListView(
-        children: [
-          TabView(
-            tabs: ['History', 'Pending'],
-            tabItems: <Widget>[
-              Column(
-                children: userOrders.length > 0
-                    ? userOrders.map<Widget>((eachOrder) {
-                        final time =
-                            DateTime.parse(eachOrder['timestamp']).toLocal();
-                        return Card(
-                            elevation: 0.0,
-                            child: DrawerEPanel([
-                              ListItem(
-                                title:
-                                    "${time.year} - ${time.month} - ${time.day}",
-                                subtitle: "${eachOrder['status']}",
-                                bodyBuilder: (context) {
-                                  final products = eachOrder['products']
-                                      .map((item) =>
-                                          productModel.one(item['product']))
-                                      .toList();
-                                  return Column(
-                                    children:
-                                        products.map<Widget>((eachProducts) {
-                                      return Row(
-                                        children: <Widget>[
-                                          Text("${eachProducts['name']}") ??
-                                              "DATA",
-                                        ],
-                                      );
-                                    }).toList(),
-                                  );
-                                },
-                              ),
-                            ]));
-                      }).toList()
-                    : [Text("No Orders found!")],
+    appBar: PreferredSize(
+    preferredSize: Size.fromHeight(50.0),
+    child: FAppBar(
+    title: 'Orders & Details',
+    ),
+    ),
+    body: Column(
+    children: userOrders.length > 0
+    ? userOrders.map<Widget>((eachOrder) {
+        final time = DateTime.parse(eachOrder['timestamp']).toLocal();
+        final products = eachOrder['products']
+          .map((item) => productModel.one(item['product']))
+         .toList();
+      return Card(
+        elevation: 0.0,
+        child: products.map<Widget>((eachProducts) {
+          return Row(
+            children: <Widget>[
+              Image.network(
+                "${eachProducts['media'][0]['src'][0]}",
+                height: 100.0,
+                width: 100.0,
               ),
-              AnimatedBuilder(
+              Column(
+                children: <Widget>[
+                  Text(
+                        "${eachProducts['name']}",
+                        style: Theme.of(context)
+                            .textTheme
+                            .body1
+                            .copyWith(
+                                fontWeight: FontWeight.w400),
+                      ) ??
+                      "DATA",
+                  Text(
+                    "${eachOrder['status']}  ${time.year}-${time.month}-${time.day}",
+                  ),
+                ],
+              ),
+              IconButton(
+                icon: Icon(
+                  Icons.arrow_right,
+                  size: 18.0,
+        ),
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+              builder: (context) => AnimatedBuilder(
                 animation: controller,
                 builder: (BuildContext context, Widget child) => Column(
                   children: [
@@ -102,16 +104,22 @@ class OrdetrackPage extends StatelessWidget {
                       //ONE
                       children: <Widget>[
                         CustomPaint(
-                          size: Size(_width, _height),
+                          size: Size(
+                              _width, _height),
                           painter: MakeLine(
-                              color: ordered == true
+                              color: ordered ==
+                                      true
                                   ? dotColor.value
-                                  : Colors.grey[300]),
+                                  : Colors
+                                      .grey[300]),
                         ),
                         SizedBox(width: 20.0),
                         DataContainer(
-                          data: 'Ordered and Approved',
-                          style: ordered == true ? textStyle.value : begin,
+                          data:
+                              'Ordered and Approved',
+                          style: ordered == true
+                              ? textStyle.value
+                              : begin,
                         ),
                       ],
                     ),
@@ -119,16 +127,21 @@ class OrdetrackPage extends StatelessWidget {
                       //TWO
                       children: <Widget>[
                         CustomPaint(
-                          size: Size(_width, _height),
+                          size: Size(
+                              _width, _height),
                           painter: MakeLine(
-                              color: packed == true
+                              color: packed ==
+                                      true
                                   ? dotColor.value
-                                  : Colors.grey[300]),
+                                  : Colors
+                                      .grey[300]),
                         ),
                         SizedBox(width: 20.0),
                         DataContainer(
                           data: 'Packed',
-                          style: packed == true ? textStyle.value : begin,
+                          style: packed == true
+                              ? textStyle.value
+                              : begin,
                         ),
                       ],
                     ),
@@ -136,17 +149,22 @@ class OrdetrackPage extends StatelessWidget {
                       //THREE
                       children: <Widget>[
                         CustomPaint(
-                          size: Size(_width, _height),
+                          size: Size(
+                              _width, _height),
                           painter: MakeLine(
-                              color: shipped == true
+                              color: shipped ==
+                                      true
                                   ? dotColor.value
-                                  : Colors.grey[300]),
+                                  : Colors
+                                      .grey[300]),
                           //child: Container(),
                         ),
                         SizedBox(width: 20.0),
                         DataContainer(
                           data: 'Shipped',
-                          style: shipped == true ? textStyle.value : begin,
+                          style: shipped == true
+                              ? textStyle.value
+                              : begin,
                         ),
                       ],
                     ),
@@ -154,27 +172,35 @@ class OrdetrackPage extends StatelessWidget {
                       //FOUR
                       children: <Widget>[
                         CustomPaint(
-                          size: Size(_width, _height),
+                          size: Size(
+                              _width, _height),
                           painter: MakeLine(
-                              color: delivered == true
+                              color: delivered ==
+                                      true
                                   ? dotColor.value
-                                  : Colors.grey[300]),
+                                  : Colors
+                                      .grey[300]),
                           //child: Container(),
                         ),
                         SizedBox(width: 20.0),
                         DataContainer(
                           data: 'Delivered',
-                          style: delivered == true ? textStyle.value : begin,
+                          style: delivered == true
+                              ? textStyle.value
+                              : begin,
                         ),
                       ],
                     ),
                   ],
                 ),
-              ),
+              )));
+                },
+              )
             ],
-          ),
-        ],
-      ),
-    );
+          );
+        }));
+          }).toList()
+        : [Center(child: Text("No Orders found!"))],
+        ));
   }
 }
