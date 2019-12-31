@@ -154,6 +154,7 @@ class DrawerApp extends StatelessWidget {
                         )),
               ],
             ),
+            Padding(padding: EdgeInsets.all(3.0),),
             DrawerEPanel(
               [
                 ListItem(
@@ -262,20 +263,11 @@ class DrawerApp extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => CartPage()));
               },
             ),
-            DrawerElements(
-              //Account
-              title: 'My Account',
-              icon: 'images/icons/wishlist.png',
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => WishlistPage()));
-              },
-            ),
             token != null
                 ? Column(
                     children: <Widget>[
                       DrawerElements(
-                        title: 'Account',
+                        title: 'My Account',
                         icon: 'images/icons/account.png',
                         onTap: () {
                           Navigator.push(

@@ -19,7 +19,7 @@ class ListItem {
       (context, isExpanded) => new Row(
         children: [
             new SizedBox(
-                width: 90.0,
+                width: 60.0,
                 child: Padding(padding: EdgeInsets.all(8.0),
                   child: title,
                 )), // new Image.asset(title, height: 20.0, width: 20.0, color: Colors.black87,)),
@@ -43,9 +43,7 @@ class DrawerEPanelState extends State<DrawerEPanel> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 0.0,
-      child: new ExpansionPanelList(
+    return ExpansionPanelList(
         children: widget.items
             .map(
               (item) => new ExpansionPanel(
@@ -60,7 +58,6 @@ class DrawerEPanelState extends State<DrawerEPanel> {
             expandedByTitle[widget.items[index].subtitle] = !isExpanded;
           });
         },
-      ),
     );
   }
 }

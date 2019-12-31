@@ -146,7 +146,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
     final user = Provider.of<UserModel>(context);
     final width = MediaQuery.of(context).size.width;
 
-    void placeOrder() async {
+    void placeOrder() async { 
       if (shippingInfo != null) {
         print("Place order");
         final orderData = {
@@ -156,7 +156,6 @@ class _CheckoutPageState extends State<CheckoutPage> {
         };
         print(orderData);
         user.placeOrder(orderData).then((result) {
-          print(result);
           if (result['error'] == null) {
             user.cart = [];
             Navigator.pushAndRemoveUntil(
@@ -168,7 +167,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
         });
       }
     }
-
+    
     return Scaffold(
       persistentFooterButtons: <Widget>[
         Container(
@@ -311,9 +310,9 @@ class _CheckoutPageState extends State<CheckoutPage> {
               ),
             ],
           ),
-          InfoNavBar(
+          InfoNavBar( 
             text: "Products & Details",
-            icon: Text(''),
+            //icon: Text(''),
             onPressed: null,
           ),
           Column(
@@ -360,7 +359,9 @@ class _CheckoutPageState extends State<CheckoutPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text(
+                          product['name'] == null? 
+                          Text('No Product')
+                          :Text(
                             product['name'],
                             style: TextStyle(
                                 fontFamily: "Helvetica",

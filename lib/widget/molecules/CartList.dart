@@ -51,7 +51,7 @@ class CartListView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.5,
+                  width: MediaQuery.of(context).size.width * 0.47,
                   child: Text(
                     name,
                     overflow: TextOverflow.ellipsis,

@@ -115,13 +115,13 @@ class _CartPageState extends State<CartPage> {
                       var each = product.one(items[index]['product']);
                       return each["error"] == null
                           ? CartListView(
-                              name: each['name'],
+                              name: each['name'] ?? 'error product',                                  
                               picture: each['media'] != null &&
                                       each['media'].length > 0 &&
                                       each['media'][0]['src'] != null &&
                                       each['media'][0]['src'].length > 0
                                   ? each['media'][0]['src'][0]
-                                  : '',
+                                  : 'images/emptywishlist.png',
                               price: each['price'],
                               id: each['_id'],
                               quantity: items[index]['quantity'] ?? 1,
@@ -132,12 +132,13 @@ class _CartPageState extends State<CartPage> {
                               color: items[index]['color'],
                             )
                           : Center(
-                              child: CircularProgressIndicator(),
+                              child: Text(''),
+                              //child: CircularProgressIndicator(),
                             );
                     },
                   )
                 : Center(
-                    child: Column(
+                      child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Container(
