@@ -142,11 +142,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
 
   @override
   Widget build(BuildContext context) {
-    final products = Provider.of<ProductModel>(context);
     final user = Provider.of<UserModel>(context);
     final width = MediaQuery.of(context).size.width;
 
-    void placeOrder() async { 
+    void placeOrder() async {
       if (shippingInfo != null) {
         print("Place order");
         final orderData = {
@@ -167,7 +166,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
         });
       }
     }
-    
+
     return Scaffold(
       persistentFooterButtons: <Widget>[
         Container(
@@ -310,14 +309,13 @@ class _CheckoutPageState extends State<CheckoutPage> {
               ),
             ],
           ),
-          InfoNavBar( 
+          InfoNavBar(
             text: "Products & Details",
             //icon: Text(''),
             onPressed: null,
           ),
           Column(
               children: widget.items.map<Widget>((fav) {
-            final product = products.one(fav['product']);
             return Container(
               margin: EdgeInsets.only(top: 20, bottom: 10),
               height: 80.0,
@@ -342,10 +340,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     child: Padding(
                       padding: EdgeInsets.all(3.0),
                       child: Image.network(
-                          product['media'] != null &&
-                                  product['media'].length > 0 &&
-                                  product['media'][0]['src'].length > 0
-                              ? product['media'][0]['src'][0]
+                          fav['product']['media'] != null &&
+                                  fav['product']['media'].length > 0 &&
+                                  fav['product']['media'][0]['src'].length > 0
+                              ? fav['product']['media'][0]['src'][0]
                               : '',
                           height: 100.0,
                           width: 70.0),
@@ -359,15 +357,15 @@ class _CheckoutPageState extends State<CheckoutPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          product['name'] == null? 
-                          Text('No Product')
-                          :Text(
-                            product['name'],
-                            style: TextStyle(
-                                fontFamily: "Helvetica",
-                                color: textColor,
-                                fontSize: 14.0),
-                          ),
+                          fav['product']['name'] == null
+                              ? Text('No Product')
+                              : Text(
+                                  fav['product']['name'],
+                                  style: TextStyle(
+                                      fontFamily: "Helvetica",
+                                      color: textColor,
+                                      fontSize: 14.0),
+                                ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: <Widget>[
@@ -410,7 +408,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                           Container(
                             alignment: Alignment.topLeft,
                             padding: EdgeInsets.all(3.0),
-                            child: Text("Rs. ${product['price']}",
+                            child: Text("Rs. ${fav['product']['price']}",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.red)),

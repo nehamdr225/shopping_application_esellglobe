@@ -26,11 +26,13 @@ class UserModel extends ChangeNotifier {
         } else {
           if (result['result']['cart'] != null) {
             final data = await _api.getCart(token);
+            print(data);
             if (data['error'] == null) _cart = data['result']['products'];
             notifyListeners();
           }
           if (result['result']['orders'].length > 0) {
             final ordersNew = await _api.getOrders(token);
+            print(ordersNew);
             if (ordersNew['error'] == null) {
               orders = ordersNew['result'];
             }

@@ -19,7 +19,6 @@ class _CartPageState extends State<CartPage> {
 
   @override
   Widget build(BuildContext context) {
-    final product = Provider.of<ProductModel>(context);
     final user = Provider.of<UserModel>(context);
     final width = MediaQuery.of(context).size.width;
     setState(() {
@@ -30,10 +29,7 @@ class _CartPageState extends State<CartPage> {
     if (items.length > 0) {
       double temp = 0;
       items.forEach((item) {
-        final selected = product.one(item['product']);
-        print(selected);
-        if (selected['error'] == null)
-          temp += double.parse(selected['price']) * item['quantity'] ?? 1;
+        temp += double.parse(item['product']['price']) * item['quantity'] ?? 1;
       });
       if (temp > 0.0)
         setState(() {
@@ -112,10 +108,11 @@ class _CartPageState extends State<CartPage> {
                 ? ListView.builder(
                     itemCount: items.length,
                     itemBuilder: (context, index) {
-                      var each = product.one(items[index]['product']);
+                      var each = items[index]['product'];
+                      print(each);
                       return each["error"] == null
                           ? CartListView(
-                              name: each['name'] ?? 'error product',                                  
+                              name: each['name'] ?? 'error product',
                               picture: each['media'] != null &&
                                       each['media'].length > 0 &&
                                       each['media'][0]['src'] != null &&
@@ -138,7 +135,7 @@ class _CartPageState extends State<CartPage> {
                     },
                   )
                 : Center(
-                      child: Column(
+                    child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Container(
