@@ -18,7 +18,6 @@ class UserModel extends ChangeNotifier {
       _token = token;
       final result = await _api.getUser(token);
       if (result['error'] == null) {
-        print(result['result']);
         if (result['message'] == "Auth failed") {
           _storage.delKeyVal("token");
           _token = null;
@@ -26,13 +25,11 @@ class UserModel extends ChangeNotifier {
         } else {
           if (result['result']['cart'] != null) {
             final data = await _api.getCart(token);
-            print(data);
             if (data['error'] == null) _cart = data['result']['products'];
             notifyListeners();
           }
           if (result['result']['orders'].length > 0) {
             final ordersNew = await _api.getOrders(token);
-            print(ordersNew);
             if (ordersNew['error'] == null) {
               orders = ordersNew['result'];
             }
@@ -70,8 +67,10 @@ class UserModel extends ChangeNotifier {
 
   get cart => _cart;
   set cart(items) => _cart = items;
-  addToCart(String product, qty, size, color) {
-    if (!_cart.contains(product)) {
+  addToCart(String product, qty, size, color, productData) {
+    print(product);
+    final check = _cart.any((each) => each['product']['_id'] == product);
+    if (!check) {
       if (user['cart'] == null) {
         _api.registerCart(token, product, qty ?? 1, size, color).then((data) {
           if (data['error'] == null) {
@@ -86,9 +85,10 @@ class UserModel extends ChangeNotifier {
         _api
             .updateCart(token, product, qty ?? 1, size ?? "S", color ?? "Black")
             .then((result) {
+          print(result);
           if (result['error'] == null) {
             _cart.add({
-              'product': product,
+              'product': productData,
               'quantity': qty ?? 1,
               'size': size,
               'color': color
@@ -109,7 +109,7 @@ class UserModel extends ChangeNotifier {
     _api.deleteCartItem(token, id).then((data) {
       print(data);
       if (data['error'] == null) {
-        _cart.removeWhere((each) => each['product'] == id);
+        _cart.removeWhere((each) => each['product']['_id'] == id);
         notifyListeners();
         return "done";
       }

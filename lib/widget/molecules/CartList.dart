@@ -50,14 +50,18 @@ class CartListView extends StatelessWidget {
               // mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.47,
-                  child: Text(
-                    name,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontSize: 12.0,
-                      fontWeight: FontWeight.bold,
+                Padding(
+                  padding: EdgeInsets.only(right: 10.0),
+                  child: SizedBox(
+                    // width: MediaQuery.of(context).size.width * 0.47,
+                    child: Text(
+                      name,
+                      textAlign: TextAlign.end,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -68,8 +72,13 @@ class CartListView extends StatelessWidget {
                     children: <Widget>[
                       Padding(
                         padding: const EdgeInsets.all(3.0),
-                        child: Text('Size:',
-                            style: TextStyle(fontWeight: FontWeight.bold)),
+                        child: Text(
+                          'Size:',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14.0,
+                          ),
+                        ),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(3.0),
@@ -79,8 +88,13 @@ class CartListView extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.all(3.0),
-                        child: Text('Color:',
-                            style: TextStyle(fontWeight: FontWeight.bold)),
+                        child: Text(
+                          'Color:',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14.0,
+                          ),
+                        ),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 3.0, right: 10.0),

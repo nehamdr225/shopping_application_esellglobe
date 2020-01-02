@@ -15,15 +15,17 @@ class PDFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserModel>(context);
+
     addToCart() {
       if (size != null && color != null)
-        user.addToCart(id, quantity, size, color);
+        user.addToCart(id, quantity, size, color,
+            Provider.of<ProductModel>(context).one(id));
       else
         buildAndShowSnackBar(context, 'Size or color not selected!');
     }
 
     final addToWish = () => user.addToWishList(id);
-    bool inCart = user.cart.any((cartItem) => cartItem['product'] == id);
+    bool inCart = user.cart.any((cartItem) => cartItem['product']['_id'] == id);
 
     // final snackBar = (text, label, onPressed) => SnackBar(
     //       backgroundColor: primary,

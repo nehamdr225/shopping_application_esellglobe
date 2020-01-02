@@ -11,7 +11,6 @@ class OrdetrackPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final userOrders = Provider.of<UserModel>(context).orders;
-    final productModel = Provider.of<ProductModel>(context);
     //Animation<double> animation = listenable;
     return Scaffold(
         appBar: PreferredSize(
@@ -24,9 +23,8 @@ class OrdetrackPage extends StatelessWidget {
           children: userOrders.length > 0
               ? userOrders.map<Widget>((eachOrder) {
                   final time = DateTime.parse(eachOrder['timestamp']).toLocal();
-                  final products = eachOrder['products']
-                      .map((item) => productModel.one(item['product']))
-                      .toList();
+                  final products = eachOrder['products'];
+
                   return Column(
                     children: products.map<Widget>((eachProducts) {
                       return Card(
@@ -82,8 +80,8 @@ class OrdetrackPage extends StatelessWidget {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => OrderLines(
-                                          controller: controller,
-                                        )));
+                                              controller: controller,
+                                            )));
                               },
                             )
                           ],

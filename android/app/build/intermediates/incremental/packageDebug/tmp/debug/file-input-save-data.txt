@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Thu Jan 02 14:26:25 NPT 2020
+#Thu Jan 02 15:08:27 NPT 2020
 60.set=ASSET
 52.set=ASSET
 53.base=/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/merged_assets/debug/out

@@ -151,9 +151,9 @@ class _CheckoutPageState extends State<CheckoutPage> {
         final orderData = {
           "userInfo": shippingInfo,
           "billing": billingInfo ?? shippingInfo,
-          "products": widget.items
+          "products":
+              widget.items.map((each) => each['product']['_id']).toList()
         };
-        print(orderData);
         user.placeOrder(orderData).then((result) {
           if (result['error'] == null) {
             user.cart = [];
