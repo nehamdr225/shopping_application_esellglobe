@@ -1,4 +1,4 @@
-#Thu Jan 02 15:08:24 NPT 2020
-base.0=/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/transforms/dexMerger/debug/0
+#Fri Jan 03 03:59:23 NPT 2020
+base.0=/run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/build/intermediates/transforms/dexMerger/debug/0
 path.0=classes.dex
 renamed.0=classes.dex

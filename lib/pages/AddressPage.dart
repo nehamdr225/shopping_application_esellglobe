@@ -55,6 +55,7 @@ class _AddressPageState extends State<AddressPage> {
           onPressed: () {
             final status = widget.save();
             print(status);
+            Navigator.pop(context);
           },
         ),
       ],
