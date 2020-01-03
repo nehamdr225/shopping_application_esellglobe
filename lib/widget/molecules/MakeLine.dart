@@ -13,7 +13,7 @@ class MakeLine extends CustomPainter {
   }
   @override
   void paint(Canvas canvas, Size size) {
-    var x = 20.0;
+    var x = 30.0;
     final paint = Paint();
     paint.color = Colors.grey[400];
     canvas.drawCircle(Offset(x, 0), 7.0, _paint);
