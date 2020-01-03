@@ -33,7 +33,7 @@ class FRaisedButton extends StatelessWidget {
           color: bg,
           child: needIcon == true
               ? Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                       Image.asset(
                         image,

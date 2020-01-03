@@ -105,34 +105,49 @@ class _CartPageState extends State<CartPage> {
               )
             ],
             body: items != null && items.length > 0
-                ? ListView.builder(
-                    itemCount: items.length,
-                    itemBuilder: (context, index) {
-                      var each = items[index]['product'];
-                      print(each);
-                      return each["error"] == null
-                          ? CartListView(
-                              name: each['name'] ?? 'error product',
-                              picture: each['media'] != null &&
-                                      each['media'].length > 0 &&
-                                      each['media'][0]['src'] != null &&
-                                      each['media'][0]['src'].length > 0
-                                  ? each['media'][0]['src'][0]
-                                  : 'images/emptywishlist.png',
-                              price: each['price'],
-                              id: each['_id'],
-                              quantity: items[index]['quantity'] ?? 1,
-                              setQuantity: updateCartItem,
-                              token: user.token,
-                              deleteFromCart: user.deleteFromCart,
-                              size: items[index]['size'],
-                              color: items[index]['color'],
-                            )
-                          : Center(
-                              child: Text(''),
-                              //child: CircularProgressIndicator(),
-                            );
-                    },
+                ? Column(
+                    children: <Widget>[
+                      ListView.builder(
+                        itemCount: items.length,
+                        itemBuilder: (context, index) {
+                          var each = items[index]['product'];
+                          print(each);
+                          return each["error"] == null
+                              ? CartListView(
+                                  name: each['name'] ?? 'error product',
+                                  picture: each['media'] != null &&
+                                          each['media'].length > 0 &&
+                                          each['media'][0]['src'] != null &&
+                                          each['media'][0]['src'].length > 0
+                                      ? each['media'][0]['src'][0]
+                                      : 'images/emptywishlist.png',
+                                  price: each['price'],
+                                  id: each['_id'],
+                                  quantity: items[index]['quantity'] ?? 1,
+                                  setQuantity: updateCartItem,
+                                  token: user.token,
+                                  deleteFromCart: user.deleteFromCart,
+                                  size: items[index]['size'],
+                                  color: items[index]['color'],
+                                )
+                              : Center(
+                                  child: Text(''),
+                                  //child: CircularProgressIndicator(),
+                                );
+                        },
+                      ),
+                      // Container(
+                      //   height: 200.0,
+                      //   child: Padding(
+                      //     padding: const EdgeInsets.all(8.0),
+                      //     child: Column(
+                      //       children: <Widget>[
+                              
+                      //       ],
+                      //     ),
+                      //   ),
+                      // )
+                    ],
                   )
                 : Center(
                     child: Column(
