@@ -31,12 +31,11 @@ class CartListView extends StatelessWidget {
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     return Padding(
-      padding: EdgeInsets.all(4.0),
+      padding: EdgeInsets.only(top: 8.0,),
       child: Container(
-        height: 250.0,
+        height: 200.0,
+        color: Colors.white,
         alignment: Alignment.topCenter,
-        decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey[300], width: 2.0)),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
@@ -47,7 +46,7 @@ class CartListView extends StatelessWidget {
                 Flexible(
                   flex: 2,
                   child: Padding(
-                    padding: const EdgeInsets.all(10.0),
+                    padding: const EdgeInsets.fromLTRB(20, 10, 10, 10),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,10 +55,10 @@ class CartListView extends StatelessWidget {
                             textAlign: TextAlign.start,
                             overflow: TextOverflow.ellipsis,
                             style: Theme.of(context).textTheme.body1.copyWith(
-                                fontWeight: FontWeight.w400, fontSize: 17.0)),
+                                fontWeight: FontWeight.w400, fontSize: 16.0)),
                         Padding(
                           padding:
-                              const EdgeInsets.fromLTRB(0.0, 8.0, 8.0, 8.0),
+                              const EdgeInsets.fromLTRB(0.0, 0.0, 8.0, 0.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: <Widget>[
@@ -154,7 +153,7 @@ class CartListView extends StatelessWidget {
                                 style:
                                     Theme.of(context).textTheme.body1.copyWith(
                                           fontWeight: FontWeight.w600,
-                                          color: Colors.red,
+                                          color: Colors.green,
                                           fontSize: 15.0,
                                         ),
                               ),
@@ -163,7 +162,7 @@ class CartListView extends StatelessWidget {
                         ),
                         Padding(
                           padding:
-                              const EdgeInsets.fromLTRB(0.0, 20.0, 10.0, 6.0),
+                              const EdgeInsets.fromLTRB(0.0, 15.0, 10.0, 6.0),
                           child: Text(
                             "Delivery by 02 Jan 2020",
                             style: Theme.of(context).textTheme.body1.copyWith(
@@ -177,7 +176,7 @@ class CartListView extends StatelessWidget {
                           "Free Delivery",
                           style: Theme.of(context).textTheme.body1.copyWith(
                                 fontWeight: FontWeight.w600,
-                                color: Colors.red,
+                                color: Colors.green,
                                 fontSize: 13.0,
                               ),
                         ),
@@ -194,7 +193,7 @@ class CartListView extends StatelessWidget {
                         child: Container(
                           padding: EdgeInsets.all(8.0),
                           child: Image.network(picture,
-                              width: 120.0, height: 100.0),
+                              width: 100.0, height: 70.0),
                         ),
                       ),
                       Row( // quantity
@@ -235,11 +234,12 @@ class CartListView extends StatelessWidget {
                 ),
               ],
             ),
-            Divider(thickness: 2.0,),
+            Divider(thickness: 1.0,),
             Row( //Buttons
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 FRaisedButton(
+                  elevation: 0.0,
                   height: 40.0,
                   width: width * 0.45,
                   needIcon: true,
@@ -251,6 +251,7 @@ class CartListView extends StatelessWidget {
                   onPressed: () {},
                 ),
                 FRaisedButton(
+                  elevation: 0.0,
                   height: 40.0,
                   width: width * 0.45,
                   needIcon: true,
@@ -288,7 +289,7 @@ class CartListView extends StatelessWidget {
                 )
               ],
             ),
-            SizedBox(height:2.0),
+            SizedBox(height:4.0),
           ],
         ),
       ),

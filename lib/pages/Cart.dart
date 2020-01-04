@@ -3,6 +3,7 @@ import 'package:esell/pages/UserPromt.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:esell/widget/molecules/CartList.dart';
+import 'package:esell/widget/molecules/CartPrice.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/widget/molecules/colors.dart';
 import 'package:provider/provider.dart';
@@ -16,11 +17,14 @@ class CartPage extends StatefulWidget {
 class _CartPageState extends State<CartPage> {
   List items = [];
   double price = 0.0;
+  double total = 0.0;
+  double deliveryPrice = 65.0;
 
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserModel>(context);
     final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
     setState(() {
       items = user.cart;
       //print(items);
@@ -34,6 +38,7 @@ class _CartPageState extends State<CartPage> {
       if (temp > 0.0)
         setState(() {
           price = temp;
+          total = price + deliveryPrice;
         });
     }
 
@@ -59,7 +64,7 @@ class _CartPageState extends State<CartPage> {
                   wishlist: true,
                   title: 'Cart',
                 )),
-            backgroundColor: Colors.white,
+            backgroundColor: Color(0xfff2f3f5),
             persistentFooterButtons: <Widget>[
               Row(
                 children: <Widget>[
@@ -68,7 +73,7 @@ class _CartPageState extends State<CartPage> {
                   ),
                   FRaisedButton(
                     width: width * 0.45,
-                    text: "RS. ${price.toStringAsFixed(2)}",
+                    text: "RS. ${total.toStringAsFixed(2)}",
                     bg: iconthemelight,
                     shape: true,
                     color: textColor,
@@ -81,7 +86,7 @@ class _CartPageState extends State<CartPage> {
                     width: width * 0.45,
                     color: Colors.white,
                     shape: true,
-                    bg: Theme.of(context).colorScheme.primary,
+                    bg: Theme.of(context).colorScheme.secondaryVariant,
                     onPressed: () {
                       user.token != null
                           ? Navigator.push(
@@ -89,7 +94,7 @@ class _CartPageState extends State<CartPage> {
                               MaterialPageRoute(
                                   builder: (_) => CheckoutPage(
                                         items: items,
-                                        price: price,
+                                        price: total,
                                       )))
                           : Navigator.push(
                               context,
@@ -106,47 +111,55 @@ class _CartPageState extends State<CartPage> {
             ],
             body: items != null && items.length > 0
                 ? Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
-                      ListView.builder(
-                        itemCount: items.length,
-                        itemBuilder: (context, index) {
-                          var each = items[index]['product'];
-                          print(each);
-                          return each["error"] == null
-                              ? CartListView(
-                                  name: each['name'] ?? 'error product',
-                                  picture: each['media'] != null &&
-                                          each['media'].length > 0 &&
-                                          each['media'][0]['src'] != null &&
-                                          each['media'][0]['src'].length > 0
-                                      ? each['media'][0]['src'][0]
-                                      : 'images/emptywishlist.png',
-                                  price: each['price'],
-                                  id: each['_id'],
-                                  quantity: items[index]['quantity'] ?? 1,
-                                  setQuantity: updateCartItem,
-                                  token: user.token,
-                                  deleteFromCart: user.deleteFromCart,
-                                  size: items[index]['size'],
-                                  color: items[index]['color'],
-                                )
-                              : Center(
-                                  child: Text(''),
-                                  //child: CircularProgressIndicator(),
-                                );
-                        },
+                      Container(
+                        height: height *0.60,
+                        child: ListView.builder(
+                          itemCount: items.length,
+                          itemBuilder: (context, index) {
+                            var each = items[index]['product'];
+                            print(each);
+                            return each["error"] == null
+                                ? CartListView(
+                                    name: each['name'] ?? 'error product',
+                                    picture: each['media'] != null &&
+                                            each['media'].length > 0 &&
+                                            each['media'][0]['src'] != null &&
+                                            each['media'][0]['src'].length > 0
+                                        ? each['media'][0]['src'][0]
+                                        : 'images/emptywishlist.png',
+                                    price: each['price'],
+                                    id: each['_id'],
+                                    quantity: items[index]['quantity'] ?? 1,
+                                    setQuantity: updateCartItem,
+                                    token: user.token,
+                                    deleteFromCart: user.deleteFromCart,
+                                    size: items[index]['size'],
+                                    color: items[index]['color'],
+                                  )
+                                : Center(
+                                    child: Text(''),
+                                    //child: CircularProgressIndicator(),
+                                  );
+                          },
+                        ),
                       ),
-                      // Container(
-                      //   height: 200.0,
-                      //   child: Padding(
-                      //     padding: const EdgeInsets.all(8.0),
-                      //     child: Column(
-                      //       children: <Widget>[
-                              
-                      //       ],
-                      //     ),
-                      //   ),
-                      // )
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8.0),
+                        child: Container(
+                          height: 160.0,
+                          color: Colors.white,
+                          child: CartPrice(
+                            length: items.length,
+                            price: price.toStringAsFixed(2),
+                            total: total.toStringAsFixed(2),
+                          )
+                        ),
+                      ),
+                      SizedBox(
+                        height: 8.0,
+                      )
                     ],
                   )
                 : Center(

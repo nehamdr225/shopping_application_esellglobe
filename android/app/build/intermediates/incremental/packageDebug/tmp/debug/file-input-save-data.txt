@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sat Jan 04 01:32:14 NPT 2020
+#Sat Jan 04 03:27:04 NPT 2020
 60.set=ASSET
 52.set=ASSET
 53.base=/run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/build/intermediates/merged_assets/debug/out
