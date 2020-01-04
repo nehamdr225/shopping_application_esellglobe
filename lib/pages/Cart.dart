@@ -24,7 +24,7 @@ class _CartPageState extends State<CartPage> {
   Widget build(BuildContext context) {
     final user = Provider.of<UserModel>(context);
     final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
+    // final height = MediaQuery.of(context).size.height;
     setState(() {
       items = user.cart;
       //print(items);
@@ -110,58 +110,60 @@ class _CartPageState extends State<CartPage> {
               )
             ],
             body: items != null && items.length > 0
-                ? Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      Container(
-                        height: height *0.60,
-                        child: ListView.builder(
-                          itemCount: items.length,
-                          itemBuilder: (context, index) {
-                            var each = items[index]['product'];
-                            print(each);
-                            return each["error"] == null
-                                ? CartListView(
-                                    name: each['name'] ?? 'error product',
-                                    picture: each['media'] != null &&
-                                            each['media'].length > 0 &&
-                                            each['media'][0]['src'] != null &&
-                                            each['media'][0]['src'].length > 0
-                                        ? each['media'][0]['src'][0]
-                                        : 'images/emptywishlist.png',
-                                    price: each['price'],
-                                    id: each['_id'],
-                                    quantity: items[index]['quantity'] ?? 1,
-                                    setQuantity: updateCartItem,
-                                    token: user.token,
-                                    deleteFromCart: user.deleteFromCart,
-                                    size: items[index]['size'],
-                                    color: items[index]['color'],
-                                  )
-                                : Center(
-                                    child: Text(''),
-                                    //child: CircularProgressIndicator(),
-                                  );
-                          },
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 8.0),
-                        child: Container(
-                          height: 160.0,
-                          color: Colors.white,
-                          child: CartPrice(
-                            length: items.length,
-                            price: price.toStringAsFixed(2),
-                            total: total.toStringAsFixed(2),
-                          )
-                        ),
-                      ),
-                      SizedBox(
-                        height: 8.0,
-                      )
-                    ],
+                // ? Column(
+                //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                //     children: <Widget>[
+                //       Container(
+                //         height: height * 0.60,
+                //         child:
+                ? ListView.builder(
+                    itemCount: items.length + 1,
+                    itemBuilder: (context, index) {
+                      return index != items.length
+                          ? CartListView(
+                              name: items[index]['product']['name'] ??
+                                  'error product',
+                              picture: items[index]['product']['media'] !=
+                                          null &&
+                                      items[index]['product']['media'].length >
+                                          0 &&
+                                      items[index]['product']['media'][0]
+                                              ['src'] !=
+                                          null &&
+                                      items[index]['product']['media'][0]['src']
+                                              .length >
+                                          0
+                                  ? items[index]['product']['media'][0]['src']
+                                      [0]
+                                  : 'images/emptywishlist.png',
+                              price: items[index]['product']['price'],
+                              id: items[index]['product']['_id'],
+                              quantity: items[index]['quantity'] ?? 1,
+                              setQuantity: updateCartItem,
+                              token: user.token,
+                              deleteFromCart: user.deleteFromCart,
+                              size: items[index]['size'],
+                              color: items[index]['color'],
+                            )
+                          : Padding(
+                              padding: const EdgeInsets.only(top: 8.0),
+                              child: Container(
+                                  height: 160.0,
+                                  color: Colors.white,
+                                  child: CartPrice(
+                                    length: items.length,
+                                    price: price.toStringAsFixed(2),
+                                    total: total.toStringAsFixed(2),
+                                  )),
+                            );
+                    },
                   )
+                //  ),
+                //     SizedBox(
+                //       height: 8.0,
+                //     )
+                //   ],
+                // )
                 : Center(
                     child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
