@@ -98,8 +98,7 @@ class _CartPriceState extends State<CartPrice> {
               Padding(
                 padding: const EdgeInsets.all(4.0),
                 child: 
-                Text(
-                  //'\$ 2000',
+                Text(                  
                   '\$ ${widget.total}',
                   style:
                       Theme.of(context).textTheme.body1.copyWith(fontSize: 17.0, fontWeight: FontWeight.w500),

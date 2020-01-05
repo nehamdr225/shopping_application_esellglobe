@@ -38,7 +38,7 @@ class _CartPageState extends State<CartPage> {
       if (temp > 0.0)
         setState(() {
           price = temp;
-          total = price + deliveryPrice;
+          total = temp + deliveryPrice;
         });
     }
 
@@ -64,7 +64,7 @@ class _CartPageState extends State<CartPage> {
                   wishlist: true,
                   title: 'Cart',
                 )),
-            backgroundColor: Color(0xfff2f3f5),
+            backgroundColor: Theme.of(context).colorScheme.background,
             persistentFooterButtons: <Widget>[
               Row(
                 children: <Widget>[
@@ -110,12 +110,6 @@ class _CartPageState extends State<CartPage> {
               )
             ],
             body: items != null && items.length > 0
-                // ? Column(
-                //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                //     children: <Widget>[
-                //       Container(
-                //         height: height * 0.60,
-                //         child:
                 ? ListView.builder(
                     itemCount: items.length + 1,
                     itemBuilder: (context, index) {
@@ -158,12 +152,6 @@ class _CartPageState extends State<CartPage> {
                             );
                     },
                   )
-                //  ),
-                //     SizedBox(
-                //       height: 8.0,
-                //     )
-                //   ],
-                // )
                 : Center(
                     child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,

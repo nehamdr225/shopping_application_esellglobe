@@ -1,3 +1,4 @@
+import 'package:esell/pages/AccountPage.dart';
 import 'package:esell/widget/AnimatingLine.dart';
 import 'package:esell/widget/atoms/DrawerEPanel.dart';
 import 'package:esell/widget/atoms/DrawerElements.dart';
@@ -10,7 +11,6 @@ import 'package:esell/pages/Cart.dart';
 import 'package:esell/pages/CategoryPage.dart';
 import 'package:esell/pages/Home.dart';
 import 'package:esell/pages/Wishlist.dart';
-import 'package:esell/pages/Signin.dart';
 
 import 'package:esell/state/state.dart';
 import 'package:provider/provider.dart';
@@ -273,7 +273,7 @@ class DrawerApp extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => SignInPage()));
+                                  builder: (context) => AccountPage()));
                         },
                       ),
                       Divider(

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 class FRaisedButton extends StatelessWidget {
   final String text;
+  final fontSize;
+  final fontWeight;
   final height;
   final width;
   final Function onPressed;
@@ -13,6 +15,8 @@ class FRaisedButton extends StatelessWidget {
   final elevation;
   FRaisedButton(
       {this.text,
+      this.fontSize: 18.0,
+      this.fontWeight,
       this.shape: false,
       this.onPressed,
       this.color,
@@ -44,23 +48,22 @@ class FRaisedButton extends StatelessWidget {
                       Text(
                         text,
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: color,
-                          fontFamily: 'Helvetica',
-                          fontSize: 16.0,
-                        ),
+                        style: Theme.of(context)
+                            .textTheme
+                            .body1
+                            .copyWith(fontSize: 16.0, color: color, fontWeight: fontWeight),
                       ),
                     ])
               : Text(
                   text,
-                  style: TextStyle(
-                    color: color,
-                    fontFamily: 'Helvetica',
-                    fontSize: 18.0,
-                  ),
+                  style: Theme.of(context)
+                      .textTheme
+                      .body1
+                      .copyWith(fontSize: fontSize, color: color, fontWeight: fontWeight),
                 ),
           shape: shape == false
-              ? Border.all(width: 0.0, color: Colors.black38)
+              ? Border.all(
+                  width: 0.0, color: Theme.of(context).colorScheme.background)
               : RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(30.0)),
                 ),

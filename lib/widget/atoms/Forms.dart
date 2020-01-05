@@ -44,10 +44,14 @@ class FForms extends StatelessWidget {
           hintText: text,
           labelStyle: style,
           labelText: text,
-          enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-            color: Theme.of(context).colorScheme.primaryVariant,
-          )),
+          enabledBorder: underline == false
+              ? OutlineInputBorder(
+                  borderSide:
+                      BorderSide(color: Theme.of(context).colorScheme.primary))
+              : UnderlineInputBorder(
+                  borderSide: BorderSide(
+                  color: Theme.of(context).colorScheme.primaryVariant,
+                )),
           focusedBorder: underline == false
               ? OutlineInputBorder(
                   borderSide:
