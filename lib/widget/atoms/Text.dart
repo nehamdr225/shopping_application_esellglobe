@@ -4,12 +4,14 @@ class FText extends StatelessWidget {
   final String text;
   final String family;
   final double size;
+  final fontWeight;
   final Color color;
   final TextStyle style;
   final List padding;
   FText(
       {this.text,
       this.family: 'Montserrat',
+      this.fontWeight,
       this.size: 32.0,
       this.color: Colors.black,
       this.style,
@@ -26,7 +28,7 @@ class FText extends StatelessWidget {
           text,
           style: style != null
               ? style
-              : TextStyle(fontFamily: family, fontSize: size, color: color),
+              : TextStyle(fontFamily: family, fontSize: size, color: color, fontWeight: fontWeight),
         ));
   }
 }

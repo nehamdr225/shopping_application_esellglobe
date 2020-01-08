@@ -83,7 +83,7 @@ class PDFooter extends StatelessWidget {
                   },
                   text: 'Goto cart',
                   color: Colors.white,
-                  bg: primaryDark,
+                  bg: Theme.of(context).colorScheme.secondaryVariant,
                   shape: true,
                 )
               : FRaisedButton(
@@ -95,7 +95,7 @@ class PDFooter extends StatelessWidget {
                   text: inCart ? 'In Cart' : 'Add to cart',
                   color: Colors.white,
                   shape: true,
-                  bg: primaryDark,
+                  bg: Theme.of(context).colorScheme.secondaryVariant,
                 ),
         ],
       ),

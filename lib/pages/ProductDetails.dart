@@ -3,7 +3,9 @@ import 'package:esell/widget/atoms/StarRating.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:esell/widget/productDetails/Carousel.dart';
 import 'package:esell/widget/productDetails/ColorSelector.dart';
+import 'package:esell/widget/productDetails/Offer.dart';
 import 'package:esell/widget/productDetails/TabView.dart';
+import 'package:esell/widget/productDetails/delivery.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:esell/widget/productDetails/details.dart';
@@ -52,7 +54,7 @@ class _ProductDetailsState extends State<ProductDetails> {
         persistentFooterButtons: <Widget>[
           PDFooter(id: widget.id, quantity: quantity, size: size, color: color)
         ],
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).colorScheme.background,
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(40.0),
           child: FAppBar(
@@ -66,40 +68,56 @@ class _ProductDetailsState extends State<ProductDetails> {
             Padding(
               padding: const EdgeInsets.only(right: 8.0, left: 8.0),
               child: Container(
-                height: screenHeight * 0.40,
-                width: screenWidth * 0.95,
-                child: PDCarousel(images: images),
+                height: screenHeight * 0.45,
+                width: screenWidth,
+                child: PDCarousel(
+                  images: images,
+                  id: widget.id,
+                  width: screenWidth,
+                ),
               ),
             ),
             PDInfo(
               name: product['name'],
               price: product['price'].toString(),
             ),
-            Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TabView(
-                  tabs: ['Styles', 'Details', 'Reviews'],
-                  tabItems: <Widget>[
-                    Column(
-                      children: <Widget>[
-                        PDColorSelector(
-                            color: product['colors'], setColor: setColor),
-                        PDSizeSelector(
-                          sizes: json.decode(product['sizes']),
-                          setSize: setSize,
-                        ),
-                      ],
-                    ),
-                    PDDetails(
-                        details: json.decode(product['description']),
-                        price: product['price'].toString(),
-                        colors: product['colors'],
-                        sizes: json.decode(product['sizes'])),
-                    PDStarRating(
-                      rating: 5.0,
-                    )
-                  ],
-                ))
+            PDoffer(),
+            PDSizeSelector(
+              sizes: json.decode(product['sizes']),
+              setSize: setSize,
+            ),
+            PDColorSelector(color: product['colors'], setColor: setColor),
+            PDdelivery(),
+            PDDetails(
+                details: json.decode(product['description']),
+                price: product['price'].toString(),
+                colors: product['colors'],
+                sizes: json.decode(product['sizes'])),
+
+            // Padding(
+            //     padding: const EdgeInsets.all(8.0),
+            //     child: TabView(
+            //       tabs: ['Styles', 'Details', 'Reviews'],
+            //       tabItems: <Widget>[
+            //         Column(
+            //           children: <Widget>[
+            //
+            //             PDSizeSelector(
+            //               sizes: json.decode(product['sizes']),
+            //               setSize: setSize,
+            //             ),
+            //           ],
+            //         ),
+            //         PDDetails(
+            //             details: json.decode(product['description']),
+            //             price: product['price'].toString(),
+            //             colors: product['colors'],
+            //             sizes: json.decode(product['sizes'])),
+            //         PDStarRating(
+            //           rating: 5.0,
+            //         )
+            //       ],
+            //     ))
           ],
         ),
       ),

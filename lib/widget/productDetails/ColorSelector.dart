@@ -59,6 +59,7 @@ class _PDColorSelectorState extends State<PDColorSelector> {
     final List<Widget> colorWidgets = buildColorWidgets(colorList);
 
     return Container(
+      color: Colors.white,
       padding: EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 8.0),
       width: MediaQuery.of(context).size.width * 0.95,
       child: Column(
@@ -70,13 +71,13 @@ class _PDColorSelectorState extends State<PDColorSelector> {
               child: Text(
                 'Select a color',
                 style: TextStyle(
-                    color: primaryDark,
+                    color: textColor,
                     fontSize: 18.0,
                     fontWeight: FontWeight.w500),
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 18.0, top: 20.0),
+              padding: EdgeInsets.only(left: 18.0, top: 20.0, bottom: 18.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: colorWidgets,

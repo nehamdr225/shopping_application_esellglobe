@@ -32,7 +32,7 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
             decoration: BoxDecoration(
                 color: active == i.toString() ? primary : Colors.transparent,
                 shape: BoxShape.rectangle,
-                border: Border.all(color: Colors.black87)),
+                border: Border.all(color: Colors.grey[200])),
             child: Text(
               i.toString(),
               style: TextStyle(
@@ -60,6 +60,7 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
         padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 8.0),
         width: screenWidth * 0.95,
         decoration: BoxDecoration(
+          color: Colors.white,
             borderRadius: BorderRadius.only(bottomLeft: Radius.circular(0.0))),
         child: Column(
           children: <Widget>[
@@ -72,29 +73,45 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
                 Padding(
                   padding: EdgeInsets.only(left: 14.0),
                   child: Text(
-                    "Select Size ",
-                    style: Theme.of(context).textTheme.body2,
+                    "Size- ",
+                    style: TextStyle(
+                    color: textColor,
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.w500),
                     textAlign: TextAlign.left,
                   ),
                 ),
                 Text(
-                  "UK",
-                  style: Theme.of(context).textTheme.body2,
+                  "UK/India",
+                  style: Theme.of(context).textTheme.body2.copyWith(color: textColor),
                   textAlign: TextAlign.start,
                 ),
                 Padding(
                   padding: EdgeInsets.only(right: 145.0),
                 ),
-                IconButton(
-                  icon: Icon(
-                    Icons.more_vert,
-                    color: Theme.of(context).colorScheme.primaryVariant,
+                InkWell(
+                  child: Container(
+                    padding: EdgeInsets.only(right: 7.0),
+                    child: Row(
+                      children: <Widget>[
+                        Icon(Icons.linear_scale, color: primaryDark,),
+                        Text(
+                          'Size Chart',
+                          style: Theme.of(context)
+                              .textTheme
+                              .body1
+                              .copyWith(color: primaryDark),
+                        )
+                      ],
+                    ),
                   ),
-                  onPressed: () {},
                 )
               ],
             ),
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: widgets)
+            Padding(
+              padding: const EdgeInsets.only(top: 18.0),
+              child: Row(mainAxisAlignment: MainAxisAlignment.center, children: widgets),
+            )
           ],
         ));
   }
