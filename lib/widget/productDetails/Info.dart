@@ -1,5 +1,5 @@
-import 'package:esell/state/src/theme.dart';
-import 'package:esell/widget/atoms/Text.dart';
+// import 'package:esell/state/src/theme.dart';
+// import 'package:esell/widget/atoms/Text.dart';
 import 'package:flutter/material.dart';
 //import 'package:esell/widget/atoms/StarRating.dart';
 
@@ -95,8 +95,8 @@ class PDInfo extends StatelessWidget {
                 child: Row(
                   children: <Widget>[
                     Container(
-                      width: 58.0,
-                      height: 30.0,
+                       width: 64.0,
+                      height: 40.0,
                       child: Chip(
                         backgroundColor: Colors.green,
                         label: Row(
@@ -110,6 +110,9 @@ class PDInfo extends StatelessWidget {
                                     color: Colors.white,
                                     fontSize: 13.0,
                                   ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.all(2.0),
                             ),
                             Icon(
                               Icons.star,

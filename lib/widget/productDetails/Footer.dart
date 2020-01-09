@@ -5,7 +5,7 @@ import 'package:esell/widget/atoms/Snackbar.dart';
 import 'package:esell/widget/molecules/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:esell/state/src/theme.dart';
+// import 'package:esell/state/src/theme.dart';
 
 class PDFooter extends StatelessWidget {
   final String id, color;

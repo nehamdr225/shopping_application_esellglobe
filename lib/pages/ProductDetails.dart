@@ -1,10 +1,11 @@
 import 'dart:convert';
-import 'package:esell/widget/atoms/StarRating.dart';
+// import 'package:esell/widget/atoms/StarRating.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:esell/widget/productDetails/Carousel.dart';
 import 'package:esell/widget/productDetails/ColorSelector.dart';
 import 'package:esell/widget/productDetails/Offer.dart';
-import 'package:esell/widget/productDetails/TabView.dart';
+import 'package:esell/widget/productDetails/PDratingNreview.dart';
+// import 'package:esell/widget/productDetails/TabView.dart';
 import 'package:esell/widget/productDetails/delivery.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -93,7 +94,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                 price: product['price'].toString(),
                 colors: product['colors'],
                 sizes: json.decode(product['sizes'])),
-
+            PDratingNreview(),
+            Padding(padding: EdgeInsets.all(10.0),)
             // Padding(
             //     padding: const EdgeInsets.all(8.0),
             //     child: TabView(
