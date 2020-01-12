@@ -3,7 +3,7 @@ import 'package:esell/entities/user.api.dart';
 import 'package:esell/pages/Signup.dart';
 import 'package:esell/pages/Home.dart';
 import 'package:esell/widget/atoms/BrandLogos.dart';
-import 'package:esell/widget/molecules/AppBar.dart';
+import 'package:esell/widget/molecules/BlueAppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/widget/atoms/Forms.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
@@ -102,26 +102,58 @@ class _PageState extends State<SignInPage> {
         resizeToAvoidBottomInset: true,
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(40.0),
-          child: FAppBar(
-            title: "Sign In",
+          child: BlueAppBar(
+            elevation: 0.0,
+            search: false,
+            cart: false,
           ),
         ),
         resizeToAvoidBottomPadding: false,
         body: ListView(
           children: <Widget>[
+            Container(
+              color: primaryDark,
+              height: 10.0,
+            ),
+            Container(
+                height: 20.0,
+                color: primaryDark,
+                child: Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(20.0),
+                          topRight: Radius.circular(20.0)),
+                      color: Colors.white),
+                )),
             Padding(
               padding: EdgeInsets.only(top: 30),
               child: BrandLogos(),
             ),
             Padding(
-              padding: EdgeInsets.all(20.0),
+              padding: EdgeInsets.all(10.0),
+            ),
+            FancyText(
+                // continue w/o signin
+                color: textColor,
+                text: "Login with email",
+                size: 18.0,
+                fontfamily: 'Montserrat',
+                fontWeight: FontWeight.w600,
+                onTap: () {
+                  // Navigator.push(context,
+                  //     MaterialPageRoute(builder: (context) => HomePageApp()));
+                }),
+            Padding(
+              padding: EdgeInsets.all(10.0),
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
               child: FForms(
                   type: TextInputType.emailAddress,
                   text: "Email",
-                  onChanged: setEmail),
+                  onChanged: setEmail,
+                  
+              ),
             ),
             emailErr != null
                 ? Text(

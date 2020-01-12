@@ -3,7 +3,7 @@ import 'package:esell/entities/user.api.dart';
 import 'package:esell/pages/Signin.dart';
 import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/BrandLogos.dart';
-import 'package:esell/widget/molecules/AppBar.dart';
+import 'package:esell/widget/molecules/BlueAppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/widget/atoms/Forms.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
@@ -86,16 +86,42 @@ class _PageState extends State<SignUpPage> {
         resizeToAvoidBottomInset: true,
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(40.0),
-          child: FAppBar(
-            title: "Register",
+          child: BlueAppBar(
+            elevation: 0.0,
+            search: false,
+            cart: false,
           ),
         ),
         body: ListView(
           children: <Widget>[
+            Container(
+              color: primaryDark,
+              height: 10.0,
+            ),
+            Container(
+                height: 20.0,
+                color: primaryDark,
+                child: Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(20.0),
+                          topRight: Radius.circular(20.0)),
+                      color: Colors.white),
+                )),
             Padding(
-              padding: EdgeInsets.only(top: 30.0),
+              padding: EdgeInsets.only(top: 30.0, bottom: 10.0),
               child: BrandLogos(),
             ),
+            FancyText(
+                color: textColor,
+                text: "Set up your account",
+                size: 18.0,
+                fontfamily: 'Montserrat',
+                fontWeight: FontWeight.w600,
+                onTap: () {
+                  // Navigator.push(context,
+                  //     MaterialPageRoute(builder: (context) => HomePageApp()));
+                }),
             Padding(
               padding: EdgeInsets.all(20.0),
             ),
@@ -140,14 +166,21 @@ class _PageState extends State<SignUpPage> {
                     textAlign: TextAlign.center,
                   )
                 : Text(''),
-            signupErr != null ? Text(signupErr) : Text(''),
+            signupErr != null
+                ? Text(
+                    signupErr,
+                    style: TextStyle(color: Colors.red, fontSize: 15.0, fontWeight: FontWeight.w600),
+                    textAlign: TextAlign.center,
+                  )
+                : Text(''),
             // FForms(type: TextInputType.phone, text: "Mobile No."),
+            Padding(padding: EdgeInsets.all(8.0),),
             Align(
               alignment: Alignment.center,
               child: isActive
                   ? CircularProgressIndicator()
                   : FRaisedButton(
-                      text: "Register now",
+                      text: "Complete",
                       width: 160.0,
                       height: 45.0,
                       shape: true,

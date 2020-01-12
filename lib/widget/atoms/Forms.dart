@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class FForms extends StatelessWidget {
   final bool obscure;
   final String text;
-  final Icon icon;
+  final icon;
+  final prefix;
   final TextInputType type;
   final Function onChanged;
   final height;
@@ -22,6 +23,7 @@ class FForms extends StatelessWidget {
     this.obscure: false,
     this.onChanged,
     this.icon,
+    this.prefix,
     this.underline: false,
   });
 
@@ -40,6 +42,7 @@ class FForms extends StatelessWidget {
               borderSide: BorderSide(
             color: Theme.of(context).colorScheme.primary,
           )),
+          prefix: prefix,
           prefixIcon: icon,
           hintText: text,
           labelStyle: style,

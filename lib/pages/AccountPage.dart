@@ -1,15 +1,11 @@
 import 'package:esell/pages/AccountEdit.dart';
 import 'package:esell/pages/AddressPage.dart';
-import 'package:esell/pages/Cart.dart';
-import 'package:esell/pages/Home.dart';
 import 'package:esell/pages/OrdertrackPage.dart';
-import 'package:esell/pages/SearchPage.dart';
 import 'package:esell/state/src/theme.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/molecules/AccountCards.dart';
-import 'package:esell/widget/molecules/Icons.dart';
+import 'package:esell/widget/molecules/BlueAppBar.dart';
 import 'package:flutter/material.dart';
-
 import 'package:esell/state/state.dart';
 import 'package:provider/provider.dart';
 
@@ -24,35 +20,7 @@ class AccountPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(40.0),
-          child: AppBar(
-            elevation: 0.5,
-            backgroundColor: primaryDark,
-            leading: IconButton(
-              icon: Icon(Icons.arrow_back),
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => HomePageApp()));
-              },
-            ),
-            actions: <Widget>[
-              FIcons(
-                icon: Icons.search,
-                alignment: Alignment.centerRight,
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SearchPage()));
-                },
-              ),
-              FIcons(
-                  icon: Icons.shopping_cart,
-                  alignment: Alignment.centerRight,
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => CartPage()));
-                  })
-            ],
-          )),
+          preferredSize: Size.fromHeight(40.0), child: BlueAppBar()),
       body: ListView(
         children: <Widget>[
           Stack(
@@ -77,10 +45,10 @@ class AccountPage extends StatelessWidget {
                             userData['name'].split(' ').reduce((a, b) {
                               return '${a[0]} ${b[0]}';
                             }),
-                            style: Theme.of(context)
-                                .textTheme
-                                .body1
-                                .copyWith(color: primaryDark, fontSize: 24.0, fontWeight: FontWeight.w700),
+                            style: Theme.of(context).textTheme.body1.copyWith(
+                                color: primaryDark,
+                                fontSize: 24.0,
+                                fontWeight: FontWeight.w700),
                           ),
                   ),
                   Padding(
@@ -117,18 +85,16 @@ class AccountPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[
                           IconButton(
-                                icon: Icon(Icons.edit),
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => AccountEdit()));
-                                },
-                              ),
+                            icon: Icon(Icons.edit),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => AccountEdit()));
+                            },
+                          ),
                         ],
                       )
-                     
-                      
                     ],
                   ),
                 ],
