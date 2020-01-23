@@ -1,4 +1,5 @@
 import 'package:esell/pages/Cart.dart';
+import 'package:esell/pages/Home.dart';
 import 'package:esell/pages/SearchPage.dart';
 import 'package:esell/state/src/theme.dart';
 import 'package:esell/widget/molecules/Icons.dart';
@@ -17,9 +18,9 @@ class BlueAppBar extends StatelessWidget {
       leading: IconButton(
         icon: Icon(Icons.arrow_back),
         onPressed: () {
-          Navigator.pop(context);
-          // Navigator.push(
-          //     context, MaterialPageRoute(builder: (context) => HomePageApp()));
+          //Navigator.pop(context);
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => HomePageApp()));
         },
       ),
       actions: <Widget>[

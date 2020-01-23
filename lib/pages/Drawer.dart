@@ -1,4 +1,5 @@
 import 'package:esell/pages/AccountPage.dart';
+import 'package:esell/pages/HelpCenter.dart';
 import 'package:esell/widget/AnimatingLine.dart';
 import 'package:esell/widget/atoms/DrawerEPanel.dart';
 import 'package:esell/widget/atoms/DrawerElements.dart';
@@ -104,7 +105,11 @@ class DrawerApp extends StatelessWidget {
             DrawerEPanel(
               [
                 ListItem(
-                    title: Image.asset("images/icons/men.png", height: 20.0, width: 20.0,),
+                    title: Image.asset(
+                      "images/icons/men.png",
+                      height: 20.0,
+                      width: 20.0,
+                    ),
                     subtitle: "Men",
                     bodyBuilder: (context) => Column(
                           children: <Widget>[
@@ -154,11 +159,14 @@ class DrawerApp extends StatelessWidget {
                         )),
               ],
             ),
-            Padding(padding: EdgeInsets.all(3.0),),
+            Padding(
+              padding: EdgeInsets.all(3.0),
+            ),
             DrawerEPanel(
               [
                 ListItem(
-                    title: Image.asset("images/icons/women.png", height: 20.0, width: 20.0),
+                    title: Image.asset("images/icons/women.png",
+                        height: 20.0, width: 20.0),
                     subtitle: "Women",
                     bodyBuilder: (context) => Column(
                           children: <Widget>[
@@ -286,6 +294,17 @@ class DrawerApp extends StatelessWidget {
                     color: Colors.grey[500],
                     height: 5.0,
                   ),
+            DrawerElements(
+              //Customer Service
+              title: 'Help Center',
+              icon: 'images/icons/CustomerService.png',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HelpCenter()),
+                );
+              },
+            ),
             DrawerElements(
               // About
               title: 'About',

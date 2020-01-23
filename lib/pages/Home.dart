@@ -98,13 +98,14 @@ class _HomePageAppState extends State<HomePageApp>
                       })
                 ],
                 bottom: PreferredSize(
-                  preferredSize: Size.fromHeight(50.0),
+                  preferredSize: Size.fromHeight(60.0),
                   child: Padding(
                     padding: EdgeInsets.all(7.0),
                     child: FForms(
-                      height: 35.0,
+                      height: 45.0,
                       width: width * 0.90,
                       text: 'Search for fashion',
+                      labeltext: false,
                       icon: Icon(Icons.search),
                     ),
                   ),

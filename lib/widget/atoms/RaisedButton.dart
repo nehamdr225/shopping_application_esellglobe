@@ -13,20 +13,25 @@ class FRaisedButton extends StatelessWidget {
   final image;
   final imgcolor;
   final elevation;
-  FRaisedButton(
-      {this.text,
-      this.fontSize: 18.0,
-      this.fontWeight,
-      this.shape: false,
-      this.onPressed,
-      this.color,
-      this.bg,
-      this.width,
-      this.height,
-      this.elevation,
-      this.image,
-      this.imgcolor,
-      this.needIcon: false});
+  final TextAlign textAlign;
+  final MainAxisAlignment mainAxisAlignment;
+  FRaisedButton({
+    this.text,
+    this.fontSize: 18.0,
+    this.fontWeight,
+    this.shape: false,
+    this.onPressed,
+    this.color,
+    this.bg,
+    this.width,
+    this.height,
+    this.elevation,
+    this.image,
+    this.imgcolor,
+    this.needIcon: false,
+    this.textAlign: TextAlign.center,
+    this.mainAxisAlignment: MainAxisAlignment.center,
+  });
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -48,18 +53,35 @@ class FRaisedButton extends StatelessWidget {
                       Text(
                         text,
                         textAlign: TextAlign.center,
-                        style: Theme.of(context)
-                            .textTheme
-                            .body1
-                            .copyWith(fontSize: 16.0, color: color, fontWeight: fontWeight),
+                        style: Theme.of(context).textTheme.body1.copyWith(
+                            fontSize: 16.0,
+                            color: color,
+                            fontWeight: fontWeight),
                       ),
                     ])
-              : Text(
-                  text,
-                  style: Theme.of(context)
-                      .textTheme
-                      .body1
-                      .copyWith(fontSize: fontSize, color: color, fontWeight: fontWeight),
+              : Flex(
+                  direction: Axis.vertical,
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.all(5.0),
+                    ),
+                    Row(
+                      mainAxisAlignment: mainAxisAlignment,
+                      children: <Widget>[
+                        Flexible(
+                          flex: 2,
+                          child: Text(
+                            text,
+                            textAlign: textAlign,
+                            style: Theme.of(context).textTheme.body1.copyWith(
+                                fontSize: fontSize,
+                                color: color,
+                                fontWeight: fontWeight),
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
                 ),
           shape: shape == false
               ? Border.all(

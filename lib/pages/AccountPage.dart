@@ -20,7 +20,10 @@ class AccountPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(40.0), child: BlueAppBar()),
+          preferredSize: Size.fromHeight(40.0),
+          child: BlueAppBar(
+            
+          )),
       body: ListView(
         children: <Widget>[
           Stack(

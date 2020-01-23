@@ -1,8 +1,10 @@
+import 'package:esell/state/src/theme.dart';
 import 'package:flutter/material.dart';
 
 class FForms extends StatelessWidget {
   final bool obscure;
   final String text;
+  final bool labeltext;
   final icon;
   final prefix;
   final TextInputType type;
@@ -10,6 +12,7 @@ class FForms extends StatelessWidget {
   final height;
   final width;
   final underline;
+  final borderColor;
   final style = TextStyle(
       fontFamily: 'Montserrat',
       fontWeight: FontWeight.bold,
@@ -18,6 +21,7 @@ class FForms extends StatelessWidget {
   FForms({
     this.text,
     this.height,
+    this.labeltext: true,
     this.width,
     this.type,
     this.obscure: false,
@@ -25,14 +29,16 @@ class FForms extends StatelessWidget {
     this.icon,
     this.prefix,
     this.underline: false,
+    this.borderColor : Colors.white,
   });
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       height: height,
       width: width,
-          child: TextField(
+      color: borderColor,
+      child: TextField(
         keyboardType: type,
         autofocus: false,
         obscureText: obscure,
@@ -40,17 +46,18 @@ class FForms extends StatelessWidget {
         decoration: InputDecoration(
           border: OutlineInputBorder(
               borderSide: BorderSide(
-            color: Theme.of(context).colorScheme.primary,
+            color: primaryDark
           )),
           prefix: prefix,
           prefixIcon: icon,
-          hintText: text,
+          hintText: labeltext == true ? text : '',
+          enabled: true,
           labelStyle: style,
           labelText: text,
           enabledBorder: underline == false
               ? OutlineInputBorder(
                   borderSide:
-                      BorderSide(color: Theme.of(context).colorScheme.primary))
+                      BorderSide(color: primaryDark))
               : UnderlineInputBorder(
                   borderSide: BorderSide(
                   color: Theme.of(context).colorScheme.primaryVariant,
