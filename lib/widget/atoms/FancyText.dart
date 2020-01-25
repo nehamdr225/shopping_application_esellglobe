@@ -22,9 +22,7 @@ class FancyText extends StatelessWidget {
       this.textAlign: TextAlign.center});
   @override
   Widget build(BuildContext context) {
-    return Container(
-      //height: 30.0,
-      child: Material(
+    return Material(
         color: Colors.transparent,
         child: InkWell(
           onTap: onTap,
@@ -39,6 +37,6 @@ class FancyText extends StatelessWidget {
                   decorationColor: primaryDark),
         ),
       ),
-    ));
+    );
   }
 }

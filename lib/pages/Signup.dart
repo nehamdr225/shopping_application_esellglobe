@@ -1,5 +1,6 @@
 import 'package:esell/core/validators.dart';
 import 'package:esell/entities/user.api.dart';
+import 'package:esell/pages/Home.dart';
 import 'package:esell/pages/Signin.dart';
 import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/BrandLogos.dart';
@@ -90,6 +91,10 @@ class _PageState extends State<SignUpPage> {
             elevation: 0.0,
             search: false,
             cart: false,
+            onPressed: (){
+            Navigator.push(
+              context, MaterialPageRoute(builder: (context) => HomePageApp()));
+          },
           ),
         ),
         body: ListView(

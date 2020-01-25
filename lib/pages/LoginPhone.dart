@@ -1,3 +1,4 @@
+import 'package:esell/pages/Home.dart';
 import 'package:esell/pages/SendOTP.dart';
 import 'package:esell/pages/Signin.dart';
 import 'package:esell/state/src/theme.dart';
@@ -51,6 +52,10 @@ class _LoginPhoneState extends State<LoginPhone> {
             elevation: 0.0,
             search: false,
             cart: false,
+            onPressed: (){
+            Navigator.push(
+              context, MaterialPageRoute(builder: (context) => HomePageApp()));
+          },
           ),
         ),
         resizeToAvoidBottomPadding: false,

@@ -1,5 +1,6 @@
 import 'package:esell/pages/AccountEdit.dart';
 import 'package:esell/pages/AddressPage.dart';
+import 'package:esell/pages/Home.dart';
 import 'package:esell/pages/OrdertrackPage.dart';
 import 'package:esell/state/src/theme.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
@@ -22,7 +23,10 @@ class AccountPage extends StatelessWidget {
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(40.0),
           child: BlueAppBar(
-            
+            onPressed: (){
+            Navigator.push(
+              context, MaterialPageRoute(builder: (context) => HomePageApp()));
+          },
           )),
       body: ListView(
         children: <Widget>[

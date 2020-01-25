@@ -1,3 +1,4 @@
+import 'package:esell/pages/Home.dart';
 import 'package:esell/pages/Signup.dart';
 import 'package:esell/state/src/theme.dart';
 import 'package:esell/widget/atoms/BrandLogos.dart';
@@ -54,6 +55,10 @@ class _SendOTPState extends State<SendOTP> {
             elevation: 0.0,
             search: false,
             cart: false,
+            onPressed: (){
+            Navigator.push(
+              context, MaterialPageRoute(builder: (context) => HomePageApp()));
+          },
           ),
         ),
         resizeToAvoidBottomPadding: false,
