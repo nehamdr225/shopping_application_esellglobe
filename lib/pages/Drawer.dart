@@ -59,9 +59,9 @@ class DrawerApp extends StatelessWidget {
                             backgroundColor: Colors.white,
                             radius: 40.0,
                             child: Image.asset(
-                              'images/logo/logoonly1.png',
+                              'images/logo/logoonly.png',
                               height: 45.0,
-                              width: 45.0,
+                              width: 35.0,
                             ),
                           ),
                           Container(

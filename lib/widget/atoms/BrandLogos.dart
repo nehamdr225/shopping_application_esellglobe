@@ -11,7 +11,7 @@ class BrandLogos extends StatelessWidget {
     return Container(
       height: height,
       width: width,
-      child: Image.asset('images/logo/logoonly1.png'),
+      child: Image.asset('images/logo/logoonly.png'),
     );
   }
 }

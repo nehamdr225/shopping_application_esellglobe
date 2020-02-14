@@ -27,19 +27,22 @@ class _QueriesState extends State<Queries> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     //final size = MediaQuery.of(context).size;
     final colorScheme = Theme.of(context).colorScheme;
-    return Scaffold(
-      backgroundColor: colorScheme.background,
-      body: NestedScrollView(
-        controller: _scrollViewController,
-        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-          return <Widget>[
-            SliverApBar(
-              innerBoxIsScrolled: innerBoxIsScrolled,
-              title: widget.title,
-            )
-          ];
-        },
-        body: widget.widgets
-    ));
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: colorScheme.background,
+        body: NestedScrollView(
+          controller: _scrollViewController,
+          physics: NeverScrollableScrollPhysics(),
+          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+            return <Widget>[
+              SliverApBar(
+                innerBoxIsScrolled: innerBoxIsScrolled,
+                title: widget.title,
+              )
+            ];
+          },
+          body: widget.widgets
+      )),
+    );
   }
 }

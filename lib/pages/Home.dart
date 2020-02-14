@@ -57,7 +57,7 @@ class _HomePageAppState extends State<HomePageApp>
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
               SliverAppBar(
-                title: Image.asset('images/logo/logoonly1.png'),
+                title: Image.asset('images/logo/logoonly.png', height: 35.0,),
                 pinned: true,
                 floating: true,
                 forceElevated: innerBoxIsScrolled,
@@ -164,7 +164,7 @@ class _HomePageAppState extends State<HomePageApp>
               ),
               Container(
                 height: 250.0,
-                child: GridList(
+                child: GridList( 
                   type: 'men',
                   listViews: MEN,
                   crossAxisCount: 3,

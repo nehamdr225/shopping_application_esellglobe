@@ -197,7 +197,7 @@ class _CartPageState extends State<CartPage> {
                       text: 'Login',
                       color: Colors.white,
                       width: 150.0,
-                      height: 30.0,
+                      height: 40.0,
                       elevation: 0.5,
                       shape: true,
                       onPressed: () {

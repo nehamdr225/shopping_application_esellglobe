@@ -32,9 +32,9 @@ MERGED from /run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app
 application
 ADDED from /run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/src/main/AndroidManifest.xml:10:5-33:19
 	android:label
-		ADDED from /run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/src/main/AndroidManifest.xml:12:9-36
+		ADDED from /run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/src/main/AndroidManifest.xml:12:9-34
 	android:icon
-		ADDED from /run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/src/main/AndroidManifest.xml:13:9-41
+		ADDED from /run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/src/main/AndroidManifest.xml:13:9-45
 	android:name
 		ADDED from /run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/src/main/AndroidManifest.xml:11:9-57
 activity#com.lwg.esellglobe.MainActivity

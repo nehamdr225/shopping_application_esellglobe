@@ -9,8 +9,8 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="Esell Globe"
-        android:icon="@mipmap/logoonly1">
+        android:label="Shop2More"
+        android:icon="@mipmap/shop2morelogo">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

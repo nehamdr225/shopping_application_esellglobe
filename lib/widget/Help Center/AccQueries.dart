@@ -2,7 +2,7 @@ import 'package:esell/state/state.dart';
 import 'package:esell/widget/Help%20Center/ContactUs.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
-import 'package:esell/widget/molecules/AccountCards.dart';
+import 'package:esell/widget/Help%20Center/ContactUsCard.dart';
 import 'package:esell/widget/molecules/SliverApBar.dart';
 import 'package:flutter/material.dart';
 
@@ -99,13 +99,12 @@ class _AccQueriesState extends State<AccQueries>
                                   Padding(
                                     padding: EdgeInsets.all(2.0),
                                   ),
-                                  AccountCards(
+                                  ContactUsCard(
                                     padding: false,
                                     text: 'Issue still not resolved?',
                                     buttonText: 'Contact Us',
-                                    height: 110.0,
                                     onTap: () {},
-                                  )
+                                  ),
                                 ],
                               ),
                             )));
@@ -122,7 +121,23 @@ class _AccQueriesState extends State<AccQueries>
               color: textColor,
               textAlign: TextAlign.start,
               bg: Colors.white,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ContactUs(
+                              widgets: Column(
+                                children: <Widget>[
+                                  ContactUsCard(
+                                    padding: false,
+                                    text: 'Issue still not resolved?',
+                                    buttonText: 'Contact Us',
+                                    onTap: () {},
+                                  ),
+                                ],
+                              ),
+                            )));
+              },
               width: size.width * 0.90,
               height: 50.0,
               mainAxisAlignment: MainAxisAlignment.start,
