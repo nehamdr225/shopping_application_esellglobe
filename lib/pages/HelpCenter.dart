@@ -693,11 +693,12 @@ class _HelpCenterState extends State<HelpCenter> {
                                               Navigator.push(
                                                   context,
                                                   MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          ContactUs(
-                                                            widgets: Column(
-                                                              children: <
-                                                                  Widget>[
+                                                      builder:
+                                                          (context) =>
+                                                              ContactUs(
+                                                                widgets: Column(
+                                                                  children: <
+                                                                      Widget>[
                                                                     Container(
                                                                       color: Colors
                                                                           .white,
@@ -716,7 +717,7 @@ class _HelpCenterState extends State<HelpCenter> {
                                                                                 FancyText(
                                                                               fontWeight: FontWeight.w500,
                                                                               size: 17.0,
-                                                                              text: "I have requested for a return for my item. \nWhen will it happen?",
+                                                                              text: "How long does it take to cancel an order?",
                                                                             ),
                                                                           ),
                                                                           Padding(
@@ -725,7 +726,7 @@ class _HelpCenterState extends State<HelpCenter> {
                                                                             child:
                                                                                 FancyText(
                                                                               size: 17.0,
-                                                                              text: "You can now track the status of your return easily right from your Shop2More accunt or mobile app. Just visit the 'My Orders' page to see its status along with the date of pick up and status of your refund if applicable. \nYou will also receive an email & SMS with the details of your return.",
+                                                                              text: "Cancellation of item(s) in an order happens immediately if the order hasn't been shipped yet by the seller. If your order has been shipped, it will be cancelled as soon as the courier service confirms that the shipment is being returned to the seller. Orders from certain categories cannot be cancelled after 24 hours, please check the product page for more details.",
                                                                               textAlign: TextAlign.left,
                                                                             ),
                                                                           ),
@@ -737,18 +738,19 @@ class _HelpCenterState extends State<HelpCenter> {
                                                                           EdgeInsets.all(
                                                                               2.0),
                                                                     ),
-                                                                ContactUsCard(
-                                                                  padding:
-                                                                      false,
-                                                                  text:
-                                                                      'Issue still not resolved?',
-                                                                  buttonText:
-                                                                      'Contact Us',
-                                                                  onTap: () {},
+                                                                    ContactUsCard(
+                                                                      padding:
+                                                                          false,
+                                                                      text:
+                                                                          'Issue still not resolved?',
+                                                                      buttonText:
+                                                                          'Contact Us',
+                                                                      onTap:
+                                                                          () {},
+                                                                    ),
+                                                                  ],
                                                                 ),
-                                                              ],
-                                                            ),
-                                                          )));
+                                                              )));
                                             },
                                             width: size.width * 0.90,
                                             height: 50.0,
@@ -758,7 +760,7 @@ class _HelpCenterState extends State<HelpCenter> {
                                           FRaisedButton(
                                             elevation: 0.0,
                                             text:
-                                                'How can I use a new email address to log in to my Shop2More account',
+                                                "I've still not received the refund in my bank account.",
                                             color: textColor,
                                             textAlign: TextAlign.start,
                                             bg: Colors.white,
@@ -766,11 +768,12 @@ class _HelpCenterState extends State<HelpCenter> {
                                               Navigator.push(
                                                   context,
                                                   MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          ContactUs(
-                                                            widgets: Column(
-                                                              children: <
-                                                                  Widget>[
+                                                      builder:
+                                                          (context) =>
+                                                              ContactUs(
+                                                                widgets: Column(
+                                                                  children: <
+                                                                      Widget>[
                                                                     Container(
                                                                       color: Colors
                                                                           .white,
@@ -789,7 +792,7 @@ class _HelpCenterState extends State<HelpCenter> {
                                                                                 FancyText(
                                                                               fontWeight: FontWeight.w500,
                                                                               size: 17.0,
-                                                                              text: "I have requested for a return for my item. \nWhen will it happen?",
+                                                                              text: "I've still not received the refund in my bank account.",
                                                                             ),
                                                                           ),
                                                                           Padding(
@@ -798,7 +801,7 @@ class _HelpCenterState extends State<HelpCenter> {
                                                                             child:
                                                                                 FancyText(
                                                                               size: 17.0,
-                                                                              text: "You can now track the status of your return easily right from your Shop2More accunt or mobile app. Just visit the 'My Orders' page to see its status along with the date of pick up and status of your refund if applicable. \nYou will also receive an email & SMS with the details of your return.",
+                                                                              text: "If you have received a mail from us confrming your refund request, it means that the refund has already been initiated. You can contact your bank with the ARN you received in the email.\nIn rare events of amount not being credited by the date promised, you can contact us as we will work with the bank to get it done.",
                                                                               textAlign: TextAlign.left,
                                                                             ),
                                                                           ),
@@ -810,18 +813,94 @@ class _HelpCenterState extends State<HelpCenter> {
                                                                           EdgeInsets.all(
                                                                               2.0),
                                                                     ),
-                                                                ContactUsCard(
-                                                                  padding:
-                                                                      false,
-                                                                  text:
-                                                                      'Issue still not resolved?',
-                                                                  buttonText:
-                                                                      'Contact Us',
-                                                                  onTap: () {},
+                                                                    ContactUsCard(
+                                                                      padding:
+                                                                          false,
+                                                                      text:
+                                                                          'Issue still not resolved?',
+                                                                      buttonText:
+                                                                          'Contact Us',
+                                                                      onTap:
+                                                                          () {},
+                                                                    ),
+                                                                  ],
                                                                 ),
-                                                              ],
-                                                            ),
-                                                          )));
+                                                              )));
+                                            },
+                                            width: size.width * 0.90,
+                                            height: 50.0,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                          ),
+                                          FRaisedButton(
+                                            elevation: 0.0,
+                                            text:
+                                                "Why can't I track my order even though it has already been shipped?",
+                                            color: textColor,
+                                            textAlign: TextAlign.start,
+                                            bg: Colors.white,
+                                            onPressed: () {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder:
+                                                          (context) =>
+                                                              ContactUs(
+                                                                widgets: Column(
+                                                                  children: <
+                                                                      Widget>[
+                                                                    Container(
+                                                                      color: Colors
+                                                                          .white,
+                                                                      child:
+                                                                          Column(
+                                                                        crossAxisAlignment:
+                                                                            CrossAxisAlignment.start,
+                                                                        mainAxisAlignment:
+                                                                            MainAxisAlignment.start,
+                                                                        children: <
+                                                                            Widget>[
+                                                                          Padding(
+                                                                            padding:
+                                                                                const EdgeInsets.all(10.0),
+                                                                            child:
+                                                                                FancyText(
+                                                                              fontWeight: FontWeight.w500,
+                                                                              size: 17.0,
+                                                                              text: "Why can't I track my order even though it has already been shipped?",
+                                                                            ),
+                                                                          ),
+                                                                          Padding(
+                                                                            padding:
+                                                                                const EdgeInsets.all(10.0),
+                                                                            child:
+                                                                                FancyText(
+                                                                              size: 17.0,
+                                                                              text: "Courier service takes upto 24 hours to activate tracking for an order once it's shipped. Please check again after the mentioned time frame.",
+                                                                              textAlign: TextAlign.left,
+                                                                            ),
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                    ),
+                                                                    Padding(
+                                                                      padding:
+                                                                          EdgeInsets.all(
+                                                                              2.0),
+                                                                    ),
+                                                                    ContactUsCard(
+                                                                      padding:
+                                                                          false,
+                                                                      text:
+                                                                          'Issue still not resolved?',
+                                                                      buttonText:
+                                                                          'Contact Us',
+                                                                      onTap:
+                                                                          () {},
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              )));
                                             },
                                             width: size.width * 0.90,
                                             height: 50.0,
@@ -833,83 +912,6 @@ class _HelpCenterState extends State<HelpCenter> {
                                 Padding(
                                   padding: EdgeInsets.all(8.0),
                                 ),
-                                FRaisedButton(
-                                  elevation: 0.0,
-                                  text: "SELECT CATEGORY",
-                                  color: Colors.grey[400],
-                                  textAlign: TextAlign.start,
-                                  bg: Colors.white,
-                                  onPressed: () {},
-                                  width: size.width * 0.90,
-                                  height: 50.0,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  fontSize: 15.0,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                                FRaisedButton(
-                                  elevation: 0.0,
-                                  text: "Shop2more Plus",
-                                  color: textColor,
-                                  textAlign: TextAlign.start,
-                                  bg: Colors.white,
-                                  onPressed: () {},
-                                  width: size.width * 0.90,
-                                  height: 50.0,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  fontSize: 17.0,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                                FRaisedButton(
-                                  elevation: 0.0,
-                                  text: "Order",
-                                  color: textColor,
-                                  textAlign: TextAlign.start,
-                                  bg: Colors.white,
-                                  onPressed: () {},
-                                  width: size.width * 0.90,
-                                  height: 50.0,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  fontSize: 17.0,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                                FRaisedButton(
-                                  elevation: 0.0,
-                                  text: "Cancellations and Returns",
-                                  color: textColor,
-                                  textAlign: TextAlign.start,
-                                  bg: Colors.white,
-                                  onPressed: () {},
-                                  width: size.width * 0.90,
-                                  height: 50.0,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  fontSize: 17.0,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                                FRaisedButton(
-                                  elevation: 0.0,
-                                  text: "Payment",
-                                  color: textColor,
-                                  textAlign: TextAlign.start,
-                                  bg: Colors.white,
-                                  onPressed: () {},
-                                  width: size.width * 0.90,
-                                  height: 50.0,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  fontSize: 17.0,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                                FRaisedButton(
-                                    elevation: 0.5,
-                                    text: "View more",
-                                    color: primaryDark,
-                                    textAlign: TextAlign.start,
-                                    bg: Colors.white,
-                                    onPressed: () {},
-                                    width: size.width * 0.90,
-                                    height: 50.0,
-                                    fontSize: 17.0,
-                                    fontWeight: FontWeight.w500,
-                                    mainAxisAlignment: MainAxisAlignment.start),
                               ],
                             ),
                           )));
