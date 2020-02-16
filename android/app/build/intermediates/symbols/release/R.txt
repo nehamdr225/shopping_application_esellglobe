@@ -109,8 +109,8 @@ int layout notification_template_custom_big 0x7f070002
 int layout notification_template_icon_group 0x7f070003
 int layout notification_template_part_chronometer 0x7f070004
 int layout notification_template_part_time 0x7f070005
-int mipmap logo 0x7f080000
-int mipmap logoonly1 0x7f080001
+int mipmap shop2more 0x7f080000
+int mipmap shop2morelogo 0x7f080001
 int string status_bar_notification_info_overflow 0x7f090000
 int style LaunchTheme 0x7f0a0000
 int style TextAppearance_Compat_Notification 0x7f0a0001

@@ -19,8 +19,8 @@
     <application
         android:name="io.flutter.app.FlutterApplication"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-        android:icon="@mipmap/logoonly1"
-        android:label="Esell Globe" >
+        android:icon="@mipmap/shop2morelogo"
+        android:label="Shop2More" >
         <activity
             android:name="com.lwg.esellglobe.MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"

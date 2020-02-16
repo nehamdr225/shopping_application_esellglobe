@@ -58,9 +58,9 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /home/bee/.
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.0.0] /home/bee/.gradle/caches/transforms-2/files-2.1/7e62454a41e3fdd264a7c69779e83bb2/AndroidManifest.xml:22:18-86
 	android:label
-		ADDED from /run/media/bee/workshop/workshop/flutter/esell/android/app/src/main/AndroidManifest.xml:12:9-36
+		ADDED from /run/media/bee/workshop/workshop/flutter/esell/android/app/src/main/AndroidManifest.xml:12:9-34
 	android:icon
-		ADDED from /run/media/bee/workshop/workshop/flutter/esell/android/app/src/main/AndroidManifest.xml:13:9-41
+		ADDED from /run/media/bee/workshop/workshop/flutter/esell/android/app/src/main/AndroidManifest.xml:13:9-45
 	android:name
 		ADDED from /run/media/bee/workshop/workshop/flutter/esell/android/app/src/main/AndroidManifest.xml:11:9-57
 activity#com.lwg.esellglobe.MainActivity

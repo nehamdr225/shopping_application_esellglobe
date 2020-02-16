@@ -16,10 +16,10 @@
             ]
         },
         {
-            "outputFile": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/release/values-lt_values-lt.arsc.flat",
+            "outputFile": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/release/values-pl_values-pl.arsc.flat",
             "map": [
                 {
-                    "source": "/home/bee/.gradle/caches/transforms-2/files-2.1/7e62454a41e3fdd264a7c69779e83bb2/res/values-lt/values-lt.xml",
+                    "source": "/home/bee/.gradle/caches/transforms-2/files-2.1/7e62454a41e3fdd264a7c69779e83bb2/res/values-pl/values-pl.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -31,10 +31,10 @@
             ]
         },
         {
-            "outputFile": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/release/values-pl_values-pl.arsc.flat",
+            "outputFile": "/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/res/merged/release/values-lt_values-lt.arsc.flat",
             "map": [
                 {
-                    "source": "/home/bee/.gradle/caches/transforms-2/files-2.1/7e62454a41e3fdd264a7c69779e83bb2/res/values-pl/values-pl.xml",
+                    "source": "/home/bee/.gradle/caches/transforms-2/files-2.1/7e62454a41e3fdd264a7c69779e83bb2/res/values-lt/values-lt.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

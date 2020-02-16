@@ -110,8 +110,8 @@ layout notification_template_custom_big
 layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
-mipmap logo
-mipmap logoonly1
+mipmap shop2more
+mipmap shop2morelogo
 string status_bar_notification_info_overflow
 style LaunchTheme
 style TextAppearance_Compat_Notification
