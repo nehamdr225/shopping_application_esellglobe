@@ -44,10 +44,33 @@ class _ProductDetailsState extends State<ProductDetails> {
     final product = Provider.of<ProductModel>(context).one(widget.id);
 
     List<Image> images = [];
-    if (product['media'].length != 0 && product['media'][0]['src'] != null)
-      for (String src in product['media'][0]['src']) {
-        images.add(Image.network(src));
-      }
+    if (product['media']['front'].length > 0) {
+      images.add(Image.network(product['media']['front']));
+    }
+    if (product['media']['back'].length > 0) {
+      images.add(Image.network(product['media']['back']));
+    }
+    if (product['media']['left'].length > 0) {
+      images.add(Image.network(product['media']['left']));
+    }
+    if (product['media']['right'].length > 0) {
+      images.add(Image.network(product['media']['right']));
+    }
+    if (product['media']['top'].length > 0) {
+      images.add(Image.network(product['media']['top']));
+    }
+    if (product['media']['bottom'].length > 0) {
+      images.add(Image.network(product['media']['bottom']));
+    }
+    // Map<String, dynamic> images;
+    //  = {
+    //   'front': '',
+    //   'back': '',
+    //   'left': '',
+    //   'right': '',
+    //   'top': '',
+    //   'bottom': ''
+    // };
     if (product['error'] != null)
       return Text('Error occured fetching product info!');
     return SafeArea(
@@ -95,7 +118,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                 colors: product['colors'],
                 sizes: json.decode(product['sizes'])),
             PDratingNreview(),
-            Padding(padding: EdgeInsets.all(10.0),)
+            Padding(
+              padding: EdgeInsets.all(10.0),
+            )
             // Padding(
             //     padding: const EdgeInsets.all(8.0),
             //     child: TabView(

@@ -1,6 +1,15 @@
 import 'package:esell/state/src/theme.dart';
 import 'package:flutter/material.dart';
 
+/*
+Now the sizes string will either be in following formats:
+  1. 6-12 i.e sizes string will contain '-'
+    i.e. if sizes.contains('-')
+              do sizes.split('-') or similar
+  2. S;M;L i.e. sizes string will contain ';'
+    i.e. if sizes.contains(';')
+*/
+
 class PDSizeSelector extends StatefulWidget {
   final Function setSize;
   final sizes;
@@ -60,7 +69,7 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
         padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 8.0),
         width: screenWidth * 0.95,
         decoration: BoxDecoration(
-          color: Colors.white,
+            color: Colors.white,
             borderRadius: BorderRadius.only(bottomLeft: Radius.circular(0.0))),
         child: Column(
           children: <Widget>[
@@ -75,15 +84,18 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
                   child: Text(
                     "Size- ",
                     style: TextStyle(
-                    color: textColor,
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.w500),
+                        color: textColor,
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.w500),
                     textAlign: TextAlign.left,
                   ),
                 ),
                 Text(
                   "UK/India",
-                  style: Theme.of(context).textTheme.body2.copyWith(color: textColor),
+                  style: Theme.of(context)
+                      .textTheme
+                      .body2
+                      .copyWith(color: textColor),
                   textAlign: TextAlign.start,
                 ),
                 Padding(
@@ -94,7 +106,10 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
                     padding: EdgeInsets.only(right: 7.0),
                     child: Row(
                       children: <Widget>[
-                        Icon(Icons.linear_scale, color: primaryDark,),
+                        Icon(
+                          Icons.linear_scale,
+                          color: primaryDark,
+                        ),
                         Text(
                           'Size Chart',
                           style: Theme.of(context)
@@ -110,7 +125,9 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 18.0),
-              child: Row(mainAxisAlignment: MainAxisAlignment.center, children: widgets),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: widgets),
             )
           ],
         ));

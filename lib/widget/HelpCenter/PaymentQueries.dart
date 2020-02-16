@@ -1,6 +1,6 @@
 import 'package:esell/state/state.dart';
-import 'package:esell/widget/Help%20Center/ContactUs.dart';
-import 'package:esell/widget/Help%20Center/ContactUsCard.dart';
+import 'package:esell/widget/HelpCenter/ContactUs.dart';
+import 'package:esell/widget/HelpCenter/ContactUsCard.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/molecules/SliverApBar.dart';
