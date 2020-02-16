@@ -3,7 +3,8 @@ import 'package:esell/core/fetch.dart';
 
 class ProductApi {
   final Fetch _fetch;
-  final String url = "https://apiesell.herokuapp.com/products";
+  // final String url = "https://apiesell.herokuapp.com/products";
+  final String url = "https://seller.shop2more.com/products";
 
   ProductApi(this._fetch);
 
