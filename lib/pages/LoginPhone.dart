@@ -52,10 +52,10 @@ class _LoginPhoneState extends State<LoginPhone> {
             elevation: 0.0,
             search: false,
             cart: false,
-            onPressed: (){
-            Navigator.push(
-              context, MaterialPageRoute(builder: (context) => HomePageApp()));
-          },
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => HomePageApp()));
+            },
           ),
         ),
         resizeToAvoidBottomPadding: false,
@@ -104,13 +104,12 @@ class _LoginPhoneState extends State<LoginPhone> {
                     FForms(
                         type: TextInputType.phone,
                         text: "Phone Number",
-                        prefix:  Text('+91   ',
-                              textAlign: TextAlign.justify,
-                              style: TextStyle(
-                                  color: textColor,
-                                  fontSize: 18.0,
-                                  fontWeight: FontWeight.w600)
-                        ),
+                        prefix: Text('+91   ',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                                color: textColor,
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.w600)),
                         onChanged: setPhoneNum),
                     Padding(
                       padding: EdgeInsets.all(15.0),

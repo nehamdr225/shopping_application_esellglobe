@@ -12,7 +12,7 @@ Now the sizes string will either be in following formats:
 
 class PDSizeSelector extends StatefulWidget {
   final Function setSize;
-  final sizes;
+  final String sizes;
   PDSizeSelector({this.setSize, this.sizes});
 
   @override
@@ -20,11 +20,15 @@ class PDSizeSelector extends StatefulWidget {
 }
 
 class _PDSizeSelectorState extends State<PDSizeSelector> {
-  String active = "S";
+  String active;
+  List<String> sizeList;
+  String sizeType;
 
-  buildSizeWidgets(size) {
+  buildSizeWidgets() {
     List<Widget> widgets = [];
-    for (int i = size[0]; i <= size[1]; i++) {
+    for (int i = (sizeType == '-' ? sizeList[0] : 0);
+        i <= (sizeType == '-' ? sizeList[1] : sizeList.length - 1);
+        i++) {
       widgets.add(Padding(
         padding: const EdgeInsets.all(6.0),
         child: InkWell(
@@ -60,11 +64,26 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.sizes);
     var screenWidth = MediaQuery.of(context).size.width;
-    List sizeList = widget.sizes['uk'].split('-');
-    final mappedList = sizeList.map<int>((each) => int.parse(each)).toList();
-    final widgets = buildSizeWidgets(mappedList);
+
+    if (widget.sizes.contains('-')) {
+      final List<String> splitSizes = widget.sizes.split('-').toList();
+      setState(() {
+        sizeList = splitSizes;
+        active = splitSizes[0];
+        sizeType = '-';
+      });
+    } else if (widget.sizes.contains(';')) {
+      final List<String> splitSizes = widget.sizes.split(';').toList();
+      setState(() {
+        sizeList = splitSizes;
+        active = splitSizes[0];
+        sizeType = ';';
+      });
+    }
+
+    final widgets = buildSizeWidgets();
+
     return Container(
         padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 8.0),
         width: screenWidth * 0.95,

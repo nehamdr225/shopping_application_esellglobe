@@ -1,4 +1,0 @@
-#Sun Dec 08 18:36:19 NPT 2019
-base.0=/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/transforms/dexMerger/profile/0
-path.0=classes.dex
-renamed.0=classes.dex

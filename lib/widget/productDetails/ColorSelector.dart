@@ -9,13 +9,20 @@ class PDColorSelector extends StatefulWidget {
   _PDColorSelectorState createState() => _PDColorSelectorState();
 }
 
-const COLOR_TYPES = {
-  'black': Colors.black,
-  'blue': Colors.blue,
-  'red': Colors.red,
-  'green': Colors.green,
-  'brown': Colors.brown,
-  'white': Colors.white,
+//   'Violet',
+// 'Magenta', 'Chartreuse', 'Aqua', 'Fuchsia',
+// 'Maroon', 'Navy', 'Olive', 'Silver'
+const Map<String, Color> COLOR_TYPES = {
+  'Black': Colors.black,
+  'Blue': Colors.blue,
+  'Red': Colors.red,
+  'Green': Colors.green,
+  'Brown': Colors.brown,
+  'White': Colors.white,
+  'Yellow': Colors.yellow,
+  'Orange': Colors.orange,
+  'Purple': Colors.purple,
+  'Teal': Colors.teal,
 };
 
 class _PDColorSelectorState extends State<PDColorSelector> {
@@ -44,7 +51,7 @@ class _PDColorSelectorState extends State<PDColorSelector> {
               child: Container(
                 width: 14.0,
                 height: 14.0,
-                color: COLOR_TYPES[eachColor] ?? COLOR_TYPES['red'],
+                color: COLOR_TYPES[eachColor] ?? COLOR_TYPES['Red'],
               ),
             ),
           ),

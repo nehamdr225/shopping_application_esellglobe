@@ -91,10 +91,10 @@ class _PageState extends State<SignUpPage> {
             elevation: 0.0,
             search: false,
             cart: false,
-            onPressed: (){
-            Navigator.push(
-              context, MaterialPageRoute(builder: (context) => HomePageApp()));
-          },
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => HomePageApp()));
+            },
           ),
         ),
         body: ListView(
@@ -174,12 +174,17 @@ class _PageState extends State<SignUpPage> {
             signupErr != null
                 ? Text(
                     signupErr,
-                    style: TextStyle(color: Colors.red, fontSize: 15.0, fontWeight: FontWeight.w600),
+                    style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.w600),
                     textAlign: TextAlign.center,
                   )
                 : Text(''),
             // FForms(type: TextInputType.phone, text: "Mobile No."),
-            Padding(padding: EdgeInsets.all(8.0),),
+            Padding(
+              padding: EdgeInsets.all(8.0),
+            ),
             Align(
               alignment: Alignment.center,
               child: isActive

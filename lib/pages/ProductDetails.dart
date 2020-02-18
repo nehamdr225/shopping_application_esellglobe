@@ -107,16 +107,17 @@ class _ProductDetailsState extends State<ProductDetails> {
             ),
             PDoffer(),
             PDSizeSelector(
-              sizes: json.decode(product['sizes']),
+              sizes: product['sizes'],
               setSize: setSize,
             ),
             PDColorSelector(color: product['colors'], setColor: setColor),
             PDdelivery(),
             PDDetails(
-                details: json.decode(product['description']),
-                price: product['price'].toString(),
-                colors: product['colors'],
-                sizes: json.decode(product['sizes'])),
+              details: json.decode(product['description']),
+              price: product['price'].toString(),
+              // colors: product['colors'],
+              // sizes: product['sizes'],
+            ),
             PDratingNreview(),
             Padding(
               padding: EdgeInsets.all(10.0),

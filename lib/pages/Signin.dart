@@ -149,10 +149,9 @@ class _PageState extends State<SignInPage> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
               child: FForms(
-                  type: TextInputType.emailAddress,
-                  text: "Email",
-                  onChanged: setEmail,
-                  
+                type: TextInputType.emailAddress,
+                text: "Email",
+                onChanged: setEmail,
               ),
             ),
             emailErr != null

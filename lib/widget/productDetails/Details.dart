@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 class PDDetails extends StatelessWidget {
   final details;
-  final price, colors, sizes;
-  PDDetails({this.details, this.price, this.colors, this.sizes});
+  final price;
+  PDDetails({this.details, this.price});
   @override
   Widget build(BuildContext context) {
     final body1 = Theme.of(context).textTheme.body1.copyWith(fontSize: 16.0);
