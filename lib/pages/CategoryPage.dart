@@ -15,15 +15,7 @@ class CategoryPage extends StatelessWidget {
   CategoryPage({this.text, this.type});
   @override
   Widget build(BuildContext context) {
-    final cat = text == 'Top Wear'
-        ? 'top'
-        : text == 'Bottom Wear'
-            ? 'bottom'
-            : text == "Foot Wear"
-                ? 'shoe'
-                : text == "Backpacks" || text == "Bags"
-                    ? 'bags'
-                    : text == 'Sunglasses' ? 'glasses' : 'watches';
+    final cat = text;
 
     getCategoryItems(reqCategory) {
       List<String> filter =
@@ -34,21 +26,21 @@ class CategoryPage extends StatelessWidget {
     createWidgets() {
       List<Widget> widgets = [];
       SubMain[cat].forEach((each) {
-        print(each['cap']);
-        final categoryProduct = getCategoryItems(each['cap'].toLowerCase());
+        print(each['name']);
+        final categoryProduct = getCategoryItems(each['name'].toLowerCase());
         onpressed() {
           Navigator.push(
               context,
               MaterialPageRoute(
                   builder: (context) => ProductsPage(
-                        category: [cat, each['cap'].toLowerCase()], //type
+                        category: [cat, each['name']], //type
                       )));
         }
 
         widgets.addAll([
           InfoNavBar(
             text: each['name'],
-            type: each['cap'],
+            type: each['name'],
             onPressed: onpressed,
           ),
           Container(

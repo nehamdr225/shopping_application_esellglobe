@@ -16,8 +16,8 @@ const MEN = [
     "src": 'images/categoryimg/shoes.jpg',
   },
   {
-    "name": "Backpacks", //"Shoe",
-    "cap": "Backpacks", //"Shoe",
+    "name": "Bags & Backpacks", //"Shoe",
+    "cap": "Bags & Backpacks", //"Shoe",
     "src": 'images/categoryimg/bagmen.jpeg',
   },
   {
@@ -45,8 +45,8 @@ const WOMEN = [
     "src": 'images/women/shoes.jpeg',
   },
   {
-    "name": "Bags", //"Shoe",
-    "cap": "Bags", //"Shoe",
+    "name": "Bags & Backpacks", //"Shoe",
+    "cap": "Bags & Backpacks", //"Shoe",
     "src": 'images/women/bag.jpeg',
   },
   {
@@ -61,17 +61,17 @@ const WOMEN = [
   }
 ];
 
-const MAPPER = {
-  "Top Wear": "top",
-  "Bottom Wear": "bottom",
-  "Foot Wear": "shoe",
-  "Watches": "watches",
-  "Sunglasses": "glasses",
-  "Backpacks": "bags",
-  "Bags": "bags"
-};
+// const MAPPER = {
+//   "Top Wear": "top",
+//   "Bottom Wear": "bottom",
+//   "Foot Wear": "shoe",
+//   "Watches": "watches",
+//   "Sunglasses": "glasses",
+//   "Backpacks": "bags",
+//   "Bags": "bags"
+// };
 const SubMain = {
-  "top": [
+  "Top Wear": [
     {
       "name": "Casual Shirts",
       "cap": "Casual",
@@ -93,7 +93,7 @@ const SubMain = {
       "src": "images/SubMain/Shirt/jacket.jpg"
     },
   ],
-  "bottom": [
+  "Bottom Wear": [
     {
       "name": "Jeans Pants",
       "cap": "Jeans",
@@ -110,7 +110,7 @@ const SubMain = {
       "src": "images/SubMain/pant/sportswear.jpg"
     },
   ],
-  "shoe": [
+  "Foot Wear": [
     {
       "name": "Casual Shoes",
       "cap": "Casual",
@@ -132,21 +132,21 @@ const SubMain = {
       "src": "images/SubMain/foot/sandals.jpeg"
     },
   ],
-  "glasses": [
+  "Sunglasses": [
     {
       "name": "Glasses",
       "cap": "Glasses",
       "src": "images/SubMain/watchNglass/glasses.png"
     },
   ],
-  "watches": [
+  "Watches": [
     {
       "name": "Watches",
       "cap": "Watches",
       "src": "images/SubMain/watchNglass/watch.jpg"
     },
   ],
-  "bags": [
+  "Bags & Backpacks": [
     {
       "name": "Bags & Backpacks",
       "cap": "Bags",
