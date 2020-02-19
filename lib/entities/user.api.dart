@@ -4,10 +4,12 @@ import 'package:esell/core/fetch.dart';
 class UserApi {
   final Fetch _fetch;
   final CoreSecureStorage _storage;
-  final String url = "https://apiesell.herokuapp.com";
+  final String url = "https://api.shop2more.com";
 
   UserApi(this._fetch, this._storage);
 
+  //token & id --> success
+  //otp & id -->  not verified
   login(String email, String password, bool remember) async {
     Map<String, String> headers = {
       "Content-Type": "application/json",
@@ -24,10 +26,11 @@ class UserApi {
       return {"error": response['error']};
     }
     if (remember) _storage.savekeyVal('token', response['token']);
-    return {"token": response['token']};
+    return response;
   }
 
-  signup(String email, String password, String name) async {
+  //error, message & id
+  signup(String email, String password, String name, String contact) async {
     Map<String, String> headers = {
       "Content-Type": "application/json",
     };
@@ -37,6 +40,7 @@ class UserApi {
           'email': email,
           'password': password,
           'name': name,
+          'contact': contact,
         },
         headers: headers);
     return response;

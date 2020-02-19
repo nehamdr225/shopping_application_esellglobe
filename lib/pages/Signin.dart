@@ -1,5 +1,6 @@
 import 'package:esell/core/validators.dart';
 import 'package:esell/entities/user.api.dart';
+import 'package:esell/pages/SendOTP.dart';
 import 'package:esell/pages/Signup.dart';
 import 'package:esell/pages/Home.dart';
 import 'package:esell/widget/atoms/BrandLogos.dart';
@@ -59,10 +60,10 @@ class _PageState extends State<SignInPage> {
         setState(() {
           isActive = true;
         });
-        Map token = await api.login(email, password, remember);
-        if (token['error'] == null) {
-          user.token = token['token'];
-          api.getUser(token['token']).then((result) {
+        Map response = await api.login(email, password, remember);
+        if (response['token'] != null) {
+          user.token = response['token'];
+          api.getUser(response['token']).then((result) {
             if (result['error'] == null) {
               if (result['message'] != null &&
                   result['message'] == "Auth failed") {
@@ -70,7 +71,7 @@ class _PageState extends State<SignInPage> {
                   user.token = null;
                 });
               } else if (result['result']['cart'] != null) {
-                api.getCart(token['token']).then((data) {
+                api.getCart(response['token']).then((data) {
                   if (data['error'] == null)
                     user.cart = data['result']['products'];
                 });
@@ -83,11 +84,17 @@ class _PageState extends State<SignInPage> {
           });
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => HomePageApp()));
-        } else {
+        } else if (response['error'] != null) {
           setState(() {
-            loginErr = token['error'];
+            loginErr = response['error'];
             isActive = false;
           });
+        } else if (response['otp'] != null) {
+          setState(() {
+            isActive = false;
+          });
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => SendOTP()));
         }
       } catch (err) {
         setState(() {

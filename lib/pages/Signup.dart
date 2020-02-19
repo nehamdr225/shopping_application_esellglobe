@@ -17,8 +17,8 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _PageState extends State<SignUpPage> {
-  String name, email, password;
-  String nameErr, emailErr, passwordErr, signupErr;
+  String name, email, password, contact, id;
+  String nameErr, emailErr, passwordErr, signupErr, contactErr;
   bool isActive = false;
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class _PageState extends State<SignUpPage> {
         });
       else if (emailErr != null)
         setState(() {
-          nameErr = "name is not valid!";
+          nameErr = "Name is not valid!";
         });
     };
 
@@ -45,7 +45,7 @@ class _PageState extends State<SignUpPage> {
         });
       else if (emailErr != null)
         setState(() {
-          emailErr = "email is not valid!";
+          emailErr = "Email is not valid!";
         });
     };
 
@@ -62,11 +62,27 @@ class _PageState extends State<SignUpPage> {
         });
     };
 
+    final setContact = (data) {
+      setState(() {
+        password = data;
+      });
+      if (data.length >= 8 && password != null) {
+        setState(() {
+          passwordErr = null;
+        });
+      } else if (password == null) {
+        setState(() {
+          passwordErr = "Contact is not valid!";
+        });
+      }
+    };
+
     var signupUser = () async {
       setState(() {
         isActive = true;
       });
-      var message = await api.signup(email, password, name);
+      final message = await api.signup(email, password, name, contact);
+      //message & id
       print(message);
       if (message['error'] != null)
         setState(() {
@@ -75,6 +91,7 @@ class _PageState extends State<SignUpPage> {
         });
       else {
         setState(() {
+          id = message.id;
           isActive = false;
         });
         Navigator.push(
@@ -168,6 +185,19 @@ class _PageState extends State<SignUpPage> {
             passwordErr != null
                 ? Text(
                     passwordErr,
+                    textAlign: TextAlign.center,
+                  )
+                : Text(''),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25),
+              child: FForms(
+                  type: TextInputType.emailAddress,
+                  text: "Contact",
+                  onChanged: setContact),
+            ),
+            contactErr != null
+                ? Text(
+                    contactErr,
                     textAlign: TextAlign.center,
                   )
                 : Text(''),

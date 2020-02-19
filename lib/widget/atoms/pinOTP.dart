@@ -70,8 +70,7 @@ class PinOTPState extends State<PinOTP> {
     return Row(
         mainAxisAlignment: MainAxisAlignment.center,
         verticalDirection: VerticalDirection.down,
-        children: textFields
-    );
+        children: textFields);
   }
 
   void clearTextFields() {
@@ -112,18 +111,19 @@ class PinOTPState extends State<PinOTP> {
         focusNode: _focusNodes[i],
         obscureText: widget.isTextObscure,
         decoration: InputDecoration(
-            counterText: "",
-            enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(
-                    style: BorderStyle.solid,
-                    width: 2.0,
-                    color: Colors.grey[700])),
-            focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(
-                    style: BorderStyle.solid, width: 2.0, color: primaryDark)),),
-            // border: widget.showFieldAsBox
-            //     ? OutlineInputBorder(borderSide: BorderSide(width: 2.0))
-            //     : null),
+          counterText: "",
+          enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(
+                  style: BorderStyle.solid,
+                  width: 2.0,
+                  color: Colors.grey[700])),
+          focusedBorder: UnderlineInputBorder(
+              borderSide: BorderSide(
+                  style: BorderStyle.solid, width: 2.0, color: primaryDark)),
+        ),
+        // border: widget.showFieldAsBox
+        //     ? OutlineInputBorder(borderSide: BorderSide(width: 2.0))
+        //     : null),
         onChanged: (String str) {
           setState(() {
             _pin[i] = str;

@@ -1,4 +1,6 @@
+import 'package:esell/entities/user.api.dart';
 import 'package:esell/pages/Home.dart';
+import 'package:esell/pages/Signin.dart';
 import 'package:esell/pages/Signup.dart';
 import 'package:esell/state/src/theme.dart';
 import 'package:esell/widget/atoms/BrandLogos.dart';
@@ -8,44 +10,39 @@ import 'package:esell/widget/atoms/pinOTP.dart';
 import 'package:esell/widget/molecules/BlueAppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/state/state.dart';
-//import 'package:provider/provider.dart';
-//import 'package:esell/core/validators.dart';
-// import 'package:esell/entities/user.api.dart';
+import 'package:provider/provider.dart';
 
 class SendOTP extends StatefulWidget {
   final String phoneNo;
   final onChanged;
-  SendOTP({this.phoneNo: '9840056679',this.onChanged});
+  SendOTP({this.phoneNo: '9840056679', this.onChanged});
 
   @override
   _SendOTPState createState() => _SendOTPState();
 }
 
 class _SendOTPState extends State<SendOTP> {
-   String email, password;
-  String emailErr, passwordErr;
-  String loginErr;
-  bool remember = true;
-  bool isActive = false;
+  String otp, otpErr, id;
+
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
-        //final UserModel user = Provider.of<UserModel>(context);
-    // final UserApi api = user.api;
-    //final Validator v = user.validator;
+    final UserModel user = Provider.of<UserModel>(context);
+    final UserApi api = user.api;
 
-    // var onChanged = (data) {
-    //   if (v.emailValidator(data) && data != email)
-    //     setState(() {
-    //       email = data;
-    //       emailErr = null;
-    //     });
-    //   else if (emailErr == null)
-    //     setState(() {
-    //       emailErr = "email is not valid!";
-    //     });
-    // };
-    
+    final handleOtpVerification = () async {
+      final response = await api.verifyOtp(id, otp);
+      if (response['message']) {
+        //otp success
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => SignInPage()));
+      } else {
+        setState(() {
+          otpErr = 'Failed otp verification!';
+        });
+      }
+    };
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -55,10 +52,10 @@ class _SendOTPState extends State<SendOTP> {
             elevation: 0.0,
             search: false,
             cart: false,
-            onPressed: (){
-            Navigator.push(
-              context, MaterialPageRoute(builder: (context) => HomePageApp()));
-          },
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => HomePageApp()));
+            },
           ),
         ),
         resizeToAvoidBottomPadding: false,
@@ -91,17 +88,14 @@ class _SendOTPState extends State<SendOTP> {
                       padding: EdgeInsets.all(25.0),
                     ),
                     FancyText(
-                        // continue w/o signin
-                        color: textColor,
-                        text:
-                            "Please enter OTP we have sent you on \n  \n +91 ${widget.phoneNo}",
-                        size: 16.0,
-                        fontfamily: 'Montserrat',
-                        fontWeight: FontWeight.w600,
-                        onTap: () {
-                          // Navigator.push(context,
-                          //     MaterialPageRoute(builder: (context) => HomePageApp()));
-                        }),
+                      // continue w/o signin
+                      color: textColor,
+                      text:
+                          "Please enter OTP we have sent you on \n  \n +91 ${widget.phoneNo}",
+                      size: 16.0,
+                      fontfamily: 'Montserrat',
+                      fontWeight: FontWeight.w600,
+                    ),
                     Padding(
                       padding: EdgeInsets.all(15.0),
                     ),
@@ -110,22 +104,18 @@ class _SendOTPState extends State<SendOTP> {
                       fieldWidth: 35.0,
                       fontSize: 20.0,
                     ),
-                    
                     Padding(
                       padding: EdgeInsets.all(25.0),
                     ),
                     FRaisedButton(
-                        text: "Verify",
-                        width: 160.0,
-                        height: 45.0,
-                        shape: true,
-                        color: Colors.white,
-                        bg: primaryDark,
-                        onPressed: () {
-                          Navigator.push(context,
-                             MaterialPageRoute(builder: (context) => SignUpPage()));
-                        } //signupUser,
-                        ),
+                      text: "Verify",
+                      width: 160.0,
+                      height: 45.0,
+                      shape: true,
+                      color: Colors.white,
+                      bg: primaryDark,
+                      onPressed: handleOtpVerification,
+                    ),
                   ],
                 ),
               ),
