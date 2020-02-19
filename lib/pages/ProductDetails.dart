@@ -1,4 +1,3 @@
-import 'dart:convert';
 // import 'package:esell/widget/atoms/StarRating.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:esell/widget/productDetails/Carousel.dart';
@@ -20,10 +19,10 @@ class ProductDetails extends StatefulWidget {
 }
 
 class _ProductDetailsState extends State<ProductDetails> {
-  String color;
-  int quantity = 1, size;
+  String color, size;
+  int quantity = 1;
 
-  void setSize(int newSize) {
+  void setSize(String newSize) {
     if (newSize != size)
       setState(() {
         size = newSize;
@@ -42,26 +41,28 @@ class _ProductDetailsState extends State<ProductDetails> {
     var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
     final product = Provider.of<ProductModel>(context).one(widget.id);
+    final imagesrc = "https://api.shop2more.com"  ;
 
     List<Image> images = [];
-    if (product['media']['front'].length > 0) {
-      images.add(Image.network(product['media']['front']));
+    if (product['media']['front'] != null && product['media']['front'].length > 0) {
+      images.add(Image.network(imagesrc + product['media']['front']));
     }
-    if (product['media']['back'].length > 0) {
-      images.add(Image.network(product['media']['back']));
+    if (product['media']['back'] != null && product['media']['back'].length > 0) {
+      images.add(Image.network(imagesrc + product['media']['back']));
     }
-    if (product['media']['left'].length > 0) {
-      images.add(Image.network(product['media']['left']));
+    if (product['media']['left'] != null && product['media']['left'].length > 0) {
+      images.add(Image.network(imagesrc + product['media']['left']));
     }
-    if (product['media']['right'].length > 0) {
-      images.add(Image.network(product['media']['right']));
+    if (product['media']['right'] != null && product['media']['right'].length > 0) {
+      images.add(Image.network(imagesrc + product['media']['right']));
     }
-    if (product['media']['top'].length > 0) {
-      images.add(Image.network(product['media']['top']));
+    if (product['media']['top'] != null && product['media']['top'].length > 0) {
+      images.add(Image.network(imagesrc + product['media']['top']));
     }
-    if (product['media']['bottom'].length > 0) {
-      images.add(Image.network(product['media']['bottom']));
+    if (product['media']['bottom'] != null && product['media']['bottom'].length > 0) {
+      images.add(Image.network(imagesrc + product['media']['bottom']));
     }
+    print(product['description']);
     // Map<String, dynamic> images;
     //  = {
     //   'front': '',
@@ -107,14 +108,14 @@ class _ProductDetailsState extends State<ProductDetails> {
             ),
             PDoffer(),
             PDSizeSelector(
-              sizes: product['sizes'],
+              sizes: product['sizes'] == null ? "6-10" : product['sizes'],
               setSize: setSize,
             ),
             PDColorSelector(color: product['colors'], setColor: setColor),
             PDdelivery(),
             PDDetails(
-              details: json.decode(product['description']),
-              price: product['price'].toString(),
+              details: product['description'],
+              price: product['price'],
               // colors: product['colors'],
               // sizes: product['sizes'],
             ),

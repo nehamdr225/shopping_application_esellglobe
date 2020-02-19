@@ -26,28 +26,36 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
 
   buildSizeWidgets() {
     List<Widget> widgets = [];
-    for (int i = (sizeType == '-' ? sizeList[0] : 0);
-        i <= (sizeType == '-' ? sizeList[1] : sizeList.length - 1);
+    for (int i = (sizeType == '-' ? int.parse(sizeList[0]) : 0);
+        i <= (sizeType == '-' ? int.parse(sizeList[1]) : sizeList.length - 1);
         i++) {
       widgets.add(Padding(
         padding: const EdgeInsets.all(6.0),
         child: InkWell(
           onTap: () {
-            widget.setSize(i);
-            setState(() {
-              active = i.toString();
-            });
+            widget.setSize(sizeType == '-' ? i.toString() : sizeList[i]);
+            if (sizeType == '-') {
+              setState(() {
+                active = i.toString();
+              });
+            } else {
+              setState(() {
+                active = sizeList[i];
+              });
+            }
           },
           child: Container(
             height: 37.0,
             width: 34.0,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-                color: active == i.toString() ? primary : Colors.transparent,
+                color: sizeType == '-'
+                    ? (active == i.toString() ? primary : Colors.transparent)
+                    : (active == sizeList[i] ? primary : Colors.transparent),
                 shape: BoxShape.rectangle,
                 border: Border.all(color: Colors.grey[200])),
             child: Text(
-              i.toString(),
+              sizeType == '-' ? i.toString() : sizeList[i],
               style: TextStyle(
                   fontFamily: "Helvetica",
                   fontSize: 15.0,
@@ -65,6 +73,8 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
+    print(widget.sizes);
+    print(widget.sizes.contains('-'));
 
     if (widget.sizes.contains('-')) {
       final List<String> splitSizes = widget.sizes.split('-').toList();
@@ -75,6 +85,13 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
       });
     } else if (widget.sizes.contains(';')) {
       final List<String> splitSizes = widget.sizes.split(';').toList();
+      setState(() {
+        sizeList = splitSizes;
+        active = splitSizes[0];
+        sizeType = ';';
+      });
+    } else if (widget.sizes.length == 1) {
+      final List<String> splitSizes = [widget.sizes];
       setState(() {
         sizeList = splitSizes;
         active = splitSizes[0];
@@ -144,9 +161,13 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 18.0),
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: widgets),
+              child: Wrap(
+                direction: Axis.horizontal,
+                children: widgets,
+
+                // mainAxisAlignment: MainAxisAlignment.center,
+                // children: widgets
+              ),
             )
           ],
         ));

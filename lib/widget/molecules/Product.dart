@@ -23,6 +23,7 @@ class Product extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(image);
     return Card(
       borderOnForeground: true,
       shape: RoundedRectangleBorder(
@@ -40,7 +41,7 @@ class Product extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 ImageHolder(
-                  image: image,
+                  image: image['front'],
                   imgheight: imgheight,
                 ),
                 Divider(height: 2),

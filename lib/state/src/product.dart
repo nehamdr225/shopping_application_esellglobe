@@ -1,3 +1,5 @@
+import 'dart:core';
+
 import 'package:esell/entities/product.api.dart';
 // import 'package:esell/entities/product.dart';
 // import 'package:esell/data/product.model.dart';
@@ -7,8 +9,9 @@ class ProductModel extends ChangeNotifier {
   final ProductApi _api;
   ProductModel(this._api) {
     _api.getProducts(page: page).then((data) {
+      print(data);
       if (data['error'] == null) {
-        products = data['products'];
+        products = data['products'].toList();
         //.map<ProductModel>((each) => Product.fromJson(each))
         //.toList();
         maxCount = data['count'];
@@ -48,10 +51,9 @@ class ProductModel extends ChangeNotifier {
     return {'error': 'Product not found!'};
   }
 
-  category(List<String> cat) {
+  category(String cat) {
     return products.where((product) {
-      return cat
-          .every((each) => product["category"].contains(each.toLowerCase()));
+      return product["category"].contains(cat);
       // return product["category"].contains(cat.toLowerCase());
     }).toList();
   }

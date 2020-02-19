@@ -7,10 +7,11 @@ class ImageHolder extends StatelessWidget {
   ImageHolder({this.image, this.imgheight});
   @override
   Widget build(BuildContext context) {
+    final imagesrc = "https://api.shop2more.com" + image;
     return Container(
       height: imgheight,
       child: image != null
-          ? Image.network(image)
+          ? Image.network(imagesrc)
           : CenterText(
               text: "Image load failed",
               size: 12,

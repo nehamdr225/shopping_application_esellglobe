@@ -23,6 +23,15 @@ const Map<String, Color> COLOR_TYPES = {
   'Orange': Colors.orange,
   'Purple': Colors.purple,
   'Teal': Colors.teal,
+  'Violet': Color(0xffee82ee),
+  'Megenta': Color(0xffff00ff),
+  'Chartreuse' : Color(0xff7fff00),
+  'Aqua' : Color(0xff00ffff),
+  'Fuchsia': Color(0xffff00ff),
+  'Maroon': Color(0xff800000),
+  'Navy': Color(0xff000080),
+  'Olive' : Color(0xff808000),
+  'Silver' : Color(0xffc0c0c0),
 };
 
 class _PDColorSelectorState extends State<PDColorSelector> {

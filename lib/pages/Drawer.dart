@@ -216,14 +216,14 @@ class DrawerApp extends StatelessWidget {
                         )),
               ],
             ),
-            Divider(
-              color: Colors.grey[500],
-              height: 10.0,
-            ),
+            // Divider(
+            //   color: Colors.grey[500],
+            //   height: 10.0,
+            // ),
             Padding(
               //text find your styke
               padding: const EdgeInsets.only(
-                top: 8.0,
+                top: 18.0,
                 left: 14.0,
                 bottom: 5.0,
               ),

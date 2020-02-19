@@ -18,8 +18,8 @@ class CategoryPage extends StatelessWidget {
     final cat = text;
 
     getCategoryItems(reqCategory) {
-      List<String> filter =
-          reqCategory == 'slipper' ? [reqCategory] : [cat, reqCategory];
+      String filter = [cat, reqCategory].join(';');
+      print(filter);
       return Provider.of<ProductModel>(context).category(filter);
     }
 
@@ -27,7 +27,8 @@ class CategoryPage extends StatelessWidget {
       List<Widget> widgets = [];
       SubMain[cat].forEach((each) {
         print(each['name']);
-        final categoryProduct = getCategoryItems(each['name'].toLowerCase());
+        final categoryProduct = getCategoryItems(each['name']);
+        print(categoryProduct);
         onpressed() {
           Navigator.push(
               context,
@@ -59,15 +60,7 @@ class CategoryPage extends StatelessWidget {
                         return index != categoryProduct.length
                             ? Product(
                                 name: categoryProduct[index]['name'],
-                                image: categoryProduct[index]['media'].length !=
-                                            0 &&
-                                        categoryProduct[index]['media'][0]
-                                                    ['src']
-                                                .length >
-                                            0
-                                    ? categoryProduct[index]['media'][0]['src']
-                                        [0]
-                                    : null,
+                                image: categoryProduct[index]['media'],
                                 imgheight: 120.0,
                                 price: categoryProduct[index]['price'],
                                 details: categoryProduct[index]['details'],

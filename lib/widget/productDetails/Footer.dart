@@ -8,8 +8,8 @@ import 'package:provider/provider.dart';
 // import 'package:esell/state/src/theme.dart';
 
 class PDFooter extends StatelessWidget {
-  final String id, color;
-  final int quantity, size;
+  final String id, color, size;
+  final int quantity;
   PDFooter({this.id, this.quantity, this.color, this.size});
 
   @override
