@@ -42,6 +42,43 @@ class UserApi {
     return response;
   }
 
+  //response.message or response.error
+  reset(String id, String password, token) async {
+    Map<String, String> headers = {
+      "Content-Type": "application/json",
+    };
+    final response = await _fetch.post(
+      url: "$url/user/reset/$id",
+      headers: headers,
+      body: {'password': password, 'token': token},
+    );
+    return response;
+  }
+
+  //response.message or response.error
+  sendOtp(String id) async {
+    Map<String, String> headers = {
+      "Content-Type": "application/json",
+    };
+    final response = await _fetch.get(
+      url: "$url/user/otp/$id",
+      headers: headers,
+    );
+    return response;
+  }
+
+//response.message or response.error
+  verifyOtp(String id, String token) async {
+    Map<String, String> headers = {
+      "Content-Type": "application/json",
+    };
+    final response = await _fetch.get(
+      url: "$url/user/verify/$id/$token",
+      headers: headers,
+    );
+    return response;
+  }
+
   getUser(String token) async {
     Map<String, String> headers = {
       "Content-Type": "application/json",
