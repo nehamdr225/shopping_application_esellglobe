@@ -1,7 +1,6 @@
 import 'package:esell/entities/user.api.dart';
 import 'package:esell/pages/Home.dart';
 import 'package:esell/pages/Signin.dart';
-import 'package:esell/pages/Signup.dart';
 import 'package:esell/state/src/theme.dart';
 import 'package:esell/widget/atoms/BrandLogos.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
@@ -13,15 +12,16 @@ import 'package:esell/state/state.dart';
 import 'package:provider/provider.dart';
 
 class SendOTP extends StatefulWidget {
+  final receivedOTP;
   final String phoneNo;
   final onChanged;
-  SendOTP({this.phoneNo: '9840056679', this.onChanged});
+  SendOTP({this.phoneNo: '9840056679', this.onChanged, this.receivedOTP});
 
   @override
   _SendOTPState createState() => _SendOTPState();
 }
 
-class _SendOTPState extends State<SendOTP> {
+class _SendOTPState extends State<SendOTP> { 
   String otp, otpErr, id;
 
   @override
