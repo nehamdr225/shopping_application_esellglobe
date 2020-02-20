@@ -116,13 +116,13 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Padding(
-                  padding: EdgeInsets.only(left: 14.0),
+                  padding: EdgeInsets.only(left: 14.0, top: 10.0),
                   child: Text(
-                    "Size- ",
-                    style: TextStyle(
-                        color: textColor,
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.w500),
+                    "Sizes",
+                    style: Theme.of(context)
+                        .textTheme
+                        .body1
+                        .copyWith(fontWeight: FontWeight.w600, fontSize: 15.0),
                     textAlign: TextAlign.left,
                   ),
                 ),
@@ -148,10 +148,7 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
                         ),
                         Text(
                           'Size Chart',
-                          style: Theme.of(context)
-                              .textTheme
-                              .body1
-                              .copyWith(color: primaryDark),
+                          style: Theme.of(context).textTheme.body1,
                         )
                       ],
                     ),
