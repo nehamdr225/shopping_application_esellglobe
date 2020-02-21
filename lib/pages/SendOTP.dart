@@ -1,7 +1,6 @@
 import 'package:esell/entities/user.api.dart';
 import 'package:esell/pages/Home.dart';
 import 'package:esell/pages/Signin.dart';
-import 'package:esell/pages/Signup.dart';
 import 'package:esell/state/src/theme.dart';
 import 'package:esell/widget/atoms/BrandLogos.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
@@ -14,15 +13,16 @@ import 'package:provider/provider.dart';
 
 class SendOTP extends StatefulWidget {
   final String phoneNo;
-  final onChanged;
-  SendOTP({this.phoneNo: '9840056679', this.onChanged});
+  final Function onChanged;
+  final Map<String, String> loginInfo;
+  SendOTP({this.phoneNo: '9840056679', this.onChanged, this.loginInfo});
 
   @override
   _SendOTPState createState() => _SendOTPState();
 }
 
 class _SendOTPState extends State<SendOTP> {
-  String otp, otpErr, id;
+  String otpErr, id;
 
   @override
   Widget build(BuildContext context) {
@@ -30,12 +30,41 @@ class _SendOTPState extends State<SendOTP> {
     final UserModel user = Provider.of<UserModel>(context);
     final UserApi api = user.api;
 
-    final handleOtpVerification = () async {
+    final handleOtpVerification = (String otp) async {
       final response = await api.verifyOtp(id, otp);
       if (response['message']) {
         //otp success
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => SignInPage()));
+        if (widget.loginInfo != null) {
+          Map response = await api.login(
+              widget.loginInfo['email'], widget.loginInfo['password'], true);
+          if (response['token'] != null) {
+            user.token = response['token'];
+            api.getUser(response['token']).then((result) {
+              if (result['error'] == null) {
+                if (result['message'] != null &&
+                    result['message'] == "Auth failed") {
+                  delKeyVal("token").then((data) {
+                    user.token = null;
+                  });
+                } else if (result['result']['cart'] != null) {
+                  api.getCart(response['token']).then((data) {
+                    if (data['error'] == null)
+                      user.cart = data['result']['products'];
+                  });
+                }
+                user.user = result['result'];
+              }
+            });
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => HomePageApp()));
+          } else {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => SignInPage()));
+          }
+        } else {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => SignInPage()));
+        }
       } else {
         setState(() {
           otpErr = 'Failed otp verification!';
@@ -103,6 +132,7 @@ class _SendOTPState extends State<SendOTP> {
                       fields: 6,
                       fieldWidth: 35.0,
                       fontSize: 20.0,
+                      onSubmit: handleOtpVerification,
                     ),
                     Padding(
                       padding: EdgeInsets.all(25.0),

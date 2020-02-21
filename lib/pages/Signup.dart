@@ -1,6 +1,7 @@
 import 'package:esell/core/validators.dart';
 import 'package:esell/entities/user.api.dart';
 import 'package:esell/pages/Home.dart';
+import 'package:esell/pages/SendOTP.dart';
 import 'package:esell/pages/Signin.dart';
 import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/BrandLogos.dart';
@@ -95,7 +96,7 @@ class _PageState extends State<SignUpPage> {
           isActive = false;
         });
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => SignInPage()));
+            context, MaterialPageRoute(builder: (context) => SendOTP()));
       }
     };
 
