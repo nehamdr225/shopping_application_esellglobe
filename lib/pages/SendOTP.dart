@@ -12,17 +12,19 @@ import 'package:esell/state/state.dart';
 import 'package:provider/provider.dart';
 
 class SendOTP extends StatefulWidget {
-  final String phoneNo;
+  final String phoneNo, id;
   final Function onChanged;
   final Map<String, String> loginInfo;
-  SendOTP({this.phoneNo: '9840056679', this.onChanged, this.loginInfo});
+  SendOTP(
+      {this.phoneNo: '9840056679', this.onChanged, this.loginInfo, this.id});
 
   @override
   _SendOTPState createState() => _SendOTPState();
 }
 
 class _SendOTPState extends State<SendOTP> {
-  String otpErr, id;
+  String otpErr;
+  String pin = '';
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +32,16 @@ class _SendOTPState extends State<SendOTP> {
     final UserModel user = Provider.of<UserModel>(context);
     final UserApi api = user.api;
 
-    final handleOtpVerification = (String otp) async {
-      final response = await api.verifyOtp(id, otp);
-      if (response['message']) {
+    setPin(newPin) {
+      setState(() {
+        pin = newPin;
+      });
+    }
+
+    void handleOtpVerification() async {
+      final response = await api.verifyOtp(widget.id, pin);
+      print(response);
+      if (response['message'] != null) {
         //otp success
         if (widget.loginInfo != null) {
           Map response = await api.login(
@@ -67,10 +76,12 @@ class _SendOTPState extends State<SendOTP> {
         }
       } else {
         setState(() {
-          otpErr = 'Failed otp verification!';
+          otpErr = 'OTP verification failed!';
         });
       }
-    };
+    }
+
+    ;
 
     return SafeArea(
       child: Scaffold(
@@ -132,7 +143,7 @@ class _SendOTPState extends State<SendOTP> {
                       fields: 6,
                       fieldWidth: 35.0,
                       fontSize: 20.0,
-                      onSubmit: handleOtpVerification,
+                      onSubmit: setPin,
                     ),
                     Padding(
                       padding: EdgeInsets.all(25.0),
@@ -144,7 +155,21 @@ class _SendOTPState extends State<SendOTP> {
                       shape: true,
                       color: Colors.white,
                       bg: primaryDark,
-                      onPressed: handleOtpVerification,
+                      onPressed: pin?.length == 6
+                          ? () {
+                              handleOtpVerification();
+                            }
+                          : null,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 10),
+                      child: Text(
+                        otpErr,
+                        style: TextStyle(
+                            color: orderBar,
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ],
                 ),

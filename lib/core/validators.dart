@@ -16,6 +16,6 @@ class Validator {
   }
 
   bool phoneValidator(String data) {
-    return RegExp(r'^(?:[+0]9)?[0-9]{10}$').hasMatch(data);
+    return RegExp(r'^[0-9]{10}$').hasMatch(data);
   }
 }

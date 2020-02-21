@@ -25,7 +25,8 @@ class UserApi {
     if (response['error'] != null) {
       return {"error": response['error']};
     }
-    if (remember) _storage.savekeyVal('token', response['token']);
+    if (response['token'] != null && remember)
+      _storage.savekeyVal('token', response['token']);
     return response;
   }
 

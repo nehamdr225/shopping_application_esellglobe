@@ -31,14 +31,16 @@ class _PageState extends State<SignInPage> {
     final Validator v = user.validator;
 
     var setEmail = (data) {
-      if (v.emailValidator(data) && data != email)
+      setState(() {
+        email = data;
+      });
+      if (v.emailValidator(data))
         setState(() {
-          email = data;
           emailErr = null;
         });
       else if (emailErr == null)
         setState(() {
-          emailErr = "email is not valid!";
+          emailErr = "Email is not valid!";
         });
     };
 
@@ -51,7 +53,8 @@ class _PageState extends State<SignInPage> {
         });
       else if (passwordErr == null)
         setState(() {
-          passwordErr = "Password not valid!";
+          passwordErr =
+              "Password not valid! ( must contain letter, number & symbols )";
         });
     };
 
@@ -61,6 +64,7 @@ class _PageState extends State<SignInPage> {
           isActive = true;
         });
         Map response = await api.login(email, password, remember);
+        print(response);
         if (response['token'] != null) {
           user.token = response['token'];
           api.getUser(response['token']).then((result) {
@@ -97,6 +101,7 @@ class _PageState extends State<SignInPage> {
               context,
               MaterialPageRoute(
                   builder: (context) => SendOTP(
+                      id: response['id'],
                       loginInfo: {'email': email, 'password': password})));
         }
       } catch (err) {
@@ -152,9 +157,17 @@ class _PageState extends State<SignInPage> {
               ),
             ),
             emailErr != null
-                ? Text(
-                    emailErr,
-                    textAlign: TextAlign.center,
+                ? Padding(
+                    padding: EdgeInsets.only(left: 40, bottom: 6),
+                    child: Text(
+                      emailErr,
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                        color: orderBar,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 13,
+                      ),
+                    ),
                   )
                 : Text(''),
             Padding(
@@ -166,9 +179,18 @@ class _PageState extends State<SignInPage> {
                   onChanged: setPassword),
             ),
             passwordErr != null
-                ? Text(
-                    passwordErr,
-                    textAlign: TextAlign.center,
+                ? Padding(
+                    padding: EdgeInsets.only(left: 40, bottom: 6, right: 10),
+                    child: Text(
+                      passwordErr,
+                      textAlign: TextAlign.start,
+                      overflow: TextOverflow.fade,
+                      style: TextStyle(
+                        color: orderBar,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 13,
+                      ),
+                    ),
                   )
                 : Text(''),
             loginErr != null

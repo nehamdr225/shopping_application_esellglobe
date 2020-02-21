@@ -18,10 +18,10 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _PageState extends State<SignUpPage> {
-  String name, email, password, contact, id;
+  String name, email, password, id;
   String phone;
   String phoneErr;
-  String nameErr, emailErr, passwordErr, signupErr, contactErr;
+  String nameErr, emailErr, passwordErr, signupErr;
   bool isActive = false;
   @override
   Widget build(BuildContext context) {
@@ -32,13 +32,14 @@ class _PageState extends State<SignUpPage> {
       setState(() {
         name = data;
       });
+      print(v.nameValidator(data));
       if (v.nameValidator(data))
         setState(() {
           nameErr = null;
         });
-      else if (nameErr != null)
+      else if (nameErr == null)
         setState(() {
-          nameErr = "Name is not valid!";
+          nameErr = "Name is not valid! ( minimum 8 characters )";
         });
     };
 
@@ -46,11 +47,11 @@ class _PageState extends State<SignUpPage> {
       setState(() {
         email = data;
       });
-      if (v.emailValidator(data) && data != email)
+      if (v.emailValidator(data))
         setState(() {
           emailErr = null;
         });
-      else if (emailErr != null)
+      else if (emailErr == null)
         setState(() {
           emailErr = "Email is not valid!";
         });
@@ -65,9 +66,10 @@ class _PageState extends State<SignUpPage> {
         setState(() {
           passwordErr = null;
         });
-      else if (passwordErr != null)
+      else if (passwordErr == null)
         setState(() {
-          passwordErr = "Password not valid!";
+          passwordErr =
+              "Password not valid! ( must contain letters, numbers & symbols )";
         });
     };
 
@@ -81,7 +83,7 @@ class _PageState extends State<SignUpPage> {
         });
       else if (phoneErr == null)
         setState(() {
-          phoneErr = "email is not valid!";
+          phoneErr = "Phone No. is not valid!";
         });
     };
 
@@ -89,7 +91,7 @@ class _PageState extends State<SignUpPage> {
       setState(() {
         isActive = true;
       });
-      final message = await api.signup(email, password, name, contact);
+      final message = await api.signup(email, password, name, phone);
       //message & id
       print(message);
       if (message['error'] != null)
@@ -99,11 +101,16 @@ class _PageState extends State<SignUpPage> {
         });
       else {
         setState(() {
-          id = message.id;
+          id = message['id'];
           isActive = false;
         });
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => SendOTP()));
+            context,
+            MaterialPageRoute(
+                builder: (context) => SendOTP(
+                      id: message['id'],
+                      phoneNo: '91$phone',
+                    )));
       }
     };
 
@@ -152,9 +159,17 @@ class _PageState extends State<SignUpPage> {
               ),
             ),
             nameErr != null
-                ? Text(
-                    nameErr,
-                    textAlign: TextAlign.center,
+                ? Padding(
+                    padding: EdgeInsets.only(left: 40, bottom: 6),
+                    child: Text(
+                      nameErr,
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                        color: orderBar,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 13,
+                      ),
+                    ),
                   )
                 : Text(''),
             Padding(
@@ -165,30 +180,49 @@ class _PageState extends State<SignUpPage> {
                   onChanged: setEmail),
             ),
             emailErr != null
-                ? Text(
-                    emailErr,
-                    textAlign: TextAlign.center,
+                ? Padding(
+                    padding: EdgeInsets.only(left: 40, bottom: 6),
+                    child: Text(
+                      emailErr,
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                        color: orderBar,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 13,
+                      ),
+                    ),
                   )
                 : Text(''),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25),
               child: FForms(
-                  type: TextInputType.text,
-                  text: "Password",
-                  obscure: true,
-                  onChanged: setPassword),
+                type: TextInputType.visiblePassword,
+                text: "Password",
+                obscure: false,
+                onChanged: setPassword,
+                // icon: Icon(Icons.visibility),
+              ),
             ),
             passwordErr != null
-                ? Text(
-                    passwordErr,
-                    textAlign: TextAlign.center,
+                ? Padding(
+                    padding: EdgeInsets.only(left: 40, bottom: 6, right: 20),
+                    child: Text(
+                      passwordErr,
+                      textAlign: TextAlign.start,
+                      overflow: TextOverflow.fade,
+                      style: TextStyle(
+                        color: orderBar,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 13,
+                      ),
+                    ),
                   )
                 : Text(''),
             Padding(
               padding: EdgeInsets.only(top: 10, bottom: 0, left: 25, right: 25),
               child: FForms(
                   type: TextInputType.phone,
-                  text: "Phone Number",
+                  text: "Valid Mobile No",
                   prefix: Text(
                     '+91   ',
                     textAlign: TextAlign.justify,
@@ -199,20 +233,32 @@ class _PageState extends State<SignUpPage> {
                   ),
                   onChanged: setPhoneNum),
             ),
-            contactErr != null
-                ? Text(
-                    contactErr,
-                    textAlign: TextAlign.center,
+            phoneErr != null
+                ? Padding(
+                    padding: EdgeInsets.only(left: 40, bottom: 6, top: 6),
+                    child: Text(
+                      phoneErr,
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                        color: orderBar,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 13,
+                      ),
+                    ),
                   )
                 : Text(''),
             signupErr != null
-                ? Text(
-                    signupErr,
-                    style: TextStyle(
-                        color: Colors.red,
-                        fontSize: 15.0,
-                        fontWeight: FontWeight.w600),
-                    textAlign: TextAlign.center,
+                ? Padding(
+                    padding: EdgeInsets.only(left: 40, bottom: 6),
+                    child: Text(
+                      signupErr,
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                        color: orderBar,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 13,
+                      ),
+                    ),
                   )
                 : Text(''),
             // FForms(type: TextInputType.phone, text: "Mobile No."),

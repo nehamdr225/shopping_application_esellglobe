@@ -1,4 +1,3 @@
-import 'package:esell/pages/LoginPhone.dart';
 import 'package:esell/pages/Signin.dart';
 import 'package:esell/pages/Signup.dart';
 import 'package:esell/state/src/theme.dart';
@@ -14,20 +13,6 @@ class LoginOptions extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          // FRaisedButton(
-          //   // phone no.
-          //   height: 50.0,
-          //   width: 260.0,
-          //   shape: true,
-          //   color: Colors.white,
-          //   bg: Theme.of(context).colorScheme.secondary,
-          //   text: "Login with Mobile Number",
-          //   fontWeight: FontWeight.w600,
-          //   onPressed: () {
-          //     Navigator.push(context,
-          //         MaterialPageRoute(builder: (context) => LoginPhone()));
-          //   },
-          // ),
           Padding(
             padding: EdgeInsets.all(8.0),
           ),
@@ -47,7 +32,6 @@ class LoginOptions extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => SignInPage()));
             },
           ),
-
           Padding(
             padding: EdgeInsets.symmetric(vertical: 15.0),
             child: FancyText(

@@ -6,7 +6,7 @@ class FRaisedButton extends StatelessWidget {
   final fontWeight;
   final height;
   final width;
-  final Function onPressed;
+  final dynamic onPressed;
   final Color color, bg;
   final shape;
   final needIcon;
