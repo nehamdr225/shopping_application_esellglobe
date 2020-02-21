@@ -19,6 +19,8 @@ class SignUpPage extends StatefulWidget {
 
 class _PageState extends State<SignUpPage> {
   String name, email, password, contact, id;
+  String phone;
+  String phoneErr;
   String nameErr, emailErr, passwordErr, signupErr, contactErr;
   bool isActive = false;
   @override
@@ -27,21 +29,25 @@ class _PageState extends State<SignUpPage> {
     final Validator v = Provider.of<UserModel>(context).validator;
 
     var setName = (data) {
-      if (v.nameValidator(data) && data != name)
+      setState(() {
+        name = data;
+      });
+      if (v.nameValidator(data))
         setState(() {
-          name = data;
           nameErr = null;
         });
-      else if (emailErr != null)
+      else if (nameErr != null)
         setState(() {
           nameErr = "Name is not valid!";
         });
     };
 
     var setEmail = (data) {
+      setState(() {
+        email = data;
+      });
       if (v.emailValidator(data) && data != email)
         setState(() {
-          email = data;
           emailErr = null;
         });
       else if (emailErr != null)
@@ -52,9 +58,11 @@ class _PageState extends State<SignUpPage> {
 
     var setPassword = (data) {
       // pwdValidator(data) &&
-      if (data != password && data.length >= 8)
+      setState(() {
+        password = data;
+      });
+      if (data.length >= 8)
         setState(() {
-          password = data;
           passwordErr = null;
         });
       else if (passwordErr != null)
@@ -63,19 +71,18 @@ class _PageState extends State<SignUpPage> {
         });
     };
 
-    final setContact = (data) {
+    var setPhoneNum = (data) {
       setState(() {
-        password = data;
+        phone = data;
       });
-      if (data.length >= 8 && password != null) {
+      if (v.phoneValidator(data))
         setState(() {
-          passwordErr = null;
+          phoneErr = null;
         });
-      } else if (password == null) {
+      else if (phoneErr == null)
         setState(() {
-          passwordErr = "Contact is not valid!";
+          phoneErr = "email is not valid!";
         });
-      }
     };
 
     var signupUser = () async {
@@ -190,11 +197,34 @@ class _PageState extends State<SignUpPage> {
                   )
                 : Text(''),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25),
-              child: FForms(
-                  type: TextInputType.emailAddress,
-                  text: "Contact",
-                  onChanged: setContact),
+              padding: EdgeInsets.all(25.0),
+            ),
+            FancyText(
+                // continue w/o signin
+                color: textColor,
+                text: "Enter Verified Mobile Number",
+                size: 18.0,
+                fontfamily: 'Montserrat',
+                fontWeight: FontWeight.w600,
+                onTap: () {
+                  // Navigator.push(context,
+                  //     MaterialPageRoute(builder: (context) => HomePageApp()));
+                }),
+            Padding(
+              padding: EdgeInsets.all(15.0),
+            ),
+            FForms(
+                type: TextInputType.phone,
+                text: "Phone Number",
+                prefix: Text('+91   ',
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(
+                        color: textColor,
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.w600)),
+                onChanged: setPhoneNum),
+            Padding(
+              padding: EdgeInsets.all(15.0),
             ),
             contactErr != null
                 ? Text(

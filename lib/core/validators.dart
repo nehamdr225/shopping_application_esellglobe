@@ -14,4 +14,8 @@ class Validator {
   bool nameValidator(String data) {
     return data.length > 8;
   }
+
+  bool phoneValidator(String data) {
+    return RegExp(r'^(?:[+0]9)?[0-9]{10}$').hasMatch(data);
+  }
 }
