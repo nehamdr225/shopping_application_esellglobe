@@ -61,10 +61,12 @@ class FRaisedButton extends StatelessWidget {
                     ])
               : Flex(
                   direction: Axis.vertical,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.all(5.0),
-                    ),
+                    // Padding(
+                    //   padding: EdgeInsets.all(5.0),
+                    // ),
                     Row(
                       mainAxisAlignment: mainAxisAlignment,
                       children: <Widget>[

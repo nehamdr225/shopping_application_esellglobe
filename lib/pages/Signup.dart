@@ -116,6 +116,7 @@ class _PageState extends State<SignUpPage> {
             elevation: 0.0,
             search: false,
             cart: false,
+            title: 'Register',
             onPressed: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => HomePageApp()));
@@ -139,21 +140,8 @@ class _PageState extends State<SignUpPage> {
                       color: Colors.white),
                 )),
             Padding(
-              padding: EdgeInsets.only(top: 30.0, bottom: 10.0),
+              padding: EdgeInsets.only(top: 0.0, bottom: 4.0),
               child: BrandLogos(),
-            ),
-            FancyText(
-                color: textColor,
-                text: "Set up your account",
-                size: 18.0,
-                fontfamily: 'Montserrat',
-                fontWeight: FontWeight.w600,
-                onTap: () {
-                  // Navigator.push(context,
-                  //     MaterialPageRoute(builder: (context) => HomePageApp()));
-                }),
-            Padding(
-              padding: EdgeInsets.all(20.0),
             ),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25),
@@ -197,34 +185,19 @@ class _PageState extends State<SignUpPage> {
                   )
                 : Text(''),
             Padding(
-              padding: EdgeInsets.all(25.0),
-            ),
-            FancyText(
-                // continue w/o signin
-                color: textColor,
-                text: "Enter Verified Mobile Number",
-                size: 18.0,
-                fontfamily: 'Montserrat',
-                fontWeight: FontWeight.w600,
-                onTap: () {
-                  // Navigator.push(context,
-                  //     MaterialPageRoute(builder: (context) => HomePageApp()));
-                }),
-            Padding(
-              padding: EdgeInsets.all(15.0),
-            ),
-            FForms(
-                type: TextInputType.phone,
-                text: "Phone Number",
-                prefix: Text('+91   ',
+              padding: EdgeInsets.only(top: 10, bottom: 0, left: 25, right: 25),
+              child: FForms(
+                  type: TextInputType.phone,
+                  text: "Phone Number",
+                  prefix: Text(
+                    '+91   ',
                     textAlign: TextAlign.justify,
                     style: TextStyle(
                         color: textColor,
                         fontSize: 18.0,
-                        fontWeight: FontWeight.w600)),
-                onChanged: setPhoneNum),
-            Padding(
-              padding: EdgeInsets.all(15.0),
+                        fontWeight: FontWeight.w600),
+                  ),
+                  onChanged: setPhoneNum),
             ),
             contactErr != null
                 ? Text(
@@ -243,9 +216,6 @@ class _PageState extends State<SignUpPage> {
                   )
                 : Text(''),
             // FForms(type: TextInputType.phone, text: "Mobile No."),
-            Padding(
-              padding: EdgeInsets.all(8.0),
-            ),
             Align(
               alignment: Alignment.center,
               child: isActive
@@ -260,7 +230,7 @@ class _PageState extends State<SignUpPage> {
                       onPressed: signupUser,
                     ),
             ), //onPressed: () {}),
-            SizedBox(height: 30.0),
+            SizedBox(height: 10.0),
             FancyText(
                 text: "Already have an account?",
                 color: primaryDark,
@@ -271,7 +241,8 @@ class _PageState extends State<SignUpPage> {
                     context,
                     MaterialPageRoute(builder: (context) => SignInPage()),
                   );
-                })
+                }),
+            SizedBox(height: 20.0),
           ],
         ),
       ),

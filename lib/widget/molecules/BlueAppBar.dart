@@ -19,14 +19,26 @@ class BlueAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(title,
-          style: TextStyle(
-              fontFamily: 'Montserrat', color: Colors.white, fontSize: 17.0)),
+      centerTitle: true,
+      title: Text(
+        title,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontFamily: 'Bree',
+          color: Colors.white,
+          fontSize: 20.0,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
       elevation: elevation,
       backgroundColor: primaryDark,
       leading: IconButton(
-        icon: Icon(Icons.arrow_back),
+        icon: Icon(
+          Icons.arrow_back,
+          color: Colors.white,
+        ),
         onPressed: onPressed,
+        // color: Colors.white,
       ),
       actions: <Widget>[
         search == true

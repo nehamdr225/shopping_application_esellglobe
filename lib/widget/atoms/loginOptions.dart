@@ -14,21 +14,20 @@ class LoginOptions extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          
-          FRaisedButton(
-            // phone no.
-            height: 50.0,
-            width: 260.0,
-            shape: true,
-            color: Colors.white,
-            bg: Theme.of(context).colorScheme.secondary,
-            text: "Login with Mobile Number",
-            fontWeight: FontWeight.w600,
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => LoginPhone()));
-            },
-          ),
+          // FRaisedButton(
+          //   // phone no.
+          //   height: 50.0,
+          //   width: 260.0,
+          //   shape: true,
+          //   color: Colors.white,
+          //   bg: Theme.of(context).colorScheme.secondary,
+          //   text: "Login with Mobile Number",
+          //   fontWeight: FontWeight.w600,
+          //   onPressed: () {
+          //     Navigator.push(context,
+          //         MaterialPageRoute(builder: (context) => LoginPhone()));
+          //   },
+          // ),
           Padding(
             padding: EdgeInsets.all(8.0),
           ),
@@ -39,16 +38,16 @@ class LoginOptions extends StatelessWidget {
             shape: true,
             needIcon: true,
             image: 'images/icons/email.png',
-            text: "Login with Email Address",
-            color: Colors.black87,
+            text: "Login with email/phone no.",
+            color: Colors.black45,
+            fontWeight: FontWeight.bold,
             bg: Colors.white,
             onPressed: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => SignInPage()));
             },
           ),
-          
-          
+
           Padding(
             padding: EdgeInsets.symmetric(vertical: 15.0),
             child: FancyText(

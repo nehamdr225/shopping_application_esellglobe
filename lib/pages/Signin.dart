@@ -116,6 +116,7 @@ class _PageState extends State<SignInPage> {
             elevation: 0.0,
             search: false,
             cart: false,
+            title: 'Login',
           ),
         ),
         resizeToAvoidBottomPadding: false,
@@ -139,20 +140,6 @@ class _PageState extends State<SignInPage> {
               padding: EdgeInsets.only(top: 30),
               child: BrandLogos(),
             ),
-            Padding(
-              padding: EdgeInsets.all(10.0),
-            ),
-            FancyText(
-                // continue w/o signin
-                color: textColor,
-                text: "Login with email",
-                size: 18.0,
-                fontfamily: 'Montserrat',
-                fontWeight: FontWeight.w600,
-                onTap: () {
-                  // Navigator.push(context,
-                  //     MaterialPageRoute(builder: (context) => HomePageApp()));
-                }),
             Padding(
               padding: EdgeInsets.all(10.0),
             ),
