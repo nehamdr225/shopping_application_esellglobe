@@ -40,7 +40,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.lwg.esellglobe"
+        applicationId "com.hits.shop2more"
         minSdkVersion 18
         targetSdkVersion 28
         versionCode flutterVersionCode.toInteger()
@@ -59,8 +59,8 @@ android {
    buildTypes {
        release {
             signingConfig signingConfigs.release
-            shrinkResources false
-            minifyEnabled false
+            shrinkResources true
+            minifyEnabled true
        }
    }
 

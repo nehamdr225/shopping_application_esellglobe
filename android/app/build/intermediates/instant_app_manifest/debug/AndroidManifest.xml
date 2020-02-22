@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.lwg.esellglobe"
+    package="com.hits.shop2more"
     android:targetSandboxVersion="2"
     android:versionCode="6"
     android:versionName="1.0.6" >
@@ -26,7 +26,7 @@
         android:icon="@mipmap/shop2morelogo"
         android:label="Shop2More" >
         <activity
-            android:name="com.lwg.esellglobe.MainActivity"
+            android:name="com.hits.shop2more.MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
             android:launchMode="singleTop"

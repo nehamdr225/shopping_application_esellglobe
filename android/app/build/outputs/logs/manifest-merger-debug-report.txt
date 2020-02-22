@@ -37,7 +37,7 @@ ADDED from /run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/
 		ADDED from /run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/src/main/AndroidManifest.xml:13:9-45
 	android:name
 		ADDED from /run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/src/main/AndroidManifest.xml:11:9-57
-activity#com.lwg.esellglobe.MainActivity
+activity#com.hits.shop2more.MainActivity
 ADDED from /run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/src/main/AndroidManifest.xml:14:9-32:20
 	android:launchMode
 		ADDED from /run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/src/main/AndroidManifest.xml:16:13-43
