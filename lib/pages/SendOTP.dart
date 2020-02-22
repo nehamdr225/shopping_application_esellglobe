@@ -160,6 +160,7 @@ class _SendOTPState extends State<SendOTP> {
                     Padding(
                       padding: EdgeInsets.all(25.0),
                     ),
+                   ! isVerifying?
                     FRaisedButton(
                       text: "Verify",
                       width: 160.0,
@@ -172,6 +173,10 @@ class _SendOTPState extends State<SendOTP> {
                               handleOtpVerification();
                             }
                           : null,
+                    ):
+                    Container(
+                      child: CircularProgressIndicator(),
+                      alignment: Alignment.center,
                     ),
                     otpErr != null
                         ? Padding(
