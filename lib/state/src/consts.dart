@@ -1,4 +1,3 @@
-
 const MEN = [
   {
     "name": "Top Wear",
@@ -134,8 +133,8 @@ const SubMain = {
   ],
   "Sunglasses": [
     {
-      "name": "Glasses",
-      "cap": "Glasses",
+      "name": "Sunglasses",
+      "cap": "Sunglasses",
       "src": "images/SubMain/watchNglass/glasses.png"
     },
   ],
@@ -149,18 +148,14 @@ const SubMain = {
   "Bags & Backpacks": [
     {
       "name": "Bags & Backpacks",
-      "cap": "Bags",
+      "cap": "Bags & Backpacks",
       "src": "images/SubMain/watchNglass/watch.jpg"
     },
   ]
 };
 
-const HList =[
-{
-    "name": "Top Wear",
-    "cap": "Top Wear",
-    "src": "images/icons/tshirt.png"
-  },
+const HList = [
+  {"name": "Top Wear", "cap": "Top Wear", "src": "images/icons/tshirt.png"},
   {
     "name": "Bottom Wear",
     "cap": "Bottom Wear",
@@ -182,4 +177,3 @@ const HList =[
     "src": 'images/icons/glassesandjunga.png',
   },
 ];
-

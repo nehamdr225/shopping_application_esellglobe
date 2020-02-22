@@ -15,8 +15,7 @@ class SendOTP extends StatefulWidget {
   final String phoneNo, id;
   final Function onChanged;
   final Map<String, String> loginInfo;
-  SendOTP(
-      {this.phoneNo: '9840056679', this.onChanged, this.loginInfo, this.id});
+  SendOTP({this.phoneNo, this.onChanged, this.loginInfo, this.id});
 
   @override
   _SendOTPState createState() => _SendOTPState();
@@ -142,8 +141,9 @@ class _SendOTPState extends State<SendOTP> {
                     FancyText(
                       // continue w/o signin
                       color: textColor,
-                      text:
-                          "Please enter OTP we have sent you on \n  \n +91 ${widget.phoneNo}",
+                      text: widget.phoneNo != null
+                          ? "Please enter OTP we have sent you on \n  \n +91 ${widget.phoneNo}"
+                          : "Please enter OTP we have sent you on \n  \n Your mobile no",
                       size: 16.0,
                       fontfamily: 'Montserrat',
                       fontWeight: FontWeight.w600,
@@ -160,24 +160,24 @@ class _SendOTPState extends State<SendOTP> {
                     Padding(
                       padding: EdgeInsets.all(25.0),
                     ),
-                   ! isVerifying?
-                    FRaisedButton(
-                      text: "Verify",
-                      width: 160.0,
-                      height: 45.0,
-                      shape: true,
-                      color: Colors.white,
-                      bg: primaryDark,
-                      onPressed: pin?.length == 6
-                          ? () {
-                              handleOtpVerification();
-                            }
-                          : null,
-                    ):
-                    Container(
-                      child: CircularProgressIndicator(),
-                      alignment: Alignment.center,
-                    ),
+                    !isVerifying
+                        ? FRaisedButton(
+                            text: "Verify",
+                            width: 160.0,
+                            height: 45.0,
+                            shape: true,
+                            color: Colors.white,
+                            bg: primaryDark,
+                            onPressed: pin?.length == 6
+                                ? () {
+                                    handleOtpVerification();
+                                  }
+                                : null,
+                          )
+                        : Container(
+                            child: CircularProgressIndicator(),
+                            alignment: Alignment.center,
+                          ),
                     otpErr != null
                         ? Padding(
                             padding: EdgeInsets.only(top: 10),

@@ -18,7 +18,13 @@ class CategoryPage extends StatelessWidget {
     final cat = text;
 
     getCategoryItems(reqCategory) {
-      String filter = [cat, reqCategory].join(';');
+      String filter;
+      if (filter != 'Sunglasses' &&
+          filter != 'Watches' &&
+          filter != 'Bags & Backpacks')
+        filter = [cat, reqCategory].join(';');
+      else
+        filter = cat;
       print(filter);
       return Provider.of<ProductModel>(context).category(filter);
     }
@@ -26,9 +32,7 @@ class CategoryPage extends StatelessWidget {
     createWidgets() {
       List<Widget> widgets = [];
       SubMain[cat].forEach((each) {
-        print(each['name']);
         final categoryProduct = getCategoryItems(each['name']);
-        print(categoryProduct);
         onpressed() {
           Navigator.push(
               context,
