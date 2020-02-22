@@ -4,7 +4,6 @@ import 'package:esell/pages/ChangePassword.dart';
 import 'package:esell/pages/SearchPage.dart';
 import 'package:esell/state/src/theme.dart';
 import 'package:esell/widget/atoms/BetterInputForm.dart';
-import 'package:esell/widget/atoms/Forms.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/molecules/Icons.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +24,6 @@ class _AccountEditState extends State<AccountEdit> {
     var width = MediaQuery.of(context).size.width;
     final user = Provider.of<UserModel>(context);
     final userData = user.user;
-    final token = user.token;
 
     return Scaffold(
       appBar: PreferredSize(

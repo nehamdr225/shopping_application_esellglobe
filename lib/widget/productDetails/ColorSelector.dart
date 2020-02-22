@@ -1,4 +1,3 @@
-import 'package:esell/state/src/theme.dart';
 import 'package:flutter/material.dart';
 
 class PDColorSelector extends StatefulWidget {
@@ -25,13 +24,13 @@ const Map<String, Color> COLOR_TYPES = {
   'Teal': Colors.teal,
   'Violet': Color(0xffee82ee),
   'Megenta': Color(0xffff00ff),
-  'Chartreuse' : Color(0xff7fff00),
-  'Aqua' : Color(0xff00ffff),
+  'Chartreuse': Color(0xff7fff00),
+  'Aqua': Color(0xff00ffff),
   'Fuchsia': Color(0xffff00ff),
   'Maroon': Color(0xff800000),
   'Navy': Color(0xff000080),
-  'Olive' : Color(0xff808000),
-  'Silver' : Color(0xffc0c0c0),
+  'Olive': Color(0xff808000),
+  'Silver': Color(0xffc0c0c0),
 };
 
 class _PDColorSelectorState extends State<PDColorSelector> {
@@ -83,16 +82,16 @@ class _PDColorSelectorState extends State<PDColorSelector> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-            padding: EdgeInsets.only(left: 14.0, top: 10.0),
-            child: Text(
-              "Select Color",
-              style: Theme.of(context)
-                  .textTheme
-                  .body1
-                  .copyWith(fontWeight: FontWeight.w600, fontSize: 15.0),
-              textAlign: TextAlign.left,
+              padding: EdgeInsets.only(left: 14.0, top: 10.0),
+              child: Text(
+                "Select Color",
+                style: Theme.of(context)
+                    .textTheme
+                    .body1
+                    .copyWith(fontWeight: FontWeight.w600, fontSize: 15.0),
+                textAlign: TextAlign.left,
+              ),
             ),
-          ),
             Padding(
               padding: EdgeInsets.only(left: 18.0, top: 20.0, bottom: 18.0),
               child: Row(
