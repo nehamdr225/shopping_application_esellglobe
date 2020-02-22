@@ -56,14 +56,16 @@ class _AccountEditState extends State<AccountEdit> {
                   })
             ],
           )),
-      body: ListView(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Stack(
             alignment: AlignmentDirectional.center,
             children: <Widget>[
               Container(
                 color: primaryDark,
-                height: height * 0.20,
+                height: height * 0.30,
                 width: width,
               ),
               CircleAvatar(
@@ -125,47 +127,53 @@ class _AccountEditState extends State<AccountEdit> {
               // elevation: 0.0,
             ),
           ),
+          SizedBox(
+            height: 10.0,
+          ),         
           FRaisedButton(
             text: 'Change Password',
             color: textColor,
             bg: Colors.white,
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ChangePassword()));
-            },
-            width: width * 0.25,
+            width: width * 0.50,
             fontSize: 15.0,
             fontWeight: FontWeight.w700,
             height: 45.0,
             elevation: 0.0,
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ChangePassword()));
+            },
+            
           ),
           FRaisedButton(
             text: 'Deactivate Account',
             color: textColor,
             bg: Colors.white,
-            onPressed: () {
-              // Navigator.push(context,
-              //           MaterialPageRoute(builder: (context) => ChangePassword()));
-            },
-            width: width * 0.25,
+            width: width * 0.50,
             fontSize: 15.0,
             fontWeight: FontWeight.w700,
             height: 45.0,
             elevation: 0.0,
+            onPressed: () {
+              // Navigator.push(context,
+              //           MaterialPageRoute(builder: (context) => ChangePassword()));
+            },
+            
           ),
           FRaisedButton(
             text: 'Delete Account',
             color: orderBar,
             bg: Colors.white,
-            onPressed: () {
-              // Navigator.push(context,
-              //           MaterialPageRoute(builder: (context) => ChangePassword()));
-            },
-            width: width * 0.25,
+            width: width * 0.50,
             fontSize: 15.0,
             fontWeight: FontWeight.w700,
             height: 45.0,
             elevation: 0.0,
+            onPressed: () {
+              // Navigator.push(context,
+              //           MaterialPageRoute(builder: (context) => ChangePassword()));
+            },
+            
           ),
         ],
       ),
