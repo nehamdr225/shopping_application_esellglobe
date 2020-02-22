@@ -83,15 +83,16 @@ class _PDColorSelectorState extends State<PDColorSelector> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.only(left: 14.0),
-              child: Text(
-                'Select a color',
-                style: TextStyle(
-                    color: textColor,
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.w500),
-              ),
+            padding: EdgeInsets.only(left: 14.0, top: 10.0),
+            child: Text(
+              "Select Color",
+              style: Theme.of(context)
+                  .textTheme
+                  .body1
+                  .copyWith(fontWeight: FontWeight.w600, fontSize: 15.0),
+              textAlign: TextAlign.left,
             ),
+          ),
             Padding(
               padding: EdgeInsets.only(left: 18.0, top: 20.0, bottom: 18.0),
               child: Row(

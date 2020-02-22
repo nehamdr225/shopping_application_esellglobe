@@ -1,6 +1,7 @@
 import 'package:esell/state/state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:esell/pages/SendOTP.dart';
 
 class PinOTP extends StatefulWidget {
   final String lastPin;
@@ -31,6 +32,7 @@ class PinOTPState extends State<PinOTP> {
   List<String> _pin;
   List<FocusNode> _focusNodes;
   List<TextEditingController> _textControllers;
+  String receivedOTP;
 
   Widget textfields = Container();
 
@@ -141,7 +143,22 @@ class PinOTPState extends State<PinOTP> {
               FocusScope.of(context).requestFocus(_focusNodes[i - 1]);
             }
           }
+<<<<<<< HEAD
           widget.onSubmit(_pin.join());
+=======
+          if (_pin.every((String digit) => digit != null && digit != '')) {
+            widget.onSubmit(_pin.join());
+            SendOTP(receivedOTP: receivedOTP);
+          }
+        },
+        onSubmitted: (String str) {
+          if (_pin.every((String digit) => digit != null && digit != '')) {
+            widget.onSubmit(_pin.join());
+            receivedOTP = _pin.join();
+            SendOTP(receivedOTP: receivedOTP);
+            
+          }
+>>>>>>> a575bc3ce0f009fb763b20419dfd516fdfb3d878
         },
       ),
     );
