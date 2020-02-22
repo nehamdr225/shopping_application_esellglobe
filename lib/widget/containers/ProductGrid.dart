@@ -5,13 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:esell/state/state.dart';
 import 'package:provider/provider.dart';
 
-class ProductGrid extends StatelessWidget { 
+class ProductGrid extends StatelessWidget {
   final Orientation orientation;
   final String category;
   ProductGrid({this.orientation, this.category});
   @override
   Widget build(BuildContext context) {
-    print(category);
     final products = Provider.of<ProductModel>(context).category(category);
     return Padding(
       padding: EdgeInsets.all(4.0),
@@ -40,15 +39,15 @@ class ProductGrid extends StatelessWidget {
                     : BottomLoader();
               },
             )
-          : Row(
+          : Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation(
-                      Theme.of(context).colorScheme.primaryVariant),
-                  value: 12.0,
-                )
+                CircularProgressIndicator(),
+                SizedBox(
+                  height: 100.0,
+                  width: MediaQuery.of(context).size.width - 10,
+                ),
               ],
             ),
     );

@@ -34,7 +34,7 @@ class CategoryPage extends StatelessWidget {
               context,
               MaterialPageRoute(
                   builder: (context) => ProductsPage(
-                        category: [cat, each['name']], //type
+                        category: [cat, each['name']].join(';'), //type
                       )));
         }
 

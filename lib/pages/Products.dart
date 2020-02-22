@@ -14,7 +14,7 @@ class ProductsPage extends StatelessWidget {
           child: FAppBar(
             wishlist: true,
             cart: true,
-            title: '${category[1]}',
+            title: '${category.split(';')[1]}',
           ),
         ),
         body: OrientationBuilder(builder: (context, orientation) {
