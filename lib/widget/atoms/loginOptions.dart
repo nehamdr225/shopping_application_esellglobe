@@ -21,29 +21,54 @@ class LoginOptions extends StatelessWidget {
             height: 50.0,
             width: 260.0,
             shape: true,
-            needIcon: true,
-            image: 'images/icons/email.png',
+            needIcon: false,
+            //image: 'images/icons/email.png',
             text: "Login with email/phone no.",
-            color: Colors.black45,
+            color: Colors.white.withOpacity(0.95),
             fontWeight: FontWeight.bold,
-            bg: Colors.white,
+            bg: Theme.of(context).colorScheme.secondary,
             onPressed: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => SignInPage()));
             },
           ),
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 15.0),
+            padding: const EdgeInsets.all(8.0),
             child: FancyText(
-                color: primaryDark,
-                text: "New here? Register now!",
+              color: primaryDark,
+                text: "Or",
                 size: 16.0,
-                fontfamily: 'Helvetica',
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SignUpPage()));
-                }),
+                fontfamily: 'Montserrat',
+                fontWeight: FontWeight.w700,
+            ),
           ),
+          FRaisedButton(
+            height: 45.0,
+            width: 260.0,
+            shape: true,
+            needIcon: false,
+            //image: 'images/icons/email.png',
+            text: "Register Now",
+            color: Colors.black54,
+            fontWeight: FontWeight.bold,
+            bg: Colors.white,
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => SignUpPage()));
+            },
+          ),
+          // Padding(
+          //   padding: EdgeInsets.symmetric(vertical: 15.0),
+          //   child: FancyText(
+          //       color: primaryDark,
+          //       text: "New here? Register now!",
+          //       size: 16.0,
+          //       fontfamily: 'Helvetica',
+          //       onTap: () {
+          //         Navigator.push(context,
+          //             MaterialPageRoute(builder: (context) => SignUpPage()));
+          //       }),
+          // ),
         ],
       ),
     );

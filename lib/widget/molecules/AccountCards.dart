@@ -9,7 +9,7 @@ class AccountCards extends StatelessWidget {
   final height;
   final onTap;
   final bool padding;
-  AccountCards({this.text, this.buttonText, this.capText: '', this.onTap, this.height:105.0, this.padding: true});
+  AccountCards({this.text, this.buttonText, this.capText: '', this.onTap, this.height:110.0, this.padding: true});
   @override
   Widget build(BuildContext context) {
     return Padding(

@@ -23,6 +23,7 @@ class AccountPage extends StatelessWidget {
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(40.0),
           child: BlueAppBar(
+            elevation: 0.0,
             onPressed: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => HomePageApp()));
@@ -111,7 +112,7 @@ class AccountPage extends StatelessWidget {
               ),
             ],
           ),
-          AccountCards(
+          AccountCards(  
             text: 'ESell Plus',
             buttonText: 'VIEW PLUS ZONE',
             onTap: () {},
