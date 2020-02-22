@@ -25,6 +25,7 @@ class SendOTP extends StatefulWidget {
 class _SendOTPState extends State<SendOTP> {
   String otpErr;
   String pin = '';
+  bool isVerifying = false;
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +40,9 @@ class _SendOTPState extends State<SendOTP> {
     }
 
     void handleOtpVerification() async {
+      setState(() {
+        isVerifying = true;
+      });
       final response = await api.verifyOtp(widget.id, pin);
       print(response);
       if (response['message'] != null) {
@@ -64,19 +68,29 @@ class _SendOTPState extends State<SendOTP> {
                 user.user = result['result'];
               }
             });
+            setState(() {
+              isVerifying = false;
+            });
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => HomePageApp()));
           } else {
+            setState(() {
+              isVerifying = false;
+            });
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => SignInPage()));
           }
         } else {
+          setState(() {
+            isVerifying = false;
+          });
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => SignInPage()));
         }
       } else {
         setState(() {
           otpErr = 'OTP verification failed!';
+          isVerifying = false;
         });
       }
     }
@@ -161,16 +175,18 @@ class _SendOTPState extends State<SendOTP> {
                             }
                           : null,
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 10),
-                      child: Text(
-                        otpErr,
-                        style: TextStyle(
-                            color: orderBar,
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
+                    otpErr != null
+                        ? Padding(
+                            padding: EdgeInsets.only(top: 10),
+                            child: Text(
+                              otpErr,
+                              style: TextStyle(
+                                  color: orderBar,
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          )
+                        : Text(''),
                   ],
                 ),
               ),

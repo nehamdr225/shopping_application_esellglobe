@@ -98,11 +98,14 @@ class _PageState extends State<SignInPage> {
             isActive = false;
           });
           Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => SendOTP(
-                      id: response['id'],
-                      loginInfo: {'email': email, 'password': password})));
+            context,
+            MaterialPageRoute(
+              builder: (context) => SendOTP(
+                id: response['id'],
+                loginInfo: {'email': email, 'password': password},
+              ),
+            ),
+          );
         }
       } catch (err) {
         setState(() {
