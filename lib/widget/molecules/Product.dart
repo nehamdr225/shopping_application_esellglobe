@@ -23,7 +23,24 @@ class Product extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(image);
+    var preview = '';
+    if (image != null) {
+      if (image['front'] == null) {
+        if (image['left'] != null) {
+          preview = image['left'];
+        } else if (image['right'] != null) {
+          preview = image['right'];
+        } else if (image['back'] != null) {
+          preview = image['back'];
+        } else if (image['top'] != null) {
+          preview = image['top'];
+        } else if (image['bottom'] != null) {
+          preview = image['bottom'];
+        }
+      } else {
+        preview = image['front'];
+      }
+    }
     return Card(
       borderOnForeground: true,
       shape: RoundedRectangleBorder(
@@ -41,7 +58,7 @@ class Product extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 ImageHolder(
-                  image: image['front'],
+                  image: preview,
                   imgheight: imgheight,
                 ),
                 Divider(height: 2),

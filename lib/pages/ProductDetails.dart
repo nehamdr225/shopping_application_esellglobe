@@ -41,26 +41,36 @@ class _ProductDetailsState extends State<ProductDetails> {
     var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
     final product = Provider.of<ProductModel>(context).one(widget.id);
-    final imagesrc = "https://api.shop2more.com"  ;
+    final imagesrc = "https://api.shop2more.com";
 
     List<Image> images = [];
-    if (product['media']['front'] != null && product['media']['front'].length > 0) {
-      images.add(Image.network(imagesrc + product['media']['front']));
-    }
-    if (product['media']['back'] != null && product['media']['back'].length > 0) {
-      images.add(Image.network(imagesrc + product['media']['back']));
-    }
-    if (product['media']['left'] != null && product['media']['left'].length > 0) {
-      images.add(Image.network(imagesrc + product['media']['left']));
-    }
-    if (product['media']['right'] != null && product['media']['right'].length > 0) {
-      images.add(Image.network(imagesrc + product['media']['right']));
-    }
-    if (product['media']['top'] != null && product['media']['top'].length > 0) {
-      images.add(Image.network(imagesrc + product['media']['top']));
-    }
-    if (product['media']['bottom'] != null && product['media']['bottom'].length > 0) {
-      images.add(Image.network(imagesrc + product['media']['bottom']));
+    if (product['media'] != null) {
+      if (product['media']['front'] != null &&
+          product['media']['front'].length > 0) {
+        images.add(Image.network(imagesrc + product['media']['front']));
+      }
+      if (product['media']['back'] != null &&
+          product['media']['back'].length > 0) {
+        images.add(Image.network(imagesrc + product['media']['back']));
+      }
+      if (product['media']['left'] != null &&
+          product['media']['left'].length > 0) {
+        images.add(Image.network(imagesrc + product['media']['left']));
+      }
+      if (product['media']['right'] != null &&
+          product['media']['right'].length > 0) {
+        images.add(Image.network(imagesrc + product['media']['right']));
+      }
+      if (product['media']['top'] != null &&
+          product['media']['top'].length > 0) {
+        images.add(Image.network(imagesrc + product['media']['top']));
+      }
+      if (product['media']['bottom'] != null &&
+          product['media']['bottom'].length > 0) {
+        images.add(Image.network(imagesrc + product['media']['bottom']));
+      }
+    } else {
+      images.add(Image.network(' '));
     }
     print(product['description']);
     // Map<String, dynamic> images;

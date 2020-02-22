@@ -19,9 +19,9 @@ class CategoryPage extends StatelessWidget {
 
     getCategoryItems(reqCategory) {
       String filter;
-      if (filter != 'Sunglasses' &&
-          filter != 'Watches' &&
-          filter != 'Bags & Backpacks')
+      if (reqCategory != 'Sunglasses' &&
+          reqCategory != 'Watches' &&
+          reqCategory != 'Bags & Backpacks')
         filter = [cat, reqCategory].join(';');
       else
         filter = cat;
