@@ -95,8 +95,6 @@ class _SendOTPState extends State<SendOTP> {
       }
     }
 
-    ;
-
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,

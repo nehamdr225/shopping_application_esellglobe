@@ -171,7 +171,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
       persistentFooterButtons: <Widget>[
         Container(
             alignment: Alignment.centerLeft,
-            height: 50.0,
+            height: 40.0,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -200,6 +200,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
         ),
         FRaisedButton(
           width: width * 0.45,
+          height: 40.0,
           bg: primaryDark,
           text: 'Place Order',
           color: Colors.white,

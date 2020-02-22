@@ -23,26 +23,29 @@ class AccountPage extends StatelessWidget {
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(40.0),
           child: BlueAppBar(
-            onPressed: (){
-            Navigator.push(
-              context, MaterialPageRoute(builder: (context) => HomePageApp()));
-          },
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => HomePageApp()));
+            },
           )),
       body: ListView(
         children: <Widget>[
           Stack(
             // Blue name card
-            alignment: AlignmentDirectional.center,
+            alignment: AlignmentDirectional.topCenter,
             children: <Widget>[
               Container(
                 color: primaryDark,
-                height: height * 0.25,
+                height: height * 0.3,
                 width: width,
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.all(5.0),
+                  ),
                   CircleAvatar(
                     backgroundColor: Colors.white,
                     radius: 45.0,

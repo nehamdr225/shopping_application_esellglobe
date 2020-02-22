@@ -47,16 +47,22 @@ class _AddressPageState extends State<AddressPage> {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       persistentFooterButtons: <Widget>[
-        FRaisedButton(
-          text: 'Save',
-          shape: true,
-          color: Colors.white,
-          bg: primaryDark,
-          onPressed: () {
-            final status = widget.save();
-            print(status);
-            Navigator.pop(context);
-          },
+        Container(
+          width: MediaQuery.of(context).size.width * 0.26,
+          height: 40.0,
+          alignment: Alignment.center,
+          child: FRaisedButton(
+            text: 'Save',
+            fontSize: 18.0,
+            shape: true,
+            color: Colors.white,
+            bg: primaryDark,
+            onPressed: () {
+              final status = widget.save();
+              print(status);
+              Navigator.pop(context);
+            },
+          ),
         ),
       ],
       appBar: PreferredSize(

@@ -29,7 +29,7 @@ class FForms extends StatelessWidget {
     this.icon,
     this.prefix,
     this.underline: false,
-    this.borderColor : Colors.white,
+    this.borderColor: Colors.white,
   });
 
   @override
@@ -44,10 +44,8 @@ class FForms extends StatelessWidget {
         obscureText: obscure,
         onChanged: onChanged,
         decoration: InputDecoration(
-          border: OutlineInputBorder(
-              borderSide: BorderSide(
-            color: primaryDark
-          )),
+          border:
+              OutlineInputBorder(borderSide: BorderSide(color: primaryDark)),
           prefix: prefix,
           prefixIcon: icon,
           hintText: labeltext == true ? text : '',
@@ -55,9 +53,7 @@ class FForms extends StatelessWidget {
           labelStyle: style,
           labelText: text,
           enabledBorder: underline == false
-              ? OutlineInputBorder(
-                  borderSide:
-                      BorderSide(color: primaryDark))
+              ? OutlineInputBorder(borderSide: BorderSide(color: primaryDark))
               : UnderlineInputBorder(
                   borderSide: BorderSide(
                   color: Theme.of(context).colorScheme.primaryVariant,

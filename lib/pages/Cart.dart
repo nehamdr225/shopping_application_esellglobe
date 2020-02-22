@@ -77,6 +77,7 @@ class _CartPageState extends State<CartPage> {
                       ),
                       FRaisedButton(
                         width: width * 0.45,
+                        height: 40.0,
                         text: "RS. ${total.toStringAsFixed(2)}",
                         bg: iconthemelight,
                         shape: true,
@@ -89,6 +90,7 @@ class _CartPageState extends State<CartPage> {
                       FRaisedButton(
                         width: width * 0.45,
                         color: Colors.white,
+                        height: 40.0,
                         shape: true,
                         bg: Theme.of(context).colorScheme.secondaryVariant,
                         onPressed: () {
@@ -182,16 +184,22 @@ class _CartPageState extends State<CartPage> {
                       wishlist: true,
                       title: 'Cart',
                     )),
-                backgroundColor: Colors.white,//Theme.of(context).colorScheme.background,
+                backgroundColor:
+                    Colors.white, //Theme.of(context).colorScheme.background,
                 body: Center(
                     child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
                       "You need to Login first",
-                      style: TextStyle(fontSize: 20.0, fontFamily: 'Montserrat', fontWeight: FontWeight.w600),
+                      style: TextStyle(
+                          fontSize: 20.0,
+                          fontFamily: 'Montserrat',
+                          fontWeight: FontWeight.w600),
                     ),
-                    SizedBox(height: 15.0,),
+                    SizedBox(
+                      height: 15.0,
+                    ),
                     FRaisedButton(
                       bg: Theme.of(context).colorScheme.secondaryVariant,
                       text: 'Login',
@@ -201,10 +209,8 @@ class _CartPageState extends State<CartPage> {
                       elevation: 0.5,
                       shape: true,
                       onPressed: () {
-                        Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (_) => LoginPhone()));
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => LoginPhone()));
                       },
                     )
                   ],

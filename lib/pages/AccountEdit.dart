@@ -3,6 +3,7 @@ import 'package:esell/pages/Cart.dart';
 import 'package:esell/pages/ChangePassword.dart';
 import 'package:esell/pages/SearchPage.dart';
 import 'package:esell/state/src/theme.dart';
+import 'package:esell/widget/atoms/BetterInputForm.dart';
 import 'package:esell/widget/atoms/Forms.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/molecules/Icons.dart';
@@ -30,7 +31,7 @@ class _AccountEditState extends State<AccountEdit> {
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(40.0),
           child: AppBar(
-            elevation: 0.5,
+            elevation: 0,
             backgroundColor: primaryDark,
             leading: IconButton(
               icon: Icon(Icons.arrow_back),
@@ -87,131 +88,44 @@ class _AccountEditState extends State<AccountEdit> {
           SizedBox(
             height: 10.0,
           ),
-          token != null
-              ? Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Text(
-                          'First Name',
-                          style: Theme.of(context)
-                              .textTheme
-                              .body1
-                              .copyWith(color: Colors.grey[500]),
-                        )),
-                    Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Text(
-                        userData['name'].split(' ').reduce((a, b) {
-                          return '$a';
-                        }),
-                        style: Theme.of(context).textTheme.body1.copyWith(
-                            color: textColor,
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.w400),
-                      ),
-                    )
-                  ],
-                )
-              : Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: FForms(
-                    underline: true,
-                    text: 'First Name',
-                    height: 75.0,
-                    width: width * 0.90,
-                  ),
-                ),
-          token != null
-              ? Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Text(
-                          'Last Name',
-                          style: Theme.of(context)
-                              .textTheme
-                              .body1
-                              .copyWith(color: Colors.grey[500]),
-                        )),
-                    Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Text(
-                          userData['name'].split(' ').reduce((a, b) {
-                            return '$b';
-                          }),
-                          style: Theme.of(context).textTheme.body1.copyWith(
-                              color: textColor,
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.w400),
-                        )),
-                  ],
-                )
-              : Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: FForms(
-                    underline: true,
-                    text: 'Last Name',
-                    height: 75.0,
-                    width: width * 0.90,
-                  ),
-                ),
-          FRaisedButton(
-            text: 'SUBMIT',
-            color: primaryDark,
-            bg: Colors.white,
-            onPressed: () {
-              // Navigator.push(context,
-              //           MaterialPageRoute(builder: (context) => ChangePassword()));
-            },
-            width: width * 0.60,
-            fontSize: 20.0,
-            fontWeight: FontWeight.w600,
-            height: 50.0,
-            elevation: 0.0,
+          Container(
+            padding: const EdgeInsets.all(10.0),
+            child: InputField(
+              value: userData['name'],
+              title: 'Name',
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(10.0),
-            child: FForms(
-              underline: true,
-              text: 'Email ID',
-              height: 75.0,
-              width: width * 0.90,
+            child: InputField(
+              value: userData['email'],
+              title: 'Email',
             ),
           ),
-          Row(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: FForms(
-                  underline: true,
-                  text: 'Mobile Number',
-                  type: TextInputType.number,
-                  height: 75.0,
-                  width: width * 0.70,
-                ),
+          Container(
+            padding: const EdgeInsets.all(10.0),
+            child: InputField(
+              value: userData['contact'],
+              title: 'Contact',
+            ),
+          ),
+          Container(
+            alignment: Alignment.topRight,
+            child: OutlineButton(
+              child: Text(
+                'Save Changes',
+                style: TextStyle(fontSize: 18.0, color: primaryDark),
               ),
-              FRaisedButton(
-                text: 'Update',
-                color: primaryDark,
-                bg: Colors.white,
-                onPressed: () {
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (context) => ChangePassword()));
-                },
-                width: width * 0.22,
-                fontSize: 14.0,
-                fontWeight: FontWeight.w700,
-                height: 50.0,
-                elevation: 0.0,
-              ),
-            ],
+              onPressed: null,
+              // () {
+              // Navigator.push(context,
+              //           MaterialPageRoute(builder: (context) => ChangePassword()));
+              // },
+              // fontSize: 20.0,
+              // fontWeight: FontWeight.w600,
+              // height: 50.0,
+              // elevation: 0.0,
+            ),
           ),
           FRaisedButton(
             text: 'Change Password',
@@ -230,6 +144,20 @@ class _AccountEditState extends State<AccountEdit> {
           FRaisedButton(
             text: 'Deactivate Account',
             color: textColor,
+            bg: Colors.white,
+            onPressed: () {
+              // Navigator.push(context,
+              //           MaterialPageRoute(builder: (context) => ChangePassword()));
+            },
+            width: width * 0.25,
+            fontSize: 15.0,
+            fontWeight: FontWeight.w700,
+            height: 45.0,
+            elevation: 0.0,
+          ),
+          FRaisedButton(
+            text: 'Delete Account',
+            color: orderBar,
             bg: Colors.white,
             onPressed: () {
               // Navigator.push(context,

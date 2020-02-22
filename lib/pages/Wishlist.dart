@@ -67,6 +67,7 @@ class WishlistPage extends StatelessWidget {
             persistentFooterButtons: <Widget>[
               FRaisedButton(
                   width: 160.0,
+                  height: 40.0,
                   shape: true,
                   color: iconthemelight,
                   bg: Theme.of(context).colorScheme.primary,
