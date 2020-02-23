@@ -86,8 +86,11 @@ class _PageState extends State<SignInPage> {
           setState(() {
             isActive = false;
           });
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => HomePageApp()));
+          Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => HomePageApp()),
+            (Route<dynamic> route) => false,
+          );
         } else if (response['error'] != null) {
           setState(() {
             loginErr = response['error'];

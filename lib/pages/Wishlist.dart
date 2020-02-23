@@ -92,9 +92,7 @@ class WishlistPage extends StatelessWidget {
                           return Product(
                               id: product['_id'],
                               name: product['name'],
-                              image: product['media'][0]['src'].length > 0
-                                  ? product['media'][0]['src'][0]
-                                  : "no images",
+                              image: product['media'],
                               imgheight: 98.0,
                               price: product['price'],
                               details: product['description'],

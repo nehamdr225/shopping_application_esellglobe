@@ -30,8 +30,28 @@ class CartListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
+    var preview = '';
+    if (picture != null) {
+      if (picture['front'] == null) {
+        if (picture['left'] != null) {
+          preview = picture['left'];
+        } else if (picture['right'] != null) {
+          preview = picture['right'];
+        } else if (picture['back'] != null) {
+          preview = picture['back'];
+        } else if (picture['top'] != null) {
+          preview = picture['top'];
+        } else if (picture['bottom'] != null) {
+          preview = picture['bottom'];
+        }
+      } else {
+        preview = picture['front'];
+      }
+    }
     return Padding(
-      padding: EdgeInsets.only(top: 8.0,),
+      padding: EdgeInsets.only(
+        top: 8.0,
+      ),
       child: Container(
         height: 200.0,
         color: Colors.white,
@@ -171,7 +191,6 @@ class CartListView extends StatelessWidget {
                                 ),
                           ),
                         ),
-
                         Text(
                           "Free Delivery",
                           style: Theme.of(context).textTheme.body1.copyWith(
@@ -186,17 +205,19 @@ class CartListView extends StatelessWidget {
                 ),
                 Flexible(
                   flex: 1,
-                  child: Column( //image and qty
+                  child: Column(
+                    //image and qty
                     children: <Widget>[
                       ClipRRect(
                         borderRadius: BorderRadius.circular(60),
                         child: Container(
                           padding: EdgeInsets.all(8.0),
-                          child: Image.network(picture,
+                          child: Image.network(preview,
                               width: 100.0, height: 70.0),
                         ),
                       ),
-                      Row( // quantity
+                      Row(
+                        // quantity
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[
                           IconButton(
@@ -234,8 +255,11 @@ class CartListView extends StatelessWidget {
                 ),
               ],
             ),
-            Divider(thickness: 1.0,),
-            Row( //Buttons
+            Divider(
+              thickness: 1.0,
+            ),
+            Row(
+              //Buttons
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 FRaisedButton(
@@ -289,7 +313,7 @@ class CartListView extends StatelessWidget {
                 )
               ],
             ),
-            SizedBox(height:4.0),
+            SizedBox(height: 4.0),
           ],
         ),
       ),

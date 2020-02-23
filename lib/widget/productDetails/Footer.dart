@@ -21,16 +21,18 @@ class PDFooter extends StatelessWidget {
       if (category != null && category.contains('Sunglasses') ||
           category.contains('Watches') ||
           category.contains('Bags & Backpacks')) {
-        if (color != null)
-          user.addToCart(id, quantity, size, color,
+        if (color != null) {
+          final status = user.addToCart(id, quantity, size, color,
               Provider.of<ProductModel>(context).one(id));
-        else
+          print(status);
+        } else
           buildAndShowSnackBar(context, 'Color not selected!');
       } else {
-        if (size != null && color != null)
-          user.addToCart(id, quantity, size, color,
+        if (size != null && color != null) {
+          final status = user.addToCart(id, quantity, size, color,
               Provider.of<ProductModel>(context).one(id));
-        else
+          print(status);
+        } else
           buildAndShowSnackBar(context, 'Size or color not selected!');
       }
     }

@@ -73,6 +73,7 @@ class UserModel extends ChangeNotifier {
     if (!check) {
       if (user['cart'] == null) {
         _api.registerCart(token, product, qty ?? 1, size, color).then((data) {
+          print(data);
           if (data['error'] == null) {
             _cart.add(product);
             _user.addAll({'cart': data['result']['_id']});
