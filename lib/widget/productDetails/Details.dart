@@ -43,23 +43,25 @@ class PDDetails extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(
-                child: Table(
-                  children: [
-                    TableRow(children: [
-                      FText(
-                        text: "Closure",
-                        color: Colors.grey[500],
-                        size: 16.0,
+              details['closure'] != null && details['closure'].length > 0
+                  ? Container(
+                      child: Table(
+                        children: [
+                          TableRow(children: [
+                            FText(
+                              text: "Closure",
+                              color: Colors.grey[500],
+                              size: 16.0,
+                            ),
+                            FText(
+                              text: details['closure'],
+                              style: body1,
+                            )
+                          ])
+                        ],
                       ),
-                      FText(
-                        text: details['closure'] ?? "N/A",
-                        style: body1,
-                      )
-                    ])
-                  ],
-                ),
-              ),
+                    )
+                  : Text(''),
               Container(
                 child: Table(
                   children: [

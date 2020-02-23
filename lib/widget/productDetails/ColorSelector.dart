@@ -1,3 +1,4 @@
+import 'package:esell/state/src/theme.dart';
 import 'package:flutter/material.dart';
 
 class PDColorSelector extends StatefulWidget {
@@ -53,7 +54,7 @@ class _PDColorSelectorState extends State<PDColorSelector> {
             alignment: Alignment.center,
             width: 20.0,
             height: 20.0,
-            color: eachColor == selectedColor ? Colors.red : Colors.white,
+            color: eachColor == selectedColor ? Colors.red : primary,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(7.5),
               child: Container(
@@ -70,13 +71,14 @@ class _PDColorSelectorState extends State<PDColorSelector> {
 
   @override
   Widget build(BuildContext context) {
-    List colorList = widget.color.split('\n');
+    List colorList = widget.color.split(';');
     final List<Widget> colorWidgets = buildColorWidgets(colorList);
 
     return Container(
       color: Colors.white,
       padding: EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 8.0),
-      width: MediaQuery.of(context).size.width * 0.95,
+      width: MediaQuery.of(context).size.width * 0.8,
+      alignment: Alignment.center,
       child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,

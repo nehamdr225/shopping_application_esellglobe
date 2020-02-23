@@ -1,5 +1,4 @@
 import 'package:esell/pages/CheckoutPage.dart';
-import 'package:esell/pages/LoginPhone.dart';
 import 'package:esell/pages/UserPromt.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
@@ -210,7 +209,7 @@ class _CartPageState extends State<CartPage> {
                       shape: true,
                       onPressed: () {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => LoginPhone()));
+                            MaterialPageRoute(builder: (_) => UserPromptApp()));
                       },
                     )
                   ],

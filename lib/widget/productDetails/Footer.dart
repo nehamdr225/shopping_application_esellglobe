@@ -1,4 +1,5 @@
 import 'package:esell/pages/Cart.dart';
+import 'package:esell/pages/UserPromt.dart';
 import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/atoms/Snackbar.dart';
@@ -8,20 +9,30 @@ import 'package:provider/provider.dart';
 // import 'package:esell/state/src/theme.dart';
 
 class PDFooter extends StatelessWidget {
-  final String id, color, size;
+  final String id, color, size, category;
   final int quantity;
-  PDFooter({this.id, this.quantity, this.color, this.size});
+  PDFooter({this.id, this.quantity, this.color, this.size, this.category});
 
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserModel>(context);
 
     addToCart() {
-      if (size != null && color != null)
-        user.addToCart(id, quantity, size, color,
-            Provider.of<ProductModel>(context).one(id));
-      else
-        buildAndShowSnackBar(context, 'Size or color not selected!');
+      if (category != null && category.contains('Sunglasses') ||
+          category.contains('Watches') ||
+          category.contains('Bags & Backpacks')) {
+        if (color != null)
+          user.addToCart(id, quantity, size, color,
+              Provider.of<ProductModel>(context).one(id));
+        else
+          buildAndShowSnackBar(context, 'Color not selected!');
+      } else {
+        if (size != null && color != null)
+          user.addToCart(id, quantity, size, color,
+              Provider.of<ProductModel>(context).one(id));
+        else
+          buildAndShowSnackBar(context, 'Size or color not selected!');
+      }
     }
 
     final addToWish = () => user.addToWishList(id);
@@ -50,54 +61,71 @@ class PDFooter extends StatelessWidget {
       width: MediaQuery.of(context).size.width - 16,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          user.findWishlistItem(id) == true
-              ? FloatingActionButton(
-                  backgroundColor: Colors.white,
-                  child: Icon(
-                    Icons.bookmark,
-                    color: iconthemedark,
-                  ),
-                  onPressed: () {},
-                )
-              : FloatingActionButton(
-                  backgroundColor: iconthemelight,
-                  child: Icon(
-                    Icons.bookmark_border,
-                    color: iconthemedark,
-                  ),
-                  onPressed: addToWish,
+        children: user.token != null
+            ? <Widget>[
+                user.findWishlistItem(id) == true
+                    ? FloatingActionButton(
+                        backgroundColor: Colors.white,
+                        child: Icon(
+                          Icons.bookmark,
+                          color: iconthemedark,
+                        ),
+                        onPressed: () {},
+                      )
+                    : FloatingActionButton(
+                        backgroundColor: iconthemelight,
+                        child: Icon(
+                          Icons.bookmark_border,
+                          color: iconthemedark,
+                        ),
+                        onPressed: addToWish,
+                      ),
+                Padding(
+                  padding: EdgeInsets.all(10.0),
                 ),
-          Padding(
-            padding: EdgeInsets.all(10.0),
-          ),
-          user.findCartItem(id) == true
-              ? FRaisedButton(
+                user.findCartItem(id) == true
+                    ? FRaisedButton(
+                        height: 50.0,
+                        width: 200.0,
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => CartPage()),
+                          );
+                        },
+                        text: 'Goto cart',
+                        color: Colors.white,
+                        bg: Theme.of(context).colorScheme.secondaryVariant,
+                        shape: true,
+                      )
+                    : FRaisedButton(
+                        height: 50.0,
+                        width: 200.0,
+                        onPressed: inCart ? () {} : addToCart,
+
+                        ///###
+                        text: inCart ? 'In Cart' : 'Add to cart',
+                        color: Colors.white,
+                        shape: true,
+                        bg: Theme.of(context).colorScheme.secondaryVariant,
+                      ),
+              ]
+            : <Widget>[
+                FRaisedButton(
                   height: 50.0,
                   width: 200.0,
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => CartPage()),
-                    );
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => UserPromptApp()));
                   },
-                  text: 'Goto cart',
-                  color: Colors.white,
-                  bg: Theme.of(context).colorScheme.secondaryVariant,
-                  shape: true,
-                )
-              : FRaisedButton(
-                  height: 50.0,
-                  width: 200.0,
-                  onPressed: inCart ? () {} : addToCart,
 
                   ///###
-                  text: inCart ? 'In Cart' : 'Add to cart',
+                  text: 'Login or Register',
                   color: Colors.white,
                   shape: true,
                   bg: Theme.of(context).colorScheme.secondaryVariant,
                 ),
-        ],
+              ],
       ),
     );
   }

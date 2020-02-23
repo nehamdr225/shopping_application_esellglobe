@@ -72,7 +72,6 @@ class _ProductDetailsState extends State<ProductDetails> {
     } else {
       images.add(Image.network(' '));
     }
-    print(product['description']);
     // Map<String, dynamic> images;
     //  = {
     //   'front': '',
@@ -87,7 +86,12 @@ class _ProductDetailsState extends State<ProductDetails> {
     return SafeArea(
       child: Scaffold(
         persistentFooterButtons: <Widget>[
-          PDFooter(id: widget.id, quantity: quantity, size: size, color: color)
+          PDFooter(
+              id: widget.id,
+              quantity: quantity,
+              size: size,
+              color: color,
+              category: product['category'])
         ],
         backgroundColor: Theme.of(context).colorScheme.background,
         appBar: PreferredSize(
@@ -117,10 +121,16 @@ class _ProductDetailsState extends State<ProductDetails> {
               price: product['price'].toString(),
             ),
             PDoffer(),
-            PDSizeSelector(
-              sizes: product['sizes'] == null ? "6-10" : product['sizes'],
-              setSize: setSize,
-            ),
+
+            !product['category'].contains('Sunglasses') &&
+                    !product['category'].contains('Watches') &&
+                    !product['category'].contains('Bags & Backpacks')
+                ? PDSizeSelector(
+                    sizes: product['sizes'],
+                    setSize: setSize,
+                    size: size,
+                  )
+                : Text(''),
             PDColorSelector(color: product['colors'], setColor: setColor),
             PDdelivery(),
             PDDetails(
