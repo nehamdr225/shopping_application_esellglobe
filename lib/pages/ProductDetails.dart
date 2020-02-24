@@ -107,7 +107,7 @@ class _ProductDetailsState extends State<ProductDetails> {
             Padding(
               padding: const EdgeInsets.only(right: 8.0, left: 8.0),
               child: Container(
-                height: screenHeight * 0.45,
+                height: screenHeight * 0.50,
                 width: screenWidth,
                 child: PDCarousel(
                   images: images,
