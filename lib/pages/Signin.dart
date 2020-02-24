@@ -1,9 +1,9 @@
 import 'package:esell/core/validators.dart';
 import 'package:esell/entities/user.api.dart';
 import 'package:esell/pages/SendOTP.dart';
-import 'package:esell/pages/Signup.dart';
 import 'package:esell/pages/Home.dart';
 import 'package:esell/widget/atoms/BrandLogos.dart';
+import 'package:esell/widget/atoms/password%20reset/ForgotPassword.dart';
 import 'package:esell/widget/molecules/BlueAppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/widget/atoms/Forms.dart';
@@ -128,6 +128,9 @@ class _PageState extends State<SignInPage> {
             search: false,
             cart: false,
             title: 'Login',
+            onPressed: (){
+              Navigator.pop(context);
+            },
           ),
         ),
         resizeToAvoidBottomPadding: false,
@@ -220,11 +223,11 @@ class _PageState extends State<SignInPage> {
             FancyText(
                 color: primaryDark,
                 decoration: TextDecoration.underline,
-                text: "Don't have an account? Register Here !",
+                text: "Forgot Password?",
                 size: 15.0,
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SignUpPage()));
+                      MaterialPageRoute(builder: (context) => ForgotPassword()));
                 })
           ],
         ),

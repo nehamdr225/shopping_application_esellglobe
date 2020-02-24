@@ -49,7 +49,7 @@ class CategoryPage extends StatelessWidget {
             onPressed: onpressed,
           ),
           Container(
-              height: 250,
+              height: 270,
               width: 70,
               alignment: Alignment.center,
               child: categoryProduct.length > 0
@@ -65,7 +65,7 @@ class CategoryPage extends StatelessWidget {
                             ? Product(
                                 name: categoryProduct[index]['name'],
                                 image: categoryProduct[index]['media'],
-                                imgheight: 120.0,
+                                imgheight: 150.0,
                                 price: categoryProduct[index]['price'],
                                 details: categoryProduct[index]['details'],
                                 id: categoryProduct[index]['_id'],
