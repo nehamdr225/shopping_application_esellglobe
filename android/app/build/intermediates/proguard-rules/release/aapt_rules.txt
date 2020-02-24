@@ -1,4 +1,0 @@
-# Referenced at /run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/build/intermediates/merged_manifests/release/AndroidManifest.xml:23
--keep class com.hits.shop2more.MainActivity { <init>(); }
-# Referenced at /run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/build/intermediates/merged_manifests/release/AndroidManifest.xml:19
--keep class io.flutter.app.FlutterApplication { <init>(); }
