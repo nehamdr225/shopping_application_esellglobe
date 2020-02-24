@@ -52,14 +52,14 @@ class _PDColorSelectorState extends State<PDColorSelector> {
           borderRadius: BorderRadius.circular(10.0),
           child: Container(
             alignment: Alignment.center,
-            width: 20.0,
-            height: 20.0,
-            color: eachColor == selectedColor ? Colors.red : primary,
+            width: 25.0,
+            height: 25.0,
+            color: eachColor == selectedColor ? primary : shadowGrey,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(7.5),
               child: Container(
-                width: 14.0,
-                height: 14.0,
+                width: 17.0,
+                height: 17.0,
                 color: COLOR_TYPES[eachColor] ?? COLOR_TYPES['Red'],
               ),
             ),

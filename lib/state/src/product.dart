@@ -78,16 +78,13 @@ class ProductModel extends ChangeNotifier {
 
   refresh() async {
     try {
-      if (!isRefreshing && maxCount != null && page * 15 < maxCount) {
-        isRefreshing = true;
+      if (maxCount != null && page * 15 < maxCount) {
         final res = await _api.getProducts(page: page + 1);
         if (res['products'].length > 0) {
           page = page + 1;
           products = res['products'];
-          isRefreshing = false;
           return "success";
         }
-        isRefreshing = false;
         return "done";
       }
       return "done";

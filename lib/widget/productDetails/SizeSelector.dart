@@ -64,7 +64,7 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
       final List<String> splitSizes = widget.sizes.split('-').toList();
       List<String> sizes = [];
       final int increment = widget.foot ? 1 : 2;
-      print('$increment $splitSizes');
+      // print('$increment $splitSizes');
       for (int i = int.parse(splitSizes[0]);
           i <= int.parse(splitSizes[1]);
           i = i + increment) {
