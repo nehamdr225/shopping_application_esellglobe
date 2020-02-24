@@ -2,6 +2,9 @@ import 'package:esell/widget/atoms/Details.dart';
 import 'package:esell/widget/atoms/ImageHolder.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/pages/ProductDetails.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
+import 'package:esell/state/state.dart';
 
 class Product extends StatelessWidget {
   final name;
@@ -23,6 +26,7 @@ class Product extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<UserModel>(context);
     var preview = '';
     if (image != null) {
       if (image['front'] == null) {
@@ -44,32 +48,53 @@ class Product extends StatelessWidget {
     return Card(
       borderOnForeground: true,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8.0),
+        borderRadius: BorderRadius.circular(2.0),
       ),
-      child: Container(
-        child: Material(
-          borderRadius: BorderRadius.circular(8.0),
-          child: InkWell(
-            onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => ProductDetails(id: id)));
-            },
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                ImageHolder( 
-                  image: preview,
-                  imgheight: imgheight,
-                ),
-                Divider(height: 2),
-                Details(
-                  name: name,
-                  price: 'Rs. $price',
-                  id: id,
-                  wishlist: wishlist,
-                ),
-              ],
-            ),
+      child: Material(
+        borderRadius: BorderRadius.circular(8.0),
+        child: InkWell(
+          onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => ProductDetails(id: id)));
+          },
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Stack(
+                children: <Widget>[
+                  Center(
+                    child: ImageHolder(
+                      image: preview,
+                      imgheight: imgheight,
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: IconButton(
+                      icon: Icon(
+                        CupertinoIcons.heart_solid,
+                      ),
+                      focusColor: Colors.red,
+                      color: user.findWishlistItem(id) != true
+                          ? Colors.grey[600]
+                          : Colors.red,
+                      onPressed: () {
+                        user.findWishlistItem(id) != true
+                            ? user.addToWishList(id)
+                            : print("already in wishlist");
+                      },
+                    ),
+                  ),
+                ],
+              ),
+              Divider(height: 2),
+              Details(
+                name: name,
+                price: 'Rs. $price',
+                id: id,
+                wishlist: wishlist,
+              ),
+            ],
           ),
         ),
       ),

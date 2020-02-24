@@ -58,14 +58,14 @@ class CategoryPage extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 1,
-                        childAspectRatio: 1.2,
+                        childAspectRatio: 1.1, 
                       ),
                       itemBuilder: (BuildContext context, int index) {
                         return index != categoryProduct.length
                             ? Product(
                                 name: categoryProduct[index]['name'],
                                 image: categoryProduct[index]['media'],
-                                imgheight: 150.0,
+                                imgheight: 210.0,
                                 price: categoryProduct[index]['price'],
                                 details: categoryProduct[index]['details'],
                                 id: categoryProduct[index]['_id'],

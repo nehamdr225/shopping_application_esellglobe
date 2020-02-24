@@ -5,11 +5,11 @@ class CategoryGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 400.0,
+        height: 500.0,
         width: 300.0,
         color: Colors.white,
         child: OrientationBuilder(builder: (context, orientation) {
-          return ProductGrid(
+          return ProductGrid( 
             orientation: orientation,
           );
         }));

@@ -41,6 +41,7 @@ class FTheme with ChangeNotifier {
       onSurface: Color(0xffEEEEEE),
       brightness: Brightness.light,
       surface: Color(0xffEEEEEE),
+      
     ),
     canvasColor: Colors.white,
     fontFamily: 'Montserrat',

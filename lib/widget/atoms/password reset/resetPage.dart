@@ -1,5 +1,4 @@
 import 'package:esell/state/state.dart';
-import 'package:esell/widget/atoms/BrandLogos.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
 import 'package:esell/widget/atoms/Forms.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
