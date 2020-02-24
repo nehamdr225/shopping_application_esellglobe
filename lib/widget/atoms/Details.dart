@@ -28,7 +28,7 @@ class _DetailsState extends State<Details> {
             child: Text(
               widget.name,
               style: Theme.of(context).textTheme.body1.copyWith(
-                    fontSize: 14.0,
+                    fontSize: 13.0,
                     fontWeight: FontWeight.w500,
                   ),
               textAlign: TextAlign.left,
@@ -39,7 +39,7 @@ class _DetailsState extends State<Details> {
             child: Text(
                 widget.price,
                 style: Theme.of(context).textTheme.body1.copyWith(
-                      fontSize: 13.0,
+                      fontSize: 16.0,
                       fontWeight: FontWeight.w500,
                     ),
                 textAlign: TextAlign.left,

@@ -1,5 +1,4 @@
 import 'package:esell/state/state.dart';
-import 'package:esell/widget/atoms/FancyText.dart';
 import 'package:esell/widget/atoms/Forms.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/molecules/BlueAppBar.dart';
@@ -23,7 +22,7 @@ class _ResetPageState extends State<ResetPage> {
     //final UserModel user = Provider.of<UserModel>(context);
     //final UserApi api = user.api;
     //final Validator v = user.validator;
-    final width = MediaQuery.of(context).size.width;
+    //final width = MediaQuery.of(context).size.width;
 
     var setPassword = (data) {
       // pwdValidator(data) &&
@@ -70,10 +69,7 @@ class _ResetPageState extends State<ResetPage> {
                         topRight: Radius.circular(20.0)),
                     color: Colors.white),
               )),
-          Padding(
-            padding: EdgeInsets.all(15.0),
-            child: BrandLogos(),
-          ),
+          
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
             child: FForms(
