@@ -7,6 +7,12 @@ class ProductsPage extends StatelessWidget {
   ProductsPage({this.category});
   @override
   Widget build(BuildContext context) {
+    String title = category;
+    if (category != 'Sunglasses' &&
+        category != 'Watches' &&
+        category != 'Bags & Backpacks') {
+      title = category.split(';')[1];
+    }
     return Scaffold(
         // backgroundColor: Colors.grey[200],
         appBar: PreferredSize(
@@ -14,7 +20,7 @@ class ProductsPage extends StatelessWidget {
           child: FAppBar(
             wishlist: true,
             cart: true,
-            title: '${category.split(';')[1]}',
+            title: '$title',
           ),
         ),
         body: OrientationBuilder(builder: (context, orientation) {
