@@ -47,8 +47,8 @@ class _ResetPageState extends State<ResetPage> {
           elevation: 0.0,
           search: false,
           cart: false,
-          title: 'Change Password',
-          onPressed: (){
+          title: 'Password Recovery',
+          onPressed: () {
             Navigator.pop(context);
           },
         ),
@@ -70,27 +70,9 @@ class _ResetPageState extends State<ResetPage> {
                         topRight: Radius.circular(20.0)),
                     color: Colors.white),
               )),
-          
           Padding(
             padding: EdgeInsets.all(15.0),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-            child: Container(
-              height: 50.0,
-              decoration: BoxDecoration(
-                color: Colors.grey[200],
-                border: Border.all(
-                  color: primaryDark.withOpacity(0.5)
-                ),
-                borderRadius: BorderRadius.circular(5.0)
-              ),
-              alignment: Alignment.center,
-                child: FancyText(
-                  text: "$widget.email",
-                  size: 18.0,
-                  color: Colors.grey[700],
-                ),),
+            child: BrandLogos(),
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
@@ -132,72 +114,6 @@ class _ResetPageState extends State<ResetPage> {
                   ),
                 )
               : Text(''),
-              Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Text('Enter OTP sent to your phone',
-                style: Theme.of(context).textTheme.title.copyWith(
-                    color: textColor,
-                    fontSize: 15,
-                    fontWeight: FontWeight.w700)),
-          ),
-          Row(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: FForms(
-                  underline: true,
-                  text: 'OTP',
-                  type: TextInputType.number,
-                  height: 75.0,
-                  width: width * 0.70,
-                ),
-              ),
-              InkWell(
-                child: Container(
-                  alignment: Alignment.center,
-                  height: 50.0,
-                  width: width * 0.20,
-                  child: Text('Resend',
-                      style: Theme.of(context).textTheme.title.copyWith(
-                          color: primaryDark,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700)),
-                ),
-                onTap: () {},
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              InkWell(
-                child: Container(
-                  alignment: Alignment.center,
-                  height: 50.0,
-                  width: width * 0.40,
-                  child: Text('Cancel',
-                      style: Theme.of(context).textTheme.title.copyWith(
-                          color: Colors.grey,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700)),
-                ),
-                onTap: () {},
-              ),
-              InkWell(
-                child: Container(
-                  alignment: Alignment.center,
-                  height: 50.0,
-                  width: width * 0.40,
-                  child: Text('Save',
-                      style: Theme.of(context).textTheme.title.copyWith(
-                          color: primaryDark,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700)),
-                ),
-                onTap: () {},
-              ),
-            ],
-          ),
           Align(
             alignment: Alignment.center,
             child: FRaisedButton(

@@ -44,8 +44,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
           elevation: 0.0,
           search: false,
           cart: false,
-          title: 'Login',
-          onPressed: (){
+          title: 'Confirm Identity',
+          onPressed: () {
             Navigator.pop(context);
           },
         ),
@@ -78,7 +78,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
             child: FForms(
               type: TextInputType.emailAddress,
-              icon: Icon(Icons.email, color: primaryDark,),
+              icon: Icon(
+                Icons.email,
+                color: primaryDark,
+              ),
               text: "Email",
               onChanged: setEmail,
             ),
@@ -108,10 +111,12 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               bg: primaryDark,
               color: Colors.white,
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ResetPage(
-                      email: email,
-                    )));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ResetPage(
+                              email: email,
+                            )));
               },
             ),
           ),

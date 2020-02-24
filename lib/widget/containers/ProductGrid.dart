@@ -11,6 +11,7 @@ class ProductGrid extends StatelessWidget {
   ProductGrid({this.orientation, this.category});
   @override
   Widget build(BuildContext context) {
+    print('Grid $category');
     final products = Provider.of<ProductModel>(context).category(category);
     return Padding(
       padding: EdgeInsets.all(4.0),

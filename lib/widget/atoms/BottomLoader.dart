@@ -9,6 +9,7 @@ class BottomLoader extends StatefulWidget {
 
 class _BottomLoaderState extends State<BottomLoader> {
   String state;
+
   @override
   Widget build(BuildContext context) {
     final status = Provider.of<ProductModel>(context).refresh();
@@ -26,7 +27,10 @@ class _BottomLoaderState extends State<BottomLoader> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Text("Nothing more to show!"),
-                  Icon(Icons.check, color: primaryDark,)
+                  Icon(
+                    Icons.check,
+                    color: primaryDark,
+                  )
                 ],
               )
             : CircularProgressIndicator(
