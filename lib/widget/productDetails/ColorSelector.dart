@@ -72,7 +72,11 @@ class _PDColorSelectorState extends State<PDColorSelector> {
   @override
   Widget build(BuildContext context) {
     List colorList = widget.color.split(';');
-    final List<Widget> colorWidgets = buildColorWidgets(colorList);
+    List<Widget> colorWidgets;
+    if (colorList.length > 1)
+      colorWidgets = buildColorWidgets(colorList);
+    else
+      colorWidgets = [Text('')];
 
     return Container(
       color: Colors.white,
@@ -82,38 +86,39 @@ class _PDColorSelectorState extends State<PDColorSelector> {
       child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: EdgeInsets.only(left: 14.0, top: 10.0),
-              child: Text(
-                "Select Color",
-                style: Theme.of(context)
-                    .textTheme
-                    .body1
-                    .copyWith(fontWeight: FontWeight.w600, fontSize: 15.0),
-                textAlign: TextAlign.left,
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 18.0, top: 20.0, bottom: 18.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: colorWidgets,
-              ),
-            ),
-            // Padding(
-            //   padding: EdgeInsets.only(right: 15.0),
-            //   child: DropdownButton(
-            //     onChanged: (selectColor) {
-            //       setState(() {
-            //         selectedColor = selectColor;
-            //       });
-            //     },
-            //     value: selectedColor,
-            //     items: colorWidgets,
-            //   ),
-            // )
-          ]),
+          children: colorList.length > 1
+              ? [
+                  Padding(
+                    padding: EdgeInsets.only(left: 14.0, top: 10.0),
+                    child: Text(
+                      "Select Color",
+                      style: Theme.of(context).textTheme.body1.copyWith(
+                          fontWeight: FontWeight.w600, fontSize: 15.0),
+                      textAlign: TextAlign.left,
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsets.only(left: 18.0, top: 20.0, bottom: 18.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: colorWidgets,
+                    ),
+                  ),
+                  // Padding(
+                  //   padding: EdgeInsets.only(right: 15.0),
+                  //   child: DropdownButton(
+                  //     onChanged: (selectColor) {
+                  //       setState(() {
+                  //         selectedColor = selectColor;
+                  //       });
+                  //     },
+                  //     value: selectedColor,
+                  //     items: colorWidgets,
+                  //   ),
+                  // )
+                ]
+              : [Text('')]),
     );
   }
 }

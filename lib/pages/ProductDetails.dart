@@ -90,7 +90,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               id: widget.id,
               quantity: quantity,
               size: size,
-              color: color,
+              color: product['colors'].split(';').length > 1 ? color : '',
               category: product['category'])
         ],
         backgroundColor: Theme.of(context).colorScheme.background,
@@ -129,6 +129,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     sizes: product['sizes'],
                     setSize: setSize,
                     size: size,
+                    foot: product['category'].contains('Foot Wear'),
                   )
                 : Text(''),
             PDColorSelector(color: product['colors'], setColor: setColor),

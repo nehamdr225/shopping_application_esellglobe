@@ -13,7 +13,8 @@ Now the sizes string will either be in following formats:
 class PDSizeSelector extends StatefulWidget {
   final Function setSize;
   final String sizes, size;
-  PDSizeSelector({this.setSize, this.sizes, this.size});
+  final bool foot;
+  PDSizeSelector({this.setSize, this.sizes, this.size, this.foot = false});
 
   @override
   _PDSizeSelectorState createState() => _PDSizeSelectorState();
@@ -62,9 +63,11 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
     if (widget.sizes.contains('-')) {
       final List<String> splitSizes = widget.sizes.split('-').toList();
       List<String> sizes = [];
-      for (var i = int.parse(splitSizes[0]);
+      final int increment = widget.foot ? 1 : 2;
+      print('$increment $splitSizes');
+      for (int i = int.parse(splitSizes[0]);
           i <= int.parse(splitSizes[1]);
-          i++) {
+          i = i + increment) {
         sizes.add(i.toString());
       }
       setState(() {
