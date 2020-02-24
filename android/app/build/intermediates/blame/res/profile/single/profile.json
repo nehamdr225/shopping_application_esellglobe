@@ -1,0 +1,46 @@
+[
+    {
+        "merged": "/run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/build/intermediates/res/merged/profile/mipmap-xhdpi_shop2morelogo.png.flat",
+        "source": "/run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/src/main/res/mipmap-xhdpi/shop2morelogo.png"
+    },
+    {
+        "merged": "/run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/build/intermediates/res/merged/profile/mipmap-hdpi_shop2morelogo.png.flat",
+        "source": "/run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/src/main/res/mipmap-hdpi/shop2morelogo.png"
+    },
+    {
+        "merged": "/run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/build/intermediates/res/merged/profile/mipmap-mdpi_shop2more.png.flat",
+        "source": "/run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/src/main/res/mipmap-mdpi/shop2more.png"
+    },
+    {
+        "merged": "/run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/build/intermediates/res/merged/profile/mipmap-xhdpi_shop2more.png.flat",
+        "source": "/run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/src/main/res/mipmap-xhdpi/shop2more.png"
+    },
+    {
+        "merged": "/run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/build/intermediates/res/merged/profile/mipmap-xxxhdpi_shop2more.png.flat",
+        "source": "/run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/src/main/res/mipmap-xxxhdpi/shop2more.png"
+    },
+    {
+        "merged": "/run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/build/intermediates/res/merged/profile/mipmap-xxhdpi_shop2morelogo.png.flat",
+        "source": "/run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/src/main/res/mipmap-xxhdpi/shop2morelogo.png"
+    },
+    {
+        "merged": "/run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/build/intermediates/res/merged/profile/mipmap-xxxhdpi_shop2morelogo.png.flat",
+        "source": "/run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/src/main/res/mipmap-xxxhdpi/shop2morelogo.png"
+    },
+    {
+        "merged": "/run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/build/intermediates/res/merged/profile/mipmap-xxhdpi_shop2more.png.flat",
+        "source": "/run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/src/main/res/mipmap-xxhdpi/shop2more.png"
+    },
+    {
+        "merged": "/run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/build/intermediates/res/merged/profile/drawable_launch_background.xml.flat",
+        "source": "/run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/src/main/res/drawable/launch_background.xml"
+    },
+    {
+        "merged": "/run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/build/intermediates/res/merged/profile/mipmap-mdpi_shop2morelogo.png.flat",
+        "source": "/run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/src/main/res/mipmap-mdpi/shop2morelogo.png"
+    },
+    {
+        "merged": "/run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/build/intermediates/res/merged/profile/mipmap-hdpi_shop2more.png.flat",
+        "source": "/run/media/nae/workshop/LightWebGroup/reesell/esellglobe/android/app/src/main/res/mipmap-hdpi/shop2more.png"
+    }
+]

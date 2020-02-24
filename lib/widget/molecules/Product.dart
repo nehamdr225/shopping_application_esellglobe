@@ -57,7 +57,7 @@ class Product extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                ImageHolder(
+                ImageHolder( 
                   image: preview,
                   imgheight: imgheight,
                 ),

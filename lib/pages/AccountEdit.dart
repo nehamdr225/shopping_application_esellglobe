@@ -1,10 +1,10 @@
 import 'package:esell/pages/AccountPage.dart';
 import 'package:esell/pages/Cart.dart';
-import 'package:esell/pages/ChangePassword.dart';
 import 'package:esell/pages/SearchPage.dart';
 import 'package:esell/state/src/theme.dart';
 import 'package:esell/widget/atoms/BetterInputForm.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
+import 'package:esell/widget/atoms/password%20reset/resetPage.dart';
 import 'package:esell/widget/molecules/Icons.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/state/state.dart';
@@ -56,9 +56,7 @@ class _AccountEditState extends State<AccountEdit> {
                   })
             ],
           )),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
+      body: ListView(
         children: <Widget>[
           Stack(
             alignment: AlignmentDirectional.center,
@@ -141,7 +139,7 @@ class _AccountEditState extends State<AccountEdit> {
             elevation: 0.0,
             onPressed: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ChangePassword()));
+                  MaterialPageRoute(builder: (context) => ResetPage()));
             },
             
           ),

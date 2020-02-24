@@ -1,0 +1,8 @@
+Resource Reference Graph:
+drawable:launch_background:2130771968 => [mipmap:shop2more:2130837504]
+style:LaunchTheme:2130903040 => [drawable:launch_background:2130771968]
+
+The root reachable resources are:
+mipmap:shop2morelogo:2130837505,
+   style:LaunchTheme:2130903040
+Resource shrinking did not work (grew from 105006 to 105014); using original instead
