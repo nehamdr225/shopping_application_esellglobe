@@ -3,7 +3,6 @@ import 'package:esell/pages/UserPromt.dart';
 import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/atoms/Snackbar.dart';
-import 'package:esell/widget/molecules/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 // import 'package:esell/state/src/theme.dart';
@@ -37,7 +36,7 @@ class PDFooter extends StatelessWidget {
       }
     }
 
-    final addToWish = () => user.addToWishList(id);
+    //final addToWish = () => user.addToWishList(id);
     bool inCart = user.cart.any((cartItem) => cartItem['product']['_id'] == id);
 
     // final snackBar = (text, label, onPressed) => SnackBar(
@@ -65,48 +64,58 @@ class PDFooter extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: user.token != null
             ? <Widget>[
-                user.findWishlistItem(id) == true
-                    ? FloatingActionButton(
-                        backgroundColor: Colors.white,
-                        child: Icon(
-                          Icons.bookmark,
-                          color: iconthemedark,
-                        ),
-                        onPressed: () {},
-                      )
-                    : FloatingActionButton(
-                        backgroundColor: iconthemelight,
-                        child: Icon(
-                          Icons.bookmark_border,
-                          color: iconthemedark,
-                        ),
-                        onPressed: addToWish,
-                      ),
-                Padding(
-                  padding: EdgeInsets.all(10.0),
-                ),
-                user.findCartItem(id) == true
+               user.findCartItem(id) == true
                     ? FRaisedButton(
                         height: 50.0,
-                        width: 200.0,
+                        width: MediaQuery.of(context).size.width *0.40,
+                        radius: 0.0,
                         onPressed: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) => CartPage()),
                           );
                         },
-                        text: 'Goto cart',
+                        text: 'GOTO CART',
+                        color: Colors.grey[600],
+                        bg: Colors.white,//Theme.of(context).colorScheme.secondaryVariant,
+                        shape: true,
+                      )
+                    : FRaisedButton(
+                        height: 50.0,
+                        width: MediaQuery.of(context).size.width *0.40,
+                        radius: 0.0,
+                        onPressed: inCart ? () {} : addToCart,
+
+                        ///###
+                        text: inCart ? 'IN CART' : 'ADD TO CART',
+                        color: Colors.grey[600],
+                        shape: true,
+                        bg: Colors.white,//Theme.of(context).colorScheme.secondaryVariant,
+                      ),
+                user.findCartItem(id) == true
+                    ? FRaisedButton(
+                        height: 50.0,
+                        width: MediaQuery.of(context).size.width *0.40,
+                        radius: 0.0,
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => CartPage()),
+                          );
+                        },
+                        text: 'GOTO CART',
                         color: Colors.white,
                         bg: Theme.of(context).colorScheme.secondaryVariant,
                         shape: true,
                       )
                     : FRaisedButton(
                         height: 50.0,
-                        width: 200.0,
+                        width: MediaQuery.of(context).size.width *0.40,
+                        radius: 0.0,
                         onPressed: inCart ? () {} : addToCart,
 
                         ///###
-                        text: inCart ? 'In Cart' : 'Add to cart',
+                        text: 'BUY NOW',
                         color: Colors.white,
                         shape: true,
                         bg: Theme.of(context).colorScheme.secondaryVariant,

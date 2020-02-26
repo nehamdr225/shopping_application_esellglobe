@@ -39,11 +39,7 @@ class PDInfo extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
-                    Text('\$',
-                        style: Theme.of(context).textTheme.body1.copyWith(
-                              fontWeight: FontWeight.w900,
-                              fontSize: 18.0,
-                            )),
+                    Image.asset("images/icons/rupee.png", height: 14.0,),
                     Padding(
                       padding: EdgeInsets.only(right: 6.0, left: 6.0),
                       child: Text(

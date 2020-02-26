@@ -13,6 +13,7 @@ class FRaisedButton extends StatelessWidget {
   final image;
   final imgcolor;
   final elevation;
+  final radius;
   final TextAlign textAlign;
   final MainAxisAlignment mainAxisAlignment;
   FRaisedButton({
@@ -28,6 +29,7 @@ class FRaisedButton extends StatelessWidget {
     this.elevation,
     this.image,
     this.imgcolor,
+    this.radius:30.0,
     this.needIcon: false,
     this.textAlign: TextAlign.center,
     this.mainAxisAlignment: MainAxisAlignment.center,
@@ -58,6 +60,7 @@ class FRaisedButton extends StatelessWidget {
                             color: color,
                             fontWeight: fontWeight),
                       ),
+                      
                     ])
               : Flex(
                   direction: Axis.vertical,
@@ -89,7 +92,7 @@ class FRaisedButton extends StatelessWidget {
               ? Border.all(
                   width: 0.0, color: Theme.of(context).colorScheme.background)
               : RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                  borderRadius: BorderRadius.all(Radius.circular(radius)),
                 ),
           onPressed: onPressed),
     );

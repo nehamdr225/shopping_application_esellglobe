@@ -4,8 +4,10 @@ import 'package:esell/widget/productDetails/Carousel.dart';
 import 'package:esell/widget/productDetails/ColorSelector.dart';
 import 'package:esell/widget/productDetails/Offer.dart';
 import 'package:esell/widget/productDetails/PDratingNreview.dart';
+import 'package:esell/widget/productDetails/SoldBy.dart';
 // import 'package:esell/widget/productDetails/TabView.dart';
 import 'package:esell/widget/productDetails/delivery.dart';
+import 'package:esell/widget/productDetails/plusmember.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:esell/widget/productDetails/details.dart';
@@ -44,6 +46,7 @@ class _ProductDetailsState extends State<ProductDetails> {
     final imagesrc = "https://api.shop2more.com";
 
     List<Image> images = [];
+    int imgNo = product['media'].length;
     if (product['media'] != null) {
       if (product['media']['front'] != null &&
           product['media']['front'].length > 0) {
@@ -111,6 +114,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                 width: screenWidth,
                 child: PDCarousel(
                   images: images,
+                  length: imgNo,
                   id: widget.id,
                   width: screenWidth,
                 ),
@@ -133,10 +137,13 @@ class _ProductDetailsState extends State<ProductDetails> {
                   )
                 : Text(''),
             PDColorSelector(color: product['colors'], setColor: setColor),
+            PDplusmember(),
             PDdelivery(),
+            PDsoldby(),
             PDDetails(
               details: product['description'],
               price: product['price'],
+              id: widget.id,
               // colors: product['colors'],
               // sizes: product['sizes'],
             ),
@@ -144,30 +151,7 @@ class _ProductDetailsState extends State<ProductDetails> {
             Padding(
               padding: EdgeInsets.all(10.0),
             )
-            // Padding(
-            //     padding: const EdgeInsets.all(8.0),
-            //     child: TabView(
-            //       tabs: ['Styles', 'Details', 'Reviews'],
-            //       tabItems: <Widget>[
-            //         Column(
-            //           children: <Widget>[
-            //
-            //             PDSizeSelector(
-            //               sizes: json.decode(product['sizes']),
-            //               setSize: setSize,
-            //             ),
-            //           ],
-            //         ),
-            //         PDDetails(
-            //             details: json.decode(product['description']),
-            //             price: product['price'].toString(),
-            //             colors: product['colors'],
-            //             sizes: json.decode(product['sizes'])),
-            //         PDStarRating(
-            //           rating: 5.0,
-            //         )
-            //       ],
-            //     ))
+            
           ],
         ),
       ),
