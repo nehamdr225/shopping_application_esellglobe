@@ -8,32 +8,30 @@ class PDDetails extends StatefulWidget {
   final details;
   final price;
   final id;
-  PDDetails({this.details, this.price, this.id});
+  PDDetails({
+    this.details,
+    this.price,
+    this.id,
+  });
 
   @override
   _PDDetailsState createState() => _PDDetailsState();
 }
 
 class _PDDetailsState extends State<PDDetails> {
+  bool more = false;
   @override
   Widget build(BuildContext context) {
     final body1 = Theme.of(context).textTheme.body1.copyWith(fontSize: 16.0);
     final product = Provider.of<ProductModel>(context).one(widget.id);
-    
-    Widget  trailing;
-    String descriptionText;
+     
+    //Widget trailing;
+    String descriptionText, trailingText;
 
-    if (widget.details['details'].length > 150){
-      descriptionText = widget.details['details'].substring(0,150);
-      trailing = InkWell(
-        child: Text('more', style: TextStyle(color: primaryDark)),
-        onTap: (){
-          setState(() {
-            descriptionText = widget.details['details'];
-            trailing = null;
-          });
-        },
-      );
+    if (widget.details['details'].length > 150) {
+      descriptionText = widget.details['details'].substring(0, 150);
+      trailingText = widget.details['details']
+          .substring(150, widget.details['details'].length);
     }
     return Padding(
       padding: const EdgeInsets.only(top: 5.0),
@@ -69,7 +67,8 @@ class _PDDetailsState extends State<PDDetails> {
                   ],
                 ),
               ),
-              widget.details['closure'] != null && widget.details['closure'].length > 0
+              widget.details['closure'] != null &&
+                      widget.details['closure'].length > 0
                   ? Container(
                       child: Table(
                         children: [
@@ -118,28 +117,35 @@ class _PDDetailsState extends State<PDDetails> {
               //   style: body1,
               // )),
               Container(
-                child: Stack(
-                  children: <Widget>[
-                     FText(
-                text: descriptionText,
-                color: textColor,
-                size: 15.0,
-                fontWeight: FontWeight.w600,
-              ),
-                    Align(
-                      alignment: Alignment.bottomRight,
-                      child:  trailing != null 
-                    ? trailing
-                    : Text('')
-                    )
-                   
-                  
-                  ],
-                )
-                    
-                    
-                
-              ),
+                  child: Column(
+                children: <Widget>[
+                  FText(
+                    text: descriptionText,
+                    style: body1,
+                    align: TextAlign.justify,
+                  ),
+                  more == false
+                      ? InkWell(
+                          child: FText(
+                            text: '...more',
+                            style: body1.copyWith(color: primaryDark),
+                          ),
+                          onTap: () {
+                            setState(() {
+                              more = true;
+                              // descriptionText = widget.details['details'];
+                              // trailing = null;
+                            });
+                          },
+                        )
+                      : FText(
+                        padding: [0.0,12.0],
+                          text: trailingText,
+                          style: body1,
+                          align: TextAlign.justify,
+                        )
+                ],
+              )),
 
               Padding(
                 padding: EdgeInsets.only(left: 10.0),
@@ -167,7 +173,8 @@ class _PDDetailsState extends State<PDDetails> {
                             builder: (context) => PDAllDetails(
                               details: product['description'],
                               price: product['price'],
-                              
+                              image: product['media']['front'],
+                              name: product['name'],
                             ),
                           ));
                         },

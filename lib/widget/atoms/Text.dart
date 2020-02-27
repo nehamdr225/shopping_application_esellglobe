@@ -8,6 +8,7 @@ class FText extends StatelessWidget {
   final Color color;
   final TextStyle style;
   final List padding;
+  final TextAlign align;
   FText(
       {this.text,
       this.family: 'Montserrat',
@@ -15,6 +16,7 @@ class FText extends StatelessWidget {
       this.size: 32.0,
       this.color: Colors.black,
       this.style,
+      this.align,
       this.padding: const [8.0, 12.0]});
   @override
   Widget build(BuildContext context) {
@@ -26,6 +28,7 @@ class FText extends StatelessWidget {
             right: padding[1]),
         child: Text(
           text,
+          textAlign: align,
           style: style != null
               ? style
               : TextStyle(fontFamily: family, fontSize: size, color: color, fontWeight: fontWeight),

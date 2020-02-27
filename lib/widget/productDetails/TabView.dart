@@ -35,7 +35,7 @@ class _TabViewState extends State<TabView> {
               child: Container(
                 alignment: Alignment.center,
                 height: 40.0,
-                width: 90.0,
+                width: 110.0,
                 decoration: BoxDecoration(
                     border: Border(
                         bottom: BorderSide(

@@ -1,7 +1,9 @@
 // import 'package:esell/widget/atoms/StarRating.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
+import 'package:esell/widget/productDetails/BoughtTogether.dart';
 import 'package:esell/widget/productDetails/Carousel.dart';
 import 'package:esell/widget/productDetails/ColorSelector.dart';
+import 'package:esell/widget/productDetails/Comments.dart';
 import 'package:esell/widget/productDetails/Offer.dart';
 import 'package:esell/widget/productDetails/PDratingNreview.dart';
 import 'package:esell/widget/productDetails/SoldBy.dart';
@@ -125,7 +127,6 @@ class _ProductDetailsState extends State<ProductDetails> {
               price: product['price'].toString(),
             ),
             PDoffer(),
-
             !product['category'].contains('Sunglasses') &&
                     !product['category'].contains('Watches') &&
                     !product['category'].contains('Bags & Backpacks')
@@ -144,14 +145,22 @@ class _ProductDetailsState extends State<ProductDetails> {
               details: product['description'],
               price: product['price'],
               id: widget.id,
+
               // colors: product['colors'],
               // sizes: product['sizes'],
             ),
+            PDBoughtTogether(
+              details: product['description'],
+              price: product['price'],
+              id: widget.id,
+              image: product['media']['front'],
+              name: product['name'],
+            ),
             PDratingNreview(),
+            PDcomments(),
             Padding(
               padding: EdgeInsets.all(10.0),
             )
-            
           ],
         ),
       ),
