@@ -24,14 +24,22 @@ class _PDDetailsState extends State<PDDetails> {
   Widget build(BuildContext context) {
     final body1 = Theme.of(context).textTheme.body1.copyWith(fontSize: 16.0);
     final product = Provider.of<ProductModel>(context).one(widget.id);
-     
+
     //Widget trailing;
     String descriptionText, trailingText;
 
-    if (widget.details['details'].length > 150) {
+    if (widget.details['details'] != null && widget.details['details'].length > 150) {
       descriptionText = widget.details['details'].substring(0, 150);
       trailingText = widget.details['details']
           .substring(150, widget.details['details'].length);
+    }
+    else if (widget.details['details'] != null && widget.details['details'].length < 150){
+      descriptionText = widget.details['details'];
+      trailingText = "";
+    }
+    else{
+      descriptionText = " ";
+      trailingText = "";
     }
     return Padding(
       padding: const EdgeInsets.only(top: 5.0),
@@ -104,6 +112,12 @@ class _PDDetailsState extends State<PDDetails> {
                   ],
                 ),
               ),
+
+              // Container(
+              //     child: FText(
+              //   text: widget.details['details'] ?? "N/A",
+              //   style: body1,
+              // )),
               Container(
                   child: FText(
                 text: "Details",
@@ -111,11 +125,6 @@ class _PDDetailsState extends State<PDDetails> {
                 size: 15.0,
                 fontWeight: FontWeight.w600,
               )),
-              // Container(
-              //     child: FText(
-              //   text: widget.details['details'] ?? "N/A",
-              //   style: body1,
-              // )),
               Container(
                   child: Column(
                 children: <Widget>[
@@ -127,7 +136,9 @@ class _PDDetailsState extends State<PDDetails> {
                   more == false
                       ? InkWell(
                           child: FText(
-                            text: '...more',
+                            text: widget.details['details'].length >150 
+                            ? '...more'
+                            : '',
                             style: body1.copyWith(color: primaryDark),
                           ),
                           onTap: () {
@@ -139,7 +150,7 @@ class _PDDetailsState extends State<PDDetails> {
                           },
                         )
                       : FText(
-                        padding: [0.0,12.0],
+                          padding: [0.0, 12.0],
                           text: trailingText,
                           style: body1,
                           align: TextAlign.justify,

@@ -1,6 +1,5 @@
 import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/Text.dart';
-import 'package:esell/widget/productDetails/card.dart';
 import 'package:flutter/material.dart';
 
 class PDBoughtTogether extends StatelessWidget {

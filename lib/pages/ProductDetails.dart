@@ -3,7 +3,7 @@ import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:esell/widget/productDetails/BoughtTogether.dart';
 import 'package:esell/widget/productDetails/Carousel.dart';
 import 'package:esell/widget/productDetails/ColorSelector.dart';
-import 'package:esell/widget/productDetails/Comments.dart';
+//import 'package:esell/widget/productDetails/Comments.dart';
 import 'package:esell/widget/productDetails/Offer.dart';
 import 'package:esell/widget/productDetails/PDratingNreview.dart';
 import 'package:esell/widget/productDetails/SoldBy.dart';
@@ -157,7 +157,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               name: product['name'],
             ),
             PDratingNreview(),
-            PDcomments(),
+            //PDcomments(),
             Padding(
               padding: EdgeInsets.all(10.0),
             )

@@ -10,12 +10,13 @@ class PDcomments extends StatelessWidget {
       padding: const EdgeInsets.only(top: 5.0),
       child: Container(
         color: Colors.white,
-        child: Row(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            SizedBox(width: 10.0,),
-            Image.asset("images/icons/plusmemb.png", color: Colors.yellow, height: 36.0,),
-            Column(
+            Container(
+              
+            ),
+            Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
