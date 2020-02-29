@@ -2,7 +2,7 @@ import 'package:esell/pages/CategoryPage.dart';
 import 'package:esell/widget/atoms/Category.dart';
 import 'package:flutter/material.dart';
 
-class GridList extends StatelessWidget {
+class GridList extends StatelessWidget { 
   GridList({this.listViews, this.crossAxisCount, this.type});
   final listViews;
   final type;

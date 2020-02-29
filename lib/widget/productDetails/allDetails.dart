@@ -14,6 +14,11 @@ class PDAllDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     final imagesrc = "https://api.shop2more.com" + image;
     final body1 = Theme.of(context).textTheme.body1.copyWith(fontSize: 16.0);
+
+    // if(){
+
+    // }
+
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(40.0),

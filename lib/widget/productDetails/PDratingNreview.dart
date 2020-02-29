@@ -1,4 +1,5 @@
 import 'package:esell/state/state.dart';
+import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/atoms/Text.dart';
 import 'package:flutter/material.dart';
 
@@ -13,20 +14,37 @@ class PDratingNreview extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(5.0),
             ),
-            FText(
-              text: "Ratings & Reviews",
-              color: textColor,
-              size: 16.0,
-              fontWeight: FontWeight.w600,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                FText(
+                  text: "Ratings & Reviews",
+                  color: textColor,
+                  size: 16.0,
+                  fontWeight: FontWeight.w600,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(right: 8.0),
+                  child: FRaisedButton(
+                    elevation: 0.6,
+                    width: 120.0,
+                    text: 'Rate Product',
+                    color: primaryDark,
+                    fontSize: 14.0,
+                    bg: Colors.white,
+                    onPressed: (){},
+                  ),
+                ),
+              ],
             ),
             Padding(
-                padding: const EdgeInsets.only(top: 6.0, left: 18.0),
+                padding: const EdgeInsets.only(top: 6.0, left: 10.0, bottom: 6.0),
                 child: Row(
                   children: <Widget>[
                     Container(
-                      width: 64.0,
+                      width: 65.0,
                       height: 40.0,
                       child: Chip(
                         backgroundColor: Colors.green,
@@ -39,7 +57,7 @@ class PDratingNreview extends StatelessWidget {
                               style: Theme.of(context).textTheme.body1.copyWith(
                                     fontWeight: FontWeight.w700,
                                     color: Colors.white,
-                                    fontSize: 13.0,
+                                    fontSize: 14.0,
                                   ),
                             ),
                             Padding(
@@ -66,9 +84,7 @@ class PDratingNreview extends StatelessWidget {
                     ),
                   ],
                 )),
-                Padding(
-                              padding: EdgeInsets.all(12.0),
-                            ),
+            
           ],
         ),
       ),

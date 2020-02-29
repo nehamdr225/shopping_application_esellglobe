@@ -9,7 +9,7 @@ import 'package:esell/widget/molecules/Product.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class CategoryPage extends StatelessWidget {
+class CategoryPage extends StatelessWidget { 
   final String text;
   final String type;
   CategoryPage({this.text, this.type});

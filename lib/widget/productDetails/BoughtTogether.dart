@@ -21,6 +21,9 @@ class PDBoughtTogether extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
+            Padding(
+              padding: EdgeInsets.all(8.0),
+            ),
             Container(
                 child: FText(
               text: "Frequently Bought Together",

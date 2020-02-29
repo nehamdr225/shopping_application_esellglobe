@@ -53,7 +53,7 @@ class PDInfo extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(right: 6.0, left: 6.0),
                       child: Text(
-                        "\$ 1800",
+                        " 1800",
                         style: Theme.of(context).textTheme.body1.copyWith(
                             fontWeight: FontWeight.w500,
                             fontSize: 13.0,
