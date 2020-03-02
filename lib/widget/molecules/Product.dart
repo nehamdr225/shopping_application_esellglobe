@@ -90,7 +90,7 @@ class Product extends StatelessWidget {
               Divider(height: 2),
               Details(
                 name: name,
-                price: 'Rs. $price',
+                price: '$price',
                 id: id,
                 wishlist: wishlist,
               ),

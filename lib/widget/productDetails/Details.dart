@@ -24,7 +24,7 @@ class _PDDetailsState extends State<PDDetails> {
   Widget build(BuildContext context) {
     final body1 = Theme.of(context).textTheme.body1.copyWith(fontSize: 16.0);
     final product = Provider.of<ProductModel>(context).one(widget.id);
-    final category = product['category'].split(';')[0];
+
     //final property = Provider.of<PropertiesModel>(context).properties(category);
     //final properties = product['description']['TTopDescriptionData'];
     //print(properties);
@@ -45,9 +45,6 @@ class _PDDetailsState extends State<PDDetails> {
       trailingText = "";
     }
 ///////////////////////////////////////////////////////////////////////////////
-
-////////////////////// getting properties of a product with category//////////////////
-    if (category == 'Top Wear') {}
 
     return Padding(
       padding: const EdgeInsets.only(top: 5.0),

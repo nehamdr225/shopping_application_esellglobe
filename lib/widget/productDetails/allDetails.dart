@@ -5,6 +5,108 @@ import 'package:esell/widget/productDetails/TabView.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+properties(String category) {
+  if (category.contains('Top Wear')) {
+    return [
+      'Fabric',
+      'Pattern',
+      'Neck',
+      'Sleeve',
+      'Hooded',
+      'Reversible',
+      'Occasion'
+    ];
+  } else if (category.contains('Bottom Wear')) {
+    return [
+      'Fabric',
+      'Faded',
+      'Rise',
+      'Distressed',
+      'Fit',
+      'Pocket Type',
+      'Reversible',
+      'Closure',
+      'Stretchable',
+      'Fly',
+      'Occasion'
+    ];
+  } else if (category.contains('Foot Wear')) {
+    return [
+      'Inner Material',
+      'Sole Material',
+      'Closure',
+      'Occasion',
+      'Pattern',
+      'Tip Shape'
+    ];
+  } else if (category.contains('Bags')) {
+    return [
+      'Material',
+      'Occasion',
+      'No. of Compartments',
+      'No. of Pockets',
+      'Width',
+      'Height',
+      'Closure',
+      'Size'
+    ];
+  } else if (category.contains('Bottom Wear')) {
+    return [
+      'Fabric',
+      'Faded',
+      'Rise',
+      'Distressed',
+      'Fit',
+      'Pocket Type',
+      'Reversible',
+      'Closure',
+      'Stretchable',
+      'Fly',
+      'Occasion'
+    ];
+  } else if (category.contains('Watches')) {
+    return [
+      'Occasion',
+      'Display',
+      'Watch Type',
+      'Dial Color',
+      'Strap Color',
+      'Strap Material',
+      'Strap Type',
+      'Strap Design',
+      'Case Material',
+      'Water Resistant',
+      'Shock Resistant',
+      'Mechanism',
+      'Diameter',
+      'Dual Time',
+      'World Time',
+      'Novelty Features',
+      'Power Source',
+      'Light',
+      'GPS',
+      'Tour Billion',
+      'Clasp Type',
+      'Moon Phase'
+    ];
+  } else {
+    return [
+      'Occasion',
+      'Purpose',
+      'Lens Color',
+      'Lens Material',
+      'Feature',
+      'Type',
+      'Frame',
+      'Frame Material',
+      'Frame Color',
+      'Face Type',
+      'UV Protection',
+      'Case Type'
+    ];
+  }
+}
+
 class PDAllDetails extends StatelessWidget {
   final details;
   final name;
@@ -17,32 +119,126 @@ class PDAllDetails extends StatelessWidget {
     final imagesrc = "https://api.shop2more.com" + image;
     final body1 = Theme.of(context).textTheme.body1.copyWith(fontSize: 16.0);
     final product = Provider.of<ProductModel>(context).one(id);
-    final category = product['category'].split(';')[0];
-    final properties =
-        Provider.of<PropertiesModel>(context).properties(category);
 
-    oneProperty() {
-      var property;
-      for (int i = 0; i < properties.length; i++) {
-        property =
-            // details['${properties[i].toLowerCase()}'] != null &&
-            //         details['${properties[i].toLowerCase()}'].length > 0
-            // ?
-            TableRow(children: [
+    properties(String category) {
+      if (category.contains('Top Wear')) {
+        return [
+          'Fabric',
+          'Pattern',
+          'Neck',
+          'Sleeve',
+          'Hooded',
+          'Reversible',
+          'Occasion'
+        ];
+      } else if (category.contains('Bottom Wear')) {
+        return [
+          'Fabric',
+          'Faded',
+          'Rise',
+          'Distressed',
+          'Fit',
+          'Pocket Type',
+          'Reversible',
+          'Closure',
+          'Stretchable',
+          'Fly',
+          'Occasion'
+        ];
+      } else if (category.contains('Foot Wear')) {
+        return [
+          'Inner Material',
+          'Sole Material',
+          'Closure',
+          'Occasion',
+          'Pattern',
+          'Tip Shape'
+        ];
+      } else if (category.contains('Bags')) {
+        return [
+          'Material',
+          'Occasion',
+          'No. of Compartments',
+          'No. of Pockets',
+          'Width',
+          'Height',
+          'Closure',
+          'Size'
+        ];
+      } else if (category.contains('Bottom Wear')) {
+        return [
+          'Fabric',
+          'Faded',
+          'Rise',
+          'Distressed',
+          'Fit',
+          'Pocket Type',
+          'Reversible',
+          'Closure',
+          'Stretchable',
+          'Fly',
+          'Occasion'
+        ];
+      } else if (category.contains('Watches')) {
+        return [
+          'Occasion',
+          'Display',
+          'Watch Type',
+          'Dial Color',
+          'Strap Color',
+          'Strap Material',
+          'Strap Type',
+          'Strap Design',
+          'Case Material',
+          'Water Resistant',
+          'Shock Resistant',
+          'Mechanism',
+          'Diameter',
+          'Dual Time',
+          'World Time',
+          'Novelty Features',
+          'Power Source',
+          'Light',
+          'GPS',
+          'Tour Billion',
+          'Clasp Type',
+          'Moon Phase'
+        ];
+      } else {
+        return [
+          'Occasion',
+          'Purpose',
+          'Lens Color',
+          'Lens Material',
+          'Feature',
+          'Type',
+          'Frame',
+          'Frame Material',
+          'Frame Color',
+          'Face Type',
+          'UV Protection',
+          'Case Type'
+        ];
+      }
+    }
+
+    oneProperty(x) {
+      return TableRow(children: [
           FText(
-            text: properties[i],
+            text: x,
             color: Colors.grey[500],
             size: 16.0,
           ),
           FText(
-            text: properties[i],
+            text: details['$x'],
             style: body1,
           )
         ]);
-      }
-      return property;
-    }
+        // details['${properties[i].toLowerCase().combine(' ')}'] != null &&
+        //         details['${properties[i].toLowerCase()}'].length > 0
+        // ?
 
+    }
 
     return Scaffold(
       appBar: PreferredSize(
@@ -80,7 +276,7 @@ class PDAllDetails extends StatelessWidget {
                         height: 14.0,
                       ),
                       Padding(
-                        padding: EdgeInsets.only(right: 6.0, left: 6.0),
+                        padding: EdgeInsets.only(right: 6.0, left: 0.0),
                         child: Text(
                           "$price",
                           style: Theme.of(context).textTheme.body1.copyWith(
@@ -155,47 +351,67 @@ class PDAllDetails extends StatelessWidget {
                 Container(
                   child: Table(
                     children: [
-                      TableRow(children: [
-                        FText(
-                          text: "Material",
-                          color: Colors.grey[500],
-                          size: 16.0,
-                        ),
-                        FText(
-                          text: details['material'] ?? "N/A",
-                          style: body1,
-                        ),
-                      ]),
-                      details['closure'] != null &&
-                              details['closure'].length > 0
-                          ? TableRow(children: [
-                              FText(
-                                text: "Closure",
-                                color: Colors.grey[500],
-                                size: 16.0,
-                              ),
-                              FText(
-                                text: details['closure'],
-                                style: body1,
-                              )
-                            ])
-                          : Text(''),
-                      TableRow(children: [
-                        FText(
-                          text: "Warranty",
-                          color: Colors.grey[500],
-                          size: 16.0,
-                        ),
-                        FText(
-                          text: details['warranty'] ?? "N/A",
-                          style: body1,
-                        )
-                      ]),
-                        oneProperty()
-                      //TableRow(children: [oneProperty(), oneDetail()])
-                    ],
+                          details['material'] != null &&
+                                  details['material'].length > 0
+                              ? TableRow(children: [
+                                  FText(
+                                    text: "Material",
+                                    color: Colors.grey[500],
+                                    size: 16.0,
+                                  ),
+                                  FText(
+                                    text: details['material'] ?? "N/A",
+                                    style: body1,
+                                  ),
+                                ])
+                              : Text(''),
+                          details['style'] != null &&
+                                  details['style'].length > 0
+                              ? TableRow(children: [
+                                  FText(
+                                    text: "Style",
+                                    color: Colors.grey[500],
+                                    size: 16.0,
+                                  ),
+                                  FText(
+                                    text: details['style'] ?? "N/A",
+                                    style: body1,
+                                  ),
+                                ])
+                              : Text(''),
+                          details['closure'] != null &&
+                                  details['closure'].length > 0
+                              ? TableRow(children: [
+                                  FText(
+                                    text: "Closure",
+                                    color: Colors.grey[500],
+                                    size: 16.0,
+                                  ),
+                                  FText(
+                                    text: details['closure'],
+                                    style: body1,
+                                  )
+                                ])
+                              : Text(''),
+                          details['warranty'] != null &&
+                                  details['closure'].length > 0
+                              ? TableRow(children: [
+                                  FText(
+                                    text: "Warranty",
+                                    color: Colors.grey[500],
+                                    size: 16.0,
+                                  ),
+                                  FText(
+                                    text: details['warranty'] ?? "N/A",
+                                    style: body1,
+                                  )
+                                ])
+                              : Text(''),
+                              properties(product['category']).map<TableRow>(oneProperty),
+                        ]
                   ),
                 ),
+                
               ],
             ),
             Column(

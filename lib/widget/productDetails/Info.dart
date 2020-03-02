@@ -41,7 +41,7 @@ class PDInfo extends StatelessWidget {
                   children: <Widget>[
                     Image.asset("images/icons/rupee.png", height: 14.0,),
                     Padding(
-                      padding: EdgeInsets.only(right: 6.0, left: 6.0),
+                      padding: EdgeInsets.only(right: 6.0, left: 0.0),
                       child: Text(
                         "$price",
                         style: Theme.of(context).textTheme.body1.copyWith(

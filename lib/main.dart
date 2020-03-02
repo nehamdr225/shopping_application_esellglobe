@@ -29,7 +29,6 @@ class BootStrapper extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => new ProductModel(_productApi)),
-        ChangeNotifierProvider(create: (_) => new PropertiesModel()),
         ChangeNotifierProvider(
             create: (_) => new UserModel(_userApi, _storage, _validator)),
         ChangeNotifierProvider(create: (_) => new FTheme())
