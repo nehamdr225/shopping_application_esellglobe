@@ -3,21 +3,46 @@ import 'package:esell/widget/atoms/Text.dart';
 import 'package:esell/widget/molecules/BlueAppBar.dart';
 import 'package:esell/widget/productDetails/TabView.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class PDAllDetails extends StatelessWidget {
   final details;
   final name;
+  final id;
   final price;
   final image;
-  PDAllDetails({this.details, this.name, this.price, this.image});
+  PDAllDetails({this.details, this.name, this.price, this.image, this.id});
   @override
   Widget build(BuildContext context) {
     final imagesrc = "https://api.shop2more.com" + image;
     final body1 = Theme.of(context).textTheme.body1.copyWith(fontSize: 16.0);
+    final product = Provider.of<ProductModel>(context).one(id);
+    final category = product['category'].split(';')[0];
+    final properties =
+        Provider.of<PropertiesModel>(context).properties(category);
 
-    // if(){
+    oneProperty() {
+      var property;
+      for (int i = 0; i < properties.length; i++) {
+        property =
+            // details['${properties[i].toLowerCase()}'] != null &&
+            //         details['${properties[i].toLowerCase()}'].length > 0
+            // ?
+            TableRow(children: [
+          FText(
+            text: properties[i],
+            color: Colors.grey[500],
+            size: 16.0,
+          ),
+          FText(
+            text: properties[i],
+            style: body1,
+          )
+        ]);
+      }
+      return property;
+    }
 
-    // }
 
     return Scaffold(
       appBar: PreferredSize(
@@ -67,7 +92,7 @@ class PDAllDetails extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.only(right: 6.0, left: 6.0),
                         child: Text(
-                          "\$ 1800",
+                          " 1800",
                           style: Theme.of(context).textTheme.body1.copyWith(
                               fontWeight: FontWeight.w500,
                               fontSize: 13.0,
@@ -140,15 +165,10 @@ class PDAllDetails extends StatelessWidget {
                           text: details['material'] ?? "N/A",
                           style: body1,
                         ),
-                      ])
-                    ],
-                  ),
-                ),
-                details['closure'] != null && details['closure'].length > 0
-                    ? Container(
-                        child: Table(
-                          children: [
-                            TableRow(children: [
+                      ]),
+                      details['closure'] != null &&
+                              details['closure'].length > 0
+                          ? TableRow(children: [
                               FText(
                                 text: "Closure",
                                 color: Colors.grey[500],
@@ -159,13 +179,7 @@ class PDAllDetails extends StatelessWidget {
                                 style: body1,
                               )
                             ])
-                          ],
-                        ),
-                      )
-                    : Text(''),
-                Container(
-                  child: Table(
-                    children: [
+                          : Text(''),
                       TableRow(children: [
                         FText(
                           text: "Warranty",
@@ -176,7 +190,9 @@ class PDAllDetails extends StatelessWidget {
                           text: details['warranty'] ?? "N/A",
                           style: body1,
                         )
-                      ])
+                      ]),
+                        oneProperty()
+                      //TableRow(children: [oneProperty(), oneDetail()])
                     ],
                   ),
                 ),

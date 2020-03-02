@@ -24,23 +24,31 @@ class _PDDetailsState extends State<PDDetails> {
   Widget build(BuildContext context) {
     final body1 = Theme.of(context).textTheme.body1.copyWith(fontSize: 16.0);
     final product = Provider.of<ProductModel>(context).one(widget.id);
-
-    //Widget trailing;
+    final category = product['category'].split(';')[0];
+    //final property = Provider.of<PropertiesModel>(context).properties(category);
+    //final properties = product['description']['TTopDescriptionData'];
+    //print(properties);
+//////////////////////////on press more ////////////////////////////////
     String descriptionText, trailingText;
 
-    if (widget.details['details'] != null && widget.details['details'].length > 150) {
+    if (widget.details['details'] != null &&
+        widget.details['details'].length > 150) {
       descriptionText = widget.details['details'].substring(0, 150);
       trailingText = widget.details['details']
           .substring(150, widget.details['details'].length);
-    }
-    else if (widget.details['details'] != null && widget.details['details'].length < 150){
+    } else if (widget.details['details'] != null &&
+        widget.details['details'].length < 150) {
       descriptionText = widget.details['details'];
       trailingText = "";
-    }
-    else{
+    } else {
       descriptionText = " ";
       trailingText = "";
     }
+///////////////////////////////////////////////////////////////////////////////
+
+////////////////////// getting properties of a product with category//////////////////
+    if (category == 'Top Wear') {}
+
     return Padding(
       padding: const EdgeInsets.only(top: 5.0),
       child: Container(
@@ -61,26 +69,37 @@ class _PDDetailsState extends State<PDDetails> {
               Container(
                 child: Table(
                   children: [
-                    TableRow(children: [
-                      FText(
-                        text: "Material",
-                        color: Colors.grey[500],
-                        size: 16.0,
-                      ),
-                      FText(
-                        text: widget.details['material'] ?? "N/A",
-                        style: body1,
-                      ),
-                    ])
-                  ],
-                ),
-              ),
-              widget.details['closure'] != null &&
-                      widget.details['closure'].length > 0
-                  ? Container(
-                      child: Table(
-                        children: [
-                          TableRow(children: [
+                    widget.details['material'] != null &&
+                            widget.details['material'].length > 0
+                        ? TableRow(children: [
+                            FText(
+                              text: "Material",
+                              color: Colors.grey[500],
+                              size: 16.0,
+                            ),
+                            FText(
+                              text: widget.details['material'] ?? "N/A",
+                              style: body1,
+                            ),
+                          ])
+                        : Text(''),
+                    widget.details['style'] != null &&
+                            widget.details['style'].length > 0
+                        ? TableRow(children: [
+                            FText(
+                              text: "Style",
+                              color: Colors.grey[500],
+                              size: 16.0,
+                            ),
+                            FText(
+                              text: widget.details['style'] ?? "N/A",
+                              style: body1,
+                            ),
+                          ])
+                        : Text(''),
+                    widget.details['closure'] != null &&
+                            widget.details['closure'].length > 0
+                        ? TableRow(children: [
                             FText(
                               text: "Closure",
                               color: Colors.grey[500],
@@ -91,33 +110,24 @@ class _PDDetailsState extends State<PDDetails> {
                               style: body1,
                             )
                           ])
-                        ],
-                      ),
-                    )
-                  : Text(''),
-              Container(
-                child: Table(
-                  children: [
-                    TableRow(children: [
-                      FText(
-                        text: "Warranty",
-                        color: Colors.grey[500],
-                        size: 16.0,
-                      ),
-                      FText(
-                        text: widget.details['warranty'] ?? "N/A",
-                        style: body1,
-                      )
-                    ])
+                        : Text(''),
+                    widget.details['warranty'] != null &&
+                            widget.details['closure'].length > 0
+                        ? TableRow(children: [
+                            FText(
+                              text: "Warranty",
+                              color: Colors.grey[500],
+                              size: 16.0,
+                            ),
+                            FText(
+                              text: widget.details['warranty'] ?? "N/A",
+                              style: body1,
+                            )
+                          ])
+                        : Text(''),
                   ],
                 ),
               ),
-
-              // Container(
-              //     child: FText(
-              //   text: widget.details['details'] ?? "N/A",
-              //   style: body1,
-              // )),
               Container(
                   child: FText(
                 text: "Details",
@@ -136,9 +146,9 @@ class _PDDetailsState extends State<PDDetails> {
                   more == false
                       ? InkWell(
                           child: FText(
-                            text: widget.details['details'].length >150 
-                            ? '...more'
-                            : '',
+                            text: widget.details['details'].length > 150
+                                ? '...more'
+                                : '',
                             style: body1.copyWith(color: primaryDark),
                           ),
                           onTap: () {
@@ -157,7 +167,6 @@ class _PDDetailsState extends State<PDDetails> {
                         )
                 ],
               )),
-
               Padding(
                 padding: EdgeInsets.only(left: 10.0),
                 child: Row(
@@ -186,6 +195,7 @@ class _PDDetailsState extends State<PDDetails> {
                               price: product['price'],
                               image: product['media']['front'],
                               name: product['name'],
+                              id: widget.id,
                             ),
                           ));
                         },
