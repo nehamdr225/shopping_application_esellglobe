@@ -23,7 +23,7 @@ class _DetailsState extends State<Details> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.only(left: 8.0, top: 3.0),
+            padding: const EdgeInsets.only(left: 8.0, top: 10.0),
             child: Text(
               widget.name,
               style: Theme.of(context).textTheme.body1.copyWith(
@@ -50,9 +50,9 @@ class _DetailsState extends State<Details> {
                   textAlign: TextAlign.left,
                 ),
                 Padding(
-                  padding: EdgeInsets.only(right: 6.0, left: 6.0),
+                  padding: EdgeInsets.only(right: 6.0, left: 6.0, top: 3.0),
                   child: Text(
-                    " 1800",
+                    "₹ 1800",
                     style: Theme.of(context).textTheme.body1.copyWith(
                         fontWeight: FontWeight.w500,
                         fontSize: 13.0,
@@ -61,7 +61,7 @@ class _DetailsState extends State<Details> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(right: 6.0, left: 6.0),
+                  padding: EdgeInsets.only(right: 6.0, left: 6.0, top: 3.0),
                   child: Text(
                     "50% off",
                     style: Theme.of(context).textTheme.body1.copyWith(
@@ -80,19 +80,3 @@ class _DetailsState extends State<Details> {
     );
   }
 }
-// widget.wishlist == true?
-//           Expanded(
-//             child: FIcons(
-//             icon: user.findWishlistItem(widget.id) != true
-//             ? Icons.bookmark_border
-//             : Icons.bookmark,
-//             color: iconthemedark,
-//             alignment: Alignment.centerRight,
-//             onPressed: () {
-//               user.findWishlistItem(widget.id) != true
-//                   ? user.addToWishList(widget.id)
-//                   : print("already in wishlist");
-//             },
-//           )
-//           )
-//           :Text('')

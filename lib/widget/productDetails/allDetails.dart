@@ -119,7 +119,7 @@ class PDAllDetails extends StatelessWidget {
     final imagesrc = "https://api.shop2more.com" + image;
     final body1 = Theme.of(context).textTheme.body1.copyWith(fontSize: 16.0);
     final product = Provider.of<ProductModel>(context).one(id);
-
+    
     properties(String category) {
       if (category.contains('Top Wear')) {
         return [
@@ -222,6 +222,8 @@ class PDAllDetails extends StatelessWidget {
       }
     }
 
+    final property = properties(product['category']);
+
     oneProperty(x) {
       return TableRow(children: [
           FText(
@@ -288,7 +290,7 @@ class PDAllDetails extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.only(right: 6.0, left: 6.0),
                         child: Text(
-                          " 1800",
+                          "₹ 1800",
                           style: Theme.of(context).textTheme.body1.copyWith(
                               fontWeight: FontWeight.w500,
                               fontSize: 13.0,
@@ -407,7 +409,7 @@ class PDAllDetails extends StatelessWidget {
                                   )
                                 ])
                               : Text(''),
-                              properties(product['category']).map<TableRow>(oneProperty),
+                              //properties(product['category']).map<TableRow>(oneProperty),
                         ]
                   ),
                 ),

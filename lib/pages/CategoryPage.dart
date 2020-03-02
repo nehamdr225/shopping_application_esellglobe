@@ -53,7 +53,7 @@ class CategoryPage extends StatelessWidget {
             onPressed: onpressed,
           ),
           Container(
-              height: 270,
+              height: 280,
               width: 70,
               alignment: Alignment.center,
               child: categoryProduct.length > 0

@@ -53,7 +53,7 @@ class PDInfo extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(right: 6.0, left: 6.0),
                       child: Text(
-                        " 1800",
+                        "₹ 1800",
                         style: Theme.of(context).textTheme.body1.copyWith(
                             fontWeight: FontWeight.w500,
                             fontSize: 13.0,
@@ -99,6 +99,13 @@ class PDInfo extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
+                            Icon(
+                              Icons.star,
+                              size: 15.0,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.all(1.0),
+                            ),
                             Text(
                               '3.9',
                               style: Theme.of(context).textTheme.body1.copyWith(
@@ -107,13 +114,8 @@ class PDInfo extends StatelessWidget {
                                     fontSize: 13.0,
                                   ),
                             ),
-                            Padding(
-                              padding: EdgeInsets.all(2.0),
-                            ),
-                            Icon(
-                              Icons.star,
-                              size: 15.0,
-                            ),
+                            
+                            
                           ],
                         ),
                       ),

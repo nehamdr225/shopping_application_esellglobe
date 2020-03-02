@@ -64,7 +64,9 @@ class _PDDetailsState extends State<PDDetails> {
                 fontWeight: FontWeight.w600,
               )),
               Container(
-                child: Table(
+                child: 
+                widget.details != null
+                ? Table(
                   children: [
                     widget.details['material'] != null &&
                             widget.details['material'].length > 0
@@ -79,7 +81,7 @@ class _PDDetailsState extends State<PDDetails> {
                               style: body1,
                             ),
                           ])
-                        : Text(''),
+                        : TableRow(),
                     widget.details['style'] != null &&
                             widget.details['style'].length > 0
                         ? TableRow(children: [
@@ -93,7 +95,7 @@ class _PDDetailsState extends State<PDDetails> {
                               style: body1,
                             ),
                           ])
-                        : Text(''),
+                        : TableRow(),
                     widget.details['closure'] != null &&
                             widget.details['closure'].length > 0
                         ? TableRow(children: [
@@ -107,7 +109,7 @@ class _PDDetailsState extends State<PDDetails> {
                               style: body1,
                             )
                           ])
-                        : Text(''),
+                        : TableRow(),
                     widget.details['warranty'] != null &&
                             widget.details['closure'].length > 0
                         ? TableRow(children: [
@@ -121,9 +123,9 @@ class _PDDetailsState extends State<PDDetails> {
                               style: body1,
                             )
                           ])
-                        : Text(''),
+                        : TableRow(),
                   ],
-                ),
+                ): Text('')
               ),
               Container(
                   child: FText(

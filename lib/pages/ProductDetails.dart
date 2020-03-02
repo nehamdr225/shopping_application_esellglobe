@@ -9,7 +9,6 @@ import 'package:esell/widget/productDetails/PDratingNreview.dart';
 import 'package:esell/widget/productDetails/SoldBy.dart';
 // import 'package:esell/widget/productDetails/TabView.dart';
 import 'package:esell/widget/productDetails/delivery.dart';
-import 'package:esell/widget/productDetails/plusmember.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:esell/widget/productDetails/details.dart';
@@ -114,6 +113,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               child: Container(
                 height: screenHeight * 0.50,
                 width: screenWidth,
+                color: Colors.white,
                 child: PDCarousel(
                   images: images,
                   length: imgNo,
@@ -138,7 +138,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   )
                 : Text(''),
             PDColorSelector(color: product['colors'], setColor: setColor),
-            PDplusmember(),
+            //PDplusmember(),
             PDdelivery(),
             PDsoldby(),
             PDDetails(
