@@ -16,8 +16,8 @@ class PDcomments extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 0.0),
       child: Container(
-        width: MediaQuery.of(context).size.width * 0.95,
-        height: MediaQuery.of(context).size.height * 0.35,
+        // width: MediaQuery.of(context).size.width * 0.95,
+        // height: MediaQuery.of(context).size.height * 0.35,
         color: Colors.white,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

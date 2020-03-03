@@ -5,7 +5,7 @@ import 'package:esell/widget/productDetails/TabView.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-properties(String category) {
+List<String> properties(String category) {
   if (category.contains('Top Wear')) {
     return [
       'Fabric',
@@ -119,127 +119,23 @@ class PDAllDetails extends StatelessWidget {
     final imagesrc = "https://api.shop2more.com" + image;
     final body1 = Theme.of(context).textTheme.body1.copyWith(fontSize: 16.0);
     final product = Provider.of<ProductModel>(context).one(id);
-    
-    properties(String category) {
-      if (category.contains('Top Wear')) {
-        return [
-          'Fabric',
-          'Pattern',
-          'Neck',
-          'Sleeve',
-          'Hooded',
-          'Reversible',
-          'Occasion'
-        ];
-      } else if (category.contains('Bottom Wear')) {
-        return [
-          'Fabric',
-          'Faded',
-          'Rise',
-          'Distressed',
-          'Fit',
-          'Pocket Type',
-          'Reversible',
-          'Closure',
-          'Stretchable',
-          'Fly',
-          'Occasion'
-        ];
-      } else if (category.contains('Foot Wear')) {
-        return [
-          'Inner Material',
-          'Sole Material',
-          'Closure',
-          'Occasion',
-          'Pattern',
-          'Tip Shape'
-        ];
-      } else if (category.contains('Bags')) {
-        return [
-          'Material',
-          'Occasion',
-          'No. of Compartments',
-          'No. of Pockets',
-          'Width',
-          'Height',
-          'Closure',
-          'Size'
-        ];
-      } else if (category.contains('Bottom Wear')) {
-        return [
-          'Fabric',
-          'Faded',
-          'Rise',
-          'Distressed',
-          'Fit',
-          'Pocket Type',
-          'Reversible',
-          'Closure',
-          'Stretchable',
-          'Fly',
-          'Occasion'
-        ];
-      } else if (category.contains('Watches')) {
-        return [
-          'Occasion',
-          'Display',
-          'Watch Type',
-          'Dial Color',
-          'Strap Color',
-          'Strap Material',
-          'Strap Type',
-          'Strap Design',
-          'Case Material',
-          'Water Resistant',
-          'Shock Resistant',
-          'Mechanism',
-          'Diameter',
-          'Dual Time',
-          'World Time',
-          'Novelty Features',
-          'Power Source',
-          'Light',
-          'GPS',
-          'Tour Billion',
-          'Clasp Type',
-          'Moon Phase'
-        ];
-      } else {
-        return [
-          'Occasion',
-          'Purpose',
-          'Lens Color',
-          'Lens Material',
-          'Feature',
-          'Type',
-          'Frame',
-          'Frame Material',
-          'Frame Color',
-          'Face Type',
-          'UV Protection',
-          'Case Type'
-        ];
-      }
-    }
-
     final property = properties(product['category']);
 
-    oneProperty(x) {
+    TableRow oneProperty(String x) {
       return TableRow(children: [
-          FText(
-            text: x,
-            color: Colors.grey[500],
-            size: 16.0,
-          ),
-          FText(
-            text: details['$x'],
-            style: body1,
-          )
-        ]);
-        // details['${properties[i].toLowerCase().combine(' ')}'] != null &&
-        //         details['${properties[i].toLowerCase()}'].length > 0
-        // ?
-
+        FText(
+          text: x,
+          color: Colors.grey[500],
+          size: 16.0,
+        ),
+        FText(
+          text: x,
+          style: body1,
+        )
+      ]);
+      // details['${properties[i].toLowerCase().combine(' ')}'] != null &&
+      //         details['${properties[i].toLowerCase()}'].length > 0
+      // ?
     }
 
     return Scaffold(
@@ -352,7 +248,8 @@ class PDAllDetails extends StatelessWidget {
                     )),
                 Container(
                   child: Table(
-                    children: [
+                    children: property.map<TableRow>(oneProperty).toList() +
+                        [
                           details['material'] != null &&
                                   details['material'].length > 0
                               ? TableRow(children: [
@@ -409,11 +306,9 @@ class PDAllDetails extends StatelessWidget {
                                   )
                                 ])
                               : Text(''),
-                              //properties(product['category']).map<TableRow>(oneProperty),
-                        ]
+                        ],
                   ),
                 ),
-                
               ],
             ),
             Column(

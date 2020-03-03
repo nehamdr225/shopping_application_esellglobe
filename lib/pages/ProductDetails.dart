@@ -16,7 +16,9 @@ import 'package:esell/state/state.dart';
 
 class ProductDetails extends StatefulWidget {
   final String id;
-  ProductDetails({this.id, });
+  ProductDetails({
+    this.id,
+  });
   @override
   _ProductDetailsState createState() => _ProductDetailsState();
 }
@@ -159,7 +161,7 @@ class _ProductDetailsState extends State<ProductDetails> {
             PDratingNreview(),
             PDcomments(),
             Padding(
-              padding: EdgeInsets.all(10.0),
+              padding: EdgeInsets.all(3.0),
             )
           ],
         ),
