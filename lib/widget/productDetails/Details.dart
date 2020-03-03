@@ -81,7 +81,7 @@ class _PDDetailsState extends State<PDDetails> {
                               style: body1,
                             ),
                           ])
-                        : TableRow(),
+                        : TableRow(children: [Container(), Container()]),
                     widget.details['style'] != null &&
                             widget.details['style'].length > 0
                         ? TableRow(children: [
@@ -95,7 +95,7 @@ class _PDDetailsState extends State<PDDetails> {
                               style: body1,
                             ),
                           ])
-                        : TableRow(),
+                        : TableRow(children: [Container(), Container()]),
                     widget.details['closure'] != null &&
                             widget.details['closure'].length > 0
                         ? TableRow(children: [
@@ -109,7 +109,7 @@ class _PDDetailsState extends State<PDDetails> {
                               style: body1,
                             )
                           ])
-                        : TableRow(),
+                        : TableRow(children: [Container(), Container()]),
                     widget.details['warranty'] != null &&
                             widget.details['closure'].length > 0
                         ? TableRow(children: [
@@ -123,7 +123,7 @@ class _PDDetailsState extends State<PDDetails> {
                               style: body1,
                             )
                           ])
-                        : TableRow(),
+                        : TableRow(children: [Container(), Container()]),
                   ],
                 ): Text('')
               ),
@@ -145,7 +145,7 @@ class _PDDetailsState extends State<PDDetails> {
                   more == false
                       ? InkWell(
                           child: FText(
-                            text: widget.details['details'].length > 150
+                            text: widget.details['details'] != null && widget.details['details'].length > 150  
                                 ? '...more'
                                 : '',
                             style: body1.copyWith(color: primaryDark),

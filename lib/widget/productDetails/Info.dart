@@ -14,7 +14,7 @@ class PDInfo extends StatelessWidget {
 
     return Container(
       //width: width*0.80,
-      height: 150.0,
+      height: 200.0,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.only(bottomLeft: Radius.circular(4.0))),
       child: Card(
@@ -31,50 +31,98 @@ class PDInfo extends StatelessWidget {
                   textAlign: TextAlign.start,
                   overflow: TextOverflow.ellipsis,
                   style: Theme.of(context).textTheme.body1.copyWith(
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.w800,
                       fontSize: 18.0,
-                      color: Colors.grey[500])),
+                      color: Colors.grey[800])),
               Padding(
-                padding: const EdgeInsets.only(top:5.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Image.asset("images/icons/rupee.png", height: 14.0,),
-                    Padding(
-                      padding: EdgeInsets.only(right: 6.0, left: 0.0),
-                      child: Text(
-                        "$price",
-                        style: Theme.of(context).textTheme.body1.copyWith(
-                              fontWeight: FontWeight.w900,
-                              fontSize: 18.0,
-                            ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(right: 6.0, left: 6.0),
-                      child: Text(
-                        "₹ 1800",
-                        style: Theme.of(context).textTheme.body1.copyWith(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 13.0,
-                            color: Colors.grey[500],
-                            decoration: TextDecoration.lineThrough),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(right: 6.0, left: 6.0),
-                      child: Text(
-                        "50% off",
-                        style: Theme.of(context).textTheme.body1.copyWith(
+                  padding: const EdgeInsets.only(top: 5.0),
+                  child: Table(
+                    children: [
+                      TableRow(children: [
+                        Text(
+                          "Price",
+                          textAlign: TextAlign.left,
+                          style: Theme.of(context).textTheme.body1.copyWith(
                               fontWeight: FontWeight.w600,
-                              color: Colors.green,
                               fontSize: 15.0,
-                            ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+                              color: Colors.grey[500]),
+                        ),
+                        Text(':', textAlign: TextAlign.center, style: Theme.of(context).textTheme.body1.copyWith(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 17.0,
+                              color: Colors.grey[800]),),
+                        Text(
+                          "₹ 1800",
+                          style: Theme.of(context).textTheme.body1.copyWith(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 13.0,
+                              color: Colors.grey[500],
+                              decoration: TextDecoration.lineThrough),
+                        ),
+                      ]),
+                      TableRow(children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top:2.0, bottom: 2.0),
+                          child: Text(
+                            "After discount ",
+                            textAlign: TextAlign.left,
+                            style: Theme.of(context).textTheme.body1.copyWith(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16.0,
+                                color: Colors.grey[800]),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top:2.0, bottom: 2.0),
+                          child: Text(':',  textAlign: TextAlign.center, style: Theme.of(context).textTheme.body1.copyWith(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 17.0,
+                                color: Colors.grey[800]),),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top:2.0, bottom: 4.0),
+                          child: Text(
+                            "₹ $price",
+                            style: Theme.of(context).textTheme.body1.copyWith(
+                                  fontWeight: FontWeight.w900,
+                                  fontSize: 17.0,
+                                ),
+                          ),
+                        ),
+                      ]),
+                      TableRow(children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top:2.0, bottom: 2.0),
+                          child: Text(
+                            "You save",
+                            textAlign: TextAlign.left,
+                            style: Theme.of(context).textTheme.body1.copyWith(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16.0,
+                                color: Colors.grey[800]),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top:2.0, bottom: 2.0),
+                          child: Text(':', textAlign: TextAlign.center,style: Theme.of(context).textTheme.body1.copyWith(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 17.0,
+                                color: Colors.grey[800]),),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top:2.0, bottom: 2.0),
+                          child: Text(
+                            "50% off",
+                            style: Theme.of(context).textTheme.body1.copyWith(
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.green,
+                                  fontSize: 15.0,
+                                ),
+                          ),
+                        ),
+                      ])
+                    ],
+                  )),
               Padding(
                 padding: const EdgeInsets.only(top: 6.0),
                 child: Text(
@@ -87,11 +135,11 @@ class PDInfo extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top:6.0),
+                padding: const EdgeInsets.only(top: 6.0),
                 child: Row(
                   children: <Widget>[
                     Container(
-                       width: 64.0,
+                      width: 64.0,
                       height: 40.0,
                       child: Chip(
                         backgroundColor: Colors.green,
@@ -114,8 +162,6 @@ class PDInfo extends StatelessWidget {
                                     fontSize: 13.0,
                                   ),
                             ),
-                            
-                            
                           ],
                         ),
                       ),
@@ -123,7 +169,7 @@ class PDInfo extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        '15 ratings',
+                        '15 ratings and 1 review',
                         style: Theme.of(context).textTheme.body1.copyWith(
                               fontWeight: FontWeight.w700,
                               color: Colors.grey[500],

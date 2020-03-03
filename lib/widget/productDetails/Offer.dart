@@ -10,9 +10,9 @@ class PDoffer extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.only(left: 14.0, top: 10.0),
+            padding: EdgeInsets.only(left: 14.0, top: 12.0),
             child: Text(
-              "Available offers",
+              "Special offers from Shop 2 More shop",
               style: Theme.of(context)
                   .textTheme
                   .body1
@@ -25,13 +25,13 @@ class PDoffer extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                Icon(CupertinoIcons.tags_solid, color: Colors.green, size: 19.0,),
+                Icon(CupertinoIcons.tag_solid, color: Colors.green, size: 19.0,),
                 Flexible(
                   flex: 2,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      "5% Unlimited Cashback on Esell Axis Bank Credit card",
+                      "5% Unlimited Cashback on shop 2 more products on any purchase from Axis Bank Credit card",
                       style: Theme.of(context)
                           .textTheme
                           .body1
@@ -60,13 +60,13 @@ class PDoffer extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                Icon(CupertinoIcons.tags_solid, color: Colors.green, size: 19.0,),
+                Icon(CupertinoIcons.tag_solid, color: Colors.green, size: 19.0,),
                 Flexible(
                   flex: 2,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      "Extra 5% off* with Axis Bank Buxx Credit Card",
+                      "Extra 10% off when buying another Shop 2 More product ",
                       style: Theme.of(context)
                           .textTheme
                           .body1

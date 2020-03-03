@@ -43,8 +43,8 @@ List<String> properties(String category) {
     return [
       'Material',
       'Occasion',
-      'No. of Compartments',
-      'No. of Pockets',
+      'No Of Compartments',
+      'No Of Pockets',
       'Width',
       'Height',
       'Closure',
@@ -122,20 +122,22 @@ class PDAllDetails extends StatelessWidget {
     final property = properties(product['category']);
 
     TableRow oneProperty(String x) {
-      return TableRow(children: [
-        FText(
-          text: x,
-          color: Colors.grey[500],
-          size: 16.0,
-        ),
-        FText(
-          text: x,
-          style: body1,
-        )
-      ]);
-      // details['${properties[i].toLowerCase().combine(' ')}'] != null &&
-      //         details['${properties[i].toLowerCase()}'].length > 0
-      // ?
+      var combi = x.replaceAll(' ', '');
+      var first = combi.substring(0, 1).toLowerCase();
+      var name = first + combi.substring(1, x.length);
+      return details['$name'] != null && details['$name'].length > 0
+          ? TableRow(children: [
+              FText(
+                text: x,
+                color: Colors.grey[500],
+                size: 16.0,
+              ),
+              FText(
+                text: product['$name'],
+                style: body1,
+              )
+            ])
+          : TableRow(children: [Container(), Container()]);
     }
 
     return Scaffold(
@@ -263,7 +265,7 @@ class PDAllDetails extends StatelessWidget {
                                     style: body1,
                                   ),
                                 ])
-                              : Text(''),
+                              : TableRow(children: [Container(), Container()]),
                           details['style'] != null &&
                                   details['style'].length > 0
                               ? TableRow(children: [
@@ -277,7 +279,7 @@ class PDAllDetails extends StatelessWidget {
                                     style: body1,
                                   ),
                                 ])
-                              : Text(''),
+                              : TableRow(children: [Container(), Container()]),
                           details['closure'] != null &&
                                   details['closure'].length > 0
                               ? TableRow(children: [
@@ -291,7 +293,7 @@ class PDAllDetails extends StatelessWidget {
                                     style: body1,
                                   )
                                 ])
-                              : Text(''),
+                              : TableRow(children: [Container(), Container()]),
                           details['warranty'] != null &&
                                   details['closure'].length > 0
                               ? TableRow(children: [
@@ -305,7 +307,7 @@ class PDAllDetails extends StatelessWidget {
                                     style: body1,
                                   )
                                 ])
-                              : Text(''),
+                              : TableRow(children: [Container(), Container()]),
                         ],
                   ),
                 ),
