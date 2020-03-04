@@ -123,9 +123,8 @@ class PDAllDetails extends StatelessWidget {
 
     TableRow oneProperty(String x) {
       var combi = x.replaceAll(' ', '');
-      var first = combi.substring(0, 1).toLowerCase();
-      var name = first + combi.substring(1, x.length);
-      return details['$name'] != null && details['$name'].length > 0
+      var newName = combi.substring(0, 1).toLowerCase() + combi.substring(1);
+      return details[newName] != null && details[newName].length > 0
           ? TableRow(children: [
               FText(
                 text: x,
@@ -133,7 +132,7 @@ class PDAllDetails extends StatelessWidget {
                 size: 16.0,
               ),
               FText(
-                text: product['$name'],
+                text: details[newName],
                 style: body1,
               )
             ])
