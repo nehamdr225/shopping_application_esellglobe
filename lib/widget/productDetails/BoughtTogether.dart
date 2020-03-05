@@ -1,6 +1,42 @@
 import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/Text.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+List<String> cat(String category) {
+  if (category.contains('Top Wear')) {
+    if (category.contains('Casual Shir')) {
+      return [
+        'Bottom Wear; Jeans Pants',
+        'Foot Wear; Casual Shoes',
+        'Sunglasses',
+        'Watches',
+        'Bags & Backpacks'
+      ];
+    }else if( category.contains('Formal Shirt')){
+      return [
+        'Bottom Wear; Formal Pants',
+        'Foot Wear; Formal Shoes',
+        'Sunglasses',
+        'Watches',
+      ];
+    }else if( category.contains('T-Shirt')){
+      return [
+        'Bottom Wear; Track/Sports Wear',
+        'Foot Wear; Sports Shoes',
+        'Sunglasses',
+        'Watches',
+      ];
+    }else if( category.contains('Jackets')){
+      return [
+        'Bottom Wear; Track/Sports Wear',
+        'Foot Wear; Sports Shoes',
+        'Sunglasses',
+        'Watches',
+      ];
+    }
+  }
+}
 
 class PDBoughtTogether extends StatelessWidget {
   final details;
@@ -13,6 +49,8 @@ class PDBoughtTogether extends StatelessWidget {
   Widget build(BuildContext context) {
     final imagesrc = "https://api.shop2more.com" + image;
     final body1 = Theme.of(context).textTheme.body1.copyWith(fontSize: 16.0);
+    final product = Provider.of<ProductModel>(context).one(id);
+    final elements = cat(product['category']);
     return Padding(
       padding: const EdgeInsets.only(top: 5.0),
       child: Container(
@@ -31,7 +69,8 @@ class PDBoughtTogether extends StatelessWidget {
               size: 16.0,
               fontWeight: FontWeight.w600,
             )),
-            Container( //card like this use PDCard below
+            Container(
+              //card like this use PDCard below
               // card
               width: MediaQuery.of(context).size.width * 0.95,
               height: 100.0,

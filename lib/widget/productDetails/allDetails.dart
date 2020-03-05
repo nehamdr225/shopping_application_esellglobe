@@ -119,24 +119,32 @@ class PDAllDetails extends StatelessWidget {
     final imagesrc = "https://api.shop2more.com" + image;
     final body1 = Theme.of(context).textTheme.body1.copyWith(fontSize: 16.0);
     final product = Provider.of<ProductModel>(context).one(id);
-    final property = properties(product['category']);
+    final property = properties(product['category']); 
+    final size = MediaQuery.of(context).size;
 
-    TableRow oneProperty(String x) {
+    Row oneProperty(String x) {
       var combi = x.replaceAll(' ', '');
       var newName = combi.substring(0, 1).toLowerCase() + combi.substring(1);
       return details[newName] != null && details[newName].length > 0
-          ? TableRow(children: [
-              FText(
-                text: x,
-                color: Colors.grey[500],
-                size: 16.0,
+          ? Row(children: [
+              Container(
+                width: size.width * 0.28,
+                child: FText(
+                  text: x,
+                  color: Colors.grey[500],
+                  size: 16.0,
+                ),
               ),
-              FText(
-                text: details[newName],
-                style: body1,
+              Container(
+                width: size.width * 0.72,
+                child: FText(
+                  text: details[newName],
+                  style: body1,
+                  align: TextAlign.justify,
+                ),
               )
             ])
-          : TableRow(children: [Container(), Container()]);
+          : Row(children: [Container(), Container()]);
     }
 
     return Scaffold(
@@ -248,65 +256,59 @@ class PDAllDetails extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     )),
                 Container(
-                  child: Table(
-                    children: property.map<TableRow>(oneProperty).toList() +
+                  width: MediaQuery.of(context).size.width,
+                  child: Column(
+                    children: property.map<Row>(oneProperty).toList() +
                         [
-                          details['material'] != null &&
-                                  details['material'].length > 0
-                              ? TableRow(children: [
-                                  FText(
-                                    text: "Material",
-                                    color: Colors.grey[500],
-                                    size: 16.0,
-                                  ),
-                                  FText(
-                                    text: details['material'] ?? "N/A",
-                                    style: body1,
-                                  ),
-                                ])
-                              : TableRow(children: [Container(), Container()]),
                           details['style'] != null &&
                                   details['style'].length > 0
-                              ? TableRow(children: [
-                                  FText(
-                                    text: "Style",
-                                    color: Colors.grey[500],
-                                    size: 16.0,
-                                  ),
-                                  FText(
-                                    text: details['style'] ?? "N/A",
-                                    style: body1,
-                                  ),
-                                ])
-                              : TableRow(children: [Container(), Container()]),
-                          details['closure'] != null &&
-                                  details['closure'].length > 0
-                              ? TableRow(children: [
-                                  FText(
-                                    text: "Closure",
-                                    color: Colors.grey[500],
-                                    size: 16.0,
-                                  ),
-                                  FText(
-                                    text: details['closure'],
-                                    style: body1,
-                                  )
-                                ])
-                              : TableRow(children: [Container(), Container()]),
+                              ? Row(
+                                  children: <Widget>[
+                                    Container(
+                                      width: size.width * 0.28,
+                                      child: FText(
+                                        text: "Style",
+                                        color: Colors.grey[500],
+                                        size: 16.0,
+                                      ),
+                                    ),
+                                    Container(
+                                      width: size.width * 0.72,
+                                      child: FText(
+                                        align: TextAlign.justify,
+                                        text: details['style'] ?? "N/A",
+                                        style: body1,
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              : Row(
+                                  children: <Widget>[Container(), Container()],
+                                ),
                           details['warranty'] != null &&
                                   details['closure'].length > 0
-                              ? TableRow(children: [
-                                  FText(
-                                    text: "Warranty",
-                                    color: Colors.grey[500],
-                                    size: 16.0,
-                                  ),
-                                  FText(
-                                    text: details['warranty'] ?? "N/A",
-                                    style: body1,
-                                  )
-                                ])
-                              : TableRow(children: [Container(), Container()]),
+                              ? Row(
+                                  children: <Widget>[
+                                    Container(
+                                      width: size.width * 0.28,
+                                      child: FText(
+                                        text: "Warranty",
+                                        color: Colors.grey[500],
+                                        size: 16.0,
+                                      ),
+                                    ),
+                                    Container(
+                                        width: size.width * 0.72,
+                                        child: FText(
+                                          align: TextAlign.justify,
+                                          text: details['warranty'] ?? "N/A",
+                                          style: body1,
+                                        ))
+                                  ],
+                                )
+                              : Row(
+                                  children: <Widget>[Container(), Container()],
+                                ),
                         ],
                   ),
                 ),

@@ -124,7 +124,7 @@ class PDFooter extends StatelessWidget {
             : <Widget>[
                 FRaisedButton(
                   height: 50.0,
-                  width: 200.0,
+                  width: MediaQuery.of(context).size.width * 0.90,
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (_) => UserPromptApp()));
