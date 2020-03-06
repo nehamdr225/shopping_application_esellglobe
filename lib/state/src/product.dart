@@ -1,4 +1,5 @@
 import 'dart:core';
+import 'dart:math';
 
 import 'package:esell/entities/product.api.dart';
 // import 'package:esell/entities/product.dart';
@@ -93,5 +94,20 @@ class ProductModel extends ChangeNotifier {
       isRefreshing = false;
       return "done";
     }
+  }
+  relevant(String prodCategory){
+    List frequentlyBroughtTogether = [];
+    Random r = new Random();
+    int increment = r.nextInt(7 - 3);
+    for (int i = 0; i<prodCategory.length; i= i + increment){
+      if(frequentlyBroughtTogether.length < 3){
+        if (!_products[i]['category'].contains(prodCategory)) {
+          frequentlyBroughtTogether.add(_products[i]);
+        } 
+      }else{
+        return frequentlyBroughtTogether;
+      }
+    }
+    return frequentlyBroughtTogether;
   }
 }

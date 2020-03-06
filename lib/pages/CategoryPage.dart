@@ -9,13 +9,22 @@ import 'package:esell/widget/molecules/Product.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class CategoryPage extends StatelessWidget { 
+class CategoryPage extends StatefulWidget { 
   final String text;
   final String type;
   CategoryPage({this.text, this.type});
+
+  @override
+  _CategoryPageState createState() => _CategoryPageState();
+}
+
+class _CategoryPageState extends State<CategoryPage> {
+  
+  // var _stockList = [];
+  // ProductModel refProd = new ProductModel();
   @override
   Widget build(BuildContext context) {
-    final cat = text;
+    final cat = widget.text;
 
     getCategoryItems(reqCategory) {
       String filter;
@@ -92,10 +101,21 @@ class CategoryPage extends StatelessWidget {
         backgroundColor: Colors.white,
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(40.0),
-          child: FAppBar(wishlist: true, cart: true, title: '$text'),
+          child: FAppBar(wishlist: true, cart: true, title: '${widget.text}'),
         ),
         body: ListView(primary: false, children: createWidgets()),
+        //body: RefreshIndicator(child: ListView(primary: false, children: createWidgets()), onRefresh: _refreshPages,),
       ),
     );
   }
+//   Future<void> _refreshPages() async
+//   {
+//     print('refreshing product...');
+//     // _stockList.forEach((s) async {
+//     //   var product = await refProd.refresh();
+//     //   setState(() {
+//     //     s.price = product;
+//     //   });
+//     // });
+//   }
 }

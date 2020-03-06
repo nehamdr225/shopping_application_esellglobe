@@ -102,6 +102,9 @@ class DrawerApp extends StatelessWidget {
                     Theme.of(context).textTheme.body2.copyWith(fontSize: 16.0),
               ),
             ),
+            Padding(
+              padding: EdgeInsets.all(3.0),
+            ),
             DrawerEPanel(
               [
                 ListItem(
@@ -216,10 +219,13 @@ class DrawerApp extends StatelessWidget {
                         )),
               ],
             ),
-            // Divider(
-            //   color: Colors.grey[500],
-            //   height: 10.0,
-            // ),
+            Padding(
+              padding: EdgeInsets.all(3.0),
+            ),
+            Divider(
+              color: Colors.grey[500],
+              height: 10.0,
+            ),
             Padding(
               //text find your styke
               padding: const EdgeInsets.only(
