@@ -47,7 +47,7 @@ class _AccQueriesState extends State<AccQueries>
           children: <Widget>[
             FRaisedButton(
               elevation: 0.0,
-              text: 'I want to deactivate my esell account',
+              text: 'I want to deactivate my Shop2more account',
               color: textColor,
               textAlign: TextAlign.start,
               bg: Colors.white,
@@ -72,7 +72,7 @@ class _AccQueriesState extends State<AccQueries>
                                             fontWeight: FontWeight.w500,
                                             size: 17.0,
                                             text:
-                                                'How can I deactivate my Esell account?',
+                                                'How can I deactivate my Shop2more account?',
                                           ),
                                         ),
                                         Padding(
@@ -90,7 +90,7 @@ class _AccQueriesState extends State<AccQueries>
                                             size: 17.0,
                                             textAlign: TextAlign.left,
                                             text:
-                                                "1. Log into your Esell account \n2. Go to My Account > Settings > Deactivate \n3. Enter the password for your account \n4. Choose 'Confirm Deactivation'",
+                                                "1. Log into your Shop2more account \n2. Go to My Account > Settings > Deactivate \n3. Enter the password for your account \n4. Choose 'Confirm Deactivation'",
                                           ),
                                         ),
                                       ],

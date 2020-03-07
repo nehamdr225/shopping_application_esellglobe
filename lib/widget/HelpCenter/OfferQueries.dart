@@ -39,7 +39,7 @@ class _OfferQueriesState extends State<OfferQueries>
           return <Widget>[
             SliverApBar(
               innerBoxIsScrolled: innerBoxIsScrolled,
-              title: 'Payment Queries',
+              title: 'Offer Queries',
             )
           ];
         },

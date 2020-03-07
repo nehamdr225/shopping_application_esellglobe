@@ -38,7 +38,7 @@ class _ServiceQueriesState extends State<ServiceQueries>
           return <Widget>[
             SliverApBar(
               innerBoxIsScrolled: innerBoxIsScrolled,
-              title: 'Esell Service Queries',
+              title: 'Shop2more Service Queries',
             )
           ];
         },
