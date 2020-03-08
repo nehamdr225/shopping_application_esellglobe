@@ -50,14 +50,10 @@ flutter:
   assets:
     - images/
     - images/icons/
+    - images/esellIcons/
     - images/logo/
     - images/esell photo/
     - images/categoryimg/
-    - images/offers/
-    - images/SubMain/Shirt/
-    - images/SubMain/pant/
-    - images/SubMain/foot/    
-    - images/SubMain/watchNglass/
     - images/women/
     - images/myntra images/
 

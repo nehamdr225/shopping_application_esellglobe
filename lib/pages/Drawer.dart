@@ -109,9 +109,9 @@ class DrawerApp extends StatelessWidget {
               [
                 ListItem(
                     title: Image.asset(
-                      "images/icons/men.png",
-                      height: 20.0,
-                      width: 20.0,
+                      "images/esellIcons/man.png",
+                      height: 25.0,
+                      width: 25.0,
                     ),
                     subtitle: "Men",
                     bodyBuilder: (context) => Column(
@@ -119,6 +119,7 @@ class DrawerApp extends StatelessWidget {
                             DrawerElements(
                               title: 'Top Wear',
                               icon: 'images/icons/tshirt.png',
+                              iconSize: 23.0,
                               onTap: () {
                                 Navigator.of(context).push(
                                   MaterialPageRoute(
@@ -131,6 +132,7 @@ class DrawerApp extends StatelessWidget {
                             DrawerElements(
                               title: 'Bottom Wear',
                               icon: 'images/icons/pant.png',
+                              iconSize: 23.0,
                               onTap: () {
                                 Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) =>
@@ -141,6 +143,7 @@ class DrawerApp extends StatelessWidget {
                             DrawerElements(
                               title: 'FootWear',
                               icon: 'images/icons/shoe.png',
+                              iconSize: 23.0,
                               onTap: () {
                                 Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) =>
@@ -151,6 +154,7 @@ class DrawerApp extends StatelessWidget {
                             DrawerElements(
                               title: 'Watches & Glasses',
                               icon: 'images/icons/glassesandjunga.png',
+                              iconSize: 23.0,
                               onTap: () {
                                 Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) =>
@@ -168,14 +172,15 @@ class DrawerApp extends StatelessWidget {
             DrawerEPanel(
               [
                 ListItem(
-                    title: Image.asset("images/icons/women.png",
-                        height: 20.0, width: 20.0),
+                    title: Image.asset("images/esellIcons/woman.png",
+                        height: 30.0, width: 30.0),
                     subtitle: "Women",
                     bodyBuilder: (context) => Column(
                           children: <Widget>[
                             DrawerElements(
                               title: 'Top Wear',
                               icon: 'images/icons/tshirt.png',
+                              iconSize: 23.0,
                               onTap: () {
                                 Navigator.of(context).push(
                                   MaterialPageRoute(
@@ -188,6 +193,7 @@ class DrawerApp extends StatelessWidget {
                             DrawerElements(
                               title: 'Bottom Wear',
                               icon: 'images/icons/pant.png',
+                              iconSize: 23.0,
                               onTap: () {
                                 Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) =>
@@ -198,6 +204,7 @@ class DrawerApp extends StatelessWidget {
                             DrawerElements(
                               title: 'FootWear',
                               icon: 'images/icons/shoe.png',
+                              iconSize: 23.0,
                               onTap: () {
                                 Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) =>
@@ -208,6 +215,7 @@ class DrawerApp extends StatelessWidget {
                             DrawerElements(
                               title: 'Watches & Glasses',
                               icon: 'images/icons/glassesandjunga.png',
+                              iconSize: 23.0,
                               onTap: () {
                                 Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) =>
@@ -242,7 +250,7 @@ class DrawerApp extends StatelessWidget {
             DrawerElements(
               //Order
               title: 'My Orders',
-              icon: 'images/icons/order.png',
+              icon: 'images/esellIcons/order.png',
               onTap: () {
                 Navigator.push(
                   context,
@@ -253,7 +261,7 @@ class DrawerApp extends StatelessWidget {
             DrawerElements(
               //Coupons
               title: 'My Coupons',
-              icon: 'images/icons/homepage.png',
+              icon: 'images/esellIcons/coupon.png',
               onTap: () {
                 // Navigator.push(context,
                 //     MaterialPageRoute(builder: (context) => HomePageApp()));
@@ -262,7 +270,7 @@ class DrawerApp extends StatelessWidget {
             DrawerElements(
               //Wishlist
               title: 'My Wishlist',
-              icon: 'images/icons/wishlist.png',
+              icon: 'images/esellIcons/wishlist.png',
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => WishlistPage()));
@@ -271,7 +279,7 @@ class DrawerApp extends StatelessWidget {
             DrawerElements(
               //Cart
               title: 'My Cart',
-              icon: 'images/icons/cart.png',
+              icon: 'images/esellIcons/cart.png',
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => CartPage()));
@@ -282,7 +290,7 @@ class DrawerApp extends StatelessWidget {
                     children: <Widget>[
                       DrawerElements(
                         title: 'My Account',
-                        icon: 'images/icons/account.png',
+                        icon: 'images/esellIcons/account.png',
                         onTap: () {
                           Navigator.push(
                               context,
@@ -303,7 +311,7 @@ class DrawerApp extends StatelessWidget {
             DrawerElements(
               //Customer Service
               title: 'Help Center',
-              icon: 'images/icons/CustomerService.png',
+              icon: 'images/esellIcons/helpcenter.png',
               onTap: () {
                 Navigator.push(
                   context,
@@ -314,7 +322,7 @@ class DrawerApp extends StatelessWidget {
             DrawerElements(
               // About
               title: 'About',
-              icon: 'images/icons/about.png',
+              icon: 'images/esellIcons/about.png',
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => AboutPage()));
