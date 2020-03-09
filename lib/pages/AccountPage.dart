@@ -31,8 +31,7 @@ class AccountPage extends StatelessWidget {
           )),
       body: ListView(
         children: <Widget>[
-          Stack(
-            // Blue name card
+          Stack(// Blue name card
             alignment: AlignmentDirectional.topCenter,
             children: <Widget>[
               Container(
@@ -112,11 +111,7 @@ class AccountPage extends StatelessWidget {
               ),
             ],
           ),
-          AccountCards(  
-            text: 'ESell Plus',
-            buttonText: 'VIEW PLUS ZONE',
-            onTap: () {},
-          ),
+          
           AccountCards(
             text: 'My Orders',
             buttonText: 'VIEW ALL ORDERS',

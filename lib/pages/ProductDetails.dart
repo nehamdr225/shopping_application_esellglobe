@@ -128,6 +128,7 @@ class _ProductDetailsState extends State<ProductDetails> {
             PDInfo(
               name: product['name'],
               price: product['price'].toString(),
+              description: product['description']['style'],
             ),
             PDoffer(),
             !product['category'].contains('Sunglasses') &&

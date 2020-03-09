@@ -93,6 +93,7 @@ class Product extends StatelessWidget {
                 price: '$price',
                 id: id,
                 wishlist: wishlist,
+                details: details, 
               ),
             ],
           ),

@@ -5,7 +5,8 @@ class Details extends StatefulWidget {
   final String price;
   final String id;
   final wishlist;
-  Details({this.name, this.price, this.id, this.wishlist: true});
+  final details;
+  Details({this.name, this.price, this.id, this.wishlist: true, this.details});
 
   @override
   _DetailsState createState() => _DetailsState();
@@ -15,6 +16,7 @@ class _DetailsState extends State<Details> {
   @override
   Widget build(BuildContext context) {
     //final user = Provider.of<UserModel>(context);
+    //var text = 'String'.replaceAll('\n', ' ');
 
     return Align(
       alignment: Alignment.centerLeft,
@@ -33,6 +35,32 @@ class _DetailsState extends State<Details> {
               textAlign: TextAlign.left,
             ),
           ),
+          widget.details.length <40 ?
+          Padding(
+            padding: const EdgeInsets.only(left: 8.0, top: 5.0, right: 2.0),
+            child: Text(
+              '${widget.details.replaceAll('\n', ' ')}...',
+              style: Theme.of(context).textTheme.body1.copyWith(
+                    fontSize: 12.0,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.grey[500]
+                  ),
+              textAlign: TextAlign.left,
+            ),
+          )
+          :
+          Padding(
+            padding: const EdgeInsets.only(left: 8.0, top: 5.0, right: 2.0),
+            child: Text(
+              '${widget.details.substring(0, 40).replaceAll('\n', ' ')}...',
+              style: Theme.of(context).textTheme.body1.copyWith(
+                    fontSize: 12.0,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.grey[500]
+                  ),
+              textAlign: TextAlign.left,
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.only(left: 8.0, top: 3.0),
             child: Row(
@@ -45,7 +73,7 @@ class _DetailsState extends State<Details> {
                   widget.price,
                   style: Theme.of(context).textTheme.body1.copyWith(
                         fontSize: 16.0,
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.w800,
                       ),
                   textAlign: TextAlign.left,
                 ),
@@ -55,7 +83,7 @@ class _DetailsState extends State<Details> {
                     "₹ 1800",
                     style: Theme.of(context).textTheme.body1.copyWith(
                         fontWeight: FontWeight.w500,
-                        fontSize: 13.0,
+                        fontSize: 12.0,
                         color: Colors.grey[500],
                         decoration: TextDecoration.lineThrough),
                   ),
@@ -67,14 +95,16 @@ class _DetailsState extends State<Details> {
                     style: Theme.of(context).textTheme.body1.copyWith(
                           fontWeight: FontWeight.w600,
                           color: Colors.green,
-                          fontSize: 15.0,
+                          fontSize: 13.0,
                         ),
                   ),
                 ),
               ],
             ),
           ),
-          SizedBox(height: 10.0,)
+          SizedBox(
+            height: 10.0,
+          )
         ],
       ),
     );

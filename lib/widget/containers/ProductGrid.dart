@@ -30,7 +30,7 @@ class ProductGrid extends StatelessWidget {
                         image: products[index]['media'],
                         imgheight: 235.0,
                         price: products[index]['price'],
-                        details: products[index]['details'],
+                        details: products[index]['description']['style'],
                         id: products[index]['_id'],
                         wishlist: true,
                       )

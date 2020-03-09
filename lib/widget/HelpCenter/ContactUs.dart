@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 
 class ContactUs extends StatelessWidget {
   final Widget widgets;
-  ContactUs({this.widgets});
+  final title;
+  ContactUs({this.widgets, this.title: 'Contact Us'});
   @override
   Widget build(BuildContext context) {
     //final size = MediaQuery.of(context).size;
@@ -13,7 +14,7 @@ class ContactUs extends StatelessWidget {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(55.0),
           child: BlueAppBar(
-            title: 'Contact Us',
+            title: title,
             elevation: 0.0,
             search: false,
             cart: false,

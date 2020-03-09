@@ -25,9 +25,11 @@ class DrawerElements extends StatelessWidget {
         icon,
         height: iconSize,
         width: iconSize,
+        //color: gradient,
       ),
       trailing: Icon(Icons.arrow_right),
       onTap: onTap,
     );
   }
 }
+

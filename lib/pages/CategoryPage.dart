@@ -5,7 +5,6 @@ import 'package:esell/widget/atoms/BottomLoader.dart';
 import 'package:esell/widget/atoms/InfoNavBar.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:esell/widget/molecules/Product.dart';
-//import 'package:esell/widget/molecules/GridList.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -62,7 +61,7 @@ class _CategoryPageState extends State<CategoryPage> {
             onPressed: onpressed,
           ),
           Container(
-              height: 280,
+              height: 310,
               width: 70,
               alignment: Alignment.center,
               child: categoryProduct.length > 0
@@ -80,7 +79,7 @@ class _CategoryPageState extends State<CategoryPage> {
                                 image: categoryProduct[index]['media'],
                                 imgheight: 210.0,
                                 price: categoryProduct[index]['price'],
-                                details: categoryProduct[index]['details'],
+                                details: categoryProduct[index]['description']['style'],
                                 id: categoryProduct[index]['_id'],
                                 wishlist: true,
                               )

@@ -87,7 +87,7 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
     final widgets = buildSizeWidgets();
 
     return Container(
-        padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 8.0),
+        padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 2.0),
         width: screenWidth * 0.95,
         decoration: BoxDecoration(
             color: Colors.white,

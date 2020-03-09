@@ -10,7 +10,7 @@ class PDoffer extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.only(left: 14.0, top: 12.0),
+            padding: EdgeInsets.only(left: 14.0, top: 25.0),
             child: Text(
               "Special offers from Shop 2 More shop",
               style: Theme.of(context)

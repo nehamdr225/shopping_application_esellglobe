@@ -128,7 +128,7 @@ class _PDDetailsState extends State<PDDetails> {
                                 Container(
                                   width: size.width * 0.72,
                                   child: FText(
-                                    align: TextAlign.justify,
+                                    align: TextAlign.left,
                                     text: widget.details['style'] ?? "N/A",
                                     style: body1,
                                   ),
