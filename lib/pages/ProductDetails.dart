@@ -46,7 +46,8 @@ class _ProductDetailsState extends State<ProductDetails> {
     var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
     final product = Provider.of<ProductModel>(context).one(widget.id);
-    final relatedProds = Provider.of<ProductModel>(context).relevant(product['category']);
+    final relatedProds =
+        Provider.of<ProductModel>(context).relevant(product['category']);
     final imagesrc = "https://api.shop2more.com";
 
     List<Image> images = [];

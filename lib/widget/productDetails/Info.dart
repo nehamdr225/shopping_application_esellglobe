@@ -34,14 +34,17 @@ class PDInfo extends StatelessWidget {
                       fontWeight: FontWeight.w800,
                       fontSize: 18.0,
                       color: Colors.grey[800])),
-              description == null && description.length < 100
+              description == null
                   ? Padding(
                       padding: const EdgeInsets.only(top: 5.0),
                       child: Text(''),
                     )
                   : Padding(
                       padding: const EdgeInsets.only(top: 8.0),
-                      child: Text('${description.substring(0, 50).replaceAll('\n', ' ')}...',
+                      child: Text(
+                          description.length >= 50
+                              ? '${description.substring(0, 50).replaceAll('\n', ' ')}'
+                              : '${description.replaceAll('\n', ' ')}...',
                           textAlign: TextAlign.start,
                           overflow: TextOverflow.ellipsis,
                           style: Theme.of(context).textTheme.body1.copyWith(

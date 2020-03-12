@@ -3,16 +3,16 @@ import 'package:esell/widget/AnimatingLine.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
 import 'package:esell/widget/atoms/InfoNavBar.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
+import 'package:esell/widget/atoms/Snackbar.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:esell/state/state.dart';
 
 class CheckoutPage extends StatefulWidget {
-  final price;
-  final items;
+  final item;
 
-  CheckoutPage({this.price, this.items});
+  CheckoutPage({this.item});
 
   @override
   _CheckoutPageState createState() => _CheckoutPageState();
@@ -112,7 +112,6 @@ class _CheckoutPageState extends State<CheckoutPage> {
 
   String saveBillingInfo(type) {
     if (type == "ship" && shippingInfo != null) {
-      print('Shipping');
       setState(() {
         billingInfo = {
           'name': shippingInfo['name'],
@@ -147,16 +146,20 @@ class _CheckoutPageState extends State<CheckoutPage> {
 
     void placeOrder() async {
       if (shippingInfo != null) {
-        print("Place order");
         final orderData = {
           "userInfo": shippingInfo,
           "billing": billingInfo ?? shippingInfo,
-          "products":
-              widget.items.map((each) => each['product']['_id']).toList()
+          'product': widget.item['product']['_id'],
+          'seller': widget.item['product']['seller'],
         };
+
         user.placeOrder(orderData).then((result) {
+          print(result);
           if (result['error'] == null) {
-            user.cart = [];
+            buildAndShowSnackBar(
+                context, 'Error ordering ${widget.item['product']['name']}');
+          } else {
+            buildAndShowSnackBar(context, 'Order created');
             Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(builder: (context) => AnimatingLine()),
@@ -164,6 +167,27 @@ class _CheckoutPageState extends State<CheckoutPage> {
             );
           }
         });
+      }
+    }
+
+    var preview = '';
+    if (widget.item['product']['media'] != null) {
+      if (widget.item['product']['media']['front'] == null) {
+        if (widget.item['product']['media']['left'] != null) {
+          preview = widget.item['product']['media']['left'];
+        } else if (widget.item['product']['media']['right'] != null) {
+          preview = widget.item['product']['media']['right'];
+        } else if (widget.item['product']['media']['back'] != null) {
+          preview = widget.item['product']['media']['back'];
+        } else if (widget.item['product']['media']['top'] != null) {
+          preview = widget.item['product']['media']['top'];
+        } else if (widget.item['product']['media']['bottom'] != null) {
+          preview = widget.item['product']['media']['bottom'];
+        } else {
+          preview = '';
+        }
+      } else {
+        preview = widget.item['product']['media']['front'];
       }
     }
 
@@ -180,7 +204,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     FancyText(
-                      text: 'Total : Rs. ${widget.price.toStringAsFixed(2)}',
+                      text: 'Total : Rs. ${widget.item['product']['price']}',
                       color: Colors.red,
                       fontWeight: FontWeight.bold,
                       size: 15.0,
@@ -296,14 +320,18 @@ class _CheckoutPageState extends State<CheckoutPage> {
               ),
               Container(
                 alignment: Alignment.center,
-                child: FlatButton(
-                  color: orderBar,
-                  child: Text(
-                    'Copy Shipping Details',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  onPressed: () {},
-                ),
+                child: billingInfo != null && billingInfo['house'] != null
+                    ? Text('$houseNo, $city, $country')
+                    : FlatButton(
+                        color: orderBar,
+                        child: Text(
+                          'Copy Shipping Details',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        onPressed: () {
+                          saveBillingInfo('ship');
+                        },
+                      ),
               ),
               SizedBox(
                 height: 40.0,
@@ -315,9 +343,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
             //icon: Text(''),
             onPressed: null,
           ),
-          Column(
-              children: widget.items.map<Widget>((fav) {
-            return Container(
+          Column(children: [
+            Container(
               margin: EdgeInsets.only(top: 20, bottom: 10),
               height: 80.0,
               // decoration: BoxDecoration(
@@ -341,11 +368,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     child: Padding(
                       padding: EdgeInsets.all(3.0),
                       child: Image.network(
-                          fav['product']['media'] != null &&
-                                  fav['product']['media'].length > 0 &&
-                                  fav['product']['media'][0]['src'].length > 0
-                              ? fav['product']['media'][0]['src'][0]
-                              : '',
+                          'https://api.shop2more.com' + preview,
                           height: 100.0,
                           width: 70.0),
                     ),
@@ -358,10 +381,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          fav['product']['name'] == null
+                          widget.item['product']['name'] == null
                               ? Text('No Product')
                               : Text(
-                                  fav['product']['name'],
+                                  widget.item['product']['name'],
                                   style: TextStyle(
                                       fontFamily: "Helvetica",
                                       color: textColor,
@@ -379,7 +402,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                               Padding(
                                 padding: const EdgeInsets.all(3.0),
                                 child: Text(
-                                  fav['quantity'].toString(),
+                                  widget.item['quantity'].toString(),
                                 ),
                               ),
                               Padding(
@@ -391,7 +414,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                               Padding(
                                 padding: const EdgeInsets.all(3.0),
                                 child: Text(
-                                  fav['size'].toString() ?? "N/A",
+                                  widget.item['size'].toString() ?? "N/A",
                                 ),
                               ),
                               Padding(
@@ -402,14 +425,15 @@ class _CheckoutPageState extends State<CheckoutPage> {
                               ),
                               Padding(
                                 padding: const EdgeInsets.all(3.0),
-                                child: Text(fav['color'] ?? "N/A"),
+                                child: Text(widget.item['color'] ?? "N/A"),
                               ),
                             ],
                           ),
                           Container(
                             alignment: Alignment.topLeft,
                             padding: EdgeInsets.all(3.0),
-                            child: Text("Rs. ${fav['product']['price']}",
+                            child: Text(
+                                "Rs. ${widget.item['product']['price']}",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.red)),
@@ -420,8 +444,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   ),
                 ],
               ),
-            );
-          }).toList()),
+            ),
+          ]),
         ],
       ),
     );

@@ -1,51 +1,47 @@
+import 'package:esell/pages/CheckoutPage.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CartListView extends StatelessWidget {
-  final name;
-  final picture;
-  final id;
-  final size;
-  final price;
-  // final qty;
+  final product;
   final color;
   final quantity;
   final setQuantity;
   final token;
   final deleteFromCart;
+  final size;
 
   CartListView(
-      {this.name,
-      this.price,
-      this.token,
-      this.size,
-      this.picture,
-      this.id,
+      {this.token,
+      this.product,
       this.quantity,
       this.setQuantity,
       this.deleteFromCart,
-      this.color});
+      this.color,
+      this.size});
 
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var preview = '';
-    if (picture != null) {
-      if (picture['front'] == null) {
-        if (picture['left'] != null) {
-          preview = picture['left'];
-        } else if (picture['right'] != null) {
-          preview = picture['right'];
-        } else if (picture['back'] != null) {
-          preview = picture['back'];
-        } else if (picture['top'] != null) {
-          preview = picture['top'];
-        } else if (picture['bottom'] != null) {
-          preview = picture['bottom'];
+    if (product['media'] != null) {
+      if (product['media']['front'] == null) {
+        if (product['media']['left'] != null) {
+          preview = product['media']['left'];
+        } else if (product['media']['right'] != null) {
+          preview = product['media']['right'];
+        } else if (product['media']['back'] != null) {
+          preview = product['media']['back'];
+        } else if (product['media']['top'] != null) {
+          preview = product['media']['top'];
+        } else if (product['media']['bottom'] != null) {
+          preview = product['media']['bottom'];
+        } else {
+          preview = '';
         }
       } else {
-        preview = picture['front'];
+        preview = product['media']['front'];
       }
     }
     return Padding(
@@ -71,7 +67,7 @@ class CartListView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text(name,
+                        Text(product['name'],
                             textAlign: TextAlign.start,
                             overflow: TextOverflow.ellipsis,
                             style: Theme.of(context).textTheme.body1.copyWith(
@@ -144,7 +140,7 @@ class CartListView extends StatelessWidget {
                             Padding(
                               padding: EdgeInsets.only(right: 6.0, left: 6.0),
                               child: Text(
-                                "$price",
+                                product["price"],
                                 style:
                                     Theme.of(context).textTheme.body1.copyWith(
                                           fontWeight: FontWeight.w800,
@@ -212,8 +208,10 @@ class CartListView extends StatelessWidget {
                         borderRadius: BorderRadius.circular(60),
                         child: Container(
                           padding: EdgeInsets.all(8.0),
-                          child: Image.network(preview,
-                              width: 100.0, height: 70.0),
+                          child: Image.network(
+                              'https://api.shop2more.com' + preview,
+                              width: 100.0,
+                              height: 70.0),
                         ),
                       ),
                       Row(
@@ -228,7 +226,7 @@ class CartListView extends StatelessWidget {
                             ),
                             onPressed: quantity > 1
                                 ? () {
-                                    setQuantity(id, quantity - 1);
+                                    setQuantity(product['_id'], quantity - 1);
                                   }
                                 : null,
                           ),
@@ -245,7 +243,7 @@ class CartListView extends StatelessWidget {
                               size: 25.0,
                             ),
                             onPressed: () {
-                              setQuantity(id, quantity + 1);
+                              setQuantity(product['_id'], quantity + 1);
                             },
                           ),
                         ],
@@ -269,10 +267,20 @@ class CartListView extends StatelessWidget {
                   needIcon: true,
                   shape: false,
                   image: 'images/icons/save.png',
-                  text: "Save for later",
+                  text: "Order Now",
                   color: Colors.black87,
                   bg: Colors.white,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => CheckoutPage(item: {
+                                  'product': product,
+                                  'quantity': quantity,
+                                  'size': size,
+                                  'color': color
+                                })));
+                  },
                 ),
                 FRaisedButton(
                   elevation: 0.0,
@@ -301,8 +309,9 @@ class CartListView extends StatelessWidget {
                             text: 'Remove',
                             color: Colors.white,
                             bg: Colors.red,
+                            width: 120.0,
                             onPressed: () {
-                              deleteFromCart(id);
+                              deleteFromCart(product['_id']);
                               Navigator.pop(context);
                             },
                           )

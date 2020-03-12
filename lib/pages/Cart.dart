@@ -1,11 +1,9 @@
-import 'package:esell/pages/CheckoutPage.dart';
 import 'package:esell/pages/UserPromt.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:esell/widget/molecules/CartList.dart';
 import 'package:esell/widget/molecules/CartPrice.dart';
 import 'package:flutter/material.dart';
-import 'package:esell/widget/molecules/colors.dart';
 import 'package:provider/provider.dart';
 import 'package:esell/state/state.dart';
 
@@ -23,7 +21,7 @@ class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserModel>(context);
-    final width = MediaQuery.of(context).size.width;
+    // final width = MediaQuery.of(context).size.width;
     final userData = user.user;
     final token = user.token;
     // final height = MediaQuery.of(context).size.height;
@@ -68,72 +66,19 @@ class _CartPageState extends State<CartPage> {
                       title: 'Cart',
                     )),
                 backgroundColor: Theme.of(context).colorScheme.background,
-                persistentFooterButtons: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Padding(
-                        padding: EdgeInsets.all(2.0),
-                      ),
-                      FRaisedButton(
-                        width: width * 0.45,
-                        height: 40.0,
-                        text: "RS. ${total.toStringAsFixed(2)}",
-                        bg: iconthemelight,
-                        shape: true,
-                        color: textColor,
-                        onPressed: null,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(5.0),
-                      ),
-                      FRaisedButton(
-                        width: width * 0.45,
-                        color: Colors.white,
-                        height: 40.0,
-                        shape: true,
-                        bg: Theme.of(context).colorScheme.secondaryVariant,
-                        onPressed: () {
-                          user.token != null
-                              ? Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (_) => CheckoutPage(
-                                            items: items,
-                                            price: total,
-                                          )))
-                              : Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (_) => UserPromptApp()));
-                        },
-                        text: user.token != null
-                            ? 'Check Out'
-                            : 'Login to proceed',
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(2.0),
-                      ),
-                    ],
-                  )
-                ],
                 body: items != null && items.length > 0
                     ? ListView.builder(
                         itemCount: items.length + 1,
                         itemBuilder: (context, index) {
                           return index != items.length
                               ? CartListView(
-                                  name: items[index]['product']['name'] ??
-                                      'error product',
-                                  picture: items[index]['product'],
-                                  price: items[index]['product']['price'],
-                                  id: items[index]['product']['_id'],
+                                  color: items[index]['color'],
                                   quantity: items[index]['quantity'] ?? 1,
                                   setQuantity: updateCartItem,
                                   token: user.token,
                                   deleteFromCart: user.deleteFromCart,
                                   size: items[index]['size'],
-                                  color: items[index]['color'],
-                                )
+                                  product: items[index]['product'])
                               : Padding(
                                   padding: const EdgeInsets.only(top: 8.0),
                                   child: Container(

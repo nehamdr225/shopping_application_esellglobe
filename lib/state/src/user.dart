@@ -84,7 +84,7 @@ class UserModel extends ChangeNotifier {
         });
       } else
         _api
-            .updateCart(token, product, qty ?? 1, size ?? "S", color ?? "Black")
+            .updateCart(token, product, qty ?? 1, size ?? "S", color)
             .then((result) {
           print(result);
           if (result['error'] == null) {
