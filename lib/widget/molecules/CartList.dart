@@ -43,6 +43,8 @@ class CartListView extends StatelessWidget {
           preview = picture['top'];
         } else if (picture['bottom'] != null) {
           preview = picture['bottom'];
+        } else {
+          preview = '';
         }
       } else {
         preview = picture['front'];
@@ -212,7 +214,7 @@ class CartListView extends StatelessWidget {
                         borderRadius: BorderRadius.circular(60),
                         child: Container(
                           padding: EdgeInsets.all(8.0),
-                          child: Image.network(preview,
+                          child: Image.network('https://api.shop2more.com'+preview,
                               width: 100.0, height: 70.0),
                         ),
                       ),

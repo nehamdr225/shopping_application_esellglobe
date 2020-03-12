@@ -124,7 +124,7 @@ class _CartPageState extends State<CartPage> {
                               ? CartListView(
                                   name: items[index]['product']['name'] ??
                                       'error product',
-                                  picture: items[index]['product'],
+                                  picture: items[index]['product']['media'],
                                   price: items[index]['product']['price'],
                                   id: items[index]['product']['_id'],
                                   quantity: items[index]['quantity'] ?? 1,

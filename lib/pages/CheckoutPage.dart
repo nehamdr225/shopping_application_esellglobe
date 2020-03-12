@@ -317,6 +317,27 @@ class _CheckoutPageState extends State<CheckoutPage> {
           ),
           Column(
               children: widget.items.map<Widget>((fav) {
+            var preview = '';
+            if (fav['product']['media'] != null) {
+              if (fav['product']['media']['front'] == null) {
+                if (fav['product']['media']['left'] != null) {
+                  preview = fav['product']['media']['left'];
+                } else if (fav['product']['media']['right'] != null) {
+                  preview = fav['product']['media']['right'];
+                } else if (fav['product']['media']['back'] != null) {
+                  preview = fav['product']['media']['back'];
+                } else if (fav['product']['media']['top'] != null) {
+                  preview = fav['product']['media']['top'];
+                } else if (fav['product']['media']['bottom'] != null) {
+                  preview = fav['product']['media']['bottom'];
+                } else {
+                  preview = '';
+                }
+              } else {
+                preview = fav['product']['media']['front'];
+              }
+            }
+            print('https://api.shop2more.com' + preview);
             return Container(
               margin: EdgeInsets.only(top: 20, bottom: 10),
               height: 80.0,
@@ -341,11 +362,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     child: Padding(
                       padding: EdgeInsets.all(3.0),
                       child: Image.network(
-                          fav['product']['media'] != null &&
-                                  fav['product']['media'].length > 0 &&
-                                  fav['product']['media'][0]['src'].length > 0
-                              ? fav['product']['media'][0]['src'][0]
-                              : '',
+                          'https://api.shop2more.com' + preview,
                           height: 100.0,
                           width: 70.0),
                     ),
