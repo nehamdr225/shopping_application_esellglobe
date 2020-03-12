@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Thu Mar 12 14:29:14 NPT 2020
+#Thu Mar 12 16:04:30 NPT 2020
 56.path=flutter_assets/images/esell%20photo/8shoeshirt.jpeg
 5.base=/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/merged_assets/debug/mergeDebugAssets/out
 42.base=/run/media/bee/workshop/workshop/flutter/esell/android/app/build/intermediates/merged_assets/debug/mergeDebugAssets/out

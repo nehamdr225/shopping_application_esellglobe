@@ -12,6 +12,7 @@ class OrdetrackPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final userOrders = Provider.of<UserModel>(context).orders;
     var width = MediaQuery.of(context).size.width;
+    print(userOrders);
     //Animation<double> animation = listenable;
     return Scaffold(
         appBar: PreferredSize(
@@ -21,24 +22,45 @@ class OrdetrackPage extends StatelessWidget {
           ),
         ),
         body: ListView(
-          children: userOrders.length > 0
+          children: userOrders != null && userOrders.length > 0
               ? userOrders.map<Widget>((eachOrder) {
+                  String preview;
+                  if (eachOrder['product']['media'] != null) {
+                    if (eachOrder['product']['media']['front'] == null) {
+                      if (eachOrder['product']['media']['left'] != null) {
+                        preview = eachOrder['product']['media']['left'];
+                      } else if (eachOrder['product']['media']['right'] !=
+                          null) {
+                        preview = eachOrder['product']['media']['right'];
+                      } else if (eachOrder['product']['media']['back'] !=
+                          null) {
+                        preview = eachOrder['product']['media']['back'];
+                      } else if (eachOrder['product']['media']['top'] != null) {
+                        preview = eachOrder['product']['media']['top'];
+                      } else if (eachOrder['product']['media']['bottom'] !=
+                          null) {
+                        preview = eachOrder['product']['media']['bottom'];
+                      } else {
+                        preview = '';
+                      }
+                    } else {
+                      preview = eachOrder['product']['media']['front'];
+                    }
+                  }
                   final time = DateTime.parse(eachOrder['timestamp']).toLocal();
-                  final products = eachOrder['products'];
                   return Column(
-                    children: products.map<Widget>((eachProducts) {
-                      return SizedBox(
+                    children: [
+                      SizedBox(
                         width: width,
                         height: 120.0,
                         child: Card(
                           elevation: 0.0,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(3.0),
-                            side:BorderSide(
-                              color: Colors.grey[200],
-                              width: 1.5,
-                            )
-                          ),
+                              borderRadius: BorderRadius.circular(3.0),
+                              side: BorderSide(
+                                color: Colors.grey[200],
+                                width: 1.5,
+                              )),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: <Widget>[
@@ -49,7 +71,7 @@ class OrdetrackPage extends StatelessWidget {
                                   child: Card(
                                     elevation: 2.0,
                                     child: Image.network(
-                                      "${eachProducts['media'][0]['src'][0]}",
+                                      'https://api.shop2more.com' + preview,
                                       height: 50.0,
                                       width: 50.0,
                                     ),
@@ -60,19 +82,19 @@ class OrdetrackPage extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
                                     Container(
-                                      width: width*0.50,
-                                      child:Text(
-                                          "${eachProducts['name']}",
-                                          textAlign: TextAlign.center,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .body1
-                                              .copyWith(
-                                                  fontWeight: FontWeight.w700),
-                                        ) ??
-                                        "DATA", 
+                                      width: width * 0.50,
+                                      child: Text(
+                                            "${eachOrder['product']['name']}",
+                                            textAlign: TextAlign.center,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .body1
+                                                .copyWith(
+                                                    fontWeight:
+                                                        FontWeight.w700),
+                                          ) ??
+                                          "DATA",
                                     ),
-                                    
                                     Padding(
                                       padding: EdgeInsets.all(8.0),
                                     ),
@@ -105,8 +127,8 @@ class OrdetrackPage extends StatelessWidget {
                             ],
                           ),
                         ),
-                      );
-                    }).toList(),
+                      ),
+                    ],
                   );
                 }).toList()
               : [Center(child: Text("No Orders found!"))],

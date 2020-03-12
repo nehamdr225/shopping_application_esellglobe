@@ -58,7 +58,7 @@ class OrderLines extends StatelessWidget {
             ),
           ),
         ),
-        body: Column(
+        body: ListView(
           children: <Widget>[
             Container(
               height: 180.0,
@@ -84,7 +84,8 @@ class OrderLines extends StatelessWidget {
                   SizedBox(
                     height: 40.0,
                   ),
-                  Container( //ONE
+                  Container(
+                    //ONE
                     width: width,
                     height: 100.0,
                     child: Row(
@@ -107,20 +108,26 @@ class OrderLines extends StatelessWidget {
                                   : begin.copyWith(fontSize: 13.0),
                               style: ordered == true ? textStyle.value : begin,
                             ),
-                            SizedBox(height: 10.0,),
+                            SizedBox(
+                              height: 10.0,
+                            ),
                             DataContainer(
                               data: 'Ordered and Approved',
                               style: ordered == true
-                                  ? textStyle.value
-                                      .copyWith(fontWeight: FontWeight.w300, fontSize: 15.0)
-                                  : begin.copyWith(fontWeight: FontWeight.w400, fontSize: 15.5),
+                                  ? textStyle.value.copyWith(
+                                      fontWeight: FontWeight.w300,
+                                      fontSize: 15.0)
+                                  : begin.copyWith(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 15.5),
                             ),
                           ],
                         )
                       ],
                     ),
                   ),
-                  Container(//TWO
+                  Container(
+                    //TWO
                     width: width,
                     height: 100.0,
                     child: Row(
@@ -143,20 +150,26 @@ class OrderLines extends StatelessWidget {
                                   : begin.copyWith(fontSize: 13.0),
                               style: packed == true ? textStyle.value : begin,
                             ),
-                            SizedBox(height: 10.0,),
+                            SizedBox(
+                              height: 10.0,
+                            ),
                             DataContainer(
                               //data: 'Packed',
                               style: packed == true
-                                  ? textStyle.value
-                                      .copyWith(fontWeight: FontWeight.w300, fontSize: 15.0)
-                                  : begin.copyWith(fontWeight: FontWeight.w400, fontSize: 15.5),
+                                  ? textStyle.value.copyWith(
+                                      fontWeight: FontWeight.w300,
+                                      fontSize: 15.0)
+                                  : begin.copyWith(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 15.5),
                             ),
                           ],
                         )
                       ],
                     ),
                   ),
-                  Container(//THREE
+                  Container(
+                    //THREE
                     width: width,
                     height: 100.0,
                     child: Row(
@@ -180,20 +193,26 @@ class OrderLines extends StatelessWidget {
                                   : begin.copyWith(fontSize: 13.0),
                               style: shipped == true ? textStyle.value : begin,
                             ),
-                            SizedBox(height: 10.0,),
+                            SizedBox(
+                              height: 10.0,
+                            ),
                             DataContainer(
                               //data: 'Shipped',
                               style: shipped == true
-                                  ? textStyle.value
-                                      .copyWith(fontWeight: FontWeight.w300, fontSize: 15.0)
-                                  : begin.copyWith(fontWeight: FontWeight.w400, fontSize: 15.5),
+                                  ? textStyle.value.copyWith(
+                                      fontWeight: FontWeight.w300,
+                                      fontSize: 15.0)
+                                  : begin.copyWith(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 15.5),
                             ),
                           ],
                         )
                       ],
                     ),
                   ),
-                  Container(//FOUR
+                  Container(
+                    //FOUR
                     width: width,
                     height: 100.0,
                     child: Row(
@@ -216,15 +235,21 @@ class OrderLines extends StatelessWidget {
                               timeStyle: delivered == true
                                   ? textStyle.value.copyWith(fontSize: 13.0)
                                   : begin.copyWith(fontSize: 13.0),
-                              style: delivered == true ? textStyle.value : begin,
+                              style:
+                                  delivered == true ? textStyle.value : begin,
                             ),
-                            SizedBox(height: 10.0,),
+                            SizedBox(
+                              height: 10.0,
+                            ),
                             DataContainer(
                               //data: 'Delivered',
                               style: delivered == true
-                                  ? textStyle.value
-                                      .copyWith(fontWeight: FontWeight.w300, fontSize: 15.0)
-                                  : begin.copyWith(fontWeight: FontWeight.w400, fontSize: 15.5),
+                                  ? textStyle.value.copyWith(
+                                      fontWeight: FontWeight.w300,
+                                      fontSize: 15.0)
+                                  : begin.copyWith(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 15.5),
                             ),
                           ],
                         )
