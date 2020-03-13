@@ -30,18 +30,30 @@ class FAppBar extends StatelessWidget {
     var user = Provider.of<UserModel>(context);
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(40.0),
+        preferredSize: Size.fromHeight(50.0),
         child: AppBar(
+          leading: Padding(
+            padding: const EdgeInsets.only(top:8.0),
+            child: IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ),
           elevation: 0.0,
           iconTheme: IconThemeData(color: primaryDark),
           backgroundColor: Colors.transparent,
           centerTitle: true,
-          title: Text(title,
-              style: TextStyle(
-                color: primaryDark,
-                fontSize: 18.0,
-                fontWeight: FontWeight.bold,
-              )),
+          title: Padding(
+            padding: const EdgeInsets.only(top:8.0),
+            child: Text(title,
+                style: TextStyle(
+                  color: primaryDark,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                )),
+          ),
           actions: <Widget>[
             search != null
                 ? FIcons(

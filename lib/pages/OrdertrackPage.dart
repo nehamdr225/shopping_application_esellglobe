@@ -19,11 +19,15 @@ class OrdetrackPage extends StatelessWidget {
           preferredSize: Size.fromHeight(50.0),
           child: FAppBar(
             title: 'Orders & Details',
+            drawer: false,
           ),
         ),
         body: ListView(
           children: userOrders != null && userOrders.length > 0
-              ? userOrders.map<Widget>((eachOrder) {
+              ? <Widget>[Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Text('All your Orders', style: Theme.of(context).textTheme.title,),
+              )]+userOrders.map<Widget>((eachOrder) {
                   String preview;
                   if (eachOrder['product']['media'] != null) {
                     if (eachOrder['product']['media']['front'] == null) {

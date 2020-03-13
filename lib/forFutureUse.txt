@@ -79,3 +79,8 @@ FRaisedButton(
     fontSize: 17.0,
     fontWeight: FontWeight.w500,
     mainAxisAlignment: MainAxisAlignment.start),
+
+    [ERROR:flutter/lib/ui/ui_dart_state.cc(148)] Unhandled Exception: Scaffold.of() called with a context that does not contain a Scaffold.
+E/flutter ( 6145): No Scaffold ancestor could be found starting from the context that was passed to Scaffold.of(). This usually happens when the context provided is from the same StatefulWidget as that whose build function actually creates the Scaffold widget being sought.
+E/flutter ( 6145): There are several ways to avoid this problem. The simplest is to use a Builder to get a context that is "under" the Scaffold. For an example of this, please see the documentation for Scaffold.of():
+

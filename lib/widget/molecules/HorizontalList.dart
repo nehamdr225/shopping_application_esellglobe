@@ -20,15 +20,15 @@ class HorizontalList extends StatelessWidget {
             ),
             child: Category(
               name: listViews[index]['name'],
-              caption: listViews[index]['cap'],
+              caption: listViews[index]['name'],
               src: listViews[index]['src'],
-              height: 30.0,
-              width: 30.0,
+              height: 40.0,
+              width: 40.0,
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) =>
-                        CategoryPage(text: listViews[index]['name']),
+                        CategoryPage(text: listViews[index]['cap']),
                   ),
                 );
               },

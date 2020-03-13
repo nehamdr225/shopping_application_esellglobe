@@ -17,7 +17,7 @@ class Category extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         child: Container(
-            width: 100.0,
+            width: 110.0,
             child: ListTile(
               title: Image.asset(
                 src,

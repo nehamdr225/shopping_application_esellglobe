@@ -146,7 +146,7 @@ class _ProductDetailsState extends State<ProductDetails> {
             //PDplusmember(),
             PDdelivery(),
             PDsoldby(),
-            PDDetails(
+            PDDetails( 
               details: product['description'],
               price: product['price'],
               id: widget.id,

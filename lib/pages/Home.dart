@@ -57,7 +57,10 @@ class _HomePageAppState extends State<HomePageApp>
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
               SliverAppBar(
-                title: Image.asset('images/logo/logoonly.png', height: 35.0,),
+                title: Image.asset(
+                  'images/logo/logoonly.png',
+                  height: 35.0,
+                ),
                 pinned: true,
                 floating: true,
                 forceElevated: innerBoxIsScrolled,
@@ -126,13 +129,15 @@ class _HomePageAppState extends State<HomePageApp>
                       child: FCarousel(),
                     )),
               ),
-              Container(
-                  height: 80.0,
-                  padding: EdgeInsets.all(7.0),
-                  //width: 30.0,
-                  child: HorizontalList(
-                    listViews: HList,
-                  )),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Container(
+                  alignment: Alignment.center,
+                    height: 80.0,
+                    child: HorizontalList(
+                      listViews: HList,
+                    )),
+              ),
               Padding(
                 padding: EdgeInsets.fromLTRB(10.0, 5.0, 0.0, 8.0),
                 child: FancyText(
@@ -144,14 +149,12 @@ class _HomePageAppState extends State<HomePageApp>
                 ),
               ),
               Container(
-                    height: height * 0.40,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 10.0),
-                      child: Image.asset(
-                        'images/myntra images/scroll1.jpg'
-                      ),
-                    )),
+                  height: height * 0.40,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10.0, horizontal: 10.0),
+                    child: Image.asset('images/myntra images/scroll1.jpg'),
+                  )),
               Padding(
                 padding: EdgeInsets.fromLTRB(10.0, 5.0, 0.0, 8.0),
                 child: FancyText(
@@ -164,7 +167,7 @@ class _HomePageAppState extends State<HomePageApp>
               ),
               Container(
                 height: 250.0,
-                child: GridList( 
+                child: GridList(
                   type: 'men',
                   listViews: MEN,
                   crossAxisCount: 3,

@@ -155,25 +155,20 @@ const SubMain = {
 };
 
 const HList = [
-  {"name": "Top Wear", "cap": "Top Wear", "src": "images/icons/tshirt.png"},
   {
-    "name": "Bottom Wear",
+    "name": "Men's Wear", 
+    "cap": "Top Wear", 
+    "src": "images/icons/man.png"
+  },
+  {
+    "name": "Women's Wear",
     "cap": "Bottom Wear",
-    "src": 'images/icons/pant.png',
+    "src": 'images/icons/woman.png',
   },
   {
-    "name": "Foot Wear", //"Shoe",
-    "cap": "Foot Wear", //"Shoe",
-    "src": 'images/icons/shoe.png',
+    "name": "Kid's Wear", //"Shoe",
+    "cap": "Bags & Backpacks", //"Shoe",
+    "src": 'images/icons/kid.png',
   },
-  // {
-  //   "name": "Backpacks", //"Shoe",
-  //   "cap": "Backpacks", //"Shoe",
-  //   "src": 'images/icons/bagmen.jpeg',
-  // },
-  {
-    "name": "Sunglasses", //"Shoe",
-    "cap": "Sunglasses", //"Shoe",
-    "src": 'images/icons/glassesandjunga.png',
-  },
+  
 ];
