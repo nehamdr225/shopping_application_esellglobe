@@ -23,6 +23,7 @@ class _PageState extends State<SignUpPage> {
   String phoneErr;
   String nameErr, emailErr, passwordErr, signupErr;
   bool isActive = false;
+  var _passwordVisible = false;
   @override
   Widget build(BuildContext context) {
     final UserApi api = Provider.of<UserModel>(context).api;
@@ -196,9 +197,22 @@ class _PageState extends State<SignUpPage> {
             Padding(
               padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25),
               child: FForms(
-                type: TextInputType.visiblePassword,
+                type: TextInputType.text,
                 text: "Password",
-                obscure: false,
+                trailingIcon: IconButton(
+                  color: primaryDark,
+                  icon: Icon(
+                    _passwordVisible ? Icons.visibility : Icons.visibility_off,
+                    // semanticLabel:
+                    //     _passwordVisible ? 'hide password' : 'show password',
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _passwordVisible ^= true;
+                    });
+                  },
+                ),
+                obscure: _passwordVisible == false ? true : false,
                 onChanged: setPassword,
                 // icon: Icon(Icons.visibility),
               ),

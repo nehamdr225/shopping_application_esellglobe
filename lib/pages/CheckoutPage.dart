@@ -146,35 +146,6 @@ class _CheckoutPageState extends State<CheckoutPage> {
     final user = Provider.of<UserModel>(context);
     final width = MediaQuery.of(context).size.width;
 
-    placeOrder() async {
-      if (shippingInfo != null) {
-        final orderData = {
-          "userInfo": shippingInfo,
-          "billing": billingInfo ?? shippingInfo,
-          'product': widget.item['product']['_id'],
-          'seller': widget.item['product']['seller'],
-        };
-
-        user.placeOrder(orderData).then((result) {
-          print('THIS IS THE RESULT');
-          print(result);
-          if (result['error'] == null) {
-            buildAndShowSnackBar(
-                context, 'Error ordering ${widget.item['product']['name']}');
-          } else {
-            buildAndShowSnackBar(context, 'Order created');
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => AnimatingLine()));
-            // Navigator.pushAndRemoveUntil(
-            //   context,
-            //   MaterialPageRoute(builder: (context) => AnimatingLine()),
-            //   (Route<dynamic> route) => false,
-            // );
-          }
-        });
-      }
-    }
-
     var preview = '';
     if (widget.item['product']['media'] != null) {
       if (widget.item['product']['media']['front'] == null) {
@@ -227,14 +198,50 @@ class _CheckoutPageState extends State<CheckoutPage> {
         SizedBox(
           width: 10.0,
         ),
-        FRaisedButton(
-          width: width * 0.45,
-          height: 40.0,
-          bg: primaryDark,
-          text: 'Place Order',
-          color: Colors.white,
-          shape: true,
-          onPressed: name != null ? placeOrder : null,
+        Builder(
+          builder: (BuildContext context) {
+            return FRaisedButton(
+              width: width * 0.45,
+              height: 40.0,
+              bg: primaryDark,
+              text: 'Place Order',
+              color: Colors.white,
+              shape: true,
+              onPressed: name != null
+                  ? () {
+                      if (shippingInfo != null) {
+                        final orderData = {
+                          "userInfo": shippingInfo,
+                          "billing": billingInfo ?? shippingInfo,
+                          'product': widget.item['product']['_id'],
+                          'seller': widget.item['product']['seller'],
+                        };
+
+                        user.placeOrder(orderData).then((result) {
+                          print('THIS IS THE RESULT');
+                          print(result);
+                          if (result['error'] != null) {
+                            buildAndShowSnackBar(context,
+                                'Error ordering ${widget.item['product']['name']}');
+                          } else {
+                            buildAndShowSnackBar(context, 'Order created');
+                            // Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //         builder: (context) => AnimatingLine()));
+                            Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AnimatingLine()),
+                              (Route<dynamic> route) => false,
+                            );
+                          }
+                        });
+                      }
+                    }
+                  : null,
+            );
+          },
         )
       ],
       appBar: PreferredSize(

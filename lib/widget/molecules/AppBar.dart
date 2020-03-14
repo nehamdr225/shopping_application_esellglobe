@@ -1,4 +1,5 @@
 import 'package:esell/pages/Cart.dart';
+import 'package:esell/pages/Home.dart';
 import 'package:esell/pages/SearchPage.dart';
 import 'package:esell/pages/Wishlist.dart';
 import 'package:esell/state/state.dart';
@@ -37,7 +38,9 @@ class FAppBar extends StatelessWidget {
             child: IconButton(
               icon: Icon(Icons.arrow_back),
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) => HomePageApp()
+                ));
               },
             ),
           ),

@@ -6,6 +6,7 @@ class FForms extends StatelessWidget {
   final String text;
   final bool labeltext;
   final icon;
+  final trailingIcon;
   final prefix;
   final TextInputType type;
   final Function onChanged;
@@ -27,6 +28,7 @@ class FForms extends StatelessWidget {
     this.obscure: false,
     this.onChanged,
     this.icon,
+    this.trailingIcon,
     this.prefix,
     this.underline: false,
     this.borderColor: Colors.white,
@@ -48,6 +50,7 @@ class FForms extends StatelessWidget {
               OutlineInputBorder(borderSide: BorderSide(color: primaryDark)),
           prefix: prefix,
           prefixIcon: icon,
+          suffixIcon: trailingIcon,
           hintText: labeltext == true ? text : '',
           enabled: true,
           labelStyle: style,

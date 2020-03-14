@@ -11,6 +11,7 @@ import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
 import 'package:esell/state/state.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter/cupertino.dart';
 
 class SignInPage extends StatefulWidget {
   @override
@@ -23,6 +24,7 @@ class _PageState extends State<SignInPage> {
   String loginErr;
   bool remember = true;
   bool isActive = false;
+  var _passwordVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -128,7 +130,7 @@ class _PageState extends State<SignInPage> {
             search: false,
             cart: false,
             title: 'Login',
-            onPressed: (){
+            onPressed: () {
               Navigator.pop(context);
             },
           ),
@@ -184,7 +186,22 @@ class _PageState extends State<SignInPage> {
               child: FForms(
                   type: TextInputType.text,
                   text: "Password",
-                  obscure: true,
+                  trailingIcon: IconButton(
+                    color: primaryDark,
+                    icon: Icon(
+                      _passwordVisible
+                          ? Icons.visibility
+                          : Icons.visibility_off,
+                      semanticLabel:
+                          _passwordVisible ? 'hide password' : 'show password',
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _passwordVisible ^= true;
+                      });
+                    },
+                  ),
+                  obscure: _passwordVisible == false ? true : false,
                   onChanged: setPassword),
             ),
             passwordErr != null
@@ -226,8 +243,10 @@ class _PageState extends State<SignInPage> {
                 text: "Forgot Password?",
                 size: 15.0,
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ForgotPassword()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ForgotPassword()));
                 })
           ],
         ),
