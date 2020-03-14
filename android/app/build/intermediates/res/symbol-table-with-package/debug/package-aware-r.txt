@@ -1,5 +1,0 @@
-com.hits.shop2more
-drawable launch_background
-mipmap shop2more
-mipmap shop2morelogo
-style LaunchTheme
