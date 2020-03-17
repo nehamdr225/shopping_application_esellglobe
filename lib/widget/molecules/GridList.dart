@@ -3,10 +3,11 @@ import 'package:esell/widget/atoms/Category.dart';
 import 'package:flutter/material.dart';
 
 class GridList extends StatelessWidget { 
-  GridList({this.listViews, this.crossAxisCount, this.type});
+  GridList({this.listViews, this.crossAxisCount, this.type, this.elevation:1.0});
   final listViews;
   final type;
   final crossAxisCount;
+  final elevation;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,6 +19,7 @@ class GridList extends StatelessWidget {
               crossAxisCount: crossAxisCount),
           itemBuilder: (BuildContext context, int index) {
             return Card(
+              elevation: elevation,
               child: Category(
                 name: listViews[index]['name'],
                 caption: listViews[index]['cap'],

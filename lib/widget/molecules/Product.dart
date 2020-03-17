@@ -12,6 +12,7 @@ class Product extends StatelessWidget {
   final double imgheight;
   final price;
   final details;
+  final bool showDetails;
   final id;
   final wishlist;
 
@@ -22,6 +23,7 @@ class Product extends StatelessWidget {
       this.imgheight,
       this.details,
       this.wishlist,
+      this.showDetails: true,
       this.id});
 
   @override
@@ -94,6 +96,7 @@ class Product extends StatelessWidget {
                 id: id,
                 wishlist: wishlist,
                 details: details, 
+                showDetails : showDetails
               ),
             ],
           ),

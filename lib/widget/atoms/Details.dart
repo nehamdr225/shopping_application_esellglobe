@@ -6,7 +6,8 @@ class Details extends StatefulWidget {
   final String id;
   final wishlist;
   final details;
-  Details({this.name, this.price, this.id, this.wishlist: true, this.details});
+  final showDetails;
+  Details({this.name, this.price, this.id, this.wishlist: true, this.details, this.showDetails});
 
   @override
   _DetailsState createState() => _DetailsState();
@@ -77,6 +78,7 @@ class _DetailsState extends State<Details> {
                       ),
                   textAlign: TextAlign.left,
                 ),
+                widget.showDetails == true?
                 Padding(
                   padding: EdgeInsets.only(right: 6.0, left: 6.0, top: 3.0),
                   child: Text(
@@ -87,8 +89,9 @@ class _DetailsState extends State<Details> {
                         color: Colors.grey[500],
                         decoration: TextDecoration.lineThrough),
                   ),
-                ),
-                Padding(
+                ): Text(''),
+                widget.showDetails == true
+                ? Padding(
                   padding: EdgeInsets.only(right: 6.0, left: 6.0, top: 3.0),
                   child: Text(
                     "50% off",
@@ -98,7 +101,7 @@ class _DetailsState extends State<Details> {
                           fontSize: 13.0,
                         ),
                   ),
-                ),
+                ) : Text('')
               ],
             ),
           ),

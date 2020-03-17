@@ -34,13 +34,13 @@ class _CategoryPageState extends State<CategoryPage> {
       else
         filter = cat;
       print(filter);
-      return Provider.of<ProductModel>(context).category(filter);
+      return Provider.of<ProductModel>(context).category(filter); 
     }
 
     createWidgets() {
       List<Widget> widgets = [];
       SubMain[cat].forEach((each) {
-        final categoryProduct = getCategoryItems(each['name']);
+        final categoryProduct = getCategoryItems(each['name']); 
         onpressed() {
           Navigator.push(
               context,

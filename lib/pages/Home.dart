@@ -134,7 +134,7 @@ class _HomePageAppState extends State<HomePageApp>
                 child: Container(
                   alignment: Alignment.center,
                     height: 80.0,
-                    child: HorizontalList(
+                    child: HorizontalList( 
                       listViews: HList,
                     )),
               ),
