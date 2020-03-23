@@ -92,7 +92,7 @@ class _GenderSpecificState extends State<GenderSpecific>
                     child: Container(
                         alignment: Alignment.center,
                         height: 80.0,
-                        child: HorizontalList(
+                        child: GenderSpecHorizontalList(
                           border: true,
                           listViews: widget.gender == 'Male' ? MEN : WOMEN,
                         )),
@@ -119,14 +119,12 @@ class _GenderSpecificState extends State<GenderSpecific>
                       },
                     ),
                     Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey[200])),
                       padding: EdgeInsets.all(8.0),
-                      height: 250.0,
+                      height: 240.0,
                       child: GenderGrids(
                         gender: widget.gender,
                         crossAxisCount: 3,
-                        cat: MEN[index]['name'],
+                        cat: widget.gender == 'Male'? MEN[index]['name'] : WOMEN[index]['name'],
                       ),
                     ),
                   ],

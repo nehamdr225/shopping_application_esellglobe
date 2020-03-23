@@ -11,7 +11,7 @@ class Category extends StatelessWidget {
   Category({this.caption, this.src, this.name, this.onTap, this.height: 70.0, this.width: 70.0});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { 
     return Padding(
       padding: EdgeInsets.all(2.0),
       child: InkWell(

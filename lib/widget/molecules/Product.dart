@@ -62,32 +62,35 @@ class Product extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Stack(
-                children: <Widget>[
-                  Center(
-                    child: ImageHolder(
-                      image: preview,
-                      imgheight: imgheight,
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: IconButton(
-                      icon: Icon(
-                        CupertinoIcons.heart_solid,
+              Flexible(
+                flex: 2,
+                child: Stack(
+                  children: <Widget>[
+                    Center(
+                      child: ImageHolder(
+                        image: preview,
+                        imgheight: imgheight,
                       ),
-                      focusColor: Colors.red,
-                      color: user.findWishlistItem(id) != true
-                          ? Colors.grey[600]
-                          : Colors.red,
-                      onPressed: () {
-                        user.findWishlistItem(id) != true
-                            ? user.addToWishList(id)
-                            : print("already in wishlist");
-                      },
                     ),
-                  ),
-                ],
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: IconButton(
+                        icon: Icon(
+                          CupertinoIcons.heart_solid,
+                        ),
+                        focusColor: Colors.red,
+                        color: user.findWishlistItem(id) != true
+                            ? Colors.grey[600]
+                            : Colors.red,
+                        onPressed: () {
+                          user.findWishlistItem(id) != true
+                              ? user.addToWishList(id)
+                              : print("already in wishlist");
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
               Divider(height: 2),
               Details(
@@ -97,6 +100,7 @@ class Product extends StatelessWidget {
                 wishlist: wishlist,
                 details: details, 
                 showDetails : showDetails
+                //paddingTop: paddingTop,
               ),
             ],
           ),
