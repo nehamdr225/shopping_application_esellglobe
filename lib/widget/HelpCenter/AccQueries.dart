@@ -45,104 +45,111 @@ class _AccQueriesState extends State<AccQueries>
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            FRaisedButton(
-              elevation: 0.0,
-              text: 'I want to deactivate my Shop2more account',
-              color: textColor,
-              textAlign: TextAlign.start,
-              bg: Colors.white,
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => ContactUs(
-                              widgets: Column(
-                                children: <Widget>[
-                                  Container(
-                                    color: Colors.white,
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: <Widget>[
-                                        Padding(
-                                          padding: const EdgeInsets.all(10.0),
-                                          child: FancyText(
-                                            fontWeight: FontWeight.w500,
-                                            size: 17.0,
-                                            text:
-                                                'How can I deactivate my Shop2more account?',
-                                          ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
+              child: FRaisedButton(
+                elevation: 0.0,
+                text: 'I want to deactivate my Shop2more account',
+                color: textColor,
+                textAlign: TextAlign.start,
+                bg: Colors.white,
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ContactUs(
+                                widgets: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    children: <Widget>[
+                                      Container(
+                                        color: Colors.white,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: <Widget>[
+                                            Padding(
+                                              padding: const EdgeInsets.all(10.0),
+                                              child: FancyText(
+                                                fontWeight: FontWeight.w500,
+                                                size: 16.0,
+                                                text:
+                                                    'How can I deactivate my Shop2more account?',
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.all(10.0),
+                                              child: FancyText(
+                                                size: 15.0,
+                                                text:
+                                                    'To deactivate yor Esell account, follow these simple steps',
+                                                textAlign: TextAlign.left,
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.all(10.0),
+                                              child: FancyText(
+                                                size: 15.0,
+                                                textAlign: TextAlign.left,
+                                                text:
+                                                    "1. Log into your Shop2more account \n2. Go to My Account > Settings > Deactivate \n3. Enter the password for your account \n4. Choose 'Confirm Deactivation'",
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(10.0),
-                                          child: FancyText(
-                                            size: 17.0,
-                                            text:
-                                                'To deactivate yor Esell account, follow these simple steps',
-                                            textAlign: TextAlign.left,
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(10.0),
-                                          child: FancyText(
-                                            size: 17.0,
-                                            textAlign: TextAlign.left,
-                                            text:
-                                                "1. Log into your Shop2more account \n2. Go to My Account > Settings > Deactivate \n3. Enter the password for your account \n4. Choose 'Confirm Deactivation'",
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.all(2.0),
+                                      ),
+                                      ContactUsCard(
+                                        padding: false,
+                                        text: 'Issue still not resolved?',
+                                        buttonText: 'Contact Us',
+                                        onTap: () {},
+                                      ),
+                                    ],
                                   ),
-                                  Padding(
-                                    padding: EdgeInsets.all(2.0),
-                                  ),
-                                  ContactUsCard(
-                                    padding: false,
-                                    text: 'Issue still not resolved?',
-                                    buttonText: 'Contact Us',
-                                    onTap: () {},
-                                  ),
-                                ],
-                              ),
-                            )));
-              },
-              width: size.width * 0.90,
-              height: 50.0,
-              mainAxisAlignment: MainAxisAlignment.start,
-              fontSize: 17.0,
-              fontWeight: FontWeight.w500,
+                                ),
+                              )));
+                },
+                width: size.width * 0.90,
+                height: 50.0,
+                mainAxisAlignment: MainAxisAlignment.start,
+                fontSize: 15.0,            
+              ),
             ),
-            FRaisedButton(
-              elevation: 0.0,
-              text: "Something's wrong with my Wishlist",
-              color: textColor,
-              textAlign: TextAlign.start,
-              bg: Colors.white,
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => ContactUs(
-                              widgets: Column(
-                                children: <Widget>[
-                                  ContactUsCard(
-                                    padding: false,
-                                    text: 'Issue still not resolved?',
-                                    buttonText: 'Contact Us',
-                                    onTap: () {},
-                                  ),
-                                ],
-                              ),
-                            )));
-              },
-              width: size.width * 0.90,
-              height: 50.0,
-              mainAxisAlignment: MainAxisAlignment.start,
-              fontSize: 17.0,
-              fontWeight: FontWeight.w500,
+            Padding(
+              padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+              child: FRaisedButton(
+                elevation: 0.0,
+                text: "Something's wrong with my Wishlist",
+                color: textColor,
+                textAlign: TextAlign.start,
+                bg: Colors.white,
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ContactUs(
+                                widgets: Column(
+                                  children: <Widget>[
+                                    ContactUsCard(
+                                      padding: false,
+                                      text: 'Issue still not resolved?',
+                                      buttonText: 'Contact Us',
+                                      onTap: () {},
+                                    ),
+                                  ],
+                                ),
+                              )));
+                },
+                width: size.width * 0.90,
+                height: 50.0,
+                mainAxisAlignment: MainAxisAlignment.start,
+                fontSize: 15.0,
+              ),
             ),
           ],
         ),

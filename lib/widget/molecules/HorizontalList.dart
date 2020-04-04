@@ -1,7 +1,7 @@
 import 'package:esell/pages/CategoryPage.dart';
 import 'package:esell/pages/genderSpecificPage.dart';
 import 'package:esell/widget/atoms/Category.dart';
-import 'package:esell/widget/molecules/GridList.dart';
+// import 'package:esell/widget/molecules/GridList.dart';
 import 'package:flutter/material.dart';
 
 class HorizontalList extends StatefulWidget {

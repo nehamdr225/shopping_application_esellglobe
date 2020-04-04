@@ -24,7 +24,7 @@ class ContactUsCard extends StatelessWidget {
       child: Container(
           padding: EdgeInsets.all(14.0),
           color: Colors.white,
-          height: 180.0,
+          height: 162.0,
           child: Column(
             children: <Widget>[
               Row(
@@ -36,16 +36,17 @@ class ContactUsCard extends StatelessWidget {
                         Text('$text',
                             style: Theme.of(context).textTheme.body1.copyWith(
                                 color: textColor,
-                                fontSize: 18,
+                                fontSize: 16,
                                 fontWeight: FontWeight.w500)),
                         SizedBox(
                           height: 8,
                         ),
                         Text(
                             'Feel free to talk to us about any queries or feedback. Customer satisfaction is our highest priority.',
+                            textAlign: TextAlign.justify,
                             style: Theme.of(context).textTheme.body1.copyWith(
                                 color: textColor,
-                                fontSize: 17,
+                                fontSize: 14,
                                 fontWeight: FontWeight.w400)),
                         Text('$capText',
                             style: Theme.of(context).textTheme.body1.copyWith(
@@ -55,9 +56,10 @@ class ContactUsCard extends StatelessWidget {
                       ],
                     ),
                   ),
+                  SizedBox(width: 20.0,),
                   Image.asset(
                     'images/icons/contactUs.png',
-                    width: 70.0,
+                    width: 50.0,
                   ),
                 ],
               ),

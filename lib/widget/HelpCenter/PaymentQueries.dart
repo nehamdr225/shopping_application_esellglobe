@@ -51,7 +51,7 @@ class _PaymentQueriesState extends State<PaymentQueries>
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(top: 0.0),
+              padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
               child: FRaisedButton(
                 elevation: 0.0,
                 text: 'I made a payment but order was not successful',
@@ -60,8 +60,7 @@ class _PaymentQueriesState extends State<PaymentQueries>
                 bg: Colors.white,
                 width: size.width * 0.90,
                 height: 60.0,
-                fontSize: 17.0,
-                fontWeight: FontWeight.w500,
+                fontSize: 14.0,
                 mainAxisAlignment: MainAxisAlignment.start,
                 onPressed: () {
                   Navigator.push(
@@ -112,34 +111,39 @@ class _PaymentQueriesState extends State<PaymentQueries>
                 },
               ),
             ),
-            FRaisedButton(
-                elevation: 0.0,
-                text: "I am unable to avail the displayed offer",
-                color: textColor,
-                textAlign: TextAlign.start,
-                bg: Colors.white,
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ContactUs(
-                                widgets: Column(
-                                  children: <Widget>[
-                                    ContactUsCard(
-                                      padding: false,
-                                      text: 'Issue still not resolved?',
-                                      buttonText: 'Contact Us',
-                                      onTap: () {},
-                                    ),
-                                  ],
-                                ),
-                              )));
-                },
-                width: size.width * 0.90,
-                height: 60.0,
-                fontSize: 17.0,
-                fontWeight: FontWeight.w500,
-                mainAxisAlignment: MainAxisAlignment.start),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+              child: FRaisedButton(
+                  elevation: 0.0,
+                  text: "I am unable to avail the displayed offer",
+                  color: textColor,
+                  textAlign: TextAlign.start,
+                  bg: Colors.white,
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ContactUs(
+                                  widgets: Column(
+                                    children: <Widget>[
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+                                        child: ContactUsCard(
+                                          padding: false,
+                                          text: 'Issue still not resolved?',
+                                          buttonText: 'Contact Us',
+                                          onTap: () {},
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                )));
+                  },
+                  width: size.width * 0.90,
+                  height: 60.0,
+                  fontSize: 14.0,
+                  mainAxisAlignment: MainAxisAlignment.start),
+            ),
             // FRaisedButton(
             //   elevation: 0.0,
             //   text: "I have queries related to EMI",
@@ -149,174 +153,140 @@ class _PaymentQueriesState extends State<PaymentQueries>
             //   onPressed: () {},
             //   width: size.width * 0.90,
             //   height: 60.0,
-            //   fontSize: 17.0,
+            //   fontSize: 14.0,
             //   fontWeight: FontWeight.w500,
             //   mainAxisAlignment: MainAxisAlignment.start,
             // ),
-            FRaisedButton(
-              elevation: 0.0,
-              text: "I'm not able to use my PhonePay wallet to pay",
-              color: textColor,
-              textAlign: TextAlign.start,
-              bg: Colors.white,
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => ContactUs(
-                              widgets: Column(
-                                children: <Widget>[
-                                  Container(
-                                    color: Colors.white,
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: <Widget>[
-                                        Padding(
-                                          padding: const EdgeInsets.all(10.0),
-                                          child: FancyText(
-                                            fontWeight: FontWeight.w500,
-                                            size: 17.0,
-                                            text:
-                                                'Do I need to install the PhonePe app to use the waller option on my Shop2more account?',
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(10.0),
-                                          child: FancyText(
-                                            size: 17.0,
-                                            text:
-                                                'No, you will be able to use the wallet option on your Shop2more account for payments without installing the PhonePe app. you can choose to install the PhonePe app to access other payment features.',
-                                            textAlign: TextAlign.left,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.all(2.0),
-                                  ),
-                                  ContactUsCard(
-                                    padding: false,
-                                    text: 'Issue still not resolved?',
-                                    buttonText: 'Contact Us',
-                                    onTap: () {},
-                                  ),
-                                ],
-                              ),
-                            )));
-              },
-              width: size.width * 0.90,
-              height: 60.0,
-              fontSize: 17.0,
-              fontWeight: FontWeight.w500,
-              mainAxisAlignment: MainAxisAlignment.start,
-            ),
+
             viewmore == false
-                ? FRaisedButton(
-                    elevation: 0.0,
-                    text: "View more",
-                    color: primaryDark,
-                    textAlign: TextAlign.start,
-                    bg: Colors.white,
-                    onPressed: () {
-                      setState(() {
-                        viewmore = true;
-                      });
-                    },
-                    width: size.width * 0.90,
-                    height: 60.0,
-                    fontSize: 17.0,
-                    fontWeight: FontWeight.w500,
-                    mainAxisAlignment: MainAxisAlignment.start)
+                ? Padding(
+                    padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+                    child: FRaisedButton(
+                        elevation: 0.0,
+                        text: "View more",
+                        color: primaryDark,
+                        textAlign: TextAlign.start,
+                        bg: Colors.white,
+                        onPressed: () {
+                          setState(() {
+                            viewmore = true;
+                          });
+                        },
+                        width: size.width * 0.90,
+                        height: 60.0,
+                        fontSize: 14.0,
+                        mainAxisAlignment: MainAxisAlignment.start),
+                  )
                 : Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
-                      FRaisedButton(
-                        elevation: 0.0,
-                        text: "I haven't received the Gift Card I bought.",
-                        color: textColor,
-                        textAlign: TextAlign.start,
-                        fontWeight: FontWeight.w500,
-                        bg: Colors.white,
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ContactUs(
-                                        widgets: Column(
-                                          children: <Widget>[
-                                            ContactUsCard(
-                                              padding: false,
-                                              text: 'Issue still not resolved?',
-                                              buttonText: 'Contact Us',
-                                              onTap: () {},
-                                            ),
-                                          ],
-                                        ),
-                                      )));
-                        },
-                        width: size.width * 0.90,
-                        height: 50.0,
-                        mainAxisAlignment: MainAxisAlignment.start,
+                      Padding(
+                        padding:
+                            const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+                        child: FRaisedButton(
+                          elevation: 0.0,
+                          text: "I haven't received the Gift Card I bought.",
+                          color: textColor,
+                          textAlign: TextAlign.start,
+                          fontSize: 14.0,
+                          bg: Colors.white,
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ContactUs(
+                                          widgets: Column(
+                                            children: <Widget>[
+                                              Padding(
+                                                padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+                                                child: ContactUsCard(
+                                                  padding: false,
+                                                  text:
+                                                      'Issue still not resolved?',
+                                                  buttonText: 'Contact Us',
+                                                  onTap: () {},
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        )));
+                          },
+                          width: size.width * 0.90,
+                          height: 50.0,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                        ),
                       ),
-                      FRaisedButton(
-                        elevation: 0.0,
-                        text: 'I am not able to use my Gift Card',
-                        color: textColor,
-                        textAlign: TextAlign.start,
-                        bg: Colors.white,
-                        fontWeight: FontWeight.w500,
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ContactUs(
-                                        widgets: Column(
-                                          children: <Widget>[
-                                            ContactUsCard(
-                                              padding: false,
-                                              text: 'Issue still not resolved?',
-                                              buttonText: 'Contact Us',
-                                              onTap: () {},
-                                            ),
-                                          ],
-                                        ),
-                                      )));
-                        },
-                        width: size.width * 0.90,
-                        height: 50.0,
-                        mainAxisAlignment: MainAxisAlignment.start,
+                      Padding(
+                        padding:
+                            const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+                        child: FRaisedButton(
+                          elevation: 0.0,
+                          text: 'I am not able to use my Gift Card',
+                          color: textColor,
+                          textAlign: TextAlign.start,
+                          bg: Colors.white,
+                          fontSize: 14.0,
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ContactUs(
+                                          widgets: Column(
+                                            children: <Widget>[
+                                              Padding(
+                                                padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+                                                child: ContactUsCard(
+                                                  padding: false,
+                                                  text:
+                                                      'Issue still not resolved?',
+                                                  buttonText: 'Contact Us',
+                                                  onTap: () {},
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        )));
+                          },
+                          width: size.width * 0.90,
+                          height: 50.0,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                        ),
                       ),
-                      FRaisedButton(
-                        elevation: 0.0,
-                        text: 'Others',
-                        color: textColor,
-                        textAlign: TextAlign.start,
-                        bg: Colors.white,
-                        fontWeight: FontWeight.w500,
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ContactUs(
-                                        widgets: Column(
-                                          children: <Widget>[
-                                            ContactUsCard(
-                                              padding: false,
-                                              text: 'Issue still not resolved?',
-                                              buttonText: 'Contact Us',
-                                              onTap: () {},
-                                            ),
-                                          ],
-                                        ),
-                                      )));
-                        },
-                        width: size.width * 0.90,
-                        height: 50.0,
-                        mainAxisAlignment: MainAxisAlignment.start,
+                      Padding(
+                        padding:
+                            const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+                        child: FRaisedButton(
+                          elevation: 0.0,
+                          text: 'Others',
+                          color: textColor,
+                          textAlign: TextAlign.start,
+                          bg: Colors.white,
+                          fontSize: 14.0,
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ContactUs(
+                                          widgets: Column(
+                                            children: <Widget>[
+                                              Padding(
+                                                padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+                                                child: ContactUsCard(
+                                                  padding: false,
+                                                  text:
+                                                      'Issue still not resolved?',
+                                                  buttonText: 'Contact Us',
+                                                  onTap: () {},
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        )));
+                          },
+                          width: size.width * 0.90,
+                          height: 50.0,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                        ),
                       ),
                     ],
                   ),

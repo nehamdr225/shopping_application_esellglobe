@@ -17,7 +17,7 @@ class FForms extends StatelessWidget {
   final style = TextStyle(
       fontFamily: 'Montserrat',
       fontWeight: FontWeight.bold,
-      fontSize: 18,
+      fontSize: 15,
       color: Colors.grey[400]);
   FForms({
     this.text,
