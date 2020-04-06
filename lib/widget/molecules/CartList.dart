@@ -71,7 +71,7 @@ class CartListView extends StatelessWidget {
                             textAlign: TextAlign.start,
                             overflow: TextOverflow.ellipsis,
                             style: Theme.of(context).textTheme.body1.copyWith(
-                                fontWeight: FontWeight.w400, fontSize: 16.0)),
+                                fontWeight: FontWeight.w500, fontSize: 16.0)),
                         Padding(
                           padding:
                               const EdgeInsets.fromLTRB(0.0, 0.0, 8.0, 0.0),
@@ -176,17 +176,18 @@ class CartListView extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Padding(
-                          padding:
-                              const EdgeInsets.fromLTRB(0.0, 15.0, 10.0, 6.0),
-                          child: Text(
-                            "Delivery by 02 Jan 2020",
-                            style: Theme.of(context).textTheme.body1.copyWith(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 13.0,
-                                ),
-                          ),
-                        ),
+                        // Padding(
+                        //   padding:
+                        //       const EdgeInsets.fromLTRB(0.0, 15.0, 10.0, 6.0),
+                        //   child: Text(
+                        //     "Delivery by 02 Jan 2020",
+                        //     style: Theme.of(context).textTheme.body1.copyWith(
+                        //           fontWeight: FontWeight.w500,
+                        //           fontSize: 13.0,
+                        //         ),
+                        //   ),
+                        // ),
+                        SizedBox(height: 20.0,),
                         Text(
                           "Free Delivery",
                           style: Theme.of(context).textTheme.body1.copyWith(
@@ -256,8 +257,7 @@ class CartListView extends StatelessWidget {
             Divider(
               thickness: 1.0,
             ),
-            Row(
-              //Buttons
+            Row(  //Buttons
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 FRaisedButton(

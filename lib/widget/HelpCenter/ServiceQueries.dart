@@ -46,10 +46,76 @@ class _ServiceQueriesState extends State<ServiceQueries>
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(top: 8.0),
+              padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
+              child: FRaisedButton(
+                    elevation: 0.0, 
+                    text: 'I want to avail the warranty for my item',
+                    color: textColor,
+                    textAlign: TextAlign.start,
+                    bg: Colors.white,
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ContactUs(
+                                    widgets: Padding(
+                                      padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
+                                      child: Column(
+                                        children: <Widget>[
+                                          Container(
+                                            color: Colors.white,
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              children: <Widget>[
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(10.0),
+                                                  child: FancyText(
+                                                    fontWeight: FontWeight.w500,
+                                                    size: 16.0,
+                                                    text:
+                                                        "I don't remember the warranty details for my product. Where can I find it?",
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(10.0),
+                                                  child: FancyText(
+                                                    size: 15.0,
+                                                    text:
+                                                        "You can check the brand website for the warranty details of your product. The product invoice can be used to claim the services from any Authorised Service Centre.",
+                                                    textAlign: TextAlign.left,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          ContactUsCard(
+                                            padding: false,
+                                            text: 'Issue still not resolved?',
+                                            buttonText: 'Contact Us',
+                                            onTap: () {},
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  )));
+                    },
+                    width: size.width * 0.90,
+                    height: 60.0,
+                    fontSize: 15.0,
+                    mainAxisAlignment: MainAxisAlignment.start),
+              
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
               child: FRaisedButton(
                   elevation: 0.0,
-                  text: 'I want to avail the warranty for my item',
+                  text:
+                      "I want to know the details of the authorised service centres for an item",
                   color: textColor,
                   textAlign: TextAlign.start,
                   bg: Colors.white,
@@ -58,113 +124,55 @@ class _ServiceQueriesState extends State<ServiceQueries>
                         context,
                         MaterialPageRoute(
                             builder: (context) => ContactUs(
-                                  widgets: Column(
-                                    children: <Widget>[
-                                      Container(
-                                        color: Colors.white,
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: <Widget>[
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.all(10.0),
-                                              child: FancyText(
-                                                fontWeight: FontWeight.w500,
-                                                size: 17.0,
-                                                text:
-                                                    "I don't remember the warranty details for my product. Where can I find it?",
+                                  widgets: Padding(
+                                    padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
+                                    child: Column(
+                                      children: <Widget>[
+                                        Container(
+                                          color: Colors.white,
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: <Widget>[
+                                              Padding(
+                                                padding: const EdgeInsets.all(10.0),
+                                                child: FancyText(
+                                                  fontWeight: FontWeight.w500,
+                                                  size: 16.0,
+                                                  text:
+                                                      "I don't remember the warranty details for my product. Where can I find it?",
+                                                ),
                                               ),
-                                            ),
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.all(10.0),
-                                              child: FancyText(
-                                                size: 17.0,
-                                                text:
-                                                    "You can check the brand website for the warranty details of your product. The product invoice can be used to claim the services from any Authorised Service Centre.",
-                                                textAlign: TextAlign.left,
+                                              Padding(
+                                                padding: const EdgeInsets.all(10.0),
+                                                child: FancyText(
+                                                  size: 15.0,
+                                                  text:
+                                                      "You can check the brand website for the warranty details of your product. The product invoice can be used to claim the services from any Authorised Service Centre.",
+                                                  textAlign: TextAlign.left,
+                                                ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                      ContactUsCard(
-                                        padding: false,
-                                        text: 'Issue still not resolved?',
-                                        buttonText: 'Contact Us',
-                                        onTap: () {},
-                                      ),
-                                    ],
+                                        ContactUsCard(
+                                          padding: false,
+                                          text: 'Issue still not resolved?',
+                                          buttonText: 'Contact Us',
+                                          onTap: () {},
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 )));
                   },
                   width: size.width * 0.90,
                   height: 60.0,
-                  fontSize: 17.0,
-                  fontWeight: FontWeight.w500,
+                  fontSize: 15.0,
                   mainAxisAlignment: MainAxisAlignment.start),
             ),
-            FRaisedButton(
-                elevation: 0.0,
-                text:
-                    "I want to know the details of the authorised service centres for an item",
-                color: textColor,
-                textAlign: TextAlign.start,
-                bg: Colors.white,
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ContactUs(
-                                widgets: Column(
-                                  children: <Widget>[
-                                    Container(
-                                      color: Colors.white,
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: <Widget>[
-                                          Padding(
-                                            padding: const EdgeInsets.all(10.0),
-                                            child: FancyText(
-                                              fontWeight: FontWeight.w500,
-                                              size: 17.0,
-                                              text:
-                                                  "I don't remember the warranty details for my product. Where can I find it?",
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.all(10.0),
-                                            child: FancyText(
-                                              size: 17.0,
-                                              text:
-                                                  "You can check the brand website for the warranty details of your product. The product invoice can be used to claim the services from any Authorised Service Centre.",
-                                              textAlign: TextAlign.left,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    ContactUsCard(
-                                      padding: false,
-                                      text: 'Issue still not resolved?',
-                                      buttonText: 'Contact Us',
-                                      onTap: () {},
-                                    ),
-                                  ],
-                                ),
-                              )));
-                },
-                width: size.width * 0.90,
-                height: 60.0,
-                fontSize: 17.0,
-                fontWeight: FontWeight.w500,
-                mainAxisAlignment: MainAxisAlignment.start),
           ],
         ),
       ),

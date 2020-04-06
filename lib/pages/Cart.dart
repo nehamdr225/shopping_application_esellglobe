@@ -1,3 +1,4 @@
+import 'package:esell/pages/CheckoutPage.dart';
 import 'package:esell/pages/UserPromt.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
@@ -21,7 +22,7 @@ class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserModel>(context);
-    // final width = MediaQuery.of(context).size.width;
+    final width = MediaQuery.of(context).size.width;
     final userData = user.user;
     final token = user.token;
     // final height = MediaQuery.of(context).size.height;
@@ -57,7 +58,7 @@ class _CartPageState extends State<CartPage> {
     }
 
     return SafeArea(
-        child: userData != null && token != null
+        child: userData != null && token != null && items != null
             ? Scaffold(
                 appBar: PreferredSize(
                     preferredSize: Size.fromHeight(40.0),
@@ -66,6 +67,33 @@ class _CartPageState extends State<CartPage> {
                       title: 'Cart',
                     )),
                 backgroundColor: Theme.of(context).colorScheme.background,
+                persistentFooterButtons: <Widget>[
+                  Container(
+                      alignment: Alignment.centerLeft,
+                      height: 40.0,
+                      child: Builder(
+                        builder: (BuildContext context) {
+                          return FRaisedButton(
+                              width: width * 0.95,
+                              height: 40.0,
+                              bg: Theme.of(context).colorScheme.secondaryVariant,
+                              text: 'Proceed to Checkout',
+                              color: Colors.white,
+                              shape: true,
+                              onPressed: () {
+                        //          Navigator.push(
+                        // context,
+                        // MaterialPageRoute(
+                        //     builder: (_) => CheckoutPage(item: {
+                        //           'product': product,
+                        //           'quantity': quantity,
+                        //           'size': size,
+                        //           'color': color
+                        //         })));
+                              });
+                        },
+                      ))
+                ],
                 body: items != null && items.length > 0
                     ? ListView.builder(
                         itemCount: items.length + 1,

@@ -64,10 +64,10 @@ class PDFooter extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: user.token != null
             ? <Widget>[
-               user.findCartItem(id) == true
+                user.findCartItem(id) == true
                     ? FRaisedButton(
                         height: 50.0,
-                        width: MediaQuery.of(context).size.width *0.40,
+                        width: MediaQuery.of(context).size.width * 0.40,
                         radius: 0.0,
                         onPressed: () {
                           Navigator.push(
@@ -77,12 +77,13 @@ class PDFooter extends StatelessWidget {
                         },
                         text: 'GOTO CART',
                         color: Colors.grey[600],
-                        bg: Colors.white,//Theme.of(context).colorScheme.secondaryVariant,
+                        bg: Colors
+                            .white, //Theme.of(context).colorScheme.secondaryVariant,
                         shape: true,
                       )
                     : FRaisedButton(
                         height: 50.0,
-                        width: MediaQuery.of(context).size.width *0.40,
+                        width: MediaQuery.of(context).size.width * 0.40,
                         radius: 0.0,
                         onPressed: inCart ? () {} : addToCart,
 
@@ -90,12 +91,13 @@ class PDFooter extends StatelessWidget {
                         text: inCart ? 'IN CART' : 'ADD TO CART',
                         color: Colors.grey[600],
                         shape: true,
-                        bg: Colors.white,//Theme.of(context).colorScheme.secondaryVariant,
+                        bg: Colors
+                            .white, //Theme.of(context).colorScheme.secondaryVariant,
                       ),
                 user.findCartItem(id) == true
                     ? FRaisedButton(
                         height: 50.0,
-                        width: MediaQuery.of(context).size.width *0.40,
+                        width: MediaQuery.of(context).size.width * 0.40,
                         radius: 0.0,
                         onPressed: () {
                           Navigator.push(
@@ -110,9 +112,21 @@ class PDFooter extends StatelessWidget {
                       )
                     : FRaisedButton(
                         height: 50.0,
-                        width: MediaQuery.of(context).size.width *0.40,
+                        width: MediaQuery.of(context).size.width * 0.40,
                         radius: 0.0,
-                        onPressed: inCart ? () {} : addToCart,
+                        onPressed: inCart
+                            ? () {
+                                // Navigator.push(
+                                //     context,
+                                //     MaterialPageRoute(
+                                //         builder: (_) => CheckoutPage(item: {
+                                //               'product': id,
+                                //               'quantity': quantity,
+                                //               'size': size,
+                                //               'color': color
+                                //             })));
+                              }
+                            : addToCart,
 
                         ///###
                         text: 'BUY NOW',
