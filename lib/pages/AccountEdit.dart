@@ -4,7 +4,7 @@ import 'package:esell/pages/SearchPage.dart';
 import 'package:esell/state/src/theme.dart';
 import 'package:esell/widget/atoms/BetterInputForm.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
-import 'package:esell/widget/atoms/password%20reset/resetPage.dart';
+import 'package:esell/widget/atoms/passwordReset/resetPage.dart';
 import 'package:esell/widget/molecules/Icons.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/state/state.dart';
@@ -127,7 +127,7 @@ class _AccountEditState extends State<AccountEdit> {
           ),
           SizedBox(
             height: 10.0,
-          ),         
+          ),
           FRaisedButton(
             text: 'Change Password',
             color: textColor,
@@ -141,7 +141,6 @@ class _AccountEditState extends State<AccountEdit> {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => ResetPage()));
             },
-            
           ),
           FRaisedButton(
             text: 'Deactivate Account',
@@ -156,7 +155,6 @@ class _AccountEditState extends State<AccountEdit> {
               // Navigator.push(context,
               //           MaterialPageRoute(builder: (context) => ChangePassword()));
             },
-            
           ),
           FRaisedButton(
             text: 'Delete Account',
@@ -171,7 +169,6 @@ class _AccountEditState extends State<AccountEdit> {
               // Navigator.push(context,
               //           MaterialPageRoute(builder: (context) => ChangePassword()));
             },
-            
           ),
         ],
       ),

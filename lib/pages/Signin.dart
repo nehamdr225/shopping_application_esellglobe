@@ -3,7 +3,7 @@ import 'package:esell/entities/user.api.dart';
 import 'package:esell/pages/SendOTP.dart';
 import 'package:esell/pages/Home.dart';
 import 'package:esell/widget/atoms/BrandLogos.dart';
-import 'package:esell/widget/atoms/password%20reset/ForgotPassword.dart';
+import 'package:esell/widget/atoms/passwordReset/ForgotPassword.dart';
 import 'package:esell/widget/molecules/BlueAppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/widget/atoms/Forms.dart';

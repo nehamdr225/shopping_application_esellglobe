@@ -14,6 +14,8 @@ import 'package:provider/provider.dart';
 import 'package:esell/widget/productDetails/details.dart';
 import 'package:esell/state/state.dart';
 
+import '../widget/productDetails/allDetails.dart';
+
 class ProductDetails extends StatefulWidget {
   final String id;
   ProductDetails({
@@ -146,7 +148,7 @@ class _ProductDetailsState extends State<ProductDetails> {
             //PDplusmember(),
             PDdelivery(),
             PDsoldby(),
-            PDDetails( 
+            PDAllDetails(
               details: product['description'],
               price: product['price'],
               id: widget.id,

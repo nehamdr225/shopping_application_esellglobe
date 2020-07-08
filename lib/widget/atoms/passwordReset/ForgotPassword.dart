@@ -2,7 +2,7 @@ import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/BrandLogos.dart';
 import 'package:esell/widget/atoms/Forms.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
-import 'package:esell/widget/atoms/password%20reset/resetPage.dart';
+import 'package:esell/widget/atoms/passwordReset/resetPage.dart';
 import 'package:esell/widget/molecules/BlueAppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
