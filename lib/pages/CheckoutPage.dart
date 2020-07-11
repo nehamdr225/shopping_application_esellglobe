@@ -8,11 +8,12 @@ import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:esell/state/state.dart';
+import 'package:quiver/iterables.dart';
 
 class CheckoutPage extends StatefulWidget {
-  final item;
+  final List items;
 
-  CheckoutPage({this.item});
+  CheckoutPage({this.items});
 
   @override
   _CheckoutPageState createState() => _CheckoutPageState();
@@ -105,7 +106,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
           'location': location,
           'mobile': mobileNo
         };
-        print(shippingInfo);
+        // print(shippingInfo);
       });
       return 'done';
     }
@@ -122,7 +123,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
           'country': shippingInfo['country'],
           'mobile': shippingInfo['mobileNo']
         };
-        print(billingInfo);
+        // print(billingInfo);
       });
       return 'done';
     }
@@ -146,26 +147,28 @@ class _CheckoutPageState extends State<CheckoutPage> {
     final user = Provider.of<UserModel>(context);
     final width = MediaQuery.of(context).size.width;
 
-    var preview = '';
-    if (widget.item['product']['media'] != null) {
-      if (widget.item['product']['media']['front'] == null) {
-        if (widget.item['product']['media']['left'] != null) {
-          preview = widget.item['product']['media']['left'];
-        } else if (widget.item['product']['media']['right'] != null) {
-          preview = widget.item['product']['media']['right'];
-        } else if (widget.item['product']['media']['back'] != null) {
-          preview = widget.item['product']['media']['back'];
-        } else if (widget.item['product']['media']['top'] != null) {
-          preview = widget.item['product']['media']['top'];
-        } else if (widget.item['product']['media']['bottom'] != null) {
-          preview = widget.item['product']['media']['bottom'];
+    var previews = [];
+    widget.items.forEach((item) {
+      if (item['product']['media'] != null) {
+        if (item['product']['media']['front'] == null) {
+          if (item['product']['media']['left'] != null) {
+            previews.add(item['product']['media']['left']);
+          } else if (item['product']['media']['right'] != null) {
+            previews.add(item['product']['media']['right']);
+          } else if (item['product']['media']['back'] != null) {
+            previews.add(item['product']['media']['back']);
+          } else if (item['product']['media']['top'] != null) {
+            previews.add(item['product']['media']['top']);
+          } else if (item['product']['media']['bottom'] != null) {
+            previews.add(item['product']['media']['bottom']);
+          } else {
+            previews.add('');
+          }
         } else {
-          preview = '';
+          previews.add(item['product']['media']['front']);
         }
-      } else {
-        preview = widget.item['product']['media']['front'];
       }
-    }
+    });
 
     return Scaffold(
       persistentFooterButtons: <Widget>[
@@ -180,7 +183,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     FancyText(
-                      text: 'Total : Rs. ${widget.item['product']['price']}',
+                      text:
+                          'Total : Rs. ${widget.items[0]['product']['price']}',
                       color: Colors.red,
                       fontWeight: FontWeight.bold,
                       size: 15.0,
@@ -210,32 +214,43 @@ class _CheckoutPageState extends State<CheckoutPage> {
               onPressed: name != null
                   ? () {
                       if (shippingInfo != null) {
-                        final orderData = {
-                          "userInfo": shippingInfo,
-                          "billing": billingInfo ?? shippingInfo,
-                          'product': widget.item['product']['_id'],
-                          'seller': widget.item['product']['seller'],
-                        };
-
-                        user.placeOrder(orderData).then((result) {
-                          print('THIS IS THE RESULT');
-                          print(result);
-                          if (result['error'] != null) {
-                            buildAndShowSnackBar(context,
-                                'Error ordering ${widget.item['product']['name']}');
-                          } else {
-                            buildAndShowSnackBar(context, 'Order created');
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         builder: (context) => AnimatingLine()));
-                            Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => AnimatingLine()),
-                              (Route<dynamic> route) => false,
-                            );
-                          }
+                        final List orderDatas = widget.items
+                            .map<Map>((item) => {
+                                  "userInfo": shippingInfo,
+                                  "billing": billingInfo ?? shippingInfo,
+                                  'product': item['product']['_id'],
+                                  'seller': item['product']['seller'],
+                                })
+                            .toList();
+                        // final orderData = {
+                        //   "userInfo": shippingInfo,
+                        //   "billing": billingInfo ?? shippingInfo,
+                        //   'product': widget.item['product']['_id'],
+                        //   'seller': widget.item['product']['seller'],
+                        // };
+                        // print(orderDatas);
+                        // return;
+                        orderDatas.forEach((orderData) {
+                          user.placeOrder(orderData).then((result) {
+                            // print('THIS IS THE RESULT');
+                            // print(result);
+                            if (result['error'] != null) {
+                              buildAndShowSnackBar(context, 'Error ordering');
+                            } else {
+                              buildAndShowSnackBar(context, 'Order created');
+                              user.deleteFromCart(orderData['product']);
+                              // Navigator.push(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //         builder: (context) => AnimatingLine()));
+                              Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AnimatingLine()),
+                                (Route<dynamic> route) => false,
+                              );
+                            }
+                          });
                         });
                       }
                     }
@@ -355,109 +370,113 @@ class _CheckoutPageState extends State<CheckoutPage> {
             //icon: Text(''),
             onPressed: null,
           ),
-          Column(children: [
-            Container(
-              margin: EdgeInsets.only(top: 20, bottom: 10),
-              height: 80.0,
-              // decoration: BoxDecoration(
-              //   color: Colors.white,
-              //   boxShadow: [
-              //     BoxShadow(
-              //         color: Colors.black12,
-              //         offset: Offset.fromDirection(1, 1),
-              //         blurRadius: 1),
-              //     BoxShadow(
-              //         color: Colors.black12,
-              //         offset: Offset.fromDirection(-1, 1),
-              //         blurRadius: 1)
-              //   ],
-              // ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Flexible(
-                    flex: 1,
-                    child: Padding(
-                      padding: EdgeInsets.all(3.0),
-                      child: Image.network(
-                          'https://api.shop2more.com' + preview,
-                          height: 100.0,
-                          width: 70.0),
-                    ),
-                  ),
-                  Flexible(
-                    flex: 2,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 10.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          widget.item['product']['name'] == null
-                              ? Text('No Product')
-                              : Text(
-                                  widget.item['product']['name'],
-                                  style: TextStyle(
-                                      fontFamily: "Helvetica",
-                                      color: textColor,
-                                      fontSize: 14.0),
-                                ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: <Widget>[
-                              Padding(
-                                padding: const EdgeInsets.all(3.0),
-                                child: Text('Quantity:',
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold)),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(3.0),
-                                child: Text(
-                                  widget.item['quantity'].toString(),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(3.0),
-                                child: Text('Size:',
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold)),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(3.0),
-                                child: Text(
-                                  widget.item['size'].toString() ?? "N/A",
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(3.0),
-                                child: Text('Color:',
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold)),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(3.0),
-                                child: Text(widget.item['color'] ?? "N/A"),
-                              ),
-                            ],
-                          ),
-                          Container(
-                            alignment: Alignment.topLeft,
+          Column(
+            children: zip<dynamic>([previews, widget.items])
+                .map<Widget>(
+                  (values) => Container(
+                    margin: EdgeInsets.only(top: 20, bottom: 10),
+                    height: 80.0,
+                    // decoration: BoxDecoration(
+                    //   color: Colors.white,
+                    //   boxShadow: [
+                    //     BoxShadow(
+                    //         color: Colors.black12,
+                    //         offset: Offset.fromDirection(1, 1),
+                    //         blurRadius: 1),
+                    //     BoxShadow(
+                    //         color: Colors.black12,
+                    //         offset: Offset.fromDirection(-1, 1),
+                    //         blurRadius: 1)
+                    //   ],
+                    // ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        Flexible(
+                          flex: 1,
+                          child: Padding(
                             padding: EdgeInsets.all(3.0),
-                            child: Text(
-                                "Rs. ${widget.item['product']['price']}",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.red)),
-                          )
-                        ],
-                      ),
+                            child: Image.network(
+                                'https://api.shop2more.com' + values[0],
+                                height: 100.0,
+                                width: 70.0),
+                          ),
+                        ),
+                        Flexible(
+                          flex: 2,
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 10.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                values[1]['product']['name'] == null
+                                    ? Text('No Product')
+                                    : Text(
+                                        values[1]['product']['name'],
+                                        style: TextStyle(
+                                            fontFamily: "Helvetica",
+                                            color: textColor,
+                                            fontSize: 14.0),
+                                      ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: <Widget>[
+                                    Padding(
+                                      padding: const EdgeInsets.all(3.0),
+                                      child: Text('Quantity:',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold)),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(3.0),
+                                      child: Text(
+                                        values[1]['quantity'].toString(),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(3.0),
+                                      child: Text('Size:',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold)),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(3.0),
+                                      child: Text(
+                                        values[1]['size'].toString() ?? "N/A",
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(3.0),
+                                      child: Text('Color:',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold)),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(3.0),
+                                      child: Text(values[1]['color'] ?? "N/A"),
+                                    ),
+                                  ],
+                                ),
+                                Container(
+                                  alignment: Alignment.topLeft,
+                                  padding: EdgeInsets.all(3.0),
+                                  child: Text(
+                                      "Rs. ${values[1]['product']['price']}",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.red)),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                ],
-              ),
-            ),
-          ]),
+                )
+                .toList(),
+          ),
         ],
       ),
     );

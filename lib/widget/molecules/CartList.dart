@@ -287,12 +287,14 @@ class CartListView extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (_) => CheckoutPage(item: {
-                                  'product': product,
-                                  'quantity': quantity,
-                                  'size': size,
-                                  'color': color
-                                })));
+                            builder: (_) => CheckoutPage(items: [
+                                  {
+                                    'product': product,
+                                    'quantity': quantity,
+                                    'size': size,
+                                    'color': color
+                                  }
+                                ])));
                   },
                 ),
                 FRaisedButton(

@@ -68,11 +68,13 @@ class UserModel extends ChangeNotifier {
   get cart => _cart;
   set cart(items) => _cart = items;
   addToCart(String product, qty, size, color, productData) {
-    print(product);
+    print('$product $qty $size $color }');
     final check = _cart.any((each) => each['product']['_id'] == product);
     if (!check) {
       if (user['cart'] == null) {
-        _api.registerCart(token, product, qty ?? 1, size, color).then((data) {
+        _api
+            .registerCart(token, product, qty ?? 1, size, color ?? '')
+            .then((data) {
           print(data);
           if (data['error'] == null) {
             _cart.add(product);

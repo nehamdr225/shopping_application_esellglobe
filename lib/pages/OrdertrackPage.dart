@@ -12,7 +12,7 @@ class OrdetrackPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final userOrders = Provider.of<UserModel>(context).orders;
     var width = MediaQuery.of(context).size.width;
-    print(userOrders);
+    // print(userOrders);
     //Animation<double> animation = listenable;
     return Scaffold(
         appBar: PreferredSize(

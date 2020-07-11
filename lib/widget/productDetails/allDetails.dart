@@ -116,7 +116,8 @@ class PDAllDetails extends StatelessWidget {
   PDAllDetails({this.details, this.name, this.price, this.image, this.id});
   @override
   Widget build(BuildContext context) {
-    final imagesrc = "https://api.shop2more.com" + image;
+    print(image);
+    final imagesrc = "https://api.shop2more.com" + image != null ? image : '';
     final body1 =
         Theme.of(context).textTheme.bodyText2.copyWith(fontSize: 16.0);
     final product = Provider.of<ProductModel>(context).one(id);

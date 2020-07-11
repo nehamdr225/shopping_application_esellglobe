@@ -149,7 +149,8 @@ class _ProductDetailsState extends State<ProductDetails> {
             PDdelivery(),
             PDsoldby(),
             PDAllDetails(
-              details: product['description'],
+              details:
+                  product['description'] != null ? product['description'] : '',
               price: product['price'],
               id: widget.id,
 

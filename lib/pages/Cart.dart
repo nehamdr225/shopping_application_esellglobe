@@ -1,3 +1,4 @@
+import 'package:esell/pages/CheckoutPage.dart';
 import 'package:esell/pages/UserPromt.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
@@ -82,15 +83,11 @@ class _CartPageState extends State<CartPage> {
                               color: Colors.white,
                               shape: true,
                               onPressed: () {
-                                //          Navigator.push(
-                                // context,
-                                // MaterialPageRoute(
-                                //     builder: (_) => CheckoutPage(item: {
-                                //           'product': product,
-                                //           'quantity': quantity,
-                                //           'size': size,
-                                //           'color': color
-                                //         })));
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (_) =>
+                                            CheckoutPage(items: items)));
                               });
                         },
                       ))
