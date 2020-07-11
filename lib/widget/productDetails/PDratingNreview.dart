@@ -34,13 +34,14 @@ class PDratingNreview extends StatelessWidget {
                     color: primaryDark,
                     fontSize: 14.0,
                     bg: Colors.white,
-                    onPressed: (){},
+                    onPressed: () {},
                   ),
                 ),
               ],
             ),
             Padding(
-                padding: const EdgeInsets.only(top: 6.0, left: 10.0, bottom: 6.0),
+                padding:
+                    const EdgeInsets.only(top: 6.0, left: 10.0, bottom: 6.0),
                 child: Row(
                   children: <Widget>[
                     Container(
@@ -54,7 +55,10 @@ class PDratingNreview extends StatelessWidget {
                           children: <Widget>[
                             Text(
                               '3.9',
-                              style: Theme.of(context).textTheme.body1.copyWith(
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2
+                                  .copyWith(
                                     fontWeight: FontWeight.w700,
                                     color: Colors.white,
                                     fontSize: 14.0,
@@ -75,7 +79,7 @@ class PDratingNreview extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         '15 ratings and 1 review',
-                        style: Theme.of(context).textTheme.body1.copyWith(
+                        style: Theme.of(context).textTheme.bodyText2.copyWith(
                               fontWeight: FontWeight.w700,
                               color: Colors.grey[500],
                               fontSize: 14.0,
@@ -84,7 +88,6 @@ class PDratingNreview extends StatelessWidget {
                     ),
                   ],
                 )),
-            
           ],
         ),
       ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class SubMainCards extends StatelessWidget { 
+class SubMainCards extends StatelessWidget {
   final image;
   final text;
   final height;
@@ -19,17 +19,14 @@ class SubMainCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 5.0, right: 5.0, top: 5.0 ),
+      padding: const EdgeInsets.only(left: 5.0, right: 5.0, top: 5.0),
       child: InkWell(
         onTap: onTap,
         child: Container(
           margin: EdgeInsets.symmetric(horizontal: margin),
           decoration: BoxDecoration(
             border: Border.all(
-              style: BorderStyle.solid,
-              color: Colors.black38,
-              width: 3.0
-            ),
+                style: BorderStyle.solid, color: Colors.black38, width: 3.0),
             boxShadow: [
               BoxShadow(
                   color: Colors.black12,
@@ -43,7 +40,8 @@ class SubMainCards extends StatelessWidget {
             image: DecorationImage(
                 image: AssetImage(image),
                 fit: BoxFit.fill,
-                colorFilter: ColorFilter.mode(Colors.black45, BlendMode.darken)),
+                colorFilter:
+                    ColorFilter.mode(Colors.black45, BlendMode.darken)),
           ),
           alignment: Alignment.center,
           height: height,
@@ -51,7 +49,7 @@ class SubMainCards extends StatelessWidget {
           child: Text(
             text,
             textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.body2,
+            style: Theme.of(context).textTheme.bodyText1,
           ),
         ),
       ),

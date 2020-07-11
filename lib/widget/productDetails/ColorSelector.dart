@@ -92,7 +92,7 @@ class _PDColorSelectorState extends State<PDColorSelector> {
                     padding: EdgeInsets.only(left: 14.0, top: 10.0),
                     child: Text(
                       "Select Color",
-                      style: Theme.of(context).textTheme.body1.copyWith(
+                      style: Theme.of(context).textTheme.bodyText2.copyWith(
                           fontWeight: FontWeight.w600, fontSize: 15.0),
                       textAlign: TextAlign.left,
                     ),

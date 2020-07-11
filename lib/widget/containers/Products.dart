@@ -17,7 +17,7 @@ class ProductContainer extends StatelessWidget {
             TableRow(children: [
               Text(
                 'Products',
-                style: Theme.of(context).textTheme.title,
+                style: Theme.of(context).textTheme.headline6,
               ),
               TableRowInkWell(
                   onTap: () {

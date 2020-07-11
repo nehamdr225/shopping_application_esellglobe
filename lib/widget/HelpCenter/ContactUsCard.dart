@@ -34,29 +34,40 @@ class ContactUsCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text('$text',
-                            style: Theme.of(context).textTheme.body1.copyWith(
-                                color: textColor,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500)),
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                .copyWith(
+                                    color: textColor,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500)),
                         SizedBox(
                           height: 8,
                         ),
                         Text(
                             'Feel free to talk to us about any queries or feedback. Customer satisfaction is our highest priority.',
                             textAlign: TextAlign.justify,
-                            style: Theme.of(context).textTheme.body1.copyWith(
-                                color: textColor,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400)),
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                .copyWith(
+                                    color: textColor,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400)),
                         Text('$capText',
-                            style: Theme.of(context).textTheme.body1.copyWith(
-                                color: Colors.grey[500],
-                                fontSize: 11,
-                                fontWeight: FontWeight.w400)),
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                .copyWith(
+                                    color: Colors.grey[500],
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w400)),
                       ],
                     ),
                   ),
-                  SizedBox(width: 20.0,),
+                  SizedBox(
+                    width: 20.0,
+                  ),
                   Image.asset(
                     'images/icons/contactUs.png',
                     width: 50.0,

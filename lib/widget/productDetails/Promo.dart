@@ -21,7 +21,7 @@ class PDPromo extends StatelessWidget {
                   child: Column(children: [
                     Text(
                       "You pay only: Rs.2000",
-                      style: Theme.of(context).textTheme.body2,
+                      style: Theme.of(context).textTheme.bodyText1,
                     ),
                     Text(
                       "Apply the following coupon during checkout",
@@ -32,11 +32,11 @@ class PDPromo extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text("Apply Coupon",
-                            style: Theme.of(context).textTheme.body2,
+                            style: Theme.of(context).textTheme.bodyText1,
                             textAlign: TextAlign.center),
                         Text(
                           "ESELLGLOBE1000",
-                          style: Theme.of(context).textTheme.title,
+                          style: Theme.of(context).textTheme.headline6,
                         ),
                       ],
                     ),
@@ -46,11 +46,11 @@ class PDPromo extends StatelessWidget {
                     ),
                     Divider(),
                     Text("Exchange Policy",
-                        style: Theme.of(context).textTheme.body2,
+                        style: Theme.of(context).textTheme.bodyText1,
                         textAlign: TextAlign.center),
                     Text(
                       "Can be returned within 7 days of buying",
-                      style: Theme.of(context).textTheme.title,
+                      style: Theme.of(context).textTheme.headline6,
                     ),
                   ]),
                 ),

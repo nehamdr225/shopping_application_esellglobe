@@ -11,7 +11,8 @@ class PDCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final imagesrc = "https://api.shop2more.com" + image;
-    final body1 = Theme.of(context).textTheme.body1.copyWith(fontSize: 16.0);
+    final body1 =
+        Theme.of(context).textTheme.bodyText2.copyWith(fontSize: 16.0);
     return Container(
       // card
       width: MediaQuery.of(context).size.width * 0.95,
@@ -40,7 +41,7 @@ class PDCard extends StatelessWidget {
                   padding: EdgeInsets.only(right: 6.0, left: 6.0),
                   child: Text(
                     "$price",
-                    style: Theme.of(context).textTheme.body1.copyWith(
+                    style: Theme.of(context).textTheme.bodyText2.copyWith(
                           fontWeight: FontWeight.w900,
                           fontSize: 18.0,
                         ),
@@ -50,7 +51,7 @@ class PDCard extends StatelessWidget {
                   padding: EdgeInsets.only(right: 6.0, left: 6.0),
                   child: Text(
                     "\$ 1800",
-                    style: Theme.of(context).textTheme.body1.copyWith(
+                    style: Theme.of(context).textTheme.bodyText2.copyWith(
                         fontWeight: FontWeight.w500,
                         fontSize: 13.0,
                         color: Colors.grey[500],
@@ -61,7 +62,7 @@ class PDCard extends StatelessWidget {
                   padding: EdgeInsets.only(right: 6.0, left: 6.0),
                   child: Text(
                     "50% off",
-                    style: Theme.of(context).textTheme.body1.copyWith(
+                    style: Theme.of(context).textTheme.bodyText2.copyWith(
                           fontWeight: FontWeight.w600,
                           color: Colors.green,
                           fontSize: 15.0,

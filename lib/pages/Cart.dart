@@ -1,4 +1,3 @@
-import 'package:esell/pages/CheckoutPage.dart';
 import 'package:esell/pages/UserPromt.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
@@ -76,20 +75,22 @@ class _CartPageState extends State<CartPage> {
                           return FRaisedButton(
                               width: width * 0.95,
                               height: 40.0,
-                              bg: Theme.of(context).colorScheme.secondaryVariant,
+                              bg: Theme.of(context)
+                                  .colorScheme
+                                  .secondaryVariant,
                               text: 'Proceed to Checkout',
                               color: Colors.white,
                               shape: true,
                               onPressed: () {
-                        //          Navigator.push(
-                        // context,
-                        // MaterialPageRoute(
-                        //     builder: (_) => CheckoutPage(item: {
-                        //           'product': product,
-                        //           'quantity': quantity,
-                        //           'size': size,
-                        //           'color': color
-                        //         })));
+                                //          Navigator.push(
+                                // context,
+                                // MaterialPageRoute(
+                                //     builder: (_) => CheckoutPage(item: {
+                                //           'product': product,
+                                //           'quantity': quantity,
+                                //           'size': size,
+                                //           'color': color
+                                //         })));
                               });
                         },
                       ))

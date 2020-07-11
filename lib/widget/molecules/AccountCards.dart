@@ -9,14 +9,19 @@ class AccountCards extends StatelessWidget {
   final height;
   final onTap;
   final bool padding;
-  AccountCards({this.text, this.buttonText, this.capText: '', this.onTap, this.height:110.0, this.padding: true});
+  AccountCards(
+      {this.text,
+      this.buttonText,
+      this.capText: '',
+      this.onTap,
+      this.height: 110.0,
+      this.padding: true});
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: 
-      padding== true
-      ? const EdgeInsets.all(10.0)
-      : const EdgeInsets.only(top:10.0, bottom: 10.0),
+      padding: padding == true
+          ? const EdgeInsets.all(10.0)
+          : const EdgeInsets.only(top: 10.0, bottom: 10.0),
       child: Container(
         padding: EdgeInsets.all(14.0),
         color: Colors.white,
@@ -25,7 +30,7 @@ class AccountCards extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text('$text',
-                style: Theme.of(context).textTheme.body1.copyWith(
+                style: Theme.of(context).textTheme.bodyText2.copyWith(
                     color: textColor,
                     fontSize: 18,
                     fontWeight: FontWeight.w400)),
@@ -33,7 +38,7 @@ class AccountCards extends StatelessWidget {
               height: 2,
             ),
             Text('$capText',
-                style: Theme.of(context).textTheme.body1.copyWith(
+                style: Theme.of(context).textTheme.bodyText2.copyWith(
                     color: Colors.grey[500],
                     fontSize: 11,
                     fontWeight: FontWeight.w400)),

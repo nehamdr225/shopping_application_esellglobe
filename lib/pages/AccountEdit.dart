@@ -75,7 +75,7 @@ class _AccountEditState extends State<AccountEdit> {
                         userData['name'].split(' ').reduce((a, b) {
                           return '${a[0]} ${b[0]}';
                         }),
-                        style: Theme.of(context).textTheme.body1.copyWith(
+                        style: Theme.of(context).textTheme.bodyText2.copyWith(
                             color: primaryDark,
                             fontSize: 24.0,
                             fontWeight: FontWeight.w700),

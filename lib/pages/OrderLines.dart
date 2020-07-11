@@ -73,8 +73,10 @@ class OrderLines extends StatelessWidget {
               child: Text(
                 'Arriving \n5 January - 10 January',
                 textAlign: TextAlign.center,
-                style:
-                    Theme.of(context).textTheme.body2.copyWith(fontSize: 24.0),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText1
+                    .copyWith(fontSize: 24.0),
               ),
             ),
             AnimatedBuilder(

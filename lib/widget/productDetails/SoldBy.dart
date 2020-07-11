@@ -42,7 +42,7 @@ class PDsoldby extends StatelessWidget {
                       children: <Widget>[
                         Text(
                           '4',
-                          style: Theme.of(context).textTheme.body1.copyWith(
+                          style: Theme.of(context).textTheme.bodyText2.copyWith(
                                 fontWeight: FontWeight.w700,
                                 color: Colors.white,
                                 fontSize: 13.0,

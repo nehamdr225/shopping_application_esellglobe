@@ -24,10 +24,12 @@ class PDcomments extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Divider(),
-            Padding( // rating chip and comment title
+            Padding(
+                // rating chip and comment title
                 padding:
                     const EdgeInsets.only(left: 10.0, bottom: 4.0, top: 8.0),
-                child: Row( // rating chip
+                child: Row(
+                  // rating chip
                   children: <Widget>[
                     Container(
                       width: 58.0,
@@ -40,7 +42,10 @@ class PDcomments extends StatelessWidget {
                           children: <Widget>[
                             Text(
                               rating,
-                              style: Theme.of(context).textTheme.body1.copyWith(
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2
+                                  .copyWith(
                                     fontWeight: FontWeight.w700,
                                     color: Colors.white,
                                     fontSize: 11.0,
@@ -57,11 +62,12 @@ class PDcomments extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Padding( // comment title by user
+                    Padding(
+                      // comment title by user
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         commentTitle,
-                        style: Theme.of(context).textTheme.body1.copyWith(
+                        style: Theme.of(context).textTheme.bodyText2.copyWith(
                               fontWeight: FontWeight.w500,
                               color: textColor,
                               fontSize: 14.0,
@@ -70,18 +76,20 @@ class PDcomments extends StatelessWidget {
                     ),
                   ],
                 )),
-            Padding( // comment of user
+            Padding(
+              // comment of user
               padding: const EdgeInsets.only(top: 8.0, left: 12.0),
               child: Text(
                 comment,
-                style: Theme.of(context).textTheme.body1.copyWith(
+                style: Theme.of(context).textTheme.bodyText2.copyWith(
                       fontWeight: FontWeight.w400,
                       color: textColor,
                       fontSize: 14.0,
                     ),
               ),
             ),
-            Padding( // photos uploaded by user
+            Padding(
+              // photos uploaded by user
               padding: const EdgeInsets.only(top: 8.0, left: 12.0),
               child: Row(
                 children: <Widget>[
@@ -109,14 +117,15 @@ class PDcomments extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 12.0),
                   child: Text(
                     name,
-                    style: Theme.of(context).textTheme.body1.copyWith(
+                    style: Theme.of(context).textTheme.bodyText2.copyWith(
                           fontWeight: FontWeight.w500,
                           color: Colors.grey[500],
                           fontSize: 14.0,
                         ),
                   ),
                 ),
-                Padding( // like dislike buttons
+                Padding(
+                    // like dislike buttons
                     padding: const EdgeInsets.only(left: 12.0),
                     child: Container(
                       child: Row(
@@ -131,11 +140,12 @@ class PDcomments extends StatelessWidget {
                           ),
                           Text(
                             likes,
-                            style: Theme.of(context).textTheme.body1.copyWith(
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.grey[500],
-                                  fontSize: 12.0,
-                                ),
+                            style:
+                                Theme.of(context).textTheme.bodyText2.copyWith(
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.grey[500],
+                                      fontSize: 12.0,
+                                    ),
                           ),
                           IconButton(
                             icon: Icon(
@@ -147,11 +157,12 @@ class PDcomments extends StatelessWidget {
                           ),
                           Text(
                             dislikes,
-                            style: Theme.of(context).textTheme.body1.copyWith(
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.grey[500],
-                                  fontSize: 12.0,
-                                ),
+                            style:
+                                Theme.of(context).textTheme.bodyText2.copyWith(
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.grey[500],
+                                      fontSize: 12.0,
+                                    ),
                           ),
                           IconButton(
                             icon: Icon(
@@ -166,7 +177,8 @@ class PDcomments extends StatelessWidget {
                     ))
               ],
             ),
-            Padding( // certified or not if certified time is the variable
+            Padding(
+              // certified or not if certified time is the variable
               padding: const EdgeInsets.only(left: 12.0),
               child: Row(
                 children: <Widget>[
@@ -180,7 +192,7 @@ class PDcomments extends StatelessWidget {
                   ),
                   Text(
                     'Certified Buyer . $time ago',
-                    style: Theme.of(context).textTheme.body1.copyWith(
+                    style: Theme.of(context).textTheme.bodyText2.copyWith(
                           fontWeight: FontWeight.w400,
                           color: Colors.grey[500],
                           fontSize: 12.0,

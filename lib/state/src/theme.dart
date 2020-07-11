@@ -40,16 +40,15 @@ class FTheme with ChangeNotifier {
       onSurface: Color(0xffEEEEEE),
       brightness: Brightness.light,
       surface: Color(0xffEEEEEE),
-      
     ),
     canvasColor: Colors.white,
     fontFamily: 'Montserrat',
     textSelectionColor: Colors.black38,
     textTheme: TextTheme(
-      headline: TextStyle(fontSize: 24.0, color: textColor),
-      title: TextStyle(fontSize: 16.0, color: textColor),
-      body1: TextStyle(fontSize: 12.0, color: textColor),
-      body2: TextStyle(fontSize: 18.0, color: primaryDark),
+      headline5: TextStyle(fontSize: 24.0, color: textColor),
+      headline6: TextStyle(fontSize: 16.0, color: textColor),
+      bodyText2: TextStyle(fontSize: 12.0, color: textColor),
+      bodyText1: TextStyle(fontSize: 18.0, color: primaryDark),
       caption: TextStyle(fontSize: 14.0, color: textColor),
     ),
   );

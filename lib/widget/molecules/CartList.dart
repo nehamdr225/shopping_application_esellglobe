@@ -70,8 +70,12 @@ class CartListView extends StatelessWidget {
                         Text(product['name'],
                             textAlign: TextAlign.start,
                             overflow: TextOverflow.ellipsis,
-                            style: Theme.of(context).textTheme.body1.copyWith(
-                                fontWeight: FontWeight.w500, fontSize: 16.0)),
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                .copyWith(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 16.0)),
                         Padding(
                           padding:
                               const EdgeInsets.fromLTRB(0.0, 0.0, 8.0, 0.0),
@@ -82,7 +86,7 @@ class CartListView extends StatelessWidget {
                                 'Size:',
                                 style: Theme.of(context)
                                     .textTheme
-                                    .body1
+                                    .bodyText2
                                     .copyWith(
                                         fontSize: 13.0,
                                         color: Colors.grey[600]),
@@ -92,7 +96,7 @@ class CartListView extends StatelessWidget {
                                 child: Text(size.toString() ?? "N/A",
                                     style: Theme.of(context)
                                         .textTheme
-                                        .body1
+                                        .bodyText2
                                         .copyWith(
                                             fontWeight: FontWeight.w400,
                                             fontSize: 13.0,
@@ -104,7 +108,7 @@ class CartListView extends StatelessWidget {
                                   'Color:',
                                   style: Theme.of(context)
                                       .textTheme
-                                      .body1
+                                      .bodyText2
                                       .copyWith(
                                           fontWeight: FontWeight.w400,
                                           fontSize: 13.0,
@@ -118,7 +122,7 @@ class CartListView extends StatelessWidget {
                                   color ?? "N/A",
                                   style: Theme.of(context)
                                       .textTheme
-                                      .body1
+                                      .bodyText2
                                       .copyWith(
                                           fontWeight: FontWeight.w400,
                                           fontSize: 13.0,
@@ -132,20 +136,24 @@ class CartListView extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: <Widget>[
                             Text('\$',
-                                style:
-                                    Theme.of(context).textTheme.body1.copyWith(
-                                          fontWeight: FontWeight.w800,
-                                          fontSize: 16.0,
-                                        )),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText2
+                                    .copyWith(
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: 16.0,
+                                    )),
                             Padding(
                               padding: EdgeInsets.only(right: 6.0, left: 6.0),
                               child: Text(
                                 product["price"],
-                                style:
-                                    Theme.of(context).textTheme.body1.copyWith(
-                                          fontWeight: FontWeight.w800,
-                                          fontSize: 16.0,
-                                        ),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText2
+                                    .copyWith(
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: 16.0,
+                                    ),
                               ),
                             ),
                             Padding(
@@ -154,7 +162,7 @@ class CartListView extends StatelessWidget {
                                 "\$ 1800",
                                 style: Theme.of(context)
                                     .textTheme
-                                    .body1
+                                    .bodyText2
                                     .copyWith(
                                         fontWeight: FontWeight.w500,
                                         fontSize: 13.0,
@@ -166,12 +174,14 @@ class CartListView extends StatelessWidget {
                               padding: EdgeInsets.only(right: 6.0, left: 6.0),
                               child: Text(
                                 "50% off",
-                                style:
-                                    Theme.of(context).textTheme.body1.copyWith(
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.green,
-                                          fontSize: 15.0,
-                                        ),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText2
+                                    .copyWith(
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.green,
+                                      fontSize: 15.0,
+                                    ),
                               ),
                             ),
                           ],
@@ -181,16 +191,18 @@ class CartListView extends StatelessWidget {
                         //       const EdgeInsets.fromLTRB(0.0, 15.0, 10.0, 6.0),
                         //   child: Text(
                         //     "Delivery by 02 Jan 2020",
-                        //     style: Theme.of(context).textTheme.body1.copyWith(
+                        //     style: Theme.of(context).textTheme.bodyText2.copyWith(
                         //           fontWeight: FontWeight.w500,
                         //           fontSize: 13.0,
                         //         ),
                         //   ),
                         // ),
-                        SizedBox(height: 20.0,),
+                        SizedBox(
+                          height: 20.0,
+                        ),
                         Text(
                           "Free Delivery",
-                          style: Theme.of(context).textTheme.body1.copyWith(
+                          style: Theme.of(context).textTheme.bodyText2.copyWith(
                                 fontWeight: FontWeight.w600,
                                 color: Colors.green,
                                 fontSize: 13.0,
@@ -257,7 +269,8 @@ class CartListView extends StatelessWidget {
             Divider(
               thickness: 1.0,
             ),
-            Row(  //Buttons
+            Row(
+              //Buttons
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 FRaisedButton(

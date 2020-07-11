@@ -7,7 +7,13 @@ class Details extends StatefulWidget {
   final wishlist;
   final details;
   final showDetails;
-  Details({this.name, this.price, this.id, this.wishlist: true, this.details, this.showDetails});
+  Details(
+      {this.name,
+      this.price,
+      this.id,
+      this.wishlist: true,
+      this.details,
+      this.showDetails});
 
   @override
   _DetailsState createState() => _DetailsState();
@@ -29,39 +35,38 @@ class _DetailsState extends State<Details> {
             padding: const EdgeInsets.only(left: 8.0, top: 10.0),
             child: Text(
               widget.name,
-              style: Theme.of(context).textTheme.body1.copyWith(
+              style: Theme.of(context).textTheme.bodyText2.copyWith(
                     fontSize: 13.0,
                     fontWeight: FontWeight.w500,
                   ),
               textAlign: TextAlign.left,
             ),
           ),
-          widget.details.length <40 ?
-          Padding(
-            padding: const EdgeInsets.only(left: 8.0, top: 5.0, right: 2.0),
-            child: Text(
-              '${widget.details.replaceAll('\n', ' ')}...',
-              style: Theme.of(context).textTheme.body1.copyWith(
-                    fontSize: 12.0,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.grey[500]
+          widget.details.length < 40
+              ? Padding(
+                  padding:
+                      const EdgeInsets.only(left: 8.0, top: 5.0, right: 2.0),
+                  child: Text(
+                    '${widget.details.replaceAll('\n', ' ')}...',
+                    style: Theme.of(context).textTheme.bodyText2.copyWith(
+                        fontSize: 12.0,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.grey[500]),
+                    textAlign: TextAlign.left,
                   ),
-              textAlign: TextAlign.left,
-            ),
-          )
-          :
-          Padding(
-            padding: const EdgeInsets.only(left: 8.0, top: 5.0, right: 2.0),
-            child: Text(
-              '${widget.details.substring(0, 40).replaceAll('\n', ' ')}...',
-              style: Theme.of(context).textTheme.body1.copyWith(
-                    fontSize: 12.0,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.grey[500]
+                )
+              : Padding(
+                  padding:
+                      const EdgeInsets.only(left: 8.0, top: 5.0, right: 2.0),
+                  child: Text(
+                    '${widget.details.substring(0, 40).replaceAll('\n', ' ')}...',
+                    style: Theme.of(context).textTheme.bodyText2.copyWith(
+                        fontSize: 12.0,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.grey[500]),
+                    textAlign: TextAlign.left,
                   ),
-              textAlign: TextAlign.left,
-            ),
-          ),
+                ),
           Padding(
             padding: const EdgeInsets.only(left: 8.0, top: 3.0),
             child: Row(
@@ -72,36 +77,40 @@ class _DetailsState extends State<Details> {
                 ),
                 Text(
                   widget.price,
-                  style: Theme.of(context).textTheme.body1.copyWith(
+                  style: Theme.of(context).textTheme.bodyText2.copyWith(
                         fontSize: 16.0,
                         fontWeight: FontWeight.w800,
                       ),
                   textAlign: TextAlign.left,
                 ),
-                widget.showDetails == true?
-                Padding(
-                  padding: EdgeInsets.only(right: 6.0, left: 6.0, top: 3.0),
-                  child: Text(
-                    "₹ 1800",
-                    style: Theme.of(context).textTheme.body1.copyWith(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 12.0,
-                        color: Colors.grey[500],
-                        decoration: TextDecoration.lineThrough),
-                  ),
-                ): Text(''),
                 widget.showDetails == true
-                ? Padding(
-                  padding: EdgeInsets.only(right: 6.0, left: 6.0, top: 3.0),
-                  child: Text(
-                    "50% off",
-                    style: Theme.of(context).textTheme.body1.copyWith(
-                          fontWeight: FontWeight.w600,
-                          color: Colors.green,
-                          fontSize: 13.0,
+                    ? Padding(
+                        padding:
+                            EdgeInsets.only(right: 6.0, left: 6.0, top: 3.0),
+                        child: Text(
+                          "₹ 1800",
+                          style: Theme.of(context).textTheme.bodyText2.copyWith(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 12.0,
+                              color: Colors.grey[500],
+                              decoration: TextDecoration.lineThrough),
                         ),
-                  ),
-                ) : Text('')
+                      )
+                    : Text(''),
+                widget.showDetails == true
+                    ? Padding(
+                        padding:
+                            EdgeInsets.only(right: 6.0, left: 6.0, top: 3.0),
+                        child: Text(
+                          "50% off",
+                          style: Theme.of(context).textTheme.bodyText2.copyWith(
+                                fontWeight: FontWeight.w600,
+                                color: Colors.green,
+                                fontSize: 13.0,
+                              ),
+                        ),
+                      )
+                    : Text('')
               ],
             ),
           ),

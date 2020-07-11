@@ -30,7 +30,7 @@ class PDInfo extends StatelessWidget {
               Text(name,
                   textAlign: TextAlign.start,
                   overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.body1.copyWith(
+                  style: Theme.of(context).textTheme.bodyText2.copyWith(
                       fontWeight: FontWeight.w800,
                       fontSize: 18.0,
                       color: Colors.grey[800])),
@@ -47,7 +47,7 @@ class PDInfo extends StatelessWidget {
                               : '${description.replaceAll('\n', ' ')}...',
                           textAlign: TextAlign.start,
                           overflow: TextOverflow.ellipsis,
-                          style: Theme.of(context).textTheme.body1.copyWith(
+                          style: Theme.of(context).textTheme.bodyText2.copyWith(
                               fontWeight: FontWeight.w500,
                               fontSize: 14.0,
                               color: Colors.grey[500])),
@@ -58,7 +58,7 @@ class PDInfo extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       "₹ $price",
-                      style: Theme.of(context).textTheme.body1.copyWith(
+                      style: Theme.of(context).textTheme.bodyText2.copyWith(
                             fontWeight: FontWeight.w900,
                             fontSize: 17.0,
                           ),
@@ -67,7 +67,7 @@ class PDInfo extends StatelessWidget {
                       padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                       child: Text(
                         "₹ 1800",
-                        style: Theme.of(context).textTheme.body1.copyWith(
+                        style: Theme.of(context).textTheme.bodyText2.copyWith(
                             fontWeight: FontWeight.w500,
                             fontSize: 13.0,
                             color: Colors.grey[500],
@@ -78,7 +78,7 @@ class PDInfo extends StatelessWidget {
                       padding: const EdgeInsets.only(top: 2.0, bottom: 2.0),
                       child: Text(
                         "50% off",
-                        style: Theme.of(context).textTheme.body1.copyWith(
+                        style: Theme.of(context).textTheme.bodyText2.copyWith(
                               fontWeight: FontWeight.w600,
                               color: Colors.green,
                               fontSize: 15.0,
@@ -92,7 +92,7 @@ class PDInfo extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 6.0),
                 child: Text(
                   "Free Delivery",
-                  style: Theme.of(context).textTheme.body1.copyWith(
+                  style: Theme.of(context).textTheme.bodyText2.copyWith(
                         fontWeight: FontWeight.w600,
                         color: Colors.green,
                         fontSize: 13.0,
@@ -121,7 +121,10 @@ class PDInfo extends StatelessWidget {
                             ),
                             Text(
                               '3.9',
-                              style: Theme.of(context).textTheme.body1.copyWith(
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2
+                                  .copyWith(
                                     fontWeight: FontWeight.w700,
                                     color: Colors.white,
                                     fontSize: 13.0,
@@ -135,7 +138,7 @@ class PDInfo extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         '15 ratings and 1 review',
-                        style: Theme.of(context).textTheme.body1.copyWith(
+                        style: Theme.of(context).textTheme.bodyText2.copyWith(
                               fontWeight: FontWeight.w700,
                               color: Colors.grey[500],
                               fontSize: 13.0,

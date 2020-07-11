@@ -29,7 +29,7 @@ class FRaisedButton extends StatelessWidget {
     this.elevation,
     this.image,
     this.imgcolor,
-    this.radius:30.0,
+    this.radius: 30.0,
     this.needIcon: false,
     this.textAlign: TextAlign.center,
     this.mainAxisAlignment: MainAxisAlignment.center,
@@ -55,12 +55,11 @@ class FRaisedButton extends StatelessWidget {
                       Text(
                         text,
                         textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.body1.copyWith(
+                        style: Theme.of(context).textTheme.bodyText2.copyWith(
                             fontSize: 16.0,
                             color: color,
                             fontWeight: fontWeight),
                       ),
-                      
                     ])
               : Flex(
                   direction: Axis.vertical,
@@ -78,10 +77,13 @@ class FRaisedButton extends StatelessWidget {
                           child: Text(
                             text,
                             textAlign: textAlign,
-                            style: Theme.of(context).textTheme.body1.copyWith(
-                                fontSize: fontSize,
-                                color: color,
-                                fontWeight: fontWeight),
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                .copyWith(
+                                    fontSize: fontSize,
+                                    color: color,
+                                    fontWeight: fontWeight),
                           ),
                         )
                       ],

@@ -106,7 +106,7 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
                     "Sizes",
                     style: Theme.of(context)
                         .textTheme
-                        .body1
+                        .bodyText2
                         .copyWith(fontWeight: FontWeight.w600, fontSize: 15.0),
                     textAlign: TextAlign.left,
                   ),
@@ -122,7 +122,7 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
                         ),
                         Text(
                           'Size Chart',
-                          style: Theme.of(context).textTheme.body1,
+                          style: Theme.of(context).textTheme.bodyText2,
                         )
                       ],
                     ),

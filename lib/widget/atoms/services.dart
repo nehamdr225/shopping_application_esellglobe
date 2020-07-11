@@ -14,7 +14,8 @@ class Services extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final body1 = Theme.of(context).textTheme.body1.copyWith(color: primaryDark);
+    final body1 =
+        Theme.of(context).textTheme.bodyText2.copyWith(color: primaryDark);
     return Card(
       child: Container(
         padding: EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 8.0),
@@ -27,8 +28,10 @@ class Services extends StatelessWidget {
             children: <Widget>[
               payOnDelivery
                   ? Column(children: [
-                      Icon(Icons.payment,
-                      color: primary,),
+                      Icon(
+                        Icons.payment,
+                        color: primary,
+                      ),
                       Text(
                         'Pay on \nDelivery',
                         style: body1,
@@ -37,7 +40,10 @@ class Services extends StatelessWidget {
                   : Text(''),
               replacement
                   ? Column(children: [
-                      Icon(Icons.change_history,color: primary,),
+                      Icon(
+                        Icons.change_history,
+                        color: primary,
+                      ),
                       Text(
                         '10 Days\n Replacement',
                         textAlign: TextAlign.center,
@@ -45,10 +51,12 @@ class Services extends StatelessWidget {
                       )
                     ])
                   : Text(''),
-            
               aYearWarranty
                   ? Column(children: [
-                      Icon(Icons.check_circle_outline,color: primary,),
+                      Icon(
+                        Icons.check_circle_outline,
+                        color: primary,
+                      ),
                       Text(
                         'One Year Warranty',
                         style: body1,

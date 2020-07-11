@@ -15,7 +15,7 @@ class PDoffer extends StatelessWidget {
               "Special offers from Shop 2 More shop",
               style: Theme.of(context)
                   .textTheme
-                  .body1
+                  .bodyText2
                   .copyWith(fontWeight: FontWeight.w600, fontSize: 15.0),
               textAlign: TextAlign.left,
             ),
@@ -25,7 +25,11 @@ class PDoffer extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                Icon(CupertinoIcons.tag_solid, color: Colors.green, size: 19.0,),
+                Icon(
+                  CupertinoIcons.tag_solid,
+                  color: Colors.green,
+                  size: 19.0,
+                ),
                 Flexible(
                   flex: 2,
                   child: Padding(
@@ -34,7 +38,7 @@ class PDoffer extends StatelessWidget {
                       "5% Unlimited Cashback on shop 2 more products on any purchase from Axis Bank Credit card",
                       style: Theme.of(context)
                           .textTheme
-                          .body1
+                          .bodyText2
                           .copyWith(fontSize: 14.0),
                       textAlign: TextAlign.left,
                     ),
@@ -60,7 +64,11 @@ class PDoffer extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                Icon(CupertinoIcons.tag_solid, color: Colors.green, size: 19.0,),
+                Icon(
+                  CupertinoIcons.tag_solid,
+                  color: Colors.green,
+                  size: 19.0,
+                ),
                 Flexible(
                   flex: 2,
                   child: Padding(
@@ -69,7 +77,7 @@ class PDoffer extends StatelessWidget {
                       "Extra 10% off when buying another Shop 2 More product ",
                       style: Theme.of(context)
                           .textTheme
-                          .body1
+                          .bodyText2
                           .copyWith(fontSize: 14.0),
                       textAlign: TextAlign.left,
                     ),
@@ -90,7 +98,9 @@ class PDoffer extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 10.0,)
+          SizedBox(
+            height: 10.0,
+          )
         ],
       ),
     );

@@ -31,7 +31,8 @@ class AccountPage extends StatelessWidget {
           )),
       body: ListView(
         children: <Widget>[
-          Stack(// Blue name card
+          Stack(
+            // Blue name card
             alignment: AlignmentDirectional.topCenter,
             children: <Widget>[
               Container(
@@ -55,17 +56,20 @@ class AccountPage extends StatelessWidget {
                             userData['name'].split(' ').reduce((a, b) {
                               return '${a[0]} ${b[0]}';
                             }),
-                            style: Theme.of(context).textTheme.body1.copyWith(
-                                color: primaryDark,
-                                fontSize: 24.0,
-                                fontWeight: FontWeight.w700),
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                .copyWith(
+                                    color: primaryDark,
+                                    fontSize: 24.0,
+                                    fontWeight: FontWeight.w700),
                           ),
                   ),
                   Padding(
                     padding: EdgeInsets.all(5.0),
                   ),
                   Text(userData['name'],
-                      style: Theme.of(context).textTheme.title.copyWith(
+                      style: Theme.of(context).textTheme.headline6.copyWith(
                           color: Colors.white,
                           fontSize: 20,
                           fontWeight: FontWeight.w600)),
@@ -82,7 +86,7 @@ class AccountPage extends StatelessWidget {
                             Text(userData['email'],
                                 style: Theme.of(context)
                                     .textTheme
-                                    .title
+                                    .headline6
                                     .copyWith(
                                         color: Colors.white,
                                         fontSize: 14,
@@ -111,7 +115,6 @@ class AccountPage extends StatelessWidget {
               ),
             ],
           ),
-          
           AccountCards(
             text: 'My Orders',
             buttonText: 'VIEW ALL ORDERS',

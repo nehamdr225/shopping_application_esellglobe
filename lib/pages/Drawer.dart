@@ -98,8 +98,10 @@ class DrawerApp extends StatelessWidget {
               ),
               child: Text(
                 'Search for Fashion',
-                style:
-                    Theme.of(context).textTheme.body2.copyWith(fontSize: 16.0),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText1
+                    .copyWith(fontSize: 16.0),
               ),
             ),
             Padding(
@@ -243,8 +245,10 @@ class DrawerApp extends StatelessWidget {
               ),
               child: Text(
                 'Find your style',
-                style:
-                    Theme.of(context).textTheme.body2.copyWith(fontSize: 16.0),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText1
+                    .copyWith(fontSize: 16.0),
               ),
             ),
             DrawerElements(

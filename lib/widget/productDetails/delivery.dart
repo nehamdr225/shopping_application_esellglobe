@@ -39,7 +39,7 @@ class PDdelivery extends StatelessWidget {
                             'Delivery to',
                             style: Theme.of(context)
                                 .textTheme
-                                .body1
+                                .bodyText2
                                 .copyWith(fontSize: 15.0),
                             textAlign: TextAlign.left,
                           ),
@@ -48,8 +48,12 @@ class PDdelivery extends StatelessWidget {
                           padding: EdgeInsets.only(left: 14.0, top: 10.0),
                           child: Text(
                             'Hyderabad - 500028',
-                            style: Theme.of(context).textTheme.body1.copyWith(
-                                fontSize: 15.0, fontWeight: FontWeight.w500),
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                .copyWith(
+                                    fontSize: 15.0,
+                                    fontWeight: FontWeight.w500),
                             textAlign: TextAlign.left,
                           ),
                         ),
@@ -74,7 +78,7 @@ class PDdelivery extends StatelessWidget {
                       padding: EdgeInsets.only(left: 14.0, top: 5.0),
                       child: Text(
                         'Delivery Details',
-                        style: Theme.of(context).textTheme.body1.copyWith(
+                        style: Theme.of(context).textTheme.bodyText2.copyWith(
                             fontSize: 14.0, fontWeight: FontWeight.w500),
                         textAlign: TextAlign.left,
                       ),
@@ -96,7 +100,7 @@ class PDdelivery extends StatelessWidget {
                       '40 | Delivery in 3 - 4 Days',
                       style: Theme.of(context)
                           .textTheme
-                          .body1
+                          .bodyText2
                           .copyWith(fontSize: 14.0),
                       textAlign: TextAlign.left,
                     ),
@@ -121,7 +125,7 @@ class PDdelivery extends StatelessWidget {
                                     'Usually delivered in',
                                     style: Theme.of(context)
                                         .textTheme
-                                        .body1
+                                        .bodyText2
                                         .copyWith(fontSize: 14.0),
                                     textAlign: TextAlign.left,
                                   ),
@@ -133,7 +137,7 @@ class PDdelivery extends StatelessWidget {
                                     '3-4 days',
                                     style: Theme.of(context)
                                         .textTheme
-                                        .body1
+                                        .bodyText2
                                         .copyWith(
                                             fontSize: 16.0,
                                             fontWeight: FontWeight.w700),
@@ -155,7 +159,7 @@ class PDdelivery extends StatelessWidget {
                                         "View Details",
                                         style: Theme.of(context)
                                             .textTheme
-                                            .body1
+                                            .bodyText2
                                             .copyWith(
                                                 fontSize: 15.0,
                                                 fontWeight: FontWeight.w600),
@@ -241,7 +245,8 @@ class PDdelivery extends StatelessWidget {
                           Container(
                             color: Colors.white,
                             child: Padding(
-                              padding: EdgeInsets.only(left: 14.0, top: 20.0, bottom: 20.0),
+                              padding: EdgeInsets.only(
+                                  left: 14.0, top: 20.0, bottom: 20.0),
                               child: FancyText(
                                 size: 16.0,
                                 text:

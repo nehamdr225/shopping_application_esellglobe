@@ -35,11 +35,11 @@ class PDFeedback extends StatelessWidget {
                     TableRow(children: [
                       Text(
                         "Neha M.",
-                        style: Theme.of(context).textTheme.body2,
+                        style: Theme.of(context).textTheme.bodyText1,
                       ),
                       Text(
                         "It is good.\n  ",
-                        style: Theme.of(context).textTheme.body2,
+                        style: Theme.of(context).textTheme.bodyText1,
                       ),
                     ]),
                   ]),
