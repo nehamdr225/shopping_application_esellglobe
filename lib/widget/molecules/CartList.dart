@@ -135,7 +135,7 @@ class CartListView extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: <Widget>[
-                            Text('\$',
+                            Text('\$ ₹',
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodyText2
@@ -159,7 +159,7 @@ class CartListView extends StatelessWidget {
                             Padding(
                               padding: EdgeInsets.only(right: 6.0, left: 6.0),
                               child: Text(
-                                "\$ 1800",
+                                "\$ ₹ 1800",
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodyText2

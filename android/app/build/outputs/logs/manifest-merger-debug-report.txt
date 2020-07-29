@@ -1,0 +1,158 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml:1:1-34:12
+INJECTED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml:1:1-34:12
+INJECTED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml:1:1-34:12
+INJECTED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml:1:1-34:12
+MERGED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml:1:1-34:12
+MERGED from [:flutter_secure_storage] /home/nae_mdr/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_secure_storage-3.3.3/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.fragment:fragment:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/9868b6b13f489f6f2e4ed92e39893c11/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/783f2cfb748edb6de75f6ad526f03b85/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/2c968f7be49c6ccef1dd9e45b31efba0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/a4a993f689a7a9875e082b8e7328abdf/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/01d46c932d99be0faa0eb3e91b5a9733/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/cd42c1b6ddd38647cef27b6ae51f7918/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/1f307f627a89b222f6e0706acf04ee7d/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/3d11126eb17508c72d59a345a850634d/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/57cd5f992a11497d9553015f946d41b5/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/21835f43def1fe496dea179e731cb411/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/171e919052aa35d7e104ab2f827cf368/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/188c4a3bbb0367cccf5d919754f49107/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/51e2977ed922551a8ece3686d55ca4a3/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/fb15878382fad84b780a743f0f2dc773/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/064294745bd05fc7162962509900c254/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/6b92a24edb86b85da2dfbbe9a5f9e7eb/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/a958aeab57ccc6c9bf7f950dc23e702d/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/85a370aa508890e7bd1130300123c91e/AndroidManifest.xml:17:1-25:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/033b696dd2f8d6b3ab9f2d272823aca8/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/be879c148fe01a67cfa3002dcd33c447/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/fa15cc348def4e0aec812a0d0314c8f7/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/8fa7eff046b4782ee39dcf59378ce73f/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/2934b50aa7b43cc0b053ed6bd73499dd/AndroidManifest.xml:17:1-22:12
+INJECTED from /home/nae_mdr/workshop/esellglobe/android/app/src/debug/AndroidManifest.xml:1:1-7:12
+INJECTED from /home/nae_mdr/workshop/esellglobe/android/app/src/debug/AndroidManifest.xml:1:1-7:12
+INJECTED from /home/nae_mdr/workshop/esellglobe/android/app/src/debug/AndroidManifest.xml:1:1-7:12
+	package
+		ADDED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml:2:5-33
+		INJECTED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml
+		INJECTED from /home/nae_mdr/workshop/esellglobe/android/app/src/debug/AndroidManifest.xml
+	android:versionName
+		INJECTED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml
+		ADDED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml:1:1-34:12
+		INJECTED from /home/nae_mdr/workshop/esellglobe/android/app/src/debug/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml
+		ADDED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml:1:1-34:12
+		INJECTED from /home/nae_mdr/workshop/esellglobe/android/app/src/debug/AndroidManifest.xml
+	xmlns:android
+		ADDED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml:1:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml:3:5-66
+MERGED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml:3:5-66
+MERGED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml:3:5-66
+	android:name
+		ADDED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml:3:22-64
+application
+ADDED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml:10:5-33:19
+MERGED from [androidx.core:core:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/188c4a3bbb0367cccf5d919754f49107/AndroidManifest.xml:22:5-89
+MERGED from [androidx.core:core:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/188c4a3bbb0367cccf5d919754f49107/AndroidManifest.xml:22:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/85a370aa508890e7bd1130300123c91e/AndroidManifest.xml:22:5-23:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/85a370aa508890e7bd1130300123c91e/AndroidManifest.xml:22:5-23:19
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/188c4a3bbb0367cccf5d919754f49107/AndroidManifest.xml:22:18-86
+	android:label
+		ADDED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml:12:9-34
+	android:icon
+		ADDED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml:13:9-45
+	android:name
+		ADDED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml:11:9-57
+activity#com.hits.shop2more.MainActivity
+ADDED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml:14:9-32:20
+	android:launchMode
+		ADDED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml:16:13-43
+	android:hardwareAccelerated
+		ADDED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml:19:13-47
+	android:windowSoftInputMode
+		ADDED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml:20:13-55
+	android:configChanges
+		ADDED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml:18:13-144
+	android:theme
+		ADDED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml:17:13-47
+	android:name
+		ADDED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml:15:13-41
+meta-data#io.flutter.app.android.SplashScreenUntilFirstFrame
+ADDED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml:25:13-27:40
+	android:value
+		ADDED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml:27:17-37
+	android:name
+		ADDED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml:26:17-82
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml:28:13-31:29
+action#android.intent.action.MAIN
+ADDED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml:29:17-68
+	android:name
+		ADDED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml:29:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml:30:17-76
+	android:name
+		ADDED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml:30:27-74
+uses-sdk
+INJECTED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml
+INJECTED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml
+MERGED from [:flutter_secure_storage] /home/nae_mdr/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_secure_storage-3.3.3/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:flutter_secure_storage] /home/nae_mdr/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_secure_storage-3.3.3/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.fragment:fragment:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/9868b6b13f489f6f2e4ed92e39893c11/AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/9868b6b13f489f6f2e4ed92e39893c11/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/783f2cfb748edb6de75f6ad526f03b85/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/783f2cfb748edb6de75f6ad526f03b85/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/2c968f7be49c6ccef1dd9e45b31efba0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/2c968f7be49c6ccef1dd9e45b31efba0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/a4a993f689a7a9875e082b8e7328abdf/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/a4a993f689a7a9875e082b8e7328abdf/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/01d46c932d99be0faa0eb3e91b5a9733/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/01d46c932d99be0faa0eb3e91b5a9733/AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/cd42c1b6ddd38647cef27b6ae51f7918/AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/cd42c1b6ddd38647cef27b6ae51f7918/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/1f307f627a89b222f6e0706acf04ee7d/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/1f307f627a89b222f6e0706acf04ee7d/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/3d11126eb17508c72d59a345a850634d/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/3d11126eb17508c72d59a345a850634d/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/57cd5f992a11497d9553015f946d41b5/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/57cd5f992a11497d9553015f946d41b5/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/21835f43def1fe496dea179e731cb411/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/21835f43def1fe496dea179e731cb411/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/171e919052aa35d7e104ab2f827cf368/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/171e919052aa35d7e104ab2f827cf368/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/188c4a3bbb0367cccf5d919754f49107/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/188c4a3bbb0367cccf5d919754f49107/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/51e2977ed922551a8ece3686d55ca4a3/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/51e2977ed922551a8ece3686d55ca4a3/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/fb15878382fad84b780a743f0f2dc773/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/fb15878382fad84b780a743f0f2dc773/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/064294745bd05fc7162962509900c254/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/064294745bd05fc7162962509900c254/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/6b92a24edb86b85da2dfbbe9a5f9e7eb/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/6b92a24edb86b85da2dfbbe9a5f9e7eb/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/a958aeab57ccc6c9bf7f950dc23e702d/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/a958aeab57ccc6c9bf7f950dc23e702d/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/85a370aa508890e7bd1130300123c91e/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/85a370aa508890e7bd1130300123c91e/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/033b696dd2f8d6b3ab9f2d272823aca8/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/033b696dd2f8d6b3ab9f2d272823aca8/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/be879c148fe01a67cfa3002dcd33c447/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/be879c148fe01a67cfa3002dcd33c447/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/fa15cc348def4e0aec812a0d0314c8f7/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/fa15cc348def4e0aec812a0d0314c8f7/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/8fa7eff046b4782ee39dcf59378ce73f/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/8fa7eff046b4782ee39dcf59378ce73f/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/2934b50aa7b43cc0b053ed6bd73499dd/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /home/nae_mdr/.gradle/caches/transforms-2/files-2.1/2934b50aa7b43cc0b053ed6bd73499dd/AndroidManifest.xml:20:5-44
+INJECTED from /home/nae_mdr/workshop/esellglobe/android/app/src/debug/AndroidManifest.xml
+INJECTED from /home/nae_mdr/workshop/esellglobe/android/app/src/debug/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml
+		INJECTED from /home/nae_mdr/workshop/esellglobe/android/app/src/debug/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /home/nae_mdr/workshop/esellglobe/android/app/src/main/AndroidManifest.xml
+		INJECTED from /home/nae_mdr/workshop/esellglobe/android/app/src/debug/AndroidManifest.xml

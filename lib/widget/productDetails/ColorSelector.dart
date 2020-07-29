@@ -79,46 +79,50 @@ class _PDColorSelectorState extends State<PDColorSelector> {
       colorWidgets = [Text('')];
 
     return Container(
-      color: Colors.white,
-      padding: EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 8.0),
-      width: MediaQuery.of(context).size.width * 0.8,
-      alignment: Alignment.center,
-      child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: colorList.length > 1
-              ? [
-                  Padding(
-                    padding: EdgeInsets.only(left: 14.0, top: 10.0),
-                    child: Text(
-                      "Select Color",
-                      style: Theme.of(context).textTheme.bodyText2.copyWith(
-                          fontWeight: FontWeight.w600, fontSize: 15.0),
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                  Padding(
+        color: Colors.white,
+        padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 8.0),
+        width: MediaQuery.of(context).size.width * 0.8,
+        alignment: Alignment.center,
+        child:
+            // Column(
+            //     mainAxisAlignment: MainAxisAlignment.start,
+            //     crossAxisAlignment: CrossAxisAlignment.start,
+            //     children:
+            //         ? [
+            // Padding(
+            //   padding: EdgeInsets.only(left: 14.0, top: 10.0),
+            //   child: Text(
+            //     "Select Color",
+            //     style: Theme.of(context).textTheme.bodyText2.copyWith(
+            //         fontWeight: FontWeight.w600, fontSize: 15.0),
+            //     textAlign: TextAlign.left,
+            //   ),
+            // ),
+            colorList.length > 0 && colorList.length<1
+                ? Padding(
                     padding:
-                        EdgeInsets.only(left: 18.0, top: 20.0, bottom: 18.0),
+                        EdgeInsets.only(left: 18.0, top: 0.0, bottom: 18.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: colorWidgets,
                     ),
-                  ),
-                  // Padding(
-                  //   padding: EdgeInsets.only(right: 15.0),
-                  //   child: DropdownButton(
-                  //     onChanged: (selectColor) {
-                  //       setState(() {
-                  //         selectedColor = selectColor;
-                  //       });
-                  //     },
-                  //     value: selectedColor,
-                  //     items: colorWidgets,
-                  //   ),
-                  // )
-                ]
-              : [Text('')]),
-    );
+                  )
+                : SizedBox.shrink()
+        // Padding(
+        //   padding: EdgeInsets.only(right: 15.0),
+        //   child: DropdownButton(
+        //     onChanged: (selectColor) {
+        //       setState(() {
+        //         selectedColor = selectColor;
+        //       });
+        //     },
+        //     value: selectedColor,
+        //     items: colorWidgets,
+        //   ),
+        // )
+        //]
+
+        //),
+        );
   }
 }

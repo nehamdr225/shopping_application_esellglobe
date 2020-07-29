@@ -2,6 +2,7 @@ import 'package:esell/core/validators.dart';
 import 'package:esell/entities/user.api.dart';
 import 'package:esell/pages/SendOTP.dart';
 import 'package:esell/pages/Home.dart';
+import 'package:esell/pages/Signup.dart';
 import 'package:esell/widget/atoms/BrandLogos.dart';
 import 'package:esell/widget/atoms/passwordReset/ForgotPassword.dart';
 import 'package:esell/widget/molecules/BlueAppBar.dart';
@@ -219,6 +220,17 @@ class _PageState extends State<SignInPage> {
                     ),
                   )
                 : Text(''),
+                 FancyText(
+                color: primaryDark,
+                textAlign: TextAlign.end,
+                text: "Forgot Password?",
+                size: 15.0,
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ForgotPassword()));
+                }),
             loginErr != null
                 ? Text(loginErr, style: TextStyle(color: Colors.red))
                 : Text(''),
@@ -231,7 +243,7 @@ class _PageState extends State<SignInPage> {
                       shape: true,
                       width: 160.0,
                       height: 45.0,
-                      bg: primaryDark,
+                      bg: Colors.black38,
                       color: Colors.white,
                       onPressed: loginUser,
                     ),
@@ -239,14 +251,13 @@ class _PageState extends State<SignInPage> {
             SizedBox(height: 30.0),
             FancyText(
                 color: primaryDark,
-                decoration: TextDecoration.underline,
-                text: "Forgot Password?",
+                text: "Register",
                 size: 15.0,
                 onTap: () {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => ForgotPassword()));
+                          builder: (context) => SignUpPage()));
                 })
           ],
         ),

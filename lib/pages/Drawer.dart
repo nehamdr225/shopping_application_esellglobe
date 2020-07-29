@@ -111,7 +111,7 @@ class DrawerApp extends StatelessWidget {
               [
                 ListItem(
                     title: Image.asset(
-                      "images/esellIcons/man.png",
+                      "images/esellIcons/men.png",
                       height: 25.0,
                       width: 25.0,
                     ),

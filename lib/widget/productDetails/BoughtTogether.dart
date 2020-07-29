@@ -21,7 +21,7 @@ class PDBoughtTogether extends StatelessWidget {
             ),
             Container(
                 child: FText(
-              text: "Frequently Bought Together",
+              text: "You might also like",
               color: textColor,
               size: 16.0,
               fontWeight: FontWeight.w600,

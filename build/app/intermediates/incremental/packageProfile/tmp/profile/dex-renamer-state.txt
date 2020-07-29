@@ -1,0 +1,7 @@
+#Sun Jul 26 17:11:08 NPT 2020
+base.0=/home/nae_mdr/workshop/esellglobe/build/app/intermediates/dex/profile/mergeDexProfile/out/classes.dex
+path.1=classes2.dex
+renamed.1=classes2.dex
+path.0=classes.dex
+renamed.0=classes.dex
+base.1=/home/nae_mdr/workshop/esellglobe/build/app/intermediates/dex/profile/mergeDexProfile/out/classes2.dex

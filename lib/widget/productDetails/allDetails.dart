@@ -117,7 +117,7 @@ class PDAllDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print(image);
-    final imagesrc = "https://api.shop2more.com" + image != null ? image : '';
+    final imagesrc = "https://api.shop2more.com" + image != null ? image : ''; //"images/esellIcons/men.png";
     final body1 =
         Theme.of(context).textTheme.bodyText2.copyWith(fontSize: 16.0);
     final product = Provider.of<ProductModel>(context).one(id);
@@ -180,14 +180,11 @@ class PDAllDetails extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      Image.asset(
-                        "images/icons/rupee.png",
-                        height: 14.0,
-                      ),
+                      
                       Padding(
                         padding: EdgeInsets.only(right: 6.0, left: 0.0),
                         child: Text(
-                          "$price",
+                          "₹ $price",
                           style: Theme.of(context).textTheme.bodyText2.copyWith(
                                 fontWeight: FontWeight.w900,
                                 fontSize: 18.0,

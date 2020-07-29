@@ -2,7 +2,6 @@
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:esell/widget/productDetails/BoughtTogether.dart';
 import 'package:esell/widget/productDetails/Carousel.dart';
-import 'package:esell/widget/productDetails/ColorSelector.dart';
 import 'package:esell/widget/productDetails/Comments.dart';
 import 'package:esell/widget/productDetails/Offer.dart';
 import 'package:esell/widget/productDetails/PDratingNreview.dart';
@@ -29,19 +28,7 @@ class _ProductDetailsState extends State<ProductDetails> {
   String color, size;
   int quantity = 1;
 
-  void setSize(String newSize) {
-    if (newSize != size)
-      setState(() {
-        size = newSize;
-      });
-  }
-
-  void setColor(String newColor) {
-    if (newColor != color)
-      setState(() {
-        color = newColor;
-      });
-  }
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -114,49 +101,47 @@ class _ProductDetailsState extends State<ProductDetails> {
         ),
         body: ListView(
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(right: 8.0, left: 8.0),
-              child: Container(
-                height: screenHeight * 0.50,
+            Container(
+              height: screenHeight * 0.50,
+              width: screenWidth,
+              color: Colors.white,
+              child: PDCarousel(
+                images: images,
+                length: imgNo,
+                id: widget.id,
                 width: screenWidth,
-                color: Colors.white,
-                child: PDCarousel(
-                  images: images,
-                  length: imgNo,
-                  id: widget.id,
-                  width: screenWidth,
-                ),
               ),
-            ),
+            ), 
             PDInfo(
               name: product['name'],
               price: product['price'].toString(),
               description: product['description']['style'],
+               id: widget.id,
             ),
-            PDoffer(),
-            !product['category'].contains('Sunglasses') &&
-                    !product['category'].contains('Watches') &&
-                    !product['category'].contains('Bags & Backpacks')
-                ? PDSizeSelector(
-                    sizes: product['sizes'],
-                    setSize: setSize,
-                    size: size,
-                    foot: product['category'].contains('Foot Wear'),
-                  )
-                : Text(''),
-            PDColorSelector(color: product['colors'], setColor: setColor),
+            //PDoffer(),
+            // !product['category'].contains('Sunglasses') &&
+            //         !product['category'].contains('Watches') &&
+            //         !product['category'].contains('Bags & Backpacks')
+            //     ? PDSizeSelector(
+            //         sizes: product['sizes'],
+            //         setSize: setSize,
+            //         size: size,
+            //         foot: product['category'].contains('Foot Wear'),
+            //       )
+            //     : Text(''),
+            //PDColorSelector(color: product['colors'], setColor: setColor),
             //PDplusmember(),
             PDdelivery(),
             PDsoldby(),
-            PDAllDetails(
-              details:
-                  product['description'] != null ? product['description'] : '',
-              price: product['price'],
-              id: widget.id,
+            // PDAllDetails(    
+            //   details:
+            //       product['description'] != null ? product['description'] : '',
+            //   price: product['price'],
+            //   id: widget.id,
 
-              // colors: product['colors'],
-              // sizes: product['sizes'],
-            ),
+            //   // colors: product['colors'],
+            //   // sizes: product['sizes'],
+            // ),
             PDBoughtTogether(
               // details: product['description'],
               // price: product['price'],

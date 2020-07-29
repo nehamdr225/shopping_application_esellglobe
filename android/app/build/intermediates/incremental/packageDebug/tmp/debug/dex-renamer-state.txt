@@ -1,0 +1,4 @@
+#Fri May 15 13:34:25 NPT 2020
+base.0=/home/nae_mdr/workshop/esellglobe/android/app/build/intermediates/transforms/dexMerger/debug/0
+path.0=classes.dex
+renamed.0=classes.dex

@@ -72,6 +72,7 @@ class _GenderSpecHorizontalListState extends State<GenderSpecHorizontalList> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      // height: 100.0,
       color: Colors.white,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
@@ -80,6 +81,7 @@ class _GenderSpecHorizontalListState extends State<GenderSpecHorizontalList> {
           return Padding(
             padding: const EdgeInsets.only(right: 8.0),
             child: Container(
+              height: 150.0,
               decoration: BoxDecoration(
                   border: widget.border == true
                       ? Border.all(color: Colors.grey[200])

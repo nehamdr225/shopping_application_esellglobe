@@ -34,11 +34,11 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
           },
           child: Container(
             height: 37.0,
-            width: 34.0,
+            width: 65.0,
             alignment: Alignment.center,
             decoration: BoxDecoration(
                 color:
-                    widget.size == sizeList[i] ? primary : Colors.transparent,
+                    widget.size == sizeList[i] ? primaryDark : Colors.transparent, 
                 shape: BoxShape.rectangle,
                 border: Border.all(color: Colors.grey[200])),
             child: Text(
@@ -46,7 +46,8 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
               style: TextStyle(
                   fontFamily: "Helvetica",
                   fontSize: 15.0,
-                  color: Colors.black87),
+                  fontWeight: FontWeight.w400,
+                  color:  widget.size == sizeList[i] ? Colors.white: Colors.black87),
               textAlign: TextAlign.center,
             ),
           ),
@@ -87,60 +88,20 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
     final widgets = buildSizeWidgets();
 
     return Container(
-        padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 2.0),
-        width: screenWidth * 0.95,
+      alignment: Alignment.centerLeft,
+        width: screenWidth,
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(bottomLeft: Radius.circular(0.0))),
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.all(2.0),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(left: 14.0, top: 10.0),
-                  child: Text(
-                    "Sizes",
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyText2
-                        .copyWith(fontWeight: FontWeight.w600, fontSize: 15.0),
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-                InkWell(
-                  child: Container(
-                    padding: EdgeInsets.only(right: 7.0),
-                    child: Row(
-                      children: <Widget>[
-                        Icon(
-                          Icons.linear_scale,
-                          color: primaryDark,
-                        ),
-                        Text(
-                          'Size Chart',
-                          style: Theme.of(context).textTheme.bodyText2,
-                        )
-                      ],
-                    ),
-                  ),
-                )
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 18.0),
-              child: Wrap(
-                direction: Axis.horizontal,
-                children: widgets,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 2.0),
+          child: Wrap(
+            direction: Axis.horizontal,
+            children: widgets,
 
-                // mainAxisAlignment: MainAxisAlignment.center,
-                // children: widgets
-              ),
-            )
-          ],
+            // mainAxisAlignment: MainAxisAlignment.center,
+            // children: widgets
+          ),
         ));
   }
 }

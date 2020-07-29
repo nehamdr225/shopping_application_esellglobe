@@ -86,7 +86,7 @@ class _GenderSpecificState extends State<GenderSpecific>
                       })
                 ],
                 bottom: PreferredSize(
-                  preferredSize: Size.fromHeight(height * 0.13),
+                  preferredSize: Size.fromHeight(98.0),
                   child: Padding(
                     padding: const EdgeInsets.only(bottom: 10.0, top: 8.0),
                     child: Container(

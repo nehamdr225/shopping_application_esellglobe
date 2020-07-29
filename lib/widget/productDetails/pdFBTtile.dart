@@ -31,17 +31,14 @@ class FBTtile extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                Image.asset(
-                  "images/icons/rupee.png",
-                  height: 14.0,
-                ),
+                
                 Padding(
-                  padding: EdgeInsets.only(right: 6.0, left: 6.0),
+                  padding: EdgeInsets.only(right: 6.0, left: 11.0),
                   child: Text(
-                    "$price",
+                    "₹ $price",
                     style: Theme.of(context).textTheme.bodyText2.copyWith(
-                          fontWeight: FontWeight.w900,
-                          fontSize: 18.0,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 17.0,
                         ),
                   ),
                 ),
