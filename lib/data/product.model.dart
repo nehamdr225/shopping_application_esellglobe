@@ -1,29 +1,131 @@
-import 'package:flutter/foundation.dart';
+import 'package:esell/data/discount.model.dart';
 
-abstract class ProductModel {
-  final String id, name, brand, article, category, price, gender;
-  final String sizes, colors, stock;
-  final Map<String, String> media;
-  final Map description;
-  final String timestamp;
-  final String sellerId;
-  final String paymentMethod;
+abstract class ProductModel<T> {
+  String id, name, brand, article, category, price, gender, deliveryTime;
+  String sizes, colors, stock;
+  Map<String, String> media;
+  T description;
+  String timestamp;
+  String sellerId;
+  String paymentMethod;
+  DiscountModel discount;
+}
 
-  ProductModel({
-    @required this.id,
-    @required this.name,
-    @required this.article,
-    @required this.category,
-    @required this.brand,
-    @required this.price,
-    @required this.timestamp,
-    @required this.sellerId,
-    @required this.paymentMethod,
-    @required this.description,
-    @required this.media,
-    @required this.stock,
-    this.gender,
-    this.colors,
-    this.sizes,
-  });
+abstract class TopWearDescriptionModel {
+  String warranty,
+      careInstructions,
+      details,
+      disclaimer,
+      perfectFor,
+      style,
+      fabric,
+      pattern,
+      neck,
+      sleeve,
+      hooded,
+      reversible,
+      occasion;
+}
+
+abstract class BottomWearDescriptionModel {
+  String warranty,
+      careInstructions,
+      details,
+      disclaimer,
+      perfectFor,
+      style,
+      fabric,
+      faded,
+      rise,
+      distressed,
+      fit,
+      reversible,
+      occasion,
+      pocketType,
+      closure,
+      stretchable,
+      fly;
+}
+
+abstract class FootWearDescriptionModel {
+  String warranty,
+      careInstructions,
+      details,
+      disclaimer,
+      perfectFor,
+      style,
+      innerMaterial,
+      soleMaterial,
+      closure,
+      occasion,
+      pattern,
+      tipShape;
+}
+
+abstract class BagsDescriptionModel {
+  String warranty,
+      careInstructions,
+      details,
+      disclaimer,
+      perfectFor,
+      style,
+      material,
+      noOfCompartments,
+      noOfPockets,
+      width,
+      height,
+      closure,
+      size;
+}
+
+abstract class WatchesDescriptionModel {
+  String warranty,
+      careInstructions,
+      details,
+      disclaimer,
+      perfectFor,
+      style,
+      occasion,
+      display,
+      watchType,
+      dialColor,
+      strapColor,
+      strapMaterial,
+      strapType,
+      strapDesign,
+      caseMaterial,
+      waterResistant,
+      shockResistant,
+      mechanism,
+      diameter,
+      noveltyFeatures,
+      powerSource,
+      claspType;
+  bool dualTime, worldTime, light, gps, tourbillion, moonPhase;
+}
+
+abstract class GlassDescriptionModel {
+  String warranty,
+      careInstructions,
+      details,
+      disclaimer,
+      perfectFor,
+      style,
+      occasion,
+      purpose,
+      lensColor,
+      lensMaterial,
+      features,
+      type,
+      frame,
+      frameMaterial,
+      frameColor,
+      faceType,
+      uvProtection,
+      caseType;
+  GlassSizeModel size;
+}
+
+abstract class GlassSizeModel {
+  String bridge, horizontalWidth, verticalHeight, frameArmLength;
 }
