@@ -1,4 +1,4 @@
-import 'package:esell/data/discount.model.dart';
+import 'package:esell/models/discount.model.dart';
 
 class Discount implements DiscountModel {
   String percent, discountedPrice;

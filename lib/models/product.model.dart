@@ -1,4 +1,4 @@
-import 'package:esell/data/discount.model.dart';
+import 'package:esell/models/discount.model.dart';
 
 abstract class ProductModel<T> {
   String id, name, brand, article, category, price, gender, deliveryTime;

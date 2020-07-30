@@ -1,5 +1,5 @@
-import 'package:esell/data/discount.model.dart';
-import 'package:esell/data/product.model.dart';
+import 'package:esell/models/discount.model.dart';
+import 'package:esell/models/product.model.dart';
 import 'package:esell/entities/discount.dart';
 
 class Product<T> implements ProductModel<T> {
