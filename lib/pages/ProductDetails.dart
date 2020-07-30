@@ -1,19 +1,14 @@
-// import 'package:esell/widget/atoms/StarRating.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:esell/widget/productDetails/BoughtTogether.dart';
 import 'package:esell/widget/productDetails/Carousel.dart';
 import 'package:esell/widget/productDetails/Comments.dart';
-import 'package:esell/widget/productDetails/Offer.dart';
 import 'package:esell/widget/productDetails/PDratingNreview.dart';
 import 'package:esell/widget/productDetails/SoldBy.dart';
-// import 'package:esell/widget/productDetails/TabView.dart';
 import 'package:esell/widget/productDetails/delivery.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:esell/widget/productDetails/details.dart';
 import 'package:esell/state/state.dart';
-
-import '../widget/productDetails/allDetails.dart';
 
 class ProductDetails extends StatefulWidget {
   final String id;
@@ -27,8 +22,6 @@ class ProductDetails extends StatefulWidget {
 class _ProductDetailsState extends State<ProductDetails> {
   String color, size;
   int quantity = 1;
-
- 
 
   @override
   Widget build(BuildContext context) {
@@ -111,12 +104,12 @@ class _ProductDetailsState extends State<ProductDetails> {
                 id: widget.id,
                 width: screenWidth,
               ),
-            ), 
+            ),
             PDInfo(
               name: product['name'],
               price: product['price'].toString(),
               description: product['description']['style'],
-               id: widget.id,
+              id: widget.id,
             ),
             //PDoffer(),
             // !product['category'].contains('Sunglasses') &&
@@ -133,7 +126,7 @@ class _ProductDetailsState extends State<ProductDetails> {
             //PDplusmember(),
             PDdelivery(),
             PDsoldby(),
-            // PDAllDetails(    
+            // PDAllDetails(
             //   details:
             //       product['description'] != null ? product['description'] : '',
             //   price: product['price'],

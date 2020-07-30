@@ -5,7 +5,7 @@ import 'package:esell/entities/discount.dart';
 class Product<T> implements ProductModel<T> {
   String id, name, brand, article, category, price, gender, deliveryTime;
   String sizes, colors, stock;
-  Map<String, String> media;
+  ProductMediaModel media;
   T description;
   String timestamp;
   String sellerId;
@@ -22,7 +22,7 @@ class Product<T> implements ProductModel<T> {
     this.price = json['price'];
     this.colors = json['colors'];
     this.sizes = json['sizes'];
-    this.media = json['media'];
+    this.media = ProductMedia.fromJson(json['media']);
     this.gender = json['gender'];
     this.description = json['description'];
     this.paymentMethod = json['paymentMethod'];
@@ -31,6 +31,18 @@ class Product<T> implements ProductModel<T> {
     this.deliveryTime = json['deliveryTime'];
     this.discount = Discount.fromJson(json['discount']);
   }
+}
+
+class ProductMedia implements ProductMediaModel {
+  String front, back, left, right, top, bottom;
+
+  ProductMedia.fromJson(json)
+      : this.front = json['front'],
+        this.back = json['back'],
+        this.left = json['left'],
+        this.right = json['right'],
+        this.top = json['top'],
+        this.bottom = json['bottom'];
 }
 
 class TopWearDescription implements TopWearDescriptionModel {

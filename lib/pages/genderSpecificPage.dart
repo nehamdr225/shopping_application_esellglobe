@@ -34,7 +34,6 @@ class _GenderSpecificState extends State<GenderSpecific>
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
     return Scaffold(
         backgroundColor: Colors.white,
         body: NestedScrollView(
@@ -113,7 +112,8 @@ class _GenderSpecificState extends State<GenderSpecific>
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) => CategoryPage(
-                                text: MEN[index]['name'],),
+                              text: MEN[index]['name'],
+                            ),
                           ),
                         );
                       },
@@ -124,7 +124,9 @@ class _GenderSpecificState extends State<GenderSpecific>
                       child: GenderGrids(
                         gender: widget.gender,
                         crossAxisCount: 3,
-                        cat: widget.gender == 'Male'? MEN[index]['name'] : WOMEN[index]['name'],
+                        cat: widget.gender == 'Male'
+                            ? MEN[index]['name']
+                            : WOMEN[index]['name'],
                       ),
                     ),
                   ],
