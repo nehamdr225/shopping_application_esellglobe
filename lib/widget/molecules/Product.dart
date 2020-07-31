@@ -1,4 +1,3 @@
-import 'package:esell/entities/product.dart';
 import 'package:esell/widget/atoms/Details.dart';
 import 'package:esell/widget/atoms/ImageHolder.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +8,7 @@ import 'package:esell/state/state.dart';
 
 class Product extends StatelessWidget {
   final imgheight;
-  final category;
+  final category; 
   final id;
   final wishlist;
   final showDetails;

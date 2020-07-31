@@ -166,7 +166,7 @@ class _HomePageAppState extends State<HomePageApp>
               Container(
                 height: 250.0,
                 child: GridList(
-                  type: 'men',
+                  type: 'men', 
                   listViews: MEN,
                   crossAxisCount: 3,
                 ),

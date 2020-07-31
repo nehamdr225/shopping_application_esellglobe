@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 
 class ProductsPage extends StatelessWidget {
-  final category;
+  final category; 
   ProductsPage({this.category});
   @override
   Widget build(BuildContext context) {

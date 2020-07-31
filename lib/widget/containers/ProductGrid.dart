@@ -17,7 +17,7 @@ class ProductGrid extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(4.0),
       child: products.length > 0
-          ? GridView.builder(
+          ? GridView.builder( 
               itemCount: products.length + 1,
               scrollDirection: Axis.vertical,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -31,7 +31,7 @@ class ProductGrid extends StatelessWidget {
                         category: category,
                         wishlist: true,
                       )
-                    : BottomLoader();
+                    : BottomLoader(); 
               },
             )
           : Column(

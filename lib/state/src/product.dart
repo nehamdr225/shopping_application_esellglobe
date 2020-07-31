@@ -30,14 +30,14 @@ class ProductModel extends ChangeNotifier {
     'Watches': [],
   };
 
-  Map<String, List<Product>> _womenProducts = {
-    'Top Wear': [],
-    'Bottom Wear': [],
-    'Foot Wear': [],
-    'Bags & Backpacks': [],
-    'Sunglasses': [],
-    'Watches': [],
-  };
+  // Map<String, List<Product>> _womenProducts = {
+  //   'Top Wear': [],
+  //   'Bottom Wear': [],
+  //   'Foot Wear': [],
+  //   'Bags & Backpacks': [],
+  //   'Sunglasses': [],
+  //   'Watches': [],
+  // };
 
   int _maxCount;
   int _page = 1;

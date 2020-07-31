@@ -88,7 +88,7 @@ class _GenderSpecificState extends State<GenderSpecific>
                   preferredSize: Size.fromHeight(98.0),
                   child: Padding(
                     padding: const EdgeInsets.only(bottom: 10.0, top: 8.0),
-                    child: Container(
+                    child: Container( 
                         alignment: Alignment.center,
                         height: 80.0,
                         child: GenderSpecHorizontalList(
