@@ -88,14 +88,11 @@ class WishlistPage extends StatelessWidget {
                               orientation == Orientation.portrait ? 2 : 3,
                         ),
                         itemBuilder: (BuildContext context, int index) {
-                          var product = products.one(items[index]);
+                          var product = products.one(items[index], '');
                           return Product(
-                              id: product['_id'],
-                              name: product['name'],
-                              image: product['media'],
+                              id: product.id,
                               imgheight: 98.0,
-                              price: product['price'],
-                              details: product['description'],
+                              category: product.category,
                               wishlist: false);
                         },
                       );

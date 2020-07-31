@@ -20,17 +20,13 @@ Future main() async {
 class BootStrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Fetch _fetch = Fetch();
-    CoreSecureStorage _storage = CoreSecureStorage();
-    ProductApi _productApi = ProductApi(_fetch);
-    UserApi _userApi = UserApi(_fetch, _storage);
-    Validator _validator = Validator();
-
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => new ProductModel(_productApi)),
         ChangeNotifierProvider(
-            create: (_) => new UserModel(_userApi, _storage, _validator)),
+            create: (_) => new ProductModel(ProductApi(Fetch()))),
+        ChangeNotifierProvider(
+            create: (_) => new UserModel(UserApi(Fetch(), CoreSecureStorage()),
+                CoreSecureStorage(), Validator())),
         ChangeNotifierProvider(create: (_) => new FTheme())
       ],
       child: EsellApp(),

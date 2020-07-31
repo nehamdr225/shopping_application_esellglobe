@@ -1,10 +1,11 @@
+import 'package:esell/entities/product.dart';
 import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/Text.dart';
 import 'package:esell/widget/productDetails/pdFBTtile.dart';
 import 'package:flutter/material.dart';
 
 class PDBoughtTogether extends StatelessWidget {
-  final relevantProds;
+  final List<Product> relevantProds;
   PDBoughtTogether({this.relevantProds});
   @override
   Widget build(BuildContext context) {
@@ -27,23 +28,15 @@ class PDBoughtTogether extends StatelessWidget {
               fontWeight: FontWeight.w600,
             )),
             Column(
-              children: <Widget>[
-                FBTtile(
-                  name: relevantProds[0]['name'],
-                  image: relevantProds[0]['media']['front'],
-                  price: relevantProds[0]['price'],
-                ),
-                FBTtile(
-                  name: relevantProds[1]['name'],
-                  image: relevantProds[1]['media']['front'],
-                  price: relevantProds[1]['price'],
-                ),
-                FBTtile(
-                  name: relevantProds[2]['name'],
-                  image: relevantProds[2]['media']['front'],
-                  price: relevantProds[2]['price'],
-                ),
-              ],
+              children: relevantProds
+                  .map<Widget>(
+                    (e) => FBTtile(
+                      name: e.name,
+                      image: e.media.front,
+                      price: e.price,
+                    ),
+                  )
+                  .toList(),
             ),
             SizedBox(
               width: 10.0,

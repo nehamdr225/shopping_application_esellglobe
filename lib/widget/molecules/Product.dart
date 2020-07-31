@@ -1,3 +1,4 @@
+import 'package:esell/entities/product.dart';
 import 'package:esell/widget/atoms/Details.dart';
 import 'package:esell/widget/atoms/ImageHolder.dart';
 import 'package:flutter/material.dart';
@@ -7,46 +8,30 @@ import 'package:provider/provider.dart';
 import 'package:esell/state/state.dart';
 
 class Product extends StatelessWidget {
-  final name;
-  final image;
-  final double imgheight;
-  final price;
-  final details;
-  final bool showDetails;
+  final imgheight;
+  final category;
   final id;
   final wishlist;
+  final showDetails;
 
   Product(
-      {this.name,
-      this.price,
-      this.image,
-      this.imgheight,
-      this.details,
+      {this.category,
       this.wishlist,
       this.showDetails: true,
-      this.id});
+      this.id,
+      this.imgheight});
 
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserModel>(context);
-    var preview = '';
-    if (image != null) {
-      if (image['front'] == null) {
-        if (image['left'] != null) {
-          preview = image['left'];
-        } else if (image['right'] != null) {
-          preview = image['right'];
-        } else if (image['back'] != null) {
-          preview = image['back'];
-        } else if (image['top'] != null) {
-          preview = image['top'];
-        } else if (image['bottom'] != null) {
-          preview = image['bottom'];
-        }
-      } else {
-        preview = image['front'];
-      }
-    }
+    final product = Provider.of<ProductModel>(context).one(id, category);
+    String preview = product.media.front ??
+        product.media.back ??
+        product.media.bottom ??
+        product.media.top ??
+        product.media.left ??
+        product.media.right;
+
     return Card(
       borderOnForeground: true,
       shape: RoundedRectangleBorder(
@@ -57,7 +42,8 @@ class Product extends StatelessWidget {
         child: InkWell(
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => ProductDetails(id: id)));
+                builder: (context) =>
+                    ProductDetails(id: id, category: category)));
           },
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -94,14 +80,14 @@ class Product extends StatelessWidget {
               ),
               Divider(height: 2),
               Details(
-                name: name,
-                price: '$price',
-                id: id,
-                wishlist: wishlist,
-                details: details, 
-                showDetails : showDetails
-                //paddingTop: paddingTop,
-              ),
+                  name: product.name,
+                  price: product.price,
+                  id: id,
+                  wishlist: wishlist,
+                  details: product.description['style'],
+                  showDetails: showDetails
+                  //paddingTop: paddingTop,
+                  ),
             ],
           ),
         ),

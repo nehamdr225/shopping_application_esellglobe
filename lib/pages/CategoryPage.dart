@@ -8,7 +8,7 @@ import 'package:esell/widget/molecules/Product.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class CategoryPage extends StatefulWidget { 
+class CategoryPage extends StatefulWidget {
   final String text;
   final String type;
   CategoryPage({this.text, this.type});
@@ -18,7 +18,6 @@ class CategoryPage extends StatefulWidget {
 }
 
 class _CategoryPageState extends State<CategoryPage> {
-  
   // var _stockList = [];
   // ProductModel refProd = new ProductModel();
   @override
@@ -26,21 +25,14 @@ class _CategoryPageState extends State<CategoryPage> {
     final cat = widget.text;
 
     getCategoryItems(reqCategory) {
-      String filter;
-      if (reqCategory != 'Sunglasses' &&
-          reqCategory != 'Watches' &&
-          reqCategory != 'Bags & Backpacks')
-        filter = [cat, reqCategory].join(';');
-      else
-        filter = cat;
-      print(filter);
-      return Provider.of<ProductModel>(context).category(filter); 
+      print(reqCategory);
+      return Provider.of<ProductModel>(context).category(cat, reqCategory);
     }
 
     createWidgets() {
       List<Widget> widgets = [];
       SubMain[cat].forEach((each) {
-        final categoryProduct = getCategoryItems(each['name']); 
+        final categoryProduct = getCategoryItems(each['name']);
         onpressed() {
           Navigator.push(
               context,
@@ -70,17 +62,14 @@ class _CategoryPageState extends State<CategoryPage> {
                       scrollDirection: Axis.horizontal,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 1,
-                        childAspectRatio: 1.1, 
+                        childAspectRatio: 1.1,
                       ),
                       itemBuilder: (BuildContext context, int index) {
                         return index != categoryProduct.length
                             ? Product(
-                                name: categoryProduct[index]['name'],
-                                image: categoryProduct[index]['media'],
                                 imgheight: 210.0,
-                                price: categoryProduct[index]['price'],
-                                details: categoryProduct[index]['description']['style'],
-                                id: categoryProduct[index]['_id'],
+                                category: cat,
+                                id: categoryProduct[index].id,
                                 wishlist: true,
                               )
                             : BottomLoader();

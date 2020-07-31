@@ -23,16 +23,17 @@ class GenderGrids extends StatelessWidget {
           reqCategory != 'Watches' &&
           reqCategory != 'Bags & Backpacks') {
         if (cat == 'Top Wear') {
-           filter = [ cat, 'Casual Shirts'].join(';');
+          filter = [cat, 'Casual Shirts'].join(';');
         } else if (cat == 'Bottom Wear') {
-           filter = [ cat, 'Jeans Pants'].join(';');
-        } else if(cat == 'Foot Wear'){
-           filter = [ cat, 'Casual Shoes'].join(';');
+          filter = [cat, 'Jeans Pants'].join(';');
+        } else if (cat == 'Foot Wear') {
+          filter = [cat, 'Casual Shoes'].join(';');
         }
       } else
-          filter = cat;
+        filter = cat;
       print(filter);
-      return Provider.of<ProductModel>(context).category(filter);
+      return Provider.of<ProductModel>(context)
+          .category(cat, filter.split(';').last);
     }
 
     createWidgets() {
@@ -55,13 +56,8 @@ class GenderGrids extends StatelessWidget {
                     itemBuilder: (BuildContext context, int index) {
                       return index != categoryProduct.length
                           ? Product(
-                              name: categoryProduct[index]['name'],
-                              image: categoryProduct[index]['media'],
-                              imgheight: 80.0,
-                              price: categoryProduct[index]['price'],
-                              details: categoryProduct[index]['description']
-                                  ['style'],
-                              id: categoryProduct[index]['_id'],
+                              category: cat,
+                              id: categoryProduct[index].id,
                               wishlist: true,
                               showDetails: false,
                             )

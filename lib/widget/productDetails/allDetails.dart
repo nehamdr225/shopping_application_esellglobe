@@ -113,15 +113,22 @@ class PDAllDetails extends StatelessWidget {
   final id;
   final price;
   final image;
-  PDAllDetails({this.details, this.name, this.price, this.image, this.id});
+  final category;
+  PDAllDetails(
+      {this.details,
+      this.name,
+      this.price,
+      this.image,
+      this.id,
+      this.category});
   @override
   Widget build(BuildContext context) {
-    print(image);
-    final imagesrc = "https://api.shop2more.com" + image != null ? image : ''; //"images/esellIcons/men.png";
+    final imagesrc = "https://api.shop2more.com" + (image ?? '');
     final body1 =
         Theme.of(context).textTheme.bodyText2.copyWith(fontSize: 16.0);
-    final product = Provider.of<ProductModel>(context).one(id);
-    final property = properties(product['category']);
+    final product =
+        Provider.of<ProductModel>(context).one(id, category.split(';').last);
+    final property = properties(product.category);
     final size = MediaQuery.of(context).size;
 
     Row oneProperty(String x) {
@@ -180,7 +187,6 @@ class PDAllDetails extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      
                       Padding(
                         padding: EdgeInsets.only(right: 6.0, left: 0.0),
                         child: Text(

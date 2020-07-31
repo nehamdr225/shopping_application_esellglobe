@@ -1,6 +1,5 @@
 import 'package:esell/pages/SearchPage.dart';
 import 'package:esell/state/state.dart';
-//import 'package:esell/widget/atoms/BrandLogos.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
 import 'package:esell/widget/atoms/Forms.dart';
 import 'package:esell/widget/atoms/loginOptions.dart';
@@ -9,7 +8,6 @@ import 'package:esell/widget/molecules/HorizontalList.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/widget/molecules/Carousel.dart';
-//import 'package:esell/widget/molecules/colors.dart';
 import 'package:esell/widget/molecules/Icons.dart';
 import 'package:esell/pages/Cart.dart';
 import 'package:esell/pages/Wishlist.dart';
@@ -132,9 +130,9 @@ class _HomePageAppState extends State<HomePageApp>
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Container(
-                  alignment: Alignment.center,
+                    alignment: Alignment.center,
                     height: 80.0,
-                    child: HorizontalList( 
+                    child: HorizontalList(
                       listViews: HList,
                     )),
               ),

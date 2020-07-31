@@ -1,7 +1,7 @@
 import 'dart:core';
-import 'dart:math';
 
 import 'package:esell/entities/product.api.dart';
+import 'package:esell/entities/product.dart';
 // import 'package:esell/entities/product.dart';
 // import 'package:esell/data/product.model.dart';
 import 'package:flutter/cupertino.dart';
@@ -12,27 +12,57 @@ class ProductModel extends ChangeNotifier {
     _api.getProducts(page: page).then((data) {
       print(data);
       if (data['error'] == null) {
-        products = data['products'].toList();
-        //.map<ProductModel>((each) => Product.fromJson(each))
-        //.toList();
-        maxCount = data['count'];
+        final products = data['products']
+            .map<Product>((each) => Product.fromJson(each))
+            .toList();
+        setProducts(products);
+        maxCount = products['count'];
       } else
         print(data['error']);
     });
   }
-  List _products = [];
+  Map<String, List<Product>> _menProducts = {
+    'Top Wear': [],
+    'Bottom Wear': [],
+    'Foot Wear': [],
+    'Bags & Backpacks': [],
+    'Sunglasses': [],
+    'Watches': [],
+  };
+
+  Map<String, List<Product>> _womenProducts = {
+    'Top Wear': [],
+    'Bottom Wear': [],
+    'Foot Wear': [],
+    'Bags & Backpacks': [],
+    'Sunglasses': [],
+    'Watches': [],
+  };
+
   int _maxCount;
   int _page = 1;
   bool _isRefreshing = false;
 
-  get isRefreshing => _isRefreshing;
-  set isRefreshing(value) {
-    _isRefreshing = value;
-    notifyListeners();
-  }
+  Map<String, bool> menCategories = {
+    'Top Wear': false,
+    'Bottom Wear': false,
+    'Foot Wear': false,
+    'Bags & Backpacks': false,
+    'Sunglasses': false,
+    'Watches': false,
+  };
 
-  List get products => _products;
-  get count => _products.length;
+  Map<String, bool> womenCategories = {
+    'Top Wear': false,
+    'Bottom Wear': false,
+    'Foot Wear': false,
+    'Bags & Backpacks': false,
+    'Sunglasses': false,
+    'Watches': false,
+  };
+
+  List<Product> products(String category) => _menProducts[category];
+
   get maxCount => _maxCount;
   set maxCount(value) {
     _maxCount = value;
@@ -45,69 +75,88 @@ class ProductModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  one(id) {
-    for (var item in _products) {
-      if (item['_id'] == id) return item;
+  Product one(String id, String category) {
+    return _menProducts[category]
+        .firstWhere((element) => element.id == id, orElse: () => null);
+  }
+
+  List<Product> category(String cat, String sub) {
+    return products(cat)
+        .where((element) => element.category.contains(sub))
+        .toList();
+  }
+
+  product(Product item, String category) {
+    if (!products(category).any((each) => each.id == item.id)) {
+      _menProducts[category].add(item);
+      notifyListeners();
     }
-    return {'error': 'Product not found!'};
   }
 
-  category(String cat) {
-    return products.where((product) {
-      return product["category"].contains(cat);
-      // return product["category"].contains(cat.toLowerCase());
-    }).toList();
-  }
-
-  set product(Map item) {
-    if (products.firstWhere((each) => each['_id'] == item['_id']).length == 0)
-      _products.add(item);
+  setProducts(List<Product> items) {
+    for (final item in items) {
+      if (item.category.contains('Top Wear'))
+        _menProducts['Top Wear'].add(item);
+      if (item.category.contains('Bottom Wear'))
+        _menProducts['Bottom Wear'].add(item);
+      if (item.category.contains('Foot Wear'))
+        _menProducts['Foot Wear'].add(item);
+      if (item.category.contains('Bags & Backpacks'))
+        _menProducts['Bags & Backpacks'].add(item);
+      if (item.category.contains('Sunglasses'))
+        _menProducts['Sunglasses'].add(item);
+      if (item.category.contains('Watches')) _menProducts['Watches'].add(item);
+    }
     notifyListeners();
   }
 
-  set products(List items) {
-    if (_products.length > 0) {
-      items.forEach((el) {
-        final check = _products.any((product) => product['_id'] == el['_id']);
-        if (!check) _products.add(el);
-      });
-    } else {
-      _products = items;
+  getProductsByCategory(String category) async {
+    Map<String, List> res =
+        await _api.getProductsByCategory(category: category);
+    if (res['products'] != null) {
+      setProducts(res['products'].map((e) => Product.fromJson(e)).toList());
     }
-    notifyListeners();
   }
 
-  refresh() async {
+  Future<RefreshStatus> refresh() async {
     try {
-      if (maxCount != null && page * 15 < maxCount) {
-        final res = await _api.getProducts(page: page + 1);
-        if (res['products'].length > 0) {
-          page = page + 1;
-          products = res['products'];
-          return "success";
-        }
-        return "done";
+      if (maxCount != null && page * 15 >= maxCount)
+        return RefreshStatus.noMoreProductsToShow;
+      if (_isRefreshing) return RefreshStatus.loading;
+
+      print('here');
+      print(page);
+      _isRefreshing = true;
+      Map<String, dynamic> res = await _api.getProducts(page: page + 1);
+      if (res['products'].length > 0) {
+        print(res);
+        page = page + 1;
+        final List<Product> prods =
+            res['products'].map<Product>((e) => Product.fromJson(e)).toList();
+        setProducts(prods);
+        _isRefreshing = false;
+        return RefreshStatus.loaded;
       }
-      return "done";
+      _isRefreshing = false;
+      return RefreshStatus.done;
     } catch (e) {
       print(e);
-      isRefreshing = false;
-      return "done";
+      _isRefreshing = false;
+      return RefreshStatus.done;
     }
   }
-  relevant(String prodCategory){
-    List frequentlyBroughtTogether = [];
-    Random r = new Random();
-    int increment = r.nextInt(7 - 3);
-    for (int i = 0; i<prodCategory.length; i= i + increment){
-      if(frequentlyBroughtTogether.length < 3){
-        if (!_products[i]['category'].contains(prodCategory)) {
-          frequentlyBroughtTogether.add(_products[i]);
-        } 
-      }else{
-        return frequentlyBroughtTogether;
-      }
-    }
+
+  relevant(String prodCategory) {
+    List<Product> frequentlyBroughtTogether = [];
+    frequentlyBroughtTogether.add(_menProducts[prodCategory].first);
+    frequentlyBroughtTogether.add(_menProducts[prodCategory].last);
     return frequentlyBroughtTogether;
   }
+}
+
+enum RefreshStatus {
+  noMoreProductsToShow,
+  loading,
+  loaded,
+  done,
 }

@@ -5,14 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:esell/state/state.dart';
 import 'package:provider/provider.dart';
 
-class ProductGrid extends StatelessWidget { 
+class ProductGrid extends StatelessWidget {
   final Orientation orientation;
   final String category;
   ProductGrid({this.orientation, this.category});
   @override
   Widget build(BuildContext context) {
-    print('Grid $category'); 
-    final products = Provider.of<ProductModel>(context).category(category);
+    print('Grid $category');
+    final products = Provider.of<ProductModel>(context)
+        .category(category.split(';').first, category.split(';').last);
     return Padding(
       padding: EdgeInsets.all(4.0),
       child: products.length > 0
@@ -26,12 +27,8 @@ class ProductGrid extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 return index != products.length
                     ? Product(
-                        name: products[index]['name'],
-                        image: products[index]['media'],
-                        imgheight: 235.0,
-                        price: products[index]['price'],
-                        details: products[index]['description']['style'],
-                        id: products[index]['_id'],
+                        id: products[index].id,
+                        category: category,
                         wishlist: true,
                       )
                     : BottomLoader();

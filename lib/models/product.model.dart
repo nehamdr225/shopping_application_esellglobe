@@ -1,10 +1,10 @@
 import 'package:esell/models/discount.model.dart';
 
-abstract class ProductModel<T> {
+abstract class ProductModel {
   String id, name, brand, article, category, price, gender, deliveryTime;
   String sizes, colors, stock;
   ProductMediaModel media;
-  T description;
+  Map description;
   String timestamp;
   String sellerId;
   String paymentMethod;
@@ -13,6 +13,7 @@ abstract class ProductModel<T> {
 
 abstract class ProductMediaModel {
   String front, back, left, right, top, bottom;
+  int get length;
 }
 
 abstract class TopWearDescriptionModel {

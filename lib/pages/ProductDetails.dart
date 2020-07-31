@@ -11,10 +11,8 @@ import 'package:esell/widget/productDetails/details.dart';
 import 'package:esell/state/state.dart';
 
 class ProductDetails extends StatefulWidget {
-  final String id;
-  ProductDetails({
-    this.id,
-  });
+  final String id, category;
+  ProductDetails({this.id, this.category});
   @override
   _ProductDetailsState createState() => _ProductDetailsState();
 }
@@ -27,38 +25,32 @@ class _ProductDetailsState extends State<ProductDetails> {
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
-    final product = Provider.of<ProductModel>(context).one(widget.id);
+    final product =
+        Provider.of<ProductModel>(context).one(widget.id, widget.category);
     final relatedProds =
-        Provider.of<ProductModel>(context).relevant(product['category']);
+        Provider.of<ProductModel>(context).relevant(widget.category);
     final imagesrc = "https://api.shop2more.com";
 
     List<Image> images = [];
-    int imgNo = product['media'].length;
-    if (product['media'] != null) {
-      if (product['media']['front'] != null &&
-          product['media']['front'].length > 0) {
-        images.add(Image.network(imagesrc + product['media']['front']));
-      }
-      if (product['media']['back'] != null &&
-          product['media']['back'].length > 0) {
-        images.add(Image.network(imagesrc + product['media']['back']));
-      }
-      if (product['media']['left'] != null &&
-          product['media']['left'].length > 0) {
-        images.add(Image.network(imagesrc + product['media']['left']));
-      }
-      if (product['media']['right'] != null &&
-          product['media']['right'].length > 0) {
-        images.add(Image.network(imagesrc + product['media']['right']));
-      }
-      if (product['media']['top'] != null &&
-          product['media']['top'].length > 0) {
-        images.add(Image.network(imagesrc + product['media']['top']));
-      }
-      if (product['media']['bottom'] != null &&
-          product['media']['bottom'].length > 0) {
-        images.add(Image.network(imagesrc + product['media']['bottom']));
-      }
+    int imgNo = product.media.length;
+    if (product.media != null) {
+      if (product.media.front != null)
+        images.add(Image.network(imagesrc + product.media.front));
+
+      if (product.media.back != null)
+        images.add(Image.network(imagesrc + product.media.back));
+
+      if (product.media.left != null)
+        images.add(Image.network(imagesrc + product.media.left));
+
+      if (product.media.right != null)
+        images.add(Image.network(imagesrc + product.media.right));
+
+      if (product.media.top != null)
+        images.add(Image.network(imagesrc + product.media.top));
+
+      if (product.media.bottom != null)
+        images.add(Image.network(imagesrc + product.media.bottom));
     } else {
       images.add(Image.network(' '));
     }
@@ -71,8 +63,8 @@ class _ProductDetailsState extends State<ProductDetails> {
     //   'top': '',
     //   'bottom': ''
     // };
-    if (product['error'] != null)
-      return Text('Error occured fetching product info!');
+    if (product == null) return Text('Error occured fetching product info!');
+
     return SafeArea(
       child: Scaffold(
         persistentFooterButtons: <Widget>[
@@ -80,8 +72,8 @@ class _ProductDetailsState extends State<ProductDetails> {
               id: widget.id,
               quantity: quantity,
               size: size,
-              color: product['colors'].split(';').length > 1 ? color : '',
-              category: product['category'])
+              color: color,
+              category: product.category)
         ],
         backgroundColor: Theme.of(context).colorScheme.background,
         appBar: PreferredSize(
@@ -106,10 +98,8 @@ class _ProductDetailsState extends State<ProductDetails> {
               ),
             ),
             PDInfo(
-              name: product['name'],
-              price: product['price'].toString(),
-              description: product['description']['style'],
-              id: widget.id,
+              category: widget.category,
+              id: product.id,
             ),
             //PDoffer(),
             // !product['category'].contains('Sunglasses') &&
@@ -139,7 +129,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               // details: product['description'],
               // price: product['price'],
               // id: widget.id,
-              // image: product['media']['front'],
+              // image: product.media.front,
               // name: product['name'],
               relevantProds: relatedProds,
             ),

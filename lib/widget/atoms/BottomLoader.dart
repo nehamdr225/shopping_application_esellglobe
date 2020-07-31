@@ -12,17 +12,13 @@ class _BottomLoaderState extends State<BottomLoader> {
 
   @override
   Widget build(BuildContext context) {
-    final status = Provider.of<ProductModel>(context).refresh();
-    status.then((data) {
-      if (data != null)
-        setState(() {
-          state = data;
-        });
-    });
-    return Container(
-        alignment: Alignment.center,
-        child: state == "done" && state != null
-            ? Column(
+    return FutureBuilder(
+      future: Provider.of<ProductModel>(context).refresh(),
+      builder: (context, AsyncSnapshot<RefreshStatus> snapshot) {
+        if (snapshot.hasData) {
+          switch (snapshot.data) {
+            case RefreshStatus.noMoreProductsToShow:
+              return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
@@ -32,10 +28,23 @@ class _BottomLoaderState extends State<BottomLoader> {
                     color: primaryDark,
                   )
                 ],
-              )
-            : CircularProgressIndicator(
+              );
+            default:
+              return CircularProgressIndicator(
                 valueColor: AlwaysStoppedAnimation(
-                    Theme.of(context).colorScheme.primaryVariant),
-                strokeWidth: 5.0));
+                  Theme.of(context).colorScheme.primaryVariant,
+                ),
+                strokeWidth: 5.0,
+              );
+          }
+        }
+        return CircularProgressIndicator(
+          valueColor: AlwaysStoppedAnimation(
+            Theme.of(context).colorScheme.primaryVariant,
+          ),
+          strokeWidth: 5.0,
+        );
+      },
+    );
   }
 }
