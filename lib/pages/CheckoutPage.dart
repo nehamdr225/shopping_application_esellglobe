@@ -1,4 +1,3 @@
-import 'package:esell/entities/product.dart';
 import 'package:esell/pages/AddressPage.dart';
 import 'package:esell/widget/AnimatingLine.dart';
 import 'package:esell/widget/atoms/FancyText.dart';

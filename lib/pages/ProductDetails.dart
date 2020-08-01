@@ -2,7 +2,6 @@ import 'package:esell/widget/atoms/InfoNavBar.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:esell/widget/productDetails/BoughtTogether.dart';
 import 'package:esell/widget/productDetails/Carousel.dart';
-import 'package:esell/widget/productDetails/ColorSelector.dart';
 import 'package:esell/widget/productDetails/Comments.dart';
 import 'package:esell/widget/productDetails/PDratingNreview.dart';
 import 'package:esell/widget/productDetails/SoldBy.dart';

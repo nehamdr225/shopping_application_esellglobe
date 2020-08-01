@@ -61,9 +61,12 @@ class _PDInfoState extends State<PDInfo> {
                       fontWeight: FontWeight.w900,
                       fontSize: 19.0,
                       color: Colors.grey[800])),
-              PDColorSelector(color: product.colors, setColor: widget.setColor),
               Padding(
-                padding: const EdgeInsets.only(top: 8.0, bottom: 14.0),
+                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                child: PDColorSelector(color: product.colors, setColor: widget.setColor),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 0.0, bottom: 14.0),
                 child: PDSizeSelector(
                   sizes: product.sizes,
                   setSize: widget.setSize,

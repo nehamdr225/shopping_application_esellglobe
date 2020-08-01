@@ -107,14 +107,22 @@ List<String> properties(String category) {
   }
 }
 
-class PDAllDetails extends StatelessWidget {
+class PDAllDetails extends StatefulWidget {
   final id;
   final category;
   PDAllDetails({this.id, this.category});
+
+  @override
+  _PDAllDetailsState createState() => _PDAllDetailsState();
+}
+
+class _PDAllDetailsState extends State<PDAllDetails>{
+
+
   @override
   Widget build(BuildContext context) {
-    final product =
-        Provider.of<ProductModel>(context).one(id, category.split(';').first);
+    final product = Provider.of<ProductModel>(context)
+        .one(widget.id, widget.category.split(';').first);
     final imagesrc = "https://api.shop2more.com" + (product.media.front ?? '');
     final body1 =
         Theme.of(context).textTheme.bodyText2.copyWith(fontSize: 16.0);
@@ -219,114 +227,116 @@ class PDAllDetails extends StatelessWidget {
           ),
         ),
         TabView(
-          tabs: ["Details", "Specifications", "More"],
+          tabs: [
+            "Details",
+            "Secifications",
+            "More",
+          ],
           tabItems: <Widget>[
             Column(
-              //tab0
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                    child: FText(
-                  text:
-                      product.description['details'].replaceAll('\n', '\n\n') ??
-                          "N/A",
-                  style: body1,
-                )),
-              ],
-            ),
-            Column(
-              //tab1
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                    padding: EdgeInsets.only(top: 8.0),
-                    child: FText(
-                      text: "Product Details",
-                      color: textColor,
-                      size: 16.0,
-                      fontWeight: FontWeight.w600,
-                    )),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  child: Column(
-                    children: property.map<Row>(oneProperty).toList() +
-                        [
-                          product.description['style'] != null &&
-                                  product.description['style'].length > 0
-                              ? Row(
-                                  children: <Widget>[
-                                    Container(
-                                      width: size.width * 0.28,
-                                      child: FText(
-                                        text: "Style",
-                                        color: Colors.grey[500],
-                                        size: 16.0,
-                                      ),
+            //tab0
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                  child: FText(
+                text: product.description['details'].replaceAll('\n', '\n\n') ??
+                    "N/A",
+                style: body1,
+              )),
+            ],
+          ),
+          Column(
+            //tab1
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                  padding: EdgeInsets.only(top: 8.0),
+                  child: FText(
+                    text: "Product Details",
+                    color: textColor,
+                    size: 16.0,
+                    fontWeight: FontWeight.w600,
+                  )),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  children: property.map<Row>(oneProperty).toList() +
+                      [
+                        product.description['style'] != null &&
+                                product.description['style'].length > 0
+                            ? Row(
+                                children: <Widget>[
+                                  Container(
+                                    width: size.width * 0.28,
+                                    child: FText(
+                                      text: "Style",
+                                      color: Colors.grey[500],
+                                      size: 16.0,
                                     ),
-                                    Container(
+                                  ),
+                                  Container(
+                                    width: size.width * 0.72,
+                                    child: FText(
+                                      align: TextAlign.justify,
+                                      text:
+                                          product.description['style'] ?? "N/A",
+                                      style: body1,
+                                    ),
+                                  ),
+                                ],
+                              )
+                            : Row(
+                                children: <Widget>[Container(), Container()],
+                              ),
+                        product.description['warranty'] != null &&
+                                product.description['closure'].length > 0
+                            ? Row(
+                                children: <Widget>[
+                                  Container(
+                                    width: size.width * 0.28,
+                                    child: FText(
+                                      text: "Warranty",
+                                      color: Colors.grey[500],
+                                      size: 16.0,
+                                    ),
+                                  ),
+                                  Container(
                                       width: size.width * 0.72,
                                       child: FText(
                                         align: TextAlign.justify,
-                                        text: product.description['style'] ??
+                                        text: product.description['warranty'] ??
                                             "N/A",
                                         style: body1,
-                                      ),
-                                    ),
-                                  ],
-                                )
-                              : Row(
-                                  children: <Widget>[Container(), Container()],
-                                ),
-                          product.description['warranty'] != null &&
-                                  product.description['closure'].length > 0
-                              ? Row(
-                                  children: <Widget>[
-                                    Container(
-                                      width: size.width * 0.28,
-                                      child: FText(
-                                        text: "Warranty",
-                                        color: Colors.grey[500],
-                                        size: 16.0,
-                                      ),
-                                    ),
-                                    Container(
-                                        width: size.width * 0.72,
-                                        child: FText(
-                                          align: TextAlign.justify,
-                                          text:
-                                              product.description['warranty'] ??
-                                                  "N/A",
-                                          style: body1,
-                                        ))
-                                  ],
-                                )
-                              : Row(
-                                  children: <Widget>[Container(), Container()],
-                                ),
-                        ],
-                  ),
+                                      ))
+                                ],
+                              )
+                            : Row(
+                                children: <Widget>[Container(), Container()],
+                              ),
+                      ],
                 ),
-              ],
-            ),
-            Column(
-              //tab2
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                    padding: EdgeInsets.only(top: 8.0),
-                    child: FText(
-                      text: "Care Instructions",
-                      color: textColor,
-                      size: 16.0,
-                      fontWeight: FontWeight.w600,
-                    )),
-                Container(
-                    child: FText(
-                  text: product.description['care_instructions'] ?? "N/A",
-                  style: body1,
-                )),
-              ],
-            ),
+              ),
+            ],
+          ),
+          Column(
+            //tab2
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                  padding: EdgeInsets.only(top: 8.0),
+                  child: FText(
+                    text: "Care Instructions",
+                    color: textColor,
+                    size: 16.0,
+                    fontWeight: FontWeight.w600,
+                  )),
+              Container(
+                  child: FText(
+                text: product.description['care_instructions'] ?? "N/A",
+                style: body1,
+              )),
+            ],
+          ),
           ],
         ),
       ]),

@@ -39,28 +39,31 @@ class _PDColorSelectorState extends State<PDColorSelector> {
 
   List<Widget> buildColorWidgets(List<String> colorNames) {
     return colorNames.map<Widget>((eachColor) {
-      return InkWell(
-        onTap: () {
-          if (eachColor != selectedColor) {
-            widget.setColor(eachColor);
-            setState(() {
-              selectedColor = eachColor;
-            });
-          }
-        },
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(10.0),
-          child: Container(
-            alignment: Alignment.center,
-            width: 25.0,
-            height: 25.0,
-            color: eachColor == selectedColor ? primary : shadowGrey,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(7.5),
-              child: Container(
-                width: 17.0,
-                height: 17.0,
-                color: COLOR_TYPES[eachColor] ?? COLOR_TYPES['Red'],
+      return Padding(
+        padding: const EdgeInsets.all(5.0),
+        child: InkWell(
+          onTap: () {
+            if (eachColor != selectedColor) {
+              widget.setColor(eachColor);
+              setState(() {
+                selectedColor = eachColor;
+              });
+            }
+          },
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10.0),
+            child: Container(
+              alignment: Alignment.center,
+              width: 25.0,
+              height: 25.0,
+              color: eachColor == selectedColor ? primary : shadowGrey,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(7.5),
+                child: Container(
+                  width: 17.0,
+                  height: 17.0,
+                  color: COLOR_TYPES[eachColor] ?? COLOR_TYPES['Red'],
+                ),
               ),
             ),
           ),
@@ -80,9 +83,8 @@ class _PDColorSelectorState extends State<PDColorSelector> {
 
     return Container(
         color: Colors.white,
-        padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 8.0),
         width: MediaQuery.of(context).size.width * 0.8,
-        alignment: Alignment.center,
+        alignment: Alignment.centerLeft,
         child:
             // Column(
             //     mainAxisAlignment: MainAxisAlignment.start,
@@ -99,14 +101,11 @@ class _PDColorSelectorState extends State<PDColorSelector> {
             //   ),
             // ),
             colorList.length > 0
-                ? Padding(
-                    padding:
-                        EdgeInsets.only(left: 18.0, top: 0.0, bottom: 18.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: colorWidgets,
-                    ),
-                  )
+                ? Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: colorWidgets,
+                )
                 : SizedBox.shrink()
         // Padding(
         //   padding: EdgeInsets.only(right: 15.0),

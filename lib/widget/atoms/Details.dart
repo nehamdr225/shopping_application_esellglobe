@@ -32,7 +32,50 @@ class _DetailsState extends State<Details> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.only(left: 8.0, top: 10.0),
+            padding: const  EdgeInsets.only(left: 8.0, top: 10.0),
+            child: Row(
+              children: <Widget>[
+                Text(
+                  "₹ ${widget.price}",
+                  style: Theme.of(context).textTheme.bodyText2.copyWith(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w800,
+                      ),
+                  textAlign: TextAlign.left,
+                ),
+                // widget.showDetails == true
+                //     ? Padding(
+                //         padding:
+                //             EdgeInsets.only(right: 6.0, left: 6.0, top: 3.0),
+                //         child: Text(
+                //           "₹ 1800",
+                //           style: Theme.of(context).textTheme.bodyText2.copyWith(
+                //               fontWeight: FontWeight.w500,
+                //               fontSize: 12.0,
+                //               color: Colors.grey[500],
+                //               decoration: TextDecoration.lineThrough),
+                //         ),
+                //       )
+                //     : Text(''),
+                // widget.showDetails == true
+                //     ? Padding(
+                //         padding:
+                //             EdgeInsets.only(right: 6.0, left: 6.0, top: 3.0),
+                //         child: Text(
+                //           "50% off",
+                //           style: Theme.of(context).textTheme.bodyText2.copyWith(
+                //                 fontWeight: FontWeight.w600,
+                //                 color: Colors.green,
+                //                 fontSize: 13.0,
+                //               ),
+                //         ),
+                //       )
+                //     : Text('')
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 8.0, top: 3.0),
             child: Text(
               widget.name,
               style: Theme.of(context).textTheme.bodyText2.copyWith(
@@ -67,53 +110,6 @@ class _DetailsState extends State<Details> {
                     textAlign: TextAlign.left,
                   ),
                 ),
-          Padding(
-            padding: const EdgeInsets.only(left: 8.0, top: 3.0),
-            child: Row(
-              children: <Widget>[
-                Image.asset(
-                  "images/icons/rupee.png",
-                  height: 14.0,
-                ),
-                Text(
-                  widget.price,
-                  style: Theme.of(context).textTheme.bodyText2.copyWith(
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.w800,
-                      ),
-                  textAlign: TextAlign.left,
-                ),
-                widget.showDetails == true
-                    ? Padding(
-                        padding:
-                            EdgeInsets.only(right: 6.0, left: 6.0, top: 3.0),
-                        child: Text(
-                          "₹ 1800",
-                          style: Theme.of(context).textTheme.bodyText2.copyWith(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 12.0,
-                              color: Colors.grey[500],
-                              decoration: TextDecoration.lineThrough),
-                        ),
-                      )
-                    : Text(''),
-                widget.showDetails == true
-                    ? Padding(
-                        padding:
-                            EdgeInsets.only(right: 6.0, left: 6.0, top: 3.0),
-                        child: Text(
-                          "50% off",
-                          style: Theme.of(context).textTheme.bodyText2.copyWith(
-                                fontWeight: FontWeight.w600,
-                                color: Colors.green,
-                                fontSize: 13.0,
-                              ),
-                        ),
-                      )
-                    : Text('')
-              ],
-            ),
-          ),
           SizedBox(
             height: 10.0,
           )

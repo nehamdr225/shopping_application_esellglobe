@@ -112,10 +112,11 @@ class _CategoryPageState extends State<CategoryPage>
                             alignment: Alignment.center,
                             height: 80.0,
                             child: TabBar(
+                              indicatorColor: Theme.of(context).colorScheme.secondary,
                               isScrollable: true,
                               controller: _tabController,
                               // indicator: BoxDecoration(),
-                              tabs: SubMain[widget.text]
+                              tabs: SubMain[widget.text] 
                                   .map<Widget>(
                                     (e) => Category(
                                       name: e['name'],

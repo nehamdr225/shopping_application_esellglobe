@@ -31,63 +31,66 @@ class Product extends StatelessWidget {
         product.media.left ??
         product.media.right;
 
-    return Card(
-      borderOnForeground: true,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(2.0),
-      ),
-      child: Material(
-        borderRadius: BorderRadius.circular(8.0),
-        child: InkWell(
-          onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) =>
-                    ProductDetails(id: id, category: category)));
-          },
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Flexible(
-                flex: 2,
-                child: Stack(
-                  children: <Widget>[
-                    Center(
-                      child: ImageHolder(
-                        image: preview,
-                        imgheight: imgheight,
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.topRight,
-                      child: IconButton(
-                        icon: Icon(
-                          CupertinoIcons.heart_solid,
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Card(
+        borderOnForeground: true,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(2.0),
+        ),
+        child: Material(
+          borderRadius: BorderRadius.circular(8.0),
+          child: InkWell(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) =>
+                      ProductDetails(id: id, category: category)));
+            },
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Flexible(
+                  flex: 2,
+                  child: Stack(
+                    children: <Widget>[
+                      Center(
+                        child: ImageHolder(
+                          image: preview,
+                          imgheight: imgheight,
                         ),
-                        focusColor: Colors.red,
-                        color: user.findWishlistItem(id) != true
-                            ? Colors.grey[600]
-                            : Colors.red,
-                        onPressed: () {
-                          user.findWishlistItem(id) != true
-                              ? user.addToWishList(id)
-                              : print("already in wishlist");
-                        },
                       ),
-                    ),
-                  ],
-                ),
-              ),
-              Divider(height: 2),
-              Details(
-                  name: product.name,
-                  price: product.price,
-                  id: id,
-                  wishlist: wishlist,
-                  details: product.description['style'],
-                  showDetails: showDetails
-                  //paddingTop: paddingTop,
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: IconButton(
+                          icon: Icon(
+                            CupertinoIcons.heart_solid,
+                          ),
+                          focusColor: Colors.red,
+                          color: user.findWishlistItem(id) != true
+                              ? Colors.grey[600]
+                              : Colors.red,
+                          onPressed: () {
+                            user.findWishlistItem(id) != true
+                                ? user.addToWishList(id)
+                                : print("already in wishlist");
+                          },
+                        ),
+                      ),
+                    ],
                   ),
-            ],
+                ),
+                Divider(height: 2),
+                Details(
+                    name: product.name,
+                    price: product.price,
+                    id: id,
+                    wishlist: wishlist,
+                    details: product.description['style'],
+                    showDetails: showDetails
+                    //paddingTop: paddingTop,
+                    ),
+              ],
+            ),
           ),
         ),
       ),
