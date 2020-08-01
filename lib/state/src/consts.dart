@@ -155,11 +155,7 @@ const SubMain = {
 };
 
 const HList = [
-  {
-    "name": "Men's Wear", 
-    "cap": "Male", 
-    "src": "images/icons/man.png"
-  },
+  {"name": "Men's Wear", "cap": "Male", "src": "images/icons/man.png"},
   {
     "name": "Women's Wear",
     "cap": "Female",
@@ -170,7 +166,4 @@ const HList = [
     "cap": "Kids", //"Shoe",
     "src": 'images/icons/kid.png',
   },
-  
 ];
-
-

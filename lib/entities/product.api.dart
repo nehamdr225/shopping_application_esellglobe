@@ -18,7 +18,8 @@ class ProductApi {
     //     .toList();
   }
 
-  getProductsByCategory({category = "top", result = 15, page = 1}) async {
+  Future<Map> getProductsByCategory(
+      {category = "top", result = 15, page = 1}) async {
     return await _fetch.get(
       url: '$url/category/$category?page=$page&result=$result',
     );

@@ -105,7 +105,7 @@ List<String> properties(String category) {
       'Case Type'
     ];
   }
-} 
+}
 
 class PDAllDetails extends StatelessWidget {
   final details;
@@ -127,7 +127,7 @@ class PDAllDetails extends StatelessWidget {
     final body1 =
         Theme.of(context).textTheme.bodyText2.copyWith(fontSize: 16.0);
     final product =
-        Provider.of<ProductModel>(context).one(id, category.split(';').last);
+        Provider.of<ProductModel>(context).one(id, category.split(';').first);
     final property = properties(product.category);
     final size = MediaQuery.of(context).size;
 

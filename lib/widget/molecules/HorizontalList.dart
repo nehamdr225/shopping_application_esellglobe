@@ -96,7 +96,8 @@ class _GenderSpecHorizontalListState extends State<GenderSpecHorizontalList> {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) => CategoryPage(
-                          text: widget.listViews[index]['name'],),
+                        text: widget.listViews[index]['name'],
+                      ),
                     ),
                   );
                 },

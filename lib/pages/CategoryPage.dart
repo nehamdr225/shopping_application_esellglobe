@@ -1,11 +1,9 @@
 import 'package:esell/pages/Cart.dart';
-import 'package:esell/pages/Products.dart';
 import 'package:esell/pages/Wishlist.dart';
 import 'package:esell/state/state.dart';
 import 'package:esell/state/src/consts.dart';
 import 'package:esell/widget/atoms/BottomLoader.dart';
-import 'package:esell/widget/atoms/InfoNavBar.dart';
-import 'package:esell/widget/molecules/HorizontalList.dart';
+import 'package:esell/widget/atoms/Category.dart';
 import 'package:esell/widget/molecules/Icons.dart';
 import 'package:esell/widget/molecules/Product.dart';
 import 'package:flutter/material.dart';
@@ -20,12 +18,20 @@ class CategoryPage extends StatefulWidget {
   _CategoryPageState createState() => _CategoryPageState();
 }
 
-class _CategoryPageState extends State<CategoryPage>   with SingleTickerProviderStateMixin {
+class _CategoryPageState extends State<CategoryPage>
+    with SingleTickerProviderStateMixin {
   ScrollController _scrollViewController;
+  TabController _tabController;
+
   @override
   void initState() {
     super.initState();
     _scrollViewController = ScrollController();
+    _tabController = new TabController(
+      length: SubMain[widget.text].length,
+      vsync: this,
+      initialIndex: 0,
+    );
   }
 
   @override
@@ -34,77 +40,18 @@ class _CategoryPageState extends State<CategoryPage>   with SingleTickerProvider
     super.dispose();
   }
 
-  // var _stockList = [];
-  // ProductModel refProd = new ProductModel();
   @override
   Widget build(BuildContext context) {
-    final cat = widget.text;
-
+    print(widget.text);
     getCategoryItems(reqCategory) {
-      print(reqCategory);
-      return Provider.of<ProductModel>(context).category(cat, reqCategory);
-    }
-
-    createWidgets() {
-      List<Widget> widgets = [];
-      SubMain[cat].forEach((each) {
-        final categoryProduct = getCategoryItems(each['name']);
-        onpressed() {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => ProductsPage(
-                        category: cat != 'Sunglasses' &&
-                                cat != 'Watches' &&
-                                cat != 'Bags & Backpacks'
-                            ? [cat, each['name']].join(';')
-                            : cat, //type
-                      )));
-        }
- 
-        widgets.addAll([
-          InfoNavBar(
-            text: each['name'],
-            type: each['name'],
-            onPressed: onpressed,
-          ),
-          Container(
-              height: 310,
-              width: 70,
-              alignment: Alignment.center,
-              child: categoryProduct.length > 0
-                  ? GridView.builder(
-                      itemCount: categoryProduct.length + 1,
-                      scrollDirection: Axis.horizontal,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 1,
-                        childAspectRatio: 1.1,
-                      ),
-                      itemBuilder: (BuildContext context, int index) {
-                        return index != categoryProduct.length
-                            ? Product(
-                                imgheight: 210.0,
-                                category: cat,
-                                id: categoryProduct[index].id,
-                                wishlist: true,
-                              )
-                            : BottomLoader();
-                      },
-                    )
-                  : BottomLoader()),
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 10.0),
-          )
-        ]);
-      });
-      return widgets;
+      return Provider.of<ProductModel>(context)
+          .category(widget.text, reqCategory);
     }
 
     return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        
-        body: NestedScrollView(
+        child: Scaffold(
+      backgroundColor: Colors.white,
+      body: NestedScrollView(
           controller: _scrollViewController,
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
@@ -152,36 +99,110 @@ class _CategoryPageState extends State<CategoryPage>   with SingleTickerProvider
                                 builder: (context) => WishlistPage()));
                       })
                 ],
-                bottom: PreferredSize(
-                  preferredSize: Size.fromHeight(98.0),
-                  child: Padding(
-                    padding: const EdgeInsets.only(bottom: 10.0, top: 8.0),
-                    child: Container( 
-                        alignment: Alignment.center,
-                        height: 80.0,
-                        child: GenderSpecHorizontalList(
-                          border: true,
-                          listViews: MEN// widget.type == 'men' ? MEN : WOMEN,
-                        )),
-                  ),
-                ),
+                bottom: isSingleView(widget.text)
+                    ? PreferredSize(
+                        preferredSize: Size.fromHeight(0),
+                        child: SizedBox.shrink(),
+                      )
+                    : PreferredSize(
+                        preferredSize: Size.fromHeight(88.0),
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 0.0, top: 8.0),
+                          child: Container(
+                            alignment: Alignment.center,
+                            height: 80.0,
+                            child: TabBar(
+                              isScrollable: true,
+                              controller: _tabController,
+                              // indicator: BoxDecoration(),
+                              tabs: SubMain[widget.text]
+                                  .map<Widget>(
+                                    (e) => Category(
+                                      name: e['name'],
+                                      caption: e['name'],
+                                      src: e['src'],
+                                      height: 40.0,
+                                      width: 40.0,
+                                      onTap: null,
+                                    ),
+                                  )
+                                  .toList(),
+                            ),
+                          ),
+                        ),
+                      ),
               )
             ];
-          },  
-
-        body: ListView(primary: false, children: createWidgets()),
-        //body: RefreshIndicator(child: ListView(primary: false, children: createWidgets()), onRefresh: _refreshPages,),
-      ),)
-    );
+          },
+          body: isSingleView(widget.text)
+              ? Builder(
+                  builder: (context) {
+                    final items = getCategoryItems(widget.text);
+                    return GridView.builder(
+                      itemCount: items.length + 1,
+                      scrollDirection: Axis.vertical,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 1,
+                        childAspectRatio: 1.1,
+                      ),
+                      itemBuilder: (BuildContext context, int index) {
+                        if (items.length == 0)
+                          return BottomLoader(
+                            category: widget.text,
+                            isNull: true,
+                          );
+                        return index != items.length
+                            ? Product(
+                                imgheight: 210.0,
+                                category: widget.text,
+                                id: items[index].id,
+                                wishlist: true,
+                              )
+                            : BottomLoader(
+                                category: widget.text,
+                              );
+                      },
+                    );
+                  },
+                )
+              : TabBarView(
+                  controller: _tabController,
+                  children: SubMain[widget.text].map<Widget>((e) {
+                    final items = getCategoryItems(e['name']);
+                    return GridView.builder(
+                      itemCount: items.length + 1,
+                      scrollDirection: Axis.vertical,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 1,
+                        childAspectRatio: 1.1,
+                      ),
+                      itemBuilder: (BuildContext context, int index) {
+                        if (items.length == 0)
+                          return BottomLoader(
+                            category: [widget.text, e['name']].join(';'),
+                            isNull: true,
+                          );
+                        return index != items.length
+                            ? Product(
+                                imgheight: 210.0,
+                                category: widget.text,
+                                id: items[index].id,
+                                wishlist: true,
+                              )
+                            : BottomLoader(
+                                category: [widget.text, e['name']].join(';'),
+                              );
+                      },
+                    );
+                  }).toList(),
+                )),
+    ));
   }
-//   Future<void> _refreshPages() async
-//   {
-//     print('refreshing product...');
-//     // _stockList.forEach((s) async {
-//     //   var product = await refProd.refresh();
-//     //   setState(() {
-//     //     s.price = product;
-//     //   });
-//     // });
-//   }
+}
+
+bool isSingleView(String category) {
+  if (category.contains('Sunglasses') ||
+      category.contains('Bags & Backpacks') ||
+      category.contains('Watches')) return true;
+  return false;
 }

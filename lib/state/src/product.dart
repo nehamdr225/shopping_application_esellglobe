@@ -9,18 +9,21 @@ import 'package:flutter/cupertino.dart';
 class ProductModel extends ChangeNotifier {
   final ProductApi _api;
   ProductModel(this._api) {
-    _api.getProducts(page: page).then((data) {
-      print(data);
-      if (data['error'] == null) {
-        final products = data['products']
-            .map<Product>((each) => Product.fromJson(each))
-            .toList();
-        setProducts(products);
-        maxCount = products['count'];
-      } else
-        print(data['error']);
-    });
+    handleInitialLoad();
   }
+
+  handleInitialLoad() async {
+    final data = await _api.getProducts(page: page);
+    if (data['error'] == null) {
+      final products = data['products']
+          .map<Product>((each) => Product.fromJson(each))
+          .toList();
+      setProducts(items: products);
+      maxCount = data['count'];
+    } else
+      print(data['error']);
+  }
+
   Map<String, List<Product>> _menProducts = {
     'Top Wear': [],
     'Bottom Wear': [],
@@ -43,23 +46,8 @@ class ProductModel extends ChangeNotifier {
   int _page = 1;
   bool _isRefreshing = false;
 
-  Map<String, bool> menCategories = {
-    'Top Wear': false,
-    'Bottom Wear': false,
-    'Foot Wear': false,
-    'Bags & Backpacks': false,
-    'Sunglasses': false,
-    'Watches': false,
-  };
-
-  Map<String, bool> womenCategories = {
-    'Top Wear': false,
-    'Bottom Wear': false,
-    'Foot Wear': false,
-    'Bags & Backpacks': false,
-    'Sunglasses': false,
-    'Watches': false,
-  };
+  CategoryProperties menCategory = CategoryProperties();
+  CategoryProperties womenCategory = CategoryProperties();
 
   List<Product> products(String category) => _menProducts[category];
 
@@ -93,7 +81,12 @@ class ProductModel extends ChangeNotifier {
     }
   }
 
-  setProducts(List<Product> items) {
+  setProducts({List<Product> items, String category}) {
+    if (category != null) {
+      _menProducts[category.split(';').first].addAll(items);
+      notifyListeners();
+      return;
+    }
     for (final item in items) {
       if (item.category.contains('Top Wear'))
         _menProducts['Top Wear'].add(item);
@@ -114,31 +107,42 @@ class ProductModel extends ChangeNotifier {
     Map<String, List> res =
         await _api.getProductsByCategory(category: category);
     if (res['products'] != null) {
-      setProducts(res['products'].map((e) => Product.fromJson(e)).toList());
+      setProducts(
+          items: res['products'].map((e) => Product.fromJson(e)).toList());
     }
   }
 
-  Future<RefreshStatus> refresh() async {
+  Future<RefreshStatus> refresh(String category) async {
     try {
-      if (maxCount != null && page * 15 >= maxCount)
-        return RefreshStatus.noMoreProductsToShow;
+      final thisRef = menCategory.getFromString(category);
+      if (thisRef.isComplete) return RefreshStatus.noMoreProductsToShow;
       if (_isRefreshing) return RefreshStatus.loading;
-
-      print('here');
-      print(page);
       _isRefreshing = true;
-      Map<String, dynamic> res = await _api.getProducts(page: page + 1);
-      if (res['products'].length > 0) {
-        print(res);
-        page = page + 1;
-        final List<Product> prods =
-            res['products'].map<Product>((e) => Product.fromJson(e)).toList();
-        setProducts(prods);
+      // notifyListeners();
+
+      Map<String, dynamic> res = await _api.getProductsByCategory(
+          category: category, page: thisRef.page);
+      if (res['error'] != null && res['error'] == 'Not found!') {
         _isRefreshing = false;
-        return RefreshStatus.loaded;
+        thisRef.isComplete = true;
+        notifyListeners();
+        return RefreshStatus.noMoreProductsToShow;
       }
-      _isRefreshing = false;
-      return RefreshStatus.done;
+      if (res['result'].length > 0) {
+        thisRef.page++;
+        final List<Product> prods =
+            res['result'].map<Product>((e) => Product.fromJson(e)).toList();
+        _isRefreshing = false;
+        setProducts(items: prods, category: category);
+        print('Category Status');
+        print(thisRef.page);
+        print(thisRef.isComplete);
+        return RefreshStatus.loaded;
+      } else {
+        _isRefreshing = false;
+        thisRef.isComplete = true;
+        return RefreshStatus.done;
+      }
     } catch (e) {
       print(e);
       _isRefreshing = false;
@@ -159,4 +163,29 @@ enum RefreshStatus {
   loading,
   loaded,
   done,
+}
+
+class CategoryProperties {
+  EachProperty _top = EachProperty();
+  EachProperty _bottom = EachProperty();
+  EachProperty _foot = EachProperty();
+  EachProperty _bags = EachProperty();
+  EachProperty _watches = EachProperty();
+  EachProperty _glasses = EachProperty();
+
+  EachProperty getFromString(String category) {
+    if (category.contains('Top Wear')) return _top;
+    if (category.contains('Bottom Wear')) return _bottom;
+    if (category.contains('Foot Wear')) return _foot;
+    if (category.contains('Bags')) return _bags;
+    if (category.contains('Watches')) return _watches;
+    if (category.contains('Sunglasses')) return _glasses;
+    return null;
+  }
+}
+
+class EachProperty {
+  int page;
+  bool isComplete;
+  EachProperty({this.page = 1, this.isComplete = false});
 }
