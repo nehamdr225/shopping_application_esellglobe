@@ -34,7 +34,7 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
           },
           child: Container(
             height: 37.0,
-            width: 65.0,
+            width: 66.0,
             alignment: Alignment.center,
             decoration: BoxDecoration(
                 color:

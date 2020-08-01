@@ -4,6 +4,7 @@ import 'package:esell/widget/productDetails/Carousel.dart';
 import 'package:esell/widget/productDetails/Comments.dart';
 import 'package:esell/widget/productDetails/PDratingNreview.dart';
 import 'package:esell/widget/productDetails/SoldBy.dart';
+import 'package:esell/widget/productDetails/allDetails.dart';
 import 'package:esell/widget/productDetails/delivery.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -116,15 +117,15 @@ class _ProductDetailsState extends State<ProductDetails> {
             //PDplusmember(),
             PDdelivery(),
             PDsoldby(),
-            // PDAllDetails(
-            //   details:
-            //       product['description'] != null ? product['description'] : '',
-            //   price: product['price'],
-            //   id: widget.id,
+            PDAllDetails(
+              details:
+                  product.description != null ? product.description : '',
+              price: product.price,
+              id: widget.id,
 
-            //   // colors: product['colors'],
-            //   // sizes: product['sizes'],
-            // ),
+              // colors: product['colors'],
+              // sizes: product['sizes'],
+            ),
             PDBoughtTogether(
               // details: product['description'],
               // price: product['price'],

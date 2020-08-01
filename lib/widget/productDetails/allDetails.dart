@@ -105,7 +105,7 @@ List<String> properties(String category) {
       'Case Type'
     ];
   }
-}
+} 
 
 class PDAllDetails extends StatelessWidget {
   final details;

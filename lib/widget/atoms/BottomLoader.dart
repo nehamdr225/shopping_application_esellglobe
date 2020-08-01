@@ -30,20 +30,27 @@ class _BottomLoaderState extends State<BottomLoader> {
                 ],
               );
             default:
-              return CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation(
-                  Theme.of(context).colorScheme.primaryVariant,
+              return 
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 120.0, horizontal:105.0),
+                //padding: EdgeInsets.fromLTRB(105.0, 120.0, 110.0, 120.0),
+                child: CircularProgressIndicator(
+                  backgroundColor: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                  valueColor: AlwaysStoppedAnimation(
+                    Theme.of(context).colorScheme.primary,
+                  ),
+                  strokeWidth: 5.0,
                 ),
-                strokeWidth: 5.0,
               );
           }
         }
-        return CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation(
-            Theme.of(context).colorScheme.primaryVariant,
-          ),
-          strokeWidth: 5.0,
-        );
+        return SizedBox.shrink();
+        // CircularProgressIndicator(
+        //   valueColor: AlwaysStoppedAnimation(
+        //     Theme.of(context).colorScheme.secondary,
+        //   ),
+        //   strokeWidth: 5.0,
+        // );
       },
     );
   }

@@ -103,7 +103,7 @@ class _PDInfoState extends State<PDInfo> {
                         Padding(
                           padding:
                               const EdgeInsets.only(top: 8.0, bottom: 18.0),
-                          child: Text(product.description['details'] ?? '',
+                          child: Text(product.description['style'] ?? '',
                               textAlign: TextAlign.start,
                               overflow: TextOverflow.visible,
                               style: Theme.of(context)
@@ -114,104 +114,104 @@ class _PDInfoState extends State<PDInfo> {
                                       fontSize: 14.0,
                                       color: Colors.grey[500])),
                         ),
-                      ],
+                      ],//product['description'] != null ? product['description']
                     ),
-              Padding(
-                padding: const EdgeInsets.only(top: 8.0, bottom: 4.0),
-                child: Row(
-                  children: <Widget>[
-                    Text(
-                      "₹ ${product.price}",
-                      style: Theme.of(context).textTheme.bodyText2.copyWith(
-                            fontWeight: FontWeight.w900,
-                            fontSize: 17.0,
-                          ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                      child: Text(
-                        "₹ 1800",
-                        style: Theme.of(context).textTheme.bodyText2.copyWith(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 13.0,
-                            color: Colors.grey[500],
-                            decoration: TextDecoration.lineThrough),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 2.0, bottom: 2.0),
-                      child: Text(
-                        "50% off",
-                        style: Theme.of(context).textTheme.bodyText2.copyWith(
-                              fontWeight: FontWeight.w600,
-                              color: Colors.green,
-                              fontSize: 15.0,
-                            ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 6.0),
-                child: Text(
-                  "Free Delivery",
-                  style: Theme.of(context).textTheme.bodyText2.copyWith(
-                        fontWeight: FontWeight.w600,
-                        color: Colors.green,
-                        fontSize: 13.0,
-                      ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 6.0),
-                child: Row(
-                  children: <Widget>[
-                    Container(
-                      width: 64.0,
-                      height: 40.0,
-                      child: Chip(
-                        backgroundColor: Colors.green,
-                        label: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            Icon(
-                              Icons.star,
-                              size: 15.0,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(1.0),
-                            ),
-                            Text(
-                              '3.9',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText2
-                                  .copyWith(
-                                    fontWeight: FontWeight.w700,
-                                    color: Colors.white,
-                                    fontSize: 13.0,
-                                  ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        '15 ratings and 1 review',
-                        style: Theme.of(context).textTheme.bodyText2.copyWith(
-                              fontWeight: FontWeight.w700,
-                              color: Colors.grey[500],
-                              fontSize: 13.0,
-                            ),
-                      ),
-                    ),
-                  ],
-                ),
-              )
+              // Padding(
+              //   padding: const EdgeInsets.only(top: 8.0, bottom: 4.0),
+              //   child: Row(
+              //     children: <Widget>[
+              //       Text(
+              //         "₹ ${product.price}",
+              //         style: Theme.of(context).textTheme.bodyText2.copyWith(
+              //               fontWeight: FontWeight.w900,
+              //               fontSize: 17.0,
+              //             ),
+              //       ),
+              //       Padding(
+              //         padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+              //         child: Text(
+              //           "₹ 1800",
+              //           style: Theme.of(context).textTheme.bodyText2.copyWith(
+              //               fontWeight: FontWeight.w500,
+              //               fontSize: 13.0,
+              //               color: Colors.grey[500],
+              //               decoration: TextDecoration.lineThrough),
+              //         ),
+              //       ),
+              //       Padding(
+              //         padding: const EdgeInsets.only(top: 2.0, bottom: 2.0),
+              //         child: Text(
+              //           "50% off",
+              //           style: Theme.of(context).textTheme.bodyText2.copyWith(
+              //                 fontWeight: FontWeight.w600,
+              //                 color: Colors.green,
+              //                 fontSize: 15.0,
+              //               ),
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              // Padding(
+              //   padding: const EdgeInsets.only(top: 6.0),
+              //   child: Text(
+              //     "Free Delivery",
+              //     style: Theme.of(context).textTheme.bodyText2.copyWith(
+              //           fontWeight: FontWeight.w600,
+              //           color: Colors.green,
+              //           fontSize: 13.0,
+              //         ),
+              //   ),
+              // ),
+              // Padding(
+              //   padding: const EdgeInsets.only(top: 6.0),
+              //   child: Row(
+              //     children: <Widget>[
+              //       Container(
+              //         width: 64.0,
+              //         height: 40.0,
+              //         child: Chip(
+              //           backgroundColor: Colors.green,
+              //           label: Row(
+              //             mainAxisAlignment: MainAxisAlignment.center,
+              //             crossAxisAlignment: CrossAxisAlignment.center,
+              //             children: <Widget>[
+              //               Icon(
+              //                 Icons.star,
+              //                 size: 15.0,
+              //               ),
+              //               Padding(
+              //                 padding: EdgeInsets.all(1.0),
+              //               ),
+              //               Text(
+              //                 '3.9',
+              //                 style: Theme.of(context)
+              //                     .textTheme
+              //                     .bodyText2
+              //                     .copyWith(
+              //                       fontWeight: FontWeight.w700,
+              //                       color: Colors.white,
+              //                       fontSize: 13.0,
+              //                     ),
+              //               ),
+              //             ],
+              //           ),
+              //         ),
+              //       ),
+              //       Padding(
+              //         padding: const EdgeInsets.all(8.0),
+              //         child: Text(
+              //           '15 ratings and 1 review',
+              //           style: Theme.of(context).textTheme.bodyText2.copyWith(
+              //                 fontWeight: FontWeight.w700,
+              //                 color: Colors.grey[500],
+              //                 fontSize: 13.0,
+              //               ),
+              //         ),
+              //       ),
+              //   ],
+              //  ),
+              //)
             ],
           ),
         ),
