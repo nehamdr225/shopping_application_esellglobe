@@ -23,6 +23,13 @@ class _BottomLoaderState extends State<BottomLoader> {
         status = RefreshStatus.noMoreProductsToShow;
       });
     }
+
+    if (status != null && status == RefreshStatus.loading) {
+      return Container(
+        alignment: Alignment.center,
+        child: CupertinoActivityIndicator(),
+      );
+    }
     print('Refresh status $status ${widget.category} ${widget.isNull}');
     if (status == null && widget.isNull) {
       productModel.refresh(widget.category).then((value) => setState(() {
