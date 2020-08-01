@@ -108,33 +108,25 @@ List<String> properties(String category) {
 }
 
 class PDAllDetails extends StatelessWidget {
-  final details;
-  final name;
   final id;
-  final price;
-  final image;
   final category;
-  PDAllDetails(
-      {this.details,
-      this.name,
-      this.price,
-      this.image,
-      this.id,
-      this.category});
+  PDAllDetails({this.id, this.category});
   @override
   Widget build(BuildContext context) {
-    final imagesrc = "https://api.shop2more.com" + (image ?? '');
-    final body1 =
-        Theme.of(context).textTheme.bodyText2.copyWith(fontSize: 16.0);
     final product =
         Provider.of<ProductModel>(context).one(id, category.split(';').first);
+    final imagesrc = "https://api.shop2more.com" + (product.media.front ?? '');
+    final body1 =
+        Theme.of(context).textTheme.bodyText2.copyWith(fontSize: 16.0);
+
     final property = properties(product.category);
     final size = MediaQuery.of(context).size;
 
     Row oneProperty(String x) {
       var combi = x.replaceAll(' ', '');
       var newName = combi.substring(0, 1).toLowerCase() + combi.substring(1);
-      return details[newName] != null && details[newName].length > 0
+      return product.description[newName] != null &&
+              product.description[newName].length > 0
           ? Row(children: [
               Container(
                 width: size.width * 0.28,
@@ -147,7 +139,7 @@ class PDAllDetails extends StatelessWidget {
               Container(
                 width: size.width * 0.72,
                 child: FText(
-                  text: details[newName],
+                  text: product.description[newName],
                   style: body1,
                   align: TextAlign.justify,
                 ),
@@ -180,7 +172,7 @@ class PDAllDetails extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   FText(
-                    text: '$name',
+                    text: product.name,
                     style: body1.copyWith(
                         fontSize: 16.0, fontWeight: FontWeight.w600),
                   ),
@@ -190,7 +182,7 @@ class PDAllDetails extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.only(right: 6.0, left: 0.0),
                         child: Text(
-                          "₹ $price",
+                          "₹ ${product.price}",
                           style: Theme.of(context).textTheme.bodyText2.copyWith(
                                 fontWeight: FontWeight.w900,
                                 fontSize: 18.0,
@@ -234,16 +226,10 @@ class PDAllDetails extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Container(
-                    padding: EdgeInsets.only(top: 8.0),
                     child: FText(
-                      text: "Details",
-                      color: textColor,
-                      size: 16.0,
-                      fontWeight: FontWeight.w600,
-                    )),
-                Container(
-                    child: FText(
-                  text: details['details'] ?? "N/A",
+                  text:
+                      product.description['details'].replaceAll('\n', '\n\n') ??
+                          "N/A",
                   style: body1,
                 )),
               ],
@@ -265,8 +251,8 @@ class PDAllDetails extends StatelessWidget {
                   child: Column(
                     children: property.map<Row>(oneProperty).toList() +
                         [
-                          details['style'] != null &&
-                                  details['style'].length > 0
+                          product.description['style'] != null &&
+                                  product.description['style'].length > 0
                               ? Row(
                                   children: <Widget>[
                                     Container(
@@ -281,7 +267,8 @@ class PDAllDetails extends StatelessWidget {
                                       width: size.width * 0.72,
                                       child: FText(
                                         align: TextAlign.justify,
-                                        text: details['style'] ?? "N/A",
+                                        text: product.description['style'] ??
+                                            "N/A",
                                         style: body1,
                                       ),
                                     ),
@@ -290,8 +277,8 @@ class PDAllDetails extends StatelessWidget {
                               : Row(
                                   children: <Widget>[Container(), Container()],
                                 ),
-                          details['warranty'] != null &&
-                                  details['closure'].length > 0
+                          product.description['warranty'] != null &&
+                                  product.description['closure'].length > 0
                               ? Row(
                                   children: <Widget>[
                                     Container(
@@ -306,7 +293,9 @@ class PDAllDetails extends StatelessWidget {
                                         width: size.width * 0.72,
                                         child: FText(
                                           align: TextAlign.justify,
-                                          text: details['warranty'] ?? "N/A",
+                                          text:
+                                              product.description['warranty'] ??
+                                                  "N/A",
                                           style: body1,
                                         ))
                                   ],
@@ -333,7 +322,7 @@ class PDAllDetails extends StatelessWidget {
                     )),
                 Container(
                     child: FText(
-                  text: details['care_instructions'] ?? "N/A",
+                  text: product.description['care_instructions'] ?? "N/A",
                   style: body1,
                 )),
               ],

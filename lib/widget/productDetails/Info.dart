@@ -9,29 +9,21 @@ import 'SizeSelector.dart';
 //import 'package:esell/widget/atoms/StarRating.dart';
 
 class PDInfo extends StatefulWidget {
-  final String category, id;
-  PDInfo({this.category, this.id});
+  final String category, id, color, size;
+  Function setSize, setColor;
+  PDInfo(
+      {this.category,
+      this.id,
+      this.color,
+      this.size,
+      this.setSize,
+      this.setColor});
 
   @override
   _PDInfoState createState() => _PDInfoState();
 }
 
 class _PDInfoState extends State<PDInfo> {
-  String color, size;
-  void setSize(String newSize) {
-    if (newSize != size)
-      setState(() {
-        size = newSize;
-      });
-  }
-
-  void setColor(String newColor) {
-    if (newColor != color)
-      setState(() {
-        color = newColor;
-      });
-  }
-
   @override
   Widget build(BuildContext context) {
     //final caption = Theme.of(context).textTheme.caption;
@@ -69,13 +61,13 @@ class _PDInfoState extends State<PDInfo> {
                       fontWeight: FontWeight.w900,
                       fontSize: 19.0,
                       color: Colors.grey[800])),
-              PDColorSelector(color: product.colors, setColor: setColor),
+              PDColorSelector(color: product.colors, setColor: widget.setColor),
               Padding(
                 padding: const EdgeInsets.only(top: 8.0, bottom: 14.0),
                 child: PDSizeSelector(
                   sizes: product.sizes,
-                  setSize: setSize,
-                  size: size,
+                  setSize: widget.setSize,
+                  size: widget.size,
                   foot: product.category.contains('Foot Wear'),
                 ),
               ),
@@ -114,7 +106,7 @@ class _PDInfoState extends State<PDInfo> {
                                       fontSize: 14.0,
                                       color: Colors.grey[500])),
                         ),
-                      ],//product['description'] != null ? product['description']
+                      ], //product['description'] != null ? product['description']
                     ),
               // Padding(
               //   padding: const EdgeInsets.only(top: 8.0, bottom: 4.0),

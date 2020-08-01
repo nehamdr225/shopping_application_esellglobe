@@ -1,4 +1,5 @@
 import 'package:esell/pages/Cart.dart';
+import 'package:esell/pages/CheckoutPage.dart';
 import 'package:esell/pages/UserPromt.dart';
 import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
@@ -15,6 +16,7 @@ class PDFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserModel>(context);
+    final productModel = Provider.of<ProductModel>(context);
 
     addToCart() {
       if (category != null && category.contains('Sunglasses') ||
@@ -33,13 +35,8 @@ class PDFooter extends StatelessWidget {
           buildAndShowSnackBar(context, 'Color not selected!');
       } else {
         if (size != null && color != null) {
-          final status = user.addToCart(
-              id,
-              quantity,
-              size,
-              color,
-              Provider.of<ProductModel>(context)
-                  .one(id, category.split(';').first));
+          final status = user.addToCart(id, quantity, size, color,
+              productModel.one(id, category.split(';').first));
           print(status);
         } else
           buildAndShowSnackBar(context, 'Size or color not selected!');
@@ -47,7 +44,7 @@ class PDFooter extends StatelessWidget {
     }
 
     //final addToWish = () => user.addToWishList(id);
-    bool inCart = user.cart.any((cartItem) => cartItem['product']['_id'] == id);
+    bool inCart = user.cart.any((cartItem) => cartItem['product'].id == id);
 
     // final snackBar = (text, label, onPressed) => SnackBar(
     //       backgroundColor: primary,
@@ -124,19 +121,20 @@ class PDFooter extends StatelessWidget {
                         height: 50.0,
                         width: MediaQuery.of(context).size.width * 0.40,
                         radius: 0.0,
-                        onPressed: inCart
-                            ? () {
-                                // Navigator.push(
-                                //     context,
-                                //     MaterialPageRoute(
-                                //         builder: (_) => CheckoutPage(item: {
-                                //               'product': id,
-                                //               'quantity': quantity,
-                                //               'size': size,
-                                //               'color': color
-                                //             })));
-                              }
-                            : addToCart,
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => CheckoutPage(items: [
+                                        {
+                                          'product': productModel.one(
+                                              id, category.split(';').first),
+                                          'quantity': quantity,
+                                          'size': size,
+                                          'color': color
+                                        }
+                                      ])));
+                        },
 
                         ///###
                         text: 'BUY NOW',

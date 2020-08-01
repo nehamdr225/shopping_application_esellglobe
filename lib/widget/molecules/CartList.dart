@@ -24,26 +24,7 @@ class CartListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
-    var preview = '';
-    if (product['media'] != null) {
-      if (product['media']['front'] == null) {
-        if (product['media']['left'] != null) {
-          preview = product['media']['left'];
-        } else if (product['media']['right'] != null) {
-          preview = product['media']['right'];
-        } else if (product['media']['back'] != null) {
-          preview = product['media']['back'];
-        } else if (product['media']['top'] != null) {
-          preview = product['media']['top'];
-        } else if (product['media']['bottom'] != null) {
-          preview = product['media']['bottom'];
-        } else {
-          preview = '';
-        }
-      } else {
-        preview = product['media']['front'];
-      }
-    }
+
     return Padding(
       padding: EdgeInsets.only(
         top: 8.0,
@@ -67,7 +48,7 @@ class CartListView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text(product['name'],
+                        Text(product.name,
                             textAlign: TextAlign.start,
                             overflow: TextOverflow.ellipsis,
                             style: Theme.of(context)
@@ -146,7 +127,7 @@ class CartListView extends StatelessWidget {
                             Padding(
                               padding: EdgeInsets.only(right: 6.0, left: 6.0),
                               child: Text(
-                                product["price"],
+                                product.price,
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodyText2
@@ -222,7 +203,7 @@ class CartListView extends StatelessWidget {
                         child: Container(
                           padding: EdgeInsets.all(8.0),
                           child: Image.network(
-                              'https://api.shop2more.com' + preview,
+                              'https://api.shop2more.com' + product.media.front,
                               width: 100.0,
                               height: 70.0),
                         ),

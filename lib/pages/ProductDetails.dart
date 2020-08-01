@@ -1,6 +1,8 @@
+import 'package:esell/widget/atoms/InfoNavBar.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:esell/widget/productDetails/BoughtTogether.dart';
 import 'package:esell/widget/productDetails/Carousel.dart';
+import 'package:esell/widget/productDetails/ColorSelector.dart';
 import 'package:esell/widget/productDetails/Comments.dart';
 import 'package:esell/widget/productDetails/PDratingNreview.dart';
 import 'package:esell/widget/productDetails/SoldBy.dart';
@@ -20,6 +22,20 @@ class ProductDetails extends StatefulWidget {
 
 class _ProductDetailsState extends State<ProductDetails> {
   String color, size;
+  void setSize(String newSize) {
+    if (newSize != size)
+      setState(() {
+        size = newSize;
+      });
+  }
+
+  void setColor(String newColor) {
+    if (newColor != color)
+      setState(() {
+        color = newColor;
+      });
+  }
+
   int quantity = 1;
 
   @override
@@ -101,6 +117,10 @@ class _ProductDetailsState extends State<ProductDetails> {
             PDInfo(
               category: widget.category,
               id: product.id,
+              color: color,
+              size: size,
+              setSize: setSize,
+              setColor: setColor,
             ),
             //PDoffer(),
             // !product['category'].contains('Sunglasses') &&
@@ -113,18 +133,23 @@ class _ProductDetailsState extends State<ProductDetails> {
             //         foot: product['category'].contains('Foot Wear'),
             //       )
             //     : Text(''),
-            //PDColorSelector(color: product['colors'], setColor: setColor),
+
             //PDplusmember(),
             PDdelivery(),
             PDsoldby(),
-            PDAllDetails(
-              details: product.description != null ? product.description : '',
-              price: product.price,
-              id: widget.id,
-              category: product.category,
+            InfoNavBar(
+              text: 'View All Details',
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => PDAllDetails(
+                    id: widget.id,
+                    category: product.category,
 
-              // colors: product['colors'],
-              // sizes: product['sizes'],
+                    // colors: product['colors'],
+                    // sizes: product['sizes'],
+                  ),
+                ));
+              },
             ),
             PDBoughtTogether(
               // details: product['description'],

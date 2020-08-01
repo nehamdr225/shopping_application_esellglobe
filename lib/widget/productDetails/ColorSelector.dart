@@ -73,7 +73,7 @@ class _PDColorSelectorState extends State<PDColorSelector> {
   Widget build(BuildContext context) {
     List colorList = widget.color.split(';');
     List<Widget> colorWidgets;
-    if (colorList.length > 1)
+    if (colorList.length > 0)
       colorWidgets = buildColorWidgets(colorList);
     else
       colorWidgets = [Text('')];
@@ -98,7 +98,7 @@ class _PDColorSelectorState extends State<PDColorSelector> {
             //     textAlign: TextAlign.left,
             //   ),
             // ),
-            colorList.length > 0 && colorList.length<1
+            colorList.length > 0
                 ? Padding(
                     padding:
                         EdgeInsets.only(left: 18.0, top: 0.0, bottom: 18.0),

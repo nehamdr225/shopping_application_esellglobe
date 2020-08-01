@@ -34,7 +34,7 @@ class _CartPageState extends State<CartPage> {
     if (items.length > 0) {
       double temp = 0;
       items.forEach((item) {
-        temp += double.parse(item['product']['price']) * item['quantity'] ?? 1;
+        temp += double.parse(item['product'].price) * item['quantity'] ?? 1;
       });
       if (temp > 0.0)
         setState(() {

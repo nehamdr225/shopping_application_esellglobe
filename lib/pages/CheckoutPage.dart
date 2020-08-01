@@ -1,3 +1,4 @@
+import 'package:esell/entities/product.dart';
 import 'package:esell/pages/AddressPage.dart';
 import 'package:esell/widget/AnimatingLine.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
@@ -148,27 +149,9 @@ class _CheckoutPageState extends State<CheckoutPage> {
     final width = MediaQuery.of(context).size.width;
 
     var previews = [];
-    widget.items.forEach((item) {
-      if (item['product']['media'] != null) {
-        if (item['product']['media']['front'] == null) {
-          if (item['product']['media']['left'] != null) {
-            previews.add(item['product']['media']['left']);
-          } else if (item['product']['media']['right'] != null) {
-            previews.add(item['product']['media']['right']);
-          } else if (item['product']['media']['back'] != null) {
-            previews.add(item['product']['media']['back']);
-          } else if (item['product']['media']['top'] != null) {
-            previews.add(item['product']['media']['top']);
-          } else if (item['product']['media']['bottom'] != null) {
-            previews.add(item['product']['media']['bottom']);
-          } else {
-            previews.add('');
-          }
-        } else {
-          previews.add(item['product']['media']['front']);
-        }
-      }
-    });
+    for (final item in widget.items) {
+      previews.add(item['product'].media.front);
+    }
 
     return Scaffold(
       persistentFooterButtons: <Widget>[
@@ -183,8 +166,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     FancyText(
-                      text:
-                          'Total : Rs. ${widget.items[0]['product']['price']}',
+                      text: 'Total : Rs. ${widget.items[0]['product'].price}',
                       color: Colors.red,
                       fontWeight: FontWeight.bold,
                       size: 15.0,
@@ -218,8 +200,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
                             .map<Map>((item) => {
                                   "userInfo": shippingInfo,
                                   "billing": billingInfo ?? shippingInfo,
-                                  'product': item['product']['_id'],
-                                  'seller': item['product']['seller'],
+                                  'product': item['product'].id,
+                                  'seller': item['product'].seller,
                                 })
                             .toList();
                         // final orderData = {
@@ -410,10 +392,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                values[1]['product']['name'] == null
+                                values[1]['product'].name == null
                                     ? Text('No Product')
                                     : Text(
-                                        values[1]['product']['name'],
+                                        values[1]['product'].name,
                                         style: TextStyle(
                                             fontFamily: "Helvetica",
                                             color: textColor,
@@ -462,7 +444,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                   alignment: Alignment.topLeft,
                                   padding: EdgeInsets.all(3.0),
                                   child: Text(
-                                      "Rs. ${values[1]['product']['price']}",
+                                      "Rs. ${values[1]['product'].price}",
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           color: Colors.red)),
