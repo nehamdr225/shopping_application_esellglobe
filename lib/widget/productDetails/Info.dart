@@ -1,16 +1,12 @@
-// import 'package:esell/state/src/theme.dart';
-// import 'package:esell/widget/atoms/Text.dart';
 import 'package:esell/state/src/product.dart';
 import 'package:esell/widget/productDetails/ColorSelector.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import 'SizeSelector.dart';
-//import 'package:esell/widget/atoms/StarRating.dart';
 
 class PDInfo extends StatefulWidget {
   final String category, id, color, size;
-  Function setSize, setColor;
+  final Function setSize, setColor;
   PDInfo(
       {this.category,
       this.id,
@@ -63,7 +59,8 @@ class _PDInfoState extends State<PDInfo> {
                       color: Colors.grey[800])),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10.0),
-                child: PDColorSelector(color: product.colors, setColor: widget.setColor),
+                child: PDColorSelector(
+                    color: product.colors, setColor: widget.setColor),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 0.0, bottom: 14.0),
