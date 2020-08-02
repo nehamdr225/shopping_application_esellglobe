@@ -1,8 +1,12 @@
+// import 'package:esell/models/user.model.dart';
 import 'package:esell/pages/Cart.dart';
 import 'package:esell/pages/SearchPage.dart';
 import 'package:esell/state/src/theme.dart';
+import 'package:esell/widget/atoms/loginOptions.dart';
 import 'package:esell/widget/molecules/Icons.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:esell/state/src/user.dart';
 
 class BlueAppBar extends StatelessWidget {
   final double elevation;
@@ -18,6 +22,7 @@ class BlueAppBar extends StatelessWidget {
       this.onPressed});
   @override
   Widget build(BuildContext context) {
+    var user = Provider.of<UserModel>(context);
     return AppBar(
       centerTitle: true,
       title: Text(
@@ -56,11 +61,50 @@ class BlueAppBar extends StatelessWidget {
                 icon: Icons.shopping_cart,
                 alignment: Alignment.centerRight,
                 onPressed: () {
+                  user.token != null?
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => CartPage()));
+                      MaterialPageRoute(builder: (context) => CartPage())):_showBottomSheet(context);
                 })
             : Text('')
       ],
     );
   }
+  _showBottomSheet(context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) {
+          return SafeArea(
+            child: Container(
+              color: Colors.white,
+              child: ListView(
+                children: <Widget>[
+                  IconButton(
+                    alignment: Alignment.centerRight,
+                    color: primary,
+                    icon: Icon(Icons.close),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 10),
+                    child: Center(
+                        child: Image.asset(
+                      'images/logo/logoonly1.png',
+                      height: 60.0,
+                      width: 60.0,
+                    )),
+                  ),
+                  Container(
+                    // buttons
+                    child: LoginOptions(),
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
+  }
 }
+
+

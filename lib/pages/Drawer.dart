@@ -251,7 +251,7 @@ class DrawerApp extends StatelessWidget {
                     .copyWith(fontSize: 16.0),
               ),
             ),
-            DrawerElements(
+            userData != null && token != null ? DrawerElements(
               //Order
               title: 'My Orders',
               icon: 'images/esellIcons/order.png',
@@ -261,7 +261,7 @@ class DrawerApp extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => AnimatingLine()),
                 );
               },
-            ),
+            ):SizedBox.shrink(),
             DrawerElements(
               //Coupons
               title: 'My Coupons',

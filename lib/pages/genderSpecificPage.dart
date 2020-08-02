@@ -1,11 +1,7 @@
-import 'package:esell/pages/Cart.dart';
 import 'package:esell/pages/CategoryPage.dart';
-import 'package:esell/pages/Wishlist.dart';
 import 'package:esell/state/src/consts.dart';
 import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/InfoNavBar.dart';
-import 'package:esell/widget/molecules/HorizontalList.dart';
-import 'package:esell/widget/molecules/Icons.dart';
 import 'package:esell/widget/molecules/genderGrid.dart';
 import 'package:flutter/material.dart';
 
@@ -34,104 +30,148 @@ class _GenderSpecificState extends State<GenderSpecific>
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context).colorScheme;
+    final size = MediaQuery.of(context).size;
     return Scaffold(
         backgroundColor: Colors.white,
         body: NestedScrollView(
-          controller: _scrollViewController,
-          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-            return <Widget>[
-              SliverAppBar(
-                elevation: 0.5,
-                title: Text(widget.gender,
-                    style: TextStyle(
-                      color: primaryDark,
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold,
-                    )),
-                pinned: true,
-                floating: true,
-                forceElevated: innerBoxIsScrolled,
-                iconTheme: IconThemeData(
-                  color: primaryDark,
-                ),
-                backgroundColor: Colors.white,
-                leading: Padding(
-                  padding: const EdgeInsets.only(top: 8.0),
-                  child: IconButton(
-                    icon: Icon(Icons.arrow_back),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                ),
-                actions: <Widget>[
-                  FIcons(
-                      icon: Icons.shopping_cart,
-                      alignment: Alignment.centerRight,
+            controller: _scrollViewController,
+            headerSliverBuilder:
+                (BuildContext context, bool innerBoxIsScrolled) {
+              return <Widget>[
+                SliverAppBar(
+                  leading: IconButton(
+                      icon: Icon(
+                        Icons.arrow_back_ios,
+                      ),
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => CartPage()));
+                        Navigator.pop(context);
                       }),
-                  FIcons(
-                      icon: Icons.bookmark,
-                      alignment: Alignment.centerRight,
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => WishlistPage()));
-                      })
-                ],
-                bottom: PreferredSize(
-                  preferredSize: Size.fromHeight(98.0),
-                  child: Padding(
-                    padding: const EdgeInsets.only(bottom: 10.0, top: 8.0),
-                    child: Container( 
-                        alignment: Alignment.center,
-                        height: 80.0,
-                        child: GenderSpecHorizontalList(
-                          border: true,
-                          listViews: widget.gender == 'Male' ? MEN : WOMEN,
-                        )),
-                  ),
+                  expandedHeight: 250.0,
+                  floating: true,
+                  pinned: true,
+                  snap: true,
+                  elevation: 1.0,
+                  backgroundColor: primaryDark,
+                  flexibleSpace: FlexibleSpaceBar(
+                      centerTitle: true,
+                      title: Padding(
+                        padding: const EdgeInsets.only(right: 8.0, left: 8.0),
+                        child: Text("Men's Collection",
+                            style: TextStyle(
+                              color: theme.background,
+                              fontSize: 15.0,
+                            )),
+                      ),
+                      background: Container(
+                        width: size.width,
+                        height: 240.0,
+                        color: theme.primary,
+                        child: Image.asset(
+                          "images/esell photo/1black.jpg",
+                          fit: BoxFit.cover,
+                        ),
+                      )),
                 ),
-              )
-            ];
-          },
-          body: ListView.builder(
-              scrollDirection: Axis.vertical,
-              itemCount: MEN.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Column(
-                  children: <Widget>[
-                    InfoNavBar(
-                      text: MEN[index]['name'],
-                      onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => CategoryPage(
-                              text: MEN[index]['name'],
+                // (BuildContext context, bool innerBoxIsScrolled) {
+              //   return <Widget>[
+              //     SliverAppBar(
+              //       elevation: 0.5,
+              //       title: Text(widget.gender,
+              //           style: TextStyle(
+              //             color: primaryDark,
+              //             fontSize: 18.0,
+              //             fontWeight: FontWeight.bold,
+              //           )),
+              //       pinned: true,
+              //       floating: true,
+              //       forceElevated: innerBoxIsScrolled,
+              //       iconTheme: IconThemeData(
+              //         color: primaryDark,
+              //       ),
+              //       backgroundColor: Colors.white,
+              //       leading: Padding(
+              //         padding: const EdgeInsets.only(top: 8.0),
+              //         child: IconButton(
+              //           icon: Icon(Icons.arrow_back),
+              //           onPressed: () {
+              //             Navigator.pop(context);
+              //           },
+              //         ),
+              //       ),
+              //       actions: <Widget>[
+              //         FIcons(
+              //             icon: Icons.shopping_cart,
+              //             alignment: Alignment.centerRight,
+              //             onPressed: () {
+              //               Navigator.push(
+              //                   context,
+              //                   MaterialPageRoute(
+              //                       builder: (context) => CartPage()));
+              //             }),
+              //         FIcons(
+              //             icon: Icons.bookmark,
+              //             alignment: Alignment.centerRight,
+              //             onPressed: () {
+              //               Navigator.push(
+              //                   context,
+              //                   MaterialPageRoute(
+              //                       builder: (context) => WishlistPage()));
+              //             })
+              //       ],
+              //       bottom: PreferredSize(
+              //         preferredSize: Size.fromHeight(98.0),
+              //         child: Padding(
+              //           padding: const EdgeInsets.only(bottom: 10.0, top: 8.0),
+              //           child: Container(
+              //               alignment: Alignment.center,
+              //               height: 80.0,
+              //               child: GenderSpecHorizontalList(
+              //                 border: true,
+              //                 listViews: widget.gender == 'Male' ? MEN : WOMEN,
+              //               )),
+              //         ),
+              //       ),
+              //     )
+              //   ];
+              // },
+              //body:
+                ];
+              
+              
+            },
+            body: ListView.builder(
+                    scrollDirection: Axis.vertical,
+                    itemCount: MEN.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Column(
+                        children: <Widget>[
+                          InfoNavBar(
+                            text: MEN[index]['name'],
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => CategoryPage(
+                                    text: MEN[index]['name'],
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                          Container(
+                            padding: EdgeInsets.all(8.0),
+                            height: 240.0,
+                            child: GenderGrids(
+                              gender: widget.gender,
+                              crossAxisCount: 3,
+                              cat: widget.gender == 'Male'
+                                  ? MEN[index]['name']
+                                  : WOMEN[index]['name'],
                             ),
                           ),
-                        );
-                      },
-                    ),
-                    Container(
-                      padding: EdgeInsets.all(8.0),
-                      height: 240.0,
-                      child: GenderGrids(
-                        gender: widget.gender,
-                        crossAxisCount: 3,
-                        cat: widget.gender == 'Male'
-                            ? MEN[index]['name']
-                            : WOMEN[index]['name'],
-                      ),
-                    ),
-                  ],
-                );
-              }),
-        ));
+                        ],
+                      );
+                    })
+              ));
   }
 }

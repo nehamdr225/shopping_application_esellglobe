@@ -25,6 +25,7 @@ class _PageState extends State<SignInPage> {
   String loginErr;
   bool remember = true;
   bool isActive = false;
+  
   var _passwordVisible = false;
 
   @override
@@ -130,7 +131,7 @@ class _PageState extends State<SignInPage> {
             elevation: 0.0,
             search: false,
             cart: false,
-            title: 'Login',
+            title: 'Sign-in',
             onPressed: () {
               Navigator.pop(context);
             },
@@ -183,7 +184,7 @@ class _PageState extends State<SignInPage> {
                   )
                 : Text(''),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+              padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
               child: FForms(
                   type: TextInputType.text,
                   text: "Password",
@@ -220,17 +221,50 @@ class _PageState extends State<SignInPage> {
                     ),
                   )
                 : Text(''),
-                 FancyText(
-                color: primaryDark,
-                textAlign: TextAlign.end,
-                text: "Forgot Password?",
-                size: 15.0,
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ForgotPassword()));
-                }),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 10.0, ),
+              child: Row(
+                children: <Widget>[
+                  Checkbox(
+                    value: remember,                  
+                  activeColor: primaryDark,
+                   onChanged: (bool newValue){
+                     setState(() {
+                       remember = newValue;
+                     });
+                   }),
+                  FancyText(
+                      color: primaryDark,
+                      textAlign: TextAlign.end,
+                      text: "Keep me Signed in",
+                      fontWeight: FontWeight.bold,
+                      size: 15.0,
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ForgotPassword()));
+                      }),
+                ],
+              ),
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+              child: FancyText(
+                  color: Colors.black38,
+                  fontWeight: FontWeight.bold,
+                  textAlign: TextAlign.end,
+                  text: "Forgot Password?",
+                  size: 15.0,
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ForgotPassword()));
+                  }),
+            ),
             loginErr != null
                 ? Text(loginErr, style: TextStyle(color: Colors.red))
                 : Text(''),
@@ -243,7 +277,7 @@ class _PageState extends State<SignInPage> {
                       shape: true,
                       width: 160.0,
                       height: 45.0,
-                      bg: Colors.black38,
+                      bg: Theme.of(context).colorScheme.primary,
                       color: Colors.white,
                       onPressed: loginUser,
                     ),
@@ -254,10 +288,8 @@ class _PageState extends State<SignInPage> {
                 text: "Register",
                 size: 15.0,
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => SignUpPage()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SignUpPage()));
                 })
           ],
         ),

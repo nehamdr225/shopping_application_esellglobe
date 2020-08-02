@@ -81,10 +81,11 @@ class _HomePageAppState extends State<HomePageApp>
                       icon: Icons.shopping_cart,
                       alignment: Alignment.centerRight,
                       onPressed: () {
-                        Navigator.push(
+                        user.token != null
+                        ?Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => CartPage()));
+                                builder: (context) => CartPage())):_showBottomSheet(context);
                       }),
                   FIcons(
                       icon: Icons.bookmark,

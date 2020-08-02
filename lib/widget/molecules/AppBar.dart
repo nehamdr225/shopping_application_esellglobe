@@ -34,13 +34,12 @@ class FAppBar extends StatelessWidget {
         preferredSize: Size.fromHeight(50.0),
         child: AppBar(
           leading: Padding(
-            padding: const EdgeInsets.only(top:8.0),
+            padding: const EdgeInsets.only(top: 8.0),
             child: IconButton(
               icon: Icon(Icons.arrow_back),
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (context) => HomePageApp()
-                ));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => HomePageApp()));
               },
             ),
           ),
@@ -49,7 +48,7 @@ class FAppBar extends StatelessWidget {
           backgroundColor: Colors.transparent,
           centerTitle: true,
           title: Padding(
-            padding: const EdgeInsets.only(top:8.0),
+            padding: const EdgeInsets.only(top: 8.0),
             child: Text(title,
                 style: TextStyle(
                   color: primaryDark,
@@ -75,8 +74,12 @@ class FAppBar extends StatelessWidget {
                     icon: Icons.shopping_cart,
                     alignment: Alignment.centerRight,
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => CartPage()));
+                      user.token != null
+                          ? Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => CartPage()))
+                          : _showBottomSheet(context);
                     })
                 : Text(''),
             wishlist != null

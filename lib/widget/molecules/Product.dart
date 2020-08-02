@@ -17,7 +17,7 @@ class Product extends StatelessWidget {
       {this.category,
       this.wishlist,
       this.showDetails: true,
-      this.id,
+      this.id, 
       this.imgheight});
 
   @override
