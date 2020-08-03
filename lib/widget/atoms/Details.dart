@@ -6,7 +6,7 @@ class Details extends StatefulWidget {
   final String id;
   final wishlist;
   final details;
-  final showDetails;
+  final bool showDetails;
   Details(
       {this.name,
       this.price,
@@ -100,9 +100,10 @@ class _DetailsState extends State<Details> {
                 )
               : Padding(
                   padding:
-                      const EdgeInsets.only(left: 8.0, top: 5.0, right: 2.0),
+                      const EdgeInsets.only(left: 8.0, top: 5.0, right: 8.0),
                   child: Text(
-                    '${widget.details.substring(0, 40).replaceAll('\n', ' ')}...',
+                    '${widget.details}',//.substring(0, 40).replaceAll('\n', ' ')}...',
+                    overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.bodyText2.copyWith(
                         fontSize: 12.0,
                         fontWeight: FontWeight.w500,

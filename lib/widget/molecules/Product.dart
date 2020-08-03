@@ -1,5 +1,6 @@
 import 'package:esell/widget/atoms/Details.dart';
 import 'package:esell/widget/atoms/ImageHolder.dart';
+import 'package:esell/widget/atoms/loginOptions.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/pages/ProductDetails.dart';
 import 'package:flutter/cupertino.dart';
@@ -32,7 +33,7 @@ class Product extends StatelessWidget {
         product.media.right;
 
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.all(2.0),
       child: Card(
         borderOnForeground: true,
         shape: RoundedRectangleBorder(
@@ -70,9 +71,10 @@ class Product extends StatelessWidget {
                               ? Colors.grey[600]
                               : Colors.red,
                           onPressed: () {
+                            user.token != null?
                             user.findWishlistItem(id) != true
                                 ? user.addToWishList(id)
-                                : print("already in wishlist");
+                                : print("already in wishlist"): _showBottomSheet(context) ;
                           },
                         ),
                       ),
@@ -95,5 +97,41 @@ class Product extends StatelessWidget {
         ),
       ),
     );
+  }
+   _showBottomSheet(context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) {
+          return SafeArea(
+            child: Container(
+              color: Colors.white,
+              child: ListView(
+                children: <Widget>[
+                  IconButton(
+                    alignment: Alignment.centerRight,
+                    color: primary,
+                    icon: Icon(Icons.close),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 10),
+                    child: Center(
+                        child: Image.asset(
+                      'images/logo/logoonly1.png',
+                      height: 60.0,
+                      width: 60.0,
+                    )),
+                  ),
+                  Container(
+                    // buttons
+                    child: LoginOptions(),
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
   }
 }

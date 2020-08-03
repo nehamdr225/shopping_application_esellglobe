@@ -1,4 +1,5 @@
 import 'package:carousel_pro/carousel_pro.dart';
+import 'package:esell/widget/atoms/loginOptions.dart';
 import 'package:flutter/cupertino.dart';
 // import 'package:esell/widget/molecules/Icons.dart';
 // import 'package:esell/widget/molecules/colors.dart';
@@ -43,9 +44,10 @@ class PDCarousel extends StatelessWidget {
                 ? Colors.grey[600]
                 : Colors.red,
             onPressed: () {
+              user.token != null?
               user.findWishlistItem(id) != true
                   ? user.addToWishList(id)
-                  : print("already in wishlist");
+                  : print("already in wishlist"): _showBottomSheet(context);
             },
           ),
         ),
@@ -67,5 +69,41 @@ class PDCarousel extends StatelessWidget {
         ),
       ],
     );
+  }
+  _showBottomSheet(context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) {
+          return SafeArea(
+            child: Container(
+              color: Colors.white,
+              child: ListView(
+                children: <Widget>[
+                  IconButton(
+                    alignment: Alignment.centerRight,
+                    color: primary,
+                    icon: Icon(Icons.close),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 10),
+                    child: Center(
+                        child: Image.asset(
+                      'images/logo/logoonly1.png',
+                      height: 60.0,
+                      width: 60.0,
+                    )),
+                  ),
+                  Container(
+                    // buttons
+                    child: LoginOptions(),
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
   }
 }
