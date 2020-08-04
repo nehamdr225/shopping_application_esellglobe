@@ -251,21 +251,32 @@ class DrawerApp extends StatelessWidget {
                     .copyWith(fontSize: 16.0),
               ),
             ),
-            userData != null && token != null ? DrawerElements(
-              //Order
-              title: 'My Orders',
-              icon: 'images/esellIcons/order.png',
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => AnimatingLine()),
-                );
-              },
-            ):SizedBox.shrink(),
+            userData != null && token != null
+                ? DrawerElements(
+                    //Order
+                    title: 'My Orders',
+                    // icon: 'images/esellIcons/order.png',
+                    iconWidget: Icon(
+                      Icons.shopping_basket,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => AnimatingLine()),
+                      );
+                    },
+                  )
+                : SizedBox.shrink(),
             DrawerElements(
               //Coupons
               title: 'My Coupons',
-              icon: 'images/esellIcons/coupon.png',
+              // icon: 'images/esellIcons/coupon.png',
+              iconWidget: Icon(
+                Icons.card_giftcard,
+                color: Theme.of(context).colorScheme.primary,
+              ),
               onTap: () {
                 // Navigator.push(context,
                 //     MaterialPageRoute(builder: (context) => HomePageApp()));
@@ -274,7 +285,11 @@ class DrawerApp extends StatelessWidget {
             DrawerElements(
               //Wishlist
               title: 'My Wishlist',
-              icon: 'images/esellIcons/wishlist.png',
+              // icon: 'images/esellIcons/wishlist.png',
+              iconWidget: Icon(
+                Icons.favorite,
+                color: Theme.of(context).colorScheme.primary,
+              ),
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => WishlistPage()));
@@ -283,7 +298,11 @@ class DrawerApp extends StatelessWidget {
             DrawerElements(
               //Cart
               title: 'My Cart',
-              icon: 'images/esellIcons/cart.png',
+              // icon: 'images/esellIcons/cart.png',
+              iconWidget: Icon(
+                Icons.shopping_cart,
+                color: Theme.of(context).colorScheme.primary,
+              ),
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => CartPage()));
@@ -294,7 +313,11 @@ class DrawerApp extends StatelessWidget {
                     children: <Widget>[
                       DrawerElements(
                         title: 'My Account',
-                        icon: 'images/esellIcons/account.png',
+                        // icon: 'images/esellIcons/account.png',
+                        iconWidget: Icon(
+                          Icons.account_circle,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
                         onTap: () {
                           Navigator.push(
                               context,
@@ -315,7 +338,11 @@ class DrawerApp extends StatelessWidget {
             DrawerElements(
               //Customer Service
               title: 'Help Center',
-              icon: 'images/esellIcons/helpcenter.png',
+              // icon: 'images/esellIcons/helpcenter.png',
+              iconWidget: Icon(
+                Icons.headset_mic,
+                color: Theme.of(context).colorScheme.primary,
+              ),
               onTap: () {
                 Navigator.push(
                   context,
@@ -326,7 +353,11 @@ class DrawerApp extends StatelessWidget {
             DrawerElements(
               // About
               title: 'About',
-              icon: 'images/esellIcons/about.png',
+              // icon: 'images/esellIcons/about.png',
+              iconWidget: Icon(
+                Icons.info_outline,
+                color: Theme.of(context).colorScheme.primary,
+              ),
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => AboutPage()));

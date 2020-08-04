@@ -7,11 +7,13 @@ class DrawerElements extends StatelessWidget {
   final onTap;
   final bool titleWidgets;
   final Widget widgets;
+  final Widget iconWidget;
   DrawerElements(
       {this.title,
       this.icon,
       this.iconSize: 30.0,
       this.onTap,
+      this.iconWidget,
       this.titleWidgets: false,
       this.widgets});
 
@@ -21,15 +23,15 @@ class DrawerElements extends StatelessWidget {
       title: titleWidgets == false
           ? Text(title, style: Theme.of(context).textTheme.caption)
           : widgets,
-      leading: Image.asset(
-        icon,
-        height: iconSize,
-        width: iconSize,
-        //color: gradient,
-      ),
-      trailing: Icon(Icons.arrow_right),
+      leading: iconWidget ??
+          Image.asset(
+            icon,
+            height: iconSize,
+            width: iconSize,
+            //color: gradient,
+          ),
+      // trailing: Icon(Icons.arrow_right),
       onTap: onTap,
     );
   }
 }
-

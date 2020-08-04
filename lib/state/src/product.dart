@@ -134,19 +134,16 @@ class ProductModel extends ChangeNotifier {
             res['result'].map<Product>((e) => Product.fromJson(e)).toList();
         _isRefreshing = false;
         setProducts(items: prods, category: category);
-        print('Category Status');
-        print(thisRef.page);
-        print(thisRef.isComplete);
         return RefreshStatus.loaded;
       } else {
         _isRefreshing = false;
         thisRef.isComplete = true;
-        return RefreshStatus.done;
+        return RefreshStatus.noMoreProductsToShow;
       }
     } catch (e) {
       print(e);
       _isRefreshing = false;
-      return RefreshStatus.done;
+      return RefreshStatus.error;
     }
   }
 
@@ -162,7 +159,7 @@ enum RefreshStatus {
   noMoreProductsToShow,
   loading,
   loaded,
-  done,
+  error,
 }
 
 class CategoryProperties {

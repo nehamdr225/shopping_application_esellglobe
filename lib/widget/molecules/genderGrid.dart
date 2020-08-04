@@ -13,36 +13,34 @@ class GenderGrids extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    getCategoryItems() => Provider.of<ProductModel>(context).category(cat, '');
 
     createWidgets() {
       Widget widgets;
       SubMain[cat].forEach((each) {
-        final categoryProduct = getCategoryItems();
+        final categoryProduct =
+            Provider.of<ProductModel>(context).category(cat, '');
 
         widgets = Container(
           width: size.width * 0.95,
           alignment: Alignment.center,
-          child: categoryProduct != null
-              ? categoryProduct.length > 0
-                  ? GridView.builder(
-                      itemCount: 2,
-                      physics: NeverScrollableScrollPhysics(),
-                      scrollDirection: Axis.vertical,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        childAspectRatio: 0.75,
-                      ),
-                      itemBuilder: (BuildContext context, int index) {
-                        return Product( 
-                          category: cat,
-                          id: categoryProduct[index].id,
-                          wishlist: true,
-                          showDetails: false,
-                        );
-                      },
-                    )
-                  : BottomLoader(category: cat)
+          child: categoryProduct != null && categoryProduct.length > 0
+              ? GridView.builder(
+                  itemCount: 2,
+                  physics: NeverScrollableScrollPhysics(),
+                  scrollDirection: Axis.vertical,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 0.75,
+                  ),
+                  itemBuilder: (BuildContext context, int index) {
+                    return Product(
+                      category: cat,
+                      id: categoryProduct[index].id,
+                      wishlist: true,
+                      showDetails: false,
+                    );
+                  },
+                )
               : BottomLoader(category: cat, isNull: true),
         );
       });

@@ -5,7 +5,7 @@ import 'package:esell/state/state.dart';
 
 final Widget indicator = Container(
   alignment: Alignment.center,
-  child: CupertinoActivityIndicator(radius: 20),
+  child: CupertinoActivityIndicator(radius: 15),
 );
 
 class BottomLoader extends StatefulWidget {
@@ -51,9 +51,23 @@ class _BottomLoaderState extends State<BottomLoader> {
       return Container(
         alignment: Alignment.center,
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Icon(Icons.check),
             Text('No more products available!')
+          ],
+        ),
+      );
+    }
+
+    if (status == RefreshStatus.error) {
+      return Container(
+        alignment: Alignment.center,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Icon(Icons.check),
+            Text('Internal error ocurred!')
           ],
         ),
       );
