@@ -3,7 +3,9 @@ import 'package:esell/pages/Wishlist.dart';
 import 'package:esell/state/state.dart';
 import 'package:esell/state/src/consts.dart';
 import 'package:esell/widget/atoms/BottomLoader.dart';
+import 'package:esell/widget/atoms/BrandLogos.dart';
 import 'package:esell/widget/atoms/Category.dart';
+import 'package:esell/widget/atoms/loginOptions.dart';
 import 'package:esell/widget/molecules/Icons.dart';
 import 'package:esell/widget/molecules/Product.dart';
 import 'package:flutter/material.dart';
@@ -47,6 +49,7 @@ class _CategoryPageState extends State<CategoryPage>
       return Provider.of<ProductModel>(context)
           .category(widget.text, reqCategory);
     }
+    final user = Provider.of<UserModel>(context);
 
     return SafeArea(
         child: Scaffold(
@@ -84,19 +87,21 @@ class _CategoryPageState extends State<CategoryPage>
                       icon: Icons.shopping_cart,
                       alignment: Alignment.centerRight,
                       onPressed: () {
+                        user.token != null?
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => CartPage()));
+                                builder: (context) => CartPage())): _showBottomSheet(context);
                       }),
                   FIcons(
                       icon: Icons.bookmark,
                       alignment: Alignment.centerRight,
                       onPressed: () {
+                        user.token !=null?
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => WishlistPage()));
+                                builder: (context) => WishlistPage())):_showBottomSheet(context);
                       })
                 ],
                 bottom: isSingleView(widget.text)
@@ -198,6 +203,35 @@ class _CategoryPageState extends State<CategoryPage>
                   }).toList(),
                 )),
     ));
+  }
+  _showBottomSheet(context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) {
+          return SafeArea(
+            child: Container(
+              height: 350.0,
+              color: Colors.white,
+              child: ListView(
+                children: <Widget>[
+                  IconButton(
+                    alignment: Alignment.centerRight,
+                    color: primaryDark,
+                    icon: Icon(Icons.close),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  BrandLogos(
+                    height: 90.0,
+                    width: 90.0,
+                  ),
+                  LoginOptions(),
+                ],
+              ),
+            ),
+          );
+        });
   }
 }
 

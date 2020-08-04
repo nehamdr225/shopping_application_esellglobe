@@ -1,3 +1,4 @@
+import 'package:esell/widget/atoms/BrandLogos.dart';
 import 'package:esell/widget/atoms/Details.dart';
 import 'package:esell/widget/atoms/ImageHolder.dart';
 import 'package:esell/widget/atoms/loginOptions.dart';
@@ -98,36 +99,29 @@ class Product extends StatelessWidget {
       ),
     );
   }
-   _showBottomSheet(context) {
+  _showBottomSheet(context) {
     showModalBottomSheet(
         context: context,
         builder: (BuildContext context) {
           return SafeArea(
             child: Container(
+              height: 350.0,
               color: Colors.white,
               child: ListView(
                 children: <Widget>[
                   IconButton(
                     alignment: Alignment.centerRight,
-                    color: primary,
+                    color: primaryDark,
                     icon: Icon(Icons.close),
                     onPressed: () {
                       Navigator.pop(context);
                     },
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 10),
-                    child: Center(
-                        child: Image.asset(
-                      'images/logo/logoonly1.png',
-                      height: 60.0,
-                      width: 60.0,
-                    )),
+                  BrandLogos(
+                    height: 90.0,
+                    width: 90.0,
                   ),
-                  Container(
-                    // buttons
-                    child: LoginOptions(),
-                  ),
+                  LoginOptions(),
                 ],
               ),
             ),

@@ -1,5 +1,6 @@
 import 'package:esell/pages/SearchPage.dart';
 import 'package:esell/state/state.dart';
+import 'package:esell/widget/atoms/BrandLogos.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
 import 'package:esell/widget/atoms/Forms.dart';
 import 'package:esell/widget/atoms/loginOptions.dart';
@@ -82,10 +83,11 @@ class _HomePageAppState extends State<HomePageApp>
                       alignment: Alignment.centerRight,
                       onPressed: () {
                         user.token != null
-                        ?Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => CartPage())):_showBottomSheet(context);
+                            ? Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => CartPage()))
+                            : _showBottomSheet(context);
                       }),
                   FIcons(
                       icon: Icons.bookmark,
@@ -167,7 +169,7 @@ class _HomePageAppState extends State<HomePageApp>
               Container(
                 height: 250.0,
                 child: GridList(
-                  type: 'men', 
+                  type: 'men',
                   listViews: MEN,
                   crossAxisCount: 3,
                 ),
@@ -206,30 +208,23 @@ class _HomePageAppState extends State<HomePageApp>
         builder: (BuildContext context) {
           return SafeArea(
             child: Container(
+              height: 350.0,
               color: Colors.white,
               child: ListView(
                 children: <Widget>[
                   IconButton(
                     alignment: Alignment.centerRight,
-                    color: primary,
+                    color: primaryDark,
                     icon: Icon(Icons.close),
                     onPressed: () {
                       Navigator.pop(context);
                     },
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 10),
-                    child: Center(
-                        child: Image.asset(
-                      'images/logo/logoonly1.png',
-                      height: 60.0,
-                      width: 60.0,
-                    )),
+                  BrandLogos(
+                    height: 90.0,
+                    width: 90.0,
                   ),
-                  Container(
-                    // buttons
-                    child: LoginOptions(),
-                  ),
+                  LoginOptions(),
                 ],
               ),
             ),

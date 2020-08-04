@@ -32,31 +32,37 @@ class LoginOptions extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => SignInPage()));
             },
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: FancyText(
-              color: primaryDark,
-                text: "Or",
-                size: 16.0,
-                fontfamily: 'Montserrat',
-                fontWeight: FontWeight.w700,
-            ),
-          ),
-          FRaisedButton(
-            height: 45.0,
-            width: 260.0,
-            shape: true,
-            needIcon: false,
-            //image: 'images/icons/email.png',
-            text: "Register Now",
-            color: Colors.black54,
-            fontWeight: FontWeight.bold,
-            bg: Colors.white,
-            onPressed: () {
+          InkWell(
+            onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => SignUpPage()));
             },
+            child: Container(
+              padding: const EdgeInsets.all(18.0),
+              child: FancyText(
+                color: primaryDark,
+                  text: "Register Now",
+                  size: 17.0,
+                  fontfamily: 'Montserrat',
+                  fontWeight: FontWeight.w700,
+              ),
+            ),
           ),
+          // FRaisedButton(
+          //   height: 45.0,
+          //   width: 260.0,
+          //   shape: true,
+          //   needIcon: false,
+          //   //image: 'images/icons/email.png',
+          //   text: "Register Now",
+          //   color: Colors.black54,
+          //   fontWeight: FontWeight.bold,
+          //   bg: Colors.white,
+          //   onPressed: () {
+          //     Navigator.push(context,
+          //         MaterialPageRoute(builder: (context) => SignUpPage()));
+          //   },
+          // ),
           // Padding(
           //   padding: EdgeInsets.symmetric(vertical: 15.0),
           //   child: FancyText(

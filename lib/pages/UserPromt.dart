@@ -17,30 +17,31 @@ class UserPromptApp extends StatelessWidget {
             title: "",
           ),
         ),
-        body: Center(
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                BrandLogos(
-                  height: 100.0,
-                  width: 100.0,
-                ),
-                LoginOptions(),
-                Padding(
-                  padding: EdgeInsets.all(10.0),
-                ),
-                FancyText(
-                    text: "Terms & Conditions",
-                    decoration: TextDecoration.underline,
-                    size: 16.0,
-                    color: primaryDark,
-                    onTap: () {
-                      // Navigator.push(context,
-                      //     MaterialPageRoute(builder: (context) => HomePageApp()));
-                    })
-              ]),
-        ),
+        body: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              BrandLogos(
+                height: 100.0,
+                width: 100.0,
+              ),
+              LoginOptions(),
+              
+              FancyText(
+                  text: "Terms & Conditions",
+                  decoration: TextDecoration.underline,
+                  size: 15.0,
+                  fontfamily: 'Montserrat',
+                  color: primaryDark,
+                  onTap: () {
+                    // Navigator.push(context,
+                    //     MaterialPageRoute(builder: (context) => HomePageApp()));
+                  }),
+              // SizedBox(height: 50.0,),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Image.asset("images/options.png")),
+            ]),
       ),
     );
   }

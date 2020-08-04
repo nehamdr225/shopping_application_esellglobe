@@ -152,7 +152,7 @@ class _PageState extends State<SignUpPage> {
               child: BrandLogos(),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25),
+              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15),
               child: FForms(
                 type: TextInputType.text,
                 text: "Name",
@@ -174,7 +174,7 @@ class _PageState extends State<SignUpPage> {
                   )
                 : Text(''),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25),
+              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15),
               child: FForms(
                   type: TextInputType.emailAddress,
                   text: "Email",
@@ -195,7 +195,7 @@ class _PageState extends State<SignUpPage> {
                   )
                 : Text(''),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25),
+              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15),
               child: FForms(
                 type: TextInputType.text,
                 text: "Password",
@@ -233,7 +233,7 @@ class _PageState extends State<SignUpPage> {
                   )
                 : Text(''),
             Padding(
-              padding: EdgeInsets.only(top: 10, bottom: 0, left: 25, right: 25),
+              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
               child: FForms(
                   type: TextInputType.phone,
                   text: "Valid Mobile No",
