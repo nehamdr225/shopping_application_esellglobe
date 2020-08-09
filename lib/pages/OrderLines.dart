@@ -48,7 +48,10 @@ class OrderLines extends StatelessWidget {
           child: AppBar(
             elevation: 0.0,
             backgroundColor: Colors.white,
-            title: Image.asset('images/logo/logoonly1.png'),
+            title: Text(
+              'Order Details',
+              style: TextStyle(color: Theme.of(context).colorScheme.primary),
+            ),
             leading: IconButton(
               icon: Icon(Icons.arrow_back),
               color: primaryDark,

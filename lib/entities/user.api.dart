@@ -177,7 +177,7 @@ class UserApi {
         "X-Access-Token": token
       };
       final response = await _fetch.get(
-        url: "$url/orders/",
+        url: "$url/orders",
         headers: headers,
       );
       return response;

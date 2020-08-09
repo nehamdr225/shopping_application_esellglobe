@@ -1,6 +1,7 @@
 import 'package:esell/core/SecureStorage.dart';
 import 'package:esell/core/validators.dart';
 import 'package:esell/entities/cart.dart';
+import 'package:esell/entities/orders.dart';
 import 'package:esell/entities/product.dart';
 import 'package:esell/entities/user.api.dart';
 import 'package:flutter/cupertino.dart';
@@ -25,6 +26,7 @@ class UserModel extends ChangeNotifier {
           _token = null;
           notifyListeners();
         } else {
+          user = result['result'];
           if (result['result']['cart'] != null) {
             final data = await _api.getCart(token);
             if (data['error'] == null)
@@ -32,15 +34,15 @@ class UserModel extends ChangeNotifier {
                   .map<CartItem>((e) => CartItem.fromJson(e))
                   .toList();
           }
-          if (result['result']['orders'].length > 0) {
-            final ordersNew = await _api.getOrders(token);
-            if (ordersNew['error'] == null) {
-              orders = ordersNew['result'];
-            }
+          // if (result['result']['orders'].length > 0) {
+          final ordersNew = await _api.getOrders(token);
+          if (ordersNew['error'] == null) {
+            orders = ordersNew['result']
+                .map<OrderItem>((e) => OrderItem.fromJson(e))
+                .toList();
           }
+          // }
         }
-        user = result['result'];
-        notifyListeners();
       }
     }
   }
@@ -49,7 +51,7 @@ class UserModel extends ChangeNotifier {
   Map _user;
   List<String> _wishList = [];
   List<CartItem> _cart = [];
-  List _orders = [];
+  List<OrderItem> _orders = [];
 
   Validator get validator => _validator;
   UserApi get api => _api;
@@ -142,8 +144,8 @@ class UserModel extends ChangeNotifier {
     return _wishList.contains(id);
   }
 
-  get orders => _orders;
-  set orders(values) {
+  List<OrderItem> get orders => _orders;
+  set orders(List<OrderItem> values) {
     _orders = values;
     notifyListeners();
   }

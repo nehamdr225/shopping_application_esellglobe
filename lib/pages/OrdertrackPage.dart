@@ -34,32 +34,8 @@ class OrdetrackPage extends StatelessWidget {
                     )
                   ] +
                   userOrders.map<Widget>((eachOrder) {
-                    String preview;
-                    if (eachOrder['product']['media'] != null) {
-                      if (eachOrder['product']['media']['front'] == null) {
-                        if (eachOrder['product']['media']['left'] != null) {
-                          preview = eachOrder['product']['media']['left'];
-                        } else if (eachOrder['product']['media']['right'] !=
-                            null) {
-                          preview = eachOrder['product']['media']['right'];
-                        } else if (eachOrder['product']['media']['back'] !=
-                            null) {
-                          preview = eachOrder['product']['media']['back'];
-                        } else if (eachOrder['product']['media']['top'] !=
-                            null) {
-                          preview = eachOrder['product']['media']['top'];
-                        } else if (eachOrder['product']['media']['bottom'] !=
-                            null) {
-                          preview = eachOrder['product']['media']['bottom'];
-                        } else {
-                          preview = '';
-                        }
-                      } else {
-                        preview = eachOrder['product']['media']['front'];
-                      }
-                    }
-                    final time =
-                        DateTime.parse(eachOrder['timestamp']).toLocal();
+                    String preview = eachOrder.product.media.front;
+                    final time = DateTime.parse(eachOrder.timestamp).toLocal();
                     return Column(
                       children: [
                         SizedBox(
@@ -96,7 +72,7 @@ class OrdetrackPage extends StatelessWidget {
                                       Container(
                                         width: width * 0.50,
                                         child: Text(
-                                              "${eachOrder['product']['name']}",
+                                              "${eachOrder.product.name}",
                                               textAlign: TextAlign.center,
                                               style: Theme.of(context)
                                                   .textTheme
@@ -111,7 +87,7 @@ class OrdetrackPage extends StatelessWidget {
                                         padding: EdgeInsets.all(8.0),
                                       ),
                                       Text(
-                                        "${eachOrder['status']}  ${time.year}-${time.month}-${time.day}",
+                                        "${eachOrder.status}  ${time.year}-${time.month}-${time.day}",
                                         style: Theme.of(context)
                                             .textTheme
                                             .bodyText2
