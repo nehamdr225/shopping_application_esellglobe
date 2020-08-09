@@ -1,3 +1,4 @@
+import 'package:esell/entities/product.dart';
 import 'package:esell/pages/Cart.dart';
 import 'package:esell/pages/CheckoutPage.dart';
 import 'package:esell/pages/UserPromt.dart';
@@ -10,33 +11,32 @@ import 'package:provider/provider.dart';
 
 class PDFooter extends StatelessWidget {
   final String id, color, size, category;
+  final Product product;
   final int quantity;
-  PDFooter({this.id, this.quantity, this.color, this.size, this.category});
+  PDFooter(
+      {this.id,
+      this.quantity,
+      this.color,
+      this.size,
+      this.category,
+      this.product});
 
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserModel>(context);
-    final productModel = Provider.of<ProductModel>(context);
 
     addToCart() {
       if (category != null && category.contains('Sunglasses') ||
           category.contains('Watches') ||
           category.contains('Bags & Backpacks')) {
         if (color != null) {
-          final status = user.addToCart(
-              id,
-              quantity,
-              size,
-              color,
-              Provider.of<ProductModel>(context)
-                  .one(id, category.split(';').first));
+          final status = user.addToCart(id, quantity, size, color, product);
           print(status);
         } else
           buildAndShowSnackBar(context, 'Color not selected!');
       } else {
         if (size != null && color != null) {
-          final status = user.addToCart(id, quantity, size, color,
-              productModel.one(id, category.split(';').first));
+          final status = user.addToCart(id, quantity, size, color, product);
           print(status);
         } else
           buildAndShowSnackBar(context, 'Size or color not selected!');
@@ -44,7 +44,7 @@ class PDFooter extends StatelessWidget {
     }
 
     //final addToWish = () => user.addToWishList(id);
-    bool inCart = user.cart.any((cartItem) => cartItem['product'].id == id);
+    bool inCart = user.cart.any((cartItem) => cartItem['product']['_id'] == id);
 
     // final snackBar = (text, label, onPressed) => SnackBar(
     //       backgroundColor: primary,
@@ -127,8 +127,7 @@ class PDFooter extends StatelessWidget {
                               MaterialPageRoute(
                                   builder: (_) => CheckoutPage(items: [
                                         {
-                                          'product': productModel.one(
-                                              id, category.split(';').first),
+                                          'product': product,
                                           'quantity': quantity,
                                           'size': size,
                                           'color': color

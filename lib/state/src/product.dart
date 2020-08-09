@@ -153,6 +153,10 @@ class ProductModel extends ChangeNotifier {
     frequentlyBroughtTogether.add(_menProducts[prodCategory].last);
     return frequentlyBroughtTogether;
   }
+
+  Future<Map> getProductDetails(String productId) async {
+    return (await _api.getProductDetails(productId))['result'][0];
+  }
 }
 
 enum RefreshStatus {

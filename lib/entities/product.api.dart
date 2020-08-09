@@ -24,4 +24,8 @@ class ProductApi {
       url: '$url/category/$category?page=$page&result=$result',
     );
   }
+
+  Future<Map> getProductDetails(String productId) async {
+    return await _fetch.get(url: '$url/id/$productId');
+  }
 }

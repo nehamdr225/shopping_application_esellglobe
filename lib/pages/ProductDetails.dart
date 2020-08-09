@@ -8,9 +8,11 @@ import 'package:esell/widget/productDetails/SoldBy.dart';
 import 'package:esell/widget/productDetails/allDetails.dart';
 import 'package:esell/widget/productDetails/delivery.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:esell/widget/productDetails/details.dart';
 import 'package:esell/state/state.dart';
+import 'package:esell/entities/product.dart';
 
 class ProductDetails extends StatefulWidget {
   final String id, category;
@@ -36,13 +38,33 @@ class _ProductDetailsState extends State<ProductDetails> {
   }
 
   int quantity = 1;
+  Product product;
 
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
-    final product =
-        Provider.of<ProductModel>(context).one(widget.id, widget.category);
+    if (product == null) {
+      Provider.of<ProductModel>(context)
+          .getProductDetails(widget.id)
+          .then((value) {
+        setState(() {
+          print(value);
+          product = Product.fromJson(value);
+        });
+      });
+      return Scaffold(
+          backgroundColor: Theme.of(context).colorScheme.background,
+          appBar: PreferredSize(
+            preferredSize: Size.fromHeight(40.0),
+            child: FAppBar(
+              wishlist: true,
+              title: "",
+              cart: true,
+            ),
+          ),
+          body: CupertinoActivityIndicator());
+    }
     final relatedProds =
         Provider.of<ProductModel>(context).relevant(widget.category);
     final imagesrc = "https://api.shop2more.com";
@@ -85,11 +107,13 @@ class _ProductDetailsState extends State<ProductDetails> {
       child: Scaffold(
         persistentFooterButtons: <Widget>[
           PDFooter(
-              id: widget.id,
-              quantity: quantity,
-              size: size,
-              color: color,
-              category: product.category)
+            id: widget.id,
+            quantity: quantity,
+            size: size,
+            color: color,
+            category: product.category,
+            product: product,
+          )
         ],
         backgroundColor: Theme.of(context).colorScheme.background,
         appBar: PreferredSize(
@@ -114,12 +138,17 @@ class _ProductDetailsState extends State<ProductDetails> {
               ),
             ),
             PDInfo(
-              category: widget.category,
+              category: product.category,
               id: product.id,
               color: color,
               size: size,
               setSize: setSize,
               setColor: setColor,
+              colors: product.colors,
+              description: product.description['style'],
+              name: product.name,
+              price: product.price,
+              sizes: product.sizes,
             ),
             //PDoffer(),
             // !product['category'].contains('Sunglasses') &&

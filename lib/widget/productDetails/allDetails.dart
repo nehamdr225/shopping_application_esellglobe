@@ -296,8 +296,7 @@ class _PDAllDetailsState extends State<PDAllDetails>
                       labelStyle: TextStyle(
                           fontWeight: FontWeight.bold, fontSize: 15.0),
                       // indicator: BoxDecoration(),
-                      tabs: 
-                      <Widget>[
+                      tabs: <Widget>[
                         Tab(
                           text: "Details",
                         ),
@@ -308,7 +307,6 @@ class _PDAllDetailsState extends State<PDAllDetails>
                           text: "More",
                         ),
                       ]),
-                  
                 ],
               ),
             ),

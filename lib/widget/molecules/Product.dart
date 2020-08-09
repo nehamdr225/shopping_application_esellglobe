@@ -10,7 +10,7 @@ import 'package:esell/state/state.dart';
 
 class Product extends StatelessWidget {
   final imgheight;
-  final category; 
+  final category;
   final id;
   final wishlist;
   final showDetails;
@@ -19,7 +19,7 @@ class Product extends StatelessWidget {
       {this.category,
       this.wishlist,
       this.showDetails: true,
-      this.id, 
+      this.id,
       this.imgheight});
 
   @override
@@ -72,10 +72,11 @@ class Product extends StatelessWidget {
                               ? Colors.grey[600]
                               : Colors.red,
                           onPressed: () {
-                            user.token != null?
-                            user.findWishlistItem(id) != true
-                                ? user.addToWishList(id)
-                                : print("already in wishlist"): _showBottomSheet(context) ;
+                            user.token != null
+                                ? user.findWishlistItem(id) != true
+                                    ? user.addToWishList(id)
+                                    : print("already in wishlist")
+                                : _showBottomSheet(context);
                           },
                         ),
                       ),
@@ -88,7 +89,7 @@ class Product extends StatelessWidget {
                     price: product.price,
                     id: id,
                     wishlist: wishlist,
-                    details: product.description['style'],
+                    details: product.description['details'],
                     showDetails: showDetails
                     //paddingTop: paddingTop,
                     ),
@@ -99,6 +100,7 @@ class Product extends StatelessWidget {
       ),
     );
   }
+
   _showBottomSheet(context) {
     showModalBottomSheet(
         context: context,

@@ -149,7 +149,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
 
     var previews = [];
     for (final item in widget.items) {
-      previews.add(item['product'].media.front);
+      previews.add(item['product']['media']['front']);
     }
 
     return Scaffold(
@@ -165,7 +165,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     FancyText(
-                      text: 'Total : Rs. ${widget.items[0]['product'].price}',
+                      text:
+                          'Total : Rs. ${widget.items[0]['product']['price']}',
                       color: Colors.red,
                       fontWeight: FontWeight.bold,
                       size: 15.0,
@@ -391,10 +392,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                values[1]['product'].name == null
+                                values[1]['product']['name'] == null
                                     ? Text('No Product')
                                     : Text(
-                                        values[1]['product'].name,
+                                        values[1]['product']['name'],
                                         style: TextStyle(
                                             fontFamily: "Helvetica",
                                             color: textColor,
@@ -443,7 +444,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                   alignment: Alignment.topLeft,
                                   padding: EdgeInsets.all(3.0),
                                   child: Text(
-                                      "Rs. ${values[1]['product'].price}",
+                                      "Rs. ${values[1]['product']['price']}",
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           color: Colors.red)),

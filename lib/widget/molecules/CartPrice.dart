@@ -41,7 +41,7 @@ class _CartPriceState extends State<CartPrice> {
               Padding(
                 padding: const EdgeInsets.all(4.0),
                 child: Text(
-                  'Price (₹{widget.length} item)',
+                  'Price (${widget.length} item)',
                   style: Theme.of(context)
                       .textTheme
                       .bodyText2
@@ -51,7 +51,7 @@ class _CartPriceState extends State<CartPrice> {
               Padding(
                 padding: const EdgeInsets.all(4.0),
                 child: Text(
-                  '\$ ₹{widget.price}',
+                  '₹  ${widget.price}',
                   style: Theme.of(context)
                       .textTheme
                       .bodyText2
@@ -76,7 +76,7 @@ class _CartPriceState extends State<CartPrice> {
               Padding(
                 padding: const EdgeInsets.all(4.0),
                 child: Text(
-                  '\$ ₹{widget.deliveryPrice}',
+                  '₹  ${widget.deliveryPrice}',
                   style: Theme.of(context)
                       .textTheme
                       .bodyText2
@@ -104,7 +104,7 @@ class _CartPriceState extends State<CartPrice> {
               Padding(
                 padding: const EdgeInsets.all(4.0),
                 child: Text(
-                  '\$ ₹{widget.total}',
+                  '₹  ${widget.total}',
                   style: Theme.of(context)
                       .textTheme
                       .bodyText2

@@ -1,11 +1,17 @@
-import 'package:esell/state/src/product.dart';
 import 'package:esell/widget/productDetails/ColorSelector.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'SizeSelector.dart';
 
 class PDInfo extends StatefulWidget {
-  final String category, id, color, size;
+  final String name,
+      colors,
+      sizes,
+      price,
+      category,
+      id,
+      color,
+      size,
+      description;
   final Function setSize, setColor;
   PDInfo(
       {this.category,
@@ -13,7 +19,12 @@ class PDInfo extends StatefulWidget {
       this.color,
       this.size,
       this.setSize,
-      this.setColor});
+      this.setColor,
+      this.colors,
+      this.description,
+      this.name,
+      this.sizes,
+      this.price});
 
   @override
   _PDInfoState createState() => _PDInfoState();
@@ -24,8 +35,7 @@ class _PDInfoState extends State<PDInfo> {
   Widget build(BuildContext context) {
     //final caption = Theme.of(context).textTheme.caption;
     //var width = MediaQuery.of(context).size.width;
-    final product = Provider.of<ProductModel>(context)
-        .one(widget.id, widget.category.split(';').first);
+
     return Container(
       //width: width*0.80,
       //height: 200.0,
@@ -43,14 +53,14 @@ class _PDInfoState extends State<PDInfo> {
             children: <Widget>[
               SizedBox(height: 8.0),
               Text(
-                "₹ ${product.price}",
+                "₹ ${widget.price}",
                 style: Theme.of(context).textTheme.bodyText2.copyWith(
                       fontWeight: FontWeight.w500,
                       fontSize: 15.0,
                     ),
               ),
               SizedBox(height: 6.0),
-              Text(product.name,
+              Text(widget.name,
                   textAlign: TextAlign.start,
                   overflow: TextOverflow.ellipsis,
                   style: Theme.of(context).textTheme.bodyText2.copyWith(
@@ -60,21 +70,23 @@ class _PDInfoState extends State<PDInfo> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10.0),
                 child: PDColorSelector(
-                    color: product.colors, setColor: widget.setColor),
+                    color: widget.colors, setColor: widget.setColor),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 0.0, bottom: 14.0),
-                child: PDSizeSelector(
-                  sizes: product.sizes,
-                  setSize: widget.setSize,
-                  size: widget.size,
-                  foot: product.category.contains('Foot Wear'),
+              if (!widget.category.contains('Sunglasses') &&
+                  !widget.category.contains('Watches'))
+                Padding(
+                  padding: const EdgeInsets.only(top: 0.0, bottom: 14.0),
+                  child: PDSizeSelector(
+                    sizes: widget.sizes,
+                    setSize: widget.setSize,
+                    size: widget.size,
+                    foot: widget.category.contains('Foot Wear'),
+                  ),
                 ),
-              ),
               SizedBox(
                 height: 2.0,
               ),
-              product.description == null
+              widget.description == null
                   ? Padding(
                       padding: const EdgeInsets.only(top: 5.0),
                       child: Text(''),
@@ -95,7 +107,7 @@ class _PDInfoState extends State<PDInfo> {
                         Padding(
                           padding:
                               const EdgeInsets.only(top: 8.0, bottom: 18.0),
-                          child: Text(product.description['style'] ?? '',
+                          child: Text(widget.description ?? '',
                               textAlign: TextAlign.start,
                               overflow: TextOverflow.visible,
                               style: Theme.of(context)
