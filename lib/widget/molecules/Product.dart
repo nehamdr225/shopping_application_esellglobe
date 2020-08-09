@@ -89,7 +89,7 @@ class Product extends StatelessWidget {
                     price: product.price,
                     id: id,
                     wishlist: wishlist,
-                    details: product.description['details'],
+                    details: product.description['style'],
                     showDetails: showDetails
                     //paddingTop: paddingTop,
                     ),

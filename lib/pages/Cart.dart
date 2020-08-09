@@ -57,7 +57,7 @@ class _CartPageState extends State<CartPage> {
       }
     }
 
-    print(user.cart[0]['color']);
+    // print(user.cart[0]['color']);
     return SafeArea(
         child: userData != null && token != null && items != null
             ? Scaffold(
