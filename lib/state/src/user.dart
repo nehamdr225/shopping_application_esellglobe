@@ -84,7 +84,7 @@ class UserModel extends ChangeNotifier {
           print(data);
           if (data['error'] == null) {
             _cart.add(CartItem.fromJson({
-              'product': productData,
+              'product': productData.toJson(),
               'timestamp': DateTime.now(),
               'quantity': qty ?? 1,
               'size': size,
@@ -101,8 +101,8 @@ class UserModel extends ChangeNotifier {
           print(result);
           if (result['error'] == null) {
             _cart.add(CartItem.fromJson({
-              'product': productData,
-              'timestamp': DateTime.now(),
+              'product': productData.toJson(),
+              'timestamp': DateTime.now().toIso8601String(),
               'quantity': qty,
               'size': size,
               'color': color,

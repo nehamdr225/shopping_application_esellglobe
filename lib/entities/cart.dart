@@ -3,7 +3,7 @@ import 'package:esell/models/product.model.dart';
 
 abstract class CartModel {
   ProductModel product;
-  DateTime timestamp;
+  String timestamp;
   int quantity;
   String size;
   String color;
@@ -11,7 +11,7 @@ abstract class CartModel {
 
 class CartItem implements CartModel {
   ProductModel product;
-  DateTime timestamp;
+  String timestamp;
   int quantity;
   String size;
   String color;

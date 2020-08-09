@@ -1,11 +1,12 @@
 import 'package:esell/entities/cart.dart';
+import 'package:esell/entities/product.dart';
 import 'package:esell/pages/CheckoutPage.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CartListView extends StatelessWidget {
-  final product;
+  final Product product;
   final color;
   final quantity;
   final setQuantity;
@@ -49,7 +50,7 @@ class CartListView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text(product['name'],
+                        Text(product.name,
                             textAlign: TextAlign.start,
                             overflow: TextOverflow.ellipsis,
                             style: Theme.of(context)
@@ -128,7 +129,7 @@ class CartListView extends StatelessWidget {
                             Padding(
                               padding: EdgeInsets.only(right: 6.0, left: 6.0),
                               child: Text(
-                                product['price'],
+                                product.price,
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodyText2
@@ -204,8 +205,7 @@ class CartListView extends StatelessWidget {
                         child: Container(
                           padding: EdgeInsets.all(8.0),
                           child: Image.network(
-                              'https://api.shop2more.com' +
-                                  product['media']['front'],
+                              'https://api.shop2more.com' + product.media.front,
                               width: 100.0,
                               height: 70.0),
                         ),
@@ -222,7 +222,7 @@ class CartListView extends StatelessWidget {
                             ),
                             onPressed: quantity > 1
                                 ? () {
-                                    setQuantity(product['_id'], quantity - 1);
+                                    setQuantity(product.id, quantity - 1);
                                   }
                                 : null,
                           ),
@@ -239,7 +239,7 @@ class CartListView extends StatelessWidget {
                               size: 25.0,
                             ),
                             onPressed: () {
-                              setQuantity(product['_id'], quantity + 1);
+                              setQuantity(product.id, quantity + 1);
                             },
                           ),
                         ],
@@ -309,7 +309,7 @@ class CartListView extends StatelessWidget {
                             bg: Colors.red,
                             width: 120.0,
                             onPressed: () {
-                              deleteFromCart(product['_id']);
+                              deleteFromCart(product.id);
                               Navigator.pop(context);
                             },
                           )

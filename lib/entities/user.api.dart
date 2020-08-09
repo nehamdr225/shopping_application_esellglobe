@@ -113,7 +113,7 @@ class UserApi {
     };
     try {
       final response = await _fetch.post(
-        url: "$url/cart/$id?quantity=$qty&size=$size&color=$color",
+        url: "$url/cart/$id/$qty/$size/$color",
         headers: headers,
       );
       return response;
@@ -129,7 +129,7 @@ class UserApi {
         "X-Access-Token": token
       };
       final response = await _fetch.put(
-        url: "$url/cart/$productId?quantity=$qty&size=$size&color=$color",
+        url: "$url/cart/$productId/$qty/$size/$color",
         headers: headers,
       );
       return response;

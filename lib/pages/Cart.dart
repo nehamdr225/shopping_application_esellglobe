@@ -1,3 +1,4 @@
+import 'package:esell/entities/cart.dart';
 import 'package:esell/pages/CheckoutPage.dart';
 import 'package:esell/pages/UserPromt.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
@@ -14,7 +15,7 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
-  List items = [];
+  List<CartItem> items = [];
   double price = 0.0;
   double total = 0.0;
   double deliveryPrice = 65.0;
@@ -34,7 +35,7 @@ class _CartPageState extends State<CartPage> {
     if (items.length > 0) {
       double temp = 0;
       items.forEach((item) {
-        temp += double.parse(item['product']['price']) * item['quantity'] ?? 1;
+        temp += double.parse(item.product.price) * item.quantity;
       });
       if (temp > 0.0)
         setState(() {
@@ -46,9 +47,9 @@ class _CartPageState extends State<CartPage> {
     updateCartItem(id, quan) {
       try {
         items.forEach((el) {
-          if (el['product'] == id) {
+          if (el.product.id == id) {
             setState(() {
-              el['quantity'] = quan;
+              el.quantity = quan;
             });
           }
         });
@@ -99,13 +100,13 @@ class _CartPageState extends State<CartPage> {
                         itemBuilder: (context, index) {
                           return index != items.length
                               ? CartListView(
-                                  color: items[index]['color'],
-                                  quantity: items[index]['quantity'] ?? 1,
+                                  color: items[index].color,
+                                  quantity: items[index].quantity,
                                   setQuantity: updateCartItem,
                                   token: user.token,
                                   deleteFromCart: user.deleteFromCart,
-                                  size: items[index]['size'],
-                                  product: items[index]['product'])
+                                  size: items[index].size,
+                                  product: items[index].product)
                               : Padding(
                                   padding: const EdgeInsets.only(top: 8.0),
                                   child: Container(
