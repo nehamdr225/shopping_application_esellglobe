@@ -3,7 +3,15 @@ import 'package:esell/models/product.model.dart';
 import 'package:esell/entities/discount.dart';
 
 class Product implements ProductModel {
-  String id, name, brand, article, category, price, gender, deliveryTime;
+  String id,
+      name,
+      brand,
+      article,
+      category,
+      price,
+      gender,
+      deliveryTime,
+      seller;
   String sizes, colors, stock;
   ProductMediaModel media;
   Map description;
@@ -16,6 +24,7 @@ class Product implements ProductModel {
     this.id = json['_id'];
     this.name = json['name'];
     this.brand = json['brand'];
+    this.seller = json['seller'];
     this.article = json['article'];
     this.category = json['category'];
     this.stock = json['stock'];
@@ -31,6 +40,27 @@ class Product implements ProductModel {
     this.deliveryTime = json['deliveryTime'];
     this.discount = Discount.fromJson(json['discount']);
   }
+
+  toJson() => {
+        '_id': this.id,
+        'name': this.name,
+        'brand': this.brand,
+        'seller': this.seller,
+        'article': this.article,
+        'category': this.category,
+        'stock': this.stock,
+        'price': this.price,
+        'colors': this.colors,
+        'sizes': this.sizes,
+        'media': this.media.toJson(),
+        'gender': this.gender,
+        'description': this.description,
+        'paymentMethod': this.paymentMethod,
+        'sellerId': this.sellerId,
+        'timestamp': this.timestamp,
+        'deliveryTime': this.deliveryTime,
+        'discount': this.discount.toJson(),
+      };
 }
 
 class ProductMedia implements ProductMediaModel {
@@ -43,6 +73,15 @@ class ProductMedia implements ProductMediaModel {
         this.right = json['right'],
         this.top = json['top'],
         this.bottom = json['bottom'];
+
+  toJson() => {
+        if (front != null) 'front': front,
+        if (back != null) 'back': back,
+        if (left != null) 'left': left,
+        if (right != null) 'right': right,
+        if (top != null) 'top': top,
+        if (bottom != null) 'bottom': bottom,
+      };
 
   int get length {
     int len = 0;

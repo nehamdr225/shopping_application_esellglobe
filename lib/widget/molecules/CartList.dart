@@ -1,3 +1,4 @@
+import 'package:esell/entities/cart.dart';
 import 'package:esell/pages/CheckoutPage.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:flutter/cupertino.dart';
@@ -270,12 +271,12 @@ class CartListView extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                             builder: (_) => CheckoutPage(items: [
-                                  {
+                                  CartItem.fromJson({
                                     'product': product,
                                     'quantity': quantity,
                                     'size': size,
                                     'color': color
-                                  }
+                                  })
                                 ])));
                   },
                 ),

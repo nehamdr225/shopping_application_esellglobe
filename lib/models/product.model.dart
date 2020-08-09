@@ -1,7 +1,15 @@
 import 'package:esell/models/discount.model.dart';
 
 abstract class ProductModel {
-  String id, name, brand, article, category, price, gender, deliveryTime;
+  String id,
+      name,
+      brand,
+      article,
+      category,
+      price,
+      gender,
+      deliveryTime,
+      seller;
   String sizes, colors, stock;
   ProductMediaModel media;
   Map description;
@@ -14,6 +22,8 @@ abstract class ProductModel {
 abstract class ProductMediaModel {
   String front, back, left, right, top, bottom;
   int get length;
+
+  Map toJson();
 }
 
 abstract class TopWearDescriptionModel {

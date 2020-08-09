@@ -1,3 +1,4 @@
+import 'package:esell/entities/cart.dart';
 import 'package:esell/entities/product.dart';
 import 'package:esell/pages/Cart.dart';
 import 'package:esell/pages/CheckoutPage.dart';
@@ -44,7 +45,7 @@ class PDFooter extends StatelessWidget {
     }
 
     //final addToWish = () => user.addToWishList(id);
-    bool inCart = user.cart.any((cartItem) => cartItem['product']['_id'] == id);
+    bool inCart = user.cart.any((cartItem) => cartItem.product.id == id);
 
     // final snackBar = (text, label, onPressed) => SnackBar(
     //       backgroundColor: primary,
@@ -126,12 +127,12 @@ class PDFooter extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                   builder: (_) => CheckoutPage(items: [
-                                        {
-                                          'product': product,
+                                        CartItem.fromJson({
+                                          'product': product.toJson(),
                                           'quantity': quantity,
                                           'size': size,
                                           'color': color
-                                        }
+                                        })
                                       ])));
                         },
 

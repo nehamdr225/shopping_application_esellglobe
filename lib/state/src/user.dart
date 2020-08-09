@@ -1,5 +1,7 @@
 import 'package:esell/core/SecureStorage.dart';
 import 'package:esell/core/validators.dart';
+import 'package:esell/entities/cart.dart';
+import 'package:esell/entities/product.dart';
 import 'package:esell/entities/user.api.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -25,8 +27,10 @@ class UserModel extends ChangeNotifier {
         } else {
           if (result['result']['cart'] != null) {
             final data = await _api.getCart(token);
-            if (data['error'] == null) _cart = data['result']['products'];
-            notifyListeners();
+            if (data['error'] == null)
+              cart = data['result']['products']
+                  .map<CartItem>((e) => CartItem.fromJson(e))
+                  .toList();
           }
           if (result['result']['orders'].length > 0) {
             final ordersNew = await _api.getOrders(token);
@@ -44,7 +48,7 @@ class UserModel extends ChangeNotifier {
   String _token;
   Map _user;
   List<String> _wishList = [];
-  List _cart = [];
+  List<CartItem> _cart = [];
   List _orders = [];
 
   Validator get validator => _validator;
@@ -65,19 +69,27 @@ class UserModel extends ChangeNotifier {
     }
   }
 
-  get cart => _cart;
-  set cart(items) => _cart = items;
-  addToCart(String product, qty, size, color, productData) {
+  List<CartItem> get cart => _cart;
+  set cart(List<CartItem> items) {
+    _cart = items;
+    notifyListeners();
+  }
+
+  addToCart(String product, qty, size, color, Product productData) {
     print('$product $qty $size $color }');
-    final check = _cart.any((each) => each['product']['_id'] == product);
+    final check = _cart.any((each) => each.product.id == product);
     if (!check) {
       if (user['cart'] == null) {
-        _api
-            .registerCart(token, product, qty ?? 1, size, color ?? '')
-            .then((data) {
+        _api.registerCart(token, product, qty ?? 1, size, color).then((data) {
           print(data);
           if (data['error'] == null) {
-            _cart.add(product);
+            _cart.add(CartItem.fromJson({
+              'product': productData,
+              'timestamp': DateTime.now(),
+              'quantity': qty ?? 1,
+              'size': size,
+              'color': color,
+            }));
             _user.addAll({'cart': data['result']['_id']});
             notifyListeners();
             return "success";
@@ -90,12 +102,13 @@ class UserModel extends ChangeNotifier {
             .then((result) {
           print(result);
           if (result['error'] == null) {
-            _cart.add({
+            _cart.add(CartItem.fromJson({
               'product': productData,
+              'timestamp': DateTime.now(),
               'quantity': qty ?? 1,
               'size': size,
-              'color': color
-            });
+              'color': color,
+            }));
             notifyListeners();
             return "success";
           }
@@ -112,7 +125,7 @@ class UserModel extends ChangeNotifier {
     _api.deleteCartItem(token, id).then((data) {
       print(data);
       if (data['error'] == null) {
-        _cart.removeWhere((each) => each['product']['_id'] == id);
+        _cart.removeWhere((each) => each.product.id == id);
         notifyListeners();
         return "done";
       }
