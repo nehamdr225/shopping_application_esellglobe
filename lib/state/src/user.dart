@@ -80,7 +80,7 @@ class UserModel extends ChangeNotifier {
     final check = _cart.any((each) => each.product.id == product);
     if (!check) {
       if (user['cart'] == null) {
-        _api.registerCart(token, product, qty ?? 1, size, color).then((data) {
+        _api.registerCart(token, product, qty, size, color).then((data) {
           print(data);
           if (data['error'] == null) {
             _cart.add(CartItem.fromJson({
@@ -97,15 +97,13 @@ class UserModel extends ChangeNotifier {
           return "failed";
         });
       } else
-        _api
-            .updateCart(token, product, qty ?? 1, size ?? "S", color)
-            .then((result) {
+        _api.updateCart(token, product, qty, size, color).then((result) {
           print(result);
           if (result['error'] == null) {
             _cart.add(CartItem.fromJson({
               'product': productData,
               'timestamp': DateTime.now(),
-              'quantity': qty ?? 1,
+              'quantity': qty,
               'size': size,
               'color': color,
             }));
