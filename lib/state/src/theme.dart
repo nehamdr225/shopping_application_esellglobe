@@ -27,29 +27,83 @@ class FTheme with ChangeNotifier {
       color: Colors.white,
     ),
     colorScheme: ColorScheme(
-      primary: Color(0xff3ea8cc),
-      primaryVariant: Color(0xff3288a6),
-      secondary: Color(0xffffa378),
-      secondaryVariant: Color(0xfff06449),
-      background: Color(0xfff2f3f5),
+      primary: Color(0xff3E91CC),
+      primaryVariant: Color(0xff86C3EE), //55A6E0
       onPrimary: Color(0xff78daff),
+      secondary: Color(0xffFFA8AC),
+      secondaryVariant: Color(0xffFDFAFA),
+      onSecondary: Color(0xffFDFAFA),
+      background: Color(0xffFBFBFB), // 000000
       onBackground: Colors.white, //Color(0xfff2f3f5),
       onError: Color(0xffc5032b),
       error: Color(0xffc5032b),
-      onSecondary: Color(0xffffa378),
-      onSurface: Color(0xffEEEEEE),
+      onSurface: Color(0xffEEEEEF),
       brightness: Brightness.light,
-      surface: Color(0xffEEEEEE),
+      surface: Color(0xffFBFBFB),
     ),
     canvasColor: Colors.white,
-    fontFamily: 'Montserrat',
     textSelectionColor: Colors.black38,
     textTheme: TextTheme(
-      headline5: TextStyle(fontSize: 24.0, color: textColor),
-      headline6: TextStyle(fontSize: 16.0, color: textColor),
-      bodyText2: TextStyle(fontSize: 12.0, color: textColor),
-      bodyText1: TextStyle(fontSize: 18.0, color: primaryDark),
-      caption: TextStyle(fontSize: 14.0, color: textColor),
+      headline1: TextStyle(
+          fontSize: 16.0,
+          color: Color(0xff000000),
+          fontFamily: 'Montserrat',
+          fontWeight: FontWeight.bold),
+      headline2: TextStyle(
+          fontSize: 16.0,
+          color: Color(0xff000000),
+          fontFamily: 'Montserrat',
+          fontWeight: FontWeight.normal),
+      headline3: TextStyle(
+          fontSize: 14.0,
+          color: Color(0xff000000),
+          fontFamily: 'Montserrat',
+          fontWeight: FontWeight.w600),
+      headline4: TextStyle(
+          fontSize: 14.0,
+          color: Color(0xff000000),
+          fontFamily: 'Montserrat',
+          fontWeight: FontWeight.bold),
+      headline5: TextStyle(
+          fontSize: 14.0,
+          color: Color(0xffffffff),
+          fontFamily: 'Montserrat',
+          fontWeight: FontWeight.bold),
+      headline6: TextStyle(
+          fontSize: 12.0,
+          color: Color(0xff000000),
+          fontFamily: 'Montserrat',
+          fontWeight: FontWeight.w700),
+      bodyText1: TextStyle(
+          fontSize: 10.0,
+          color: Color(0xff757575),
+          fontFamily: 'Nunito',
+          fontWeight: FontWeight.normal),
+      subtitle1: TextStyle(
+          fontSize: 10.0,
+          color: Color(0xff000000),
+          fontFamily: 'Nunito',
+          fontWeight: FontWeight.w700),
+      subtitle2: TextStyle(
+          fontSize: 9.0,
+          color: Color(0xff000000),
+          fontFamily: 'Nunito',
+          fontWeight: FontWeight.normal),
+      caption: TextStyle(
+          fontSize: 12.0,
+          color: Color(0xffA1A1A1),
+          fontFamily: 'Nunito',
+          fontWeight: FontWeight.bold),
+      bodyText2: TextStyle(
+          fontSize: 13.0,
+          color: Color(0xff676767),
+          fontFamily: 'Nunito',
+          fontWeight: FontWeight.bold),
+      overline: TextStyle(
+          fontSize: 12.0,
+          color: Color(0xff3E91CC),
+          fontFamily: 'Nunito',
+          fontWeight: FontWeight.normal),
     ),
   );
 
