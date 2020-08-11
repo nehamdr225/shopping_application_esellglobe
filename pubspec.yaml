@@ -79,6 +79,9 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
+    # - family: Ropa Sans
+    #   fonts:
+    #     - asset: fonts/Ropa_Sans/RopaSans-Regular.ttf
     - family: Montserrat
       fonts:
         - asset: fonts/Montserrat/Montserrat-Thin.ttf
@@ -90,8 +93,6 @@ flutter:
         - asset: fonts/Montserrat/Montserrat-ExtraBold.ttf
         - asset: fonts/Montserrat/Montserrat-Black.ttf
         
-       
-    
     - family: Nunito
       fonts:
         - asset: fonts/Nunito/Nunito-ExtraLight.ttf

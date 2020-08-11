@@ -25,9 +25,9 @@ class PDCarousel extends StatelessWidget {
               images: images,
               autoplay: false,
               dotSize: 6.0,
-              dotColor: Colors.grey[500],
-              dotIncreasedColor: Colors.grey[500],
-              animationDuration: Duration(seconds: 2),
+              dotColor: Colors.transparent,
+              dotIncreasedColor: Colors.transparent,
+              animationDuration: Duration(seconds: 1),
               overlayShadowColors: Color(0xff0d47a1),
               dotBgColor: Colors.transparent,
               indicatorBgPadding: 12.0,
@@ -54,18 +54,25 @@ class PDCarousel extends StatelessWidget {
         ),
         Align(
           alignment: Alignment.bottomRight,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                Image.asset("images/icons/stack.png", color: Colors.grey[500],),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text("$length", style: TextStyle(fontFamily: 'Bree', fontSize: 20.0, color: Colors.grey[700],),),
-                )
+          child: Column(
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    Image.asset("images/icons/stack.png", color: Colors.black, height: 20.0, width: 20.0,),
+                   
+                    Padding(
+                      padding: const EdgeInsets.only(top:8.0, right: 8.0, bottom: 8.0),
+                      child: Text(" $length", style: Theme.of(context).textTheme.subtitle1),
+                    )
 
-              ],
-            ),
+                  ],
+                ),
+              Icon(Icons.arrow_forward_ios, color: Colors.black,),
+              Text("Swipe", style: Theme.of(context).textTheme.subtitle1)
+            ],
+          ),
           
         ),
       ],

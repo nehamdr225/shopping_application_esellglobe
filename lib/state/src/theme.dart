@@ -24,7 +24,7 @@ class FTheme with ChangeNotifier {
   ThemeData esellDarkTheme = ThemeData.dark();
   ThemeData esellDefaultTheme = ThemeData(
     iconTheme: IconThemeData(
-      color: Colors.white,
+      color: Colors.black,
     ),
     colorScheme: ColorScheme(
       primary: Color(0xff3E91CC),
@@ -80,7 +80,7 @@ class FTheme with ChangeNotifier {
           fontFamily: 'Nunito',
           fontWeight: FontWeight.normal),
       subtitle1: TextStyle(
-          fontSize: 10.0,
+          fontSize: 12.0,
           color: Color(0xff000000),
           fontFamily: 'Nunito',
           fontWeight: FontWeight.w700),
