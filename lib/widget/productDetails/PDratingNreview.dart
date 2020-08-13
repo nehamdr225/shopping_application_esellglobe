@@ -1,9 +1,16 @@
+import 'package:esell/widget/atoms/Forms.dart';
+import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/atoms/StarRating.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:esell/widget/productDetails/Stars.dart';
 import 'package:flutter/material.dart';
 
-class PDratingNreview extends StatelessWidget {
+class PDratingNreview extends StatefulWidget {
+  @override
+  _PDratingNreviewState createState() => _PDratingNreviewState();
+}
+
+class _PDratingNreviewState extends State<PDratingNreview> {
   @override
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -21,26 +28,53 @@ class PDratingNreview extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         color: Theme.of(context).buttonColor,
         size: 34.0,
-      ),//only for show
+      ), //only for show
       InkWell(
         onTap: () {
-          showDialog(context: context,
-          builder: (BuildContext context) {
-            return Container(
-              height: 400.0,
-              color: Theme.of(context).colorScheme.background,
-              child: CupertinoAlertDialog(
-                actions: [
-                  Container(
-                    height:100.0,
-                    child: Text('HELLO')
-                  )
-                ],
-              ),
-            );
-          });
+          showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                String localData;
+                return SimpleDialog(
+                  children: <Widget>[
+                    SimpleDialogOption(
+                      child: FForms(
+                        underline: false,
+                        borderColor: Theme.of(context).colorScheme.background,
+                        text: "Write a review",
+                        onChanged: (value) {
+                          setState(() {
+                            localData = value;
+                          });
+                        },
+                      ),
+                    ),
+                    SimpleDialogOption(
+                        child: Container(
+                            child: FRaisedButton(
+                      text: 'Save',
+                      bg: Theme.of(context).colorScheme.primary,
+                      color: Colors.white,
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    )))
+                  ],
+                );
+              });
+          // showDialog(
+          //     context: context,
+          //     builder: (BuildContext context) {
+          //       return Container(
+          //         height: 400.0,
+          //         color: Theme.of(context).colorScheme.background,
+          //         child: CupertinoAlertDialog(
+          //           actions: [Container(height: 100.0, child: Text('HELLO'))],
+          //         ),
+          //       );
+          //     });
           // Navigator.of(context).push(MaterialPageRoute(
-          //   builder: (context) => 
+          //   builder: (context) =>
           // ));
         },
         child: Text("Write a review",
