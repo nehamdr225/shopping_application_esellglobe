@@ -36,23 +36,23 @@ class FAppBar extends StatelessWidget {
         preferredSize: Size.fromHeight(50.0),
         child: AppBar(
           automaticallyImplyLeading: false,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Icon(CupertinoIcons.back),
-              Text(
-                "Back",
-                style: theme.textTheme.subtitle1,
-              ),
-            ],
+          title: InkWell(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Icon(CupertinoIcons.back),
+                Text(
+                  "Back",
+                  style: theme.textTheme.subtitle1,
+                ),
+              ],
+            ),
+            onTap: () {
+              Navigator.pop(context);
+            },
           ),
-          // leading: CupertinoButton(
-          //   child:
-          //   onPressed: () {
-          //     Navigator.pop(context);
-          //   },
-          // ),
+          // leading:
           elevation: 0.0,
           iconTheme: theme.iconTheme,
           backgroundColor: theme.colorScheme.background,
@@ -81,7 +81,11 @@ class FAppBar extends StatelessWidget {
                 : Text(''),
             cart != null
                 ? InkWell(
-                    child: Image.asset("images/esellIcons/cart2.png", height: 20.0, width: 20.0,),
+                    child: Image.asset(
+                      "images/esellIcons/cart2.png",
+                      height: 20.0,
+                      width: 20.0,
+                    ),
                     onTap: () {
                       user.token != null
                           ? Navigator.push(

@@ -26,8 +26,9 @@ class FTheme with ChangeNotifier {
     iconTheme: IconThemeData(
       color: Colors.black,
     ),
+    buttonColor: Color(0xffC4C4C4),
     colorScheme: ColorScheme(
-      primary: Color(0xff3E91CC),
+      primary: Color(0xff3E91CC), //3E91CC
       primaryVariant: Color(0xff86C3EE), //55A6E0
       onPrimary: Color(0xff78daff),
       secondary: Color(0xffFFA8AC),
@@ -40,6 +41,7 @@ class FTheme with ChangeNotifier {
       onSurface: Color(0xffEEEEEF),
       brightness: Brightness.light,
       surface: Color(0xffFBFBFB),
+      
     ),
     canvasColor: Colors.white,
     textSelectionColor: Colors.black38,
@@ -70,12 +72,12 @@ class FTheme with ChangeNotifier {
           fontFamily: 'Montserrat',
           fontWeight: FontWeight.bold),
       headline6: TextStyle(
-          fontSize: 12.0,
+          fontSize: 14.0,
           color: Color(0xff000000),
           fontFamily: 'Montserrat',
           fontWeight: FontWeight.w700),
       bodyText1: TextStyle(
-          fontSize: 10.0,
+          fontSize: 12.0,
           color: Color(0xff757575),
           fontFamily: 'Nunito',
           fontWeight: FontWeight.normal),
@@ -85,12 +87,12 @@ class FTheme with ChangeNotifier {
           fontFamily: 'Nunito',
           fontWeight: FontWeight.w700),
       subtitle2: TextStyle(
-          fontSize: 9.0,
+          fontSize: 12.0,
           color: Color(0xff000000),
           fontFamily: 'Nunito',
           fontWeight: FontWeight.normal),
       caption: TextStyle(
-          fontSize: 12.0,
+          fontSize: 13.0,
           color: Color(0xffA1A1A1),
           fontFamily: 'Nunito',
           fontWeight: FontWeight.bold),
@@ -103,6 +105,7 @@ class FTheme with ChangeNotifier {
           fontSize: 12.0,
           color: Color(0xff3E91CC),
           fontFamily: 'Nunito',
+          letterSpacing: 1.0,
           fontWeight: FontWeight.normal),
     ),
   );

@@ -21,64 +21,65 @@ class PDCarousel extends StatelessWidget {
       children: <Widget>[
         Center(
           child: Carousel(
-              boxFit: BoxFit.fill,
-              images: images,
-              autoplay: false,
-              dotSize: 6.0,
-              dotColor: Colors.transparent,
-              dotIncreasedColor: Colors.transparent,
-              animationDuration: Duration(seconds: 1),
-              overlayShadowColors: Color(0xff0d47a1),
-              dotBgColor: Colors.transparent,
-              indicatorBgPadding: 12.0,
-            ),
-          
+            boxFit: BoxFit.fill,
+            images: images,
+            autoplay: false,
+            dotSize: 6.0,
+            dotIncreaseSize: 1.5,
+            dotColor: Colors.grey[400].withOpacity(0.5), //Colors.transparent,
+            dotIncreasedColor: Colors.grey[400].withOpacity(0.5),
+            animationDuration: Duration(seconds: 1),
+            overlayShadowColors: Color(0xff0d47a1),
+            dotBgColor: Colors.transparent,
+            indicatorBgPadding: 12.0,
+          ),
         ),
         Align(
           alignment: Alignment.topRight,
           child: IconButton(
-            icon: Icon(
-              CupertinoIcons.heart_solid,
-            ),
+            icon: user.findWishlistItem(id) != true
+            ? Icon(
+              CupertinoIcons.heart,
+            ): Icon(CupertinoIcons.heart_solid),
             focusColor: Colors.red,
             color: user.findWishlistItem(id) != true
                 ? Colors.grey[600]
                 : Colors.red,
             onPressed: () {
-              user.token != null?
-              user.findWishlistItem(id) != true
-                  ? user.addToWishList(id)
-                  : print("already in wishlist"): _showBottomSheet(context);
+              user.token != null
+                  ? user.findWishlistItem(id) != true
+                      ? user.addToWishList(id)
+                      : print("already in wishlist")
+                  : _showBottomSheet(context);
             },
           ),
         ),
         Align(
           alignment: Alignment.bottomRight,
-          child: Column(
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
-                    Image.asset("images/icons/stack.png", color: Colors.black, height: 20.0, width: 20.0,),
-                   
-                    Padding(
-                      padding: const EdgeInsets.only(top:8.0, right: 8.0, bottom: 8.0),
-                      child: Text(" $length", style: Theme.of(context).textTheme.subtitle1),
-                    )
-
-                  ],
-                ),
-              Icon(Icons.arrow_forward_ios, color: Colors.black,),
-              Text("Swipe", style: Theme.of(context).textTheme.subtitle1)
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              Image.asset(
+                "images/icons/stack.png",
+                color: Colors.black54,
+                height: 18.0,
+                width: 18.0,
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.only(top: 8.0, right: 8.0, bottom: 8.0),
+                child: Text(" $length",
+                    style: Theme.of(context).textTheme.subtitle1),
+              )
             ],
           ),
-          
         ),
       ],
     );
   }
- _showBottomSheet(context) {
+
+  _showBottomSheet(context) {
     showModalBottomSheet(
         context: context,
         builder: (BuildContext context) {
