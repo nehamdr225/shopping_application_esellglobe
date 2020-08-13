@@ -1,4 +1,5 @@
 import 'package:esell/widget/atoms/Forms.dart';
+import 'package:esell/widget/atoms/GradientButton.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/atoms/StarRating.dart';
 import 'package:flutter/cupertino.dart';
@@ -19,16 +20,30 @@ class _PDratingNreviewState extends State<PDratingNreview> {
           style: Theme.of(context).textTheme.headline3),
       Text("Tell others what you think",
           textAlign: TextAlign.start,
-          style: Theme.of(context).textTheme.subtitle2),
-      // PDStarRating(
-      //   rating: 5,
-      //   size: 34.0,
-      // ), //working wala i will change the style later to look like belows.
-      Stars(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        color: Theme.of(context).buttonColor,
-        size: 34.0,
-      ), //only for show
+          style: Theme.of(context)
+              .textTheme
+              .subtitle2
+              .copyWith(color: Colors.grey[500])),
+      Padding(
+        padding: const EdgeInsets.symmetric(vertical: 12.0),
+        child: Align(
+          alignment: Alignment.center,
+          child: PDStarRating(
+            rating: 5,
+            size: 34.0,
+            spacing: MediaQuery.of(context).size.width * 0.10, //8.0,
+            allowHalfRating: false,
+          ),
+        ),
+      ), //working wala i will change the style later to look like belows.
+      // Padding(
+      //   padding: const EdgeInsets.symmetric(vertical:8.0),
+      //   child: Stars(
+      //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      //     color: Theme.of(context).buttonColor,
+      //     size: 34.0,
+      //   ),
+      // ), //only for show
       InkWell(
         onTap: () {
           showDialog(
@@ -36,11 +51,12 @@ class _PDratingNreviewState extends State<PDratingNreview> {
               builder: (BuildContext context) {
                 String localData;
                 return SimpleDialog(
+                  backgroundColor: Theme.of(context).colorScheme.background,
                   children: <Widget>[
                     SimpleDialogOption(
                       child: FForms(
-                        underline: false,
-                        borderColor: Theme.of(context).colorScheme.background,
+                        // underline: false,
+                        borderColor: Theme.of(context).colorScheme.onBackground,
                         text: "Write a review",
                         onChanged: (value) {
                           setState(() {
@@ -50,15 +66,13 @@ class _PDratingNreviewState extends State<PDratingNreview> {
                       ),
                     ),
                     SimpleDialogOption(
-                        child: Container(
-                            child: FRaisedButton(
-                      text: 'Save',
-                      bg: Theme.of(context).colorScheme.primary,
-                      color: Colors.white,
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    )))
+                        child: GradientButton(
+                          text: "Save",
+                          elevation: 0.0,
+                          onPressed: () {
+                        //     Navigator.pop(context);
+                       },
+                        ))
                   ],
                 );
               });

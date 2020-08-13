@@ -1,5 +1,6 @@
 import 'package:esell/widget/productDetails/AllDetails.dart';
 import 'package:esell/widget/productDetails/ColorSelector.dart';
+import 'package:esell/widget/productDetails/PDratingNreview.dart';
 import 'package:esell/widget/productDetails/Stars.dart';
 import 'package:flutter/material.dart';
 import 'SizeSelector.dart';
@@ -83,7 +84,7 @@ class _PDInfoState extends State<PDInfo> {
             if (!widget.category.contains('Sunglasses') &&
                 !widget.category.contains('Watches'))
               Padding(
-                padding: const EdgeInsets.only(top: 0.0, bottom: 14.0),
+                padding: const EdgeInsets.only(top: 0.0, bottom: 16.0),
                 child: PDSizeSelector(
                   sizes: widget.sizes,
                   setSize: widget.setSize,
@@ -91,9 +92,7 @@ class _PDInfoState extends State<PDInfo> {
                   foot: widget.category.contains('Foot Wear'),
                 ),
               ),
-            SizedBox(
-              height: 2.0,
-            ),
+            
             widget.description == null
                 ? Padding(
                     padding: const EdgeInsets.only(top: 5.0),
@@ -106,7 +105,6 @@ class _PDInfoState extends State<PDInfo> {
                           textAlign: TextAlign.start,
                           overflow: TextOverflow.ellipsis,
                           style: Theme.of(context).textTheme.headline3),
-                      
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0),
                         child: Text(widget.description ?? '',
@@ -118,29 +116,27 @@ class _PDInfoState extends State<PDInfo> {
                         //     fontSize: 14.0,
                         //     color: Colors.grey[500])),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 18.0),
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => AllDetails(
-                                id: widget.id,
-                                category: widget.category,
-                              ),
-                            ));
-                          },
-                          child: Text("View More...",
-                              textAlign: TextAlign.start,
-                              overflow: TextOverflow.visible,
-                              style:
-                                  Theme.of(context).textTheme.caption.copyWith(
-                                        color: Color(0xff3E91CC),
-                                      )),
-                        ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => AllDetails(
+                              id: widget.id,
+                              category: widget.category,
+                            ),
+                          ));
+                        },
+                        child: Text("View More...",
+                            textAlign: TextAlign.start,
+                            overflow: TextOverflow.visible,
+                            style: Theme.of(context).textTheme.caption.copyWith(
+                                  color: Color(0xff3E91CC),
+                                )),
                       ),
-                      
-                      
-                    ], 
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 16.0),
+                        child: PDratingNreview(),
+                      )
+                    ],
                   ),
           ],
         ),

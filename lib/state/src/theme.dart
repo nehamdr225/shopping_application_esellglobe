@@ -35,7 +35,7 @@ class FTheme with ChangeNotifier {
       secondaryVariant: Color(0xffFDFAFA),
       onSecondary: Color(0xffFDFAFA),
       background: Color(0xffFBFBFB), // 000000
-      onBackground: Colors.white, //Color(0xfff2f3f5),
+      onBackground: Color(0xffEEEEEF), //Color(0xfff2f3f5),
       onError: Color(0xffc5032b),
       error: Color(0xffc5032b),
       onSurface: Color(0xffEEEEEF),

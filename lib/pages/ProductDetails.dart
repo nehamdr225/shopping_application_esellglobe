@@ -171,7 +171,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               // name: product['name'],
               relevantProds: relatedProds,
             ),
-            PDratingNreview(),
+            
             PDcomments(),
             Padding(
               padding: EdgeInsets.all(3.0),
