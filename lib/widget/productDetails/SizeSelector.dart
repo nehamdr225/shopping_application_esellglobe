@@ -1,4 +1,3 @@
-import 'package:esell/state/src/theme.dart';
 import 'package:flutter/material.dart';
 
 /*
@@ -37,17 +36,17 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
             width: 66.0,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-                color:
-                    widget.size == sizeList[i] ? primaryDark : Colors.transparent, 
+                color: widget.size == sizeList[i]
+                    ? Theme.of(context).colorScheme.primary.withOpacity(0.8)
+                    : Colors.transparent,
                 shape: BoxShape.rectangle,
                 border: Border.all(color: Colors.grey[200])),
             child: Text(
               sizeList[i],
-              style: TextStyle(
-                  fontFamily: "Helvetica",
-                  fontSize: 15.0,
-                  fontWeight: FontWeight.w400,
-                  color:  widget.size == sizeList[i] ? Colors.white: Colors.black87),
+              style: Theme.of(context).textTheme.headline3.copyWith(
+                  color: widget.size == sizeList[i]
+                      ? Colors.white
+                      : Colors.black87),
               textAlign: TextAlign.center,
             ),
           ),
@@ -88,7 +87,7 @@ class _PDSizeSelectorState extends State<PDSizeSelector> {
     final widgets = buildSizeWidgets();
 
     return Container(
-      alignment: Alignment.centerLeft,
+        alignment: Alignment.centerLeft,
         width: screenWidth,
         decoration: BoxDecoration(
             color: Colors.white,

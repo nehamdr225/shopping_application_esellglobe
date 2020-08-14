@@ -47,7 +47,7 @@ class FForms extends StatelessWidget {
         onChanged: onChanged,
         decoration: InputDecoration(
           border:
-              OutlineInputBorder(borderSide: BorderSide(color: primaryDark)),
+              OutlineInputBorder(borderSide: BorderSide(color: borderColor)),
           prefix: prefix,
           prefixIcon: icon,
           suffixIcon: trailingIcon,
@@ -56,7 +56,7 @@ class FForms extends StatelessWidget {
           labelStyle: style,
           labelText: text,
           enabledBorder: underline == false
-              ? OutlineInputBorder(borderSide: BorderSide(color: primaryDark))
+              ? OutlineInputBorder(borderSide: BorderSide(color: borderColor))
               : UnderlineInputBorder(
                   borderSide: BorderSide(
                   color: Theme.of(context).colorScheme.primaryVariant,

@@ -1,12 +1,8 @@
-import 'package:esell/widget/atoms/InfoNavBar.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:esell/widget/productDetails/BoughtTogether.dart';
 import 'package:esell/widget/productDetails/Carousel.dart';
 import 'package:esell/widget/productDetails/Comments.dart';
 import 'package:esell/widget/productDetails/PDratingNreview.dart';
-import 'package:esell/widget/productDetails/SoldBy.dart';
-import 'package:esell/widget/productDetails/allDetails.dart';
-import 'package:esell/widget/productDetails/delivery.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
@@ -130,11 +126,27 @@ class _ProductDetailsState extends State<ProductDetails> {
               height: screenHeight * 0.50,
               width: screenWidth,
               color: Colors.white,
-              child: PDCarousel(
-                images: images,
-                length: imgNo,
-                id: widget.id,
-                width: screenWidth,
+              child: Stack(
+                alignment: Alignment.bottomCenter,
+                children: [
+                  Container(
+                      height: 40.0,
+                      color: Theme.of(context).colorScheme.background,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(40.0),
+                            ),
+                            color: Colors.white),
+                      )),
+                  PDCarousel(
+                    images: images,
+                    length: imgNo,
+                    id: widget.id,
+                    width: screenWidth,
+                  ),
+                  
+                ],
               ),
             ),
             PDInfo(
@@ -150,35 +162,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               price: product.price,
               sizes: product.sizes,
             ),
-            //PDoffer(),
-            // !product['category'].contains('Sunglasses') &&
-            //         !product['category'].contains('Watches') &&
-            //         !product['category'].contains('Bags & Backpacks')
-            //     ? PDSizeSelector(
-            //         sizes: product['sizes'],
-            //         setSize: setSize,
-            //         size: size,
-            //         foot: product['category'].contains('Foot Wear'),
-            //       )
-            //     : Text(''),
-
-            //PDplusmember(),
-            PDdelivery(),
-            PDsoldby(),
-            InfoNavBar(
-              text: 'View All Details',
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => PDAllDetails(
-                    id: widget.id,
-                    category: product.category,
-
-                    // colors: product['colors'],
-                    // sizes: product['sizes'],
-                  ),
-                ));
-              },
-            ),
+            
             PDBoughtTogether(
               // details: product['description'],
               // price: product['price'],
@@ -187,7 +171,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               // name: product['name'],
               relevantProds: relatedProds,
             ),
-            PDratingNreview(),
+            
             PDcomments(),
             Padding(
               padding: EdgeInsets.all(3.0),

@@ -1,11 +1,11 @@
 import 'package:esell/pages/Cart.dart';
-import 'package:esell/pages/Home.dart';
 import 'package:esell/pages/SearchPage.dart';
 import 'package:esell/pages/Wishlist.dart';
 import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/BrandLogos.dart';
 import 'package:esell/widget/atoms/loginOptions.dart';
 import 'package:esell/widget/molecules/Icons.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 //import 'package:esell/widget/molecules/colors.dart';
 // import 'package:carousel_pro/carousel_pro.dart';
@@ -29,34 +29,43 @@ class FAppBar extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     var user = Provider.of<UserModel>(context);
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50.0),
         child: AppBar(
-          leading: Padding(
-            padding: const EdgeInsets.only(top: 8.0),
-            child: IconButton(
-              icon: Icon(Icons.arrow_back),
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => HomePageApp()));
-              },
+          automaticallyImplyLeading: false,
+          title: InkWell(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Icon(CupertinoIcons.back),
+                Text(
+                  "Back",
+                  style: theme.textTheme.subtitle1,
+                ),
+              ],
             ),
+            onTap: () {
+              Navigator.pop(context);
+            },
           ),
+          // leading:
           elevation: 0.0,
-          iconTheme: IconThemeData(color: primaryDark),
-          backgroundColor: Colors.transparent,
-          centerTitle: true,
-          title: Padding(
-            padding: const EdgeInsets.only(top: 8.0),
-            child: Text(title,
-                style: TextStyle(
-                  color: primaryDark,
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.bold,
-                )),
-          ),
+          iconTheme: theme.iconTheme,
+          backgroundColor: theme.colorScheme.background,
+          // centerTitle: true,
+          // title: Padding(
+          //   padding: const EdgeInsets.only(top: 8.0),
+          //   child: Text(title,
+          //       style: TextStyle(
+          //         color: primaryDark,
+          //         fontSize: 18.0,
+          //         fontWeight: FontWeight.bold,
+          //       )),
+          // ),
           actions: <Widget>[
             search != null
                 ? FIcons(
@@ -71,10 +80,13 @@ class FAppBar extends StatelessWidget {
                   )
                 : Text(''),
             cart != null
-                ? FIcons(
-                    icon: Icons.shopping_cart,
-                    alignment: Alignment.centerRight,
-                    onPressed: () {
+                ? InkWell(
+                    child: Image.asset(
+                      "images/esellIcons/cart2.png",
+                      height: 20.0,
+                      width: 20.0,
+                    ),
+                    onTap: () {
                       user.token != null
                           ? Navigator.push(
                               context,
@@ -85,7 +97,7 @@ class FAppBar extends StatelessWidget {
                 : Text(''),
             wishlist != null
                 ? FIcons(
-                    icon: Icons.bookmark,
+                    icon: Icons.bookmark_border,
                     alignment: Alignment.centerRight,
                     onPressed: () {
                       user.token != null
@@ -102,7 +114,7 @@ class FAppBar extends StatelessWidget {
     );
   }
 
-_showBottomSheet(context) {
+  _showBottomSheet(context) {
     showModalBottomSheet(
         context: context,
         builder: (BuildContext context) {

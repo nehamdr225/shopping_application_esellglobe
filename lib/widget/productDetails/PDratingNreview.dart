@@ -1,96 +1,102 @@
-import 'package:esell/state/state.dart';
+import 'package:esell/widget/atoms/Forms.dart';
+import 'package:esell/widget/atoms/GradientButton.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
-import 'package:esell/widget/atoms/Text.dart';
+import 'package:esell/widget/atoms/StarRating.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:esell/widget/productDetails/Stars.dart';
 import 'package:flutter/material.dart';
 
-class PDratingNreview extends StatelessWidget {
+class PDratingNreview extends StatefulWidget {
+  @override
+  _PDratingNreviewState createState() => _PDratingNreviewState();
+}
+
+class _PDratingNreviewState extends State<PDratingNreview> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 5.0),
-      child: Container(
-        color: Colors.white,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.all(5.0),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                FText(
-                  text: "Ratings & Reviews",
-                  color: textColor,
-                  size: 16.0,
-                  fontWeight: FontWeight.w600,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(right: 8.0),
-                  child: FRaisedButton(
-                    elevation: 0.6,
-                    width: 120.0,
-                    text: 'Rate Product',
-                    color: primaryDark,
-                    fontSize: 14.0,
-                    bg: Colors.white,
-                    onPressed: () {},
-                  ),
-                ),
-              ],
-            ),
-            Padding(
-                padding:
-                    const EdgeInsets.only(top: 6.0, left: 10.0, bottom: 6.0),
-                child: Row(
-                  children: <Widget>[
-                    Container(
-                      width: 65.0,
-                      height: 40.0,
-                      child: Chip(
-                        backgroundColor: Colors.green,
-                        label: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            Text(
-                              '3.9',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText2
-                                  .copyWith(
-                                    fontWeight: FontWeight.w700,
-                                    color: Colors.white,
-                                    fontSize: 14.0,
-                                  ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(2.0),
-                            ),
-                            Icon(
-                              Icons.star,
-                              size: 15.0,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        '15 ratings and 1 review',
-                        style: Theme.of(context).textTheme.bodyText2.copyWith(
-                              fontWeight: FontWeight.w700,
-                              color: Colors.grey[500],
-                              fontSize: 14.0,
-                            ),
-                      ),
-                    ),
-                  ],
-                )),
-          ],
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Text("Rate this app",
+          textAlign: TextAlign.start,
+          style: Theme.of(context).textTheme.headline3),
+      Text("Tell others what you think",
+          textAlign: TextAlign.start,
+          style: Theme.of(context)
+              .textTheme
+              .subtitle2
+              .copyWith(color: Colors.grey[500])),
+      Padding(
+        padding: const EdgeInsets.symmetric(vertical: 12.0),
+        child: Align(
+          alignment: Alignment.center,
+          child: PDStarRating(
+            rating: 5,
+            size: 34.0,
+            spacing: MediaQuery.of(context).size.width * 0.10, //8.0,
+            allowHalfRating: false,
+          ),
         ),
-      ),
-    );
+      ), //working wala i will change the style later to look like belows.
+      // Padding(
+      //   padding: const EdgeInsets.symmetric(vertical:8.0),
+      //   child: Stars(
+      //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      //     color: Theme.of(context).buttonColor,
+      //     size: 34.0,
+      //   ),
+      // ), //only for show
+      InkWell(
+        onTap: () {
+          showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                String localData;
+                return SimpleDialog(
+                  backgroundColor: Theme.of(context).colorScheme.background,
+                  children: <Widget>[
+                    SimpleDialogOption(
+                      child: FForms(
+                        // underline: false,
+                        borderColor: Theme.of(context).colorScheme.onBackground,
+                        text: "Write a review",
+                        onChanged: (value) {
+                          setState(() {
+                            localData = value;
+                          });
+                        },
+                      ),
+                    ),
+                    SimpleDialogOption(
+                        child: GradientButton(
+                          text: "Save",
+                          elevation: 0.0,
+                          onPressed: () {
+                        //     Navigator.pop(context);
+                       },
+                        ))
+                  ],
+                );
+              });
+          // showDialog(
+          //     context: context,
+          //     builder: (BuildContext context) {
+          //       return Container(
+          //         height: 400.0,
+          //         color: Theme.of(context).colorScheme.background,
+          //         child: CupertinoAlertDialog(
+          //           actions: [Container(height: 100.0, child: Text('HELLO'))],
+          //         ),
+          //       );
+          //     });
+          // Navigator.of(context).push(MaterialPageRoute(
+          //   builder: (context) =>
+          // ));
+        },
+        child: Text("Write a review",
+            textAlign: TextAlign.start,
+            style: Theme.of(context).textTheme.caption.copyWith(
+                  color: Color(0xff3E91CC),
+                )),
+      )
+    ]);
   }
 }
