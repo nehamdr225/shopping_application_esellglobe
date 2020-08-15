@@ -1,5 +1,7 @@
 import 'package:esell/widget/productDetails/AllDetails.dart';
+import 'package:esell/widget/productDetails/BoughtTogether.dart';
 import 'package:esell/widget/productDetails/ColorSelector.dart';
+import 'package:esell/widget/productDetails/Comments.dart';
 import 'package:esell/widget/productDetails/PDratingNreview.dart';
 import 'package:esell/widget/productDetails/Stars.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +17,7 @@ class PDInfo extends StatefulWidget {
       color,
       size,
       description;
+  final relatedProd;
   final Function setSize, setColor;
   PDInfo(
       {this.category,
@@ -27,7 +30,7 @@ class PDInfo extends StatefulWidget {
       this.description,
       this.name,
       this.sizes,
-      this.price});
+      this.price, this.relatedProd});
 
   @override
   _PDInfoState createState() => _PDInfoState();
@@ -36,6 +39,7 @@ class PDInfo extends StatefulWidget {
 class _PDInfoState extends State<PDInfo> {
   @override
   Widget build(BuildContext context) {
+    
     return Card(
       elevation: 0.0,
       color: Colors.white,
@@ -92,7 +96,6 @@ class _PDInfoState extends State<PDInfo> {
                   foot: widget.category.contains('Foot Wear'),
                 ),
               ),
-            
             widget.description == null
                 ? Padding(
                     padding: const EdgeInsets.only(top: 5.0),
@@ -135,7 +138,17 @@ class _PDInfoState extends State<PDInfo> {
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 16.0),
                         child: PDratingNreview(),
-                      )
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 16.0),
+                        child: PDcomments(),
+                      ),
+                      Padding(
+                        padding:  EdgeInsets.symmetric(vertical: 16.0),
+                        child: PDBoughtTogether(
+                          relevantProds: widget.relatedProd,
+                        ),
+                      ),
                     ],
                   ),
           ],

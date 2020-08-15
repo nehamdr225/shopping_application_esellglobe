@@ -1,6 +1,4 @@
 import 'package:esell/entities/product.dart';
-import 'package:esell/state/state.dart';
-import 'package:esell/widget/atoms/Text.dart';
 import 'package:esell/widget/productDetails/pdFBTtile.dart';
 import 'package:flutter/material.dart';
 
@@ -20,23 +18,25 @@ class PDBoughtTogether extends StatelessWidget {
             Padding(
               padding: EdgeInsets.all(8.0),
             ),
+            Text("You may also like",
+                textAlign: TextAlign.start,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.headline3),
             Container(
-                child: FText(
-              text: "You might also like",
-              color: textColor,
-              size: 16.0,
-              fontWeight: FontWeight.w600,
-            )),
-            Column(
-              children: relevantProds
-                  .map<Widget>(
-                    (e) => FBTtile(
-                      name: e.name,
-                      image: e.media.front,
-                      price: e.price,
-                    ),
-                  )
-                  .toList(),
+               width: MediaQuery.of(context).size.width ,
+        height: 170.0,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: relevantProds
+                    .map<Widget>(
+                      (e) => FBTtile(
+                        name: e.name,
+                        image: e.media.front,
+                        price: e.price,
+                      ),
+                    )
+                    .toList(),
+              ),
             ),
             SizedBox(
               width: 10.0,

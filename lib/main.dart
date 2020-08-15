@@ -11,7 +11,7 @@ import 'package:esell/state/state.dart';
 
 Future main() async {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    statusBarColor: Color(0xff3288a6),
+    statusBarColor: Color(0xff000000),//3E91CC),
   ));
   runApp(BootStrapper());
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);

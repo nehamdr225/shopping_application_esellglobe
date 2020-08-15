@@ -38,7 +38,7 @@ class _DetailsState extends State<Details> {
                 Text(
                   "₹ ${widget.price}",
                   style: Theme.of(context).textTheme.bodyText2.copyWith(
-                        fontSize: 16.0,
+                        fontSize: 15.0,
                         fontWeight: FontWeight.w800,
                       ),
                   textAlign: TextAlign.left,

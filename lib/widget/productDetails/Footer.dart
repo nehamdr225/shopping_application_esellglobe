@@ -4,6 +4,8 @@ import 'package:esell/pages/Cart.dart';
 import 'package:esell/pages/CheckoutPage.dart';
 import 'package:esell/pages/UserPromt.dart';
 import 'package:esell/state/state.dart';
+import 'package:esell/widget/atoms/FOutlineButton.dart';
+import 'package:esell/widget/atoms/GradientButton.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/atoms/Snackbar.dart';
 import 'package:flutter/material.dart';
@@ -73,55 +75,46 @@ class PDFooter extends StatelessWidget {
         children: user.token != null
             ? <Widget>[
                 user.findCartItem(id) == true
-                    ? FRaisedButton(
-                        height: 50.0,
+                    ? FOutlineButton(
+                        height: 45.0,
+                        text: 'Goto Cart',
+                        radius: 10.0,
+                        color: Colors.black,
                         width: MediaQuery.of(context).size.width * 0.40,
-                        radius: 0.0,
                         onPressed: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) => CartPage()),
                           );
                         },
-                        text: 'GOTO CART',
-                        color: Colors.grey[600],
-                        bg: Colors
-                            .white, //Theme.of(context).colorScheme.secondaryVariant,
-                        shape: true,
                       )
-                    : FRaisedButton(
-                        height: 50.0,
+                    : FOutlineButton(
+                        height: 45.0,
                         width: MediaQuery.of(context).size.width * 0.40,
-                        radius: 0.0,
+                        text: inCart ? 'In Cart' : 'Add To Cart',
+                        radius: 10.0,
+                        color: Colors.black,
                         onPressed: inCart ? () {} : addToCart,
-
-                        ///###
-                        text: inCart ? 'IN CART' : 'ADD TO CART',
-                        color: Colors.grey[600],
-                        shape: true,
-                        bg: Colors
-                            .white, //Theme.of(context).colorScheme.secondaryVariant,
                       ),
+
                 user.findCartItem(id) == true
-                    ? FRaisedButton(
-                        height: 50.0,
+                    ? FOutlineButton(
+                        height: 45.0,
                         width: MediaQuery.of(context).size.width * 0.40,
-                        radius: 0.0,
+                        text: 'Goto Cart',
+                        radius: 10.0,
+                        color: Colors.black,
                         onPressed: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) => CartPage()),
                           );
                         },
-                        text: 'GOTO CART',
-                        color: Colors.white,
-                        bg: Theme.of(context).colorScheme.secondaryVariant,
-                        shape: true,
                       )
-                    : FRaisedButton(
-                        height: 50.0,
+                   
+                    : GradientButton(
                         width: MediaQuery.of(context).size.width * 0.40,
-                        radius: 0.0,
+                        text: 'Buy Now',
                         onPressed: () {
                           Navigator.push(
                               context,
@@ -135,29 +128,39 @@ class PDFooter extends StatelessWidget {
                                         })
                                       ])));
                         },
+                      )
 
-                        ///###
-                        text: 'BUY NOW',
-                        color: Colors.white,
-                        shape: true,
-                        bg: Theme.of(context).colorScheme.secondaryVariant,
-                      ),
+                // FRaisedButton(
+                //     height: 50.0,
+                //     width: MediaQuery.of(context).size.width * 0.40,
+                //     radius: 0.0,
+
+                //     ///###
+
+                //     color: Colors.white,
+                //     shape: true,
+                //     bg: Theme.of(context).colorScheme.secondaryVariant,
+                //   ),
               ]
             : <Widget>[
-                FRaisedButton(
-                  height: 50.0,
-                  width: MediaQuery.of(context).size.width * 0.90,
+                GradientButton(
+                  text: 'Login or Register',
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (_) => UserPromptApp()));
                   },
+                )
+                // FRaisedButton(
+                //   height: 50.0,
+                //   width: MediaQuery.of(context).size.width * 0.90,
+                //   onPressed: (){},
 
-                  ///###
-                  text: 'Login or Register',
-                  color: Colors.white,
-                  shape: true,
-                  bg: Theme.of(context).colorScheme.secondaryVariant,
-                ),
+                //   ///###
+
+                //   color: Colors.white,
+                //   shape: true,
+                //   bg: Theme.of(context).colorScheme.secondaryVariant,
+                // ),
               ],
       ),
     );

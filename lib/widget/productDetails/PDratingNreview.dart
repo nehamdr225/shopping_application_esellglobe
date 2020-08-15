@@ -1,9 +1,7 @@
 import 'package:esell/widget/atoms/Forms.dart';
 import 'package:esell/widget/atoms/GradientButton.dart';
-import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/atoms/StarRating.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:esell/widget/productDetails/Stars.dart';
 import 'package:flutter/material.dart';
 
 class PDratingNreview extends StatefulWidget {
@@ -55,24 +53,30 @@ class _PDratingNreviewState extends State<PDratingNreview> {
                   children: <Widget>[
                     SimpleDialogOption(
                       child: FForms(
-                        // underline: false,
-                        borderColor: Theme.of(context).colorScheme.onBackground,
-                        text: "Write a review",
+                        minLines: 1,
+                        maxLines: 10,
+                        borderColor: Theme.of(context).textTheme.caption.color,
+                        labeltext: true,
+                        text: 'Description',
+                        textColor: Theme.of(context).textTheme.caption.color,
                         onChanged: (value) {
                           setState(() {
                             localData = value;
                           });
                         },
+                        validator: (val) => val.length < 20
+                            ? 'Description must be at least 20 characters!'
+                            : null,
                       ),
                     ),
                     SimpleDialogOption(
                         child: GradientButton(
-                          text: "Save",
-                          elevation: 0.0,
-                          onPressed: () {
+                      text: "Save",
+                      elevation: 0.0,
+                      onPressed: () {
                         //     Navigator.pop(context);
-                       },
-                        ))
+                      },
+                    ))
                   ],
                 );
               });

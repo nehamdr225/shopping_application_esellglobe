@@ -72,7 +72,7 @@ class FTheme with ChangeNotifier {
           fontFamily: 'Montserrat',
           fontWeight: FontWeight.bold),
       headline6: TextStyle(
-          fontSize: 14.0,
+          fontSize: 12.0,
           color: Color(0xff000000),
           fontFamily: 'Montserrat',
           fontWeight: FontWeight.w700),
@@ -92,8 +92,8 @@ class FTheme with ChangeNotifier {
           fontFamily: 'Nunito',
           fontWeight: FontWeight.normal),
       caption: TextStyle(
-          fontSize: 13.0,
           color: Color(0xffA1A1A1),
+          fontSize: 13.0,
           fontFamily: 'Nunito',
           fontWeight: FontWeight.bold),
       bodyText2: TextStyle(
