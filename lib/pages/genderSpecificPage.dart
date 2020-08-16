@@ -52,16 +52,13 @@ class _GenderSpecificState extends State<GenderSpecific>
                   pinned: true,
                   snap: true,
                   elevation: 1.0,
-                  backgroundColor: primaryDark,
+                  backgroundColor: theme.primary,
                   flexibleSpace: FlexibleSpaceBar(
                       centerTitle: true,
                       title: Padding(
                         padding: const EdgeInsets.only(right: 8.0, left: 8.0),
                         child: Text("Men's Collection",
-                            style: TextStyle(
-                              color: theme.background,
-                              fontSize: 15.0,
-                            )),
+                            style: Theme.of(context).textTheme.subtitle1.copyWith(fontSize: 15.0, fontWeight: FontWeight.bold, color: Colors.white)),
                       ),
                       background: Container(
                         width: size.width,
@@ -73,69 +70,7 @@ class _GenderSpecificState extends State<GenderSpecific>
                         ),
                       )),
                 ),
-                // (BuildContext context, bool innerBoxIsScrolled) {
-                //   return <Widget>[
-                //     SliverAppBar(
-                //       elevation: 0.5,
-                //       title: Text(widget.gender,
-                //           style: TextStyle(
-                //             color: primaryDark,
-                //             fontSize: 18.0,
-                //             fontWeight: FontWeight.bold,
-                //           )),
-                //       pinned: true,
-                //       floating: true,
-                //       forceElevated: innerBoxIsScrolled,
-                //       iconTheme: IconThemeData(
-                //         color: primaryDark,
-                //       ),
-                //       backgroundColor: Colors.white,
-                //       leading: Padding(
-                //         padding: const EdgeInsets.only(top: 8.0),
-                //         child: IconButton(
-                //           icon: Icon(Icons.arrow_back),
-                //           onPressed: () {
-                //             Navigator.pop(context);
-                //           },
-                //         ),
-                //       ),
-                //       actions: <Widget>[
-                //         FIcons(
-                //             icon: Icons.shopping_cart,
-                //             alignment: Alignment.centerRight,
-                //             onPressed: () {
-                //               Navigator.push(
-                //                   context,
-                //                   MaterialPageRoute(
-                //                       builder: (context) => CartPage()));
-                //             }),
-                //         FIcons(
-                //             icon: Icons.bookmark,
-                //             alignment: Alignment.centerRight,
-                //             onPressed: () {
-                //               Navigator.push(
-                //                   context,
-                //                   MaterialPageRoute(
-                //                       builder: (context) => WishlistPage()));
-                //             })
-                //       ],
-                //       bottom: PreferredSize(
-                //         preferredSize: Size.fromHeight(98.0),
-                //         child: Padding(
-                //           padding: const EdgeInsets.only(bottom: 10.0, top: 8.0),
-                //           child: Container(
-                //               alignment: Alignment.center,
-                //               height: 80.0,
-                //               child: GenderSpecHorizontalList(
-                //                 border: true,
-                //                 listViews: widget.gender == 'Male' ? MEN : WOMEN,
-                //               )),
-                //         ),
-                //       ),
-                //     )
-                //   ];
-                // },
-                //body:
+                
               ];
             },
             body: ListView.builder(
@@ -144,6 +79,7 @@ class _GenderSpecificState extends State<GenderSpecific>
                 itemBuilder: (BuildContext context, int index) {
                   return Column(
                     children: <Widget>[
+                      
                       InfoNavBar(
                         text: MEN[index]['name'],
                         onPressed: () {
@@ -154,7 +90,7 @@ class _GenderSpecificState extends State<GenderSpecific>
                               ),
                             ),
                           );
-                        },
+                        }, 
                       ),
                       Container(
                         padding: EdgeInsets.all(8.0),

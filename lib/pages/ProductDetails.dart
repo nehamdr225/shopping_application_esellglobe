@@ -1,8 +1,5 @@
 import 'package:esell/widget/molecules/AppBar.dart';
-import 'package:esell/widget/productDetails/BoughtTogether.dart';
 import 'package:esell/widget/productDetails/Carousel.dart';
-import 'package:esell/widget/productDetails/Comments.dart';
-import 'package:esell/widget/productDetails/PDratingNreview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
@@ -150,6 +147,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               ),
             ),
             PDInfo(
+              relatedProd: relatedProds,
               category: product.category,
               id: product.id,
               color: color,
@@ -161,18 +159,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               name: product.name,
               price: product.price,
               sizes: product.sizes,
-            ),
-            
-            PDBoughtTogether(
-              // details: product['description'],
-              // price: product['price'],
-              // id: widget.id,
-              // image: product.media.front,
-              // name: product['name'],
-              relevantProds: relatedProds,
-            ),
-            
-            PDcomments(),
+            ),          
             Padding(
               padding: EdgeInsets.all(3.0),
             )

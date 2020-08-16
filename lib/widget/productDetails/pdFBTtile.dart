@@ -1,4 +1,3 @@
-import 'package:esell/widget/atoms/Text.dart';
 import 'package:flutter/material.dart';
 
 class FBTtile extends StatelessWidget {
@@ -9,64 +8,47 @@ class FBTtile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final imagesrc = "https://api.shop2more.com" + image;
-    final body1 =
-        Theme.of(context).textTheme.bodyText2.copyWith(fontSize: 16.0);
-    return Container(
-      width: MediaQuery.of(context).size.width * 0.95,
-      height: 100.0,
-      child: ListTile(
-        leading: Image.network(
-          imagesrc,
-          fit: BoxFit.contain,
-          width: 90,
+    return Padding(
+      padding: const EdgeInsets.only(right:8.0, top: 8.0),
+      child: Container(
+        width: MediaQuery.of(context).size.width * 0.45,
+        height: 170.0,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(2.0),
+          border: Border.all(
+            color: Color(0xffA1A1A1),
+            width: 0.1
+          )
         ),
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            FText(
-              text: '$name',
-              style:
-                  body1.copyWith(fontSize: 16.0, fontWeight: FontWeight.w600),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+        child: Material(
+          borderRadius: BorderRadius.circular(8.0),
+          child: InkWell(
+            onTap: () {},
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                
-                Padding(
-                  padding: EdgeInsets.only(right: 6.0, left: 11.0),
-                  child: Text(
-                    "₹ $price",
-                    style: Theme.of(context).textTheme.bodyText2.copyWith(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 17.0,
-                        ),
+                Center(
+                  child: Image.network(
+                    imagesrc,
+                    fit: BoxFit.contain,
+                    width: 80.0,
+                    height: 100.0,
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.only(right: 6.0, left: 6.0),
-                  child: Text(
-                    "\$ 1800",
-                    style: Theme.of(context).textTheme.bodyText2.copyWith(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 13.0,
-                        color: Colors.grey[500],
-                        decoration: TextDecoration.lineThrough),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(right: 6.0, left: 6.0),
-                  child: Text(
-                    "50% off",
-                    style: Theme.of(context).textTheme.bodyText2.copyWith(
-                          fontWeight: FontWeight.w600,
-                          color: Colors.green,
-                          fontSize: 15.0,
-                        ),
-                  ),
+                Divider(height: 2),
+                Column(
+                  children: [
+                    Text(
+                      name,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.caption,
+                    ),
+                    Text("₹ $price", style: Theme.of(context).textTheme.caption)
+                  ],
                 ),
               ],
             ),
-          ],
+          ),
         ),
       ),
     );

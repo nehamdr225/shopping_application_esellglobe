@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 
 class GradientButton extends StatelessWidget {
   final String text;
-  final double elevation;
+  final double elevation, width;
   final onPressed;
-  GradientButton({this.text, this.elevation, this.onPressed});
+  GradientButton({this.text, this.elevation, this.onPressed, this.width});
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 45.0,
+      width: width,
       child: RaisedButton(
         elevation: elevation,
         onPressed: onPressed,

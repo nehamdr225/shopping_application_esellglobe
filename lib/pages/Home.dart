@@ -58,13 +58,23 @@ class _HomePageAppState extends State<HomePageApp>
               SliverAppBar(
                 title: Image.asset(
                   'images/logo/logoonly.png',
-                  height: 35.0,
+                  color: Colors.black,
+                  height: 24.0,
                 ),
+                leading: Builder(builder: (BuildContext context) {
+                  return InkWell(
+                    child: Image.asset("images/esellIcons/menu.png"),
+                    onTap: () {
+                      Scaffold.of(context).openDrawer();
+                    },
+                  );
+                }),
+                
                 pinned: true,
                 floating: true,
                 forceElevated: innerBoxIsScrolled,
                 iconTheme: IconThemeData(
-                  color: primaryDark,
+                  color: Colors.black,
                 ),
                 backgroundColor: Colors.white,
                 actions: <Widget>[
@@ -108,6 +118,8 @@ class _HomePageAppState extends State<HomePageApp>
                     child: FForms(
                       height: 45.0,
                       width: width * 0.90,
+                      formColor: Theme.of(context).colorScheme.onBackground,
+                      borderColor: Theme.of(context).colorScheme.onBackground,
                       text: 'Search for fashion',
                       labeltext: false,
                       icon: Icon(Icons.search),
