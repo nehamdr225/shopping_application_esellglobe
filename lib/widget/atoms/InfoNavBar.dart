@@ -1,5 +1,3 @@
-import 'package:esell/state/src/theme.dart';
-import 'package:esell/widget/atoms/FancyText.dart';
 import 'package:flutter/material.dart';
 
 class InfoNavBar extends StatelessWidget {

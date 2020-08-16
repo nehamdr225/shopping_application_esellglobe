@@ -1,11 +1,11 @@
 import 'package:esell/pages/SearchPage.dart';
 import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/BrandLogos.dart';
+import 'package:esell/widget/atoms/Category.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
 import 'package:esell/widget/atoms/Forms.dart';
 import 'package:esell/widget/atoms/loginOptions.dart';
 import 'package:esell/widget/molecules/GridList.dart';
-import 'package:esell/widget/molecules/HorizontalList.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/widget/molecules/Carousel.dart';
@@ -14,6 +14,8 @@ import 'package:esell/pages/Cart.dart';
 import 'package:esell/pages/Wishlist.dart';
 import 'package:provider/provider.dart';
 import 'package:esell/pages/Drawer.dart';
+
+import 'genderSpecificPage.dart';
 
 class HomePageApp extends StatefulWidget {
   const HomePageApp(
@@ -143,24 +145,54 @@ class _HomePageAppState extends State<HomePageApp>
                     )),
               ),
               Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Container(
-                    alignment: Alignment.center,
-                    height: 80.0,
-                    child: HorizontalList(
-                      listViews: HList,
-                    )),
-              ),
+                  padding: const EdgeInsets.all(10.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                    Category(
+                      name: "Men",
+                      caption: "Mens",
+                      src: "images/icons/man.png",
+                      height: 28.0,
+                      width: 28.0,
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => GenderSpecific(
+                              gender: "Male",
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                    Category(
+                      name: "Women",
+                      caption: "Womens",
+                      src: "images/icons/woman.png",
+                      height: 28.0,
+                      width: 28.0,
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => GenderSpecific(
+                              gender: "Female",
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ])),
               Padding(
-                padding: EdgeInsets.fromLTRB(10.0, 5.0, 0.0, 8.0),
-                child: FancyText(
-                  text: "Discounts for you",
-                  size: 20.0,
-                  color: textColor,
-                  textAlign: TextAlign.start,
-                  fontfamily: "Bree",
-                ),
-              ),
+                padding: EdgeInsets.symmetric(vertical: 10.0, horizontal:8.0),
+                child: Text("SPECIAL DISCOUNTS", style: Theme.of(context).textTheme.headline4,),),
+              //   FancyText(
+              //     text: 
+              //     size: 20.0,
+              //     color: textColor,
+              //     textAlign: TextAlign.start,
+              //     fontfamily: "Bree",
+              //   ),
+              // ),
               Container(
                   height: height * 0.40,
                   child: Padding(

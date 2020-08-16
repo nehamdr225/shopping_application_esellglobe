@@ -161,9 +161,9 @@ const HList = [
     "cap": "Female",
     "src": 'images/icons/woman.png',
   },
-  {
-    "name": "Kid's Wear", //"Shoe",
-    "cap": "Kids", //"Shoe",
-    "src": 'images/icons/kid.png',
-  },
+  // {
+  //   "name": "Kid's Wear", //"Shoe",
+  //   "cap": "Kids", //"Shoe",
+  //   "src": 'images/icons/kid.png',
+  // },
 ];
