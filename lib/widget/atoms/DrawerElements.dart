@@ -8,6 +8,7 @@ class DrawerElements extends StatelessWidget {
   final bool titleWidgets;
   final Widget widgets;
   final Widget iconWidget;
+  final style;
   DrawerElements(
       {this.title,
       this.icon,
@@ -15,13 +16,14 @@ class DrawerElements extends StatelessWidget {
       this.onTap,
       this.iconWidget,
       this.titleWidgets: false,
-      this.widgets});
+      this.widgets,
+      this.style});
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       title: titleWidgets == false
-          ? Text(title, style: Theme.of(context).textTheme.caption)
+          ? Text(title, style: style)
           : widgets,
       leading: iconWidget ??
           Image.asset(

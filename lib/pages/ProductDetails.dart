@@ -146,7 +146,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                 ],
               ),
             ),
-            PDInfo(
+            PDInfo( 
               relatedProd: relatedProds,
               category: product.category,
               id: product.id,

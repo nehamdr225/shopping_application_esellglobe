@@ -28,12 +28,7 @@ class BlueAppBar extends StatelessWidget {
       title: Text(
         title,
         textAlign: TextAlign.center,
-        style: TextStyle(
-          fontFamily: 'Bree',
-          color: Colors.white,
-          fontSize: 20.0,
-          fontWeight: FontWeight.bold,
-        ),
+        style: Theme.of(context).textTheme.headline5
       ),
       elevation: elevation,
       backgroundColor: primaryDark,

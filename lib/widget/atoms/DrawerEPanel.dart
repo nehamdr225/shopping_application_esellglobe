@@ -23,7 +23,7 @@ class ListItem {
                 child: Padding(padding: EdgeInsets.all(8.0),
                   child: title,
                 )), // new Image.asset(title, height: 20.0, width: 20.0, color: Colors.black87,)),
-            new Text(subtitle, style: Theme.of(context).textTheme.caption)
+            new Text(subtitle, style: Theme.of(context).textTheme.headline3)
           ]);
 }
 

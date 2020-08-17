@@ -30,98 +30,111 @@ class DrawerApp extends StatelessWidget {
           children: <Widget>[
             userData != null && token != null
                 //token != null
-                ? UserAccountsDrawerHeader(
-                    accountName: Text(
-                        userData.length > 0 ? userData['name'] : "Loading ..."),
-                    accountEmail: Text(userData.length > 0
-                        ? userData['email']
-                        : "Loading ..."),
-                    currentAccountPicture: GestureDetector(
-                      child: CircleAvatar(
-                        backgroundColor: Colors.white24,
-                        child: Icon(Icons.person, color: Colors.black45),
-                      ),
-                    ),
-                    decoration: BoxDecoration(
-                      gradient: drawercolor,
-                    ),
-                  )
-                : DrawerHeader(
-                    decoration: BoxDecoration(
-                      //color: primary,
-                      gradient: drawercolor,
-                    ),
-                    child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          CircleAvatar(
-                            backgroundColor: Colors.white,
-                            radius: 40.0,
-                            child: Image.asset(
-                              'images/logo/logoonly.png',
-                              height: 45.0,
-                              width: 35.0,
-                            ),
-                          ),
-                          Container(
-                            //login/signup
-                            color: Colors.transparent,
-                            alignment: Alignment.bottomLeft,
-                            child: ListTile(
-                              title: Text('Log in   .   Sign up',
+                ? Container(
+                    height: MediaQuery.of(context).size.height * 0.35,
+                    child: DrawerHeader(
+                        decoration: BoxDecoration(
+                          gradient: drawercolor,
+                        ),
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Container(
+                                height: 110.0,
+                                width: 110.0,
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                      "images/esell photo/3brown.jpg",
+                                    ),
+                                    fit: BoxFit.cover,
+                                  ),
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ),
+                              ),
+                              SizedBox(height: 8.0),
+                              Text(
+                                userData.length > 0
+                                    ? userData['name']
+                                    : "Loading ...",
+                                style: Theme.of(context).textTheme.headline5,
+                              ),
+                              Text(
+                                  userData.length > 0
+                                      ? userData['email']
+                                      : "Loading ...",
                                   style: Theme.of(context)
                                       .textTheme
-                                      .caption
-                                      .copyWith(
-                                          fontSize: 16.0,
-                                          fontWeight: FontWeight.w500)),
-                              contentPadding: EdgeInsets.only(left: 5.0),
-                              trailing: Icon(
-                                Icons.arrow_right,
-                                color: textColor,
+                                      .bodyText1
+                                      .copyWith(color: Colors.white)),
+                            ])),
+                  )
+                : Container(
+                    height: MediaQuery.of(context).size.height * 0.35,
+                    child: DrawerHeader(
+                        decoration: BoxDecoration(
+                          gradient: drawercolor,
+                        ),
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Container(
+                                height: 110.0,
+                                width: 110.0,
+                                child:
+                                    Icon(Icons.person, color: Colors.black45),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ),
                               ),
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => UserPromptApp()));
-                              },
-                            ),
-                          )
-                        ])),
+                              Container(
+                                //login/signup
+                                color: Colors.transparent,
+                                alignment: Alignment.bottomLeft,
+                                child: ListTile(
+                                  title: Text('Log in   .   Sign up',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headline5),
+                                  contentPadding: EdgeInsets.only(left: 5.0),
+                                  trailing: Icon(
+                                    Icons.arrow_right,
+                                    color: Colors.white,
+                                  ),
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                UserPromptApp()));
+                                  },
+                                ),
+                              )
+                            ])),
+                  ),
             Padding(
-              padding: const EdgeInsets.only(
-                top: 8.0,
-                left: 14.0,
-                bottom: 5.0,
-              ),
-              child: Text(
-                'Search for Fashion',
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyText1
-                    .copyWith(fontSize: 16.0),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(3.0),
+              padding: EdgeInsets.all(8.0),
             ),
             DrawerEPanel(
               [
                 ListItem(
                     title: Image.asset(
-                      "images/esellIcons/men.png",
-                      height: 25.0,
-                      width: 25.0,
+                      "images/icons/man.png",
+                      height: 20.0,
+                      width: 20.0,
                     ),
                     subtitle: "Men",
                     bodyBuilder: (context) => Column(
                           children: <Widget>[
                             DrawerElements(
+                              style: Theme.of(context).textTheme.caption.copyWith(color: Colors.black, fontWeight: FontWeight.normal),
                               title: 'Top Wear',
                               icon: 'images/icons/tshirt.png',
-                              iconSize: 23.0,
+                              iconSize: 0.0,
                               onTap: () {
                                 Navigator.of(context).push(
                                   MaterialPageRoute(
@@ -132,9 +145,10 @@ class DrawerApp extends StatelessWidget {
                               },
                             ),
                             DrawerElements(
+                              style: Theme.of(context).textTheme.caption.copyWith(color: Colors.black, fontWeight: FontWeight.normal),
                               title: 'Bottom Wear',
                               icon: 'images/icons/pant.png',
-                              iconSize: 23.0,
+                              iconSize: 0.0,
                               onTap: () {
                                 Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) =>
@@ -143,9 +157,10 @@ class DrawerApp extends StatelessWidget {
                               },
                             ),
                             DrawerElements(
+                              style: Theme.of(context).textTheme.caption.copyWith(color: Colors.black, fontWeight: FontWeight.normal),
                               title: 'FootWear',
                               icon: 'images/icons/shoe.png',
-                              iconSize: 23.0,
+                              iconSize: 0.0,
                               onTap: () {
                                 Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) =>
@@ -154,9 +169,10 @@ class DrawerApp extends StatelessWidget {
                               },
                             ),
                             DrawerElements(
+                              style: Theme.of(context).textTheme.caption.copyWith(color: Colors.black, fontWeight: FontWeight.normal),
                               title: 'Watches & Glasses',
                               icon: 'images/icons/glassesandjunga.png',
-                              iconSize: 23.0,
+                              iconSize: 0.0,
                               onTap: () {
                                 Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) =>
@@ -174,15 +190,16 @@ class DrawerApp extends StatelessWidget {
             DrawerEPanel(
               [
                 ListItem(
-                    title: Image.asset("images/esellIcons/woman.png",
-                        height: 30.0, width: 30.0),
+                    title: Image.asset("images/icons/woman.png",
+                        height: 24.0, width: 24.0),
                     subtitle: "Women",
                     bodyBuilder: (context) => Column(
                           children: <Widget>[
                             DrawerElements(
+                              style: Theme.of(context).textTheme.caption.copyWith(color: Colors.black, fontWeight: FontWeight.normal),
                               title: 'Top Wear',
                               icon: 'images/icons/tshirt.png',
-                              iconSize: 23.0,
+                              iconSize: 0.0,
                               onTap: () {
                                 Navigator.of(context).push(
                                   MaterialPageRoute(
@@ -193,9 +210,10 @@ class DrawerApp extends StatelessWidget {
                               },
                             ),
                             DrawerElements(
+                              style: Theme.of(context).textTheme.caption.copyWith(color: Colors.black, fontWeight: FontWeight.normal),
                               title: 'Bottom Wear',
                               icon: 'images/icons/pant.png',
-                              iconSize: 23.0,
+                              iconSize: 0.0,
                               onTap: () {
                                 Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) =>
@@ -204,9 +222,10 @@ class DrawerApp extends StatelessWidget {
                               },
                             ),
                             DrawerElements(
-                              title: 'FootWear',
+                              style: Theme.of(context).textTheme.caption.copyWith(color: Colors.black, fontWeight: FontWeight.normal),
+                              title: 'Foot Wear',
                               icon: 'images/icons/shoe.png',
-                              iconSize: 23.0,
+                              iconSize: 0.0,
                               onTap: () {
                                 Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) =>
@@ -215,9 +234,10 @@ class DrawerApp extends StatelessWidget {
                               },
                             ),
                             DrawerElements(
+                              style: Theme.of(context).textTheme.caption.copyWith(color: Colors.black, fontWeight: FontWeight.normal),
                               title: 'Watches & Glasses',
                               icon: 'images/icons/glassesandjunga.png',
-                              iconSize: 23.0,
+                              iconSize: 0.0,
                               onTap: () {
                                 Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) =>
@@ -229,36 +249,15 @@ class DrawerApp extends StatelessWidget {
                         )),
               ],
             ),
-            Padding(
-              padding: EdgeInsets.all(3.0),
-            ),
-            Divider(
-              color: Colors.grey[500],
-              height: 10.0,
-            ),
-            Padding(
-              //text find your styke
-              padding: const EdgeInsets.only(
-                top: 18.0,
-                left: 14.0,
-                bottom: 5.0,
-              ),
-              child: Text(
-                'Find your style',
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyText1
-                    .copyWith(fontSize: 16.0),
-              ),
-            ),
             userData != null && token != null
                 ? DrawerElements(
                     //Order
+                    style: Theme.of(context).textTheme.headline3,
                     title: 'My Orders',
                     // icon: 'images/esellIcons/order.png',
                     iconWidget: Icon(
                       Icons.shopping_basket,
-                      color: Theme.of(context).colorScheme.primary,
+                      color: Colors.black
                     ),
                     onTap: () {
                       Navigator.push(
@@ -270,12 +269,13 @@ class DrawerApp extends StatelessWidget {
                   )
                 : SizedBox.shrink(),
             DrawerElements(
+              style: Theme.of(context).textTheme.headline3,
               //Coupons
               title: 'My Coupons',
               // icon: 'images/esellIcons/coupon.png',
               iconWidget: Icon(
                 Icons.card_giftcard,
-                color: Theme.of(context).colorScheme.primary,
+                color: Colors.black
               ),
               onTap: () {
                 // Navigator.push(context,
@@ -283,12 +283,13 @@ class DrawerApp extends StatelessWidget {
               },
             ),
             DrawerElements(
+              style: Theme.of(context).textTheme.headline3,
               //Wishlist
               title: 'My Wishlist',
               // icon: 'images/esellIcons/wishlist.png',
               iconWidget: Icon(
                 Icons.favorite,
-                color: Theme.of(context).colorScheme.primary,
+                color: Colors.black
               ),
               onTap: () {
                 Navigator.push(context,
@@ -296,12 +297,13 @@ class DrawerApp extends StatelessWidget {
               },
             ),
             DrawerElements(
+              style: Theme.of(context).textTheme.headline3,
               //Cart
               title: 'My Cart',
               // icon: 'images/esellIcons/cart.png',
               iconWidget: Icon(
                 Icons.shopping_cart,
-                color: Theme.of(context).colorScheme.primary,
+                color: Colors.black
               ),
               onTap: () {
                 Navigator.push(context,
@@ -312,11 +314,12 @@ class DrawerApp extends StatelessWidget {
                 ? Column(
                     children: <Widget>[
                       DrawerElements(
+                        style: Theme.of(context).textTheme.headline3,
                         title: 'My Account',
                         // icon: 'images/esellIcons/account.png',
                         iconWidget: Icon(
                           Icons.account_circle,
-                          color: Theme.of(context).colorScheme.primary,
+                          color: Colors.black
                         ),
                         onTap: () {
                           Navigator.push(
@@ -325,10 +328,7 @@ class DrawerApp extends StatelessWidget {
                                   builder: (context) => AccountPage()));
                         },
                       ),
-                      Divider(
-                        color: Colors.grey[500],
-                        height: 5.0,
-                      ),
+                     
                     ],
                   )
                 : Divider(
@@ -336,12 +336,13 @@ class DrawerApp extends StatelessWidget {
                     height: 5.0,
                   ),
             DrawerElements(
+              style: Theme.of(context).textTheme.headline3,
               //Customer Service
               title: 'Help Center',
               // icon: 'images/esellIcons/helpcenter.png',
               iconWidget: Icon(
                 Icons.headset_mic,
-                color: Theme.of(context).colorScheme.primary,
+                color: Colors.black
               ),
               onTap: () {
                 Navigator.push(
@@ -351,12 +352,13 @@ class DrawerApp extends StatelessWidget {
               },
             ),
             DrawerElements(
+              style: Theme.of(context).textTheme.headline3,
               // About
               title: 'About',
               // icon: 'images/esellIcons/about.png',
               iconWidget: Icon(
                 Icons.info_outline,
-                color: Theme.of(context).colorScheme.primary,
+                color: Colors.black
               ),
               onTap: () {
                 Navigator.push(context,

@@ -2,7 +2,6 @@ import 'package:esell/pages/SearchPage.dart';
 import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/BrandLogos.dart';
 import 'package:esell/widget/atoms/Category.dart';
-import 'package:esell/widget/atoms/FancyText.dart';
 import 'package:esell/widget/atoms/Forms.dart';
 import 'package:esell/widget/atoms/loginOptions.dart';
 import 'package:esell/widget/molecules/GridList.dart';
@@ -71,7 +70,6 @@ class _HomePageAppState extends State<HomePageApp>
                     },
                   );
                 }),
-                
                 pinned: true,
                 floating: true,
                 forceElevated: innerBoxIsScrolled,
@@ -147,52 +145,50 @@ class _HomePageAppState extends State<HomePageApp>
               Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                    Category(
-                      name: "Men",
-                      caption: "Mens",
-                      src: "images/icons/man.png",
-                      height: 28.0,
-                      width: 28.0,
-                      onTap: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => GenderSpecific(
-                              gender: "Male",
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                    Category(
-                      name: "Women",
-                      caption: "Womens",
-                      src: "images/icons/woman.png",
-                      height: 28.0,
-                      width: 28.0,
-                      onTap: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => GenderSpecific(
-                              gender: "Female",
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  ])),
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Category(
+                          name: "Men",
+                          caption: "Mens",
+                          src: "images/icons/man.png",
+                          height: 28.0,
+                          width: 28.0,
+                          style: Theme.of(context).textTheme.headline3,
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => GenderSpecific(
+                                  gender: "Male",
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                        Category(
+                          name: "Women",
+                          caption: "Womens",
+                          src: "images/icons/woman.png",
+                          height: 28.0,
+                          width: 28.0,
+                          style: Theme.of(context).textTheme.headline3,
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => GenderSpecific(
+                                  gender: "Female",
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ])),
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 10.0, horizontal:8.0),
-                child: Text("SPECIAL DISCOUNTS", style: Theme.of(context).textTheme.headline4,),),
-              //   FancyText(
-              //     text: 
-              //     size: 20.0,
-              //     color: textColor,
-              //     textAlign: TextAlign.start,
-              //     fontfamily: "Bree",
-              //   ),
-              // ),
+                padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 8.0),
+                child: Text(
+                  "SPECIAL DISCOUNTS",
+                  style: Theme.of(context).textTheme.headline4,
+                ),
+              ),
               Container(
                   height: height * 0.40,
                   child: Padding(
@@ -202,12 +198,9 @@ class _HomePageAppState extends State<HomePageApp>
                   )),
               Padding(
                 padding: EdgeInsets.fromLTRB(10.0, 5.0, 0.0, 8.0),
-                child: FancyText(
-                  text: "Men's Fashion",
-                  size: 20.0,
-                  color: textColor,
-                  textAlign: TextAlign.start,
-                  fontfamily: "Bree",
+                child: Text(
+                  "Men's Fashion",
+                  style: Theme.of(context).textTheme.headline4,
                 ),
               ),
               Container(
@@ -223,14 +216,7 @@ class _HomePageAppState extends State<HomePageApp>
               ),
               Padding(
                 padding: EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 8.0),
-                child: FancyText(
-                  text: "Women's Fashion",
-                  size: 20.0,
-                  color: textColor,
-                  fontfamily: "Bree",
-                  textAlign: TextAlign.start,
-                ),
-              ),
+                child:Text("Women's Fashion", style: Theme.of(context).textTheme.headline4,),),
               Container(
                 height: 250.0,
                 child: GridList(

@@ -4,12 +4,10 @@ import 'package:esell/pages/SendOTP.dart';
 import 'package:esell/pages/Home.dart';
 import 'package:esell/pages/Signup.dart';
 import 'package:esell/widget/atoms/BrandLogos.dart';
+import 'package:esell/widget/atoms/GradientButton.dart';
 import 'package:esell/widget/atoms/passwordReset/ForgotPassword.dart';
-import 'package:esell/widget/molecules/BlueAppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/widget/atoms/Forms.dart';
-import 'package:esell/widget/atoms/RaisedButton.dart';
-import 'package:esell/widget/atoms/FancyText.dart';
 import 'package:esell/state/state.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/cupertino.dart';
@@ -25,7 +23,7 @@ class _PageState extends State<SignInPage> {
   String loginErr;
   bool remember = true;
   bool isActive = false;
-  
+
   var _passwordVisible = false;
 
   @override
@@ -125,47 +123,82 @@ class _PageState extends State<SignInPage> {
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: true,
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(40.0),
-          child: BlueAppBar(
-            elevation: 0.0,
-            search: false,
-            cart: false,
-            title: 'Sign-in',
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-        ),
         resizeToAvoidBottomPadding: false,
         body: ListView(
           children: <Widget>[
+            Stack(
+              children: [
+                Container(
+                  height: 110.0,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 45.0, vertical: 28.0),
+                  child: Row(
+                    children: [
+                      BrandLogos(
+                        height: 40.0,
+                        width: 40.0,
+                      ),
+                      SizedBox(
+                        width: 10.0,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Welcome',
+                              textAlign: TextAlign.start,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .caption
+                                  .copyWith(
+                                      fontSize: 15.0,
+                                      color: Colors.white.withOpacity(0.7),
+                                      fontWeight: FontWeight.normal)),
+                          Text('Sign-in',
+                              textAlign: TextAlign.start,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline5
+                                  .copyWith(fontSize: 22.0)),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
             Container(
-              color: primaryDark,
+              color: Theme.of(context).colorScheme.primary,
               height: 10.0,
             ),
             Container(
-                height: 20.0,
-                color: primaryDark,
+                height: 40.0,
+                color: Theme.of(context).colorScheme.primary,
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20.0),
-                          topRight: Radius.circular(20.0)),
+                          topLeft: Radius.circular(40.0),
+                          topRight: Radius.circular(40.0)),
                       color: Colors.white),
                 )),
             Padding(
-              padding: EdgeInsets.only(top: 30),
-              child: BrandLogos(),
-            ),
-            Padding(
-              padding: EdgeInsets.all(10.0),
+              padding: const EdgeInsets.symmetric(horizontal: 30.0),
+              child: Text('Email',
+                  textAlign: TextAlign.start,
+                  style: Theme.of(context).textTheme.headline4),
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
               child: FForms(
                 type: TextInputType.emailAddress,
-                text: "Email",
+                text: "Enter your email",
+                textStyle: Theme.of(context)
+                    .textTheme
+                    .bodyText2
+                    .copyWith(fontSize: 15.0, color: Colors.black),
+                labeltext: false,
                 onChanged: setEmail,
               ),
             ),
@@ -184,12 +217,23 @@ class _PageState extends State<SignInPage> {
                   )
                 : Text(''),
             Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30.0),
+              child: Text('Password',
+                  textAlign: TextAlign.start,
+                  style: Theme.of(context).textTheme.headline4),
+            ),
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
               child: FForms(
                   type: TextInputType.text,
-                  text: "Password",
+                  text: "Enter password",
+                  textStyle: Theme.of(context)
+                      .textTheme
+                      .bodyText2
+                      .copyWith(fontSize: 15.0, color: Colors.black),
+                  labeltext: false,
                   trailingIcon: IconButton(
-                    color: primaryDark,
+                    color: Theme.of(context).colorScheme.primary,
                     icon: Icon(
                       _passwordVisible
                           ? Icons.visibility
@@ -222,48 +266,53 @@ class _PageState extends State<SignInPage> {
                   )
                 : Text(''),
             Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 10.0, ),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 10.0,
+              ),
               child: Row(
                 children: <Widget>[
                   Checkbox(
-                    value: remember,                  
-                  activeColor: primaryDark,
-                   onChanged: (bool newValue){
-                     setState(() {
-                       remember = newValue;
-                     });
-                   }),
-                  FancyText(
-                      color: primaryDark,
-                      textAlign: TextAlign.end,
-                      text: "Keep me Signed in",
-                      fontWeight: FontWeight.bold,
-                      size: 15.0,
+                      value: remember,
+                      activeColor: Theme.of(context).colorScheme.primary,
+                      onChanged: (bool newValue) {
+                        setState(() {
+                          remember = newValue;
+                        });
+                      }),
+                  InkWell(
                       onTap: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => ForgotPassword()));
-                      }),
+                      },
+                      child: Text(
+                        "Keep me Signed in",
+                        style: Theme.of(context).textTheme.bodyText2.copyWith(
+                              color: Theme.of(context).colorScheme.primary,
+                              fontSize: 14.0,
+                            ),
+                      )),
                 ],
               ),
             ),
-            Padding(
+            Container(
+              alignment: Alignment.centerRight,
               padding:
                   const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-              child: FancyText(
-                  color: Colors.black38,
-                  fontWeight: FontWeight.bold,
-                  textAlign: TextAlign.end,
-                  text: "Forgot Password?",
-                  size: 15.0,
+              child: InkWell(
                   onTap: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => ForgotPassword()));
-                  }),
+                  },
+                  child: Text(
+                    "Forgot Password?",
+                    style: Theme.of(context).textTheme.caption.copyWith(
+                          fontSize: 14.0,
+                        ),
+                  )),
             ),
             loginErr != null
                 ? Text(loginErr, style: TextStyle(color: Colors.red))
@@ -272,25 +321,27 @@ class _PageState extends State<SignInPage> {
               alignment: Alignment.center,
               child: isActive
                   ? CircularProgressIndicator()
-                  : FRaisedButton(
+                  : GradientButton(
                       text: "Sign in",
-                      shape: true,
                       width: 160.0,
-                      height: 45.0,
-                      bg: Theme.of(context).colorScheme.primary,
-                      color: Colors.white,
                       onPressed: loginUser,
                     ),
             ),
             SizedBox(height: 30.0),
-            FancyText(
-                color: primaryDark,
-                text: "Register",
-                size: 15.0,
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SignUpPage()));
-                })
+            Center(
+              child: InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => SignUpPage()));
+                  },
+                  child: Text(
+                    "Register",
+                    style: Theme.of(context).textTheme.caption.copyWith(
+                          fontSize: 15.0,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                  )),
+            ),
           ],
         ),
       ),
