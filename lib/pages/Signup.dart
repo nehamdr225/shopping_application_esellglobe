@@ -5,11 +5,10 @@ import 'package:esell/pages/SendOTP.dart';
 import 'package:esell/pages/Signin.dart';
 import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/BrandLogos.dart';
-import 'package:esell/widget/molecules/BlueAppBar.dart';
+import 'package:esell/widget/atoms/GradientButton.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/widget/atoms/Forms.dart';
-import 'package:esell/widget/atoms/RaisedButton.dart';
-import 'package:esell/widget/atoms/FancyText.dart';
 import 'package:provider/provider.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -118,44 +117,96 @@ class _PageState extends State<SignUpPage> {
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: true,
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(40.0),
-          child: BlueAppBar(
-            elevation: 0.0,
-            search: false,
-            cart: false,
-            title: 'Register',
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => HomePageApp()));
-            },
-          ),
-        ),
         body: ListView(
           children: <Widget>[
+            Stack(
+              children: [
+                Container(
+                  height: 110.0,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 8.0, vertical: 28.0),
+                  child: Row(
+                    children: [
+                      IconButton(
+                        icon: Icon(
+                          CupertinoIcons.back,
+                          color: Colors.white,
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomePageApp()));
+                        },
+                      ),
+                      SizedBox(
+                        width: 20.0,
+                      ),
+                      BrandLogos(
+                        height: 40.0,
+                        width: 40.0,
+                      ),
+                      SizedBox(
+                        width: 10.0,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Welcome',
+                              textAlign: TextAlign.start,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .caption
+                                  .copyWith(
+                                      fontSize: 15.0,
+                                      color: Colors.white.withOpacity(0.7),
+                                      fontWeight: FontWeight.normal)),
+                          Text('Sign-up',
+                              textAlign: TextAlign.start,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline5
+                                  .copyWith(fontSize: 22.0)),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
             Container(
-              color: primaryDark,
+              color: Theme.of(context).colorScheme.primary,
               height: 10.0,
             ),
             Container(
-                height: 20.0,
-                color: primaryDark,
+                height: 40.0,
+                color: Theme.of(context).colorScheme.primary,
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20.0),
-                          topRight: Radius.circular(20.0)),
+                          topLeft: Radius.circular(40.0),
+                          topRight: Radius.circular(40.0)),
                       color: Colors.white),
                 )),
             Padding(
-              padding: EdgeInsets.only(top: 0.0, bottom: 4.0),
-              child: BrandLogos(),
+              padding: const EdgeInsets.symmetric(horizontal: 30.0),
+              child: Text("Name",
+                  textAlign: TextAlign.start,
+                  style: Theme.of(context).textTheme.headline4),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15),
+              padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
               child: FForms(
                 type: TextInputType.text,
-                text: "Name",
+                text: "Enter your name",
+                textStyle: Theme.of(context)
+                    .textTheme
+                    .bodyText2
+                    .copyWith(fontSize: 15.0, color: Colors.black),
+                labeltext: false,
                 onChanged: setName,
               ),
             ),
@@ -174,11 +225,23 @@ class _PageState extends State<SignUpPage> {
                   )
                 : Text(''),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 30.0),
+              child: Text("Email",
+                  textAlign: TextAlign.start,
+                  style: Theme.of(context).textTheme.headline4),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
               child: FForms(
-                  type: TextInputType.emailAddress,
-                  text: "Email",
-                  onChanged: setEmail),
+                type: TextInputType.emailAddress,
+                text: "Enter your email",
+                textStyle: Theme.of(context)
+                    .textTheme
+                    .bodyText2
+                    .copyWith(fontSize: 15.0, color: Colors.black),
+                labeltext: false,
+                onChanged: setEmail,
+              ),
             ),
             emailErr != null
                 ? Padding(
@@ -195,28 +258,40 @@ class _PageState extends State<SignUpPage> {
                   )
                 : Text(''),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15),
-              child: FForms(
-                type: TextInputType.text,
-                text: "Password",
-                trailingIcon: IconButton(
-                  color: primaryDark,
-                  icon: Icon(
-                    _passwordVisible ? Icons.visibility : Icons.visibility_off,
-                    // semanticLabel:
-                    //     _passwordVisible ? 'hide password' : 'show password',
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      _passwordVisible ^= true;
-                    });
-                  },
-                ),
-                obscure: _passwordVisible == false ? true : false,
-                onChanged: setPassword,
-                // icon: Icon(Icons.visibility),
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 30.0),
+              child: Text('Password',
+                  textAlign: TextAlign.start,
+                  style: Theme.of(context).textTheme.headline4),
             ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
+              child: FForms(
+                  type: TextInputType.text,
+                  text: "Enter password",
+                  textStyle: Theme.of(context)
+                      .textTheme
+                      .bodyText2
+                      .copyWith(fontSize: 15.0, color: Colors.black),
+                  labeltext: false,
+                  trailingIcon: IconButton(
+                    color: Theme.of(context).colorScheme.primary,
+                    icon: Icon(
+                      _passwordVisible
+                          ? Icons.visibility
+                          : Icons.visibility_off,
+                      semanticLabel:
+                          _passwordVisible ? 'hide password' : 'show password',
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _passwordVisible ^= true;
+                      });
+                    },
+                  ),
+                  obscure: _passwordVisible == false ? true : false,
+                  onChanged: setPassword),
+            ),
+
             passwordErr != null
                 ? Padding(
                     padding: EdgeInsets.only(left: 40, bottom: 6, right: 20),
@@ -233,10 +308,20 @@ class _PageState extends State<SignUpPage> {
                   )
                 : Text(''),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
+              padding: const EdgeInsets.symmetric(horizontal: 30.0),
+              child: Text("Phone Number",
+                  textAlign: TextAlign.start,
+                  style: Theme.of(context).textTheme.headline4),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
               child: FForms(
                   type: TextInputType.phone,
                   text: "Valid Mobile No",
+                  textStyle: Theme.of(context)
+                      .textTheme
+                      .bodyText2
+                      .copyWith(fontSize: 15.0, color: Colors.black),
                   prefix: Text(
                     '+91   ',
                     textAlign: TextAlign.justify,
@@ -245,8 +330,10 @@ class _PageState extends State<SignUpPage> {
                         fontSize: 18.0,
                         fontWeight: FontWeight.w600),
                   ),
+                  labeltext: false,
                   onChanged: setPhoneNum),
             ),
+
             phoneErr != null
                 ? Padding(
                     padding: EdgeInsets.only(left: 40, bottom: 6, top: 6),
@@ -263,7 +350,7 @@ class _PageState extends State<SignUpPage> {
                 : Text(''),
             signupErr != null
                 ? Padding(
-                    padding: EdgeInsets.only(left: 40, bottom: 6),
+                    padding: EdgeInsets.only(left: 40),
                     child: Text(
                       signupErr,
                       textAlign: TextAlign.start,
@@ -280,28 +367,28 @@ class _PageState extends State<SignUpPage> {
               alignment: Alignment.center,
               child: isActive
                   ? CircularProgressIndicator()
-                  : FRaisedButton(
-                      text: "Complete",
+                  : GradientButton(
+                      text: "Sign in",
                       width: 160.0,
-                      height: 45.0,
-                      shape: true,
-                      color: Colors.white,
-                      bg: primaryDark,
                       onPressed: signupUser,
                     ),
             ), //onPressed: () {}),
             SizedBox(height: 10.0),
-            FancyText(
-                text: "Already have an account?",
-                color: primaryDark,
-                decoration: TextDecoration.underline,
-                size: 15.0,
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SignInPage()),
-                  );
-                }),
+            Center(
+              child: InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => SignInPage()));
+                  },
+                  child: Text(
+                    "Already have an account?",
+                    style: Theme.of(context).textTheme.caption.copyWith(
+                          fontSize: 15.0,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                  )),
+            ),
+
             SizedBox(height: 20.0),
           ],
         ),

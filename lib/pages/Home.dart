@@ -79,7 +79,7 @@ class _HomePageAppState extends State<HomePageApp>
                 backgroundColor: Colors.white,
                 actions: <Widget>[
                   FIcons(
-                    icon: Icons.search,
+                    icon: Icon(Icons.search),
                     alignment: Alignment.centerRight,
                     onPressed: () {
                       Navigator.push(
@@ -89,7 +89,11 @@ class _HomePageAppState extends State<HomePageApp>
                     },
                   ),
                   FIcons(
-                      icon: Icons.shopping_cart,
+                      icon: Image.asset(
+                      "images/esellIcons/cart2.png",
+                      height: 20.0,
+                      width: 20.0,
+                    ),
                       alignment: Alignment.centerRight,
                       onPressed: () {
                         user.token != null
@@ -100,7 +104,7 @@ class _HomePageAppState extends State<HomePageApp>
                             : _showBottomSheet(context);
                       }),
                   FIcons(
-                      icon: Icons.bookmark,
+                      icon: Icon(Icons.bookmark_border),
                       alignment: Alignment.centerRight,
                       onPressed: () {
                         user.token != null
@@ -120,6 +124,7 @@ class _HomePageAppState extends State<HomePageApp>
                       width: width * 0.90,
                       formColor: Theme.of(context).colorScheme.onBackground,
                       borderColor: Theme.of(context).colorScheme.onBackground,
+                      borderRadius: 30.0,
                       text: 'Search for fashion',
                       labeltext: false,
                       icon: Icon(Icons.search),

@@ -1,4 +1,3 @@
-import 'package:esell/pages/AccountPage.dart';
 import 'package:esell/pages/Cart.dart';
 import 'package:esell/pages/SearchPage.dart';
 import 'package:esell/state/src/theme.dart';
@@ -6,6 +5,7 @@ import 'package:esell/widget/atoms/BetterInputForm.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/atoms/passwordReset/resetPage.dart';
 import 'package:esell/widget/molecules/Icons.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/state/state.dart';
 import 'package:provider/provider.dart';
@@ -30,17 +30,26 @@ class _AccountEditState extends State<AccountEdit> {
           preferredSize: Size.fromHeight(40.0),
           child: AppBar(
             elevation: 0,
-            backgroundColor: primaryDark,
-            leading: IconButton(
-              icon: Icon(Icons.arrow_back),
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => AccountPage()));
-              },
+            backgroundColor: Theme.of(context).colorScheme.primary,
+            leading: InkWell(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Icon(CupertinoIcons.back),
+                Text(
+                  "Back",
+                  style: Theme.of(context).textTheme.subtitle1.copyWith(color:Colors.white),
+                ),
+              ],
             ),
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
             actions: <Widget>[
               FIcons(
-                icon: Icons.search,
+                icon: Icon(Icons.search),
                 alignment: Alignment.centerRight,
                 onPressed: () {
                   Navigator.push(context,
@@ -48,7 +57,11 @@ class _AccountEditState extends State<AccountEdit> {
                 },
               ),
               FIcons(
-                  icon: Icons.shopping_cart,
+                  icon: Image.asset(
+                      "images/esellIcons/cart2.png",
+                      height: 20.0,
+                      width: 20.0,
+                    ),
                   alignment: Alignment.centerRight,
                   onPressed: () {
                     Navigator.push(context,
@@ -62,19 +75,21 @@ class _AccountEditState extends State<AccountEdit> {
             alignment: AlignmentDirectional.center,
             children: <Widget>[
               Container(
-                color: primaryDark,
+                color: Theme.of(context).colorScheme.primary,
                 height: height * 0.30,
                 width: width,
               ),
               CircleAvatar(
                 backgroundColor: Colors.white,
                 radius: 45.0,
-                child: userData['media'] != null
-                    ? Image.network(userData['media'])
-                    : Text(
-                        userData['name'].split(' ').reduce((a, b) {
-                          return '${a[0]} ${b[0]}';
-                        }),
+                child: 
+                // userData['media'] != null
+                //     ? Image.network(userData['media'])
+                //     : 
+                Text( 'N',
+                        // userData['name'].split(' ').reduce((a, b) {
+                        //   return '${a[0]} ${b[0]}';
+                        // }),
                         style: Theme.of(context).textTheme.bodyText2.copyWith(
                             color: primaryDark,
                             fontSize: 24.0,
@@ -89,30 +104,31 @@ class _AccountEditState extends State<AccountEdit> {
           Container(
             padding: const EdgeInsets.all(10.0),
             child: InputField(
-              value: userData['name'],
+              value: '',//userData['name'],
               title: 'Name',
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: InputField(
-              value: userData['email'],
+              value: '',//userData['email'],
               title: 'Email',
             ),
           ),
           Container(
             padding: const EdgeInsets.all(10.0),
             child: InputField(
-              value: userData['contact'],
+              value: '',//userData['contact'],
               title: 'Contact',
             ),
           ),
           Container(
             alignment: Alignment.topRight,
+            padding: EdgeInsets.only(bottom: 10.0),
             child: OutlineButton(
               child: Text(
                 'Save Changes',
-                style: TextStyle(fontSize: 18.0, color: primaryDark),
+                style: TextStyle(fontSize: 17.0, color: Theme.of(context).colorScheme.primary),
               ),
               onPressed: null,
               // () {

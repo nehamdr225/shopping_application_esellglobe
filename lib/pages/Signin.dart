@@ -279,20 +279,13 @@ class _PageState extends State<SignInPage> {
                           remember = newValue;
                         });
                       }),
-                  InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ForgotPassword()));
-                      },
-                      child: Text(
-                        "Keep me Signed in",
-                        style: Theme.of(context).textTheme.bodyText2.copyWith(
-                              color: Theme.of(context).colorScheme.primary,
-                              fontSize: 14.0,
-                            ),
-                      )),
+                  Text(
+                    "Keep me Signed in",
+                    style: Theme.of(context).textTheme.bodyText2.copyWith(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontSize: 14.0,
+                        ),
+                  ),
                 ],
               ),
             ),

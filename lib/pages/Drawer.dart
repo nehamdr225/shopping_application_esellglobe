@@ -1,12 +1,13 @@
 import 'package:esell/pages/AccountPage.dart';
 import 'package:esell/pages/HelpCenter.dart';
+import 'package:esell/pages/Signin.dart';
 import 'package:esell/widget/AnimatingLine.dart';
 import 'package:esell/widget/atoms/DrawerEPanel.dart';
 import 'package:esell/widget/atoms/DrawerElements.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/widget/molecules/colors.dart';
-import 'package:esell/pages/UserPromt.dart';
 import 'package:esell/pages/AboutPage.dart';
 import 'package:esell/pages/Cart.dart';
 import 'package:esell/pages/CategoryPage.dart';
@@ -82,8 +83,8 @@ class DrawerApp extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Container(
-                                height: 110.0,
-                                width: 110.0,
+                                height: 80.0,
+                                width: 80.0,
                                 child:
                                     Icon(Icons.person, color: Colors.black45),
                                 decoration: BoxDecoration(
@@ -110,7 +111,7 @@ class DrawerApp extends StatelessWidget {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                UserPromptApp()));
+                                                SignInPage()));
                                   },
                                 ),
                               )
@@ -131,7 +132,12 @@ class DrawerApp extends StatelessWidget {
                     bodyBuilder: (context) => Column(
                           children: <Widget>[
                             DrawerElements(
-                              style: Theme.of(context).textTheme.caption.copyWith(color: Colors.black, fontWeight: FontWeight.normal),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .caption
+                                  .copyWith(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.normal),
                               title: 'Top Wear',
                               icon: 'images/icons/tshirt.png',
                               iconSize: 0.0,
@@ -145,7 +151,12 @@ class DrawerApp extends StatelessWidget {
                               },
                             ),
                             DrawerElements(
-                              style: Theme.of(context).textTheme.caption.copyWith(color: Colors.black, fontWeight: FontWeight.normal),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .caption
+                                  .copyWith(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.normal),
                               title: 'Bottom Wear',
                               icon: 'images/icons/pant.png',
                               iconSize: 0.0,
@@ -157,7 +168,12 @@ class DrawerApp extends StatelessWidget {
                               },
                             ),
                             DrawerElements(
-                              style: Theme.of(context).textTheme.caption.copyWith(color: Colors.black, fontWeight: FontWeight.normal),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .caption
+                                  .copyWith(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.normal),
                               title: 'FootWear',
                               icon: 'images/icons/shoe.png',
                               iconSize: 0.0,
@@ -169,7 +185,12 @@ class DrawerApp extends StatelessWidget {
                               },
                             ),
                             DrawerElements(
-                              style: Theme.of(context).textTheme.caption.copyWith(color: Colors.black, fontWeight: FontWeight.normal),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .caption
+                                  .copyWith(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.normal),
                               title: 'Watches & Glasses',
                               icon: 'images/icons/glassesandjunga.png',
                               iconSize: 0.0,
@@ -196,7 +217,12 @@ class DrawerApp extends StatelessWidget {
                     bodyBuilder: (context) => Column(
                           children: <Widget>[
                             DrawerElements(
-                              style: Theme.of(context).textTheme.caption.copyWith(color: Colors.black, fontWeight: FontWeight.normal),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .caption
+                                  .copyWith(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.normal),
                               title: 'Top Wear',
                               icon: 'images/icons/tshirt.png',
                               iconSize: 0.0,
@@ -210,7 +236,12 @@ class DrawerApp extends StatelessWidget {
                               },
                             ),
                             DrawerElements(
-                              style: Theme.of(context).textTheme.caption.copyWith(color: Colors.black, fontWeight: FontWeight.normal),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .caption
+                                  .copyWith(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.normal),
                               title: 'Bottom Wear',
                               icon: 'images/icons/pant.png',
                               iconSize: 0.0,
@@ -222,7 +253,12 @@ class DrawerApp extends StatelessWidget {
                               },
                             ),
                             DrawerElements(
-                              style: Theme.of(context).textTheme.caption.copyWith(color: Colors.black, fontWeight: FontWeight.normal),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .caption
+                                  .copyWith(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.normal),
                               title: 'Foot Wear',
                               icon: 'images/icons/shoe.png',
                               iconSize: 0.0,
@@ -234,7 +270,12 @@ class DrawerApp extends StatelessWidget {
                               },
                             ),
                             DrawerElements(
-                              style: Theme.of(context).textTheme.caption.copyWith(color: Colors.black, fontWeight: FontWeight.normal),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .caption
+                                  .copyWith(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.normal),
                               title: 'Watches & Glasses',
                               icon: 'images/icons/glassesandjunga.png',
                               iconSize: 0.0,
@@ -255,10 +296,8 @@ class DrawerApp extends StatelessWidget {
                     style: Theme.of(context).textTheme.headline3,
                     title: 'My Orders',
                     // icon: 'images/esellIcons/order.png',
-                    iconWidget: Icon(
-                      Icons.shopping_basket,
-                      color: Colors.black
-                    ),
+                    iconWidget:
+                        Icon(Icons.shopping_basket, color: Colors.black),
                     onTap: () {
                       Navigator.push(
                         context,
@@ -273,10 +312,7 @@ class DrawerApp extends StatelessWidget {
               //Coupons
               title: 'My Coupons',
               // icon: 'images/esellIcons/coupon.png',
-              iconWidget: Icon(
-                Icons.card_giftcard,
-                color: Colors.black
-              ),
+              iconWidget: Icon(Icons.card_giftcard, color: Colors.black),
               onTap: () {
                 // Navigator.push(context,
                 //     MaterialPageRoute(builder: (context) => HomePageApp()));
@@ -287,10 +323,7 @@ class DrawerApp extends StatelessWidget {
               //Wishlist
               title: 'My Wishlist',
               // icon: 'images/esellIcons/wishlist.png',
-              iconWidget: Icon(
-                Icons.favorite,
-                color: Colors.black
-              ),
+              iconWidget: Icon(Icons.bookmark_border, color: Colors.black),
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => WishlistPage()));
@@ -301,10 +334,12 @@ class DrawerApp extends StatelessWidget {
               //Cart
               title: 'My Cart',
               // icon: 'images/esellIcons/cart.png',
-              iconWidget: Icon(
-                Icons.shopping_cart,
-                color: Colors.black
+              iconWidget: Image.asset(
+                "images/esellIcons/cart2.png",
+                height: 20.0,
+                width: 20.0,
               ),
+
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => CartPage()));
@@ -317,10 +352,8 @@ class DrawerApp extends StatelessWidget {
                         style: Theme.of(context).textTheme.headline3,
                         title: 'My Account',
                         // icon: 'images/esellIcons/account.png',
-                        iconWidget: Icon(
-                          Icons.account_circle,
-                          color: Colors.black
-                        ),
+                        iconWidget:
+                            Icon(Icons.account_circle, color: Colors.black),
                         onTap: () {
                           Navigator.push(
                               context,
@@ -328,7 +361,6 @@ class DrawerApp extends StatelessWidget {
                                   builder: (context) => AccountPage()));
                         },
                       ),
-                     
                     ],
                   )
                 : Divider(
@@ -340,10 +372,7 @@ class DrawerApp extends StatelessWidget {
               //Customer Service
               title: 'Help Center',
               // icon: 'images/esellIcons/helpcenter.png',
-              iconWidget: Icon(
-                Icons.headset_mic,
-                color: Colors.black
-              ),
+              iconWidget: Icon(Icons.headset_mic, color: Colors.black),
               onTap: () {
                 Navigator.push(
                   context,
@@ -356,10 +385,7 @@ class DrawerApp extends StatelessWidget {
               // About
               title: 'About',
               // icon: 'images/esellIcons/about.png',
-              iconWidget: Icon(
-                Icons.info_outline,
-                color: Colors.black
-              ),
+              iconWidget: Icon(Icons.info_outline, color: Colors.black),
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => AboutPage()));

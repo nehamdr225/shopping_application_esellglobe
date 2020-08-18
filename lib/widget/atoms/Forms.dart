@@ -20,6 +20,7 @@ class FForms extends StatelessWidget {
   final Function validator;
   final controller;
   final key;
+  final borderRadius;
   final FocusNode currentFocus;
   final FocusNode nextFocus;
   final TextInputAction textInputAction;
@@ -43,9 +44,11 @@ class FForms extends StatelessWidget {
       this.icon,
       this.trailingIcon,
       this.prefix,
+      
       this.underline: false,
       this.formColor: Colors.white,
       this.borderColor: Colors.white,
+      this.borderRadius:0.0,
       this.textColor,
       this.textInputAction: TextInputAction.none,
       this.validator,
@@ -63,7 +66,7 @@ class FForms extends StatelessWidget {
       height: height,
       width: width,
       decoration: BoxDecoration(
-          color: formColor, borderRadius: BorderRadius.circular(30.0)),
+          color: formColor, borderRadius: BorderRadius.circular(borderRadius)),
       child: TextFormField(
         style: textStyle,
         maxLines: maxLines ?? 1,
@@ -99,7 +102,7 @@ class FForms extends StatelessWidget {
           enabledBorder: underline == false
               ? OutlineInputBorder(
                   borderSide: BorderSide(color: borderColor),
-                  borderRadius: BorderRadius.circular(30.0))
+                  borderRadius: BorderRadius.circular(borderRadius))
               : UnderlineInputBorder(
                   borderSide: BorderSide(
                   color: Theme.of(context).colorScheme.primaryVariant,

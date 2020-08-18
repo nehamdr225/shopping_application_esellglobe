@@ -27,7 +27,7 @@ class FAppBar extends StatelessWidget {
     this.title,
     this.searchBar,
   });
-  @override
+  @override 
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     var user = Provider.of<UserModel>(context);
@@ -69,7 +69,7 @@ class FAppBar extends StatelessWidget {
           actions: <Widget>[
             search != null
                 ? FIcons(
-                    icon: Icons.search,
+                    icon: Icon(Icons.search),
                     alignment: Alignment.centerRight,
                     onPressed: () {
                       Navigator.push(
@@ -97,7 +97,7 @@ class FAppBar extends StatelessWidget {
                 : Text(''),
             wishlist != null
                 ? FIcons(
-                    icon: Icons.bookmark_border,
+                    icon: Icon(Icons.bookmark_border),
                     alignment: Alignment.centerRight,
                     onPressed: () {
                       user.token != null
@@ -107,7 +107,8 @@ class FAppBar extends StatelessWidget {
                                   builder: (context) => WishlistPage()))
                           : _showBottomSheet(context);
                     })
-                : Text('')
+                : Text(''),
+                SizedBox(width:10.0)
           ],
         ),
       ),

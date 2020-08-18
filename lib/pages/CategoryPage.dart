@@ -84,7 +84,11 @@ class _CategoryPageState extends State<CategoryPage>
                 ),
                 actions: <Widget>[
                   FIcons(
-                      icon: Icons.shopping_cart,
+                      icon: Image.asset(
+                      "images/esellIcons/cart2.png",
+                      height: 20.0,
+                      width: 20.0,
+                    ),
                       alignment: Alignment.centerRight,
                       onPressed: () {
                         user.token != null?
@@ -94,7 +98,7 @@ class _CategoryPageState extends State<CategoryPage>
                                 builder: (context) => CartPage())): _showBottomSheet(context);
                       }),
                   FIcons(
-                      icon: Icons.bookmark,
+                      icon: Icon(Icons.bookmark_border),
                       alignment: Alignment.centerRight,
                       onPressed: () {
                         user.token !=null?

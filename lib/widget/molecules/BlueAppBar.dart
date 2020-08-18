@@ -4,6 +4,7 @@ import 'package:esell/pages/SearchPage.dart';
 import 'package:esell/state/src/theme.dart';
 import 'package:esell/widget/atoms/loginOptions.dart';
 import 'package:esell/widget/molecules/Icons.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:esell/state/src/user.dart';
@@ -31,19 +32,25 @@ class BlueAppBar extends StatelessWidget {
         style: Theme.of(context).textTheme.headline5
       ),
       elevation: elevation,
-      backgroundColor: primaryDark,
-      leading: IconButton(
-        icon: Icon(
-          Icons.arrow_back,
-          color: Colors.white,
-        ),
-        onPressed: onPressed,
-        // color: Colors.white,
-      ),
+      backgroundColor: Theme.of(context).colorScheme.primary,
+      leading: InkWell(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Icon(CupertinoIcons.back),
+                Text(
+                  "Back",
+                  style: Theme.of(context).textTheme.subtitle1.copyWith(color:Colors.white),
+                ),
+              ],
+            ),
+            onTap: onPressed
+          ),
       actions: <Widget>[
         search == true
             ? FIcons(
-                icon: Icons.search,
+                icon: Icon(Icons.search),
                 alignment: Alignment.centerRight,
                 onPressed: () {
                   Navigator.push(context,
@@ -53,7 +60,11 @@ class BlueAppBar extends StatelessWidget {
             : Text(''),
         cart == true
             ? FIcons(
-                icon: Icons.shopping_cart,
+                icon: Image.asset(
+                      "images/esellIcons/cart2.png",
+                      height: 20.0,
+                      width: 20.0,
+                    ),
                 alignment: Alignment.centerRight,
                 onPressed: () {
                   user.token != null?

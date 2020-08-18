@@ -1,6 +1,5 @@
 import 'package:esell/pages/Cart.dart';
 import 'package:esell/pages/SearchPage.dart';
-import 'package:esell/state/src/theme.dart';
 import 'package:esell/widget/atoms/Forms.dart';
 import 'package:esell/widget/molecules/Icons.dart';
 import 'package:flutter/material.dart';
@@ -23,10 +22,10 @@ class SliverApBar extends StatelessWidget {
       iconTheme: IconThemeData(
         color: Colors.white,
       ),
-      backgroundColor: primaryDark,
+      backgroundColor: Theme.of(context).colorScheme.primary,
       actions: <Widget>[
         FIcons(
-          icon: Icons.search,
+          icon: Icon(Icons.search),
           alignment: Alignment.centerRight,
           onPressed: () {
             Navigator.push(
@@ -36,7 +35,11 @@ class SliverApBar extends StatelessWidget {
           },
         ),
         FIcons(
-            icon: Icons.shopping_cart,
+            icon: Image.asset(
+                      "images/esellIcons/cart2.png",
+                      height: 20.0,
+                      width: 20.0,
+                    ),
             alignment: Alignment.centerRight,
             onPressed: () {
               Navigator.push(
@@ -52,6 +55,7 @@ class SliverApBar extends StatelessWidget {
             height: 45.0,
             width: size.width * 0.90,
             text: 'Search for topics or questions',
+            borderRadius: 30.0,
             labeltext: false,
             icon: Icon(Icons.search),
           ),

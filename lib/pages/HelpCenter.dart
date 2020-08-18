@@ -51,12 +51,13 @@ class _HelpCenterState extends State<HelpCenter> {
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
-          child: FRaisedButton(
+          child: FRaisedButton( 
             elevation: 0.0,
             text: 'ANY OTHER ISSUES?',
             color: Colors.grey[400],
             textAlign: TextAlign.start,
             bg: Colors.white,
+            
             onPressed: () {},
             width: size.width * 0.90,
             height: 50.0,
@@ -144,8 +145,9 @@ class _HelpCenterState extends State<HelpCenter> {
                   elevation: 0.0,
                   text: 'View more',
                   textAlign: TextAlign.start,
-                  color: primaryDark,
+                  color: colorScheme.primary,
                   bg: Colors.white,
+                  borderColor: colorScheme.background,
                   fontSize: 15.0,
                   onPressed: () {
                     setState(() {
@@ -169,6 +171,7 @@ class _HelpCenterState extends State<HelpCenter> {
                         color: textColor,
                         textAlign: TextAlign.start,
                         bg: Colors.white,
+                        borderColor: colorScheme.background,
                         fontSize: 15.0,
                         onPressed: () {
                           Navigator.push(
@@ -200,6 +203,7 @@ class _HelpCenterState extends State<HelpCenter> {
                         color: textColor,
                         textAlign: TextAlign.start,
                         bg: Colors.white,
+                        borderColor: colorScheme.background,
                         fontSize: 15.0,
                         onPressed: () {
                           Navigator.push(
@@ -235,7 +239,7 @@ class _HelpCenterState extends State<HelpCenter> {
             elevation: 0.0,
             text: 'Browse Help Topics',
             textAlign: TextAlign.start,
-            color: primaryDark,
+            color: colorScheme.primary,
             bg: Colors.white,
             fontSize: 15.0,
             width: size.width * 0.90,

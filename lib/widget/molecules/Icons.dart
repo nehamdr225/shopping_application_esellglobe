@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class FIcons extends StatelessWidget {
-  final IconData icon;
+  final Widget icon;
   final Color color;
   final Function onPressed;
   final Alignment alignment;
@@ -9,10 +9,7 @@ class FIcons extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       alignment: alignment,
-      icon: Icon(
-        icon,
-        color: color,
-      ),
+      icon: icon,
       onPressed: onPressed,
     );
   }
