@@ -154,6 +154,10 @@ class UserModel extends ChangeNotifier {
     return await _api.createOrder(token, body);
   }
 
+  Future rateProduct(String id, double rate) async {
+    return await _api.rateProduct(token, id, rate);
+  }
+
   logout() async {
     _token = null;
     _user = {};

@@ -7,7 +7,8 @@ class PDStarRating extends StatelessWidget {
   final double size;
   final double spacing;
   final bool allowHalfRating;
-  PDStarRating({this.rating, this.size:28.0, this.spacing:0.0, this.allowHalfRating});
+  PDStarRating(
+      {this.rating, this.size: 28.0, this.spacing: 0.0, this.allowHalfRating});
   @override
   Widget build(BuildContext context) {
     return SmoothStarRating(

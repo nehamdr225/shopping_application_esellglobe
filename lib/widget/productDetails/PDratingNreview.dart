@@ -1,15 +1,21 @@
+import 'package:esell/state/src/user.dart';
 import 'package:esell/widget/atoms/Forms.dart';
 import 'package:esell/widget/atoms/GradientButton.dart';
-import 'package:esell/widget/atoms/StarRating.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 class PDratingNreview extends StatefulWidget {
+  final id;
+  final rating;
+  PDratingNreview(this.id, this.rating);
   @override
   _PDratingNreviewState createState() => _PDratingNreviewState();
 }
 
 class _PDratingNreviewState extends State<PDratingNreview> {
+  double localRating;
   @override
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -26,11 +32,22 @@ class _PDratingNreviewState extends State<PDratingNreview> {
         padding: const EdgeInsets.symmetric(vertical: 12.0),
         child: Align(
           alignment: Alignment.center,
-          child: PDStarRating(
-            rating: 5,
-            size: 34.0,
-            spacing: MediaQuery.of(context).size.width * 0.10, //8.0,
-            allowHalfRating: false,
+          child: SmoothStarRating(
+            allowHalfRating: true,
+            onRatingChanged: (v) {
+              setState(() {
+                localRating = v;
+              });
+              Provider.of<UserModel>(context, listen: false)
+                  .rateProduct(widget.id, v)
+                  .then((value) => print(value));
+            },
+            starCount: 5,
+            rating: localRating ?? widget.rating ?? 0.0,
+            size: 34,
+            color: Theme.of(context).colorScheme.primary, // secondary
+            borderColor: Theme.of(context).colorScheme.primary,
+            spacing: 0.0,
           ),
         ),
       ), //working wala i will change the style later to look like belows.

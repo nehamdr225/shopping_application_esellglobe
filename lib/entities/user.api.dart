@@ -328,7 +328,7 @@ class UserApi {
     }
   }
 
-  rateProduct(token, productId, rate) async {
+  Future rateProduct(token, productId, rate) async {
     try {
       Map<String, String> headers = {
         "Content-Type": "application/json",

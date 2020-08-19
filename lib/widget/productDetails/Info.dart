@@ -1,3 +1,4 @@
+import 'package:esell/entities/product.dart';
 import 'package:esell/widget/productDetails/AllDetails.dart';
 import 'package:esell/widget/productDetails/BoughtTogether.dart';
 import 'package:esell/widget/productDetails/ColorSelector.dart';
@@ -19,6 +20,7 @@ class PDInfo extends StatefulWidget {
       description;
   final relatedProd;
   final Function setSize, setColor;
+  Rating rating;
   PDInfo(
       {this.category,
       this.id,
@@ -30,7 +32,9 @@ class PDInfo extends StatefulWidget {
       this.description,
       this.name,
       this.sizes,
-      this.price, this.relatedProd});
+      this.price,
+      this.relatedProd,
+      this.rating});
 
   @override
   _PDInfoState createState() => _PDInfoState();
@@ -39,7 +43,6 @@ class PDInfo extends StatefulWidget {
 class _PDInfoState extends State<PDInfo> {
   @override
   Widget build(BuildContext context) {
-    
     return Card(
       elevation: 0.0,
       color: Colors.white,
@@ -71,10 +74,12 @@ class _PDInfoState extends State<PDInfo> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: <Widget>[
                       Stars(
-                        color: Theme.of(context).colorScheme.secondary,
-                      ),
+                          color: Theme.of(context).colorScheme.secondary,
+                          rate: widget.rating.count != 0
+                              ? widget.rating.rate
+                              : 5),
                       Text(
-                        "55 reviews",
+                        "${widget.rating.count} reviews",
                         style: Theme.of(context).textTheme.caption,
                       )
                     ])
@@ -137,14 +142,14 @@ class _PDInfoState extends State<PDInfo> {
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 16.0),
-                        child: PDratingNreview(),
+                        child: PDratingNreview(widget.id, widget.rating.rate),
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 16.0),
                         child: PDcomments(),
                       ),
                       Padding(
-                        padding:  EdgeInsets.symmetric(vertical: 16.0),
+                        padding: EdgeInsets.symmetric(vertical: 16.0),
                         child: PDBoughtTogether(
                           relevantProds: widget.relatedProd,
                         ),
