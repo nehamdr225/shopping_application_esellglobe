@@ -27,7 +27,11 @@ class PDAppBar extends StatelessWidget {
       expandedHeight: 450,
       actions: <Widget>[
         FIcons(
-            icon: Icons.shopping_cart,
+            icon: Image.asset(
+                      "images/esellIcons/cart2.png",
+                      height: 20.0,
+                      width: 20.0,
+                    ),
             alignment: Alignment.centerRight,
             color: Colors.deepPurple[900],
             onPressed: () {
@@ -35,7 +39,7 @@ class PDAppBar extends StatelessWidget {
                   context, MaterialPageRoute(builder: (context) => CartPage()));
             }),
         FIcons(
-            icon: Icons.bookmark,
+            icon: Icon(Icons.bookmark),
             alignment: Alignment.centerRight,
             color: Colors.deepPurple[900],
             onPressed: () {

@@ -36,7 +36,7 @@ class AccountPage extends StatelessWidget {
             alignment: AlignmentDirectional.topCenter,
             children: <Widget>[
               Container(
-                color: primaryDark,
+                color: Theme.of(context).colorScheme.primary,
                 height: height * 0.3,
                 width: width,
               ),
@@ -50,12 +50,15 @@ class AccountPage extends StatelessWidget {
                   CircleAvatar(
                     backgroundColor: Colors.white,
                     radius: 45.0,
-                    child: userData['media'] != null
-                        ? Image.network(userData['media'])
-                        : Text(
-                            userData['name'].split(' ').reduce((a, b) {
-                              return '${a[0]} ${b[0]}';
-                            }),
+                    child:
+                    // userData['media'] != null
+                      //  ? Text('image')//Image.network(userData['media'])
+                        //: 
+                        Text(
+                            'N',
+                            // userData['name'].split(' ').reduce((a, b) {
+                            //   return '${a[0]} ${b[0]}';
+                            // }),
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyText2
@@ -68,7 +71,7 @@ class AccountPage extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.all(5.0),
                   ),
-                  Text(userData['name'],
+                  Text('name',//userData['name'],
                       style: Theme.of(context).textTheme.headline6.copyWith(
                           color: Colors.white,
                           fontSize: 20,
@@ -83,7 +86,7 @@ class AccountPage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
-                            Text(userData['email'],
+                            Text('email',//userData['email'],
                                 style: Theme.of(context)
                                     .textTheme
                                     .headline6
@@ -99,7 +102,7 @@ class AccountPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[
                           IconButton(
-                            icon: Icon(Icons.edit),
+                            icon: Icon(Icons.edit, color: Colors.white,),
                             onPressed: () {
                               Navigator.push(
                                   context,
@@ -114,6 +117,9 @@ class AccountPage extends StatelessWidget {
                 ],
               ),
             ],
+          ),
+          SizedBox(
+            height: 15.0,
           ),
           AccountCards(
             text: 'My Orders',
@@ -148,12 +154,14 @@ class AccountPage extends StatelessWidget {
             },
           ),
           SizedBox(
-            height: 10.0,
+            height: 30.0,
           ),
           FRaisedButton(
             text: 'Language Settings',
             color: textColor,
-            bg: Colors.white,
+            bg: Theme.of(context).colorScheme.background,
+            borderColor: Colors.grey[200],
+            fontSize: 15.0,
             onPressed: () {},
             width: width * 0.90,
             height: 50.0,
@@ -161,7 +169,9 @@ class AccountPage extends StatelessWidget {
           FRaisedButton(
             text: 'Notification Preferences',
             color: textColor,
-            bg: Colors.white,
+            bg: Theme.of(context).colorScheme.background,
+            borderColor: Colors.grey[200],
+            fontSize: 15.0,
             onPressed: () {},
             width: width * 0.90,
             height: 50.0,
@@ -169,7 +179,9 @@ class AccountPage extends StatelessWidget {
           FRaisedButton(
             text: 'Account Settings',
             color: textColor,
-            bg: Colors.white,
+            bg: Theme.of(context).colorScheme.background,
+            borderColor: Colors.grey[200],
+            fontSize: 15.0,
             onPressed: () {},
             width: width * 0.90,
             height: 50.0,
@@ -177,7 +189,9 @@ class AccountPage extends StatelessWidget {
           FRaisedButton(
             text: 'Logout of this app',
             color: textColor,
-            bg: Colors.white,
+            bg: Theme.of(context).colorScheme.background,
+            borderColor: Colors.grey[200],
+            fontSize: 15.0,
             onPressed: () {},
             width: width * 0.90,
             height: 50.0,
@@ -185,7 +199,9 @@ class AccountPage extends StatelessWidget {
           FRaisedButton(
             text: 'Logout of all devices',
             color: textColor,
-            bg: Colors.white,
+            bg: Theme.of(context).colorScheme.background,
+            borderColor: Colors.grey[200],
+            fontSize: 15.0,
             onPressed: () {},
             width: width * 0.90,
             height: 50.0,

@@ -57,7 +57,7 @@ class FTheme with ChangeNotifier {
           fontFamily: 'Montserrat',
           fontWeight: FontWeight.normal),
       headline3: TextStyle(
-          fontSize: 14.0,
+          fontSize: 13.0,
           color: Color(0xff000000),
           fontFamily: 'Montserrat',
           fontWeight: FontWeight.w600),

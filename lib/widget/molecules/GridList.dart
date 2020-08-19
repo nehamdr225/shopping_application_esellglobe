@@ -21,10 +21,11 @@ class GridList extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             return Card(
               elevation: elevation,
-              child: Category(
+              child: Category( 
                 name: listViews[index]['name'],
                 caption: listViews[index]['cap'],
                 src: listViews[index]['src'],
+                style: Theme.of(context).textTheme.subtitle2,
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(

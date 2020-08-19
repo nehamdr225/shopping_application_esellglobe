@@ -8,14 +8,16 @@ class Category extends StatelessWidget {
   final Function onTap;
   final width;
   final height;
-
-  Category(
-      {this.caption,
-      this.src,
-      this.name,
-      this.onTap,
-      this.height: 70.0,
-      this.width: 70.0});
+  final style;
+  Category({
+    this.caption,
+    this.src,
+    this.name,
+    this.onTap,
+    this.height: 70.0,
+    this.width: 70.0,
+    this.style,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +41,7 @@ class Category extends StatelessWidget {
                     child: Text(
                       caption,
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.bodyText2,
+                      style: style,
                     ),
                   ),
                 ),

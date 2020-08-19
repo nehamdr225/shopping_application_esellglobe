@@ -25,13 +25,15 @@ class _InputFieldState extends State<InputField> {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      style: Theme.of(context).textTheme.bodyText2.copyWith(fontSize: 15.0),
       controller: _controller,
       // obscureText: true,
       onChanged: widget.onChanged,
       decoration: InputDecoration(
         border: OutlineInputBorder(borderSide: BorderSide.none),
         labelText: widget.title,
+        labelStyle: Theme.of(context).textTheme.bodyText2.copyWith(fontSize: 14.0),
       ),
     );
   }

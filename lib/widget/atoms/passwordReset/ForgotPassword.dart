@@ -1,9 +1,8 @@
 import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/BrandLogos.dart';
 import 'package:esell/widget/atoms/Forms.dart';
-import 'package:esell/widget/atoms/RaisedButton.dart';
+import 'package:esell/widget/atoms/GradientButton.dart';
 import 'package:esell/widget/atoms/passwordReset/resetPage.dart';
-import 'package:esell/widget/molecules/BlueAppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:esell/core/validators.dart';
@@ -38,51 +37,73 @@ class _ForgotPasswordState extends State<ForgotPassword> {
     };
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(40.0),
-        child: BlueAppBar(
-          elevation: 0.0,
-          search: false,
-          cart: false,
-          title: 'Confirm Identity',
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-      ),
       resizeToAvoidBottomPadding: false,
       body: ListView(
         children: <Widget>[
+          Stack(
+            children: [
+              Container(
+                height: 110.0,
+                color: Theme.of(context).colorScheme.primary,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 45.0, vertical: 28.0),
+                child: Row(
+                  children: [
+                    BrandLogos(
+                      height: 40.0,
+                      width: 40.0,
+                    ),
+                    SizedBox(
+                      width: 10.0,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Confirm your identity!',
+                            textAlign: TextAlign.start,
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline5
+                                .copyWith(fontSize: 16.0)),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
           Container(
-            color: primaryDark,
+            color: Theme.of(context).colorScheme.primary,
             height: 10.0,
           ),
           Container(
-              height: 20.0,
-              color: primaryDark,
+              height: 40.0,
+              color: Theme.of(context).colorScheme.primary,
               child: Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(20.0),
-                        topRight: Radius.circular(20.0)),
+                        topLeft: Radius.circular(40.0),
+                        topRight: Radius.circular(40.0)),
                     color: Colors.white),
               )),
           Padding(
-            padding: EdgeInsets.only(top: 30),
-            child: BrandLogos(),
-          ),
-          Padding(
-            padding: EdgeInsets.all(10.0),
+            padding: const EdgeInsets.symmetric(horizontal: 30.0),
+            child: Text("Email",
+                textAlign: TextAlign.start,
+                style: Theme.of(context).textTheme.headline4),
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
             child: FForms(
               type: TextInputType.emailAddress,
-              icon: Icon(
-                Icons.email,
-                color: primaryDark,
-              ),
-              text: "Email",
+              text: "Enter your email",
+              textStyle: Theme.of(context)
+                  .textTheme
+                  .bodyText2
+                  .copyWith(fontSize: 15.0, color: Colors.black),
+              labeltext: false,
               onChanged: setEmail,
             ),
           ),
@@ -102,14 +123,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               : Text(''),
           Align(
             alignment: Alignment.center,
-            child: FRaisedButton(
+            child: GradientButton(
               text: "Reset",
-              fontWeight: FontWeight.w500,
-              shape: true,
               width: 160.0,
-              height: 45.0,
-              bg: primaryDark,
-              color: Colors.white,
               onPressed: () {
                 Navigator.push(
                     context,

@@ -1,8 +1,8 @@
 import 'package:esell/pages/Cart.dart';
 import 'package:esell/pages/SearchPage.dart';
-import 'package:esell/state/src/theme.dart';
 import 'package:esell/widget/atoms/Forms.dart';
 import 'package:esell/widget/molecules/Icons.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SliverApBar extends StatelessWidget {
@@ -13,20 +13,38 @@ class SliverApBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return SliverAppBar(
-      title: Text(
-        title,
-        style: TextStyle(color: Colors.white),
-      ),
+      leading: InkWell(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Icon(CupertinoIcons.back),
+              Text(
+                "Back",
+                style: Theme.of(context)
+                    .textTheme
+                    .subtitle1
+                    .copyWith(color: Colors.white),
+              ),
+            ],
+          ),
+          onTap: () {
+            Navigator.pop(context);
+          }),
+      centerTitle: true,
+      title: Text(title,
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.headline5),
       pinned: true,
       floating: true,
       forceElevated: innerBoxIsScrolled,
       iconTheme: IconThemeData(
         color: Colors.white,
       ),
-      backgroundColor: primaryDark,
+      backgroundColor: Theme.of(context).colorScheme.primary,
       actions: <Widget>[
         FIcons(
-          icon: Icons.search,
+          icon: Icon(Icons.search),
           alignment: Alignment.centerRight,
           onPressed: () {
             Navigator.push(
@@ -36,7 +54,8 @@ class SliverApBar extends StatelessWidget {
           },
         ),
         FIcons(
-            icon: Icons.shopping_cart,
+            icon: Image.asset("images/esellIcons/cart2.png",
+                height: 20.0, width: 20.0, color: Colors.white),
             alignment: Alignment.centerRight,
             onPressed: () {
               Navigator.push(
@@ -48,9 +67,11 @@ class SliverApBar extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.all(7.0),
           child: FForms(
-            borderColor: Colors.white,
             height: 45.0,
             width: size.width * 0.90,
+            formColor: Theme.of(context).colorScheme.onBackground,
+            borderColor: Theme.of(context).colorScheme.onBackground,
+            borderRadius: 30.0,
             text: 'Search for topics or questions',
             labeltext: false,
             icon: Icon(Icons.search),
