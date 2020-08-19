@@ -57,7 +57,7 @@ class _PDratingNreviewState extends State<PDratingNreview> {
                         maxLines: 10,
                         borderColor: Theme.of(context).textTheme.caption.color,
                         labeltext: true,
-                        text: 'Description',
+                        text: 'Write a comment',
                         textColor: Theme.of(context).textTheme.caption.color,
                         onChanged: (value) {
                           setState(() {

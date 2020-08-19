@@ -64,6 +64,7 @@ class BlueAppBar extends StatelessWidget {
                       "images/esellIcons/cart2.png",
                       height: 20.0,
                       width: 20.0,
+                      color:Colors.white,
                     ),
                 alignment: Alignment.centerRight,
                 onPressed: () {
