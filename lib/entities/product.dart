@@ -19,6 +19,7 @@ class Product implements ProductModel {
   String sellerId;
   String paymentMethod;
   DiscountModel discount;
+  Rating rating;
 
   Product.fromJson(json) {
     this.id = json['_id'];
@@ -39,6 +40,7 @@ class Product implements ProductModel {
     this.timestamp = json['timestamp'];
     this.deliveryTime = json['deliveryTime'];
     this.discount = Discount.fromJson(json['discount']);
+    this.rating = Rating.fromJson(json['rating']);
   }
 
   toJson() => {
@@ -60,7 +62,18 @@ class Product implements ProductModel {
         'timestamp': this.timestamp,
         'deliveryTime': this.deliveryTime,
         'discount': this.discount.toJson(),
+        'rating': this.rating.toJson(),
       };
+}
+
+class Rating {
+  double rate;
+  int count;
+  Rating({this.rate, this.count});
+  Rating.fromJson(json)
+      : this.rate = json != null ? json['rate'] ?? 0 : 0,
+        this.count = json != null ? json['count'] ?? 0 : 0;
+  toJson() => {'rate': this.rate, 'count': this.count};
 }
 
 class ProductMedia implements ProductMediaModel {

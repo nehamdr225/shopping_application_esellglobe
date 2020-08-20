@@ -1,3 +1,4 @@
+import 'package:esell/entities/product.dart';
 import 'package:esell/models/discount.model.dart';
 
 abstract class ProductModel {
@@ -17,6 +18,7 @@ abstract class ProductModel {
   String sellerId;
   String paymentMethod;
   DiscountModel discount;
+  Rating rating;
 }
 
 abstract class ProductMediaModel {

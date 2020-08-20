@@ -290,4 +290,160 @@ class UserApi {
       return {"error": err};
     }
   }
+
+  getProductRatings({
+    int page = 1,
+    int result = 15,
+    String productId,
+    String token,
+  }) async {
+    try {
+      Map<String, String> headers = {
+        "Content-Type": "application/json",
+        "X-Access-Token": token
+      };
+      final response = await _fetch.get(
+        url: "$url/rating/product/$productId?page=$page&result=$result",
+        headers: headers,
+      );
+      return response;
+    } catch (err) {
+      return {"error": err};
+    }
+  }
+
+  getSpecificProductRating(String ratingId, String token) async {
+    try {
+      Map<String, String> headers = {
+        "Content-Type": "application/json",
+        "X-Access-Token": token
+      };
+      final response = await _fetch.get(
+        url: "$url/rating/$ratingId",
+        headers: headers,
+      );
+      return response;
+    } catch (err) {
+      return {"error": err};
+    }
+  }
+
+  Future rateProduct(token, productId, rate) async {
+    try {
+      Map<String, String> headers = {
+        "Content-Type": "application/json",
+        "X-Access-Token": token
+      };
+      final response =
+          await _fetch.post(url: "$url/rating/", headers: headers, body: {
+        'rating': rate,
+        'product': productId,
+      });
+      return response;
+    } catch (err) {
+      return {"error": err};
+    }
+  }
+
+  updateRating(token, productId, rate) async {
+    try {
+      Map<String, String> headers = {
+        "Content-Type": "application/json",
+        "X-Access-Token": token
+      };
+      final response = await _fetch
+          .put(url: "$url/rating/$productId", headers: headers, body: {
+        'rating': rate,
+      });
+      return response;
+    } catch (err) {
+      return {"error": err};
+    }
+  }
+
+  reviewProduct(token, productId, review) async {
+    try {
+      Map<String, String> headers = {
+        "Content-Type": "application/json",
+        "X-Access-Token": token
+      };
+      final response =
+          await _fetch.post(url: "$url/reviews/", headers: headers, body: {
+        'review': review,
+        'product': productId,
+      });
+      return response;
+    } catch (err) {
+      return {"error": err};
+    }
+  }
+
+  updateReview(token, productId, review) async {
+    try {
+      Map<String, String> headers = {
+        "Content-Type": "application/json",
+        "X-Access-Token": token
+      };
+      final response = await _fetch
+          .put(url: "$url/reviews/$productId", headers: headers, body: {
+        'review': review,
+      });
+      return response;
+    } catch (err) {
+      return {"error": err};
+    }
+  }
+
+  getProductReviews({
+    int page = 1,
+    int result = 15,
+    String productId,
+    String token,
+  }) async {
+    try {
+      Map<String, String> headers = {
+        "Content-Type": "application/json",
+        "X-Access-Token": token
+      };
+      final response = await _fetch.get(
+        url: "$url/reviews/product/$productId?page=$page&result=$result",
+        headers: headers,
+      );
+      return response;
+    } catch (err) {
+      return {"error": err};
+    }
+  }
+
+  getSpecificProductReview(String reviewId, String token) async {
+    try {
+      Map<String, String> headers = {
+        "Content-Type": "application/json",
+        "X-Access-Token": token
+      };
+      final response = await _fetch.get(
+        url: "$url/reviews/$reviewId",
+        headers: headers,
+      );
+      return response;
+    } catch (err) {
+      return {"error": err};
+    }
+  }
+
+  deleteReview(String reviewId, String token) async {
+    try {
+      Map<String, String> headers = {
+        "Content-Type": "application/json",
+        "X-Access-Token": token
+      };
+      final response = await _fetch.delete(
+        url: "$url/reviews/$reviewId",
+        headers: headers,
+      );
+      return response;
+    } catch (err) {
+      return {"error": err};
+    }
+  }
 }
