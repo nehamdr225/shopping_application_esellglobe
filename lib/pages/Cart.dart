@@ -1,6 +1,8 @@
 import 'package:esell/entities/cart.dart';
 import 'package:esell/pages/CheckoutPage.dart';
+import 'package:esell/pages/Signin.dart';
 import 'package:esell/pages/UserPromt.dart';
+import 'package:esell/widget/atoms/GradientButton.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:esell/widget/molecules/CartList.dart';
@@ -142,35 +144,27 @@ class _CartPageState extends State<CartPage> {
                       wishlist: true,
                       title: 'Cart',
                     )),
-                backgroundColor:
-                    Colors.white, //Theme.of(context).colorScheme.background,
+                backgroundColor:Theme.of(context).colorScheme.background,
                 body: Center(
                     child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
                       "You need to Login first",
-                      style: TextStyle(
-                          fontSize: 20.0,
-                          fontFamily: 'Montserrat',
-                          fontWeight: FontWeight.w600),
+                      style: Theme.of(context).textTheme.headline4.copyWith(fontSize: 16.0),
                     ),
                     SizedBox(
                       height: 15.0,
                     ),
-                    FRaisedButton(
-                      bg: Theme.of(context).colorScheme.secondaryVariant,
-                      text: 'Login',
-                      color: Colors.white,
+                    GradientButton(
+                      text: "Login",
                       width: 150.0,
-                      height: 40.0,
-                      elevation: 0.5,
-                      shape: true,
                       onPressed: () {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => UserPromptApp()));
+                            MaterialPageRoute(builder: (_) => SignInPage()));
                       },
-                    )
+                    ),
+                    
                   ],
                 ))));
   }

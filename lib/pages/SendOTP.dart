@@ -98,7 +98,7 @@ class _SendOTPState extends State<SendOTP> {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(40.0),
+          preferredSize: Size.fromHeight(50.0),
           child: BlueAppBar(
             elevation: 0.0,
             search: false,
@@ -113,7 +113,7 @@ class _SendOTPState extends State<SendOTP> {
         body: ListView(
           children: <Widget>[
             Container(
-              color: primaryDark,
+              color: Theme.of(context).colorScheme.primary,
               height: 10.0,
             ),
             Container(

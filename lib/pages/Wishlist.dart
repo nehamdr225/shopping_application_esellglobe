@@ -1,5 +1,7 @@
 import 'package:esell/pages/Cart.dart';
 import 'package:esell/pages/LoginPhone.dart';
+import 'package:esell/pages/Signin.dart';
+import 'package:esell/widget/atoms/GradientButton.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/molecules/Product.dart';
 import 'package:esell/widget/molecules/colors.dart';
@@ -32,14 +34,19 @@ class WishlistPage extends StatelessWidget {
               children: <Widget>[
                 Text(
                   "You need to Login first",
-                  style: TextStyle(
-                      fontSize: 20.0,
-                      fontFamily: 'Montserrat',
-                      fontWeight: FontWeight.w600),
+                  style:  Theme.of(context).textTheme.headline4.copyWith(fontSize: 16.0),
                 ),
                 SizedBox(
                   height: 15.0,
                 ),
+                GradientButton(
+                      text: "Login",
+                      width: 150.0,
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => SignInPage()));
+                      },
+                    ),
                 FRaisedButton(
                   bg: Theme.of(context).colorScheme.secondaryVariant,
                   text: 'Login',
