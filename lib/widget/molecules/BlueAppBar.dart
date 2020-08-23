@@ -76,36 +76,28 @@ class BlueAppBar extends StatelessWidget {
       ],
     );
   }
-  _showBottomSheet(context) {
+ _showBottomSheet(context) {
     showModalBottomSheet(
         context: context,
         builder: (BuildContext context) {
           return SafeArea(
             child: Container(
+              height: 300.0,
               color: Colors.white,
               child: ListView(
                 children: <Widget>[
                   IconButton(
                     alignment: Alignment.centerRight,
-                    color: primary,
+                    color: Theme.of(context).colorScheme.primary,
                     icon: Icon(Icons.close),
                     onPressed: () {
                       Navigator.pop(context);
                     },
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 10),
-                    child: Center(
-                        child: Image.asset(
-                      'images/logo/logoonly1.png',
-                      height: 60.0,
-                      width: 60.0,
-                    )),
+                  SizedBox(
+                    height: 50.0,
                   ),
-                  Container(
-                    // buttons
-                    child: LoginOptions(),
-                  ),
+                  LoginOptions(),
                 ],
               ),
             ),
@@ -113,5 +105,3 @@ class BlueAppBar extends StatelessWidget {
         });
   }
 }
-
-

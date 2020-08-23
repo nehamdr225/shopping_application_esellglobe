@@ -1,5 +1,4 @@
 import 'package:esell/pages/Cart.dart';
-import 'package:esell/pages/LoginPhone.dart';
 import 'package:esell/pages/Signin.dart';
 import 'package:esell/widget/atoms/GradientButton.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
@@ -34,32 +33,24 @@ class WishlistPage extends StatelessWidget {
               children: <Widget>[
                 Text(
                   "You need to Login first",
-                  style:  Theme.of(context).textTheme.headline4.copyWith(fontSize: 16.0),
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline4
+                      .copyWith(fontSize: 16.0),
                 ),
                 SizedBox(
                   height: 15.0,
                 ),
                 GradientButton(
-                      text: "Login",
-                      width: 150.0,
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => SignInPage()));
-                      },
-                    ),
-                FRaisedButton(
-                  bg: Theme.of(context).colorScheme.secondaryVariant,
-                  text: 'Login',
-                  color: Colors.white,
+                  text: "Login",
                   width: 150.0,
-                  height: 40.0,
-                  elevation: 0.5,
-                  shape: true,
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (_) => LoginPhone()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => SignInPage())); //LoginPhone()
                   },
-                )
+                ),
               ],
             )))
         : Scaffold(
@@ -116,7 +107,7 @@ class WishlistPage extends StatelessWidget {
                       ),
                       Text(
                         "Oops..Your wishlist is empty!",
-                        style: TextStyle(fontSize: 24.0),
+                        style: TextStyle(fontSize: 20.0),
                       ),
                     ],
                   )));

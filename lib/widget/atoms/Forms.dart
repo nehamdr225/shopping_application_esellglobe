@@ -44,11 +44,10 @@ class FForms extends StatelessWidget {
       this.icon,
       this.trailingIcon,
       this.prefix,
-      
       this.underline: false,
       this.formColor: Colors.white,
       this.borderColor: Colors.white,
-      this.borderRadius:0.0,
+      this.borderRadius: 0.0,
       this.textColor,
       this.textInputAction: TextInputAction.none,
       this.validator,

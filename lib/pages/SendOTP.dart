@@ -4,7 +4,7 @@ import 'package:esell/pages/Signin.dart';
 import 'package:esell/state/src/theme.dart';
 import 'package:esell/widget/atoms/BrandLogos.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
-import 'package:esell/widget/atoms/RaisedButton.dart';
+import 'package:esell/widget/atoms/GradientButton.dart';
 import 'package:esell/widget/atoms/pinOTP.dart';
 import 'package:esell/widget/molecules/BlueAppBar.dart';
 import 'package:flutter/material.dart';
@@ -118,7 +118,7 @@ class _SendOTPState extends State<SendOTP> {
             ),
             Container(
                 height: 20.0,
-                color: primaryDark,
+                color: Theme.of(context).colorScheme.primary,
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
@@ -161,18 +161,17 @@ class _SendOTPState extends State<SendOTP> {
                       padding: EdgeInsets.all(25.0),
                     ),
                     !isVerifying
-                        ? FRaisedButton(
-                            text: "Verify",
-                            width: 160.0,
-                            height: 45.0,
-                            shape: true,
-                            color: Colors.white,
-                            bg: primaryDark,
-                            onPressed: pin?.length == 6
-                                ? () {
-                                    handleOtpVerification();
-                                  }
-                                : null,
+                        ? Align(
+                            alignment: Alignment.center,
+                            child: GradientButton(
+                              text: "Verify",
+                              width: 160.0,
+                              onPressed: pin?.length == 6
+                                  ? () {
+                                      handleOtpVerification();
+                                    }
+                                  : null,
+                            ),
                           )
                         : Container(
                             child: CircularProgressIndicator(),

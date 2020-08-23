@@ -121,21 +121,20 @@ class FAppBar extends StatelessWidget {
         builder: (BuildContext context) {
           return SafeArea(
             child: Container(
-              height: 350.0,
+              height: 300.0,
               color: Colors.white,
               child: ListView(
                 children: <Widget>[
                   IconButton(
                     alignment: Alignment.centerRight,
-                    color: primaryDark,
+                    color: Theme.of(context).colorScheme.primary,
                     icon: Icon(Icons.close),
                     onPressed: () {
                       Navigator.pop(context);
                     },
                   ),
-                  BrandLogos(
-                    height: 90.0,
-                    width: 90.0,
+                  SizedBox(
+                    height: 50.0,
                   ),
                   LoginOptions(),
                 ],

@@ -8,6 +8,7 @@ import 'package:esell/widget/atoms/Category.dart';
 import 'package:esell/widget/atoms/loginOptions.dart';
 import 'package:esell/widget/molecules/Icons.dart';
 import 'package:esell/widget/molecules/Product.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -49,6 +50,7 @@ class _CategoryPageState extends State<CategoryPage>
       return Provider.of<ProductModel>(context)
           .category(widget.text, reqCategory);
     }
+
     final user = Provider.of<UserModel>(context);
 
     return SafeArea(
@@ -60,12 +62,15 @@ class _CategoryPageState extends State<CategoryPage>
             return <Widget>[
               SliverAppBar(
                 elevation: 0.5,
-                title: Text("${widget.text}",
-                    style: TextStyle(
-                      color: primaryDark,
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold,
-                    )),
+                title: Text(
+                  "${widget.text}",
+                  style: Theme.of(context).textTheme.headline2.copyWith(fontWeight: FontWeight.bold),
+                  // TextStyle(
+                  //   color: Colors.black,
+                  //   fontSize: 18.0,
+                  //   fontWeight: FontWeight.bold,
+                  // )
+                ),
                 pinned: true,
                 floating: true,
                 forceElevated: innerBoxIsScrolled,
@@ -73,39 +78,54 @@ class _CategoryPageState extends State<CategoryPage>
                   color: primaryDark,
                 ),
                 backgroundColor: Colors.white,
-                leading: Padding(
-                  padding: const EdgeInsets.only(top: 8.0),
-                  child: IconButton(
-                    icon: Icon(Icons.arrow_back),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
+                leading: InkWell(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(
+                        CupertinoIcons.back,
+                        color: Colors.black,
+                      ),
+                      Text(
+                        "Back",
+                        style: Theme.of(context).textTheme.subtitle1,
+                      ),
+                    ],
                   ),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
                 ),
                 actions: <Widget>[
                   FIcons(
                       icon: Image.asset(
-                      "images/esellIcons/cart2.png",
-                      height: 20.0,
-                      width: 20.0,
-                    ),
+                        "images/esellIcons/cart2.png",
+                        height: 20.0,
+                        width: 20.0,
+                      ),
                       alignment: Alignment.centerRight,
                       onPressed: () {
-                        user.token != null?
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => CartPage())): _showBottomSheet(context);
+                        user.token != null
+                            ? Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => CartPage()))
+                            : _showBottomSheet(context);
                       }),
                   FIcons(
-                      icon: Icon(Icons.bookmark_border),
+                      icon: Icon(
+                        Icons.bookmark_border,
+                        color: Colors.black,
+                      ),
                       alignment: Alignment.centerRight,
                       onPressed: () {
-                        user.token !=null?
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => WishlistPage())):_showBottomSheet(context);
+                        user.token != null
+                            ? Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => WishlistPage()))
+                            : _showBottomSheet(context);
                       })
                 ],
                 bottom: isSingleView(widget.text)
@@ -121,11 +141,12 @@ class _CategoryPageState extends State<CategoryPage>
                             alignment: Alignment.center,
                             height: 80.0,
                             child: TabBar(
-                              indicatorColor: Theme.of(context).colorScheme.secondary,
+                              indicatorColor:
+                                  Theme.of(context).colorScheme.secondary,
                               isScrollable: true,
                               controller: _tabController,
                               // indicator: BoxDecoration(),
-                              tabs: SubMain[widget.text] 
+                              tabs: SubMain[widget.text]
                                   .map<Widget>(
                                     (e) => Category(
                                       name: e['name'],
@@ -208,27 +229,27 @@ class _CategoryPageState extends State<CategoryPage>
                 )),
     ));
   }
+
   _showBottomSheet(context) {
     showModalBottomSheet(
         context: context,
         builder: (BuildContext context) {
           return SafeArea(
             child: Container(
-              height: 350.0,
+              height: 300.0,
               color: Colors.white,
               child: ListView(
                 children: <Widget>[
                   IconButton(
                     alignment: Alignment.centerRight,
-                    color: primaryDark,
+                    color: Theme.of(context).colorScheme.primary,
                     icon: Icon(Icons.close),
                     onPressed: () {
                       Navigator.pop(context);
                     },
                   ),
-                  BrandLogos(
-                    height: 90.0,
-                    width: 90.0,
+                  SizedBox(
+                    height: 50.0,
                   ),
                   LoginOptions(),
                 ],

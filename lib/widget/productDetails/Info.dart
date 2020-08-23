@@ -20,7 +20,7 @@ class PDInfo extends StatefulWidget {
       description;
   final relatedProd;
   final Function setSize, setColor;
-  Rating rating;
+  final Rating rating;
   PDInfo(
       {this.category,
       this.id,

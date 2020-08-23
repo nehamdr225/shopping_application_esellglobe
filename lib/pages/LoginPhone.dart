@@ -3,9 +3,8 @@ import 'package:esell/pages/SendOTP.dart';
 import 'package:esell/pages/Signin.dart';
 import 'package:esell/state/src/theme.dart';
 import 'package:esell/widget/atoms/BrandLogos.dart';
-import 'package:esell/widget/atoms/FancyText.dart';
 import 'package:esell/widget/atoms/Forms.dart';
-import 'package:esell/widget/atoms/RaisedButton.dart';
+import 'package:esell/widget/atoms/GradientButton.dart';
 import 'package:esell/widget/molecules/BlueAppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/state/state.dart';
@@ -67,7 +66,7 @@ class _LoginPhoneState extends State<LoginPhone> {
             ),
             Container(
                 height: 20.0,
-                color: primaryDark,
+                color: Theme.of(context).colorScheme.primary,
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
@@ -87,58 +86,55 @@ class _LoginPhoneState extends State<LoginPhone> {
                     Padding(
                       padding: EdgeInsets.all(25.0),
                     ),
-                    FancyText(
-                        // continue w/o signin
-                        color: textColor,
-                        text: "Enter Verified Mobile Number",
-                        size: 18.0,
-                        fontfamily: 'Montserrat',
-                        fontWeight: FontWeight.w600,
-                        onTap: () {
-                          // Navigator.push(context,
-                          //     MaterialPageRoute(builder: (context) => HomePageApp()));
-                        }),
+                    Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 20.0, vertical: 10),
+                        child: FForms(
+                            type: TextInputType.text,
+                            text: "Enter Verified Mobile Number",
+                            obscure: true,
+                            onChanged: () {})),
                     Padding(
                       padding: EdgeInsets.all(15.0),
                     ),
-                    FForms(
-                        type: TextInputType.phone,
-                        text: "Phone Number",
-                        prefix: Text('+91   ',
-                            textAlign: TextAlign.justify,
-                            style: TextStyle(
-                                color: textColor,
-                                fontSize: 18.0,
-                                fontWeight: FontWeight.w600)),
-                        onChanged: setPhoneNum),
+                    Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 20.0, vertical: 10),
+                        child: FForms(
+                            type: TextInputType.text,
+                            text: "Phone Number",
+                            obscure: true,
+                            prefix: Text('+91   ',
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                    color: textColor,
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.w600)),
+                            onChanged: setPhoneNum)),
                     Padding(
                       padding: EdgeInsets.all(15.0),
                     ),
-                    Container(
-                      alignment: Alignment.centerRight,
-                      child: FancyText(
-                          color: Theme.of(context).colorScheme.primary,
-                          text: "Use Email-ID",
-                          size: 16.0,
-                          fontfamily: 'Montserrat',
-                          fontWeight: FontWeight.w500,
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => SignInPage()));
-                          }),
-                    ),
+                    Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 20.0, vertical: 10),
+                        child: FForms(
+                            type: TextInputType.text,
+                            text: "Use Email-ID",
+                            obscure: true,
+                            onChanged: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SignInPage()));
+                            })),
                     Padding(
                       padding: EdgeInsets.all(15.0),
                     ),
-                    FRaisedButton(
+                    Align(
+                      alignment: Alignment.center,
+                      child: GradientButton(
                         text: "Send OTP",
                         width: 160.0,
-                        height: 45.0,
-                        shape: true,
-                        color: Colors.white,
-                        bg: primaryDark,
                         onPressed: () {
                           Navigator.push(
                               context,
@@ -146,8 +142,9 @@ class _LoginPhoneState extends State<LoginPhone> {
                                   builder: (context) => SendOTP(
                                       //phoneNo: phone
                                       )));
-                        } //signupUser,
-                        ),
+                        },
+                      ),
+                    ),
                   ],
                 ),
               ),
