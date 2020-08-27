@@ -25,14 +25,14 @@ class CartListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery.of(context).size.width;
+    // var width = MediaQuery.of(context).size.width;
 
     return Padding(
       padding: EdgeInsets.only(
         top: 8.0,
       ),
       child: Container(
-        height: 200.0,
+        height: 165.0,
         color: Theme.of(context).colorScheme.background,
         alignment: Alignment.topCenter,
         child: Column(
@@ -139,58 +139,99 @@ class CartListView extends StatelessWidget {
                                     ),
                               ),
                             ),
-                            // Padding(
-                            //   padding: EdgeInsets.only(right: 6.0, left: 6.0),
-                            //   child: Text(
-                            //     "₹ 1800",
-                            //     style: Theme.of(context)
-                            //         .textTheme
-                            //         .bodyText2
-                            //         .copyWith(
-                            //             fontWeight: FontWeight.w500,
-                            //             fontSize: 13.0,
-                            //             color: Colors.grey[500],
-                            //             decoration: TextDecoration.lineThrough),
-                            //   ),
-                            // ),
-                            // Padding(
-                            //   padding: EdgeInsets.only(right: 6.0, left: 6.0),
-                            //   child: Text(
-                            //     "50% off",
-                            //     style: Theme.of(context)
-                            //         .textTheme
-                            //         .bodyText2
-                            //         .copyWith(
-                            //           fontWeight: FontWeight.w600,
-                            //           color: Colors.green,
-                            //           fontSize: 15.0,
-                            //         ),
-                            //   ),
-                            // ),
                           ],
                         ),
-                        // Padding(
-                        //   padding:
-                        //       const EdgeInsets.fromLTRB(0.0, 15.0, 10.0, 6.0),
-                        //   child: Text(
-                        //     "Delivery by 02 Jan 2020",
-                        //     style: Theme.of(context).textTheme.bodyText2.copyWith(
-                        //           fontWeight: FontWeight.w500,
-                        //           fontSize: 13.0,
-                        //         ),
-                        //   ),
-                        // ),
-                        SizedBox(
-                          height: 10.0,
-                        ),
-                        Text(
-                          "Free Delivery",
-                          style: Theme.of(context).textTheme.bodyText2.copyWith(
-                                fontWeight: FontWeight.w600,
-                                color: Colors.green,
-                                fontSize: 13.0,
+                        //
+                        Row(
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (_) => CheckoutPage(items: [
+                                              CartItem.fromJson({
+                                                'product': product.id,
+                                                'quantity': quantity,
+                                                'size': size,
+                                                'color': color
+                                              })
+                                            ])));
+                              },
+                              child: Text(
+                                "Order Now",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText2
+                                    .copyWith(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary),
                               ),
+                            ),
+                            Row(
+                              // quantity
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: <Widget>[
+                                IconButton(
+                                  icon: Icon(
+                                    CupertinoIcons.minus_circled,
+                                    color: Colors.black,
+                                    size: 25.0,
+                                  ),
+                                  onPressed: quantity > 1
+                                      ? () {
+                                          setQuantity(product.id, quantity - 1);
+                                        }
+                                      : null,
+                                ),
+                                Text(
+                                  quantity.toString(),
+                                  style: TextStyle(
+                                    fontSize: 14.0,
+                                  ),
+                                ),
+                                IconButton(
+                                  icon: Icon(
+                                    CupertinoIcons.add_circled,
+                                    color: Colors.black,
+                                    size: 25.0,
+                                  ),
+                                  onPressed: () {
+                                    setQuantity(product.id, quantity + 1);
+                                  },
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
+                        // FRaisedButton(
+                        //   elevation: 0.0,
+                        //   height: 40.0,
+                        //   width: 140.0,
+                        //   textAlign: TextAlign.left,
+                        //   needIcon: true,
+                        //   shape: false,
+                        //   image: 'images/icons/save.png',
+                        //   text: "Order Now",
+                        //   fontSize: 14.0,
+                        //   fontWeight: FontWeight.w600,
+                        //   color: Theme.of(context).colorScheme.primary,
+                        //   bg: Theme.of(context).colorScheme.background,
+                        //   onPressed: () {
+                        //     Navigator.push(
+                        //         context,
+                        //         MaterialPageRoute(
+                        //             builder: (_) => CheckoutPage(items: [
+                        //                   CartItem.fromJson({
+                        //                     'product': product,
+                        //                     'quantity': quantity,
+                        //                     'size': size,
+                        //                     'color': color
+                        //                   })
+                        //                 ])));
+                        //   },
+                        // ),
                       ],
                     ),
                   ),
@@ -198,51 +239,43 @@ class CartListView extends StatelessWidget {
                 Flexible(
                   flex: 1,
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     //image and qty
                     children: <Widget>[
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(60),
-                        child: Container(
-                          padding: EdgeInsets.all(8.0),
-                          child: Image.network(
-                              'https://api.shop2more.com' + product.media.front,
-                              width: 100.0,
-                              height: 70.0),
-                        ),
-                      ),
-                      Row(
-                        // quantity
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: <Widget>[
-                          IconButton(
-                            icon: Icon(
-                              CupertinoIcons.minus_circled,
-                              color: Colors.black,
-                              size: 25.0,
-                            ),
-                            onPressed: quantity > 1
-                                ? () {
-                                    setQuantity(product.id, quantity - 1);
-                                  }
-                                : null,
-                          ),
-                          Text(
-                            quantity.toString(),
-                            style: TextStyle(
-                              fontSize: 14.0,
-                            ),
-                          ),
-                          IconButton(
-                            icon: Icon(
-                              CupertinoIcons.add_circled,
-                              color: Colors.black,
-                              size: 25.0,
-                            ),
-                            onPressed: () {
-                              setQuantity(product.id, quantity + 1);
-                            },
-                          ),
-                        ],
+                      IconButton(
+                          icon: Icon(Icons.close, color: Colors.grey[500]),
+                          onPressed: () async {
+                            showDialog(
+                              context: context,
+                              builder: (context) => AlertDialog(
+                                elevation: 2.0,
+                                content: Container(
+                                    alignment: Alignment.center,
+                                    height: 70.0,
+                                    width: 200.0,
+                                    child: Text(
+                                        'Are you sure you want to remove this product?')),
+                                actions: <Widget>[
+                                  FRaisedButton(
+                                    shape: false,
+                                    text: 'Remove',
+                                    color: Colors.white,
+                                    bg: Colors.red,
+                                    width: 120.0,
+                                    onPressed: () {
+                                      deleteFromCart(product.id);
+                                      Navigator.pop(context);
+                                    },
+                                  )
+                                ],
+                              ),
+                            );
+                          }),
+                      Container(
+                        child: Image.network(
+                            'https://api.shop2more.com' + product.media.front,
+                            width: 100.0,
+                            height: 90.0),
                       ),
                     ],
                   ),
@@ -252,79 +285,6 @@ class CartListView extends StatelessWidget {
             Divider(
               thickness: 1.0,
             ),
-            Row(
-              //Buttons
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                FRaisedButton(
-                  elevation: 0.0,
-                  height: 40.0,
-                  width: width * 0.45,
-                  needIcon: true,
-                  shape: false,
-                  image: 'images/icons/save.png',
-                  text: "Order Now",
-                  fontSize: 14.0,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black87,
-                  bg: Theme.of(context).colorScheme.background,
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (_) => CheckoutPage(items: [
-                                  CartItem.fromJson({
-                                    'product': product,
-                                    'quantity': quantity,
-                                    'size': size,
-                                    'color': color
-                                  })
-                                ])));
-                  },
-                ),
-                FRaisedButton(
-                  elevation: 0.0,
-                  height: 40.0,
-                  width: width * 0.45,
-                  needIcon: true,
-                  shape: false,
-                  image: 'images/icons/remove.png',
-                  text: "Remove",
-                  fontSize: 14.0,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black87,
-                  bg: Theme.of(context).colorScheme.background,
-                  onPressed: () async {
-                    showDialog(
-                      context: context,
-                      builder: (context) => AlertDialog(
-                        elevation: 2.0,
-                        content: Container(
-                            alignment: Alignment.center,
-                            height: 70.0,
-                            width: 200.0,
-                            child: Text(
-                                'Are you sure you want to remove this product?')),
-                        actions: <Widget>[
-                          FRaisedButton(
-                            shape: false,
-                            text: 'Remove',
-                            color: Colors.white,
-                            bg: Colors.red,
-                            width: 120.0,
-                            onPressed: () {
-                              deleteFromCart(product.id);
-                              Navigator.pop(context);
-                            },
-                          )
-                        ],
-                      ),
-                    );
-                  },
-                )
-              ],
-            ),
-            SizedBox(height: 4.0),
           ],
         ),
       ),

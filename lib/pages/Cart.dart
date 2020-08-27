@@ -84,12 +84,14 @@ class _CartPageState extends State<CartPage> {
                       //                     builder: (_) =>
                       //                         CheckoutPage(items: items)));
                       //           });
-                      ? Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top: 8.0),
-                              child: Container(
-                                  height: 160.0,
+                      ? Container(
+                          height: 160.0,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                  height: 110.0,
                                   color:
                                       Theme.of(context).colorScheme.background,
                                   child: CartPrice(
@@ -97,23 +99,23 @@ class _CartPageState extends State<CartPage> {
                                     price: price.toStringAsFixed(2),
                                     total: total.toStringAsFixed(2),
                                   )),
-                            ),
-                            FRaisedButton(
-                              width: width * 0.95,
-                              height: 40.0,
-                              bg: Theme.of(context).colorScheme.primary,
-                              text: 'Proceed to Checkout',
-                              color: Colors.white,
-                              shape: true,
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (_) =>
-                                            CheckoutPage(items: items)));
-                              },
-                            )
-                          ],
+                              FRaisedButton(
+                                width: width * 0.95,
+                                height: 40.0,
+                                bg: Theme.of(context).colorScheme.primary,
+                                text: 'Proceed to Checkout',
+                                color: Colors.white,
+                                shape: true,
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (_) =>
+                                              CheckoutPage(items: items)));
+                                },
+                              )
+                            ],
+                          ),
                         )
                       : SizedBox.shrink()
                 ],
@@ -121,14 +123,16 @@ class _CartPageState extends State<CartPage> {
                     ? ListView.builder(
                         itemCount: items.length + 1,
                         itemBuilder: (context, index) {
-                          return CartListView(
-                              color: items[index].color,
-                              quantity: items[index].quantity,
-                              setQuantity: updateCartItem,
-                              token: user.token,
-                              deleteFromCart: user.deleteFromCart,
-                              size: items[index].size,
-                              product: items[index].product);
+                          return index != items.length
+                              ? CartListView(
+                                  color: items[index].color,
+                                  quantity: items[index].quantity,
+                                  setQuantity: updateCartItem,
+                                  token: user.token,
+                                  deleteFromCart: user.deleteFromCart,
+                                  size: items[index].size,
+                                  product: items[index].product)
+                              : SizedBox.shrink();
                           // return index != items.length
                           //     ? CartListView(
                           //         color: items[index].color,
