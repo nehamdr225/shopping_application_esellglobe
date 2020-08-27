@@ -27,13 +27,12 @@ class UserModel extends ChangeNotifier {
           notifyListeners();
         } else {
           user = result['result'];
-          if (result['result']['cart'] != null) {
-            final data = await _api.getCart(token);
-            if (data['error'] == null)
-              cart = data['result']['products']
-                  .map<CartItem>((e) => CartItem.fromJson(e))
-                  .toList();
-          }
+          final data = await _api.getCart(token);
+          if (data['error'] == null)
+            cart = data['result']['products']
+                .map<CartItem>((e) => CartItem.fromJson(e))
+                .toList();
+
           // if (result['result']['orders'].length > 0) {
           final ordersNew = await _api.getOrders(token);
           if (ordersNew['error'] == null) {
@@ -77,43 +76,33 @@ class UserModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  List<OrderItem> get orders => _orders;
+  set orders(List<OrderItem> values) {
+    _orders = values;
+    notifyListeners();
+  }
+
+  get wishList => _wishList;
+
   addToCart(String product, qty, size, color, Product productData) {
     print('$product $qty $size $color }');
     final check = _cart.any((each) => each.product.id == product);
     if (!check) {
-      if (user['cart'] == null) {
-        _api.registerCart(token, product, qty, size, color).then((data) {
-          print(data);
-          if (data['error'] == null) {
-            _cart.add(CartItem.fromJson({
-              'product': productData.toJson(),
-              'timestamp': DateTime.now(),
-              'quantity': qty ?? 1,
-              'size': size,
-              'color': color,
-            }));
-            _user.addAll({'cart': data['result']['_id']});
-            notifyListeners();
-            return "success";
-          }
-          return "failed";
-        });
-      } else
-        _api.updateCart(token, product, qty, size, color).then((result) {
-          print(result);
-          if (result['error'] == null) {
-            _cart.add(CartItem.fromJson({
-              'product': productData.toJson(),
-              'timestamp': DateTime.now().toIso8601String(),
-              'quantity': qty,
-              'size': size,
-              'color': color,
-            }));
-            notifyListeners();
-            return "success";
-          }
-          return "failed";
-        });
+      _api.registerCart(token, product, qty, size, color).then((data) {
+        print(data);
+        if (data['error'] == null) {
+          _cart.add(CartItem.fromJson({
+            'product': productData.toJson(),
+            'timestamp': DateTime.now().toIso8601String(),
+            'quantity': qty ?? 1,
+            'size': size,
+            'color': color,
+          }));
+          notifyListeners();
+          return "success";
+        }
+        return "failed";
+      });
     }
   }
 
@@ -133,7 +122,6 @@ class UserModel extends ChangeNotifier {
     });
   }
 
-  get wishList => _wishList;
   addToWishList(String product) {
     _wishList.add(product);
     notifyListeners();
@@ -144,18 +132,22 @@ class UserModel extends ChangeNotifier {
     return _wishList.contains(id);
   }
 
-  List<OrderItem> get orders => _orders;
-  set orders(List<OrderItem> values) {
-    _orders = values;
-    notifyListeners();
-  }
-
   placeOrder(body) async {
     return await _api.createOrder(token, body);
   }
 
   Future rateProduct(String id, double rate) async {
     return await _api.rateProduct(token, id, rate);
+  }
+
+  Future<Map> login(String email, String password, bool remember) async {
+    Map response = await api.login(email, password, remember);
+    if (response['token'] != null) {
+      token = response['token'];
+      await _storage.savekeyVal('token', token);
+      init();
+    }
+    return response;
   }
 
   logout() async {

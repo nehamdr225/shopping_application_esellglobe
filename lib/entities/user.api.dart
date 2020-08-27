@@ -122,22 +122,6 @@ class UserApi {
     }
   }
 
-  updateCart(token, productId, qty, size, color) async {
-    try {
-      Map<String, String> headers = {
-        "Content-Type": "application/json",
-        "X-Access-Token": token
-      };
-      final response = await _fetch.put(
-        url: "$url/cart/$productId/$qty/$size/$color",
-        headers: headers,
-      );
-      return response;
-    } catch (err) {
-      return {"error": err};
-    }
-  }
-
   deleteCartItem(token, id) async {
     Map<String, String> headers = {
       "Content-Type": "application/json",

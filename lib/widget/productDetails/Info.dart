@@ -16,11 +16,11 @@ class PDInfo extends StatefulWidget {
       category,
       id,
       color,
-      size, 
+      size,
       description;
   final relatedProd;
   final Function setSize, setColor;
-  Rating rating;
+  final Rating rating;
   PDInfo(
       {this.category,
       this.id,
@@ -91,7 +91,8 @@ class _PDInfoState extends State<PDInfo> {
                   color: widget.colors, setColor: widget.setColor),
             ),
             if (!widget.category.contains('Sunglasses') &&
-                !widget.category.contains('Watches') && !widget.category.contains("Bags & Backpacks"))
+                !widget.category.contains('Watches') &&
+                !widget.category.contains("Bags & Backpacks"))
               Padding(
                 padding: const EdgeInsets.only(top: 0.0, bottom: 16.0),
                 child: PDSizeSelector(

@@ -110,7 +110,6 @@ class PDFooter extends StatelessWidget {
                           );
                         },
                       )
-                   
                     : GradientButton(
                         width: MediaQuery.of(context).size.width * 0.40,
                         text: 'Buy Now',

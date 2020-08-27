@@ -85,15 +85,7 @@ class _ProductDetailsState extends State<ProductDetails> {
     } else {
       images.add(Image.network(' '));
     }
-    // Map<String, dynamic> images;
-    //  = {
-    //   'front': '',
-    //   'back': '',
-    //   'left': '',
-    //   'right': '',
-    //   'top': '',
-    //   'bottom': ''
-    // };
+
     if (product == null) return Text('Error occured fetching product info!');
 
     return SafeArea(

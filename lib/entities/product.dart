@@ -71,7 +71,8 @@ class Rating {
   int count;
   Rating({this.rate, this.count});
   Rating.fromJson(json)
-      : this.rate = json != null ? json['rate'] ?? 0 : 0,
+      : this.rate =
+            json != null ? double.parse(json['rate'].toString()) ?? 0.0 : 0.0,
         this.count = json != null ? json['count'] ?? 0 : 0;
   toJson() => {'rate': this.rate, 'count': this.count};
 }

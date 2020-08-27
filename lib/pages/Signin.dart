@@ -18,6 +18,7 @@ class SignInPage extends StatefulWidget {
 }
 
 class _PageState extends State<SignInPage> {
+  final _formState = GlobalKey<FormState>();
   String email, password;
   String emailErr, passwordErr;
   String loginErr;
@@ -29,7 +30,6 @@ class _PageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     final UserModel user = Provider.of<UserModel>(context);
-    final UserApi api = user.api;
     final Validator v = user.validator;
 
     var setEmail = (data) {
@@ -65,29 +65,11 @@ class _PageState extends State<SignInPage> {
         setState(() {
           isActive = true;
         });
-        Map response = await api.login(email, password, remember);
-        print(response);
+        Map response = await user.login(email, password, remember);
+        setState(() {
+          isActive = false;
+        });
         if (response['token'] != null) {
-          user.token = response['token'];
-          api.getUser(response['token']).then((result) {
-            if (result['error'] == null) {
-              if (result['message'] != null &&
-                  result['message'] == "Auth failed") {
-                delKeyVal("token").then((data) {
-                  user.token = null;
-                });
-              } else if (result['result']['cart'] != null) {
-                api.getCart(response['token']).then((data) {
-                  if (data['error'] == null)
-                    user.cart = data['result']['products'];
-                });
-              }
-              user.user = result['result'];
-            }
-          });
-          setState(() {
-            isActive = false;
-          });
           Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(builder: (context) => HomePageApp()),
@@ -96,12 +78,8 @@ class _PageState extends State<SignInPage> {
         } else if (response['error'] != null) {
           setState(() {
             loginErr = response['error'];
-            isActive = false;
           });
         } else if (response['otp'] != null) {
-          setState(() {
-            isActive = false;
-          });
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -183,88 +161,78 @@ class _PageState extends State<SignInPage> {
                           topRight: Radius.circular(40.0)),
                       color: Colors.white),
                 )),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30.0),
-              child: Text('Email',
-                  textAlign: TextAlign.start,
-                  style: Theme.of(context).textTheme.headline4),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-              child: FForms(
-                type: TextInputType.emailAddress,
-                text: "Enter your email",
-                textStyle: Theme.of(context)
-                    .textTheme
-                    .bodyText2
-                    .copyWith(fontSize: 15.0, color: Colors.black),
-                labeltext: false,
-                onChanged: setEmail,
+            Form(
+              key: _formState,
+              autovalidate: true,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                    child: Text('Email',
+                        textAlign: TextAlign.start,
+                        style: Theme.of(context).textTheme.headline4),
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+                    child: FForms(
+                      type: TextInputType.emailAddress,
+                      text: "Enter your email",
+                      textStyle: Theme.of(context)
+                          .textTheme
+                          .bodyText2
+                          .copyWith(fontSize: 15.0, color: Colors.black),
+                      labeltext: false,
+                      onChanged: setEmail,
+                      validator: (value) => v.emailValidator(value)
+                          ? null
+                          : "Email is not valid!",
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                    child: Text('Password',
+                        textAlign: TextAlign.start,
+                        style: Theme.of(context).textTheme.headline4),
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
+                    child: FForms(
+                      type: TextInputType.text,
+                      text: "Enter password",
+                      textStyle: Theme.of(context)
+                          .textTheme
+                          .bodyText2
+                          .copyWith(fontSize: 15.0, color: Colors.black),
+                      labeltext: false,
+                      trailingIcon: IconButton(
+                        color: Theme.of(context).colorScheme.primary,
+                        icon: Icon(
+                          _passwordVisible
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                          semanticLabel: _passwordVisible
+                              ? 'hide password'
+                              : 'show password',
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _passwordVisible ^= true;
+                          });
+                        },
+                      ),
+                      obscure: _passwordVisible == false ? true : false,
+                      onChanged: setPassword,
+                      validator: (value) => v.pwdValidator(value)
+                          ? null
+                          : "Password not valid! ( must contain letter, number & symbols )",
+                    ),
+                  ),
+                ],
               ),
             ),
-            emailErr != null
-                ? Padding(
-                    padding: EdgeInsets.only(left: 40, bottom: 6),
-                    child: Text(
-                      emailErr,
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                        color: orderBar,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 13,
-                      ),
-                    ),
-                  )
-                : Text(''),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30.0),
-              child: Text('Password',
-                  textAlign: TextAlign.start,
-                  style: Theme.of(context).textTheme.headline4),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
-              child: FForms(
-                  type: TextInputType.text,
-                  text: "Enter password",
-                  textStyle: Theme.of(context)
-                      .textTheme
-                      .bodyText2
-                      .copyWith(fontSize: 15.0, color: Colors.black),
-                  labeltext: false,
-                  trailingIcon: IconButton(
-                    color: Theme.of(context).colorScheme.primary,
-                    icon: Icon(
-                      _passwordVisible
-                          ? Icons.visibility
-                          : Icons.visibility_off,
-                      semanticLabel:
-                          _passwordVisible ? 'hide password' : 'show password',
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        _passwordVisible ^= true;
-                      });
-                    },
-                  ),
-                  obscure: _passwordVisible == false ? true : false,
-                  onChanged: setPassword),
-            ),
-            passwordErr != null
-                ? Padding(
-                    padding: EdgeInsets.only(left: 40, bottom: 6, right: 10),
-                    child: Text(
-                      passwordErr,
-                      textAlign: TextAlign.start,
-                      overflow: TextOverflow.fade,
-                      style: TextStyle(
-                        color: orderBar,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 13,
-                      ),
-                    ),
-                  )
-                : Text(''),
             Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 10.0,

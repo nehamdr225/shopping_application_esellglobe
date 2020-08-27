@@ -6,9 +6,10 @@ class Validator {
   }
 
   bool pwdValidator(String data) {
-    return RegExp(
-            r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$')
-        .hasMatch(data);
+    // return data.length >= 8 && RegExp(r'^(?=.*?[0-9])$').hasMatch(data);
+    return RegExp(r'^(?=.*?[a-z])(?=.*?[0-9]).{8,}$').hasMatch(data);
+    //(?=.*?[!@#\$&*~])
+    //(?=.*?[A-Z])
   }
 
   bool nameValidator(String data) {
