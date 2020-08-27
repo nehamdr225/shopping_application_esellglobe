@@ -3,7 +3,6 @@ import 'package:esell/pages/Wishlist.dart';
 import 'package:esell/state/state.dart';
 import 'package:esell/state/src/consts.dart';
 import 'package:esell/widget/atoms/BottomLoader.dart';
-import 'package:esell/widget/atoms/BrandLogos.dart';
 import 'package:esell/widget/atoms/Category.dart';
 import 'package:esell/widget/atoms/loginOptions.dart';
 import 'package:esell/widget/molecules/Icons.dart';
@@ -62,9 +61,13 @@ class _CategoryPageState extends State<CategoryPage>
             return <Widget>[
               SliverAppBar(
                 elevation: 0.5,
+                centerTitle: true,
                 title: Text(
                   "${widget.text}",
-                  style: Theme.of(context).textTheme.headline2.copyWith(fontWeight: FontWeight.bold),
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline2
+                      .copyWith(fontWeight: FontWeight.bold),
                   // TextStyle(
                   //   color: Colors.black,
                   //   fontSize: 18.0,

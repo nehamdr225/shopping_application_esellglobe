@@ -1,7 +1,6 @@
 // import 'package:esell/models/user.model.dart';
 import 'package:esell/pages/Cart.dart';
 import 'package:esell/pages/SearchPage.dart';
-import 'package:esell/state/src/theme.dart';
 import 'package:esell/widget/atoms/loginOptions.dart';
 import 'package:esell/widget/molecules/Icons.dart';
 import 'package:flutter/cupertino.dart';
@@ -26,27 +25,27 @@ class BlueAppBar extends StatelessWidget {
     var user = Provider.of<UserModel>(context);
     return AppBar(
       centerTitle: true,
-      title: Text(
-        title,
-        textAlign: TextAlign.center,
-        style: Theme.of(context).textTheme.headline5
-      ),
+      title: Text(title,
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.headline5),
       elevation: elevation,
       backgroundColor: Theme.of(context).colorScheme.primary,
       leading: InkWell(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Icon(CupertinoIcons.back),
-                Text(
-                  "Back",
-                  style: Theme.of(context).textTheme.subtitle1.copyWith(color:Colors.white),
-                ),
-              ],
-            ),
-            onTap: onPressed
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Icon(CupertinoIcons.back),
+              Text(
+                "Back",
+                style: Theme.of(context)
+                    .textTheme
+                    .subtitle1
+                    .copyWith(color: Colors.white),
+              ),
+            ],
           ),
+          onTap: onPressed),
       actions: <Widget>[
         search == true
             ? FIcons(
@@ -61,22 +60,24 @@ class BlueAppBar extends StatelessWidget {
         cart == true
             ? FIcons(
                 icon: Image.asset(
-                      "images/esellIcons/cart2.png",
-                      height: 20.0,
-                      width: 20.0,
-                      color:Colors.white,
-                    ),
+                  "images/esellIcons/cart2.png",
+                  height: 20.0,
+                  width: 20.0,
+                  color: Colors.white,
+                ),
                 alignment: Alignment.centerRight,
                 onPressed: () {
-                  user.token != null?
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => CartPage())):_showBottomSheet(context);
+                  user.token != null
+                      ? Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => CartPage()))
+                      : _showBottomSheet(context);
                 })
             : Text('')
       ],
     );
   }
- _showBottomSheet(context) {
+
+  _showBottomSheet(context) {
     showModalBottomSheet(
         context: context,
         builder: (BuildContext context) {

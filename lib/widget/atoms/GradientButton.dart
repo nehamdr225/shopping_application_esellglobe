@@ -19,7 +19,10 @@ class GradientButton extends StatelessWidget {
         child: Ink(
           decoration: BoxDecoration(
               gradient: RadialGradient(
-                colors: [Theme.of(context).colorScheme.primaryVariant, Theme.of(context).colorScheme.primary],
+                colors: [
+                  Theme.of(context).colorScheme.primaryVariant,
+                  Theme.of(context).colorScheme.primary
+                ],
                 center: Alignment(-0.5, -0.5),
                 radius: 2.5,
               ),

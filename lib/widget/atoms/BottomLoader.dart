@@ -5,7 +5,7 @@ import 'package:esell/state/state.dart';
 
 final Widget indicator = Container(
   alignment: Alignment.center,
-  child: CupertinoActivityIndicator(radius: 15),
+  child: CupertinoActivityIndicator(radius: 18),
 );
 
 class BottomLoader extends StatefulWidget {

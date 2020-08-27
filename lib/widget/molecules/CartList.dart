@@ -33,7 +33,7 @@ class CartListView extends StatelessWidget {
       ),
       child: Container(
         height: 200.0,
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.background,
         alignment: Alignment.topCenter,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -123,7 +123,7 @@ class CartListView extends StatelessWidget {
                                     .textTheme
                                     .bodyText2
                                     .copyWith(
-                                      fontWeight: FontWeight.w800,
+                                      fontWeight: FontWeight.w700,
                                       fontSize: 16.0,
                                     )),
                             Padding(
@@ -134,39 +134,39 @@ class CartListView extends StatelessWidget {
                                     .textTheme
                                     .bodyText2
                                     .copyWith(
-                                      fontWeight: FontWeight.w800,
+                                      fontWeight: FontWeight.w700,
                                       fontSize: 16.0,
                                     ),
                               ),
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(right: 6.0, left: 6.0),
-                              child: Text(
-                                "₹ 1800",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyText2
-                                    .copyWith(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 13.0,
-                                        color: Colors.grey[500],
-                                        decoration: TextDecoration.lineThrough),
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(right: 6.0, left: 6.0),
-                              child: Text(
-                                "50% off",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyText2
-                                    .copyWith(
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.green,
-                                      fontSize: 15.0,
-                                    ),
-                              ),
-                            ),
+                            // Padding(
+                            //   padding: EdgeInsets.only(right: 6.0, left: 6.0),
+                            //   child: Text(
+                            //     "₹ 1800",
+                            //     style: Theme.of(context)
+                            //         .textTheme
+                            //         .bodyText2
+                            //         .copyWith(
+                            //             fontWeight: FontWeight.w500,
+                            //             fontSize: 13.0,
+                            //             color: Colors.grey[500],
+                            //             decoration: TextDecoration.lineThrough),
+                            //   ),
+                            // ),
+                            // Padding(
+                            //   padding: EdgeInsets.only(right: 6.0, left: 6.0),
+                            //   child: Text(
+                            //     "50% off",
+                            //     style: Theme.of(context)
+                            //         .textTheme
+                            //         .bodyText2
+                            //         .copyWith(
+                            //           fontWeight: FontWeight.w600,
+                            //           color: Colors.green,
+                            //           fontSize: 15.0,
+                            //         ),
+                            //   ),
+                            // ),
                           ],
                         ),
                         // Padding(
@@ -181,7 +181,7 @@ class CartListView extends StatelessWidget {
                         //   ),
                         // ),
                         SizedBox(
-                          height: 20.0,
+                          height: 10.0,
                         ),
                         Text(
                           "Free Delivery",
@@ -264,8 +264,10 @@ class CartListView extends StatelessWidget {
                   shape: false,
                   image: 'images/icons/save.png',
                   text: "Order Now",
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.w600,
                   color: Colors.black87,
-                  bg: Colors.white,
+                  bg: Theme.of(context).colorScheme.background,
                   onPressed: () {
                     Navigator.push(
                         context,
@@ -288,8 +290,10 @@ class CartListView extends StatelessWidget {
                   shape: false,
                   image: 'images/icons/remove.png',
                   text: "Remove",
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.w600,
                   color: Colors.black87,
-                  bg: Colors.white,
+                  bg: Theme.of(context).colorScheme.background,
                   onPressed: () async {
                     showDialog(
                       context: context,

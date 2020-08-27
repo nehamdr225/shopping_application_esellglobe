@@ -56,7 +56,10 @@ class _ProductDetailsState extends State<ProductDetails> {
               cart: true,
             ),
           ),
-          body: CupertinoActivityIndicator());
+          body: Center(
+              child: CupertinoActivityIndicator(
+            radius: 18.0,
+          )));
     }
     final relatedProds =
         Provider.of<ProductModel>(context).relevant(widget.category);

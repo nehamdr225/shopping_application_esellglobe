@@ -32,21 +32,24 @@ class _AccountEditState extends State<AccountEdit> {
             elevation: 0,
             backgroundColor: Theme.of(context).colorScheme.primary,
             leading: InkWell(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Icon(CupertinoIcons.back),
-                Text(
-                  "Back",
-                  style: Theme.of(context).textTheme.subtitle1.copyWith(color:Colors.white),
-                ),
-              ],
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Icon(CupertinoIcons.back),
+                  Text(
+                    "Back",
+                    style: Theme.of(context)
+                        .textTheme
+                        .subtitle1
+                        .copyWith(color: Colors.white),
+                  ),
+                ],
+              ),
+              onTap: () {
+                Navigator.pop(context);
+              },
             ),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
             actions: <Widget>[
               FIcons(
                 icon: Icon(Icons.search),
@@ -58,10 +61,11 @@ class _AccountEditState extends State<AccountEdit> {
               ),
               FIcons(
                   icon: Image.asset(
-                      "images/esellIcons/cart2.png",
-                      height: 20.0,
-                      width: 20.0,
-                    ),
+                    "images/esellIcons/cart2.png",
+                    color: Colors.white,
+                    height: 20.0,
+                    width: 20.0,
+                  ),
                   alignment: Alignment.centerRight,
                   onPressed: () {
                     Navigator.push(context,
@@ -82,14 +86,12 @@ class _AccountEditState extends State<AccountEdit> {
               CircleAvatar(
                 backgroundColor: Colors.white,
                 radius: 45.0,
-                child: 
-                // userData['media'] != null
-                //     ? Image.network(userData['media'])
-                //     : 
-                Text( 'N',
-                        // userData['name'].split(' ').reduce((a, b) {
-                        //   return '${a[0]} ${b[0]}';
-                        // }),
+                child: userData['media'] != null
+                    ? Image.network(userData['media'])
+                    : Text(
+                        userData['name'].split(' ').reduce((a, b) {
+                          return '${a[0]} ${b[0]}';
+                        }),
                         style: Theme.of(context).textTheme.bodyText2.copyWith(
                             color: primaryDark,
                             fontSize: 24.0,
@@ -104,21 +106,21 @@ class _AccountEditState extends State<AccountEdit> {
           Container(
             padding: const EdgeInsets.all(10.0),
             child: InputField(
-              value: '',//userData['name'],
+              value: userData['name'],
               title: 'Name',
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: InputField(
-              value: '',//userData['email'],
+              value: userData['email'],
               title: 'Email',
             ),
           ),
           Container(
             padding: const EdgeInsets.all(10.0),
             child: InputField(
-              value: '',//userData['contact'],
+              value: userData['contact'],
               title: 'Contact',
             ),
           ),
@@ -128,7 +130,9 @@ class _AccountEditState extends State<AccountEdit> {
             child: OutlineButton(
               child: Text(
                 'Save Changes',
-                style: TextStyle(fontSize: 17.0, color: Theme.of(context).colorScheme.primary),
+                style: TextStyle(
+                    fontSize: 17.0,
+                    color: Theme.of(context).colorScheme.primary),
               ),
               onPressed: null,
               // () {

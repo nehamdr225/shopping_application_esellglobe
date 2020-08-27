@@ -33,7 +33,7 @@ class FRaisedButton extends StatelessWidget {
     this.imgcolor,
     this.radius: 30.0,
     this.needIcon: false,
-    this.borderWidth:0.0,
+    this.borderWidth: 0.0,
     this.borderColor,
     this.textAlign: TextAlign.center,
     this.mainAxisAlignment: MainAxisAlignment.center,
@@ -96,7 +96,11 @@ class FRaisedButton extends StatelessWidget {
                 ),
           shape: shape == false
               ? Border.all(
-                  width: borderWidth, color: borderColor == null?Theme.of(context).colorScheme.background: borderColor, )
+                  width: borderWidth,
+                  color: borderColor == null
+                      ? Theme.of(context).colorScheme.background
+                      : borderColor,
+                )
               : RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(radius)),
                 ),
@@ -104,4 +108,3 @@ class FRaisedButton extends StatelessWidget {
     );
   }
 }
-

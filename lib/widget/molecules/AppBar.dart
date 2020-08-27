@@ -2,7 +2,6 @@ import 'package:esell/pages/Cart.dart';
 import 'package:esell/pages/SearchPage.dart';
 import 'package:esell/pages/Wishlist.dart';
 import 'package:esell/state/state.dart';
-import 'package:esell/widget/atoms/BrandLogos.dart';
 import 'package:esell/widget/atoms/loginOptions.dart';
 import 'package:esell/widget/molecules/Icons.dart';
 import 'package:flutter/cupertino.dart';
@@ -27,7 +26,7 @@ class FAppBar extends StatelessWidget {
     this.title,
     this.searchBar,
   });
-  @override 
+  @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     var user = Provider.of<UserModel>(context);
@@ -108,7 +107,7 @@ class FAppBar extends StatelessWidget {
                           : _showBottomSheet(context);
                     })
                 : Text(''),
-                SizedBox(width:10.0)
+            SizedBox(width: 10.0)
           ],
         ),
       ),

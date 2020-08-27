@@ -32,7 +32,7 @@ class _DetailsState extends State<Details> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Padding(
-            padding: const  EdgeInsets.only(left: 8.0, top: 10.0),
+            padding: const EdgeInsets.only(left: 8.0, top: 10.0),
             child: Row(
               children: <Widget>[
                 Text(
@@ -80,6 +80,7 @@ class _DetailsState extends State<Details> {
               widget.name,
               style: Theme.of(context).textTheme.bodyText2.copyWith(
                     fontSize: 13.0,
+                    color: Colors.black,
                     fontWeight: FontWeight.w500,
                   ),
               textAlign: TextAlign.left,
@@ -102,7 +103,7 @@ class _DetailsState extends State<Details> {
                   padding:
                       const EdgeInsets.only(left: 8.0, top: 5.0, right: 8.0),
                   child: Text(
-                    '${widget.details}',//.substring(0, 40).replaceAll('\n', ' ')}...',
+                    '${widget.details}', //.substring(0, 40).replaceAll('\n', ' ')}...',
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.bodyText2.copyWith(
                         fontSize: 12.0,

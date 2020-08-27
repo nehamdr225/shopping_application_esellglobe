@@ -22,30 +22,17 @@ class _CartPriceState extends State<CartPrice> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(4.0),
-            child: Text(
-              'PRICE DETAILS',
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyText2
-                  .copyWith(color: Colors.grey[500], fontSize: 17.0),
-            ),
-          ),
-          Divider(
-            thickness: 1.0,
-          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.all(4.0),
                 child: Text(
-                  'Price (${widget.length} item)',
+                  'Order (${widget.length} item)',
                   style: Theme.of(context)
                       .textTheme
-                      .bodyText2
-                      .copyWith(fontSize: 16.0),
+                      .caption
+                      .copyWith(fontSize: 14.0),
                 ),
               ),
               Padding(
@@ -55,7 +42,7 @@ class _CartPriceState extends State<CartPrice> {
                   style: Theme.of(context)
                       .textTheme
                       .bodyText2
-                      .copyWith(fontSize: 16.0),
+                      .copyWith(fontSize: 15.0),
                 ),
               )
             ],
@@ -69,8 +56,8 @@ class _CartPriceState extends State<CartPrice> {
                   'Delivery Fee',
                   style: Theme.of(context)
                       .textTheme
-                      .bodyText2
-                      .copyWith(fontSize: 16.0),
+                      .caption
+                      .copyWith(fontSize: 14.0),
                 ),
               ),
               Padding(
@@ -80,13 +67,10 @@ class _CartPriceState extends State<CartPrice> {
                   style: Theme.of(context)
                       .textTheme
                       .bodyText2
-                      .copyWith(fontSize: 16.0),
+                      .copyWith(fontSize: 15.0),
                 ),
               )
             ],
-          ),
-          Divider(
-            thickness: 1.0,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -97,8 +81,8 @@ class _CartPriceState extends State<CartPrice> {
                   'Total Amount',
                   style: Theme.of(context)
                       .textTheme
-                      .bodyText2
-                      .copyWith(fontSize: 17.0, fontWeight: FontWeight.w500),
+                      .caption
+                      .copyWith(fontSize: 15.0),
                 ),
               ),
               Padding(
@@ -108,7 +92,7 @@ class _CartPriceState extends State<CartPrice> {
                   style: Theme.of(context)
                       .textTheme
                       .bodyText2
-                      .copyWith(fontSize: 17.0, fontWeight: FontWeight.w500),
+                      .copyWith(fontSize: 16.0),
                 ),
               )
             ],
