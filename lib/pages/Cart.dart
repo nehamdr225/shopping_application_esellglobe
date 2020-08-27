@@ -30,13 +30,13 @@ class _CartPageState extends State<CartPage> {
     // final height = MediaQuery.of(context).size.height;
     setState(() {
       items = user.cart;
-      //print(items);
     });
 
     if (items.length > 0) {
       double temp = 0;
       items.forEach((item) {
-        temp += double.parse(item.product.price) * item.quantity;
+        temp += double.parse(item.product.price.replaceAll(',', '')) *
+            item.quantity;
       });
       if (temp > 0.0)
         setState(() {
