@@ -17,7 +17,7 @@ class AccountPage extends StatelessWidget {
     var width = MediaQuery.of(context).size.width;
     final user = Provider.of<UserModel>(context);
     final userData = user.user;
-    //final token = user.token;
+    final token = user.token;
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: PreferredSize(
@@ -50,15 +50,12 @@ class AccountPage extends StatelessWidget {
                   CircleAvatar(
                     backgroundColor: Colors.white,
                     radius: 45.0,
-                    child:
-                    // userData['media'] != null
-                      //  ? Text('image')//Image.network(userData['media'])
-                        //: 
-                        Text(
-                            'N',
-                            // userData['name'].split(' ').reduce((a, b) {
-                            //   return '${a[0]} ${b[0]}';
-                            // }),
+                    child: userData['media'] != null
+                        ? Text('image') //Image.network(userData['media'])
+                        : Text(
+                            userData['name'].split(' ').reduce((a, b) {
+                              return '${a[0]} ${b[0]}';
+                            }),
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyText2
@@ -71,7 +68,7 @@ class AccountPage extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.all(5.0),
                   ),
-                  Text('name',//userData['name'],
+                  Text(userData['name'],
                       style: Theme.of(context).textTheme.headline6.copyWith(
                           color: Colors.white,
                           fontSize: 20,
@@ -86,7 +83,7 @@ class AccountPage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
-                            Text('email',//userData['email'],
+                            Text('email', //userData['email'],
                                 style: Theme.of(context)
                                     .textTheme
                                     .headline6
@@ -102,7 +99,10 @@ class AccountPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[
                           IconButton(
-                            icon: Icon(Icons.edit, color: Colors.white,),
+                            icon: Icon(
+                              Icons.edit,
+                              color: Colors.white,
+                            ),
                             onPressed: () {
                               Navigator.push(
                                   context,
