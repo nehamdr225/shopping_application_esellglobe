@@ -1,10 +1,7 @@
 import 'package:esell/pages/Signin.dart';
 import 'package:esell/pages/Signup.dart';
-import 'package:esell/state/src/theme.dart';
+import 'package:esell/widget/atoms/GradientButton.dart';
 import 'package:flutter/material.dart';
-import 'package:esell/widget/atoms/RaisedButton.dart';
-import 'package:esell/widget/atoms/FancyText.dart';
-
 class LoginOptions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -16,38 +13,35 @@ class LoginOptions extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(8.0),
           ),
-          FRaisedButton(
-            // email
-            height: 50.0,
-            width: 260.0,
-            shape: true,
-            needIcon: false,
-            //image: 'images/icons/email.png',
-            text: "Login with email/phone no.",
-            color: Colors.white.withOpacity(0.95),
-            fontWeight: FontWeight.bold,
-            bg: Theme.of(context).colorScheme.secondary,
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => SignInPage()));
-            },
-          ),
-          InkWell(
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => SignUpPage()));
-            },
-            child: Container(
-              padding: const EdgeInsets.all(18.0),
-              child: FancyText(
-                color: primaryDark,
-                  text: "Register Now",
-                  size: 17.0,
-                  fontfamily: 'Montserrat',
-                  fontWeight: FontWeight.w700,
-              ),
+          Align(
+            alignment: Alignment.center,
+            child: GradientButton(
+              text: "Login with email/phone no.",
+              width: 260.0,
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SignInPage()));
+              },
             ),
           ),
+          Container(
+            padding: const EdgeInsets.all(18.0),
+            alignment: Alignment.center,
+            child: InkWell(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SignUpPage()));
+                },
+                child: Text(
+                  "Register Now",
+                  style: Theme.of(context).textTheme.caption.copyWith(
+                        fontSize: 17.0,
+                        fontWeight: FontWeight.w800,
+                        color: Colors.black,//Theme.of(context).colorScheme.primary,
+                      ),
+                )),
+          ),
+
           // FRaisedButton(
           //   height: 45.0,
           //   width: 260.0,

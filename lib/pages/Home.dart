@@ -1,6 +1,5 @@
 import 'package:esell/pages/SearchPage.dart';
 import 'package:esell/state/state.dart';
-import 'package:esell/widget/atoms/BrandLogos.dart';
 import 'package:esell/widget/atoms/Category.dart';
 import 'package:esell/widget/atoms/Forms.dart';
 import 'package:esell/widget/atoms/loginOptions.dart';
@@ -123,7 +122,7 @@ class _HomePageAppState extends State<HomePageApp>
                       height: 45.0,
                       width: width * 0.90,
                       formColor: Theme.of(context).colorScheme.onBackground,
-                      borderColor: Theme.of(context).colorScheme.onBackground,
+                      borderColor: Colors.white,
                       borderRadius: 30.0,
                       text: 'Search for fashion',
                       labeltext: false,
@@ -243,21 +242,20 @@ class _HomePageAppState extends State<HomePageApp>
         builder: (BuildContext context) {
           return SafeArea(
             child: Container(
-              height: 350.0,
+              height: 300.0,
               color: Colors.white,
               child: ListView(
                 children: <Widget>[
                   IconButton(
                     alignment: Alignment.centerRight,
-                    color: primaryDark,
+                    color: Theme.of(context).colorScheme.primary,
                     icon: Icon(Icons.close),
                     onPressed: () {
                       Navigator.pop(context);
                     },
                   ),
-                  BrandLogos(
-                    height: 90.0,
-                    width: 90.0,
+                  SizedBox(
+                    height: 50.0,
                   ),
                   LoginOptions(),
                 ],

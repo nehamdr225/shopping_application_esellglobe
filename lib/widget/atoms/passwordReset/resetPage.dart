@@ -1,7 +1,7 @@
 import 'package:esell/state/state.dart';
+import 'package:esell/widget/atoms/BrandLogos.dart';
 import 'package:esell/widget/atoms/Forms.dart';
-import 'package:esell/widget/atoms/RaisedButton.dart';
-import 'package:esell/widget/molecules/BlueAppBar.dart';
+import 'package:esell/widget/atoms/GradientButton.dart';
 import 'package:flutter/material.dart';
 //import 'package:provider/provider.dart';
 //import 'package:esell/core/validators.dart';
@@ -40,36 +40,60 @@ class _ResetPageState extends State<ResetPage> {
 
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(40.0),
-        child: BlueAppBar(
-          elevation: 0.0,
-          search: false,
-          cart: false,
-          title: 'Password Recovery',
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-      ),
+     
       resizeToAvoidBottomPadding: false,
       body: ListView(
-        children: <Widget>[
-          Container(
-            color: primaryDark,
-            height: 10.0,
+        children: <Widget>[ 
+          Stack(
+            children: [
+              Container(
+                height: 110.0,
+                color: Theme.of(context).colorScheme.primary,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 45.0, vertical: 28.0),
+                child: Row(
+                  children: [
+                    BrandLogos(
+                      height: 40.0,
+                      width: 40.0,
+                    ),
+                    SizedBox(
+                      width: 10.0,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Password Recovery',
+                            textAlign: TextAlign.start,
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline5
+                                .copyWith(fontSize: 16.0)),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
           Container(
-              height: 20.0,
-              color: primaryDark,
+            color: Theme.of(context).colorScheme.primary,
+            height: 10.0,
+          ),
+          Container( 
+              height: 40.0,
+              color: Theme.of(context).colorScheme.primary,
               child: Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(20.0),
-                        topRight: Radius.circular(20.0)),
+                        topLeft: Radius.circular(40.0),
+                        topRight: Radius.circular(40.0)),
                     color: Colors.white),
               )),
-          
+
+        
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
             child: FForms(
@@ -112,16 +136,11 @@ class _ResetPageState extends State<ResetPage> {
               : Text(''),
           Align(
             alignment: Alignment.center,
-            child: FRaisedButton(
+            child: GradientButton(
               text: "Reset Password",
-              fontWeight: FontWeight.w500,
-              shape: true,
-              width: 180.0,
-              height: 45.0,
-              bg: primaryDark,
-              color: Colors.white,
+              width: 160.0,
               onPressed: () {
-                // Navigator.push(context,
+                 // Navigator.push(context,
                 //     MaterialPageRoute(builder: (context) => Reset()));
               },
             ),

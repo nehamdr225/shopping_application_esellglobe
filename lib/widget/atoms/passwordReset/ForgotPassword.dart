@@ -78,7 +78,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             color: Theme.of(context).colorScheme.primary,
             height: 10.0,
           ),
-          Container(
+          Container( 
               height: 40.0,
               color: Theme.of(context).colorScheme.primary,
               child: Container(

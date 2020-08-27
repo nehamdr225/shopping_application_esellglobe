@@ -32,7 +32,7 @@ class _PDratingNreviewState extends State<PDratingNreview> {
         padding: const EdgeInsets.symmetric(vertical: 12.0),
         child: Align(
           alignment: Alignment.center,
-          child: SmoothStarRating(
+          child: SmoothStarRating( 
             allowHalfRating: true,
             onRatingChanged: (v) {
               setState(() {

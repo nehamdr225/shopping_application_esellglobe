@@ -1,7 +1,6 @@
 import 'package:esell/entities/cart.dart';
 import 'package:esell/pages/CheckoutPage.dart';
 import 'package:esell/pages/Signin.dart';
-import 'package:esell/pages/UserPromt.dart';
 import 'package:esell/widget/atoms/GradientButton.dart';
 import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
@@ -72,29 +71,38 @@ class _CartPageState extends State<CartPage> {
                     )),
                 backgroundColor: Theme.of(context).colorScheme.background,
                 persistentFooterButtons: <Widget>[
-                  Container(
-                      alignment: Alignment.centerLeft,
-                      height: 40.0,
-                      child: Builder(
-                        builder: (BuildContext context) {
-                          return FRaisedButton(
-                              width: width * 0.95,
-                              height: 40.0,
-                              bg: Theme.of(context)
-                                  .colorScheme
-                                  .secondaryVariant,
-                              text: 'Proceed to Checkout',
-                              color: Colors.white,
-                              shape: true,
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (_) =>
-                                            CheckoutPage(items: items)));
-                              });
-                        },
-                      ))
+                  items != null && items.length > 0
+                      ? Builder(
+                          builder: (BuildContext context) {
+                            return GradientButton(
+                                width: width,
+                                text: 'Proceed to Checkout',
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (_) =>
+                                              CheckoutPage(items: items)));
+                                });
+                            // FRaisedButton(
+                            //     width: width * 0.95,
+                            //     height: 40.0,
+                            //     bg: Theme.of(context)
+                            //         .colorScheme
+                            //         .primary,
+                            //     text: 'Proceed to Checkout',
+                            //     color: Colors.white,
+                            //     shape: true,
+                            //     onPressed: () {
+                            //       Navigator.push(
+                            //           context,
+                            //           MaterialPageRoute(
+                            //               builder: (_) =>
+                            //                   CheckoutPage(items: items)));
+                            //     });
+                          },
+                        )
+                      : SizedBox.shrink()
                 ],
                 body: items != null && items.length > 0
                     ? ListView.builder(
@@ -133,7 +141,7 @@ class _CartPageState extends State<CartPage> {
                           ),
                           Text(
                             "Oops...Your cart is empty!",
-                            style: TextStyle(fontSize: 24.0),
+                            style: TextStyle(fontSize: 20.0),
                           ),
                         ],
                       )))
@@ -144,14 +152,17 @@ class _CartPageState extends State<CartPage> {
                       wishlist: true,
                       title: 'Cart',
                     )),
-                backgroundColor:Theme.of(context).colorScheme.background,
+                backgroundColor: Theme.of(context).colorScheme.background,
                 body: Center(
                     child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
                       "You need to Login first",
-                      style: Theme.of(context).textTheme.headline4.copyWith(fontSize: 16.0),
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline4
+                          .copyWith(fontSize: 16.0),
                     ),
                     SizedBox(
                       height: 15.0,
@@ -164,7 +175,6 @@ class _CartPageState extends State<CartPage> {
                             MaterialPageRoute(builder: (_) => SignInPage()));
                       },
                     ),
-                    
                   ],
                 ))));
   }

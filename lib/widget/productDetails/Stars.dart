@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class Stars extends StatelessWidget {
   final Color color;
   final double size;
-  double rate;
+  final double rate;
   final MainAxisAlignment mainAxisAlignment;
   Stars(
       {this.color,
