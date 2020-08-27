@@ -151,7 +151,7 @@ class CartListView extends StatelessWidget {
                                     MaterialPageRoute(
                                         builder: (_) => CheckoutPage(items: [
                                               CartItem.fromJson({
-                                                'product': product.id,
+                                                'product': product.toJson(),
                                                 'quantity': quantity,
                                                 'size': size,
                                                 'color': color
