@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 const barGrey = Colors.grey;
-const orderBar = Color(0xfffc773a);
+const orderBar = Color(0xfffFFA8AC); //c773a);
 const splash = Colors.black12;
 const textColor = Colors.black87;
 const primaryDark = Color(0xff3ea8cc);
@@ -41,7 +41,6 @@ class FTheme with ChangeNotifier {
       onSurface: Color(0xffEEEEEF),
       brightness: Brightness.light,
       surface: Color(0xffFBFBFB),
-      
     ),
     canvasColor: Colors.white,
     textSelectionColor: Colors.black38,

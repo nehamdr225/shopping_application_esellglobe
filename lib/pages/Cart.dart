@@ -110,8 +110,10 @@ class _CartPageState extends State<CartPage> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (_) =>
-                                              CheckoutPage(items: items)));
+                                          builder: (_) => CheckoutPage(
+                                                items: items,
+                                                total: total.toStringAsFixed(2),
+                                              )));
                                 },
                               )
                             ],

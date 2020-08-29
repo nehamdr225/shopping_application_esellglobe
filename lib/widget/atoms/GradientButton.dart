@@ -4,7 +4,13 @@ class GradientButton extends StatelessWidget {
   final String text;
   final double elevation, width;
   final onPressed;
-  GradientButton({this.text, this.elevation, this.onPressed, this.width});
+  final bool notEnoughInfo;
+  GradientButton(
+      {this.text,
+      this.elevation,
+      this.onPressed,
+      this.width,
+      this.notEnoughInfo: false});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,14 +24,17 @@ class GradientButton extends StatelessWidget {
         padding: EdgeInsets.all(0.0),
         child: Ink(
           decoration: BoxDecoration(
-              gradient: RadialGradient(
-                colors: [
-                  Theme.of(context).colorScheme.primaryVariant,
-                  Theme.of(context).colorScheme.primary
-                ],
-                center: Alignment(-0.5, -0.5),
-                radius: 2.5,
-              ),
+              gradient: notEnoughInfo == false
+                  ? RadialGradient(
+                      colors: [
+                        Theme.of(context).colorScheme.primaryVariant,
+                        Theme.of(context).colorScheme.primary
+                      ],
+                      center: Alignment(-0.5, -0.5),
+                      radius: 2.5,
+                    )
+                  : RadialGradient(
+                      colors: [Colors.grey[400], Colors.grey[400]]),
               borderRadius: BorderRadius.circular(10.0)),
           child: Container(
             constraints: BoxConstraints(maxWidth: 300.0, minHeight: 50.0),

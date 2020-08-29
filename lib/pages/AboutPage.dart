@@ -1,4 +1,4 @@
-import 'package:esell/widget/molecules/colors.dart';
+import 'package:esell/widget/molecules/BlueAppBar.dart';
 import 'package:flutter/material.dart';
 
 class AboutPage extends StatelessWidget {
@@ -8,43 +8,31 @@ class AboutPage extends StatelessWidget {
     return SafeArea(
         child: Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(40.0),
-        child: AppBar(
-          elevation: 0.0,
-          title: Text('About',
-              style: TextStyle(fontFamily: 'Bree', color: iconthemelight)),
-          iconTheme: IconThemeData(
-            color: iconthemelight,
-          ),
-          backgroundColor: Theme.of(context).colorScheme.primary,
-        ),
-      ),
+          preferredSize: Size.fromHeight(40.0),
+          child: BlueAppBar(
+            title: "About",
+          )),
       backgroundColor: Theme.of(context).colorScheme.background,
       body: Container(
+        padding: EdgeInsets.all(8.0),
         alignment: Alignment.center,
-        color: Colors.grey[200],
+        color: Theme.of(context).colorScheme.background,
         width: screenWidth * 0.90,
         height: 400.0,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
               'About',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 32.0,
-                fontWeight: FontWeight.bold,
-            
-              ),
+              textAlign: TextAlign.start,
+              style: Theme.of(context).textTheme.headline1,
             ),
             Text(
-              'Esell Globe is a shopping App made just for you!',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 24.0,
-                //fontWeight: FontWeight.bold,
-              ),
+              'Shop 2 More is a shopping app made just for you!',
+              textAlign: TextAlign.start,
+              style:
+                  Theme.of(context).textTheme.caption.copyWith(fontSize: 16.0),
             )
           ],
         ),

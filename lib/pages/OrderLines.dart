@@ -1,5 +1,7 @@
 import 'package:esell/widget/atoms/DataContainer.dart';
+import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:esell/widget/molecules/MakeLine.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:esell/state/state.dart';
 // import 'package:provider/provider.dart';
@@ -45,20 +47,8 @@ class OrderLines extends StatelessWidget {
     return Scaffold(
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(40.0),
-          child: AppBar(
-            elevation: 0.0,
-            backgroundColor: Colors.white,
-            title: Text(
-              'Order Details',
-              style: TextStyle(color: Theme.of(context).colorScheme.primary),
-            ),
-            leading: IconButton(
-              icon: Icon(Icons.arrow_back),
-              color: primaryDark,
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
+          child: FAppBar(
+            title: "Order Details",
           ),
         ),
         body: ListView(

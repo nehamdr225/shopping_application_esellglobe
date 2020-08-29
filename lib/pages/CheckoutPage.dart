@@ -2,8 +2,8 @@ import 'package:esell/entities/cart.dart';
 import 'package:esell/pages/AddressPage.dart';
 import 'package:esell/widget/AnimatingLine.dart';
 import 'package:esell/widget/atoms/FancyText.dart';
+import 'package:esell/widget/atoms/GradientButton.dart';
 import 'package:esell/widget/atoms/InfoNavBar.dart';
-import 'package:esell/widget/atoms/RaisedButton.dart';
 import 'package:esell/widget/atoms/Snackbar.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:flutter/material.dart';
@@ -13,8 +13,9 @@ import 'package:quiver/iterables.dart';
 
 class CheckoutPage extends StatefulWidget {
   final List<CartItem> items;
+  final total;
 
-  CheckoutPage({this.items});
+  CheckoutPage({this.items, this.total});
 
   @override
   _CheckoutPageState createState() => _CheckoutPageState();
@@ -166,7 +167,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     FancyText(
-                      text: 'Total : Rs. ${widget.items[0].product.price}',
+                      text: 'Total : Rs. ${widget.total}',
                       color: Colors.red,
                       fontWeight: FontWeight.bold,
                       size: 15.0,
@@ -186,13 +187,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
         ),
         Builder(
           builder: (BuildContext context) {
-            return FRaisedButton(
+            return GradientButton(
+              notEnoughInfo: country != null ? false : true,
               width: width * 0.45,
-              height: 40.0,
-              bg: primaryDark,
               text: 'Place Order',
-              color: Colors.white,
-              shape: true,
               onPressed: name != null
                   ? () {
                       if (shippingInfo != null) {
@@ -247,7 +245,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
             wishlist: true,
             title: 'Checkout',
           )),
-      // backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: ListView(
         children: <Widget>[
           Column(
@@ -332,7 +330,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 child: billingInfo != null && billingInfo['house'] != null
                     ? Text('$houseNo, $city, $country')
                     : FlatButton(
-                        color: orderBar,
+                        color: Theme.of(context).colorScheme.secondary,
                         child: Text(
                           'Copy Shipping Details',
                           style: TextStyle(color: Colors.white),
@@ -443,7 +441,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                 Container(
                                   alignment: Alignment.topLeft,
                                   padding: EdgeInsets.all(3.0),
-                                  child: Text("Rs. ${values[1].product.price}",
+                                  child: Text("₹ ${values[1].product.price}",
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           color: Colors.red)),

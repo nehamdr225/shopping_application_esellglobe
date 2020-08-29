@@ -15,6 +15,7 @@ class OrdetrackPage extends StatelessWidget {
     // print(userOrders);
     //Animation<double> animation = listenable;
     return Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.background,
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(50.0),
           child: FAppBar(
@@ -53,27 +54,29 @@ class OrdetrackPage extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: <Widget>[
                                 Container(
-                                    height: 80.0,
-                                    width: 80.0,
-                                    padding: EdgeInsets.all(2.0),
+                                    height: 100.0,
+                                    width: 100.0,
+                                    //padding: EdgeInsets.all(2.0),
                                     child: Card(
-                                      elevation: 2.0,
+                                      elevation: 0.0,
                                       child: Image.network(
                                         'https://api.shop2more.com' + preview,
-                                        height: 50.0,
-                                        width: 50.0,
+                                        height: 100.0,
+                                        width: 100.0,
                                       ),
                                     )),
                                 Flexible(
                                   flex: 2,
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: <Widget>[
                                       Container(
                                         width: width * 0.50,
                                         child: Text(
                                               "${eachOrder.product.name}",
-                                              textAlign: TextAlign.center,
+                                              textAlign: TextAlign.start,
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .bodyText2
@@ -84,7 +87,7 @@ class OrdetrackPage extends StatelessWidget {
                                             "DATA",
                                       ),
                                       Padding(
-                                        padding: EdgeInsets.all(8.0),
+                                        padding: EdgeInsets.all(2.0),
                                       ),
                                       Text(
                                         "${eachOrder.status}  ${time.year}-${time.month}-${time.day}",
@@ -93,6 +96,19 @@ class OrdetrackPage extends StatelessWidget {
                                             .bodyText2
                                             .copyWith(
                                                 fontWeight: FontWeight.w400),
+                                        textAlign: TextAlign.start,
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.all(2.0),
+                                      ),
+                                      Text(
+                                        "₹ ${eachOrder.product.price}",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyText2
+                                            .copyWith(
+                                                fontWeight: FontWeight.bold),
+                                        textAlign: TextAlign.start,
                                       ),
                                     ],
                                   ),
