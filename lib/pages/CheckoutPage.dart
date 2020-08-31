@@ -90,6 +90,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                     "billing": billingInfo ?? shippingInfo,
                                     'product': item.product.id,
                                     'seller': item.product.seller,
+                                    'productDetails': {
+                                      'color': item.color,
+                                      'quantity': item.quantity,
+                                      'size': item.size
+                                    }
                                   })
                               .toList();
                           // final orderData = {
