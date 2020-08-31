@@ -1,3 +1,4 @@
+import 'package:esell/entities/address.dart';
 import 'package:esell/entities/cart.dart';
 import 'package:esell/pages/AddressPage.dart';
 import 'package:esell/widget/AnimatingLine.dart';
@@ -22,127 +23,13 @@ class CheckoutPage extends StatefulWidget {
 }
 
 class _CheckoutPageState extends State<CheckoutPage> {
-  String name, city, country, location = "Home", mobileNo;
-  String nameErr, mobileNoErr, cityErr, countryErr;
-  String houseNo;
-  Map shippingInfo, billingInfo;
+  Address shippingInfo = Address();
+  Address billingInfo = Address();
 
-  final scaffoldKey = GlobalKey<ScaffoldState>();
-
-  void setName(String value) {
-    if (value.length > 10) {
-      setState(() {
-        name = value;
-        nameErr = null;
-      });
-    } else {
-      setState(() {
-        name = value;
-        nameErr = 'Name is not valid!';
-      });
-    }
-  }
-
-  void setCity(String value) {
-    if (value.length > 5) {
-      setState(() {
-        city = value;
-        cityErr = null;
-      });
-    } else {
-      setState(() {
-        city = value;
-        cityErr = 'City is not valid!';
-      });
-    }
-  }
-
-  void setCountry(String value) {
-    if (value.length > 5) {
-      setState(() {
-        country = value;
-        countryErr = null;
-      });
-    } else {
-      setState(() {
-        country = value;
-        countryErr = 'Country is not valid!';
-      });
-    }
-  }
-
-  void setLocation(String value) {
-    setState(() {
-      location = value;
-    });
-  }
-
-  void setMobileNo(String value) {
-    if (value.length >= 10) {
-      setState(() {
-        mobileNo = value;
-        mobileNoErr = null;
-      });
-    } else {
-      setState(() {
-        mobileNo = value;
-        mobileNoErr = 'Mobile no. is not valid!';
-      });
-    }
-  }
-
-  void setHouseNo(String value) {
-    setState(() {
-      houseNo = value;
-    });
-  }
-
-  String saveShippingInfo() {
-    if (name != null && city != null && country != null && mobileNo != null) {
-      setState(() {
-        shippingInfo = {
-          'name': name,
-          'house': houseNo ?? 'N/A',
-          'city': city,
-          'country': country,
-          'location': location,
-          'mobile': mobileNo
-        };
-        // print(shippingInfo);
-      });
-      return 'done';
-    }
-    return 'error';
-  }
-
-  String saveBillingInfo(type) {
-    if (type == "ship" && shippingInfo != null) {
-      setState(() {
-        billingInfo = {
-          'name': shippingInfo['name'],
-          'house': shippingInfo['houseNo'] ?? 'N/A',
-          'city': shippingInfo['city'],
-          'country': shippingInfo['country'],
-          'mobile': shippingInfo['mobileNo']
-        };
-        // print(billingInfo);
-      });
-      return 'done';
-    }
-    if (name != null && city != null && country != null && mobileNo != null) {
-      setState(() {
-        billingInfo = {
-          'name': name,
-          'house': houseNo ?? 'N/A',
-          'city': city,
-          'country': country,
-          'mobile': mobileNo
-        };
-      });
-      return 'done';
-    }
-    return 'error';
-  }
+  void save(Map<String, dynamic> json, bool isBilling) =>
+      setState(() => isBilling
+          ? billingInfo = Address.fromJson(json)
+          : shippingInfo = Address.fromJson(json));
 
   @override
   Widget build(BuildContext context) {
@@ -188,53 +75,55 @@ class _CheckoutPageState extends State<CheckoutPage> {
         Builder(
           builder: (BuildContext context) {
             return GradientButton(
-              notEnoughInfo: country != null ? false : true,
+              notEnoughInfo:
+                  shippingInfo.houseNo != null && billingInfo.houseNo != null
+                      ? false
+                      : true,
               width: width * 0.45,
               text: 'Place Order',
-              onPressed: name != null
-                  ? () {
-                      if (shippingInfo != null) {
-                        final List orderDatas = widget.items
-                            .map<Map>((item) => {
-                                  "userInfo": shippingInfo,
-                                  "billing": billingInfo ?? shippingInfo,
-                                  'product': item.product.id,
-                                  'seller': item.product.seller,
-                                })
-                            .toList();
-                        // final orderData = {
-                        //   "userInfo": shippingInfo,
-                        //   "billing": billingInfo ?? shippingInfo,
-                        //   'product': widget.item['product']['_id'],
-                        //   'seller': widget.item['product']['seller'],
-                        // };
-                        // print(orderDatas);
-                        // return;
-                        orderDatas.forEach((orderData) {
-                          user.placeOrder(orderData).then((result) {
-                            // print('THIS IS THE RESULT');
-                            // print(result);
-                            if (result['error'] != null) {
-                              buildAndShowSnackBar(context, 'Error ordering');
-                            } else {
-                              buildAndShowSnackBar(context, 'Order created');
-                              user.deleteFromCart(orderData['product']);
-                              // Navigator.push(
-                              //     context,
-                              //     MaterialPageRoute(
-                              //         builder: (context) => AnimatingLine()));
-                              Navigator.pushAndRemoveUntil(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => AnimatingLine()),
-                                (Route<dynamic> route) => false,
-                              );
-                            }
+              onPressed:
+                  shippingInfo.houseNo != null && billingInfo.houseNo != null
+                      ? () {
+                          final List orderDatas = widget.items
+                              .map<Map>((item) => {
+                                    "userInfo": shippingInfo,
+                                    "billing": billingInfo ?? shippingInfo,
+                                    'product': item.product.id,
+                                    'seller': item.product.seller,
+                                  })
+                              .toList();
+                          // final orderData = {
+                          //   "userInfo": shippingInfo,
+                          //   "billing": billingInfo ?? shippingInfo,
+                          //   'product': widget.item['product']['_id'],
+                          //   'seller': widget.item['product']['seller'],
+                          // };
+                          // print(orderDatas);
+                          // return;
+                          orderDatas.forEach((orderData) {
+                            user.placeOrder(orderData).then((result) {
+                              // print('THIS IS THE RESULT');
+                              // print(result);
+                              if (result['error'] != null) {
+                                buildAndShowSnackBar(context, 'Error ordering');
+                              } else {
+                                buildAndShowSnackBar(context, 'Order created');
+                                user.deleteFromCart(orderData['product']);
+                                // Navigator.push(
+                                //     context,
+                                //     MaterialPageRoute(
+                                //         builder: (context) => AnimatingLine()));
+                                Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => AnimatingLine()),
+                                  (Route<dynamic> route) => false,
+                                );
+                              }
+                            });
                           });
-                        });
-                      }
-                    }
-                  : null,
+                        }
+                      : null,
             );
           },
         )
@@ -260,23 +149,9 @@ class _CheckoutPageState extends State<CheckoutPage> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => AddressPage(
-                              name: name,
-                              city: city,
-                              country: country,
-                              location: location,
-                              mobileNo: mobileNo,
-                              houseNo: houseNo,
-                              nameErr: nameErr,
-                              cityErr: cityErr,
-                              countryErr: countryErr,
-                              mobilenoErr: mobileNoErr,
-                              setCity: setCity,
-                              setCountry: setCountry,
-                              setHouseNo: setHouseNo,
-                              setLocation: setLocation,
-                              setMobileNo: setMobileNo,
-                              setName: setName,
-                              save: saveShippingInfo),
+                            save: save,
+                            address: shippingInfo,
+                          ),
                         ),
                       );
                     }),
@@ -284,8 +159,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
               SizedBox(
                 height: 10.0,
               ),
-              Text(country != null
-                  ? '$houseNo, $city, $country'
+              Text(shippingInfo.city != null
+                  ? shippingInfo.toString()
                   : 'Please provide shipping details.'),
               SizedBox(
                 height: 20.0,
@@ -300,24 +175,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => AddressPage(
-                              name: name,
-                              city: city,
-                              country: country,
-                              location: location,
-                              mobileNo: mobileNo,
-                              houseNo: houseNo,
-                              nameErr: nameErr,
-                              cityErr: cityErr,
-                              countryErr: countryErr,
-                              mobilenoErr: mobileNoErr,
-                              setCity: setCity,
-                              setCountry: setCountry,
-                              setHouseNo: setHouseNo,
-                              setLocation: setLocation,
-                              setMobileNo: setMobileNo,
-                              setName: setName,
-                              save: saveBillingInfo,
-                              isBilling: true),
+                            save: save,
+                            isBilling: true,
+                            address: billingInfo,
+                          ),
                         ),
                       );
                     }),
@@ -327,17 +188,16 @@ class _CheckoutPageState extends State<CheckoutPage> {
               ),
               Container(
                 alignment: Alignment.center,
-                child: billingInfo != null && billingInfo['house'] != null
-                    ? Text('$houseNo, $city, $country')
+                child: billingInfo.city != null
+                    ? Text(billingInfo.toString())
                     : FlatButton(
                         color: Theme.of(context).colorScheme.secondary,
                         child: Text(
                           'Copy Shipping Details',
                           style: TextStyle(color: Colors.white),
                         ),
-                        onPressed: () {
-                          saveBillingInfo('ship');
-                        },
+                        onPressed: () =>
+                            setState(() => billingInfo = shippingInfo),
                       ),
               ),
               SizedBox(

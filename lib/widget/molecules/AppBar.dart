@@ -35,7 +35,7 @@ class FAppBar extends StatelessWidget {
         preferredSize: Size.fromHeight(50.0),
         child: AppBar(
           automaticallyImplyLeading: false,
-          title: InkWell(
+          leading: InkWell(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -55,16 +55,15 @@ class FAppBar extends StatelessWidget {
           elevation: 0.0,
           iconTheme: theme.iconTheme,
           backgroundColor: theme.colorScheme.background,
-          // centerTitle: true,
-          // title: Padding(
-          //   padding: const EdgeInsets.only(top: 8.0),
-          //   child: Text(title,
-          //       style: TextStyle(
-          //         color: primaryDark,
-          //         fontSize: 18.0,
-          //         fontWeight: FontWeight.bold,
-          //       )),
-          // ),
+          centerTitle: true,
+          title: Text(
+            title,
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 16.0,
+              // fontWeight: FontWeight.bold,
+            ),
+          ),
           actions: <Widget>[
             search != null
                 ? FIcons(

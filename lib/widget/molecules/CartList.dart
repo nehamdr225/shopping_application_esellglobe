@@ -147,16 +147,23 @@ class CartListView extends StatelessWidget {
                             InkWell(
                               onTap: () {
                                 Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (_) => CheckoutPage(items: [
-                                              CartItem.fromJson({
-                                                'product': product.toJson(),
-                                                'quantity': quantity,
-                                                'size': size,
-                                                'color': color
-                                              })
-                                            ])));
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => CheckoutPage(
+                                      items: [
+                                        CartItem.fromJson({
+                                          'product': product.toJson(),
+                                          'quantity': quantity,
+                                          'size': size,
+                                          'color': color
+                                        })
+                                      ],
+                                      total: double.parse(product.price
+                                              .replaceAll(',', '')) *
+                                          quantity,
+                                    ),
+                                  ),
+                                );
                               },
                               child: Text(
                                 "Order Now",

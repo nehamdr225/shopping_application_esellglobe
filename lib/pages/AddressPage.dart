@@ -1,3 +1,4 @@
+import 'package:esell/entities/address.dart';
 import 'package:esell/state/state.dart';
 import 'package:esell/widget/atoms/Forms.dart';
 import 'package:esell/widget/atoms/GradientButton.dart';
@@ -5,71 +6,82 @@ import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:flutter/material.dart';
 
 class AddressPage extends StatefulWidget {
-  final String name, city, country, location, mobileNo;
-  final String houseNo;
-  final String nameErr, mobilenoErr, cityErr, countryErr;
-  final Function setName,
-      setMobileNo,
-      setHouseNo,
-      setCountry,
-      setCity,
-      setLocation,
-      save;
+  final Function save;
   final bool isBilling;
-  AddressPage(
-      {this.name,
-      this.city,
-      this.country,
-      this.location,
-      this.mobileNo,
-      this.houseNo,
-      this.setCity,
-      this.setCountry,
-      this.setHouseNo,
-      this.setLocation,
-      this.setMobileNo,
-      this.setName,
-      this.cityErr,
-      this.countryErr,
-      this.mobilenoErr,
-      this.nameErr,
-      this.save,
-      this.isBilling: false});
+  final Address address;
+  AddressPage({this.save, this.isBilling: false, this.address});
 
   @override
   _AddressPageState createState() => _AddressPageState();
 }
 
 class _AddressPageState extends State<AddressPage> {
-  String active = "Home";
+  String name, city, country, location = "Home", mobileNo;
+  String nameErr, mobileNoErr, cityErr, countryErr;
+  String houseNo;
+
+  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  void setName(String value) => setState(() => name = value);
+
+  void setCity(String value) => setState(() => city = value);
+
+  void setCountry(String value) => setState(() => country = value);
+
+  void setLocation(String value) => setState(() => location = value);
+
+  void setMobileNo(String value) => setState(() => mobileNo = value);
+
+  void setHouseNo(String value) => setState(() => houseNo = value);
+
+  String active;
   @override
   Widget build(BuildContext context) {
+    setState(() {
+      active = widget.address.label ?? "Home";
+      country = widget.address.country;
+      location = widget.address.label;
+    });
     final primaryColor = Theme.of(context).colorScheme.primaryVariant;
     return Scaffold(
         resizeToAvoidBottomInset: true,
         persistentFooterButtons: <Widget>[
-          GradientButton(
-            width: MediaQuery.of(context).size.width * 0.50,
-            text: 'Save',
-            onPressed: () {
-              final status = widget.save();
-              print(status);
-              Navigator.pop(context);
-            },
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: GradientButton(
+              width: MediaQuery.of(context).size.width,
+              text: 'Save',
+              onPressed: () {
+                if (!_formKey.currentState.validate()) {
+                  return;
+                }
+                // final status = widget.save();
+                // print(status);
+                Map<String, String> json = {
+                  'name': name,
+                  'city': city,
+                  'houseNo': houseNo,
+                  'label': location,
+                  'contact': mobileNo,
+                  'country': country,
+                };
+                widget.save(json, widget.isBilling);
+                Navigator.pop(context);
+              },
+            ),
           ),
         ],
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(40.0),
             child: FAppBar(
               wishlist: true,
-              title: widget.isBilling
-                  ? 'Add Billing Address'
-                  : 'Add Shipping Address',
+              title: widget.isBilling ? 'Billing Address' : 'Shipping Address',
             )),
         backgroundColor: Theme.of(context).colorScheme.background,
         body: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
-          child: Container(
+          child: Form(
+            key: _formKey,
             child: ListView(
               children: <Widget>[
                 Padding(
@@ -78,9 +90,12 @@ class _AddressPageState extends State<AddressPage> {
                       bottom: 8.0, left: 8.0, right: 8.0, top: 15.0),
                   child: FForms(
                     icon: Icon(Icons.person, color: primaryColor),
-                    onChanged: widget.setName,
+                    onChanged: setName,
+                    validator: (value) =>
+                        value.isEmpty ? 'Name is not valid!' : null,
                     text: 'Full Name',
                     type: TextInputType.text,
+                    initialValue: widget.address.name,
                     textStyle: Theme.of(context)
                         .textTheme
                         .bodyText2
@@ -92,8 +107,12 @@ class _AddressPageState extends State<AddressPage> {
                   padding: const EdgeInsets.all(8.0),
                   child: FForms(
                     icon: Icon(Icons.phone, color: primaryColor),
-                    onChanged: widget.setMobileNo,
+                    onChanged: setMobileNo,
                     text: 'Mobile number',
+                    initialValue: widget.address.contact,
+                    validator: (value) => value.isEmpty && value.length != 10
+                        ? 'Phone is not valid!'
+                        : null,
                     type: TextInputType.phone,
                     textStyle: Theme.of(context)
                         .textTheme
@@ -109,8 +128,11 @@ class _AddressPageState extends State<AddressPage> {
                         padding: const EdgeInsets.all(8.0),
                         child: FForms(
                           icon: Icon(Icons.home, color: primaryColor),
-                          onChanged: widget.setHouseNo,
+                          onChanged: setHouseNo,
                           text: 'House no.',
+                          initialValue: widget.address.houseNo,
+                          validator: (value) =>
+                              value.isEmpty ? 'Not valid!' : null,
                           type: TextInputType.number,
                           textStyle: Theme.of(context)
                               .textTheme
@@ -122,7 +144,10 @@ class _AddressPageState extends State<AddressPage> {
                         padding: const EdgeInsets.all(8.0),
                         child: FForms(
                           icon: Icon(Icons.location_city, color: primaryColor),
-                          onChanged: widget.setCity,
+                          onChanged: setCity,
+                          initialValue: widget.address.city,
+                          validator: (value) =>
+                              value.isEmpty ? 'Not valid!' : null,
                           text: 'City',
                           type: TextInputType.text,
                           textStyle: Theme.of(context)
@@ -139,8 +164,11 @@ class _AddressPageState extends State<AddressPage> {
                   padding: const EdgeInsets.all(8.0),
                   child: FForms(
                     icon: Icon(Icons.place, color: primaryColor),
-                    onChanged: widget.setCountry,
+                    onChanged: setCountry,
                     text: 'Country',
+                    initialValue: widget.address.country,
+                    validator: (value) =>
+                        value.isEmpty ? 'Country is not valid!' : null,
                     type: TextInputType.text,
                     textStyle: Theme.of(context)
                         .textTheme
@@ -189,7 +217,7 @@ class _AddressPageState extends State<AddressPage> {
                                 ),
                                 child: InkWell(
                                   onTap: () {
-                                    widget.setLocation('Office');
+                                    setLocation('Office');
                                     setState(() {
                                       active = 'Office';
                                     });
@@ -223,7 +251,7 @@ class _AddressPageState extends State<AddressPage> {
                                 ),
                                 child: InkWell(
                                   onTap: () {
-                                    widget.setLocation('Home');
+                                    setLocation('Home');
                                     setState(() {
                                       active = 'Home';
                                     });
