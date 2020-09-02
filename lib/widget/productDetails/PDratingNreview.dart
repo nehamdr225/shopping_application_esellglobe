@@ -1,3 +1,4 @@
+import 'package:esell/entities/user.dart';
 import 'package:esell/state/src/user.dart';
 import 'package:esell/widget/atoms/Forms.dart';
 import 'package:esell/widget/atoms/GradientButton.dart';
@@ -8,8 +9,8 @@ import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 class PDratingNreview extends StatefulWidget {
   final id;
-  final rating;
-  PDratingNreview(this.id, this.rating);
+  final UserRating userRating;
+  PDratingNreview(this.id, this.userRating);
   @override
   _PDratingNreviewState createState() => _PDratingNreviewState();
 }
@@ -19,7 +20,7 @@ class _PDratingNreviewState extends State<PDratingNreview> {
   @override
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Text("Rate this app",
+      Text("Rate this product",
           textAlign: TextAlign.start,
           style: Theme.of(context).textTheme.headline3),
       Text("Tell others what you think",
@@ -32,18 +33,21 @@ class _PDratingNreviewState extends State<PDratingNreview> {
         padding: const EdgeInsets.symmetric(vertical: 12.0),
         child: Align(
           alignment: Alignment.center,
-          child: SmoothStarRating( 
+          child: SmoothStarRating(
             allowHalfRating: true,
             onRatingChanged: (v) {
-              setState(() {
-                localRating = v;
-              });
-              Provider.of<UserModel>(context, listen: false)
-                  .rateProduct(widget.id, v)
-                  .then((value) => print(value));
+              setState(() => localRating = v);
+              if (widget.userRating == null)
+                Provider.of<UserModel>(context, listen: false)
+                    .rateProduct(widget.id, v)
+                    .then((value) => print(value));
+              else
+                Provider.of<UserModel>(context, listen: false)
+                    .updateRating(widget.id, localRating)
+                    .then((value) => print(value));
             },
             starCount: 5,
-            rating: localRating ?? widget.rating ?? 0.0,
+            rating: localRating ?? widget.userRating.rating ?? 0.0,
             size: 34,
             color: Theme.of(context).colorScheme.primary, // secondary
             borderColor: Theme.of(context).colorScheme.primary,

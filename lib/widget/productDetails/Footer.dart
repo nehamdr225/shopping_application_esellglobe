@@ -26,6 +26,7 @@ class PDFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserModel>(context);
+    final width = MediaQuery.of(context).size.width;
 
     addToCart() {
       if (category != null && category.contains('Sunglasses') ||
@@ -79,7 +80,7 @@ class PDFooter extends StatelessWidget {
                         text: 'Goto Cart',
                         radius: 10.0,
                         color: Colors.black,
-                        width: MediaQuery.of(context).size.width * 0.40,
+                        width: width * 0.40,
                         onPressed: () {
                           Navigator.push(
                             context,
@@ -89,7 +90,7 @@ class PDFooter extends StatelessWidget {
                       )
                     : FOutlineButton(
                         height: 45.0,
-                        width: MediaQuery.of(context).size.width * 0.40,
+                        width: width * 0.40,
                         text: inCart ? 'In Cart' : 'Add To Cart',
                         radius: 10.0,
                         color: Colors.black,
@@ -99,7 +100,7 @@ class PDFooter extends StatelessWidget {
                 user.findCartItem(id) == true
                     ? FOutlineButton(
                         height: 45.0,
-                        width: MediaQuery.of(context).size.width * 0.40,
+                        width: width * 0.40,
                         text: 'Goto Cart',
                         radius: 10.0,
                         color: Colors.black,
@@ -111,7 +112,7 @@ class PDFooter extends StatelessWidget {
                         },
                       )
                     : GradientButton(
-                        width: MediaQuery.of(context).size.width * 0.40,
+                        width: width * 0.40,
                         text: 'Buy Now',
                         onPressed: () {
                           Navigator.push(
@@ -130,7 +131,7 @@ class PDFooter extends StatelessWidget {
 
                 // FRaisedButton(
                 //     height: 50.0,
-                //     width: MediaQuery.of(context).size.width * 0.40,
+                //     width: width * 0.40,
                 //     radius: 0.0,
 
                 //     ///###
@@ -142,6 +143,7 @@ class PDFooter extends StatelessWidget {
               ]
             : <Widget>[
                 GradientButton(
+                  width: width - width * 0.08,
                   text: 'Login or Register',
                   onPressed: () {
                     Navigator.push(context,

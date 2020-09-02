@@ -1,4 +1,5 @@
 import 'package:esell/entities/product.dart';
+import 'package:esell/entities/user.dart';
 import 'package:esell/widget/productDetails/AllDetails.dart';
 import 'package:esell/widget/productDetails/BoughtTogether.dart';
 import 'package:esell/widget/productDetails/ColorSelector.dart';
@@ -18,6 +19,7 @@ class PDInfo extends StatefulWidget {
       color,
       size,
       description;
+  final UserRating userRating;
   final relatedProd;
   final Function setSize, setColor;
   final Rating rating;
@@ -34,7 +36,8 @@ class PDInfo extends StatefulWidget {
       this.sizes,
       this.price,
       this.relatedProd,
-      this.rating});
+      this.rating,
+      this.userRating});
 
   @override
   _PDInfoState createState() => _PDInfoState();
@@ -143,7 +146,10 @@ class _PDInfoState extends State<PDInfo> {
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 16.0),
-                        child: PDratingNreview(widget.id, widget.rating.rate),
+                        child: PDratingNreview(
+                          widget.id,
+                          widget.userRating,
+                        ),
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 16.0),

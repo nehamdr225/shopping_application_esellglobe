@@ -18,3 +18,16 @@ class User {
     this.cart = jsonData['cart'];
   }
 }
+
+class UserRating {
+  double rating;
+  String id;
+
+  UserRating();
+
+  UserRating.fromJson(json)
+      : rating = double.parse(json['rating'].toString()),
+        id = json['_id'];
+
+  toJson() => {'_id': id, 'rating': rating};
+}

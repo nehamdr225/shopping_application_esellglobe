@@ -4,6 +4,7 @@ import 'package:esell/entities/cart.dart';
 import 'package:esell/entities/orders.dart';
 import 'package:esell/entities/product.dart';
 import 'package:esell/entities/user.api.dart';
+import 'package:esell/entities/user.dart';
 import 'package:flutter/cupertino.dart';
 
 class UserModel extends ChangeNotifier {
@@ -138,6 +139,21 @@ class UserModel extends ChangeNotifier {
 
   Future rateProduct(String id, double rate) async {
     return await _api.rateProduct(token, id, rate);
+  }
+
+  Future updateRating(String productId, double rate) async {
+    return await _api.updateRating(token, productId, rate);
+  }
+
+  Future getUserRatingForProduct(String id) async {
+    final value = await _api.getUserRatingForProduct(token, id);
+    print(value);
+    if (value['error'] == null &&
+        value['result'] != null &&
+        value['result']['rating'] != null) {
+      return UserRating.fromJson(value['result']);
+    }
+    return null;
   }
 
   Future<Map> login(String email, String password, bool remember) async {

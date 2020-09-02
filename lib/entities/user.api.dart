@@ -329,14 +329,42 @@ class UserApi {
     }
   }
 
-  updateRating(token, productId, rate) async {
+  Future getUserRating(token) async {
+    try {
+      Map<String, String> headers = {
+        "Content-Type": "application/json",
+        "X-Access-Token": token
+      };
+      final response =
+          await _fetch.get(url: "$url/rating/user", headers: headers);
+      return response;
+    } catch (err) {
+      return {"error": err};
+    }
+  }
+
+  Future getUserRatingForProduct(token, productId) async {
+    try {
+      Map<String, String> headers = {
+        "Content-Type": "application/json",
+        "X-Access-Token": token
+      };
+      final response = await _fetch.get(
+          url: "$url/rating/product/user/$productId", headers: headers);
+      return response;
+    } catch (err) {
+      return {"error": err};
+    }
+  }
+
+  updateRating(token, ratingId, rate) async {
     try {
       Map<String, String> headers = {
         "Content-Type": "application/json",
         "X-Access-Token": token
       };
       final response = await _fetch
-          .put(url: "$url/rating/$productId", headers: headers, body: {
+          .put(url: "$url/rating/$ratingId", headers: headers, body: {
         'rating': rate,
       });
       return response;

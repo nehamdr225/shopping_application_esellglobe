@@ -1,3 +1,4 @@
+import 'package:esell/entities/user.dart';
 import 'package:esell/widget/molecules/AppBar.dart';
 import 'package:esell/widget/productDetails/Carousel.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +33,7 @@ class _ProductDetailsState extends State<ProductDetails> {
 
   int quantity = 1;
   Product product;
+  UserRating userRatingForProduct;
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +48,11 @@ class _ProductDetailsState extends State<ProductDetails> {
           product = Product.fromJson(value);
         });
       });
+      if (userRatingForProduct == null)
+        Provider.of<UserModel>(context).getUserRatingForProduct(widget.id).then(
+            (value) => value != null
+                ? setState(() => userRatingForProduct = value)
+                : null);
       return Scaffold(
           backgroundColor: Theme.of(context).colorScheme.background,
           appBar: PreferredSize(
@@ -63,6 +70,7 @@ class _ProductDetailsState extends State<ProductDetails> {
     }
     final relatedProds =
         Provider.of<ProductModel>(context).relevant(widget.category);
+
     final imagesrc = "https://api.shop2more.com";
 
     List<Image> images = [];
@@ -141,19 +149,21 @@ class _ProductDetailsState extends State<ProductDetails> {
               ),
             ),
             PDInfo(
-                relatedProd: relatedProds,
-                category: product.category,
-                id: product.id,
-                color: color,
-                size: size,
-                setSize: setSize,
-                setColor: setColor,
-                colors: product.colors,
-                description: product.description['style'],
-                name: product.name,
-                price: product.price,
-                sizes: product.sizes,
-                rating: product.rating),
+              relatedProd: relatedProds,
+              category: product.category,
+              id: product.id,
+              color: color,
+              size: size,
+              setSize: setSize,
+              setColor: setColor,
+              colors: product.colors,
+              description: product.description['style'],
+              name: product.name,
+              price: product.price,
+              sizes: product.sizes,
+              rating: product.rating,
+              userRating: userRatingForProduct ?? UserRating(),
+            ),
             Padding(
               padding: EdgeInsets.all(3.0),
             )
