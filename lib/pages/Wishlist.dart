@@ -62,19 +62,6 @@ class WishlistPage extends StatelessWidget {
               ),
             ),
             backgroundColor: Colors.white,
-            persistentFooterButtons: <Widget>[
-              FRaisedButton(
-                  width: 160.0,
-                  height: 40.0,
-                  shape: true,
-                  color: iconthemelight,
-                  bg: Theme.of(context).colorScheme.primary,
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => CartPage()));
-                  },
-                  text: 'Proceed to Cart'),
-            ],
             body: items.length > 0
                 ? Container(
                     child: OrientationBuilder(builder: (context, orientation) {

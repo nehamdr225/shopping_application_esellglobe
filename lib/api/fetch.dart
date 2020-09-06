@@ -1,7 +1,5 @@
-import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:dio_flutter_transformer/dio_flutter_transformer.dart';
-import 'package:http/http.dart' as http;
 
 const JSON_TYPE = {'content-type': 'application/json'};
 const Map<String, String> Error = {"error": "Error with network!"};
@@ -13,13 +11,13 @@ Dio getDioInstance() {
 }
 
 class Fetch {
+  final Dio _dio = getDioInstance();
   Future<Response<T>> get<T>({
     String url,
     String token,
   }) async {
     try {
-      final dio = getDioInstance();
-      return await dio.get(
+      return await _dio.get(
         url,
         options: Options(
           headers: {...JSON_TYPE, if (token != null) "X-Access-Token": token},
@@ -38,8 +36,7 @@ class Fetch {
     dynamic data,
   }) async {
     try {
-      final dio = getDioInstance();
-      return await dio.post(
+      return await _dio.post(
         url,
         options: Options(
           headers: {...JSON_TYPE, if (token != null) "X-Access-Token": token},
@@ -60,8 +57,7 @@ class Fetch {
     dynamic data,
   }) async {
     try {
-      final dio = getDioInstance();
-      return await dio.put(
+      return await _dio.put(
         url,
         options: Options(
           headers: {...JSON_TYPE, if (token != null) "X-Access-Token": token},
@@ -82,8 +78,7 @@ class Fetch {
     dynamic data,
   }) async {
     try {
-      final dio = getDioInstance();
-      return await dio.delete(
+      return await _dio.delete(
         url,
         options: Options(
           headers: {...JSON_TYPE, if (token != null) "X-Access-Token": token},

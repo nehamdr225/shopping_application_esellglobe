@@ -25,7 +25,7 @@ class ProductApi {
     page = 1,
   }) async {
     return (await _fetch.get(
-      url: '$url/category/$category?page=$page&result=$result',
+      url: '$url/category/$category?page=$page&results=$result',
     ))
         .data;
   }
