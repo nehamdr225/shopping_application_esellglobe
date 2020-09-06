@@ -60,151 +60,138 @@ class _CartPageState extends State<CartPage> {
     }
 
     // print(user.cart[0]['color']);
-    return SafeArea(
-        child: userData != null && token != null && items != null
-            ? Scaffold(
-                appBar: PreferredSize(
-                    preferredSize: Size.fromHeight(40.0),
-                    child: FAppBar(
-                      wishlist: true,
-                      title: 'Cart',
-                    )),
-                backgroundColor: Theme.of(context).colorScheme.background,
-                persistentFooterButtons: <Widget>[
-                  items != null && items.length > 0
-                      // ? Builder(
-                      //     builder: (BuildContext context) {
-                      //       return GradientButton(
-                      //           width: width * 0.80,
-                      //           text: 'Proceed to Checkout',
-                      //           onPressed: () {
-                      //             Navigator.push(
-                      //                 context,
-                      //                 MaterialPageRoute(
-                      //                     builder: (_) =>
-                      //                         CheckoutPage(items: items)));
-                      //           });
-                      ? Container(
-                          height: 160.0,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                  height: 110.0,
-                                  color:
-                                      Theme.of(context).colorScheme.background,
-                                  child: CartPrice(
-                                    length: items.length,
-                                    price: price.toStringAsFixed(2),
-                                    total: total.toStringAsFixed(2),
-                                  )),
-                              FRaisedButton(
-                                width: width * 0.95,
-                                height: 40.0,
-                                bg: Theme.of(context).colorScheme.primary,
-                                text: 'Proceed to Checkout',
-                                color: Colors.white,
-                                shape: true,
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (_) => CheckoutPage(
-                                                items: items,
-                                                total: total.toStringAsFixed(2),
-                                              )));
-                                },
-                              )
-                            ],
-                          ),
-                        )
-                      : SizedBox.shrink()
-                ],
-                body: items != null && items.length > 0
-                    ? ListView.builder(
-                        itemCount: items.length + 1,
-                        itemBuilder: (context, index) {
-                          return index != items.length
-                              ? CartListView(
-                                  color: items[index].color,
-                                  quantity: items[index].quantity,
-                                  setQuantity: updateCartItem,
-                                  token: user.token,
-                                  deleteFromCart: user.deleteFromCart,
-                                  size: items[index].size,
-                                  product: items[index].product)
-                              : SizedBox.shrink();
-                          // return index != items.length
-                          //     ? CartListView(
-                          //         color: items[index].color,
-                          //         quantity: items[index].quantity,
-                          //         setQuantity: updateCartItem,
-                          //         token: user.token,
-                          //         deleteFromCart: user.deleteFromCart,
-                          //         size: items[index].size,
-                          //         product: items[index].product)
-                          //     : Padding(
-                          //         padding: const EdgeInsets.only(top: 8.0),
-                          //         child: Container(
-                          //             height: 160.0,
-                          //             color: Theme.of(context)
-                          //                 .colorScheme
-                          //                 .background,
-                          //             child: CartPrice(
-                          //               length: items.length,
-                          //               price: price.toStringAsFixed(2),
-                          //               total: total.toStringAsFixed(2),
-                          //             )),
-                          //       );
-                        },
-                      )
-                    : Center(
-                        child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Container(
-                            height: 200.0,
-                            width: 300.0,
-                            child: Image.asset('images/emptywishlist.png'),
-                          ),
-                          Text(
-                            "Oops...Your cart is empty!",
-                            style: TextStyle(fontSize: 20.0),
-                          ),
-                        ],
-                      )))
-            : Scaffold(
-                appBar: PreferredSize(
-                    preferredSize: Size.fromHeight(40.0),
-                    child: FAppBar(
-                      wishlist: true,
-                      title: 'Cart',
-                    )),
-                backgroundColor: Theme.of(context).colorScheme.background,
-                body: Center(
-                    child: Column(
+    if (userData == null && token == null && items == null)
+      return SafeArea(
+        child: Scaffold(
+          appBar: PreferredSize(
+              preferredSize: Size.fromHeight(40.0),
+              child: FAppBar(
+                wishlist: true,
+                title: 'Cart',
+              )),
+          backgroundColor: Theme.of(context).colorScheme.background,
+          body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  "You need to Login first",
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline4
+                      .copyWith(fontSize: 16.0),
+                ),
+                SizedBox(
+                  height: 15.0,
+                ),
+                GradientButton(
+                  text: "Login",
+                  width: 150.0,
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => SignInPage()));
+                  },
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    if (items == null || items.isEmpty)
+      return SafeArea(
+        child: Scaffold(
+          appBar: PreferredSize(
+              preferredSize: Size.fromHeight(40.0),
+              child: FAppBar(
+                wishlist: true,
+                title: 'Cart',
+              )),
+          backgroundColor: Theme.of(context).colorScheme.background,
+          body: ListView(
+            children: [
+              Center(
+                heightFactor: 2,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
+                    Container(
+                      height: 200.0,
+                      width: 300.0,
+                      child: Image.asset('images/emptywishlist.png'),
+                    ),
                     Text(
-                      "You need to Login first",
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline4
-                          .copyWith(fontSize: 16.0),
-                    ),
-                    SizedBox(
-                      height: 15.0,
-                    ),
-                    GradientButton(
-                      text: "Login",
-                      width: 150.0,
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => SignInPage()));
-                      },
+                      "Oops...Your cart is empty!",
+                      style: TextStyle(fontSize: 20.0),
                     ),
                   ],
-                ))));
+                ),
+              )
+            ],
+          ),
+        ),
+      );
+    return SafeArea(
+      child: Scaffold(
+        appBar: PreferredSize(
+            preferredSize: Size.fromHeight(40.0),
+            child: FAppBar(
+              wishlist: true,
+              title: 'Cart',
+            )),
+        backgroundColor: Theme.of(context).colorScheme.background,
+        persistentFooterButtons: <Widget>[
+          Container(
+            height: 160.0,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                    height: 110.0,
+                    color: Theme.of(context).colorScheme.background,
+                    child: CartPrice(
+                      length: items.length,
+                      price: price.toStringAsFixed(2),
+                      total: total.toStringAsFixed(2),
+                    )),
+                FRaisedButton(
+                  width: width * 0.95,
+                  height: 40.0,
+                  bg: Theme.of(context).colorScheme.primary,
+                  text: 'Proceed to Checkout',
+                  color: Colors.white,
+                  shape: true,
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => CheckoutPage(
+                                  items: items,
+                                  total: total.toStringAsFixed(2),
+                                )));
+                  },
+                )
+              ],
+            ),
+          )
+        ],
+        body: ListView.builder(
+          itemCount: items.length + 1,
+          itemBuilder: (context, index) {
+            return index != items.length
+                ? CartListView(
+                    color: items[index].color,
+                    quantity: items[index].quantity,
+                    setQuantity: updateCartItem,
+                    token: user.token,
+                    deleteFromCart: user.deleteFromCart,
+                    size: items[index].size,
+                    product: items[index].product)
+                : SizedBox.shrink();
+          },
+        ),
+      ),
+    );
   }
 }
