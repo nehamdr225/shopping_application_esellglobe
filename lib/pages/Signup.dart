@@ -1,5 +1,5 @@
 import 'package:esell/core/validators.dart';
-import 'package:esell/entities/user.api.dart';
+import 'package:esell/api/user.api.dart';
 import 'package:esell/pages/Home.dart';
 import 'package:esell/pages/SendOTP.dart';
 import 'package:esell/pages/Signin.dart';

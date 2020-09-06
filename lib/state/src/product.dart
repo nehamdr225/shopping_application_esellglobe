@@ -1,6 +1,6 @@
 import 'dart:core';
 
-import 'package:esell/entities/product.api.dart';
+import 'package:esell/api/product.api.dart';
 import 'package:esell/entities/product.dart';
 // import 'package:esell/entities/product.dart';
 // import 'package:esell/data/product.model.dart';

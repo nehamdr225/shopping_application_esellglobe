@@ -3,7 +3,7 @@ import 'package:esell/core/validators.dart';
 import 'package:esell/entities/cart.dart';
 import 'package:esell/entities/orders.dart';
 import 'package:esell/entities/product.dart';
-import 'package:esell/entities/user.api.dart';
+import 'package:esell/api/user.api.dart';
 import 'package:esell/entities/user.dart';
 import 'package:flutter/cupertino.dart';
 

@@ -1,4 +1,4 @@
-import 'package:esell/entities/user.api.dart';
+import 'package:esell/api/user.api.dart';
 import 'package:esell/pages/Home.dart';
 import 'package:esell/pages/Signin.dart';
 import 'package:esell/state/src/theme.dart';

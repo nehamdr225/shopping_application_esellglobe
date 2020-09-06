@@ -1,8 +1,8 @@
 import 'package:esell/core/SecureStorage.dart';
-import 'package:esell/core/fetch.dart';
+import 'package:esell/api/fetch.dart';
 import 'package:esell/core/validators.dart';
-import 'package:esell/entities/product.api.dart';
-import 'package:esell/entities/user.api.dart';
+import 'package:esell/api/product.api.dart';
+import 'package:esell/api/user.api.dart';
 import 'package:esell/pages/Home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -11,7 +11,7 @@ import 'package:esell/state/state.dart';
 
 Future main() async {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    statusBarColor: Color(0xff000000),//3E91CC),
+    statusBarColor: Color(0xff000000), //3E91CC),
   ));
   runApp(BootStrapper());
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
