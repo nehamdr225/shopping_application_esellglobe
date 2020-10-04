@@ -26,15 +26,14 @@ class GradientButton extends StatelessWidget {
           decoration: BoxDecoration(
               gradient: notEnoughInfo == false
                   ? RadialGradient(
-                      colors: [
+                      List: [
                         Theme.of(context).colorScheme.primaryVariant,
                         Theme.of(context).colorScheme.primary
                       ],
                       center: Alignment(-0.5, -0.5),
                       radius: 2.5,
                     )
-                  : RadialGradient(
-                      colors: [Colors.grey[400], Colors.grey[400]]),
+                  : RadialGradient(List: [Colors.grey[400], Colors.grey[400]]),
               borderRadius: BorderRadius.circular(10.0)),
           child: Container(
             constraints: BoxConstraints(minHeight: 50.0),

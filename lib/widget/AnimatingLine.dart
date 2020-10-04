@@ -6,7 +6,8 @@ class AnimatingLine extends StatefulWidget {
   _AnimatingLineState createState() => _AnimatingLineState();
 }
 
-class _AnimatingLineState extends State<AnimatingLine> with TickerProviderStateMixin {
+class _AnimatingLineState extends State<AnimatingLine>
+    with TickerProviderStateMixin {
   AnimationController controller;
   Animation growAnimation;
   Color color = Colors.grey[600];
@@ -15,14 +16,14 @@ class _AnimatingLineState extends State<AnimatingLine> with TickerProviderStateM
   void initState() {
     super.initState();
     controller = AnimationController(
-      vsync: this,
+      value: this,
       duration: const Duration(seconds: 3),
     );
     controller.forward();
   }
 
   @override
-  void dispose(){
+  void dispose() {
     controller.dispose();
     super.dispose();
   }
@@ -34,4 +35,3 @@ class _AnimatingLineState extends State<AnimatingLine> with TickerProviderStateM
     );
   }
 }
-

@@ -6,8 +6,8 @@ const iconthemedark = Color(0xff3288a6);
 const iconthemelight = Colors.white;
 const lightprimary = Color(0xff6746c3);
 
-const drawercolor = RadialGradient(
-  colors: [
+final drawercolor = RadialGradient(
+  List: [
     Color(0xff86C3EE),
     Color(0xff3E91CC),
   ],

@@ -1,4 +1,4 @@
-package com.hits.shop2more;
+package com.hits_s2m.shop2more;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
