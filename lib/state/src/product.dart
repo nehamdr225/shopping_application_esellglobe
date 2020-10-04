@@ -1,6 +1,6 @@
 import 'dart:core';
 
-import 'package:esell/entities/product.api.dart';
+import 'package:esell/api/product.api.dart';
 import 'package:esell/entities/product.dart';
 // import 'package:esell/entities/product.dart';
 // import 'package:esell/data/product.model.dart';
@@ -8,9 +8,9 @@ import 'package:flutter/cupertino.dart';
 
 class ProductModel extends ChangeNotifier {
   final ProductApi _api;
-  ProductModel(this._api) {
-    handleInitialLoad();
-  }
+  ProductModel(this._api); // {
+  //   handleInitialLoad();
+  // }
 
   handleInitialLoad() async {
     final data = await _api.getProducts(page: page);
@@ -83,6 +83,10 @@ class ProductModel extends ChangeNotifier {
 
   setProducts({List<Product> items, String category}) {
     if (category != null) {
+      items.removeWhere(
+        (el) => _menProducts[category.split(';').first]
+            .any((element) => element.id == el.id),
+      );
       _menProducts[category.split(';').first].addAll(items);
       notifyListeners();
       return;
@@ -119,15 +123,17 @@ class ProductModel extends ChangeNotifier {
       if (_isRefreshing) return RefreshStatus.loading;
       _isRefreshing = true;
       // notifyListeners();
-
       Map<String, dynamic> res = await _api.getProductsByCategory(
-          category: category, page: thisRef.page);
+        category: category,
+        page: thisRef.page,
+      );
       if (res['error'] != null && res['error'] == 'Not found!') {
         _isRefreshing = false;
         thisRef.isComplete = true;
         notifyListeners();
         return RefreshStatus.noMoreProductsToShow;
       }
+
       if (res['result'].length > 0) {
         thisRef.page++;
         final List<Product> prods =
